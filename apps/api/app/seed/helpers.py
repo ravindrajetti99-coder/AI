@@ -35,12 +35,29 @@ AR_OPTIONS = [
 
 
 def assertion_reason(assertion, reason, answer, explanation, st, difficulty="medium"):
-    return mcq(f"Assertion (A): {assertion}\nReason (R): {reason}", AR_OPTIONS, answer, explanation, st, difficulty, qtype="assertion_reason", assertion=assertion, reason=reason)
+    return mcq(
+        f"Assertion (A): {assertion}\nReason (R): {reason}",
+        AR_OPTIONS,
+        answer,
+        explanation,
+        st,
+        difficulty,
+        qtype="assertion_reason",
+        assertion=assertion,
+        reason=reason,
+    )
 
 
 def multi(stem, options, answers, explanation, st, difficulty="medium"):
     ids = ["a", "b", "c", "d", "e"]
-    return {"qtype": "multi", "stem": stem, "payload": {"options": [{"id": i, "text": o} for i, o in zip(ids, options, strict=False)], "answers": answers}, "explanation": explanation, "difficulty": difficulty, "steps": st}
+    return {
+        "qtype": "multi",
+        "stem": stem,
+        "payload": {"options": [{"id": i, "text": o} for i, o in zip(ids, options, strict=False)], "answers": answers},
+        "explanation": explanation,
+        "difficulty": difficulty,
+        "steps": st,
+    }
 
 
 def descriptive(stem, criteria, model_answer, explanation="", difficulty="medium", qtype="descriptive", word_limit=None, st=None):
@@ -76,4 +93,11 @@ def coding(stem, function_name, starter, tests, explanation, st, difficulty="eas
 
 
 def speaking(sentence, translation="", language="en-US", difficulty="easy"):
-    return {"qtype": "speaking", "stem": "Read this sentence aloud clearly.", "payload": {"sentence": sentence, "language": language, "translation": translation}, "explanation": "", "difficulty": difficulty, "steps": {}}
+    return {
+        "qtype": "speaking",
+        "stem": "Read this sentence aloud clearly.",
+        "payload": {"sentence": sentence, "language": language, "translation": translation},
+        "explanation": "",
+        "difficulty": difficulty,
+        "steps": {},
+    }

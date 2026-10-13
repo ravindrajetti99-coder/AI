@@ -77,6 +77,7 @@ def add_question(
     status: str = "verified",
     pyq_year: int | None = None,
     locale: str = "en",
+    external_key: str | None = None,
 ) -> Question:
     q = Question(
         qtype=qtype,
@@ -89,6 +90,7 @@ def add_question(
         status=status,
         pyq_year=pyq_year,
         locale=locale,
+        external_key=external_key,
     )
     db.add(q)
     db.flush()

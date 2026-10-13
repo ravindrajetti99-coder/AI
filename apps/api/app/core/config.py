@@ -23,6 +23,10 @@ class Settings(BaseSettings):
     cors_origins: list[str] = ["http://localhost:3000"]
     cookie_secure: bool = False
 
+    # First admin account, created by `python -m app.seed` when both are set.
+    admin_email: str = ""
+    admin_password: str = ""
+
     # AI providers. Empty keys -> the offline provider is used.
     anthropic_api_key: str = ""
     openai_api_key: str = ""

@@ -46,6 +46,8 @@ class Question(IdMixin, TimestampMixin, Base):
     locale: Mapped[str] = mapped_column(String(10), default="en")
     status: Mapped[str] = mapped_column(String(20), default="verified", index=True)
     times_answered: Mapped[int] = mapped_column(Integer, default=0)
+    # Stable id for seeded or imported items (e.g. "profit-loss:gen:3") so loaders can upsert.
+    external_key: Mapped[str | None] = mapped_column(String(160), unique=True, nullable=True)
 
 
 class QuestionConcept(IdMixin, Base):

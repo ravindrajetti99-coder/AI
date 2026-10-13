@@ -53,8 +53,16 @@ CONCEPTS = {
             (1, "en"): L(
                 "A percentage is a way of writing a number as a part of 100. 'Per cent' literally means 'per hundred'.",
                 "If you score 45 out of 100, you scored 45%. To find p% of any number x, think of p% as the fraction p/100 and multiply: p% of x = (p/100) × x. For example 20% of 250 is 20/100 × 250 = 50. Percentages let us compare things of different sizes on the same scale of 100.",
-                [("Shopping", "A shirt costs ₹800 and GST is 5%. Tax = 5/100 × 800 = ₹40."), ("Marks", "Ravi scored 36 out of 40. As a percentage: 36/40 × 100 = 90%.")],
-                ["p% = p/100", "p% of x = p × x / 100", "To convert a fraction to %, multiply by 100", "Learn fraction equivalents: 50% = 1/2, 25% = 1/4, 20% = 1/5, 12.5% = 1/8"],
+                [
+                    ("Shopping", "A shirt costs ₹800 and GST is 5%. Tax = 5/100 × 800 = ₹40."),
+                    ("Marks", "Ravi scored 36 out of 40. As a percentage: 36/40 × 100 = 90%."),
+                ],
+                [
+                    "p% = p/100",
+                    "p% of x = p × x / 100",
+                    "To convert a fraction to %, multiply by 100",
+                    "Learn fraction equivalents: 50% = 1/2, 25% = 1/4, 20% = 1/5, 12.5% = 1/8",
+                ],
                 ["Dividing by p instead of 100.", "Forgetting to multiply by 100 when converting a fraction to a percentage."],
                 "Fraction ladder: halve 100% → 50% (1/2) → 25% (1/4) → 12.5% (1/8) → 6.25% (1/16). Say it aloud once a day.",
                 "Every SSC CGL Tier 1 paper uses percentages, directly or inside profit & loss, interest and data interpretation questions.",
@@ -64,7 +72,10 @@ CONCEPTS = {
             (2, "en"): L(
                 "A percentage expresses a ratio with denominator 100; it is the most common unit for comparing proportions.",
                 "Three conversions cover almost every question: percent → fraction (divide by 100 and simplify), fraction → percent (multiply by 100), and percent → decimal (move the decimal two places left). In exams, speed comes from fraction equivalents: 1/3 = 33.33%, 1/6 = 16.67%, 1/7 ≈ 14.28%, 1/8 = 12.5%, 1/9 ≈ 11.11%, 1/11 ≈ 9.09%. If A is x% of B, then x = A/B × 100. Also note: x% of y = y% of x (8% of 50 = 50% of 8 = 4), a quick trick for awkward numbers.",
-                [("Reverse question", "40% of a number is 72. The number = 72 × 100/40 = 180."), ("Comparison", "A is 25% more than B means A = 1.25B; B is then 20% less than A (25/125 × 100).")],
+                [
+                    ("Reverse question", "40% of a number is 72. The number = 72 × 100/40 = 180."),
+                    ("Comparison", "A is 25% more than B means A = 1.25B; B is then 20% less than A (25/125 × 100)."),
+                ],
                 ["If A is r% more than B, B is r/(100 + r) × 100% less than A", "x% of y = y% of x", "Memorise 1/1 to 1/12 as percentages"],
                 ["Treating 'A is 25% more than B' and 'B is 25% less than A' as the same statement."],
                 "Swap trick: 'x% of y = y% of x' — pick the easier one.",
@@ -90,7 +101,14 @@ CONCEPTS = {
                 ["25% of 100", "50% of 50", "12.5% of 200", "20% of 120"],
                 ["a", "b", "c"],
                 "25% of 100 = 25, 50% of 50 = 25, 12.5% of 200 = 25, but 20% of 120 = 24.",
-                steps("Compute each one separately; don't assume.", "p% of x = px/100.", "Evaluate a-d.", "a=25, b=25, c=25, d=24.", "Use fraction equivalents: 12.5% = 1/8.", "Picking (d) after estimating instead of computing."),
+                steps(
+                    "Compute each one separately; don't assume.",
+                    "p% of x = px/100.",
+                    "Evaluate a-d.",
+                    "a=25, b=25, c=25, d=24.",
+                    "Use fraction equivalents: 12.5% = 1/8.",
+                    "Picking (d) after estimating instead of computing.",
+                ),
                 "easy",
             )
         ],
@@ -104,7 +122,10 @@ CONCEPTS = {
             (1, "en"): L(
                 "Percentage change tells how much a value grew or shrank compared with where it started, expressed out of 100.",
                 "Find the change (new − old), divide by the ORIGINAL value, and multiply by 100. If milk goes from ₹50 to ₹60, the change is ₹10, and 10/50 × 100 = 20% increase. The original value is the base because we are asking 'how big is the change compared with what we had?'.",
-                [("Population", "A village grows from 2,000 to 2,300 people: 300/2000 × 100 = 15% increase."), ("Sale", "A phone drops from ₹10,000 to ₹8,500: 1500/10000 × 100 = 15% decrease.")],
+                [
+                    ("Population", "A village grows from 2,000 to 2,300 people: 300/2000 × 100 = 15% increase."),
+                    ("Sale", "A phone drops from ₹10,000 to ₹8,500: 1500/10000 × 100 = 15% decrease."),
+                ],
                 ["% change = (new − old)/old × 100", "Positive = increase, negative = decrease", "Base = original value"],
                 ["Dividing by the new value.", "Saying a fall from 100 to 50 and a rise from 50 to 100 are the same %; they are 50% and 100%."],
                 "'Old is gold': always divide by the old value.",
@@ -115,14 +136,22 @@ CONCEPTS = {
                 "Percentage change is the relative change (Δ/original) scaled to 100.",
                 "Multiplying factors make chains of changes easy: an increase of r% multiplies the value by (1 + r/100), a decrease by (1 − r/100). So a price that rises 20% becomes 1.2× its value. To undo a 20% increase you need a 1/6 ≈ 16.67% decrease, because 1.2 × (5/6) = 1. In expenditure questions, Expenditure = Price × Consumption: if price rises r%, consumption must fall by r/(100 + r) × 100% to keep spending constant.",
                 [("Keeping spending fixed", "Sugar price rises 25%. To spend the same, consumption must fall by 25/125 × 100 = 20%.")],
-                ["Increase r% → ×(1 + r/100); decrease r% → ×(1 − r/100)", "To cancel an r% rise, fall by r/(100 + r) × 100%", "Expenditure = price × quantity"],
+                [
+                    "Increase r% → ×(1 + r/100); decrease r% → ×(1 − r/100)",
+                    "To cancel an r% rise, fall by r/(100 + r) × 100%",
+                    "Expenditure = price × quantity",
+                ],
                 ["Assuming a 20% rise followed by a 20% fall returns to the start (it ends 4% lower)."],
                 "Think in multipliers: 'up 20' = ×1.2, 'down 20' = ×0.8.",
                 "Price-consumption-expenditure questions are a regular SSC favourite.",
                 [("Price up 20%, by how much should consumption fall to keep spending same?", "16.67%")],
             ),
         },
-        "flashcards": [("Base for percentage change", "The original (old) value"), ("Undo a 25% increase", "A 20% decrease"), ("Rise 20% then fall 20%: net?", "4% decrease")],
+        "flashcards": [
+            ("Base for percentage change", "The original (old) value"),
+            ("Undo a 25% increase", "A 20% decrease"),
+            ("Rise 20% then fall 20%: net?", "4% decrease"),
+        ],
         "generator": g.percentage_change,
         "extra": [
             assertion_reason(
@@ -130,7 +159,14 @@ CONCEPTS = {
                 "The second change is calculated on a larger base than the first.",
                 "d",
                 "A is false: 100 → 120 → 96, a 4% fall. R is true: the 20% decrease is taken on 120, a larger base.",
-                steps("Try it with a price of 100.", "Successive changes multiply.", "100 × 1.2 × 0.8.", "= 96, so A is false; R is true.", "Net = a + b + ab/100 = 20 − 20 − 4 = −4%.", "Assuming equal percentages cancel."),
+                steps(
+                    "Try it with a price of 100.",
+                    "Successive changes multiply.",
+                    "100 × 1.2 × 0.8.",
+                    "= 96, so A is false; R is true.",
+                    "Net = a + b + ab/100 = 20 − 20 − 4 = −4%.",
+                    "Assuming equal percentages cancel.",
+                ),
             )
         ],
     },
@@ -143,7 +179,10 @@ CONCEPTS = {
             (1, "en"): L(
                 "Successive percentage change means one percentage change applied after another, each on the new value.",
                 "If a price rises 10% and then 20%, the second 20% is calculated on the already increased price. Start with 100: after 10% it is 110; 20% of 110 is 22, so it becomes 132. The total rise is 32%, not 30%. The formula a + b + ab/100 gives 10 + 20 + 200/100 = 32.",
-                [("Salary hike", "A salary rises 10% this year and 10% next year: 10 + 10 + 1 = 21% total."), ("Double discount", "Discounts of 20% and 10%: −20 − 10 + 200/100 = −28%, i.e. a 28% total discount.")],
+                [
+                    ("Salary hike", "A salary rises 10% this year and 10% next year: 10 + 10 + 1 = 21% total."),
+                    ("Double discount", "Discounts of 20% and 10%: −20 − 10 + 200/100 = −28%, i.e. a 28% total discount."),
+                ],
                 ["Net change = a + b + ab/100", "Use −a for a decrease", "Equivalent: multiply (1 + a/100)(1 + b/100)"],
                 ["Simply adding the two percentages."],
                 "'Add, then add the product over 100.'",
@@ -164,7 +203,10 @@ CONCEPTS = {
             (1, "en"): L(
                 "Profit is what you earn when you sell something for more than it cost you; loss is what you lose when you sell for less.",
                 "Cost price (CP) is what the seller paid; selling price (SP) is what the buyer pays. If SP > CP, profit = SP − CP. If SP < CP, loss = CP − SP. Profit % and loss % are always on CP: profit% = profit/CP × 100. A shopkeeper who buys a bag for ₹500 and sells it for ₹600 makes ₹100, i.e. 100/500 × 100 = 20% profit.",
-                [("Fruit seller", "Buys mangoes at ₹40/kg, sells at ₹50/kg: profit 10/40 × 100 = 25%."), ("Old bike", "Bought for ₹30,000, sold for ₹24,000: loss 6000/30000 × 100 = 20%.")],
+                [
+                    ("Fruit seller", "Buys mangoes at ₹40/kg, sells at ₹50/kg: profit 10/40 × 100 = 25%."),
+                    ("Old bike", "Bought for ₹30,000, sold for ₹24,000: loss 6000/30000 × 100 = 20%."),
+                ],
                 ["Profit = SP − CP, Loss = CP − SP", "Profit% and Loss% are on CP", "SP = CP × (100 + profit%)/100"],
                 ["Calculating profit% on SP.", "Mixing up who pays what: the seller's cost is CP."],
                 "'Cost is the boss': CP is the base for every percentage.",
@@ -190,7 +232,14 @@ CONCEPTS = {
                 ["No profit, no loss", "1% profit", "1% loss", "10% loss"],
                 "c",
                 "When two items sell at the same price with x% profit and x% loss, there is an overall loss of x²/100 = 1%.",
-                steps("The CPs of the two watches are different.", "Equal SP with ±x% gives a loss of x²/100 %.", "Either use the formula or find both CPs: 9900/1.1 = 9000 and 9900/0.9 = 11000.", "Total CP = 20,000, total SP = 19,800: loss ₹200 = 1%.", "x²/100 = 100/100 = 1% loss.", "Assuming +10% and −10% cancel."),
+                steps(
+                    "The CPs of the two watches are different.",
+                    "Equal SP with ±x% gives a loss of x²/100 %.",
+                    "Either use the formula or find both CPs: 9900/1.1 = 9000 and 9900/0.9 = 11000.",
+                    "Total CP = 20,000, total SP = 19,800: loss ₹200 = 1%.",
+                    "x²/100 = 100/100 = 1% loss.",
+                    "Assuming +10% and −10% cancel.",
+                ),
                 "medium",
             )
         ],
@@ -256,7 +305,10 @@ CONCEPTS = {
             (1, "en"): L(
                 "Compound interest is interest calculated on the principal plus all interest added so far, i.e. 'interest on interest'.",
                 "After each year the interest is added to the principal, so next year's interest is larger. ₹1,000 at 10%: year 1 interest ₹100 → ₹1,100; year 2 interest ₹110 → ₹1,210. CI for 2 years = ₹210, while SI would be ₹200. Formula: A = P(1 + R/100)^T, CI = A − P.",
-                [("Savings", "₹5,000 at 10% for 2 years: A = 5000 × 1.21 = ₹6,050; CI = ₹1,050."), ("Growth", "A town of 10,000 growing 5% a year has 10,000 × 1.05² = 11,025 people after 2 years.")],
+                [
+                    ("Savings", "₹5,000 at 10% for 2 years: A = 5000 × 1.21 = ₹6,050; CI = ₹1,050."),
+                    ("Growth", "A town of 10,000 growing 5% a year has 10,000 × 1.05² = 11,025 people after 2 years."),
+                ],
                 ["A = P(1 + R/100)^T", "CI = A − P", "CI − SI for 2 years = P(R/100)²", "Compound growth = successive % change with equal rates"],
                 ["Using SI formula for compound problems.", "Forgetting to subtract P to get CI."],
                 "Year-by-year table: write principal, interest, new principal for each year until the pattern is automatic.",
@@ -283,7 +335,14 @@ CONCEPTS = {
                 ["8 years", "12 years", "16 years", "32 years"],
                 "b",
                 "8 = 2³, so it takes 3 doubling periods of 4 years: 12 years.",
-                steps("Compound growth multiplies: think in powers of 2.", "If (1 + r)^4 = 2 then (1 + r)^12 = 2³ = 8.", "Write 8 as a power of 2.", "8 = 2³ → 3 × 4 = 12 years.", "Doubling n → ×2^k in k·n years.", "Thinking 'eight times = four times longer' (16 years), which is linear thinking."),
+                steps(
+                    "Compound growth multiplies: think in powers of 2.",
+                    "If (1 + r)^4 = 2 then (1 + r)^12 = 2³ = 8.",
+                    "Write 8 as a power of 2.",
+                    "8 = 2³ → 3 × 4 = 12 years.",
+                    "Doubling n → ×2^k in k·n years.",
+                    "Thinking 'eight times = four times longer' (16 years), which is linear thinking.",
+                ),
                 "hard",
             )
         ],

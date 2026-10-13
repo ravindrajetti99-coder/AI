@@ -30,7 +30,14 @@ def _mcq(stem, correct, distractors, explanation, steps, difficulty, rng, unit="
 
 
 def _num(stem, answer, explanation, steps, difficulty, tolerance=0.01, unit=""):
-    return {"qtype": "numerical", "stem": stem, "payload": {"answer": answer, "tolerance": tolerance, "unit": unit}, "explanation": explanation, "difficulty": difficulty, "steps": steps}
+    return {
+        "qtype": "numerical",
+        "stem": stem,
+        "payload": {"answer": answer, "tolerance": tolerance, "unit": unit},
+        "explanation": explanation,
+        "difficulty": difficulty,
+        "steps": steps,
+    }
 
 
 def percentage_basics(rng: random.Random, n: int) -> list[dict]:
@@ -48,7 +55,17 @@ def percentage_basics(rng: random.Random, n: int) -> list[dict]:
             "mistakes": "Dividing by p instead of 100, or moving the decimal the wrong way.",
         }
         if i % 2 == 0:
-            out.append(_mcq(f"What is {p}% of {x}?", ans, [round(ans * 10, 2), round(x / p, 2), round(ans / 2, 2), round(ans + p, 2)], f"{p}% of {x} = {p}/100 × {x} = {_fmt(ans)}.", steps, "easy", rng))
+            out.append(
+                _mcq(
+                    f"What is {p}% of {x}?",
+                    ans,
+                    [round(ans * 10, 2), round(x / p, 2), round(ans / 2, 2), round(ans + p, 2)],
+                    f"{p}% of {x} = {p}/100 × {x} = {_fmt(ans)}.",
+                    steps,
+                    "easy",
+                    rng,
+                )
+            )
         else:
             out.append(_num(f"Find {p}% of {x}.", ans, f"{p}/100 × {x} = {_fmt(ans)}.", steps, "easy"))
     return out
@@ -60,18 +77,30 @@ def percentage_change(rng: random.Random, n: int) -> list[dict]:
         old = rng.choice([200, 250, 400, 500, 800, 1200, 1600])
         pct = rng.choice([10, 15, 20, 25, 30, 40])
         up = i % 2 == 0
-        new = old * (1 + pct / 100) if up else old * (1 - pct / 100)
-        new = round(new)
+        # Keep the exact value: rounding the new price (250 -> 287.5 -> 288) would break the key.
+        new = old * (100 + pct) / 100 if up else old * (100 - pct) / 100
+        new = int(new) if new == int(new) else new
         word = "increases" if up else "decreases"
         steps = {
             "hint": "Percentage change is always measured against the ORIGINAL value.",
             "concept": "% change = (new − old) / old × 100.",
-            "approach": f"Find the change {new} − {old}, then divide by the original {old}.",
-            "solution": f"({new} − {old}) / {old} × 100 = {'+' if up else '−'}{pct}%.",
+            "approach": f"Find the change {_fmt(new)} − {old}, then divide by the original {old}.",
+            "solution": f"({_fmt(new)} − {old}) / {old} × 100 = {'+' if up else '−'}{pct}%.",
             "shortcut": "If the change divided by the original is a known fraction (1/4, 1/5), read the % directly.",
             "mistakes": "Dividing by the new value instead of the old one.",
         }
-        out.append(_mcq(f"The price of an item {word} from ₹{old} to ₹{new}. What is the percentage {'increase' if up else 'decrease'}?", pct, [round(abs(new - old) / new * 100, 2), pct + 5, abs(new - old)], f"Change = {abs(new - old)}; {abs(new - old)}/{old} × 100 = {pct}%.", steps, "easy", rng, "%"))
+        out.append(
+            _mcq(
+                f"The price of an item {word} from ₹{old} to ₹{_fmt(new)}. What is the percentage {'increase' if up else 'decrease'}?",
+                pct,
+                [round(abs(new - old) / new * 100, 2), pct + 5, abs(new - old)],
+                f"Change = {_fmt(abs(new - old))}; {_fmt(abs(new - old))}/{old} × 100 = {pct}%.",
+                steps,
+                "easy",
+                rng,
+                "%",
+            )
+        )
     return out
 
 
@@ -88,7 +117,18 @@ def successive_percentage(rng: random.Random, n: int) -> list[dict]:
             "shortcut": "Multiply factors: (1 + a/100)(1 + b/100) − 1.",
             "mistakes": f"Answering {a + b}% by adding the two rates.",
         }
-        out.append(_mcq(f"A salary is increased by {a}% and then by {b}%. What is the overall percentage increase?", net, [a + b, round(net - 1, 2), round(a * b / 10, 2)], f"Net = {a} + {b} + {a}×{b}/100 = {_fmt(net)}%.", steps, "medium", rng, "%"))
+        out.append(
+            _mcq(
+                f"A salary is increased by {a}% and then by {b}%. What is the overall percentage increase?",
+                net,
+                [a + b, round(net - 1, 2), round(a * b / 10, 2)],
+                f"Net = {a} + {b} + {a}×{b}/100 = {_fmt(net)}%.",
+                steps,
+                "medium",
+                rng,
+                "%",
+            )
+        )
     return out
 
 
@@ -108,9 +148,29 @@ def profit_loss(rng: random.Random, n: int) -> list[dict]:
             "mistakes": "Using SP as the base instead of CP.",
         }
         if i % 2 == 0:
-            out.append(_mcq(f"An article bought for ₹{cp} is sold for ₹{_fmt(sp)}. Find the {'profit' if gain else 'loss'} percentage.", pct, [round(abs(sp - cp) / sp * 100, 2), pct + 5, round(abs(sp - cp), 2)], f"{'Profit' if gain else 'Loss'} = {_fmt(abs(sp - cp))}; ÷ {cp} × 100 = {pct}%.", steps, "easy", rng, "%"))
+            out.append(
+                _mcq(
+                    f"An article bought for ₹{cp} is sold for ₹{_fmt(sp)}. Find the {'profit' if gain else 'loss'} percentage.",
+                    pct,
+                    [round(abs(sp - cp) / sp * 100, 2), pct + 5, round(abs(sp - cp), 2)],
+                    f"{'Profit' if gain else 'Loss'} = {_fmt(abs(sp - cp))}; ÷ {cp} × 100 = {pct}%.",
+                    steps,
+                    "easy",
+                    rng,
+                    "%",
+                )
+            )
         else:
-            out.append(_num(f"A trader buys goods for ₹{cp} and wants a {'profit' if gain else 'loss'} of {pct}%. At what price (in ₹) must he sell?", sp, f"SP = {cp} × {(100 + pct) if gain else (100 - pct)}/100 = {_fmt(sp)}.", {**steps, "approach": f"SP = CP × (100 {'+' if gain else '−'} {pct})/100."}, "easy", unit="₹"))
+            out.append(
+                _num(
+                    f"A trader buys goods for ₹{cp} and wants a {'profit' if gain else 'loss'} of {pct}%. At what price (in ₹) must he sell?",
+                    sp,
+                    f"SP = {cp} × {(100 + pct) if gain else (100 - pct)}/100 = {_fmt(sp)}.",
+                    {**steps, "approach": f"SP = CP × (100 {'+' if gain else '−'} {pct})/100."},
+                    "easy",
+                    unit="₹",
+                )
+            )
     return out
 
 
@@ -128,7 +188,17 @@ def discount(rng: random.Random, n: int) -> list[dict]:
             "shortcut": f"Find {d}% of {mp} and subtract it.",
             "mistakes": "Applying the discount to the cost price.",
         }
-        out.append(_mcq(f"An item marked at ₹{mp} is sold at a discount of {d}%. What is the selling price?", sp, [mp - d, round(mp * d / 100, 2), round(mp * (1 + d / 100), 2)], f"SP = {mp} × {100 - d}/100 = ₹{_fmt(sp)}.", steps, "easy", rng))
+        out.append(
+            _mcq(
+                f"An item marked at ₹{mp} is sold at a discount of {d}%. What is the selling price?",
+                sp,
+                [mp - d, round(mp * d / 100, 2), round(mp * (1 + d / 100), 2)],
+                f"SP = {mp} × {100 - d}/100 = ₹{_fmt(sp)}.",
+                steps,
+                "easy",
+                rng,
+            )
+        )
     return out
 
 
@@ -148,10 +218,29 @@ def simple_interest(rng: random.Random, n: int) -> list[dict]:
             "mistakes": "Forgetting to divide by 100, or giving the amount (P + SI) when SI is asked.",
         }
         if i % 2 == 0:
-            out.append(_mcq(f"Find the simple interest on ₹{p} at {r}% per annum for {t} years.", si, [round(si + p, 2), round(p * r / 100, 2), round(si * 2, 2)], f"SI = {p}×{r}×{t}/100 = ₹{_fmt(si)}.", steps, "easy", rng))
+            out.append(
+                _mcq(
+                    f"Find the simple interest on ₹{p} at {r}% per annum for {t} years.",
+                    si,
+                    [round(si + p, 2), round(p * r / 100, 2), round(si * 2, 2)],
+                    f"SI = {p}×{r}×{t}/100 = ₹{_fmt(si)}.",
+                    steps,
+                    "easy",
+                    rng,
+                )
+            )
         else:
             amount = round(p + si, 2)
-            out.append(_num(f"₹{p} is lent at {r}% simple interest per annum. What is the amount (in ₹) after {t} years?", amount, f"SI = ₹{_fmt(si)}; amount = {p} + {_fmt(si)} = ₹{_fmt(amount)}.", {**steps, "solution": f"SI = {_fmt(si)}; Amount = P + SI = {_fmt(amount)}."}, "medium", unit="₹"))
+            out.append(
+                _num(
+                    f"₹{p} is lent at {r}% simple interest per annum. What is the amount (in ₹) after {t} years?",
+                    amount,
+                    f"SI = ₹{_fmt(si)}; amount = {p} + {_fmt(si)} = ₹{_fmt(amount)}.",
+                    {**steps, "solution": f"SI = {_fmt(si)}; Amount = P + SI = {_fmt(amount)}."},
+                    "medium",
+                    unit="₹",
+                )
+            )
     return out
 
 
@@ -169,10 +258,22 @@ def compound_interest(rng: random.Random, n: int) -> list[dict]:
             "concept": "A = P(1 + R/100)^T, CI = A − P.",
             "approach": f"Compute {p} × (1 + {r}/100)^{t}, then subtract {p}.",
             "solution": f"A = {p} × {1 + r / 100:g}^{t} = {_fmt(amount)}; CI = {_fmt(ci)}.",
-            "shortcut": f"For 2 years, CI − SI = P(R/100)^2 = {_fmt(p * (r / 100) ** 2)}." if t == 2 else "Use successive %: each year multiply by (1 + R/100).",
+            "shortcut": f"For 2 years, CI − SI = P(R/100)^2 = {_fmt(p * (r / 100) ** 2)}."
+            if t == 2
+            else "Use successive %: each year multiply by (1 + R/100).",
             "mistakes": "Using the simple-interest formula, or reporting the amount instead of the interest.",
         }
-        out.append(_mcq(f"Find the compound interest on ₹{p} at {r}% per annum for {t} years, compounded annually.", ci, [round(si, 2), round(amount, 2), round(ci - p * r / 200, 2)], f"A = {_fmt(amount)}, CI = {_fmt(ci)}.", steps, "medium" if t == 2 else "hard", rng))
+        out.append(
+            _mcq(
+                f"Find the compound interest on ₹{p} at {r}% per annum for {t} years, compounded annually.",
+                ci,
+                [round(si, 2), round(amount, 2), round(ci - p * r / 200, 2)],
+                f"A = {_fmt(amount)}, CI = {_fmt(ci)}.",
+                steps,
+                "medium" if t == 2 else "hard",
+                rng,
+            )
+        )
     return out
 
 
@@ -191,9 +292,29 @@ def ohms_law(rng: random.Random, n: int) -> list[dict]:
             "mistakes": "Multiplying when you should divide; mixing mA and A.",
         }
         if i % 2 == 0:
-            out.append(_num(f"A potential difference of {v} V is applied across a {r} Ω resistor. What current (in A) flows?", current, f"I = V/R = {v}/{r} = {current} A.", steps, "easy", unit="A"))
+            out.append(
+                _num(
+                    f"A potential difference of {v} V is applied across a {r} Ω resistor. What current (in A) flows?",
+                    current,
+                    f"I = V/R = {v}/{r} = {current} A.",
+                    steps,
+                    "easy",
+                    unit="A",
+                )
+            )
         else:
-            out.append(_mcq(f"A current of {current} A flows through a {r} Ω resistor. What is the potential difference across it?", v, [round(r / current, 2), round(current / r, 2), round(v * 2, 2)], f"V = IR = {current} × {r} = {v} V.", steps, "easy", rng, " V"))
+            out.append(
+                _mcq(
+                    f"A current of {current} A flows through a {r} Ω resistor. What is the potential difference across it?",
+                    v,
+                    [round(r / current, 2), round(current / r, 2), round(v * 2, 2)],
+                    f"V = IR = {current} × {r} = {v} V.",
+                    steps,
+                    "easy",
+                    rng,
+                    " V",
+                )
+            )
     return out
 
 
@@ -211,7 +332,18 @@ def resistance_combo(rng: random.Random, n: int) -> list[dict]:
             "shortcut": "Parallel resistance is always smaller than the smallest resistor.",
             "mistakes": "Adding parallel resistances directly.",
         }
-        out.append(_mcq(f"Two resistors of {a} Ω and {b} Ω are connected in {'series' if series else 'parallel'}. What is the equivalent resistance?", ans, [round(a * b / (a + b), 2) if series else a + b, abs(b - a) or 1, round((a + b) / 2, 2)], steps["solution"], "easy" if series else "medium", rng, " Ω"))
+        out.append(
+            _mcq(
+                f"Two resistors of {a} Ω and {b} Ω are connected in {'series' if series else 'parallel'}. What is the equivalent resistance?",
+                ans,
+                [round(a * b / (a + b), 2) if series else a + b, abs(b - a) or 1, round((a + b) / 2, 2)],
+                steps["solution"],
+                steps,
+                "easy" if series else "medium",
+                rng,
+                " Ω",
+            )
+        )
     return out
 
 
@@ -231,10 +363,31 @@ def electric_power(rng: random.Random, n: int) -> list[dict]:
             "mistakes": "Forgetting to convert W to kW before multiplying by hours.",
         }
         if i % 2 == 0:
-            out.append(_mcq(f"An appliance draws {current} A from a {v} V supply. What is its power?", p, [round(v / current, 2), round(p / 1000, 3), round(p * 2, 2)], f"P = VI = {v} × {current} = {p} W.", steps, "easy", rng, " W"))
+            out.append(
+                _mcq(
+                    f"An appliance draws {current} A from a {v} V supply. What is its power?",
+                    p,
+                    [round(v / current, 2), round(p / 1000, 3), round(p * 2, 2)],
+                    f"P = VI = {v} × {current} = {p} W.",
+                    steps,
+                    "easy",
+                    rng,
+                    " W",
+                )
+            )
         else:
             kwh = round(p / 1000 * hours, 3)
-            out.append(_num(f"An appliance of {p} W runs for {hours} hours. How many kWh (units) of energy does it use?", kwh, f"{p} W = {p / 1000} kW; × {hours} h = {kwh} kWh.", {**steps, "solution": f"{p / 1000} kW × {hours} h = {kwh} kWh."}, "medium", tolerance=0.001, unit="kWh"))
+            out.append(
+                _num(
+                    f"An appliance of {p} W runs for {hours} hours. How many kWh (units) of energy does it use?",
+                    kwh,
+                    f"{p} W = {p / 1000} kW; × {hours} h = {kwh} kWh.",
+                    {**steps, "solution": f"{p / 1000} kW × {hours} h = {kwh} kWh."},
+                    "medium",
+                    tolerance=0.001,
+                    unit="kWh",
+                )
+            )
     return out
 
 
@@ -254,9 +407,28 @@ def depreciation_slm(rng: random.Random, n: int) -> list[dict]:
             "mistakes": "Ignoring the residual (scrap) value, or applying the rate on the reducing balance.",
         }
         if i % 2 == 0:
-            out.append(_num(f"A machine costs ₹{cost:,} with a residual value of ₹{salvage:,} and a useful life of {life} years. Find the annual depreciation (₹) under the straight line method.", dep, f"({cost} − {salvage}) / {life} = ₹{_fmt(dep)}.", steps, "easy", unit="₹"))
+            out.append(
+                _num(
+                    f"A machine costs ₹{cost:,} with a residual value of ₹{salvage:,} and a useful life of {life} years. Find the annual depreciation (₹) under the straight line method.",
+                    dep,
+                    f"({cost} − {salvage}) / {life} = ₹{_fmt(dep)}.",
+                    steps,
+                    "easy",
+                    unit="₹",
+                )
+            )
         else:
-            out.append(_mcq(f"Cost ₹{cost:,}, residual value ₹{salvage:,}, life {life} years. Annual depreciation by SLM is:", dep, [round(cost / life, 2), round((cost + salvage) / life, 2), round(dep * 2, 2)], steps["solution"], "easy", rng))
+            out.append(
+                _mcq(
+                    f"Cost ₹{cost:,}, residual value ₹{salvage:,}, life {life} years. Annual depreciation by SLM is:",
+                    dep,
+                    [round(cost / life, 2), round((cost + salvage) / life, 2), round(dep * 2, 2)],
+                    steps["solution"],
+                    steps,
+                    "easy",
+                    rng,
+                )
+            )
     return out
 
 
@@ -278,5 +450,15 @@ def depreciation_wdv(rng: random.Random, n: int) -> list[dict]:
             "shortcut": f"Opening WDV of year n = Cost × (1 − r)^(n−1) = {cost} × {1 - rate / 100:g}^{year - 1}.",
             "mistakes": "Applying the rate on the original cost every year (that is SLM).",
         }
-        out.append(_mcq(f"An asset costing ₹{cost:,} is depreciated at {rate}% p.a. on the written down value method. What is the depreciation for year {year}?", dep, [round(cost * rate / 100, 2), round(dep * (1 - rate / 100), 2), round(book, 2)], steps["solution"], "medium", rng))
+        out.append(
+            _mcq(
+                f"An asset costing ₹{cost:,} is depreciated at {rate}% p.a. on the written down value method. What is the depreciation for year {year}?",
+                dep,
+                [round(cost * rate / 100, 2), round(dep * (1 - rate / 100), 2), round(book, 2)],
+                steps["solution"],
+                steps,
+                "medium",
+                rng,
+            )
+        )
     return out

@@ -180,17 +180,15 @@ def _doc_text(db: Session, doc: SourceDocument) -> str:
     return "\n\n".join(db.scalars(select(Chunk.text).where(Chunk.document_id == doc.id).order_by(Chunk.ordinal)).all())
 
 
-def build_mock_test(db: Session, course_id: uuid.UUID, count: int, title: str | None = None) -> Test:
-    """Blueprint-driven mock: questions spread across concepts in proportion to exam weight,
-    marking scheme from the course's exam profile."""
-    course = db.get(Course, course_id)
-    if not course:
-        raise AppError("Course not found")
-    pattern = {}
-    if course.exam_profile_id:
-        pattern = db.get(ExamProfile, course.exam_profile_id).pattern or {}
-    marks = float(pattern.get("marks_per_question", 1))
-    negative = float(pattern.get("negative_marks", 0))
+def exam_pattern(db: Session, course: Course) -> dict:
+    if not course.exam_profile_id:
+        return {}
+    return db.get(ExamProfile, course.exam_profile_id).pattern or {}
+
+
+def pick_mock_questions(db: Session, course: Course, count: int) -> list[Question]:
+    """Blueprint: verified objective questions spread across concepts in proportion to exam weight.
+    Deterministic per course, so rebuilding a mock with the same pool picks the same questions."""
     concepts = catalog.course_concepts(db, course.id)
     total_w = sum(w for _, w, _ in concepts) or 1
     rng = random.Random(f"{course.id}-{count}")
@@ -201,15 +199,27 @@ def build_mock_test(db: Session, course_id: uuid.UUID, count: int, title: str | 
             select(Question)
             .join(QuestionConcept, QuestionConcept.question_id == Question.id)
             .where(QuestionConcept.concept_id == concept.id, Question.status == "verified", Question.qtype.in_(OBJECTIVE_TYPES))
+            .order_by(Question.id)  # stable input order, so the seeded shuffle is reproducible
         ).all()
         pool = [q for q in pool if q not in chosen]
         rng.shuffle(pool)
         chosen += pool[:want]
-    chosen = chosen[:count]
+    return chosen[:count]
+
+
+def build_mock_test(db: Session, course_id: uuid.UUID, count: int, title: str | None = None, slug: str | None = None) -> Test:
+    """Blueprint-driven mock with the marking scheme from the course's exam profile."""
+    course = db.get(Course, course_id)
+    if not course:
+        raise AppError("Course not found")
+    pattern = exam_pattern(db, course)
+    marks = float(pattern.get("marks_per_question", 1))
+    negative = float(pattern.get("negative_marks", 0))
+    chosen = pick_mock_questions(db, course, count)
     if not chosen:
         raise AppError("No verified objective questions in this course yet")
     test = Test(
-        slug=f"{course.slug}-mock-{uuid.uuid4().hex[:6]}",
+        slug=slug or f"{course.slug}-mock-{uuid.uuid4().hex[:6]}",
         title=title or f"{course.title}: Mock test",
         kind="mock",
         course_id=course.id,
