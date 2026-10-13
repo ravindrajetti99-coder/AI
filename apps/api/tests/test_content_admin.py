@@ -53,6 +53,11 @@ def test_flashcards_and_tutor(learner):
     assert {"front": "SI formula", "back": "P × R × T / 100"}.items() <= cards[0].items()
     first = learner.post(f"{API}/concepts/simple-interest/ask", json={"question": "What does the principal mean in simple interest?"}).json()
     assert first["provider"] == "offline" and "Principal" in first["reply"] and first["follow_up_questions"]
+    # Without a level the tutor reads the level-2 lesson; with one, the lesson on the learner's screen.
+    beginner = "What does per cent mean?"
+    assert "couldn't find" in learner.post(f"{API}/concepts/percentage-basics/ask", json={"question": beginner}).json()["reply"]
+    grounded = learner.post(f"{API}/concepts/percentage-basics/ask", json={"question": beginner, "level": 1}).json()
+    assert "per hundred" in grounded["reply"]
     follow = learner.post(f"{API}/concepts/simple-interest/ask", json={"question": "and the time?", "conversation_id": first["conversation_id"]}).json()
     assert follow["conversation_id"] == first["conversation_id"]
     other = make_actor(learner.client)
@@ -66,6 +71,9 @@ def test_learners_can_flag_content_for_staff(learner, admin):
     assert learner.get(f"{API}/admin/flags").status_code == 403
     flags = admin.get(f"{API}/admin/flags").json()
     assert flags[0]["asset_id"] == lesson["id"] and flags[0]["reason"] == "Example 2 has a typo"
+    assert admin.post(f"{API}/admin/flags/{flags[0]['id']}/resolve").json()["resolved"]
+    assert admin.get(f"{API}/admin/flags").json() == []
+    assert learner.post(f"{API}/admin/flags/{flags[0]['id']}/resolve").status_code == 403
 
 
 # --------------------------------------------------------------------------- uploads and retrieval

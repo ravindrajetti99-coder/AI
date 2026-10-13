@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* Design tokens. Components use these semantic names, so light and dark themes stay in sync. */
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Telugu", "Nirmala UI", "Gautami", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+  --color-brand-900: #312e81;
+
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+}
+
+:root {
+  --canvas: #f7f7fb;
+  --surface: #ffffff;
+  --surface-2: #f1f2f7;
+  --ink: #171a2b;
+  --muted: #5d627a;
+  --line: #e2e4ee;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --canvas: #0e1018;
+    --surface: #171a26;
+    --surface-2: #1f2333;
+    --ink: #eceef6;
+    --muted: #a2a7bd;
+    --line: #2c3146;
+    color-scheme: dark;
+  }
+}
+
+html,
+body {
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+}
+
+/* Telugu glyphs need more line height than Latin text to stay readable. */
+:lang(te) {
+  line-height: 1.85;
+}
+
+.prose-lesson p + p {
+  margin-top: 0.75rem;
+}
+
+@media print {
+  nav,
+  .no-print {
+    display: none !important;
+  }
+}

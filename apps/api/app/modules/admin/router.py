@@ -294,6 +294,17 @@ def flags(_: User = Depends(require_staff), db: Session = Depends(get_db)):
     ]
 
 
+@router.post("/flags/{flag_id}/resolve")
+def resolve_flag(flag_id: uuid.UUID, user: User = Depends(require_staff), db: Session = Depends(get_db)):
+    flag = db.get(ContentFlag, flag_id)
+    if not flag:
+        raise NotFound("Flag not found")
+    flag.resolved = 1
+    audit(db, user.id, "flag_resolve", "flag", flag.id)
+    db.commit()
+    return {"id": str(flag.id), "resolved": True}
+
+
 @router.get("/ai-usage")
 def ai_usage(days: int = 30, _: User = Depends(require_staff), db: Session = Depends(get_db)):
     since = datetime.now(UTC) - timedelta(days=days)

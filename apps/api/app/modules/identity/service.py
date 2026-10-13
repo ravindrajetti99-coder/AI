@@ -70,7 +70,7 @@ def rotate_refresh(db: Session, raw: str) -> tuple[User, str, str]:
     now = datetime.now(UTC)
     if not token or token.revoked_at:
         raise Unauthorized("Invalid refresh token")
-    if token.used_at:
+    if token.used_at and now - as_utc(token.used_at) > timedelta(seconds=get_settings().refresh_reuse_grace_seconds):
         db.execute(update(RefreshToken).where(RefreshToken.family_id == token.family_id, RefreshToken.revoked_at.is_(None)).values(revoked_at=now))
         audit(db, token.user_id, "refresh_reuse_detected", "session", token.family_id)
         db.commit()
@@ -80,7 +80,7 @@ def rotate_refresh(db: Session, raw: str) -> tuple[User, str, str]:
     user = db.get(User, token.user_id)
     if not user or user.status != "active":
         raise Unauthorized("User inactive")
-    token.used_at = now
+    token.used_at = token.used_at or now
     access, new_raw = issue_tokens(db, user, family_id=token.family_id)
     return user, access, new_raw
 

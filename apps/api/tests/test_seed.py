@@ -69,13 +69,17 @@ def test_bad_answer_keys_fail_loudly(sdb):
 
 def test_admin_bootstrap(sdb, monkeypatch):
     s = get_settings()
-    monkeypatch.setattr(s, "admin_email", "Owner@EduVerse.test")
+    monkeypatch.setattr(s, "admin_email", "Owner@EduVerse.org")
     monkeypatch.setattr(s, "admin_password", "short")
     with pytest.raises(SeedError, match="at least 12"):
         load(sdb, build_tests=False)
     monkeypatch.setattr(s, "admin_password", "a-long-admin-password")
+    monkeypatch.setattr(s, "admin_email", "admin@eduverse.local")  # reserved domain: login would reject it
+    with pytest.raises(SeedError, match="not a usable email"):
+        load(sdb, build_tests=False)
+    monkeypatch.setattr(s, "admin_email", "Owner@EduVerse.org")
     assert load(sdb, build_tests=False)["admin.created"] == 1
-    user = sdb.scalar(select(User).where(User.email == "owner@eduverse.test"))
+    user = sdb.scalar(select(User).where(User.email == "owner@eduverse.org"))
     assert user.role == "admin"
     user.role = "learner"
     sdb.commit()

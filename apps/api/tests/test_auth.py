@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from conftest import API, make_actor
 from sqlalchemy import select
 
@@ -39,6 +41,13 @@ def test_protected_routes_need_a_valid_token(client):
     assert client.get(f"{API}/me", headers={"Authorization": "Bearer junk"}).status_code == 401
 
 
+def _age_used_tokens(seconds: int) -> None:
+    with SessionLocal() as db:
+        for t in db.scalars(select(RefreshToken).where(RefreshToken.used_at.is_not(None))).all():
+            t.used_at = t.used_at - timedelta(seconds=seconds)
+        db.commit()
+
+
 def test_refresh_rotates_and_reuse_revokes_the_family(client):
     first = register(client).json()["refresh_token"]
     rotated = client.post(f"{API}/auth/refresh", json={"refresh_token": first})
@@ -46,13 +55,22 @@ def test_refresh_rotates_and_reuse_revokes_the_family(client):
     second = rotated.json()["refresh_token"]
     assert second != first
 
-    # Replaying the spent token is treated as theft: the whole session family dies.
+    # Replaying the spent token later is treated as theft: the whole session family dies.
+    _age_used_tokens(60)
     replay = client.post(f"{API}/auth/refresh", json={"refresh_token": first})
     assert replay.status_code == 401 and "reuse" in replay.json()["detail"]
     assert client.post(f"{API}/auth/refresh", json={"refresh_token": second}).status_code == 401
     with SessionLocal() as db:
         assert db.scalar(select(AuditLog).where(AuditLog.action == "refresh_reuse_detected"))
         assert all(t.revoked_at for t in db.scalars(select(RefreshToken)).all())
+
+
+def test_concurrent_refreshes_within_the_grace_window_both_succeed(client):
+    first = register(client).json()["refresh_token"]
+    tab_a = client.post(f"{API}/auth/refresh", json={"refresh_token": first})
+    tab_b = client.post(f"{API}/auth/refresh", json={"refresh_token": first})  # a second tab, same cookie
+    assert tab_a.status_code == tab_b.status_code == 200
+    assert client.post(f"{API}/auth/refresh", json={"refresh_token": tab_b.json()["refresh_token"]}).status_code == 200
 
 
 def test_refresh_and_logout_with_the_cookie(client):

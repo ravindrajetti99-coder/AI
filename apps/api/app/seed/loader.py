@@ -11,6 +11,7 @@ import random
 from collections import Counter
 from types import ModuleType
 
+from pydantic import EmailStr, TypeAdapter, ValidationError
 from sqlalchemy import func, inspect, select
 from sqlalchemy.orm import Session
 
@@ -371,7 +372,10 @@ def bootstrap_admin(db: Session, stats: Counter) -> User | None:
         return None
     if len(s.admin_password) < 12:
         raise SeedError("EDU_ADMIN_PASSWORD must be at least 12 characters")
-    email = s.admin_email.lower().strip()
+    try:  # the same check sign-in applies, so the account can actually log in
+        email = TypeAdapter(EmailStr).validate_python(s.admin_email.strip()).lower()
+    except ValidationError as exc:
+        raise SeedError(f"EDU_ADMIN_EMAIL is not a usable email address: {exc.errors()[0]['msg']}") from exc
     user = db.scalar(select(User).where(User.email == email))
     if not user:
         user = identity.create_user(db, email, s.admin_password, "Administrator", role="admin")

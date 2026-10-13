@@ -65,6 +65,7 @@ class AskIn(BaseModel):
     question: str = Field(min_length=1, max_length=2000)
     conversation_id: uuid.UUID | None = None
     locale: str = "en"
+    level: int | None = Field(default=None, ge=1, le=4)  # the lesson level the learner is reading
 
 
 @router.post("/concepts/{concept_id}/ask")
@@ -82,11 +83,10 @@ def ask_tutor(concept_id: str, body: AskIn, user: User = Depends(rate_limit_ai),
     history = [
         {"role": m.role, "content": m.content} for m in db.scalars(select(Message).where(Message.conversation_id == conv.id).order_by(Message.created_at)).all()
     ]
-    lesson = (
-        service.find_lesson(db, concept.id, 2, body.locale)
-        or service.find_lesson(db, concept.id, 1, body.locale)
-        or service.find_lesson(db, concept.id, 1, "en")
-    )
+    # Ground the tutor in the lesson on the learner's screen, then the usual fallbacks.
+    candidates = [(body.level, body.locale)] if body.level else []
+    candidates += [(2, body.locale), (1, body.locale), (body.level or 1, "en"), (1, "en")]
+    lesson = next((found for lv, loc in candidates if (found := service.find_lesson(db, concept.id, lv, loc))), None)
     _, course_id = service.exam_context_for(db, concept.id)
     res = gateway.run(db, teacher.tutor_task(db, concept, lesson.body if lesson else None, history, body.question, body.locale, course_id), user.id, user.role)
     db.add(Message(conversation_id=conv.id, role="user", content=body.question))

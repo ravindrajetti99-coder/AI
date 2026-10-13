@@ -21,6 +21,9 @@ class Settings(BaseSettings):
     bcrypt_rounds: int = 12  # tests lower this; never below 12 in production
     access_token_minutes: int = 15
     refresh_token_days: int = 30
+    # A spent refresh token replayed within this window (two tabs refreshing at once) gets a
+    # fresh pair instead of revoking the session; later replays are treated as theft.
+    refresh_reuse_grace_seconds: int = 20
     cors_origins: list[str] = ["http://localhost:3000"]
     cookie_secure: bool = False
 
