@@ -1,0 +1,1185 @@
+key: number-system
+title: Number System
+strategies:
+  - key: approach
+    title: "Number system: use properties, test the options"
+    summary: >-
+      Number system questions reward properties over arithmetic: divisibility rules, unit digits,
+      remainders and prime factorisation settle most of them in a few lines, often by checking
+      the four options instead of solving from scratch.
+    seconds_per_question: 45
+    accuracy_target: 0.9
+    tactics:
+      - "Prime-factorise first: factor counts, HCF and LCM, perfect squares and trailing zeros all read off the factorisation."
+      - "Check the options with divisibility rules and unit digits before any long calculation."
+      - "Reduce big numbers to small remainders (negative ones too) before multiplying or raising to a power."
+      - "Memorise the unit-digit cycles: 2, 3, 7, 8 repeat every 4 powers; 4 and 9 every 2; 0, 1, 5, 6 never change."
+    avoid:
+      - "Counting 1 as a prime, or forgetting that 2 is the only even prime."
+      - "Using HCF × LCM = product of the numbers for three numbers (it holds only for two)."
+
+topics:
+  - key: classification
+    title: Classification of numbers
+    subtopics:
+      - key: natural-whole-integers
+        title: Natural numbers, whole numbers and integers
+        concepts:
+          - slug: natural-whole-numbers-integers
+            title: Natural numbers, whole numbers and integers
+            summary: "Natural numbers are 1, 2, 3, …; whole numbers add 0; integers add the negative numbers. SSC asks about their properties (even and odd, the role of 0 and 1) and how many numbers in a range satisfy a condition, such as being divisible by a given number."
+            difficulty: easy
+            weight: 1.0
+            formulas:
+              - key: count-in-range
+                name: Count of integers in a range
+                expression: "integers from a to b (both included) = b − a + 1"
+                example: {problem: "How many integers are there from 27 to 113?", solution: "113 − 27 + 1 = 87"}
+              - key: multiples-in-range
+                name: Multiples of k in a range
+                expression: "multiples of k from 1 to n = ⌊n/k⌋;  from a to b = ⌊b/k⌋ − ⌊(a − 1)/k⌋"
+                example: {problem: "How many numbers from 100 to 300 are divisible by 7?", solution: "⌊300/7⌋ − ⌊99/7⌋ = 42 − 14 = 28"}
+              - key: even-odd
+                name: Even and odd rules
+                expression: "even ± even = even;  odd ± odd = even;  even ± odd = odd;  odd × odd = odd;  any integer × even = even"
+            patterns:
+              - key: classify-numbers
+                title: Identify natural numbers, whole numbers and integers
+                example_stem: "Which of the following is a whole number but not a natural number? (a) −1 (b) 0 (c) 1 (d) 1/2"
+                frequency: low
+                difficulty: easy
+                target_seconds: 15
+              - key: count-divisible
+                title: Count numbers divisible by given numbers in a range
+                example_stem: "How many numbers from 200 to 600 are divisible by both 4 and 6?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: even-odd-properties
+                title: Even and odd number properties
+                example_stem: "If x is odd and y is even, which of the following must be odd? (a) x + y (b) xy (c) 2x + y (d) x²y"
+                frequency: low
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: lcm-for-both
+                title: "'Both' means the LCM, 'or' means add and subtract"
+                kind: shortcut
+                rule: "Numbers divisible by both a and b are the multiples of LCM(a, b); numbers divisible by a or b number n(a) + n(b) − n(LCM)."
+                example: {problem: "How many numbers from 1 to 100 are divisible by 3 or 5?", standard: "List and count the multiples", shortcut: "33 + 20 − 6 = 47", seconds_saved: 40}
+                pattern: count-divisible
+                pitfalls: ["Multiplying a and b instead of taking the LCM when they share a factor (4 and 6 → 12, not 24)."]
+      - key: rational-irrational
+        title: Rational numbers and irrational numbers
+        concepts:
+          - slug: rational-irrational-numbers
+            title: Rational and irrational numbers
+            summary: "A rational number can be written as p/q with integers p, q and q ≠ 0; its decimal either terminates or repeats. Irrational numbers such as √2, √3 and π have non-terminating, non-repeating decimals. SSC asks which numbers are rational, rationals between two numbers, and whether a fraction terminates."
+            difficulty: easy
+            weight: 1.0
+            prerequisites: [natural-whole-numbers-integers]
+            formulas:
+              - key: terminating-test
+                name: Terminating decimal test
+                expression: "p/q in lowest terms has a terminating decimal ⇔ q = 2ᵐ × 5ⁿ"
+                example: {problem: "Does 7/80 have a terminating decimal?", solution: "80 = 2⁴ × 5, so yes: 7/80 = 0.0875"}
+              - key: closure
+                name: Combining rational and irrational numbers
+                expression: "rational ± irrational = irrational;  non-zero rational × irrational = irrational;  irrational + irrational may be rational (√2 + (−√2) = 0)"
+              - key: rationals-between
+                name: Rationals between two numbers
+                expression: "n rationals between a and b: a + k(b − a)/(n + 1), k = 1, 2, …, n"
+                example: {problem: "Three rational numbers between 1/4 and 1/2", solution: "step (1/2 − 1/4)/4 = 1/16 → 5/16, 6/16, 7/16"}
+            patterns:
+              - key: identify-rational
+                title: Identify rational and irrational numbers
+                example_stem: "Which of the following is irrational? (a) √16 (b) 0.333… (c) √12 (d) 22/7"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+              - key: terminating-decimal
+                title: Terminating or non-terminating decimal
+                example_stem: "Which of these fractions has a terminating decimal expansion? (a) 3/14 (b) 7/40 (c) 5/12 (d) 2/15"
+                frequency: low
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: denominator-check
+                title: Cancel, then check only the denominator
+                kind: elimination
+                rule: "Reduce the fraction to lowest terms, then factorise the denominator: any prime factor other than 2 or 5 means a non-terminating, repeating decimal."
+                example: {problem: "Does 21/56 terminate?", standard: "Long division", shortcut: "21/56 = 3/8 and 8 = 2³ → terminates (0.375)", seconds_saved: 20}
+                pattern: terminating-decimal
+                pitfalls: ["Testing the denominator before cancelling: 56 has a factor 7, yet 21/56 terminates."]
+
+  - key: computation
+    title: Computation of whole numbers, decimals and fractions
+    concepts:
+      - slug: place-value-face-value
+        title: Place value, face value and counting digits
+        summary: "The face value of a digit is the digit itself; its place value is the digit × the value of its position (units, tens, hundreds, …). SSC asks the difference of place and face values, the largest and smallest numbers formed from given digits, and how many digits are used to write 1 to n (page numbers)."
+        difficulty: easy
+        weight: 0.7
+        prerequisites: [natural-whole-numbers-integers]
+        formulas:
+          - key: place-value
+            name: Place value
+            expression: "place value = digit × 10ᵏ, where k is the position counted from the units place (units: k = 0)"
+            example: {problem: "In 6,47,385 find the place value minus the face value of 7.", solution: "7 is in the thousands place: 7,000 − 7 = 6,993"}
+          - key: digits-used
+            name: Digits used in writing 1 to n
+            expression: "1-9 use 9 digits, 10-99 use 180, 100-999 use 2,700; so for 100 ≤ n ≤ 999, digits = 189 + 3(n − 99)"
+            example: {problem: "How many digits are used to number the pages of a 350-page book?", solution: "189 + 3 × 251 = 942"}
+        patterns:
+          - key: place-minus-face
+            title: Difference of place value and face value
+            example_stem: "What is the difference between the place value and the face value of 5 in 3,85,264?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 15
+          - key: page-digits
+            title: Digits used to number pages
+            example_stem: "A book uses 1,392 digits for its page numbers. How many pages does it have?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+          - key: largest-smallest-numbers
+            title: Largest and smallest numbers from given digits
+            example_stem: "Find the difference between the largest and the smallest 4-digit numbers formed with the digits 3, 0, 7 and 5, each used once."
+            frequency: low
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: digit-blocks
+            title: Count digits in blocks of 9, 180 and 2,700
+            kind: memory
+            rule: "Remember the running totals 9 (1-9), 189 (1-99) and 2,889 (1-999); subtract the block total, then divide by the number of digits per number in the next block."
+            example: {problem: "Pages numbered with 1,392 digits", standard: "Build the count block by block", shortcut: "(1,392 − 189) ÷ 3 = 401 → 99 + 401 = 500 pages", seconds_saved: 25}
+            pattern: page-digits
+      - slug: fraction-types-operations
+        title: "Fractions: types, equivalence and operations"
+        summary: "Proper, improper and mixed fractions; equivalent fractions; adding through the LCM of the denominators, multiplying straight across and dividing by multiplying with the reciprocal. These are the building blocks of every simplification and fraction word problem."
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [natural-whole-numbers-integers]
+        formulas:
+          - key: add-fractions
+            name: Adding and subtracting fractions
+            expression: "a/b ± c/d = (a × L/b ± c × L/d) / L, where L = LCM(b, d)"
+            example: {problem: "2/3 + 5/8 − 1/4", solution: "LCM 24: (16 + 15 − 6)/24 = 25/24 = 1 1/24"}
+          - key: multiply-divide
+            name: Multiplying and dividing fractions
+            expression: "(a/b) × (c/d) = ac/bd;  (a/b) ÷ (c/d) = (a/b) × (d/c)"
+            example: {problem: "3 1/2 ÷ 1 3/4", solution: "7/2 × 4/7 = 2"}
+          - key: mixed-improper
+            name: Mixed number to improper fraction
+            expression: "a b/c = (a × c + b)/c"
+            example: {problem: "Write 4 3/7 as an improper fraction.", solution: "(4 × 7 + 3)/7 = 31/7"}
+        patterns:
+          - key: fraction-of-quantity
+            title: Fraction of a quantity (word problem)
+            example_stem: "A man spends 1/3 of his salary on rent and 2/5 of the remainder on food. If he is left with ₹12,000, find his salary."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: fraction-operations
+            title: Operations on mixed fractions
+            example_stem: "Simplify: 2 1/3 + 3 1/4 − 1 5/6"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: whole-parts-separately
+            title: Whole parts and fraction parts separately
+            kind: shortcut
+            rule: "For sums of mixed numbers, add the whole numbers first, then only the fractional parts."
+            example: {problem: "2 1/3 + 3 1/4 − 1 5/6", standard: "Convert all three to improper fractions over 12", shortcut: "(2 + 3 − 1) + (4 + 3 − 10)/12 = 4 − 1/4 = 3 3/4", seconds_saved: 15}
+            pattern: fraction-operations
+          - key: remaining-fraction
+            title: Multiply what is left at each step
+            kind: shortcut
+            rule: "When fractions are spent 'of the remainder', the part left is the product (1 − a)(1 − b)… of the fractions left at each step."
+            example: {problem: "Spends 1/3, then 2/5 of the rest, and has ₹12,000 left", standard: "Work out the rent and the food amounts in terms of the salary", shortcut: "left = 2/3 × 3/5 = 2/5 of the salary → salary = 12,000 × 5/2 = ₹30,000", seconds_saved: 20}
+            pattern: fraction-of-quantity
+      - slug: decimal-fraction-operations
+        title: "Decimal fractions: operations and conversion"
+        summary: "A decimal fraction has a power of 10 as its denominator (0.375 = 375/1000 = 3/8). Multiply as whole numbers and place the point by adding decimal places; divide by first making the divisor a whole number. SSC uses these inside simplification questions."
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [fraction-types-operations, place-value-face-value]
+        formulas:
+          - key: decimal-to-fraction
+            name: Terminating decimal to fraction
+            expression: "0.d₁d₂…dₖ = (d₁d₂…dₖ)/10ᵏ, then reduce"
+            example: {problem: "Write 0.125 as a fraction.", solution: "125/1000 = 1/8"}
+          - key: decimal-places-product
+            name: Decimal places in a product
+            expression: "decimal places in a × b = decimal places in a + decimal places in b"
+            example: {problem: "0.06 × 0.007", solution: "6 × 7 = 42 with 2 + 3 = 5 places → 0.00042"}
+          - key: division-shift
+            name: Division by shifting the point
+            expression: "a ÷ b = (a × 10ᵏ) ÷ (b × 10ᵏ); choose k so that the divisor becomes a whole number"
+            example: {problem: "0.0084 ÷ 0.12", solution: "0.84 ÷ 12 = 0.07"}
+        patterns:
+          - key: decimal-simplify
+            title: Simplify an expression with decimals
+            example_stem: "Simplify: (0.0036 × 0.5) ÷ (0.012 × 0.03)"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: decimal-fraction-convert
+            title: Convert decimals to fractions
+            example_stem: "Which fraction equals 0.0625? (a) 1/8 (b) 1/16 (c) 3/40 (d) 5/64"
+            frequency: low
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: strip-decimals
+            title: Strip the decimals, then restore them
+            kind: shortcut
+            rule: "Ignore the decimal points, compute with whole numbers, then place the point by the net decimal places (places in the numerator minus places in the denominator)."
+            example: {problem: "(0.0036 × 0.5) ÷ (0.012 × 0.03)", standard: "Work out each product as a decimal and divide", shortcut: "(36 × 5) ÷ (12 × 3) = 5; places (4 + 1) − (3 + 2) = 0 → 5", seconds_saved: 20}
+            pattern: decimal-simplify
+
+  - key: divisibility
+    title: Divisibility rules
+    concepts:
+      - slug: divisibility-rules
+        title: Divisibility rules for 2 to 11
+        summary: "Quick tests: 2, 5 and 10 by the last digit; 4 by the last two digits; 8 by the last three; 3 and 9 by the digit sum; 11 by the difference of the sums of alternate digits (0 or a multiple of 11); 6 by both 2 and 3; 7 by doubling the last digit and subtracting. SSC uses them to find missing digits and to eliminate options."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [natural-whole-numbers-integers]
+        formulas:
+          - key: last-digit-rules
+            name: Last-digits rules
+            expression: "2: last digit even;  5: last digit 0 or 5;  10: last digit 0;  4: last two digits divisible by 4;  8: last three digits divisible by 8"
+          - key: digit-sum-rules
+            name: Digit-sum rules for 3 and 9
+            expression: "divisible by 3 (or 9) ⇔ the sum of the digits is divisible by 3 (or 9)"
+            example: {problem: "Is 7,345,218 divisible by 9?", solution: "digit sum 30 is not a multiple of 9 → no (but it is divisible by 3)"}
+          - key: rule-11
+            name: Rule for 11
+            expression: "(sum of digits in odd places) − (sum of digits in even places) = 0 or a multiple of 11"
+            example: {problem: "Is 9,28,477 divisible by 11?", solution: "from the right: (7 + 4 + 2) − (7 + 8 + 9) = 13 − 24 = −11 → yes"}
+          - key: rule-7
+            name: Rule for 7
+            expression: "double the last digit and subtract it from the number formed by the remaining digits; repeat; divisible by 7 ⇔ the result is divisible by 7"
+            example: {problem: "Is 3,857 divisible by 7?", solution: "385 − 14 = 371 → 37 − 2 = 35 = 7 × 5 → yes"}
+        patterns:
+          - key: missing-digit
+            title: Find the missing digit for divisibility
+            example_stem: "If the 6-digit number 4x6913 is divisible by 9, find the digit x."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: test-divisibility
+            title: Which number is divisible by a given number
+            example_stem: "Which of the following numbers is divisible by 11? (a) 4,25,736 (b) 3,46,753 (c) 6,38,251 (d) 8,15,904"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: least-to-add
+            title: Least number to add or subtract for divisibility
+            example_stem: "What least number must be added to 8,463 to make it divisible by 9?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: quickest-rule-first
+            title: Eliminate options with the quickest rule
+            kind: elimination
+            rule: "Before dividing, test each option with the cheapest rule (last digit, then digit sum, then alternate sums); usually only one option survives."
+            example: {problem: "Which is divisible by 9: 46,872, 53,718, 61,928 or 72,314?", standard: "Divide each number by 9", shortcut: "digit sums 27, 24, 26, 17 → only 46,872", seconds_saved: 30}
+            pattern: test-divisibility
+      - slug: divisibility-composite-divisors
+        title: Divisibility by composite numbers and missing digits
+        summary: "To test a composite divisor, split it into co-prime factors and apply each rule: 12 = 3 × 4, 18 = 2 × 9, 24 = 3 × 8, 36 = 4 × 9, 72 = 8 × 9, 88 = 8 × 11. Since 1001 = 7 × 11 × 13, a number like abcabc is always divisible by 7, 11 and 13."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [divisibility-rules, prime-composite-numbers]
+        formulas:
+          - key: coprime-split
+            name: Split into co-prime factors
+            expression: "N is divisible by m × n (with HCF(m, n) = 1) ⇔ N is divisible by m and by n"
+            conditions: "The factors must be co-prime: 24 = 3 × 8 works, 24 = 4 × 6 does not."
+            example: {problem: "Is 31,248 divisible by 72?", solution: "last three digits 248 = 8 × 31 → divisible by 8; digit sum 18 → divisible by 9; so yes"}
+          - key: repeated-block
+            name: Repeated blocks of digits
+            expression: "abcabc = abc × 1001 = abc × 7 × 11 × 13;  ababab = ab × 10101 = ab × 3 × 7 × 13 × 37;  aaaaaa = a × 111111 = a × 3 × 7 × 11 × 13 × 37"
+            example: {problem: "Is 527,527 divisible by 13?", solution: "527,527 = 527 × 1001 and 13 divides 1001 → yes"}
+        patterns:
+          - key: two-missing-digits
+            title: Two missing digits for a composite divisor
+            example_stem: "The 5-digit number 6x29y is divisible by 72. What is the value of x + y?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: repeated-block-divisor
+            title: Divisors of repeated-digit numbers
+            example_stem: "A six-digit number is formed by writing a three-digit number twice (such as 256256). Such a number is always divisible by: (a) 7 only (b) 11 only (c) 1001 (d) 1003"
+            frequency: low
+            difficulty: medium
+            target_seconds: 25
+        shortcuts:
+          - key: last-digits-first
+            title: Fix the last digit first
+            kind: shortcut
+            rule: "With two unknown digits, use the last-digits rule of the divisor (2, 4, 5 or 8) to fix the unit digit, then the digit-sum or 11 rule for the other digit."
+            example: {problem: "6x29y divisible by 72", standard: "Try digit pairs one by one", shortcut: "8 | 29y → y = 6; 9 | (23 + x) → x = 4; x + y = 10", seconds_saved: 40}
+            pattern: two-missing-digits
+
+  - key: factors-multiples
+    title: Factors and multiples
+    subtopics:
+      - key: primes
+        title: Prime numbers and composite numbers
+        concepts:
+          - slug: prime-composite-numbers
+            title: Prime numbers and composite numbers
+            summary: "A prime has exactly two factors, 1 and itself; a composite number has more than two; 1 is neither. There are 25 primes below 100, 2 is the only even prime, and n is prime if no prime up to √n divides it. Co-prime numbers have HCF 1."
+            difficulty: easy
+            weight: 1.0
+            prerequisites: [divisibility-rules]
+            formulas:
+              - key: primality-test
+                name: Primality test
+                expression: "n is prime if no prime p ≤ √n divides n"
+                example: {problem: "Is 391 prime?", solution: "√391 < 20; testing 2, 3, 5, 7, 11, 13, 17: 391 = 17 × 23, so it is composite"}
+              - key: primes-below-100
+                name: Primes up to 100
+                expression: "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97 (25 primes)"
+              - key: prime-form
+                name: Form of primes greater than 3
+                expression: "every prime greater than 3 is of the form 6k ± 1"
+                conditions: "The converse is false: 25 = 6 × 4 + 1 is not prime."
+            patterns:
+              - key: count-primes
+                title: Count primes in a range
+                example_stem: "How many prime numbers are there between 50 and 100?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: is-it-prime
+                title: Test whether a number is prime
+                example_stem: "Which of the following is a prime number? (a) 221 (b) 247 (c) 253 (d) 241"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 30
+              - key: co-primes
+                title: Co-prime pairs
+                example_stem: "Which of the following pairs is co-prime? (a) 21 and 35 (b) 15 and 28 (c) 18 and 45 (d) 24 and 36"
+                frequency: low
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: sqrt-limit
+                title: Test primes only up to √n
+                kind: shortcut
+                rule: "To check whether n is prime, divide only by the primes up to √n, clearing 2, 3, 5 and 11 at a glance with divisibility rules."
+                example: {problem: "Is 241 prime?", standard: "Divide by many numbers below 241", shortcut: "√241 < 16: not divisible by 2, 3, 5, 7, 11 or 13 → prime", seconds_saved: 30}
+                pattern: is-it-prime
+          - slug: factors-multiples-prime-factorisation
+            title: Factors, multiples and prime factorisation
+            summary: "A factor divides a number exactly; a multiple is the number times an integer. Every number above 1 has a unique prime factorisation (360 = 2³ × 3² × 5), the starting point for HCF, LCM, factor counts, perfect squares and cubes."
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [prime-composite-numbers]
+            formulas:
+              - key: factorisation
+                name: Prime factorisation
+                expression: "N = p₁ᵃ × p₂ᵇ × p₃ᶜ × …, with p₁, p₂, p₃ distinct primes"
+                example: {problem: "Factorise 1,260.", solution: "1,260 = 2² × 3² × 5 × 7"}
+              - key: perfect-power-test
+                name: Perfect square and perfect cube test
+                expression: "N is a perfect square when every prime exponent is even, and a perfect cube when every exponent is a multiple of 3"
+                example: {problem: "Smallest number to multiply 1,260 by to get a perfect square", solution: "1,260 = 2² × 3² × 5 × 7 → multiply by 5 × 7 = 35 (giving 44,100 = 210²)"}
+            patterns:
+              - key: smallest-multiplier
+                title: Smallest multiplier or divisor for a perfect square or cube
+                example_stem: "What is the smallest number by which 3,528 must be divided to make it a perfect square?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: factor-or-multiple
+                title: Identify factors and multiples
+                example_stem: "Which of the following is a factor of 2,184? (a) 15 (b) 26 (c) 33 (d) 45"
+                frequency: low
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: exponent-fix
+                title: Fix the odd exponents
+                kind: shortcut
+                rule: "Factorise once; the primes with odd exponents (for squares) or exponents not divisible by 3 (for cubes) give the smallest multiplier or divisor directly."
+                example: {problem: "Smallest divisor that makes 3,528 a perfect square", standard: "Divide by 2, 3, 6, … and test each quotient", shortcut: "3,528 = 2³ × 3² × 7²: only 2 has an odd exponent → divide by 2 (1,764 = 42²)", seconds_saved: 25}
+                pattern: smallest-multiplier
+      - key: factor-count
+        title: Number of factors and sum of factors
+        concepts:
+          - slug: number-of-factors
+            title: Number of factors (even, odd and perfect-square factors)
+            summary: "If N = pᵃ × qᵇ × rᶜ, N has (a + 1)(b + 1)(c + 1) factors. Odd factors use only the odd primes, even factors are the rest, and perfect-square factors use even exponents only. SSC asks the count of all, odd, even or square factors."
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [factors-multiples-prime-factorisation]
+            formulas:
+              - key: total-factors
+                name: Number of factors
+                expression: "N = pᵃ × qᵇ × rᶜ ⇒ number of factors = (a + 1)(b + 1)(c + 1)"
+                variables:
+                  - {symbol: "p, q, r", meaning: distinct primes}
+                  - {symbol: "a, b, c", meaning: their exponents}
+                example: {problem: "How many factors does 360 have?", solution: "360 = 2³ × 3² × 5 → 4 × 3 × 2 = 24"}
+              - key: odd-even-factors
+                name: Odd and even factors
+                expression: "odd factors = product of (exponent + 1) over the odd primes only;  even factors = total − odd = a × (b + 1)(c + 1) when 2ᵃ is the power of 2"
+                example: {problem: "Even factors of 360", solution: "odd factors = 3 × 2 = 6, so even factors = 24 − 6 = 18"}
+              - key: square-factors
+                name: Perfect-square factors
+                expression: "number of perfect-square factors = (⌊a/2⌋ + 1)(⌊b/2⌋ + 1)(⌊c/2⌋ + 1)"
+                example: {problem: "Perfect-square factors of 360", solution: "(1 + 1)(1 + 1)(0 + 1) = 4: 1, 4, 9 and 36"}
+            patterns:
+              - key: count-factors
+                title: Count all factors of a number
+                example_stem: "How many factors does 1,800 have?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+              - key: even-odd-count
+                title: Count even or odd factors
+                example_stem: "How many odd factors does 2,520 have?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: square-factor-count
+                title: Count perfect-square factors
+                example_stem: "How many factors of 7,200 are perfect squares?"
+                frequency: low
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: add-one-multiply
+                title: Add one to each exponent and multiply
+                kind: memory
+                rule: "Factorise, add 1 to every exponent and multiply. For odd factors drop the power of 2 first; for even factors use a × (product of the rest)."
+                example: {problem: "Even factors of 2,520", standard: "List all 48 factors and count the even ones", shortcut: "2,520 = 2³ × 3² × 5 × 7 → 3 × 3 × 2 × 2 = 36 even factors", seconds_saved: 60}
+                pattern: even-odd-count
+          - slug: sum-of-factors
+            title: Sum of factors and product of factors
+            summary: "For N = pᵃ × qᵇ, the sum of all factors is (1 + p + … + pᵃ)(1 + q + … + qᵇ), and the product of all factors is N^(d/2), where d is the number of factors. SSC asks the sum of all, odd or even factors."
+            difficulty: medium
+            weight: 0.8
+            prerequisites: [number-of-factors]
+            formulas:
+              - key: sum
+                name: Sum of factors
+                expression: "S = (p^(a+1) − 1)/(p − 1) × (q^(b+1) − 1)/(q − 1) × …"
+                example: {problem: "Sum of the factors of 72", solution: "72 = 2³ × 3² → (1 + 2 + 4 + 8)(1 + 3 + 9) = 15 × 13 = 195"}
+              - key: odd-even-sum
+                name: Sum of odd and even factors
+                expression: "sum of odd factors = product of the bracket sums for the odd primes only;  sum of even factors = total sum − sum of odd factors"
+                example: {problem: "Sum of the even factors of 72", solution: "odd factors sum to 13, so even factors sum to 195 − 13 = 182"}
+              - key: product
+                name: Product of factors
+                expression: "product of all factors of N = N^(d/2), where d = number of factors"
+                example: {problem: "Product of the factors of 36", solution: "d = 9, product = 36^(9/2) = 6⁹"}
+            patterns:
+              - key: sum-all
+                title: Sum of all factors
+                example_stem: "Find the sum of all the factors of 108."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+              - key: sum-odd-even
+                title: Sum of odd or even factors
+                example_stem: "What is the sum of the odd factors of 360?"
+                frequency: low
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: bracket-product
+                title: Multiply the bracket sums
+                kind: shortcut
+                rule: "Write one bracket (1 + p + p² + … + pᵃ) per prime and multiply; never list the factors."
+                example: {problem: "Sum of the factors of 108", standard: "List the 12 factors and add", shortcut: "108 = 2² × 3³ → (1 + 2 + 4)(1 + 3 + 9 + 27) = 7 × 40 = 280", seconds_saved: 40}
+                pattern: sum-all
+
+  - key: hcf-lcm
+    title: HCF and LCM
+    concepts:
+      - slug: hcf-lcm-basics
+        title: "HCF and LCM: methods and the product rule"
+        summary: "HCF is the largest number dividing all the given numbers (common primes with the lowest powers); LCM is the smallest number divisible by all of them (all primes with the highest powers). For two numbers HCF × LCM = product of the numbers, and the HCF always divides the LCM."
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [factors-multiples-prime-factorisation]
+        formulas:
+          - key: by-factorisation
+            name: HCF and LCM by prime factorisation
+            expression: "HCF = product of the common primes with their lowest powers;  LCM = product of all the primes with their highest powers"
+            example: {problem: "HCF and LCM of 72 and 120", solution: "72 = 2³ × 3², 120 = 2³ × 3 × 5 → HCF = 2³ × 3 = 24, LCM = 2³ × 3² × 5 = 360"}
+          - key: product-rule
+            name: Product rule (two numbers)
+            expression: "HCF(a, b) × LCM(a, b) = a × b"
+            conditions: "Only for two numbers."
+            example: {problem: "HCF 12, LCM 360 and one number 72. Find the other.", solution: "12 × 360 / 72 = 60"}
+          - key: hcf-form
+            name: Numbers written through their HCF
+            expression: "if HCF(a, b) = H, then a = Hx and b = Hy with HCF(x, y) = 1, and LCM(a, b) = Hxy"
+            example: {problem: "Two numbers have HCF 16 and sum 128. How many such pairs are there?", solution: "16(x + y) = 128 → x + y = 8 with x, y co-prime: (1, 7) and (3, 5) → 2 pairs"}
+        patterns:
+          - key: find-other-number
+            title: Find a number from the HCF, LCM and the other number
+            example_stem: "The HCF and LCM of two numbers are 18 and 1,512. If one number is 216, find the other."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: hcf-lcm-ratio
+            title: Numbers in a given ratio with a given HCF or LCM
+            example_stem: "Two numbers are in the ratio 4 : 5 and their LCM is 360. Find their HCF."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: pairs-with-hcf
+            title: Pairs of numbers with a given HCF and sum or product
+            example_stem: "The product of two numbers is 2,028 and their HCF is 13. How many such pairs of numbers are there?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: ratio-hcf
+            title: "Numbers in ratio a : b are Ha and Hb"
+            kind: shortcut
+            rule: "If two numbers are in the ratio a : b (a, b co-prime), they are Ha and Hb with LCM = H × a × b, so one division gives the HCF."
+            example: {problem: "Ratio 4 : 5, LCM 360", standard: "Let the numbers be 4x and 5x and find their LCM in terms of x", shortcut: "360 ÷ (4 × 5) = 18 = HCF", seconds_saved: 20}
+            pattern: hcf-lcm-ratio
+          - key: hcf-divides-lcm
+            title: The HCF must divide the LCM
+            kind: elimination
+            rule: "In 'which can be the HCF and LCM of two numbers' questions, reject every option in which the HCF does not divide the LCM."
+            example: {problem: "Which cannot be the HCF and LCM of two numbers: (12, 72), (8, 60), (15, 90), (9, 81)?", shortcut: "60 is not a multiple of 8 → (8, 60)", seconds_saved: 30}
+      - slug: hcf-lcm-of-fractions
+        title: HCF and LCM of fractions and decimals
+        summary: "HCF of fractions = HCF of the numerators ÷ LCM of the denominators; LCM of fractions = LCM of the numerators ÷ HCF of the denominators (with each fraction in lowest terms). For decimals, give all numbers the same number of decimal places, work with the whole numbers and restore the places."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [hcf-lcm-basics, decimal-fraction-operations]
+        formulas:
+          - key: fraction-hcf
+            name: HCF of fractions
+            expression: "HCF(a/b, c/d, …) = HCF(a, c, …) / LCM(b, d, …)"
+            conditions: "Reduce each fraction to lowest terms first."
+            example: {problem: "HCF of 2/3, 4/9 and 8/15", solution: "HCF(2, 4, 8) / LCM(3, 9, 15) = 2/45"}
+          - key: fraction-lcm
+            name: LCM of fractions
+            expression: "LCM(a/b, c/d, …) = LCM(a, c, …) / HCF(b, d, …)"
+            example: {problem: "LCM of 2/3, 4/9 and 8/15", solution: "LCM(2, 4, 8) / HCF(3, 9, 15) = 8/3"}
+          - key: decimals
+            name: HCF and LCM of decimals
+            expression: "equalise the decimal places, drop the point, find the HCF or LCM of the whole numbers, then put back the same number of decimal places"
+            example: {problem: "HCF of 0.6, 1.08 and 0.36", solution: "60, 108, 36 → HCF 12 → 0.12"}
+        patterns:
+          - key: fractions-hcf-lcm
+            title: HCF or LCM of given fractions
+            example_stem: "Find the LCM of 3/4, 5/6 and 9/10."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: decimal-hcf-lcm
+            title: HCF or LCM of decimals
+            example_stem: "What is the LCM of 1.2, 0.18 and 0.9?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: hcf-top-lcm-bottom
+            title: HCF on top, LCM below (and the reverse for LCM)
+            kind: memory
+            rule: "HCF of fractions: HCF of the tops over LCM of the bottoms. LCM of fractions: LCM of the tops over HCF of the bottoms. An HCF can never exceed the smallest fraction, nor an LCM fall below the largest."
+            example: {problem: "LCM of 3/4, 5/6 and 9/10", standard: "Convert to a common denominator and compare multiples", shortcut: "LCM(3, 5, 9) / HCF(4, 6, 10) = 45/2", seconds_saved: 30}
+            pattern: fractions-hcf-lcm
+      - slug: hcf-word-problems
+        title: "HCF word problems: greatest divisor with remainders"
+        summary: "The greatest number that divides a, b and c leaving remainders r₁, r₂ and r₃ is HCF(a − r₁, b − r₂, c − r₃); if the remainder is the same but unknown, it is the HCF of the differences of the numbers. The HCF also gives the largest equal piece, tile or container size."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [hcf-lcm-basics, division-algorithm-remainders]
+        formulas:
+          - key: given-remainders
+            name: Greatest divisor leaving given remainders
+            expression: "greatest divisor = HCF(a − r₁, b − r₂, c − r₃)"
+            example: {problem: "Greatest number dividing 280, 397 and 583 leaving remainders 4, 6 and 8", solution: "HCF(276, 391, 575) = 23"}
+          - key: same-remainder
+            name: Greatest divisor leaving the same remainder
+            expression: "greatest divisor = HCF(b − a, c − b, c − a) for a < b < c"
+            example: {problem: "Greatest number dividing 62, 132 and 237 leaving the same remainder", solution: "HCF(70, 105, 175) = 35 (each remainder is 27)"}
+          - key: equal-pieces
+            name: Largest equal size
+            expression: "largest equal length, tile side or container = HCF of the given measures;  number of pieces = sum of (measure ÷ HCF)"
+            example: {problem: "Rods of 84 cm, 126 cm and 210 cm are cut into equal pieces of the greatest length", solution: "HCF = 42 cm → 2 + 3 + 5 = 10 pieces"}
+        patterns:
+          - key: divisor-with-remainders
+            title: Greatest number dividing with given remainders
+            example_stem: "Find the greatest number that divides 1,369 and 1,936 leaving remainders 6 and 9 respectively."
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: same-remainder-divisor
+            title: Greatest divisor leaving the same remainder
+            example_stem: "Find the greatest number which divides 69, 129 and 249 leaving the same remainder in each case."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: tiles-and-pieces
+            title: Largest tile, piece or group size
+            example_stem: "A floor 8 m 16 cm long and 4 m 32 cm wide is to be paved with equal square tiles. Find the least number of tiles needed."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: subtract-then-hcf
+            title: Subtract the remainders, then take the HCF
+            kind: shortcut
+            rule: "Subtract each remainder from its number (or take the differences of the numbers when the remainder is common) and find the HCF of the results."
+            example: {problem: "Greatest number dividing 1,369 and 1,936 leaving 6 and 9", standard: "Test the options by dividing", shortcut: "HCF(1,363, 1,927) = 47 (1,363 = 47 × 29, 1,927 = 47 × 41)", seconds_saved: 25}
+            pattern: divisor-with-remainders
+            pitfalls: ["The divisor must exceed every remainder; check the answer against them."]
+      - slug: lcm-word-problems
+        title: "LCM word problems: least number with remainders, bells and laps"
+        summary: "The least number that leaves the same remainder r when divided by a, b and c is LCM(a, b, c) + r; if each remainder falls short of its divisor by the same k, it is LCM − k. Bells tolling together, runners meeting at the start and lights changing together repeat after the LCM of their intervals."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [hcf-lcm-basics, division-algorithm-remainders]
+        formulas:
+          - key: same-remainder
+            name: Numbers leaving the same remainder r
+            expression: "N = k × LCM(a, b, c) + r;  the least such number greater than r is LCM + r"
+            example: {problem: "Least number above 5 that leaves remainder 5 when divided by 6, 9 and 12", solution: "LCM 36 + 5 = 41"}
+          - key: constant-shortfall
+            name: Remainders short of the divisors by the same amount
+            expression: "if (divisor − remainder) = k for every divisor, N = LCM(a, b, c) − k"
+            example: {problem: "Least number leaving remainders 2, 3 and 4 when divided by 3, 4 and 5", solution: "each remainder is 1 short: LCM(3, 4, 5) − 1 = 59"}
+          - key: events-together
+            name: Events repeating together
+            expression: "events with periods t₁, t₂, t₃ coincide every LCM(t₁, t₂, t₃);  coincidences in a time T after the start = ⌊T / LCM⌋"
+            example: {problem: "Bells toll every 6, 8 and 12 minutes and together at 9:00 a.m. When do they next toll together?", solution: "LCM = 24 minutes → 9:24 a.m."}
+          - key: remainder-and-divisible
+            name: Remainder r and divisible by d
+            expression: "N = LCM × k + r; take the smallest k for which d divides N"
+            example: {problem: "Least number leaving remainder 5 when divided by 6, 9 and 12 and divisible by 7", solution: "36k + 5: k = 2 gives 77 = 7 × 11"}
+        patterns:
+          - key: least-with-remainder
+            title: Least number leaving a given remainder
+            example_stem: "Find the least number which, when divided by 12, 15 and 20, leaves a remainder 7 in each case but is divisible by 11."
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: bells-and-laps
+            title: Bells, lights and runners meeting together
+            example_stem: "Three runners complete a lap in 30, 45 and 60 seconds. If they start together, after how many minutes will they next be together at the starting point?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: n-digit-divisible
+            title: Largest or smallest n-digit number divisible by given numbers
+            example_stem: "Find the largest 4-digit number that is exactly divisible by 12, 18 and 30."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: lcm-plus-minus
+            title: LCM + common remainder, LCM − common shortfall
+            kind: memory
+            rule: "Same remainder r → LCM + r; same shortfall k (divisor − remainder) → LCM − k; for an extra divisibility condition step through LCM × k + r."
+            example: {problem: "Remainders 2, 3, 4 with divisors 3, 4, 5", standard: "Test numbers one by one", shortcut: "shortfall 1 each → 60 − 1 = 59", seconds_saved: 30}
+            pattern: least-with-remainder
+          - key: largest-n-digit
+            title: Largest n-digit multiple = 99…9 minus its remainder
+            kind: shortcut
+            rule: "Divide the largest n-digit number by the LCM and subtract the remainder; for the smallest, add (LCM − remainder) to 10…0."
+            example: {problem: "Largest 4-digit number divisible by 12, 18 and 30", standard: "List multiples of 180 near 10,000", shortcut: "LCM 180; 9,999 = 180 × 55 + 99 → 9,999 − 99 = 9,900", seconds_saved: 20}
+            pattern: n-digit-divisible
+
+  - key: remainders
+    title: Remainders
+    subtopics:
+      - key: remainder-basics
+        title: Division algorithm and remainders
+        concepts:
+          - slug: division-algorithm-remainders
+            title: Division algorithm and remainder problems
+            summary: "Dividend = divisor × quotient + remainder, with 0 ≤ remainder < divisor. SSC asks for a missing term, the remainder of a number by a factor of its original divisor, and successive-division chains."
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [natural-whole-numbers-integers]
+            formulas:
+              - key: division-algorithm
+                name: Division algorithm
+                expression: "N = d × q + r, 0 ≤ r < d"
+                variables:
+                  - {symbol: N, meaning: dividend}
+                  - {symbol: d, meaning: divisor}
+                  - {symbol: q, meaning: quotient}
+                  - {symbol: r, meaning: remainder}
+                example: {problem: "Divisor 23, quotient 41, remainder 17. Find the dividend.", solution: "23 × 41 + 17 = 960"}
+              - key: factor-divisor
+                name: Remainder by a factor of the divisor
+                expression: "if N leaves remainder r when divided by d and m divides d, then N leaves (r mod m) when divided by m"
+                example: {problem: "A number leaves remainder 29 when divided by 56. Find the remainder when it is divided by 8.", solution: "29 mod 8 = 5"}
+              - key: successive-division
+                name: Successive division
+                expression: "if N ÷ d₁ leaves r₁ and the quotient ÷ d₂ leaves r₂, then N mod (d₁ × d₂) = d₁ × r₂ + r₁"
+                example: {problem: "Least number leaving remainders 3 and 2 when divided successively by 4 and 5", solution: "4 × 2 + 3 = 11"}
+            patterns:
+              - key: missing-term
+                title: Find the dividend, divisor or quotient
+                example_stem: "In a division sum the divisor is 4 times the quotient and 3 times the remainder. If the remainder is 12, find the dividend."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 30
+              - key: remainder-by-factor
+                title: Remainder by a factor of the original divisor
+                example_stem: "A number when divided by 342 leaves remainder 47. What is the remainder when the same number is divided by 18?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: successive-chain
+                title: Successive division
+                example_stem: "A number when divided successively by 5 and 7 leaves remainders 3 and 4. What is the remainder when it is divided by 35?"
+                frequency: low
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: reduce-remainder
+                title: Divide the remainder, not the number
+                kind: shortcut
+                rule: "When the new divisor is a factor of the old one, just divide the old remainder by the new divisor."
+                example: {problem: "N leaves 47 when divided by 342; remainder when divided by 18?", standard: "Write N = 342k + 47 and simplify", shortcut: "342 = 18 × 19, so the answer is 47 mod 18 = 11", seconds_saved: 20}
+                pattern: remainder-by-factor
+                pitfalls: ["Works only when the new divisor divides the old one; otherwise the remainder is not fixed."]
+      - key: remainder-theorems
+        title: Remainder theorems
+        concepts:
+          - slug: remainder-sums-products-negative
+            title: Remainders of sums and products, and negative remainders
+            summary: "The remainder of a sum or product equals the remainder of the sum or product of the individual remainders. A remainder may be taken as negative (29 leaves −1 with 30), which makes products and powers easy; a negative final answer −k becomes d − k."
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [division-algorithm-remainders]
+            formulas:
+              - key: product-rule
+                name: Remainder of a product
+                expression: "(a × b) mod d = [(a mod d) × (b mod d)] mod d"
+                example: {problem: "Remainder when 1,235 × 1,237 × 1,239 is divided by 12", solution: "remainders 11, 1, 3 → 33 → 33 mod 12 = 9"}
+              - key: sum-rule
+                name: Remainder of a sum
+                expression: "(a + b) mod d = [(a mod d) + (b mod d)] mod d"
+                example: {problem: "Remainder when 1,235 + 1,237 + 1,239 is divided by 12", solution: "11 + 1 + 3 = 15 → 3"}
+              - key: negative-remainder
+                name: Negative remainder
+                expression: "a remainder r may be replaced by r − d; a negative result −k is converted back to d − k"
+                example: {problem: "Remainder when 98 × 99 is divided by 100", solution: "(−2) × (−1) = 2"}
+            patterns:
+              - key: product-remainder
+                title: Remainder of a large product
+                example_stem: "What is the remainder when 2,341 × 2,343 × 2,345 is divided by 23?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 40
+              - key: negative-remainders
+                title: Negative remainders
+                example_stem: "Find the remainder when 47 × 48 × 49 is divided by 50."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: go-negative
+                title: Use negative remainders
+                kind: shortcut
+                rule: "Replace a remainder close to the divisor by a small negative number (d − 1 → −1, d − 2 → −2) before multiplying; convert a negative final result by adding d."
+                example: {problem: "47 × 48 × 49 divided by 50", standard: "Multiply out to 110,544 and divide", shortcut: "(−3)(−2)(−1) = −6 → 50 − 6 = 44", seconds_saved: 35}
+                pattern: negative-remainders
+          - slug: remainder-cyclicity-large-powers
+            title: Remainders of large powers (cyclicity of remainders)
+            summary: "Remainders of aⁿ repeat in a cycle (2ⁿ divided by 7 gives 2, 4, 1, 2, 4, 1, …). Key results: aⁿ divided by (a + 1) leaves 1 for even n and a for odd n; aⁿ − bⁿ is divisible by a − b, and by a + b when n is even; and a^(p−1) leaves remainder 1 with a prime p that does not divide a (Fermat)."
+            difficulty: hard
+            weight: 1.0
+            prerequisites: [remainder-sums-products-negative]
+            formulas:
+              - key: cycle
+                name: Cyclicity of remainders
+                expression: "find the smallest k with aᵏ mod d = 1; then aⁿ mod d = a^(n mod k) mod d"
+                example: {problem: "Remainder when 2¹⁰⁰ is divided by 7", solution: "2³ = 8 leaves 1; 100 = 3 × 33 + 1 → 2¹ = 2"}
+              - key: base-plus-minus-one
+                name: Divisor one more or one less than the base
+                expression: "aⁿ mod (a − 1) = 1 (for a > 2);  aⁿ mod (a + 1) = 1 if n is even, a if n is odd"
+                example: {problem: "Remainder when 7⁸⁵ is divided by 8", solution: "7 ≡ −1, (−1)⁸⁵ = −1 → 8 − 1 = 7"}
+              - key: power-difference
+                name: Divisibility of aⁿ ± bⁿ
+                expression: "aⁿ − bⁿ is divisible by (a − b) for every n and by (a + b) for even n;  aⁿ + bⁿ is divisible by (a + b) for odd n"
+                example: {problem: "Is 17²⁰ − 1 divisible by 18?", solution: "17²⁰ − 1²⁰ with an even power is divisible by 17 + 1 = 18: yes"}
+              - key: fermat
+                name: Fermat's little theorem
+                expression: "a^(p−1) mod p = 1 when p is prime and p does not divide a"
+                example: {problem: "Remainder when 3¹⁰⁰ is divided by 11", solution: "3¹⁰ leaves 1, so 3¹⁰⁰ = (3¹⁰)¹⁰ leaves 1"}
+            patterns:
+              - key: power-remainder
+                title: Remainder of a large power
+                example_stem: "What is the remainder when 5⁸³ is divided by 7?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 40
+              - key: base-near-divisor
+                title: Base one more or one less than the divisor
+                example_stem: "What is the remainder when 16⁴³ is divided by 17?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: power-divisibility
+                title: Divisibility of aⁿ ± bⁿ
+                example_stem: "Which of the following divides 49¹⁵ − 1? (a) 8 (b) 14 (c) 46 (d) 50"
+                frequency: low
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: find-the-one
+                title: Find the power that leaves remainder 1
+                kind: shortcut
+                rule: "Raise the base until the remainder is 1 (or −1); then cut the exponent down by that cycle length."
+                example: {problem: "2¹⁰⁰ divided by 7", standard: "Write out remainders of successive powers of 2", shortcut: "2³ leaves 1 → 2¹⁰⁰ = (2³)³³ × 2 → 2", seconds_saved: 30}
+                pattern: power-remainder
+              - key: plus-minus-one
+                title: Write the base as divisor ± 1
+                kind: shortcut
+                rule: "If the base is one more than the divisor the remainder is 1; if one less, it is 1 for even powers and divisor − 1 for odd powers."
+                example: {problem: "16⁴³ divided by 17", shortcut: "16 ≡ −1 → (−1)⁴³ = −1 → remainder 16", seconds_saved: 25}
+                pattern: base-near-divisor
+
+  - key: digits
+    title: Unit digit and last two digits
+    concepts:
+      - slug: unit-digit-cyclicity
+        title: Unit digit and cyclicity of powers
+        summary: "Only unit digits decide the unit digit of a sum, product or power. Powers of 2, 3, 7 and 8 repeat their unit digits every 4, powers of 4 and 9 every 2, and 0, 1, 5, 6 never change; divide the exponent by 4 and use the remainder (remainder 0 means the 4th power)."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [natural-whole-numbers-integers]
+        formulas:
+          - key: cyclicity-table
+            name: Cyclicity of unit digits
+            expression: "2 → 2, 4, 8, 6;  3 → 3, 9, 7, 1;  7 → 7, 9, 3, 1;  8 → 8, 4, 2, 6;  4 → 4, 6;  9 → 9, 1;  0, 1, 5, 6 → themselves"
+          - key: power-rule
+            name: Unit digit of aⁿ
+            expression: "unit digit of aⁿ = unit digit of uʳ, where u is the unit digit of a and r = n mod 4 (take r = 4 when n mod 4 = 0)"
+            example: {problem: "Unit digit of 137⁷⁵⁴", solution: "754 mod 4 = 2 → 7² = 49 → 9"}
+          - key: product-rule
+            name: Unit digit of a product or sum
+            expression: "multiply (or add) only the unit digits and keep the last digit of the result"
+            example: {problem: "Unit digit of 263 × 589 × 742", solution: "3 × 9 × 2 = 54 → 4"}
+        patterns:
+          - key: unit-digit-power
+            title: Unit digit of a large power
+            example_stem: "Find the unit digit of 2,467¹⁵³."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: unit-digit-expression
+            title: Unit digit of a product, sum or difference of powers
+            example_stem: "What is the unit digit of 7⁹⁵ − 3⁵⁸?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: unit-digit-factorial
+            title: Unit digit of factorial sums
+            example_stem: "Find the unit digit of 1! + 2! + 3! + … + 50!"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: exponent-last-two
+            title: Only the last two digits of the exponent matter
+            kind: shortcut
+            rule: "n mod 4 depends only on the last two digits of n, so reduce huge exponents at a glance."
+            example: {problem: "Unit digit of 3⁶⁵⁴³²", standard: "Divide 65,432 by 4", shortcut: "32 mod 4 = 0 → 3⁴ → 1", seconds_saved: 15}
+            pattern: unit-digit-power
+          - key: four-and-nine
+            title: 4 and 9 depend only on odd or even powers
+            kind: memory
+            rule: "The unit digit of 4ⁿ is 4 for odd n and 6 for even n; of 9ⁿ it is 9 for odd n and 1 for even n."
+            example: {problem: "Unit digit of 1,999²⁰²⁵", shortcut: "odd power of 9 → 9", seconds_saved: 10}
+      - slug: last-two-digits
+        title: Last two digit problems
+        summary: "The last two digits of a product come from multiplying the last two digits of the factors. For powers, make the base end in 1 (3⁴ = 81, 7⁴ = 2401, 9² = 81); then (…a1)ⁿ ends in the unit digit of a × n followed by 1. For powers of 2 use 2¹⁰ = 1024: 24ⁿ ends in 24 for odd n and 76 for even n."
+        difficulty: hard
+        weight: 0.7
+        prerequisites: [unit-digit-cyclicity, remainder-sums-products-negative]
+        formulas:
+          - key: product-last-two
+            name: Last two digits of a product
+            expression: "multiply the last two digits of each factor, keeping only the last two digits after every step"
+            example: {problem: "Last two digits of 1,243 × 3,567 × 289", solution: "43 × 67 = 2,881 → 81; 81 × 89 = 7,209 → 09"}
+          - key: ending-in-one
+            name: Powers of numbers ending in 1
+            expression: "(…a1)ⁿ ends in [unit digit of a × n] followed by 1, where a is the tens digit"
+            example: {problem: "Last two digits of 71⁵⁶", solution: "7 × 56 = 392 → 2 → 21"}
+          - key: odd-bases
+            name: Powers of numbers ending in 3, 7 or 9
+            expression: "rewrite with 3⁴ = 81, 7⁴ = 2401 (ends in 01) or 9² = 81, so that the base ends in 1"
+            example: {problem: "Last two digits of 7²⁰²⁵", solution: "7⁴ ends in 01 and 2025 = 4 × 506 + 1 → 01 × 7 → 07"}
+          - key: even-bases
+            name: Powers of 2
+            expression: "2¹⁰ = 1024 ends in 24;  24ⁿ ends in 24 for odd n and 76 for even n;  76ⁿ always ends in 76"
+            example: {problem: "Last two digits of 2⁵⁰", solution: "2⁵⁰ = (2¹⁰)⁵ → 24⁵ → odd power → 24"}
+        patterns:
+          - key: last-two-product
+            title: Last two digits of a product
+            example_stem: "Find the last two digits of 33 × 47 × 59 × 61."
+            frequency: low
+            difficulty: medium
+            target_seconds: 35
+          - key: last-two-power
+            title: Last two digits of a power
+            example_stem: "What are the last two digits of 31⁴⁸?"
+            frequency: low
+            difficulty: hard
+            target_seconds: 45
+        shortcuts:
+          - key: make-it-end-in-one
+            title: Make the base end in 1
+            kind: shortcut
+            rule: "Raise the base to the small power that ends in 1 (3⁴, 7⁴, 9²), then use the tens-digit × exponent rule for (…a1)ⁿ."
+            example: {problem: "Last two digits of 3²⁰⁰", standard: "Track the last two digits of 3ⁿ until they repeat", shortcut: "3⁴ = 81 → 81⁵⁰ → 8 × 50 = 400 → 0 → 01", seconds_saved: 60}
+            pattern: last-two-power
+      - slug: factorial-trailing-zeros
+        title: Factorial trailing zeros and the highest power of a prime
+        summary: "Each trailing zero needs a factor 10 = 2 × 5, and 5s are the scarcer factor in n!, so the zeros at the end of n! number ⌊n/5⌋ + ⌊n/25⌋ + ⌊n/125⌋ + …. The same division method gives the highest power of any prime p dividing n!; for a composite base such as 12 the limiting prime decides."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [factors-multiples-prime-factorisation]
+        formulas:
+          - key: trailing-zeros
+            name: Trailing zeros of n!
+            expression: "Z = ⌊n/5⌋ + ⌊n/25⌋ + ⌊n/125⌋ + …"
+            example: {problem: "Trailing zeros in 250!", solution: "50 + 10 + 2 = 62"}
+          - key: prime-power
+            name: Highest power of a prime p in n!
+            expression: "⌊n/p⌋ + ⌊n/p²⌋ + ⌊n/p³⌋ + …"
+            example: {problem: "Highest power of 3 dividing 100!", solution: "33 + 11 + 3 + 1 = 48"}
+          - key: composite-base
+            name: Highest power of a composite number in n!
+            expression: "factorise the base; for each prime, divide its power in n! by its exponent in the base (round down); the answer is the smallest of these"
+            example: {problem: "Highest power of 12 dividing 50!", solution: "12 = 2² × 3: power of 2 = 47 → 23; power of 3 = 22 → 22; answer 22"}
+        patterns:
+          - key: zeros-in-factorial
+            title: Number of trailing zeros in n!
+            example_stem: "How many zeros are there at the end of 500!?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: zeros-in-product
+            title: Trailing zeros in a product
+            example_stem: "How many zeros are there at the end of 2⁸ × 5⁶ × 3⁵ × 10³?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: prime-power-in-factorial
+            title: Highest power of a prime or composite number in n!
+            example_stem: "What is the highest power of 7 that divides 200!?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: repeated-division
+            title: Keep dividing by 5
+            kind: shortcut
+            rule: "Divide n by 5, divide the quotient by 5 again, and so on; add all the quotients."
+            example: {problem: "Zeros at the end of 500!", standard: "Count multiples of 5, 25 and 125 separately", shortcut: "500 → 100 → 20 → 4; 100 + 20 + 4 = 124", seconds_saved: 15}
+            pattern: zeros-in-factorial
+            pitfalls: ["In a product that is not a factorial, count both the 2s and the 5s: the 2s may be fewer."]
+
+  - key: series
+    title: Sum of series
+    concepts:
+      - slug: sum-natural-squares-cubes
+        title: Sum of natural numbers, squares and cubes
+        summary: "Standard sums: 1 + 2 + … + n = n(n + 1)/2; 1² + 2² + … + n² = n(n + 1)(2n + 1)/6; 1³ + 2³ + … + n³ = [n(n + 1)/2]². The first n odd numbers add to n² and the first n even numbers to n(n + 1). SSC asks them directly and inside simplification."
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [natural-whole-numbers-integers]
+        formulas:
+          - key: sum-n
+            name: Sum of the first n natural numbers
+            expression: "1 + 2 + … + n = n(n + 1)/2"
+            example: {problem: "1 + 2 + … + 60", solution: "60 × 61 / 2 = 1,830"}
+          - key: sum-squares
+            name: Sum of squares
+            expression: "1² + 2² + … + n² = n(n + 1)(2n + 1)/6"
+            example: {problem: "1² + 2² + … + 20²", solution: "20 × 21 × 41 / 6 = 2,870"}
+          - key: sum-cubes
+            name: Sum of cubes
+            expression: "1³ + 2³ + … + n³ = [n(n + 1)/2]²"
+            example: {problem: "1³ + 2³ + … + 10³", solution: "55² = 3,025"}
+          - key: odd-even
+            name: Sum of odd and even numbers
+            expression: "1 + 3 + 5 + … (n terms) = n²;  2 + 4 + 6 + … (n terms) = n(n + 1)"
+            example: {problem: "1 + 3 + 5 + … + 99", solution: "50 terms → 50² = 2,500"}
+        patterns:
+          - key: direct-sum
+            title: Sum of the first n natural numbers, squares or cubes
+            example_stem: "Find the value of 1³ + 2³ + 3³ + … + 15³."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: partial-range
+            title: Sum of squares or cubes over a range
+            example_stem: "Find the value of 11² + 12² + 13² + … + 20²."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: odd-even-sum
+            title: Sum of odd or even numbers in a range
+            example_stem: "What is the sum of all odd numbers from 31 to 99?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: subtract-sums
+            title: Range sum = sum up to n − sum up to (m − 1)
+            kind: shortcut
+            rule: "For a sum from m to n, apply the standard formula up to n and subtract the formula up to m − 1."
+            example: {problem: "11² + 12² + … + 20²", standard: "Square and add ten numbers", shortcut: "2,870 − 385 = 2,485", seconds_saved: 40}
+            pattern: partial-range
+      - slug: arithmetic-geometric-progressions
+        title: Arithmetic and geometric progressions (nth term and sum)
+        summary: "In an arithmetic progression (AP) each term adds a common difference d: tₙ = a + (n − 1)d and Sₙ = n/2 × (first + last). In a geometric progression (GP) each term multiplies by r: tₙ = a × rⁿ⁻¹ and Sₙ = a(rⁿ − 1)/(r − 1). SSC uses them for sums of multiples, the number of terms and growing sequences."
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [sum-natural-squares-cubes]
+        formulas:
+          - key: ap-term
+            name: nth term and number of terms of an AP
+            expression: "tₙ = a + (n − 1)d;  number of terms n = (last − first)/d + 1"
+            example: {problem: "How many terms are in 7, 11, 15, …, 207?", solution: "(207 − 7)/4 + 1 = 51"}
+          - key: ap-sum
+            name: Sum of an AP
+            expression: "Sₙ = n/2 × [2a + (n − 1)d] = n/2 × (first + last)"
+            example: {problem: "Sum of all two-digit multiples of 3", solution: "12, 15, …, 99: n = 30, sum = 30/2 × (12 + 99) = 1,665"}
+          - key: gp
+            name: nth term and sum of a GP
+            expression: "tₙ = a × rⁿ⁻¹;  Sₙ = a(rⁿ − 1)/(r − 1) for r ≠ 1;  infinite sum = a/(1 − r) for −1 < r < 1"
+            example: {problem: "2 + 6 + 18 + … to 6 terms", solution: "2(3⁶ − 1)/(3 − 1) = 728"}
+        patterns:
+          - key: sum-of-multiples
+            title: Sum of multiples in a range
+            example_stem: "Find the sum of all natural numbers between 100 and 300 that are divisible by 7."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: nth-term
+            title: nth term or number of terms
+            example_stem: "Which term of the progression 5, 9, 13, … is 157?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: average-times-count
+            title: Sum = average × number of terms
+            kind: shortcut
+            rule: "In an AP the average is (first + last)/2, so the sum is that average × the number of terms."
+            example: {problem: "Sum of the multiples of 7 from 105 to 294", standard: "Use Sₙ = n/2[2a + (n − 1)d]", shortcut: "28 terms × average 199.5 = 5,586", seconds_saved: 15}
+            pattern: sum-of-multiples
+
+  - key: relationships
+    title: Relationships between numbers
+    concepts:
+      - slug: consecutive-number-problems
+        title: Consecutive numbers and number relations
+        summary: "Consecutive integers are n, n + 1, n + 2, …; consecutive even or odd numbers differ by 2. Taking the middle number as x makes the sums easy; SSC also asks relations such as 'a number exceeds 3/5 of itself by 36' and differences of squares of consecutive numbers."
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [natural-whole-numbers-integers]
+        formulas:
+          - key: middle-term
+            name: Middle-term method
+            expression: "sum of k consecutive integers (or consecutive even or odd numbers) = k × the middle term (k odd) or k × the average of the two middle terms (k even)"
+            example: {problem: "Five consecutive odd numbers add to 185. Find the largest.", solution: "middle = 185/5 = 37 → 33, 35, 37, 39, 41 → 41"}
+          - key: consecutive-products
+            name: Products of consecutive integers
+            expression: "the product of k consecutive integers is divisible by k!;  n³ − n = (n − 1)n(n + 1) is divisible by 6"
+            example: {problem: "Which number always divides n³ − n for every integer n?", solution: "(n − 1)n(n + 1) is a product of 3 consecutive integers → 6"}
+          - key: difference-of-squares
+            name: Difference of squares
+            expression: "(n + 1)² − n² = n + (n + 1);  (x + 2)² − x² = 2[x + (x + 2)]"
+        patterns:
+          - key: consecutive-sum
+            title: Numbers from the sum of consecutive integers
+            example_stem: "The sum of four consecutive even numbers is 196. Find the product of the smallest and the largest."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: fraction-relation
+            title: A number and a fraction of itself
+            example_stem: "A number exceeds 3/5 of itself by 36. Find the number."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: squares-of-consecutive
+            title: Squares of consecutive numbers
+            example_stem: "The squares of two consecutive odd numbers differ by 64. Find the larger number."
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: take-middle
+            title: Take the middle number
+            kind: shortcut
+            rule: "Divide the sum by the count to get the middle number (or the average of the two middle numbers), then step out by 1 or 2."
+            example: {problem: "Four consecutive even numbers add to 196", standard: "Solve x + (x + 2) + (x + 4) + (x + 6) = 196", shortcut: "196 ÷ 4 = 49 → 46, 48, 50, 52", seconds_saved: 20}
+            pattern: consecutive-sum
+          - key: square-difference-sum
+            title: Difference of squares = difference × sum
+            kind: shortcut
+            rule: "a² − b² = (a − b)(a + b): for consecutive numbers it equals their sum, for consecutive odd or even numbers twice their sum."
+            example: {problem: "Squares of two consecutive odd numbers differ by 64", standard: "Solve (x + 2)² − x² = 64", shortcut: "2 × sum = 64 → sum 32 → 15 and 17", seconds_saved: 20}
+            pattern: squares-of-consecutive
+      - slug: digit-number-problems
+        title: Two-digit numbers and reversed digits
+        summary: "A two-digit number with tens digit a and unit digit b is 10a + b. Reversing the digits changes it by 9(a − b), and a number plus its reverse is 11(a + b). SSC asks digit puzzles built on these identities."
+        difficulty: medium
+        weight: 0.9
+        prerequisites: [place-value-face-value]
+        formulas:
+          - key: two-digit-value
+            name: Value of a two-digit number
+            expression: "N = 10a + b;  reverse = 10b + a"
+            variables:
+              - {symbol: a, meaning: tens digit}
+              - {symbol: b, meaning: unit digit}
+          - key: reverse-identities
+            name: Difference and sum with the reverse
+            expression: "(10a + b) − (10b + a) = 9(a − b);  (10a + b) + (10b + a) = 11(a + b)"
+            example: {problem: "A number exceeds its reverse by 45 and its digits add to 11. Find it.", solution: "a − b = 5 and a + b = 11 → 83"}
+          - key: three-digit-reverse
+            name: Three-digit reversal
+            expression: "(100a + 10b + c) − (100c + 10b + a) = 99(a − c)"
+        patterns:
+          - key: reversed-digits
+            title: Number from its reversed digits
+            example_stem: "The sum of a two-digit number and the number formed by reversing its digits is 143. If the digits differ by 3 and the tens digit is larger, find the number."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: digit-relations
+            title: Digit relations and conditions
+            example_stem: "In a two-digit number the unit digit is twice the tens digit. If 27 is added to the number, its digits are reversed. Find the number."
+            frequency: low
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: nine-and-eleven
+            title: Use 9(a − b) and 11(a + b)
+            kind: shortcut
+            rule: "Divide the change on reversal by 9 to get the digit difference, and a number + its reverse by 11 to get the digit sum; then find the two digits mentally."
+            example: {problem: "Number + reverse = 143, digits differ by 3", standard: "Solve 10a + b + 10b + a = 143 with a − b = 3", shortcut: "143 ÷ 11 = 13 → digits (13 + 3)/2 = 8 and 5 → 85", seconds_saved: 25}
+            pattern: reversed-digits

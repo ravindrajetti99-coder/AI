@@ -1,0 +1,253 @@
+key: analogy
+title: Analogy
+strategies:
+  - key: approach
+    title: "Analogy: name the relationship first"
+    summary: >-
+      An analogy gives one related pair and asks for a second pair related in the same way. State
+      the relationship of the given pair in one short, specific sentence before reading the
+      options; for numbers and letters, test the common operations in a fixed order.
+    seconds_per_question: 30
+    accuracy_target: 0.9
+    tactics:
+      - "Turn a word pair into a sentence ('a carpenter cuts with a saw') and test every option with the same sentence, in the same order."
+      - "For number pairs try, in order: n², n³, n² ± 1, n³ ± 1, n × k, n × (n + 1); confirm the rule on the given pair first."
+      - "For letter clusters, write the alphabet positions under each letter and compare the steps, not the letters."
+      - "If two options fit, make the relationship more specific (function, size, direction of the relation)."
+    avoid:
+      - "Reversing the relationship (the pair is Worker : Tool and you pick a Tool : Worker option)."
+      - "Breaking numbers into digits when the question says to operate on whole numbers."
+
+topics:
+  - key: semantic
+    title: Semantic analogy
+    concepts:
+      - slug: word-analogy-relationships
+        title: "Word analogy: relationship types"
+        summary: >-
+          Two words linked by a fixed relationship (synonym, antonym, part and whole, worker and
+          tool, worker and product, cause and effect, raw material and product, individual and
+          group); find the word or pair linked the same way. SSC asks both 'A : B :: C : ?' and
+          'choose the pair related like A : B'.
+        difficulty: easy
+        weight: 1.5
+        patterns:
+          - key: complete-pair
+            title: Complete the word pair
+            description: "The first pair is complete; find the word that relates to the third word in the same way."
+            example_stem: "Select the option that is related to the third word in the same way as the second word is related to the first word. Carpenter : Saw :: Surgeon : ?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: choose-pair
+            title: Choose the pair with the same relationship
+            example_stem: "Select the word pair in which the two words are related in the same way as the words in the pair Cobbler : Shoes. (a) Tailor : Clothes (b) Teacher : Student (c) Driver : Road (d) Writer : Pen"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+        shortcuts:
+          - key: bridge-sentence
+            title: Build a bridge sentence
+            kind: elimination
+            rule: "Join the given pair with one precise sentence and drop every option that does not fit the same sentence in the same order."
+            steps: ["Write the sentence for the given pair ('a carpenter cuts wood with a saw')", "Replace the words with each option", "Keep only the option that reads true and in the same order"]
+            example: {problem: "Carpenter : Saw :: Surgeon : ?", standard: "Compare each option loosely with the given pair", shortcut: "'A carpenter cuts with a saw' → 'a surgeon cuts with a scalpel' → Scalpel", seconds_saved: 10}
+            pitfalls: ["A vague sentence ('is related to') lets wrong options through; make it specific."]
+            pattern: complete-pair
+
+      - slug: gk-based-analogy
+        title: "Knowledge-based analogy (instruments, young ones, sounds, dwellings)"
+        summary: >-
+          Pairs that need general knowledge: an instrument and what it measures (barometer :
+          atmospheric pressure), an animal and its young one (horse : foal), its sound or its
+          dwelling, a country and its currency. SSC repeats a small, stable set of such pairs.
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [word-analogy-relationships]
+        patterns:
+          - key: instrument-measure
+            title: Instrument and the quantity it measures
+            example_stem: "Thermometer : Temperature :: Anemometer : ?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: animal-pairs
+            title: "Animal: young one, sound or dwelling"
+            example_stem: "Cow : Calf :: Horse : ?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: standard-pairs
+            title: Memorise the standard pair lists
+            kind: memory
+            rule: >-
+              Learn the short lists SSC reuses: instruments (barometer – atmospheric pressure,
+              hygrometer – humidity, anemometer – wind speed, seismograph – earthquakes, ammeter –
+              electric current, odometer – distance travelled), young ones (horse – foal, sheep –
+              lamb, goat – kid, cat – kitten, dog – puppy), sounds (lion – roar, horse – neigh,
+              elephant – trumpet, frog – croak) and dwellings (bee – hive, horse – stable, lion –
+              den, dog – kennel).
+            example: {problem: "Lion : Den :: Bee : ?", shortcut: "Dwelling list → Hive", seconds_saved: 10}
+            pattern: animal-pairs
+
+  - key: symbolic-number
+    title: Symbolic/number analogy
+    subtopics:
+      - key: number-analogy
+        title: Number analogy
+        concepts:
+          - slug: number-pair-analogy
+            title: Number pair analogy
+            summary: >-
+              Two numbers linked by an operation (square, cube, square or cube ± k, a multiple,
+              n × (n + 1)); apply the same operation to the third number. SSC usually adds that
+              operations act on whole numbers, not on their separate digits.
+            difficulty: easy
+            weight: 1.5
+            formulas:
+              - key: common-relations
+                name: Common number relations
+                expression: "b = a², a³, a² ± k, a³ ± k, k × a, a × (a + 1), (a + k)²"
+                conditions: "Test them in this order and confirm the rule on the given pair before applying it."
+                example: {problem: "7 : 50 :: 9 : ?", solution: "50 = 7² + 1, so 9² + 1 = 82"}
+            patterns:
+              - key: complete-number-pair
+                title: Complete the number pair
+                example_stem: "Select the number that is related to the third number in the same way as the second number is related to the first number. 12 : 145 :: 15 : ?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+              - key: choose-number-pair
+                title: Choose the pair related in the same way
+                example_stem: "Select the option in which the numbers are related in the same way as the numbers of the pair 6 : 216."
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: powers-table
+                title: Know squares and cubes on sight
+                kind: memory
+                rule: "Know squares to 30 and cubes to 20 by heart; most number pairs are a square or cube plus or minus a small number, which you spot only if the power is familiar."
+                example: {problem: "11 : 1330 :: 13 : ?", standard: "Try products and sums one by one", shortcut: "1330 is next to 1331 = 11³, so the rule is n³ − 1 → 13³ − 1 = 2196", seconds_saved: 15}
+                pattern: complete-number-pair
+              - key: unit-digit
+                title: Unit-digit elimination
+                kind: elimination
+                rule: "Once the rule is known, work out only the unit digit of the answer and drop options with a different unit digit."
+                example: {problem: "12 : 145 :: 15 : ? (rule n² + 1)", shortcut: "15² ends in 5, plus 1 ends in 6 → keep only options ending in 6 (226)", seconds_saved: 8}
+
+          - slug: number-set-analogy
+            title: Number set (triad) analogy
+            summary: >-
+              Three numbers in a set follow one rule, such as middle = product of the ends or
+              third = (first + second) × k; find the set that follows the same rule as the given
+              sets, or the missing number. One of the most frequent SSC reasoning questions.
+            difficulty: medium
+            weight: 2.0
+            prerequisites: [number-pair-analogy]
+            formulas:
+              - key: set-rules
+                name: Common set rules
+                expression: "middle = first × third;  middle = (first + third) × k;  third = first × second ± k;  third = first² + second²"
+                conditions: "A rule counts only if it fits every given set."
+                example: {problem: "(5, 30, 6), (7, 56, 8), (9, ?, 10)", solution: "5 × 6 = 30 and 7 × 8 = 56, so 9 × 10 = 90"}
+            patterns:
+              - key: same-set
+                title: Select the set related like the given sets
+                example_stem: "Select the set in which the numbers are related in the same way as are the numbers of the following sets. (4, 20, 5), (6, 42, 7)"
+                frequency: high
+                difficulty: medium
+                target_seconds: 35
+              - key: missing-in-set
+                title: Missing number in a set
+                example_stem: "Find the missing number: (3, 12, 39), (5, 20, 65), (7, 28, ?)"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: two-set-check
+                title: Fix the rule on both given sets first
+                kind: elimination
+                rule: "A candidate rule must fit every given set; check it on the second set before looking at the options, then test the options against that one rule only."
+                example: {problem: "(4, 20, 5), (6, 42, 7)", standard: "Try several guesses on each option", shortcut: "4 × 5 = 20 and 6 × 7 = 42 → pick the option whose middle equals the product of its ends", seconds_saved: 15}
+                pattern: same-set
+
+      - key: letter-analogy
+        title: Letter and symbol analogy
+        concepts:
+          - slug: letter-cluster-analogy
+            title: Letter cluster analogy
+            summary: >-
+              Letter groups transformed by a position rule: each letter shifted by a fixed or
+              changing step, the order reversed, or each letter replaced by its opposite letter
+              (A ↔ Z, B ↔ Y). Write positions under the letters and compare the steps letter by letter.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [alphabet-positions-opposites]
+            formulas:
+              - key: cyclic-shift
+                name: Shifting a letter
+                expression: "letter at position p shifted by k → position p + k; subtract 26 if the result exceeds 26, add 26 if it falls below 1"
+                example: {problem: "Shift Y by +3.", solution: "25 + 3 = 28 → 28 − 26 = 2 → B"}
+            patterns:
+              - key: shift-cluster
+                title: Letter cluster shifted by a step
+                example_stem: "Select the option that is related to the third letter-cluster in the same way as the second letter-cluster is related to the first. PLAN : RNCP :: MILK : ?"
+                frequency: high
+                difficulty: medium
+                target_seconds: 30
+              - key: opposite-cluster
+                title: Letter cluster made of opposite letters
+                example_stem: "GRT : TIG :: LMP : ?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: step-row
+                title: Compare steps, not letters
+                kind: shortcut
+                rule: "Write the difference between each letter of the first cluster and the matching letter of the second (+2, +2, +2, +2); apply the same row of steps to the third cluster."
+                example: {problem: "PLAN : RNCP :: MILK : ?", standard: "Guess the pattern by eye", shortcut: "P→R, L→N, A→C, N→P are all +2 → MILK → OKNM", seconds_saved: 15}
+                pattern: shift-cluster
+              - key: sum-27
+                title: Sum 27 means opposite letters
+                kind: shortcut
+                rule: "If each letter and its partner have positions adding to 27, the rule is 'opposite letter'; use the pair list instead of counting."
+                example: {problem: "GRT : TIG :: LMP : ?", shortcut: "G + T = 7 + 20 = 27 → opposites; L → O, M → N, P → K → ONK", seconds_saved: 15}
+                pattern: opposite-cluster
+
+          - slug: letter-number-analogy
+            title: Letter and number mixed analogy
+            summary: >-
+              A letter or word paired with a number built from letter positions: the position
+              itself, its square, its reverse position (27 − n), or the sum of the positions of
+              the letters of a word. Find the number for a new letter or word.
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [alphabet-positions-opposites]
+            formulas:
+              - key: word-value
+                name: Value of a word
+                expression: "value = sum of the positions of its letters (A = 1, B = 2 … Z = 26)"
+                example: {problem: "Value of CAT", solution: "3 + 1 + 20 = 24"}
+            patterns:
+              - key: letter-to-number
+                title: Letter paired with a number
+                example_stem: "D : 16 :: G : ?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: word-to-number
+                title: Word paired with a number
+                example_stem: "If BAD : 7, then FACE : ?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: reverse-position
+                title: Reverse position is 27 − n
+                kind: shortcut
+                rule: "When the number looks too large for the forward position, test the reverse position 27 − n (Z = 1, A = 26)."
+                example: {problem: "C : 24 :: W : ?", standard: "Count back from Z for each letter", shortcut: "C is 3rd, 27 − 3 = 24 → W is 23rd, 27 − 23 = 4", seconds_saved: 10}
+                pattern: letter-to-number

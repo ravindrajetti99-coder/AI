@@ -1,26 +1,9 @@
 from app.seed import generators as g
 from app.seed.helpers import L, assertion_reason, mcq, multi, steps
+from app.seed.syllabus import exam_profile
 
-EXAM = {
-    "slug": "ssc-cgl-tier1",
-    "name": "SSC CGL Tier 1",
-    "body": "Staff Selection Commission",
-    "domain": "competitive",
-    "pattern": {
-        "sections": [
-            {"name": "General Intelligence & Reasoning", "questions": 25, "marks": 50},
-            {"name": "General Awareness", "questions": 25, "marks": 50},
-            {"name": "Quantitative Aptitude", "questions": 25, "marks": 50},
-            {"name": "English Comprehension", "questions": 25, "marks": 50},
-        ],
-        "marks_per_question": 2,
-        "negative_marks": 0.5,
-        "duration_minutes": 60,
-        "minutes_per_question": 0.6,
-        "default_section": "Quantitative Aptitude",
-        "mode": "Computer-based test",
-    },
-}
+# The exam stage is defined once, in the SSC CGL syllabus files, and shared with the full course.
+EXAM = exam_profile("ssc-cgl", "ssc-cgl-tier1")
 
 COURSE = {
     "slug": "ssc-cgl-quant-arithmetic",

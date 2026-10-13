@@ -1,0 +1,355 @@
+key: ms-excel
+title: MS Excel
+strategies:
+  - key: approach
+    title: "MS Excel: references, functions and the ribbon"
+    summary: >-
+      Excel gives the most varied Office questions: worksheet facts, cell references, the result of a
+      formula or function, the right chart or data tool, and shortcuts. Formula questions need a few
+      seconds of working; everything else is recall of the function syntax and the tab that holds a tool.
+    seconds_per_question: 30
+    accuracy_target: 0.9
+    tactics:
+      - "For a copied formula, count how many rows and columns it moved and shift only the parts without a $."
+      - "Learn each function with its argument order: IF(test, if true, if false); VLOOKUP(value, table, column, FALSE for an exact match); SUMIF(range, criteria, sum range)."
+      - "Evaluate formulas with Excel's precedence: brackets, negation, %, ^, then × and ÷, then + and −, then &, then comparisons."
+    avoid:
+      - "Assuming COUNT counts text: COUNT counts numbers only; COUNTA counts every non-empty cell."
+
+topics:
+  - key: basics
+    title: MS Excel basics
+    concepts:
+      - slug: computer-excel-workbook-basics
+        title: "Workbooks, worksheets, cells and ranges"
+        summary: >-
+          An Excel file is a workbook (.xlsx; .xls for Excel 97-2003; Book1 by default) made of worksheets
+          (Sheet1, Sheet2 …; a new workbook has one sheet in Excel 2013 and later, three in earlier versions).
+          Since Excel 2007 a sheet has 1,048,576 rows (numbered) and 16,384 columns (lettered A to XFD); a cell
+          is the meeting point of a row and a column, named by column letter and row number (B3), and a range is
+          a block of cells written with a colon (A1:C5). The Name Box shows the active cell's address and the
+          formula bar its contents; text is left-aligned and numbers right-aligned by default.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [computer-ms-office-suite]
+        formulas:
+          - key: range-size
+            name: Number of cells in a range
+            expression: "cells = (number of rows) × (number of columns)"
+            example: {problem: "How many cells are in the range B2:D6?", solution: "rows 2 to 6 = 5, columns B to D = 3, so 5 × 3 = 15"}
+        patterns:
+          - key: sheet-facts
+            title: Workbook, worksheet and cell facts
+            example_stem: "In MS Excel, the intersection of a row and a column is called a:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: rows-columns
+            title: Rows, columns and range size
+            example_stem: "What is the last column heading in a worksheet of MS Excel 2016?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+      - slug: computer-excel-data-entry
+        title: "Entering and formatting data: AutoFill, number formats and Format Cells"
+        summary: >-
+          Data is typed into the active cell and edited with F2; Alt+Enter starts a new line inside a cell. The
+          fill handle (the small square at the bottom-right of a selection) copies a value or extends a series
+          (1, 2, 3 …; Jan, Feb …; Mon, Tue …), and Flash Fill (Ctrl+E) completes a pattern from examples. Format
+          Cells (Ctrl+1) sets number formats (General, Number, Currency, Accounting, Date, Time, Percentage, Text),
+          alignment, font, borders and fill; Merge & Center joins cells, Wrap Text fits long text, and #####
+          means the column is too narrow to show a number.
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [computer-excel-workbook-basics]
+        patterns:
+          - key: fill-handle
+            title: Fill handle and AutoFill
+            example_stem: "In MS Excel, the small square at the bottom-right corner of the selected cell that is dragged to copy data or extend a series is called the:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: format-cells
+            title: Cell formatting
+            example_stem: "Which MS Excel command combines several selected cells into one and centres the contents?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+  - key: formulas
+    title: Formulas and cell references
+    concepts:
+      - slug: computer-excel-formulas-operators
+        title: "Formulas, operators, order of operations and error values"
+        summary: >-
+          A formula starts with = and may use arithmetic operators (+ − * / ^ %), the text operator & and
+          comparison operators (= > < >= <= <>); a colon makes a range (A1:A5) and a comma joins references.
+          Excel works out negation first, then %, then ^, then * and /, then + and −, then &, then comparisons,
+          brackets overriding all. Error values tell what went wrong: #DIV/0! (division by zero), #NAME?
+          (unknown function or name), #REF! (invalid reference), #VALUE! (wrong type of value), #N/A (value not
+          available), #NUM! (invalid number) and #NULL! (ranges that do not intersect).
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [computer-excel-workbook-basics]
+        formulas:
+          - key: precedence
+            name: Order of operations in Excel
+            expression: "( )  →  − (negation)  →  %  →  ^  →  * and /  →  + and −  →  &  →  = < > <= >= <>"
+            conditions: "Operators of the same level are worked left to right."
+            example: {problem: "Evaluate =2+3*4^2", solution: "4^2 = 16, 3 × 16 = 48, 2 + 48 = 50"}
+        patterns:
+          - key: evaluate-formula
+            title: Result of a formula
+            example_stem: "What value does the Excel formula =10-4/2*3 return?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+          - key: error-values
+            title: Meaning of an error value
+            example_stem: "Which error value does MS Excel show when a formula tries to divide a number by zero?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: error-names
+            title: The error name is its cause
+            kind: memory
+            rule: "DIV/0 = divided by 0; NAME = misspelt name; REF = broken reference; VALUE = wrong value type; N/A = not available (lookup found nothing); ##### = column too narrow, not an error in the formula."
+            pattern: error-values
+            pitfalls: ["Excel applies negation before ^, so =-2^2 returns 4, not −4."]
+      - slug: computer-excel-cell-references
+        title: "Cell references: relative, absolute and mixed"
+        summary: >-
+          A relative reference (A1) changes when a formula is copied, by the same number of rows and columns the
+          formula moves; an absolute reference ($A$1) never changes; a mixed reference fixes only the column
+          ($A1) or only the row (A$1). F4 cycles a reference through A1 → $A$1 → A$1 → $A1. Other sheets are
+          referred to as Sheet2!A1 and other workbooks as [Book2.xlsx]Sheet1!A1.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [computer-excel-formulas-operators]
+        formulas:
+          - key: copy-shift
+            name: How a copied reference changes
+            expression: "copying a formula r rows down and c columns right adds r to every row number without $ and c to every column letter without $"
+            example: {problem: "C1 contains =A1+$B$1. It is copied to D3. What does D3 contain?", solution: "Moved 2 rows down and 1 column right: A1 → B3, $B$1 stays, so =B3+$B$1"}
+        patterns:
+          - key: copied-formula
+            title: Formula after copying
+            example_stem: "Cell C3 contains =$A1*B$2. If it is copied to E5, what formula will E5 contain?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: reference-type
+            title: Identify the type of reference
+            example_stem: "In MS Excel, the reference $D$7 is an example of:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: dollar-locks
+            title: The dollar sign locks what follows it
+            kind: shortcut
+            rule: "A $ freezes the part right after it: $A1 locks column A, A$1 locks row 1, $A$1 locks both. Shift only the unlocked parts by the move."
+            example: {problem: "=$A1*B$2 copied from C3 to E5", standard: "Rewrite the formula cell by cell", shortcut: "Move +2 rows, +2 columns: $A1 → $A3, B$2 → D$2, so =$A3*D$2", seconds_saved: 15}
+            pattern: copied-formula
+
+  - key: functions
+    title: Excel functions
+    concepts:
+      - slug: computer-excel-math-functions
+        title: "Excel functions: SUM, AVERAGE, COUNT, MAX, MIN, ROUND and other maths functions"
+        summary: >-
+          A function is a built-in formula written =NAME(arguments). SUM adds, AVERAGE gives the mean, COUNT
+          counts cells that contain numbers, COUNTA non-empty cells and COUNTBLANK empty ones, MAX and MIN give
+          the largest and smallest values; ROUND(number, digits) rounds, INT rounds down to a whole number, MOD
+          gives the remainder, ABS the absolute value, SQRT the square root, POWER a power and PRODUCT the
+          product. AutoSum (Alt+=) inserts SUM, and Insert Function (Shift+F3) helps build any function.
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [computer-excel-formulas-operators]
+        formulas:
+          - key: syntax
+            name: Common maths and statistical functions
+            expression: "=SUM(range)  =AVERAGE(range)  =COUNT(range)  =COUNTA(range)  =MAX(range)  =MIN(range)  =ROUND(number, digits)  =MOD(number, divisor)  =POWER(number, power)"
+            example: {problem: "A1:A5 hold 10, Ram, 25, (blank), 40. Find COUNT, COUNTA and SUM of A1:A5.", solution: "COUNT = 3 (numbers only), COUNTA = 4 (non-empty), SUM = 75"}
+          - key: rounding
+            name: Rounding functions
+            expression: "=ROUND(x, n) rounds to n decimal places (n < 0 rounds to tens, hundreds …);  =INT(x) rounds down to the nearest integer"
+            example: {problem: "Evaluate =ROUND(15.678, 1), =ROUND(1234.5, -2) and =MOD(17, 5).", solution: "15.7, 1200 and 2"}
+        patterns:
+          - key: function-result
+            title: Result of a function
+            example_stem: "If cells A1 to A4 contain 5, 10, 15 and 20, what does =AVERAGE(A1:A4) return?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: function-choice
+            title: Which function does a job
+            example_stem: "Which Excel function counts the cells in a range that are not empty?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: count-family
+            title: The COUNT family
+            kind: memory
+            rule: "COUNT = numbers only; COUNTA = Anything that is not empty; COUNTBLANK = blanks; COUNTIF = cells meeting one condition."
+            pattern: function-choice
+      - slug: computer-excel-logical-lookup
+        title: "Excel functions: IF, AND, OR, COUNTIF, SUMIF and VLOOKUP"
+        summary: >-
+          IF(logical_test, value_if_true, value_if_false) returns one of two results, and AND, OR and NOT
+          combine conditions. COUNTIF(range, criteria) counts and SUMIF(range, criteria, sum_range) adds the
+          cells that meet a condition. VLOOKUP(lookup_value, table_array, col_index_num, range_lookup) looks for a
+          value in the first column of a table and returns the value from the given column of that row (FALSE
+          for an exact match); HLOOKUP does the same along the first row, and XLOOKUP is the newer, more flexible
+          lookup.
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [computer-excel-math-functions, computer-excel-cell-references]
+        formulas:
+          - key: if-syntax
+            name: IF function
+            expression: "=IF(logical_test, value_if_true, value_if_false)"
+            example: {problem: "B2 = 35. Evaluate =IF(B2>=40, \"Pass\", \"Fail\").", solution: "35 >= 40 is false, so the result is Fail"}
+          - key: vlookup-syntax
+            name: VLOOKUP function
+            expression: "=VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])"
+            conditions: "range_lookup FALSE (or 0) = exact match; TRUE or omitted = approximate match on a first column sorted in ascending order."
+            example: {problem: "What does =VLOOKUP(102, A2:D50, 3, FALSE) return?", solution: "The value in the 3rd column (column C) of the row whose column-A value is exactly 102"}
+        patterns:
+          - key: if-result
+            title: Result of IF and conditional functions
+            example_stem: "Cells B2:B6 contain 45, 32, 60, 38 and 75. What does =COUNTIF(B2:B6, \">=40\") return?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+          - key: lookup
+            title: VLOOKUP and HLOOKUP
+            example_stem: "In VLOOKUP, which argument tells Excel the column from which the matching value is returned?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+        shortcuts:
+          - key: v-and-h
+            title: V for vertical, H for horizontal
+            kind: memory
+            rule: "VLOOKUP searches down the first column (vertical); HLOOKUP searches along the first row (horizontal). Both return a value from the same row or column of the match."
+            pattern: lookup
+      - slug: computer-excel-text-date-functions
+        title: "Excel functions: text and date functions"
+        summary: >-
+          Text functions: LEN counts characters (spaces included), LEFT, RIGHT and MID extract characters,
+          UPPER, LOWER and PROPER change case, TRIM removes extra spaces, and CONCATENATE (or CONCAT, or the &
+          operator) joins text. Date functions: TODAY() gives the current date, NOW() the date and time, and DATE,
+          YEAR, MONTH and DAY build or split dates. Excel stores a date as a serial number counted from
+          1 January 1900, so subtracting two dates gives the days between them.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [computer-excel-math-functions]
+        formulas:
+          - key: text-syntax
+            name: Text functions
+            expression: "=LEN(text)  =LEFT(text, n)  =RIGHT(text, n)  =MID(text, start, n)  =UPPER(text)  =PROPER(text)  =TRIM(text)"
+            example: {problem: "Evaluate =LEN(\"SSC CGL\") and =MID(\"COMPUTER\", 4, 3).", solution: "7 (the space counts) and PUT"}
+        patterns:
+          - key: text-result
+            title: Result of a text function
+            example_stem: "What does the Excel formula =PROPER(\"ravi kumar\") return?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: date-function
+            title: Date and time functions
+            example_stem: "Which Excel function returns the current date and time together?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+  - key: data-tools
+    title: Charts and data tools
+    concepts:
+      - slug: computer-excel-charts
+        title: Charts and sparklines in Excel
+        summary: >-
+          Charts are inserted from the Insert tab: column (the default type, vertical bars), bar (horizontal
+          bars), line (trends over time), pie (parts of a whole, one data series only), scatter (relationship
+          between two sets of numbers) and area charts. F11 creates the default chart on a separate chart sheet
+          and Alt+F1 embeds it in the current sheet; chart elements include the title, axes, legend, data labels
+          and gridlines. Sparklines (Line, Column, Win/Loss) are tiny charts inside a single cell.
+        difficulty: easy
+        weight: 1.1
+        prerequisites: [computer-excel-workbook-basics]
+        patterns:
+          - key: chart-choice
+            title: Which chart for which data
+            example_stem: "Which chart type is most suitable for showing each department's share of a company's total budget?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: chart-parts
+            title: Chart elements and shortcuts
+            example_stem: "In an Excel chart, the box that explains which colour stands for which data series is called the:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+      - slug: computer-excel-data-tools
+        title: "Sort, filter, conditional formatting, data validation, PivotTable and what-if analysis"
+        summary: >-
+          The Data tab sorts rows (ascending A to Z or smallest to largest), filters them (AutoFilter,
+          Ctrl+Shift+L) to show only matching rows, and holds Data Validation (restricts what may be typed, e.g. a
+          drop-down list), Remove Duplicates, Text to Columns and What-If Analysis (Goal Seek finds the input that
+          gives a wanted result; Scenario Manager and Data Table compare cases). Conditional Formatting (Home tab)
+          colours cells that meet rules; a PivotTable (Insert tab) summarises a large table by categories; Freeze
+          Panes (View tab) keeps header rows or columns visible while scrolling.
+        difficulty: medium
+        weight: 1.1
+        prerequisites: [computer-excel-workbook-basics]
+        patterns:
+          - key: tool-for-task
+            title: Which data tool does a task
+            example_stem: "Which Excel feature keeps the heading row visible while you scroll down a long list?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: what-if
+            title: Goal Seek, PivotTable and validation
+            example_stem: "Which Excel tool finds the input value needed for a formula to reach a desired result?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+
+  - key: shortcuts
+    title: MS Excel keyboard shortcuts
+    concepts:
+      - slug: computer-excel-shortcuts
+        title: MS Excel keyboard shortcuts
+        summary: >-
+          Shortcuts asked most: F2 edits the active cell, F4 toggles absolute and relative references (or repeats
+          the last action), Ctrl+1 opens Format Cells, Alt+= inserts AutoSum, Shift+F11 inserts a new worksheet,
+          F11 creates a chart sheet, Ctrl+; enters today's date and Ctrl+Shift+; the current time, Ctrl+Home goes
+          to A1 and Ctrl+End to the last used cell, Ctrl+Page Down and Ctrl+Page Up move between sheets,
+          Ctrl+Space selects a column and Shift+Space a row, Ctrl+D fills down and Ctrl+R fills right, and
+          Ctrl+` (grave accent) shows formulas instead of results.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [computer-excel-cell-references, computer-windows-shortcuts]
+        patterns:
+          - key: shortcut-for-task
+            title: Shortcut for a task
+            example_stem: "Which key is pressed in MS Excel to edit the contents of the active cell?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: task-of-shortcut
+            title: What a shortcut does
+            example_stem: "In MS Excel, what does pressing Shift+F11 do?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: excel-vs-word
+            title: Same keys, different jobs
+            kind: memory
+            rule: "Ctrl+R is fill right in Excel but right-align in Word; Ctrl+D is fill down in Excel but the Font dialog in Word; Ctrl+E is Flash Fill in Excel but centre in Word."
+            pattern: task-of-shortcut

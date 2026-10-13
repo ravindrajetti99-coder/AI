@@ -1,0 +1,260 @@
+key: cyber-security
+title: Cyber security
+strategies:
+  - key: approach
+    title: "Cyber security: name the threat, then the defence"
+    summary: >-
+      Security questions describe a threat (hacking, virus, worm, Trojan, phishing, ransomware) and ask
+      its name, or name a preventive measure and ask what it does. Learn each threat with the one feature
+      that separates it from its neighbours, and each defence with the threat it stops.
+    seconds_per_question: 25
+    accuracy_target: 0.9
+    tactics:
+      - "Separate the malware trio by how it spreads: a virus needs a host file and a user action, a worm spreads by itself, a Trojan pretends to be useful and does not replicate."
+      - "For 'ishing' words, look at the channel: e-mail or website (phishing), voice call (vishing), SMS (smishing)."
+      - "Pair defences with threats: firewall → unauthorised network traffic, antivirus → malware, encryption → eavesdropping, two-factor authentication → stolen passwords."
+    avoid:
+      - "Saying a firewall removes viruses: it filters traffic; removing malware is the antivirus program's job."
+
+topics:
+  - key: threats
+    title: Network and information security threats
+    subtopics:
+      - key: basics
+        title: Information security basics
+        concepts:
+          - slug: computer-security-basics
+            title: "Information security basics: confidentiality, integrity and availability"
+            summary: >-
+              Information security protects data and systems through the CIA triad: confidentiality (only authorised
+              people can read the data), integrity (data is not altered without authority) and availability (data
+              and services are there when needed); authentication and non-repudiation are added to it. A threat is
+              anything that can cause harm, a vulnerability is a weakness it can exploit, and cyber crime is any
+              crime committed with or against computers and networks.
+            difficulty: easy
+            weight: 0.8
+            patterns:
+              - key: cia
+                title: Confidentiality, integrity and availability
+                example_stem: "Which security principle ensures that data is not changed by unauthorised persons?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+              - key: threat-vulnerability
+                title: Threat, vulnerability and cyber crime
+                example_stem: "A weakness in software that an attacker can exploit is called a:"
+                frequency: low
+                difficulty: easy
+                target_seconds: 15
+      - key: malware
+        title: "Malware: virus, worms, Trojans and others"
+        concepts:
+          - slug: computer-virus-worm-trojan
+            title: "Malware: virus, worms and Trojan horses"
+            summary: >-
+              Malware is malicious software. A virus attaches itself to a host file or boot sector and spreads only
+              when the infected file is run or shared (boot-sector, file-infector, macro and polymorphic viruses;
+              Brain, 1986, was the first IBM PC virus). A worm is a standalone program that copies itself across
+              networks without any host or user action (the Morris worm of 1988, ILOVEYOU in 2000). A Trojan horse
+              looks like useful software but secretly harms the system or opens a backdoor for attackers, and it does
+              not replicate itself.
+            difficulty: easy
+            weight: 1.5
+            prerequisites: [computer-security-basics]
+            patterns:
+              - key: identify-malware
+                title: Virus, worm or Trojan
+                example_stem: "A malicious program that copies itself from computer to computer over a network without attaching to any file is a:"
+                frequency: high
+                difficulty: easy
+                target_seconds: 15
+              - key: virus-types
+                title: Types and famous examples of viruses
+                example_stem: "A virus written in the macro language of a word processor or spreadsheet, which infects documents, is called a:"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+            shortcuts:
+              - key: host-self-disguise
+                title: Host, self, disguise
+                kind: memory
+                rule: "Virus needs a Host; Worm spreads by itSelf; Trojan relies on Disguise (like the wooden horse of Troy) and does not copy itself."
+                pattern: identify-malware
+                pitfalls: ["Expansions such as 'Vital Information Resources Under Seize' are later inventions, not the origin of the word 'virus'."]
+          - slug: computer-other-malware
+            title: "Spyware, adware, ransomware, keyloggers, rootkits and botnets"
+            summary: >-
+              Spyware secretly collects information about the user; adware shows unwanted advertisements; ransomware
+              encrypts or locks files and demands payment to restore them (WannaCry, 2017); a keylogger records
+              keystrokes to steal passwords; a rootkit hides deep in the system to keep administrator-level control;
+              bots are infected 'zombie' computers that an attacker controls together as a botnet for spam and DDoS
+              attacks; a logic bomb triggers when a condition is met, and scareware frightens users with fake alerts.
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [computer-virus-worm-trojan]
+            patterns:
+              - key: malware-type
+                title: Identify the type of malware
+                example_stem: "Malicious software that locks a user's files and demands money to unlock them is called:"
+                frequency: high
+                difficulty: easy
+                target_seconds: 15
+              - key: botnet-keylogger
+                title: Keyloggers, rootkits and botnets
+                example_stem: "A network of infected computers controlled remotely by an attacker is known as a:"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+      - key: attacks
+        title: "Hacking, phishing and other attacks"
+        concepts:
+          - slug: computer-hacking-attacks
+            title: "Hacking and network attacks: DoS, man-in-the-middle, spoofing, brute force and more"
+            summary: >-
+              Hacking is gaining unauthorised access to a computer or network. White-hat (ethical) hackers test systems
+              with permission, black-hat hackers break in for harm or gain, and grey-hat hackers fall between. Common
+              attacks: denial of service (DoS) floods a server so that real users cannot reach it, and distributed DoS
+              (DDoS) does it from many machines; man-in-the-middle intercepts communication; sniffing captures network
+              traffic; spoofing fakes an identity (IP address, e-mail sender); brute-force and dictionary attacks guess
+              passwords; SQL injection abuses input fields of websites; a zero-day attack uses a flaw not yet patched;
+              a salami attack steals tiny amounts from many accounts.
+            difficulty: medium
+            weight: 1.3
+            prerequisites: [computer-security-basics]
+            patterns:
+              - key: attack-name
+                title: Name the attack
+                example_stem: "An attack that makes a website unavailable by flooding it with traffic from thousands of compromised computers is called:"
+                frequency: high
+                difficulty: easy
+                target_seconds: 15
+              - key: hacker-types
+                title: Types of hackers
+                example_stem: "A security expert who is hired to break into a company's systems to find weaknesses is called a:"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+          - slug: computer-phishing-social-engineering
+            title: "Phishing and social engineering"
+            summary: >-
+              Social engineering tricks people rather than machines into revealing secrets. Phishing uses fake e-mails
+              and websites that imitate trusted organisations to steal passwords and card details; spear phishing targets
+              one person or organisation and whaling targets senior executives; vishing uses voice calls, smishing uses
+              SMS and quishing uses QR codes; pharming redirects users to a fake site even when they type the correct
+              address. Spam is unsolicited bulk e-mail, and identity theft, baiting with infected pen drives and shoulder
+              surfing are related tricks; urgency, mismatched sender addresses and misspelt links are warning signs.
+            difficulty: easy
+            weight: 1.4
+            prerequisites: [computer-security-basics]
+            patterns:
+              - key: ishing-type
+                title: Phishing, vishing, smishing and pharming
+                example_stem: "A fraudster sends an SMS with a link asking the user to update KYC details urgently. This attack is called:"
+                frequency: high
+                difficulty: easy
+                target_seconds: 15
+              - key: spot-phishing
+                title: Recognising a phishing attempt
+                example_stem: "Which of the following is the strongest sign that an e-mail claiming to be from your bank is a phishing attempt?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: channel-letter
+                title: The first letter is the channel
+                kind: memory
+                rule: "Phishing = e-mail/website bait; Vishing = Voice; Smishing = SMS; Quishing = QR code; Pharming = poisoned address (DNS) that sends you to a fake 'farm'."
+                pattern: ishing-type
+
+  - key: prevention
+    title: Preventive measures
+    concepts:
+      - slug: computer-firewall-antivirus
+        title: "Firewalls and antivirus software"
+        summary: >-
+          A firewall, in hardware or software (such as Windows Defender Firewall), monitors incoming and outgoing
+          network traffic and allows or blocks it by security rules, keeping unauthorised users out of a private
+          network. Antivirus software detects, quarantines and removes malware using virus signatures (which must be
+          updated regularly) and behaviour (heuristic) checks; examples are Microsoft Defender, Quick Heal (Indian),
+          Norton, McAfee, Kaspersky and Avast. Intrusion detection systems alert on attacks, proxy servers stand
+          between users and the internet, and regular software updates (patches) close known holes.
+        difficulty: easy
+        weight: 1.4
+        prerequisites: [computer-virus-worm-trojan, computer-networking-devices]
+        patterns:
+          - key: firewall-role
+            title: What a firewall does
+            example_stem: "A system that filters network traffic between a private network and the internet according to set rules is a:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: antivirus
+            title: Antivirus software and examples
+            example_stem: "Which of the following is an antivirus program developed in India? (a) Norton (b) Quick Heal (c) Kaspersky (d) McAfee"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: guard-and-doctor
+            title: Guard at the gate, doctor inside
+            kind: memory
+            rule: "A firewall is the guard at the gate (decides what traffic enters or leaves); antivirus is the doctor inside (finds and removes infections already present)."
+            pattern: firewall-role
+      - slug: computer-authentication-encryption
+        title: "Passwords, authentication and encryption"
+        summary: >-
+          Authentication proves who a user is by something they know (password, PIN), have (phone, OTP, smart card)
+          or are (fingerprint, iris, face); two-factor or multi-factor authentication combines two or more of these,
+          and authorisation then decides what the user may do. A strong password is long, mixes upper and lower case,
+          digits and symbols and is different for each account; CAPTCHA tells humans from bots. Encryption turns
+          plaintext into ciphertext with a key: symmetric encryption uses one shared key (AES), asymmetric or
+          public-key encryption a public and a private key (RSA); digital signatures, digital certificates, SSL/TLS
+          and VPNs are built on it.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [computer-security-basics]
+        patterns:
+          - key: auth-factors
+            title: Authentication factors and passwords
+            example_stem: "Logging in with a password and then a one-time code sent to your phone is an example of:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: encryption
+            title: Encryption and digital signatures
+            example_stem: "The process of converting readable data into an unreadable form so that only an authorised person can read it is called:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: know-have-are
+            title: Know, have, are
+            kind: memory
+            rule: "Two factors must come from different groups: know (password, PIN), have (phone, card, token), are (fingerprint, face). A password plus a PIN is still one factor."
+            pattern: auth-factors
+      - slug: computer-cyber-laws-safety
+        title: "Cyber laws and safe computing practices"
+        summary: >-
+          India's Information Technology Act, 2000 (amended in 2008) gives legal recognition to electronic records
+          and digital signatures and defines cyber offences such as hacking and damage to computers (Sections 43 and
+          66), identity theft (66C), cheating by personation (66D), violation of privacy (66E) and cyber terrorism
+          (66F); the Supreme Court struck down Section 66A in 2015. CERT-In is the national agency for responding to
+          cyber-security incidents, and cyber crimes can be reported at cybercrime.gov.in or on helpline 1930. Safe
+          practice means keeping software updated, using licensed software and backups, locking the screen, not
+          plugging in unknown pen drives and being careful on public Wi-Fi.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [computer-security-basics]
+        patterns:
+          - key: it-act
+            title: IT Act 2000 and cyber institutions
+            example_stem: "Which section of the Information Technology Act, 2000 deals with cyber terrorism?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 15
+          - key: safe-practices
+            title: Safe computing practices
+            example_stem: "Which of the following is the safest action when you find an unknown pen drive lying in your office?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15

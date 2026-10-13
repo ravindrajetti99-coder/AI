@@ -1,0 +1,50 @@
+key: general-awareness
+title: General Awareness
+description: >-
+  History, culture, geography, polity, economy, general science, static general knowledge and
+  current affairs. Tier 1 (25 questions) and Tier 2 Module II of Section II (25 questions).
+tiers: [tier1, tier2]
+strategies:
+  - key: approach
+    title: "General Awareness: answer fast, revise often"
+    summary: >-
+      GA questions are answered from memory in seconds or not at all. The score comes from wide
+      coverage and repeated revision, especially of facts SSC asks again and again.
+    seconds_per_question: 15
+    accuracy_target: 0.85
+    tactics:
+      - "Spend at most 8-10 minutes on the section; skip what you do not know rather than guess blindly."
+      - "Revise flashcards daily; static topics (polity, history, science) repeat across years."
+      - "Cover current affairs of the last 6-8 months before the exam: schemes, awards, sports, appointments, summits."
+      - "Use previous-year questions to see which facts recur."
+    avoid:
+      - "Guessing between options you have not eliminated (each wrong answer costs marks)."
+chapters:
+  - ancient-history
+  - medieval-history
+  - modern-history
+  - freedom-movement
+  - art-culture
+  - physical-geography
+  - world-geography
+  - indian-geography
+  - climate
+  - resources
+  - environment
+  - constitution
+  - fundamental-rights
+  - parliament
+  - president
+  - prime-minister
+  - judiciary
+  - governance
+  - economy-basics
+  - banking
+  - inflation
+  - budget
+  - physics
+  - chemistry
+  - biology
+  - science-technology
+  - static-gk
+  - current-affairs

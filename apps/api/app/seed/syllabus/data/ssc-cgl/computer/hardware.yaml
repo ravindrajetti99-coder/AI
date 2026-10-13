@@ -1,0 +1,276 @@
+key: hardware
+title: "Hardware: CPU, input/output devices and ports"
+strategies:
+  - key: approach
+    title: "Hardware: match each device to its job"
+    summary: >-
+      Hardware questions name a part, device or port and ask what it does, or describe a job and ask
+      which device does it. Learn devices in contrasting pairs (impact and non-impact printers, OMR
+      and OCR, serial and parallel ports) so that look-alike options separate at once.
+    seconds_per_question: 25
+    accuracy_target: 0.9
+    tactics:
+      - "Classify every device as input, output or both (touch screen, headset) before reading the options."
+      - "For the CPU, know which part calculates (ALU), which directs (control unit) and which holds data for an instant (registers)."
+      - "Link each port to its connector and typical device: VGA or HDMI → monitor, RJ-45 → network cable, USB → almost everything."
+    avoid:
+      - "Calling the cabinet (system unit) the CPU in a technical question: the CPU is the processor chip inside it."
+
+topics:
+  - key: cpu
+    title: Central processing unit (CPU)
+    concepts:
+      - slug: computer-cpu-components
+        title: "CPU components: ALU, control unit and registers"
+        summary: >-
+          The central processing unit, the 'brain' of the computer, has three parts: the arithmetic logic
+          unit (ALU) performs arithmetic and logical comparisons, the control unit (CU) fetches and decodes
+          instructions and directs every other unit, and registers are the smallest, fastest storage inside
+          the CPU (program counter, instruction register, accumulator, memory address and memory data
+          registers). Each instruction passes through the fetch-decode-execute (machine) cycle.
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [computer-block-diagram]
+        patterns:
+          - key: part-function
+            title: Which part of the CPU does a job
+            example_stem: "Which part of the CPU carries out comparisons such as 'is A greater than B'?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: registers
+            title: Registers and the machine cycle
+            example_stem: "Which register holds the address of the next instruction to be executed?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+        shortcuts:
+          - key: register-roles
+            title: Register names say their job
+            kind: memory
+            rule: "Program Counter points to the next instruction; Instruction Register holds the instruction being run; MAR holds a memory Address, MDR the Data going to or from it; the Accumulator collects the ALU's results."
+            pattern: registers
+            pitfalls: ["The control unit does not calculate; it only directs. Calculation is the ALU's job."]
+      - slug: computer-motherboard-buses
+        title: "Motherboard, buses, clock speed and expansion cards"
+        summary: >-
+          The motherboard is the main circuit board: it holds the CPU socket, RAM slots, chipset, BIOS chip,
+          CMOS battery and expansion slots for cards such as the graphics card (GPU), sound card and network
+          interface card. Its buses are the data bus (carries data both ways), the address bus (carries
+          memory addresses from the CPU) and the control bus (carries control signals). Processor speed is
+          the clock rate in hertz (today in GHz); more cores and a larger word size (32- or 64-bit) do more
+          work per second, and the SMPS converts mains AC into the low-voltage DC the parts need.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [computer-cpu-components]
+        formulas:
+          - key: clock-period
+            name: Clock cycle time
+            expression: "cycle time = 1 / clock frequency"
+            variables:
+              - {symbol: f, meaning: "clock frequency in hertz (1 GHz = 10⁹ cycles per second)"}
+            example: {problem: "How long is one clock cycle of a 2 GHz processor?", solution: "1 / (2 × 10⁹) s = 0.5 × 10⁻⁹ s = 0.5 nanosecond"}
+        patterns:
+          - key: speed-unit
+            title: Units of processor speed
+            example_stem: "The clock speed of a modern processor is usually expressed in:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: buses-board
+            title: Buses and motherboard parts
+            example_stem: "Which bus carries the location in memory that the CPU wants to read from or write to?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+
+  - key: input-devices
+    title: Input devices
+    concepts:
+      - slug: computer-input-devices
+        title: "Input devices: keyboard, mouse, scanner and pointing devices"
+        summary: >-
+          Input devices send data and commands into the computer: keyboard, mouse (a pointing device first
+          built by Douglas Engelbart in the 1960s), trackball, touchpad, joystick (games and simulators),
+          light pen (draws or selects directly on the screen), touch screen, scanner, digitiser or graphics
+          tablet, microphone, webcam and biometric sensors. A touch screen works as both an input and an
+          output device.
+        difficulty: easy
+        weight: 1.2
+        patterns:
+          - key: identify-input
+            title: Identify the input device from its use
+            example_stem: "Which pointing device is used mainly to control movement in video games and flight simulators?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: odd-one-out
+            title: Input or output, odd one out
+            example_stem: "Which of the following is NOT an input device? (a) Scanner (b) Light pen (c) Plotter (d) Joystick"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: direction-test
+            title: Ask which way the data flows
+            kind: elimination
+            rule: "If data flows from the user into the computer it is input; from the computer to the user it is output; both ways (touch screen, headset, modem) means both."
+            pattern: odd-one-out
+      - slug: computer-recognition-devices
+        title: "Direct-entry devices: OCR, OMR, MICR, barcode, QR and RFID readers"
+        summary: >-
+          These devices read data straight from paper or objects. MICR (Magnetic Ink Character Recognition)
+          reads characters printed in magnetic ink and is used by banks to process cheques; OMR (Optical
+          Mark Recognition) detects pen or pencil marks in fixed positions, as on objective answer sheets;
+          OCR (Optical Character Recognition) turns images of printed or handwritten text into editable
+          text; barcode and QR code readers decode printed codes at shop counters; RFID readers read radio
+          tags such as FASTag at toll plazas.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [computer-input-devices]
+        patterns:
+          - key: device-for-task
+            title: Which reader for which document
+            example_stem: "Which technology do banks use to read the code printed in special ink at the bottom of cheques?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: omr-ocr
+            title: OMR versus OCR
+            example_stem: "Answer sheets in which candidates darken circles are evaluated by:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: last-word
+            title: The middle word tells what is read
+            kind: memory
+            rule: "MICR = Magnetic Ink (cheques); OMR = Marks (darkened bubbles); OCR = Characters (text into editable text)."
+            pattern: device-for-task
+      - slug: computer-keyboard
+        title: Keyboard layout and special keys
+        summary: >-
+          The standard QWERTY keyboard (104 keys on a typical Windows keyboard) has alphanumeric keys,
+          function keys F1 to F12, toggle keys (Caps Lock, Num Lock, Scroll Lock), modifier keys (Shift,
+          Ctrl, Alt, Windows), navigation keys (arrows, Home, End, Page Up, Page Down) and a numeric keypad.
+          Backspace deletes the character to the left of the cursor and Delete the one to the right; Insert
+          switches between insert and overtype modes; Print Screen copies the screen image to the clipboard.
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [computer-input-devices]
+        patterns:
+          - key: key-function
+            title: What a key does
+            example_stem: "Which key removes the character immediately to the left of the cursor?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: key-groups
+            title: Toggle, modifier and function keys
+            example_stem: "Which of these is a toggle key? (a) Shift (b) Num Lock (c) Alt (d) Tab"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: three-locks
+            title: The toggle keys are the three Locks
+            kind: memory
+            rule: "Toggle keys are the three 'Lock' keys (Caps, Num, Scroll), switched on and off with one press; modifier keys (Shift, Ctrl, Alt) act only while held down with another key."
+            pattern: key-groups
+
+  - key: output-devices
+    title: Output devices
+    concepts:
+      - slug: computer-monitors
+        title: Monitors and display technology
+        summary: >-
+          The monitor or visual display unit (VDU) gives soft-copy output. Old CRT monitors used an electron
+          gun; flat panels are LCD, LED-backlit LCD and OLED, whose pixels give their own light and need no
+          backlight. Picture quality depends on resolution (pixels across × down, e.g. 1920 × 1080 for Full
+          HD), refresh rate in hertz and dot pitch; screen size is measured diagonally. Projectors and
+          speakers are other output devices, and printed output is called hard copy.
+        difficulty: easy
+        weight: 1.0
+        formulas:
+          - key: pixels
+            name: Total pixels on a screen
+            expression: "pixels = horizontal resolution × vertical resolution"
+            example: {problem: "How many pixels does a 1920 × 1080 display have?", solution: "1920 × 1080 = 20,73,600 (about 2.07 million)"}
+        patterns:
+          - key: display-terms
+            title: Display terms and technologies
+            example_stem: "The smallest element of a picture shown on a computer screen is called a:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: soft-hard-copy
+            title: Soft copy and hard copy
+            example_stem: "Output displayed on a monitor, which is lost when the screen changes, is known as:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+      - slug: computer-printers
+        title: Printers and plotters
+        summary: >-
+          Impact printers strike an inked ribbon against the paper (dot-matrix, daisy-wheel and line printers)
+          and can print carbon copies; non-impact printers do not (inkjet sprays tiny ink drops, laser printers
+          fuse toner from a charged drum like a photocopier, thermal printers heat special paper for receipts).
+          Speed is quoted in characters per second (dot-matrix), lines per minute (line printers) or pages per
+          minute (laser), and print quality in dots per inch (DPI). Plotters draw large vector drawings such
+          as maps and building plans; 3D printers build objects layer by layer.
+        difficulty: easy
+        weight: 1.2
+        patterns:
+          - key: impact-nonimpact
+            title: Impact versus non-impact printers
+            example_stem: "Which of the following is an impact printer? (a) Laser (b) Inkjet (c) Dot-matrix (d) Thermal"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: printer-units
+            title: Printer speed and quality units
+            example_stem: "The print resolution of a laser printer is measured in:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: hammer-test
+            title: Impact printers have something that hits
+            kind: memory
+            rule: "Pins (dot-matrix), a petal wheel (daisy-wheel) or hammers (line printer) hit the ribbon: impact. Ink drops, toner or heat: non-impact. Speed units follow the printer: CPS for dot-matrix, LPM for line, PPM for laser."
+            pattern: impact-nonimpact
+
+  - key: ports
+    title: Ports and connectors
+    concepts:
+      - slug: computer-ports
+        title: "Ports: USB, HDMI, VGA, serial, parallel, PS/2 and Ethernet"
+        summary: >-
+          A port is the socket through which a peripheral connects. Serial ports send one bit at a time (COM
+          ports, usually 9-pin), parallel ports send several bits at once (LPT, 25-pin, used for old printers),
+          PS/2 ports took the keyboard (purple) and mouse (green), and USB (Universal Serial Bus) replaced them:
+          it is plug-and-play, hot-swappable and supports up to 127 devices on one host controller. VGA carries
+          analog video (15-pin), HDMI carries digital video and audio on one cable, RJ-45 takes the Ethernet
+          network cable and RJ-11 the telephone line; Bluetooth and infrared connect without cables.
+        difficulty: easy
+        weight: 1.3
+        patterns:
+          - key: port-for-device
+            title: Which port for which device
+            example_stem: "Which connector is used to plug a computer into a wired Ethernet LAN?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: port-features
+            title: Features of a port
+            example_stem: "Which port can carry high-definition video and multi-channel audio through a single cable?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: serial-single
+            title: Serial is single file
+            kind: memory
+            rule: "Serial = one bit after another in single file; parallel = several bits side by side. USB is a serial bus even though it is fast."
+            pattern: port-features
+            pitfalls: ["RJ-45 (8 pins) is the network jack; RJ-11 is the smaller telephone jack."]

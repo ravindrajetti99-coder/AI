@@ -1,0 +1,552 @@
+key: time-work
+title: Time and Work
+strategies:
+  - key: approach
+    title: "Time and work: total work as LCM units"
+    summary: >-
+      Time and work, pipes and cisterns and wages are one idea: work = efficiency × time.
+      Taking the total work as the LCM of the given times turns every question into whole-number
+      addition and division.
+    seconds_per_question: 40
+    accuracy_target: 0.9
+    tactics:
+      - "Take the total work as the LCM of the given times and give every worker or pipe an efficiency in units per day (or per hour)."
+      - "Treat outlets and leaks as negative efficiency: pipes and cisterns is time and work with signs."
+      - "For men, days and hours write M1D1H1/W1 = M2D2H2/W2 on one line and cancel before multiplying."
+      - "Share wages in the ratio of work done (efficiency × days), not days alone."
+    avoid:
+      - "Adding times instead of rates (A in 10 days and B in 15 days do not take 25 days together)."
+      - "Forgetting the partial last day or hour in alternate-day and alternate-pipe questions."
+
+topics:
+  - key: basics
+    title: Work efficiency and individual work
+    concepts:
+      - slug: work-individual-rate
+        title: "Individual work: work rate and time"
+        summary: "If A finishes a job in n days, A does 1/n of it each day and t/n of it in t days. Part-jobs scale the same way: if 3/4 of a job takes 12 days, the whole takes 16 days. Every time and work question builds on this rate idea."
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [inverse-proportion]
+        formulas:
+          - key: rate
+            name: One day's work
+            expression: "one day's work = 1/n;  work done in t days = t/n;  time = work ÷ rate"
+            example: {problem: "A can do a job in 15 days. What part of it does he do in 6 days?", solution: "6/15 = 2/5"}
+          - key: part-work
+            name: Whole job from a part
+            expression: "if a fraction f of a job takes t days, the whole job takes t/f days"
+            example: {problem: "3/4 of a job takes 12 days.", solution: "Whole job = 12 ÷ 3/4 = 16 days"}
+        patterns:
+          - key: fraction-left
+            title: Fraction of the work done or left
+            example_stem: "A can complete a job in 18 days. What fraction of the job is left after he has worked for 8 days?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: part-to-whole
+            title: Time for the rest of the job from a part done
+            example_stem: "A can do 2/5 of a piece of work in 8 days. In how many days can he finish the remaining work?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: remaining-time
+            title: Remaining fraction × whole time
+            kind: shortcut
+            rule: "Time for the remaining work = (fraction left) × (time for the whole job)."
+            example: {problem: "2/5 of a job in 8 days; time for the rest?", standard: "Whole job 20 days, rest = 20 − 8", shortcut: "Rest 3/5 is 1.5 times 2/5, so 1.5 × 8 = 12 days", seconds_saved: 10}
+            pattern: part-to-whole
+
+      - slug: work-efficiency
+        title: Work efficiency and efficiency ratios
+        summary: "Efficiency is the work done per day, so for the same job time is inversely proportional to efficiency: efficiencies a : b mean times b : a. 'A is 50% more efficient than B' means A : B = 3 : 2, so A needs 2/3 of B's time; 'twice as good a workman' means half the time."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [work-individual-rate, percentage-comparison]
+        formulas:
+          - key: inverse-time
+            name: Efficiency and time
+            expression: "E_A : E_B = T_B : T_A"
+            example: {problem: "A takes 12 days and B 18 days for a job.", solution: "Efficiencies 18 : 12 = 3 : 2"}
+          - key: percent-efficiency
+            name: Time from 'r% more efficient'
+            expression: "A is r% more efficient than B  ⇒  T_A = T_B × 100/(100 + r)"
+            example: {problem: "B takes 30 days; A is 50% more efficient.", solution: "T_A = 30 × 100/150 = 20 days"}
+          - key: times-as-good
+            name: k times as efficient
+            expression: "A is k times as efficient as B  ⇒  T_A = T_B/k"
+        patterns:
+          - key: percent-more-efficient
+            title: Time from a percentage efficiency
+            example_stem: "A is 50% more efficient than B. If B alone can finish a job in 30 days, how long will A and B take working together?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: twice-as-good
+            title: k times as good a workman
+            example_stem: "A is twice as good a workman as B, and together they finish a job in 14 days. In how many days can A alone finish it?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: efficiency-from-times
+            title: Efficiency ratio or percentage from times
+            example_stem: "A can do a job in 16 days and B in 20 days. By what percent is A more efficient than B?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: efficiency-units
+            title: Write efficiencies as units per day
+            kind: shortcut
+            rule: "Turn the efficiency statement into a ratio (50% more → 3 : 2, twice as good → 2 : 1); total work = one worker's efficiency × his days; divide by the combined efficiency."
+            example: {problem: "A is 50% more efficient than B; B alone takes 30 days; together?", standard: "A takes 20 days; 1/20 + 1/30 = 1/12", shortcut: "A : B = 3 : 2; work = 2 × 30 = 60 units; together 60/5 = 12 days", seconds_saved: 20}
+            pattern: percent-more-efficient
+
+  - key: together
+    title: Combined work
+    concepts:
+      - slug: work-combined
+        title: "Combined work: two or three people working together"
+        summary: "Working together, rates add: 1/T = 1/a + 1/b (+ 1/c). For two people T = ab/(a + b); for three T = abc/(ab + bc + ca). Given the pairs A + B, B + C and C + A, half the sum of the pair rates is the rate of all three. If A alone takes a days more than A and B together and B takes b days more, together they take √(ab) days."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [work-individual-rate]
+        formulas:
+          - key: two
+            name: Two working together
+            expression: "T = ab/(a + b)"
+            example: {problem: "A takes 12 days and B 15 days.", solution: "T = 180/27 = 6⅔ days"}
+          - key: three
+            name: Three working together
+            expression: "T = abc/(ab + bc + ca)"
+            example: {problem: "A, B and C take 10, 12 and 15 days.", solution: "T = 1,800/(120 + 180 + 150) = 4 days"}
+          - key: pairs
+            name: From the times of the pairs
+            expression: "rate of A + B + C = ½ (1/x + 1/y + 1/z), where x, y, z are the times taken by A + B, B + C and C + A"
+            example: {problem: "A + B take 12 days, B + C 15 days and C + A 20 days.", solution: "½ (1/12 + 1/15 + 1/20) = ½ × 1/5 = 1/10, so 10 days together"}
+          - key: extra-days
+            name: Days more than working together
+            expression: "A alone takes a days more and B alone b days more than A and B together  ⇒  together T = √(ab)"
+            example: {problem: "a = 9 and b = 16.", solution: "T = √144 = 12 days (A 21, B 28; 1/21 + 1/28 = 1/12)"}
+        patterns:
+          - key: two-together
+            title: Two together, or one from the joint time
+            description: "Find the joint time, or the time of one person from the joint time and the other's time (1/b = 1/T − 1/a)."
+            example_stem: "A and B together can finish a job in 8 days. A alone can do it in 12 days. How long will B alone take?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: pairs-together
+            title: Pairs working together
+            example_stem: "A and B can do a job in 10 days, B and C in 15 days, and C and A in 12 days. How long will A, B and C take working together?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: extra-days
+            title: Days more than the joint time
+            example_stem: "Working alone, A takes 8 days more than A and B take together, and B takes 18 days more. How many days do A and B take working together?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 25
+        shortcuts:
+          - key: product-over-sum
+            title: Product over sum
+            kind: shortcut
+            rule: "Two people: T = ab/(a + b). For three, combine two first, then combine the result with the third the same way."
+            example: {problem: "A 20 days, B 30 days; together?", standard: "1/20 + 1/30 = 5/60 = 1/12", shortcut: "600/50 = 12 days", seconds_saved: 10}
+            pattern: two-together
+          - key: root-rule
+            title: "Together = √(extra days × extra days)"
+            kind: shortcut
+            rule: "If A alone needs a days more than A and B together and B alone needs b days more, together they take √(ab) days."
+            example: {problem: "8 and 18 days more", standard: "Solve 1/(T + 8) + 1/(T + 18) = 1/T", shortcut: "√(8 × 18) = 12 days", seconds_saved: 40}
+            pattern: extra-days
+
+      - slug: work-lcm-method
+        title: "LCM method: total work in units"
+        summary: "Take the total work as the LCM of the given times; each worker's efficiency is then a whole number of units per day (LCM ÷ own time). Everything else becomes simple addition and division, which makes it the standard SSC method for combined, pair and mixed questions."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [work-combined]
+        formulas:
+          - key: units
+            name: Total work and efficiencies
+            expression: "W = LCM(t₁, t₂, …);  efficiency eᵢ = W/tᵢ;  time together = W/(e₁ + e₂ + …)"
+            example: {problem: "A, B and C take 12, 15 and 20 days.", solution: "W = 60; efficiencies 5, 4, 3; together 60/12 = 5 days"}
+          - key: from-pairs
+            name: LCM with pairs
+            expression: "W = LCM of the pair times; each pair's efficiency = W/(pair time); A + B + C = half the sum of the pairs"
+            example: {problem: "A + B 12, B + C 15, C + A 20 days. How long does A alone take?", solution: "W = 60: pairs 5, 4, 3; A + B + C = 6; A = 6 − 4 = 2 units a day, so 30 days"}
+        patterns:
+          - key: lcm-three
+            title: Three workers together by the LCM method
+            example_stem: "A, B and C can finish a job in 18, 24 and 36 days respectively. In how many days will they finish it working together?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: lcm-pairs-individual
+            title: One worker's time from the pairs' times
+            example_stem: "A and B together can do a job in 12 days, B and C in 15 days, and C and A in 20 days. In how many days can A alone do it?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: lcm-units
+            title: Take the LCM as the total work
+            kind: shortcut
+            rule: "Let the job be LCM(times) units; each worker's efficiency is a whole number, so add, subtract and divide whole numbers instead of fractions."
+            example: {problem: "18, 24 and 36 days together", standard: "1/18 + 1/24 + 1/36 = (4 + 3 + 2)/72", shortcut: "W = 72: 4 + 3 + 2 = 9 units a day, so 8 days", seconds_saved: 15}
+            pattern: lcm-three
+
+  - key: midway
+    title: Leaving, joining and alternate work
+    concepts:
+      - slug: work-leaving-joining
+        title: "Work leaving and joining midway"
+        summary: "When workers leave or join, add up the work each one actually does: total work = Σ (efficiency × days worked). Fix the total as LCM units, count the days each worker was present, and solve for the unknown time. 'Leaves 3 days before completion' means he worked T − 3 days."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [work-lcm-method]
+        formulas:
+          - key: sum-of-work
+            name: Work done by each worker
+            expression: "W = e_A × d_A + e_B × d_B + …  (dᵢ = days worker i actually worked)"
+            example: {problem: "A takes 20 days and B 30 days; A leaves 5 days before the job is finished.", solution: "W = 60, e_A = 3, e_B = 2: 3(T − 5) + 2T = 60, so T = 15 days"}
+        patterns:
+          - key: leaves-after
+            title: One worker leaves after some days
+            example_stem: "A and B can finish a job in 12 and 18 days. They work together for 4 days, and then A leaves. In how many more days will B finish the job?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: leaves-before-completion
+            title: One worker leaves some days before completion
+            example_stem: "A can do a job in 20 days and B in 30 days. They start together, but A leaves 5 days before the job is finished. In how many days is the job finished?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: joins-later
+            title: A worker joins after some days
+            example_stem: "A alone can finish a job in 24 days. He works alone for 6 days, and then B, who alone takes 12 days, joins him. In how many days in all is the job completed?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+        shortcuts:
+          - key: assume-full-time
+            title: Pretend the leaver worked to the end
+            kind: shortcut
+            rule: "For 'A leaves k days before completion', pretend A worked all T days: then (combined efficiency) × T = W + e_A × k."
+            example: {problem: "A 20 days, B 30 days, A leaves 5 days before the end", standard: "3(T − 5) + 2T = 60", shortcut: "W = 60; 5T = 60 + 3 × 5 = 75, so T = 15 days", seconds_saved: 15}
+            pattern: leaves-before-completion
+
+      - slug: work-alternate-days
+        title: "Alternate work: working on alternate days"
+        summary: "When workers take turns (A on day 1, B on day 2, …), find the work done in one complete cycle, count the full cycles that fit into the total work, then finish the remainder day by day in turn. Who starts matters only in the last, partial cycle, where the last worker may need only part of a day."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [work-lcm-method]
+        formulas:
+          - key: cycle
+            name: Cycle method
+            expression: "work per cycle = sum of the efficiencies in the cycle; full cycles k = largest whole number with k × (work per cycle) ≤ W; finish the rest in turn"
+            example: {problem: "A takes 8 days and B 12; they work on alternate days, A first.", solution: "W = 24; A 3, B 2; 4 cycles = 20 units in 8 days; day 9: A → 23; B needs 1 of his 2 units = ½ day; total 9½ days"}
+        patterns:
+          - key: alternate-two
+            title: Two workers on alternate days
+            example_stem: "A can do a job in 10 days and B in 15 days. They work on alternate days, A starting first. In how many days is the job completed?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: alternate-partial
+            title: Alternate days with a partial last day
+            example_stem: "A and B can finish a job in 8 and 12 days. They work on alternate days with B starting first. In how many days is the job finished?"
+            frequency: medium
+            difficulty: hard
+            target_seconds: 45
+          - key: helper-every-third-day
+            title: A helper joins every few days
+            example_stem: "A can finish a job in 15 days and B in 10 days. A works every day and B helps him on every third day. In how many days is the job finished?"
+            frequency: low
+            difficulty: hard
+            target_seconds: 50
+        shortcuts:
+          - key: whole-cycles
+            title: Count whole cycles, then the tail
+            kind: shortcut
+            rule: "Divide the total units by the units per cycle, keep the whole cycles, then add the remaining units in turn order; stop as soon as the work is finished."
+            example: {problem: "A 10 days, B 15 days, alternate, A first", standard: "List the work day by day", shortcut: "W = 30; cycle A + B = 5 units in 2 days; 6 cycles = 30 units, so 12 days", seconds_saved: 20}
+            pattern: alternate-two
+            pitfalls: ["Overshooting: if the remainder is less than one cycle, the last worker may need only part of a day."]
+
+  - key: groups
+    title: Man-days and groups of workers
+    concepts:
+      - slug: work-man-days
+        title: "Man-days: M1D1H1/W1 = M2D2H2/W2"
+        summary: "Work done is proportional to men × days × hours a day (× efficiency), so M₁D₁H₁/W₁ = M₂D₂H₂/W₂. It covers more or fewer workers, a change in daily hours, a different amount of work, workers leaving after some days, and contracts where extra workers are needed to finish on time."
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [direct-proportion, inverse-proportion]
+        formulas:
+          - key: chain-rule
+            name: Men, days, hours and work
+            expression: "M₁ × D₁ × H₁/W₁ = M₂ × D₂ × H₂/W₂"
+            variables:
+              - {symbol: "M", meaning: "number of workers"}
+              - {symbol: "D", meaning: "number of days"}
+              - {symbol: "H", meaning: "working hours per day"}
+              - {symbol: "W", meaning: "amount of work"}
+            conditions: "Multiply by an efficiency factor on each side if the two groups differ in efficiency."
+            example: {problem: "15 men working 8 hours a day finish a job in 24 days. How long will 20 men working 9 hours a day take for twice the work?", solution: "15 × 24 × 8/1 = 20 × D × 9/2, so 2,880 = 90D and D = 32 days"}
+          - key: remaining-work
+            name: Workers needed for the remaining work
+            expression: "workers needed = (man-days still required)/(days left)"
+            example: {problem: "50 men do 2/5 of a job in 20 days; 20 days remain.", solution: "Job = 1,000 × 5/2 = 2,500 man-days; 1,500 left ÷ 20 = 75 men, so 25 more"}
+        patterns:
+          - key: men-days-hours
+            title: Men, days, hours and amount of work
+            example_stem: "12 men working 8 hours a day can build a 60 m wall in 15 days. How many days will 18 men working 10 hours a day take to build a 90 m wall?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: extra-men
+            title: Extra workers needed to finish on time
+            example_stem: "A contractor undertakes to finish a road in 40 days and employs 50 men. After 20 days only 2/5 of the work is done. How many more men must he employ to finish on time?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: men-leave
+            title: Workers leave after some days
+            example_stem: "20 men can finish a job in 30 days. After 12 days, 5 of them leave. In how many more days will the remaining men finish the job?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+        shortcuts:
+          - key: one-line-cancel
+            title: Write it on one line and cancel
+            kind: shortcut
+            rule: "Put every known value into M₁D₁H₁W₂ = M₂D₂H₂W₁ and cancel common factors before multiplying."
+            example: {problem: "12 men, 8 h, 15 days, 60 m against 18 men, 10 h, 90 m", standard: "Multiply out 12 × 15 × 8 × 90 and 18 × 10 × 60", shortcut: "D = (12 × 15 × 8 × 90)/(18 × 10 × 60) = 12 days after cancelling", seconds_saved: 15}
+            pattern: men-days-hours
+
+      - slug: work-men-women-children
+        title: Men, women and children working in groups
+        summary: "When men, women, boys or children work together, convert everyone into one kind of worker using the given equivalence (e.g. 3 men = 5 women), or find the ratio of their one-day work from two group equations. The job is then a fixed number of 'worker-days' of one kind."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [work-man-days]
+        formulas:
+          - key: equivalence
+            name: Converting to one kind of worker
+            expression: "m men do as much as w women  ⇒  1 man = w/m women; work = (equivalent workers) × days"
+            example: {problem: "1 man = 2 women; 4 men and 6 women finish a job in 8 days. How long will 2 men and 3 women take?", solution: "Work = 14 women × 8 = 112 woman-days; 2 men + 3 women = 7 women, so 16 days"}
+          - key: two-groups
+            name: Equivalence from two groups
+            expression: "(m₁M + b₁B) × d₁ = (m₂M + b₂B) × d₂ gives the ratio M : B of one day's work"
+            example: {problem: "2 men and 3 boys take 10 days; 3 men and 2 boys take 8 days.", solution: "20M + 30B = 24M + 16B, so 4M = 14B and 1 man = 3.5 boys"}
+        patterns:
+          - key: given-equivalence
+            title: Groups with a given equivalence
+            example_stem: "3 men or 5 women can finish a job in 20 days. In how many days can 2 men and 5 women finish it?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: two-group-equations
+            title: Equivalence from two groups' times
+            example_stem: "2 men and 3 boys can finish a job in 10 days, while 3 men and 2 boys can finish it in 8 days. In how many days can 2 men and 1 boy finish it?"
+            frequency: medium
+            difficulty: hard
+            target_seconds: 45
+          - key: three-kinds
+            title: Men, women and children together
+            example_stem: "A man, a woman and a child can finish a job in 6, 9 and 18 days respectively. How many children must help 2 men and 3 women to finish the job in 1 day?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: weakest-unit
+            title: Convert everyone to the weakest worker
+            kind: shortcut
+            rule: "Express every group in units of the weakest worker (women, boys or children) so the numbers stay whole; total work = equivalent workers × days."
+            example: {problem: "3 men or 5 women take 20 days; 2 men and 5 women?", standard: "Find one man's and one woman's daily work as fractions", shortcut: "Work = 100 woman-days; 2 men = 10/3 women, so 25/3 women take 100 × 3/25 = 12 days", seconds_saved: 20}
+            pattern: given-equivalence
+
+  - key: wages
+    title: Wages
+    concepts:
+      - slug: work-wages
+        title: "Wages: sharing payment by the work done"
+        summary: "Wages are shared in proportion to the work each person does, not the time spent. If all work the same number of days, wages are in the ratio of efficiencies (the inverse ratio of their individual times); a helper's share is the fraction of the job he did × the total payment."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [work-efficiency, dividing-in-given-ratio]
+        formulas:
+          - key: by-work
+            name: Share by work done
+            expression: "share of A = (work done by A/total work) × total wages"
+            example: {problem: "A takes 10 days and B 15; with C's help they finish in 5 days and get ₹6,000.", solution: "A did 5/10 = 1/2, B 5/15 = 1/3, C 1/6; C gets ₹1,000"}
+          - key: efficiency-ratio
+            name: Same days worked
+            expression: "wages of A : B = E_A : E_B = T_B : T_A"
+            example: {problem: "A takes 10 days and B 15; working together they are paid ₹5,000.", solution: "3 : 2, so ₹3,000 and ₹2,000"}
+          - key: man-day-rate
+            name: Wage per man-day
+            expression: "total wages = (wage per man-day) × men × days"
+        patterns:
+          - key: share-by-efficiency
+            title: Shares of workers who work together throughout
+            example_stem: "A can do a job in 12 days and B in 18 days. They work together and earn ₹7,500. Find A's share."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: helper-share
+            title: Share of a helper who joins
+            example_stem: "A and B can do a job in 10 and 15 days. With C's help they finish it in 5 days and are paid ₹6,000. What is C's share?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: wages-man-days
+            title: Wages for a different number of workers or days
+            example_stem: "The wages of 15 men for 6 days are ₹27,000. What are the wages of 9 men for 12 days at the same rate?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: fraction-of-job
+            title: Pay by the fraction of the job
+            kind: shortcut
+            rule: "Each worker's fraction of the job = days worked ÷ own time; the helper gets whatever fraction is left."
+            example: {problem: "A 10 days, B 15 days, done in 5 days with C; ₹6,000", standard: "Find C's efficiency, then the ratio of all three", shortcut: "C's part = 1 − 5/10 − 5/15 = 1/6, so ₹1,000", seconds_saved: 20}
+            pattern: helper-share
+            pitfalls: ["Dividing wages by days worked when the workers' efficiencies differ."]
+
+  - key: pipes
+    title: Pipes and cisterns
+    concepts:
+      - slug: pipes-and-cisterns
+        title: "Pipes and cisterns: inlets and outlets"
+        summary: "Pipes and cisterns is time and work with signs: an inlet adds its rate (+1/a of the tank per hour) and an outlet removes it (−1/b per hour). An inlet filling in a hours with an outlet emptying in b hours (b > a) fills the tank in ab/(b − a) hours."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [work-combined]
+        formulas:
+          - key: net-rate
+            name: Net rate
+            expression: "net rate = Σ 1/(inlet times) − Σ 1/(outlet times)"
+          - key: fill-and-empty
+            name: One inlet and one outlet
+            expression: "time to fill = ab/(b − a)  (inlet a hours, outlet b hours, b > a)"
+            example: {problem: "Pipe A fills a tank in 10 hours and pipe B empties it in 15 hours.", solution: "150/5 = 30 hours"}
+          - key: two-inlets
+            name: Two inlets
+            expression: "time to fill = ab/(a + b)"
+        patterns:
+          - key: inlet-outlet
+            title: An inlet and an outlet together
+            example_stem: "Pipe A can fill a tank in 12 hours and pipe B can empty it in 20 hours. If both are opened together, how long will the empty tank take to fill?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: three-pipes
+            title: Three pipes together
+            example_stem: "Pipes A and B can fill a tank in 15 and 20 minutes, and pipe C can empty it in 30 minutes. If all three are opened together, in how much time will the tank be full?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: capacity-from-rate
+            title: Capacity of the tank from a pipe's rate in litres
+            example_stem: "Two pipes can fill a tank in 20 and 30 minutes. A third pipe drains 5 litres a minute. With all three open, the tank fills in 15 minutes. Find the capacity of the tank."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: signed-units
+            title: LCM units with signs
+            kind: shortcut
+            rule: "Take the tank as the LCM of all the times; inlets get + units per hour, outlets − units; divide the capacity by the net units."
+            example: {problem: "Inlets 15 and 20 minutes, outlet 30 minutes", standard: "1/15 + 1/20 − 1/30 = 5/60", shortcut: "Tank = 60 units: +4 + 3 − 2 = 5 units a minute, so 12 minutes", seconds_saved: 15}
+            pattern: three-pipes
+
+      - slug: pipes-and-cisterns-leak
+        title: "Leaks: a cistern with a leak"
+        summary: "A leak is an outlet you are not told about directly: if a pipe fills a tank in a hours on its own but takes b hours because of a leak, the leak alone empties the full tank in ab/(b − a) hours. Questions also give an inlet's rate in litres to find the capacity."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [pipes-and-cisterns]
+        formulas:
+          - key: leak-time
+            name: Time for the leak to empty the tank
+            expression: "leak empties the full tank in ab/(b − a) hours (a = time to fill without the leak, b = with it)"
+            example: {problem: "A tank fills in 6 hours, but takes 8 hours because of a leak.", solution: "Leak empties it in 48/2 = 24 hours"}
+          - key: leak-capacity
+            name: Capacity from a leak and an inlet in litres
+            expression: "leak empties in L hours; with an inlet of r litres/hour open it empties in E hours  ⇒  capacity = r × LE/(E − L)"
+            example: {problem: "A leak empties a full tank in 5 hours; with an inlet of 6 L/min (360 L/h) open it takes 7.5 hours.", solution: "360 × 5 × 7.5/2.5 = 5,400 L"}
+        patterns:
+          - key: leak-alone
+            title: Time for the leak alone
+            example_stem: "A pipe can fill a tank in 9 hours, but because of a leak in the bottom it takes 10 hours. In how many hours can the leak alone empty the full tank?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: leak-extra-time
+            title: Leak adds some time to the filling
+            example_stem: "A tap can fill a cistern in 4 hours. Because of a leak it takes half an hour longer. If the cistern is full, how long will the leak take to empty it?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: leak-inlet-litres
+            title: Capacity from a leak and an inlet in litres
+            example_stem: "A leak can empty a full tank in 5 hours. An inlet pipe filling 6 litres a minute is opened, and the full tank now empties in 7½ hours. Find the capacity of the tank."
+            frequency: medium
+            difficulty: hard
+            target_seconds: 45
+        shortcuts:
+          - key: product-over-difference
+            title: Product over difference
+            kind: shortcut
+            rule: "Leak time = (time without the leak × time with the leak)/(difference of the two times)."
+            example: {problem: "9 hours without the leak, 10 hours with it", standard: "1/9 − 1/10 = 1/90", shortcut: "9 × 10/1 = 90 hours", seconds_saved: 10}
+            pattern: leak-alone
+
+      - slug: pipes-opened-at-different-times
+        title: Pipes opened, closed or used alternately
+        summary: "When pipes are opened or closed at different times, add the work each pipe does in the time it runs (LCM units make this whole-number arithmetic). For pipes used alternately, work in cycles as in alternate work; watch the last partial cycle."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [pipes-and-cisterns, work-alternate-days]
+        formulas:
+          - key: running-time
+            name: Work of each pipe while it runs
+            expression: "capacity = Σ (rate of each pipe × time it runs)"
+            example: {problem: "A fills a tank in 12 minutes and B in 15; both are opened and B is closed after 3 minutes.", solution: "Tank = 60: A 5, B 4 → 27 units in 3 minutes; A fills the other 33 in 6.6 minutes; total 9.6 minutes"}
+          - key: closed-before-full
+            name: Pipe closed some time before the tank is full
+            expression: "(sum of rates) × T − (rate of the closed pipe) × k = capacity  (closed k minutes before full)"
+        patterns:
+          - key: closed-after
+            title: One pipe closed after some time
+            example_stem: "Pipes A and B can fill a tank in 20 and 30 minutes. Both are opened together, but B is turned off after 6 minutes. How much longer does A take to fill the tank?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: when-to-close
+            title: When to close a pipe so the tank fills in a given time
+            example_stem: "Pipes A and B can fill a tank in 24 and 32 minutes. Both are opened together. After how many minutes should B be closed so that the tank is full in exactly 18 minutes?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: alternate-pipes
+            title: Pipes opened alternately
+            example_stem: "Pipes A and B can fill a tank in 6 hours and 9 hours. They are opened alternately for one hour each, starting with A. In how many hours will the tank be full?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: full-runner-first
+            title: Count the pipe that never stops first
+            kind: shortcut
+            rule: "Work out the contribution of the pipe that runs the whole time; the rest of the tank must come from the other pipe, which fixes how long it ran."
+            example: {problem: "A 24 minutes, B 32 minutes; tank full in 18 minutes", standard: "Solve 18/24 + t/32 = 1", shortcut: "Tank = 96: A gives 18 × 4 = 72; B gave 24 units at 3 a minute, so B ran 8 minutes", seconds_saved: 20}
+            pattern: when-to-close

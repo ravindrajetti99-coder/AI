@@ -34,6 +34,22 @@ Estimates are focused developer-days.
 
 The pilot path is #2 → #3 → #4 → #5 → #6, about 3–4 weeks. #7 and #8 can follow the pilot or run in parallel with it.
 
+### Revised order (2026-10-13)
+
+The owner widened the pilot from SSC CGL Quantitative Aptitude to the **complete SSC CGL course**
+(all five subjects, Tier 1 and Tier 2) built on a generate-once, review, serve-many content engine.
+The remaining PRs are now:
+
+| PR | Scope | Status |
+| --- | --- | --- |
+| #5 | SSC CGL content engine foundation: complete syllabus as data, Tier 1 / Tier 2 profiles, concept-level content model (formulas, shortcuts, patterns, strategies), PYQ import, reviewed-only serving, coverage | done, see [content-engine.md](content-engine.md) |
+| #6 | AI content generation engine: planner, batch jobs, grounded prompts, automatic checks, review at scale, document ingestion (S3, full-text search, moved here from the old #5), sectioned mocks | planned, see [content-engine.md](content-engine.md#pr-6-plan-ai-content-generation-engine) |
+| #7 | Pilot deployment (section 5 below), for SSC CGL as its subjects reach full coverage | – |
+| #8 | Embeddings (bge-m3) + hybrid retrieval | – |
+| #9 | Judge0 integration interface (no deployment) | – |
+
+Sections 4–6 below keep their original text; where they disagree with this table, the table wins.
+
 ---
 
 ## 1. Persistent job queue (PR #2)

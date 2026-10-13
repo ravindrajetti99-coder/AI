@@ -1,0 +1,729 @@
+key: medieval-history
+title: Medieval Indian History
+strategies:
+  - key: approach
+    title: "Medieval history: dynasties in order, one card per ruler"
+    summary: >-
+      Medieval questions ask who built or introduced something, which battle was fought when
+      and between whom, which traveller visited which ruler, and which saint taught what. Learn
+      the dynasties in sequence and attach a short list of 'signature' facts to every ruler.
+    seconds_per_question: 15
+    accuracy_target: 0.85
+    tactics:
+      - "Memorise the order of dynasties and emperors first (Slave → Khalji → Tughlaq → Sayyid → Lodi; Babur → Aurangzeb); every other fact hangs on that frame."
+      - "Keep tables for battles (year, sides, winner), monuments (builder, place) and travellers (country, ruler visited)."
+      - "For reform questions (markets, currency, revenue), link each reform to one ruler: Alauddin – markets, Muhammad bin Tughlaq – token currency, Sher Shah – rupiya, Akbar – mansabdari."
+    avoid:
+      - "Confusing the three battles of Panipat (1526, 1556, 1761) and their opponents."
+
+topics:
+  - key: early-medieval
+    title: Early medieval kingdoms
+    concepts:
+      - slug: tripartite-struggle-palas-rashtrakutas
+        title: "Palas, Pratiharas and Rashtrakutas: the tripartite struggle"
+        summary: >-
+          From the 8th to the 10th century the Palas of Bengal, the Gurjara-Pratiharas of western
+          India and the Rashtrakutas of the Deccan fought for control of Kannauj. The Pala
+          dynasty was founded by Gopala (chosen by the nobles); Dharmapala founded Vikramashila
+          university and the Somapura Mahavihara, and the Palas patronised Mahayana Buddhism. The
+          Rashtrakutas were founded by Dantidurga with their capital at Manyakheta; Krishna I
+          built the rock-cut Kailasa temple at Ellora, and Amoghavarsha I wrote the Kannada work
+          Kavirajamarga.
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: dynasty-match
+            title: Match the dynasty with its founder, capital or monument
+            example_stem: "The Kailasa temple at Ellora was built by which Rashtrakuta ruler?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+          - key: struggle
+            title: The city fought over
+            example_stem: "The tripartite struggle among the Palas, Pratiharas and Rashtrakutas was for control over which city?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: ppr
+            title: East, west, south fighting for the centre
+            kind: memory
+            rule: "Palas = east (Bengal, Buddhist universities), Pratiharas = west (stopped the Arabs), Rashtrakutas = south (Ellora Kailasa); all three wanted Kannauj."
+            pattern: struggle
+      - slug: rajput-kingdoms
+        title: Rajput kingdoms of north India
+        summary: >-
+          The main Rajput dynasties were the Gurjara-Pratiharas (Kannauj), the Chauhans (Ajmer;
+          Prithviraj III fought Muhammad Ghori at Tarain; Chand Bardai wrote Prithviraj Raso), the
+          Paramaras of Malwa (Raja Bhoja of Dhar), the Chandelas of Bundelkhand (Khajuraho
+          temples, UNESCO 1986), the Solankis of Gujarat (Bhima I; Modhera Sun Temple; Vimal Shah
+          built the Vimal Vasahi at Dilwara, Mount Abu), the Tomaras (founded Dhillika, Delhi)
+          and the Gahadavalas of Kannauj (Jaichand, defeated at Chandawar in 1194).
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [tripartite-struggle-palas-rashtrakutas]
+        patterns:
+          - key: dynasty-monument
+            title: Rajput dynasty and its monument or ruler
+            example_stem: "The temples of Khajuraho were built by which dynasty?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+      - slug: deccan-regional-kingdoms
+        title: "Kakatiyas, Hoysalas, Yadavas and Eastern Gangas"
+        summary: >-
+          The Kakatiyas ruled from Warangal (Rudramadevi was a famous queen; the Ramappa temple is
+          a UNESCO site since 2021), the Hoysalas from Dwarasamudra (Halebidu; star-shaped temples
+          at Belur and Halebidu, UNESCO 2023), and the Yadavas from Devagiri; all three were
+          attacked by Alauddin Khalji's general Malik Kafur. The Eastern Gangas of Odisha built
+          the Jagannath temple at Puri (Anantavarman Chodaganga) and the Sun Temple at Konark
+          (Narasimhadeva I, 13th century).
+        difficulty: medium
+        weight: 0.8
+        patterns:
+          - key: kingdom-capital
+            title: Regional kingdom, capital and temple
+            example_stem: "Warangal was the capital of which dynasty?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+
+  - key: invasions
+    title: Arab and Turkish invasions
+    concepts:
+      - slug: arab-turkish-invasions
+        title: "Muhammad bin Qasim, Mahmud of Ghazni and Muhammad Ghori"
+        summary: >-
+          Muhammad bin Qasim conquered Sindh in 712 CE, defeating Raja Dahir. Mahmud of Ghazni
+          raided India 17 times between 1000 and 1027 and plundered the Somnath temple in 1025;
+          the scholar Al-Biruni, who came with him, wrote Kitab-ul-Hind, and Firdausi wrote the
+          Shahnama at his court. Muhammad Ghori lost the First Battle of Tarain (1191) to
+          Prithviraj Chauhan, won the Second (1192) and defeated Jaichand at Chandawar (1194); his
+          slave Qutbuddin Aibak became the first Sultan of Delhi.
+        difficulty: easy
+        weight: 1.2
+        patterns:
+          - key: battle-year
+            title: Battle, year and opponents
+            example_stem: "In which year was the Second Battle of Tarain fought?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: invader-fact
+            title: Invader and associated event or scholar
+            example_stem: "Which scholar accompanied Mahmud of Ghazni to India and wrote 'Kitab-ul-Hind'?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: tarain-91-92
+            title: '91 lost, 92 won'
+            kind: memory
+            rule: "Ghori lost Tarain I in 1191 and won Tarain II in 1192; Chandawar followed in 1194 (Jaichand). Qasim 712 is '7-1-2: Sindh is the first'."
+            pattern: battle-year
+
+  - key: delhi-sultanate
+    title: Delhi Sultanate
+    subtopics:
+      - key: dynasties
+        title: Dynasties of the Delhi Sultanate
+        concepts:
+          - slug: slave-mamluk-dynasty
+            title: "Slave (Mamluk) dynasty: Aibak, Iltutmish, Razia, Balban"
+            summary: >-
+              Qutbuddin Aibak (1206-1210) founded the Slave dynasty, began the Qutub Minar, built the
+              Quwwat-ul-Islam mosque and the Adhai Din ka Jhonpra at Ajmer, was called Lakh Bakhsh
+              and died playing chaugan (polo). Iltutmish (1211-1236) made Delhi the capital,
+              completed the Qutub Minar, introduced the silver tanka and copper jital, organised the
+              iqta system and the Chahalgani (group of forty nobles). Razia Sultan (1236-1240) was
+              the only woman ruler of Delhi; Balban (1266-1287) called himself Zil-i-Ilahi (shadow of
+              God), introduced sijda and paibos, created the Diwan-i-Arz and broke the power of the
+              forty.
+            difficulty: medium
+            weight: 1.5
+            patterns:
+              - key: ruler-reform
+                title: Ruler and his reform or monument
+                example_stem: "Which Sultan of Delhi introduced the silver 'tanka' and copper 'jital'?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: titles
+                title: Titles and court practices
+                example_stem: "Which Sultan introduced the Persian court customs of 'sijda' and 'paibos'?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 15
+            shortcuts:
+              - key: sultanate-order
+                title: Some Kings Take Sweet Laddoos
+                kind: memory
+                rule: "Dynasties in order: Slave (1206), Khalji (1290), Tughlaq (1320), Sayyid (1414), Lodi (1451). Inside the Slave dynasty: Aibak → Iltutmish → Razia → Balban ('A-I-R-B')."
+          - slug: khalji-dynasty
+            title: "Khalji dynasty: Alauddin Khalji's reforms"
+            summary: >-
+              Jalaluddin Khalji founded the dynasty in 1290. Alauddin Khalji (1296-1316) kept a
+              large standing army paid in cash, introduced dagh (branding of horses) and chehra
+              (descriptive roll of soldiers), fixed prices through market control under the
+              Shahna-i-Mandi, measured land and took half the produce as revenue, repelled the
+              Mongols and sent Malik Kafur to raid Devagiri, Warangal, Dwarasamudra and Madurai. He
+              built the Alai Darwaza and Siri Fort, captured Ranthambore and Chittor, and had Amir
+              Khusrau ('Tuti-e-Hind') at his court.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [slave-mamluk-dynasty]
+            patterns:
+              - key: reforms
+                title: Alauddin's military and market reforms
+                example_stem: "Which Sultan of Delhi introduced the system of branding horses (dagh) and keeping a descriptive roll of soldiers (chehra)?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: general-campaign
+                title: Generals and southern campaigns
+                example_stem: "Malik Kafur was a general of which Sultan?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 10
+          - slug: tughlaq-dynasty
+            title: "Tughlaq dynasty: Muhammad bin Tughlaq and Firoz Shah"
+            summary: >-
+              Ghiyasuddin Tughlaq founded the dynasty in 1320 and built Tughlaqabad. Muhammad bin
+              Tughlaq (1325-1351) shifted the capital to Daulatabad (Devagiri), issued token
+              (copper/bronze) currency, raised taxes in the Doab, created the Diwan-i-Kohi for
+              agriculture and planned Khurasan and Qarachil expeditions; the Moroccan traveller Ibn
+              Battuta served as his qazi and wrote the Rihla. Firoz Shah Tughlaq (1351-1388) dug
+              canals, set up the Diwan-i-Khairat (charity) and Diwan-i-Bandagan (slaves), founded
+              Firozabad, Hisar and Jaunpur and brought two Ashokan pillars to Delhi; Timur invaded
+              in 1398.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [khalji-dynasty]
+            patterns:
+              - key: experiments
+                title: Muhammad bin Tughlaq's experiments
+                example_stem: "Which Sultan transferred his capital from Delhi to Daulatabad?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: firoz
+                title: Firoz Shah's welfare measures
+                example_stem: "The Diwan-i-Khairat, a department of charity, was set up by"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 15
+          - slug: sayyid-lodi-dynasties
+            title: "Sayyid and Lodi dynasties"
+            summary: >-
+              Khizr Khan, Timur's nominee, founded the Sayyid dynasty in 1414. Bahlul Lodi founded the
+              Lodi dynasty in 1451, the first Afghan dynasty of Delhi. Sikandar Lodi founded Agra
+              (1504) and made it his capital and introduced the Gaz-i-Sikandari measuring yard;
+              Ibrahim Lodi was defeated and killed by Babur in the First Battle of Panipat (1526),
+              which ended the Sultanate.
+            difficulty: easy
+            weight: 1.0
+            prerequisites: [tughlaq-dynasty]
+            patterns:
+              - key: lodi-facts
+                title: Lodi rulers and their works
+                example_stem: "The city of Agra was founded by"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+      - key: administration
+        title: Administration and architecture of the Sultanate
+        concepts:
+          - slug: delhi-sultanate-administration
+            title: Sultanate administration, taxes and architecture
+            summary: >-
+              The Sultan ruled through the Wazir (finance, Diwan-i-Wizarat), the Diwan-i-Arz
+              (military), the Diwan-i-Insha (royal correspondence) and the qazis; provinces were
+              iqtas held by muqtis. Taxes included kharaj (land tax), jaziya (on non-Muslims), zakat
+              (on Muslims) and khams (share of war booty). Indo-Islamic buildings introduced the
+              true arch and dome: the tomb of Balban has the first true arch and the Alai Darwaza
+              the first true dome; the Qutub Minar is a UNESCO site.
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [slave-mamluk-dynasty]
+            patterns:
+              - key: department
+                title: Department and its function
+                example_stem: "In the Delhi Sultanate, the Diwan-i-Arz was the department of"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 15
+              - key: tax
+                title: Taxes of the Sultanate
+                example_stem: "'Kharaj' in the Delhi Sultanate was a tax on"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 10
+
+  - key: vijayanagara-bahmani
+    title: Vijayanagara and Bahmani kingdoms
+    concepts:
+      - slug: vijayanagara-empire
+        title: Vijayanagara empire and Krishnadeva Raya
+        summary: >-
+          Harihara I and Bukka I of the Sangama dynasty founded Vijayanagara in 1336 on the
+          Tungabhadra, with Hampi as capital (UNESCO site); the later dynasties were the Saluva,
+          Tuluva and Aravidu. Krishnadeva Raya (Tuluva, 1509-1529) wrote Amuktamalyada in Telugu,
+          kept eight poets called the Ashtadiggajas (including Allasani Peddana and Tenali
+          Ramakrishna) and built the Vitthala and Hazara Rama temples. The empire was crushed at
+          the Battle of Talikota (1565) by the Deccan Sultanates. Visitors: Nicolo Conti (Italian),
+          Abdur Razzaq (Persian), Domingo Paes and Fernao Nuniz (Portuguese).
+        difficulty: medium
+        weight: 1.5
+        patterns:
+          - key: founders
+            title: Founders, dynasties and capital
+            example_stem: "The Vijayanagara empire was founded in 1336 by"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: travellers
+            title: Foreign visitors to Vijayanagara
+            example_stem: "Domingo Paes, who visited the court of Krishnadeva Raya, came from which country?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: s-s-t-a
+            title: Sangama, Saluva, Tuluva, Aravidu
+            kind: memory
+            rule: "The four dynasties in order: 'Some Smart Teachers Argue' (Sangama, Saluva, Tuluva, Aravidu). Krishnadeva Raya is Tuluva; Talikota (1565) fell in the Aravidu period."
+            pattern: founders
+      - slug: bahmani-deccan-sultanates
+        title: Bahmani kingdom and the Deccan Sultanates
+        summary: >-
+          Alauddin Hasan Bahman Shah (Hasan Gangu) founded the Bahmani kingdom in 1347 with its
+          capital at Gulbarga, later shifted to Bidar; the Persian wazir Mahmud Gawan built a
+          famous madrasa at Bidar, and the Russian Afanasy Nikitin visited the kingdom. It broke
+          into five sultanates: Bijapur (Adil Shahi; Gol Gumbaz), Golconda (Qutb Shahi; Muhammad
+          Quli Qutb Shah founded Hyderabad and built the Charminar in 1591), Ahmadnagar (Nizam
+          Shahi; Chand Bibi resisted Akbar), Berar (Imad Shahi) and Bidar (Barid Shahi).
+          Aurangzeb annexed Bijapur (1686) and Golconda (1687).
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: sultanate-dynasty
+            title: Deccan sultanate, dynasty and monument
+            example_stem: "The Gol Gumbaz is located in which city?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: bahmani-founder
+            title: Founder and capital of the Bahmani kingdom
+            example_stem: "Who founded the Bahmani kingdom in 1347?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+
+  - key: bhakti-sufi
+    title: Bhakti and Sufi movements
+    concepts:
+      - slug: bhakti-south-acharyas
+        title: "Bhakti in the south: Alvars, Nayanars and the acharyas"
+        summary: >-
+          The Bhakti movement began in south India with the Alvars (12 Vaishnava saints; Andal was
+          a woman Alvar) and the Nayanars (63 Shaiva saints). Adi Shankaracharya taught Advaita
+          (non-dualism) and set up mathas at Sringeri, Dwarka, Puri and Joshimath; Ramanuja taught
+          Vishishtadvaita (qualified non-dualism), Madhvacharya Dvaita (dualism), Nimbarka
+          Dvaitadvaita and Vallabhacharya Shuddhadvaita (Pushti Marg). Basavanna founded the
+          Lingayat (Virashaiva) movement in 12th-century Karnataka.
+        difficulty: medium
+        weight: 1.2
+        patterns:
+          - key: philosophy
+            title: Acharya and his philosophy
+            example_stem: "The philosophy of Vishishtadvaita was propounded by"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+          - key: saints-groups
+            title: Alvars and Nayanars
+            example_stem: "The Nayanar saints of south India were devotees of"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: advaita-ladder
+            title: Shankara one, Ramanuja qualified, Madhva two
+            kind: memory
+            rule: "Shankara – Advaita (one reality); Ramanuja – Vishishta-advaita (qualified one); Madhva – Dvaita (two); Nimbarka – Dvaita-advaita (both); Vallabha – Shuddha-advaita (pure one)."
+            pattern: philosophy
+      - slug: bhakti-saints-north
+        title: Bhakti saints of north, east and west India
+        summary: >-
+          Ramananda carried bhakti to the north; his followers included Kabir (nirguna bhakti,
+          dohas collected in the Bijak) and Ravidas. Other saints: Chaitanya Mahaprabhu (Bengal,
+          Krishna kirtan), Sankardeva (Assam, Ekasarana dharma, satras and namghars), Mirabai
+          (Rajasthan, Krishna), Surdas (Sursagar, in Braj) and Tulsidas (Ramcharitmanas, in
+          Awadhi). In Maharashtra the Varkari saints worshipped Vitthala of Pandharpur:
+          Jnaneshwar (Jnaneshwari, a Marathi commentary on the Gita), Namdev, Eknath and Tukaram;
+          Samarth Ramdas wrote Dasbodh.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [bhakti-south-acharyas]
+        patterns:
+          - key: saint-region
+            title: Saint and region or work
+            example_stem: "'Ramcharitmanas' was written by Tulsidas in which language?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: saint-teaching
+            title: Saint and teaching
+            example_stem: "Which Bhakti saint of Assam founded the Ekasarana dharma?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+      - slug: sufi-movement
+        title: "Sufi movement: silsilas and saints"
+        summary: >-
+          Sufis were organised in silsilas. The Chishti order was brought to India by Khwaja
+          Moinuddin Chishti, whose dargah is at Ajmer; his line included Qutbuddin Bakhtiyar Kaki,
+          Baba Farid (whose verses are in the Guru Granth Sahib), Nizamuddin Auliya of Delhi
+          (disciple Amir Khusrau) and Salim Chishti of Fatehpur Sikri. Bahauddin Zakariya established
+          the Suhrawardi order at Multan; the Naqshbandi order (Sheikh Ahmad Sirhindi) was
+          orthodox; Dara Shikoh followed the Qadiri order. Key terms: khanqah (hospice), pir and
+          murid, sama (devotional music) and urs (death anniversary).
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: saint-place
+            title: Sufi saint and his centre or order
+            example_stem: "The dargah of Khwaja Moinuddin Chishti is located at"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: terms
+            title: Sufi terms
+            example_stem: "In Sufism, a 'khanqah' refers to"
+            frequency: low
+            difficulty: easy
+            target_seconds: 10
+
+  - key: mughal
+    title: Mughal empire
+    subtopics:
+      - key: emperors
+        title: Mughal emperors
+        concepts:
+          - slug: mughal-babur-humayun
+            title: "Babur and Humayun"
+            summary: >-
+              Babur defeated Ibrahim Lodi in the First Battle of Panipat (21 April 1526) using
+              artillery and the tulughma tactic, then Rana Sanga at Khanwa (1527), Medini Rai at
+              Chanderi (1528) and the Afghans at Ghaghra (1529); he wrote his memoirs, Baburnama
+              (Tuzuk-i-Baburi), in Turki and died in 1530. Humayun lost to Sher Shah at Chausa (1539)
+              and Kannauj (1540), lived in exile in Persia, regained Delhi in 1555 and died in 1556
+              after falling from the stairs of his library, Sher Mandal. His sister Gulbadan Begum
+              wrote the Humayun-nama; his tomb in Delhi is a UNESCO site.
+            difficulty: easy
+            weight: 1.5
+            patterns:
+              - key: battles
+                title: Babur's and Humayun's battles
+                example_stem: "Babur defeated Rana Sanga in which battle?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: books
+                title: Memoirs and biographies
+                example_stem: "'Humayun-nama' was written by"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+            shortcuts:
+              - key: mughal-order
+                title: Big Hairy Apes Jump Sideways Always
+                kind: memory
+                rule: "The great Mughals in order: Babur, Humayun, Akbar, Jahangir, Shah Jahan, Aurangzeb (B-H-A-J-S-A). Babur's battles in order P-K-C-G: Panipat 1526, Khanwa 1527, Chanderi 1528, Ghaghra 1529 (one a year)."
+                pattern: battles
+          - slug: sher-shah-suri
+            title: Sher Shah Suri and the Sur interlude
+            summary: >-
+              Sher Shah Suri (Farid) defeated Humayun at Chausa (1539) and Kannauj (1540) and ruled
+              until 1545. He issued the silver rupiya and copper dam, rebuilt the Grand Trunk Road
+              (Sadak-e-Azam), measured land for revenue with patta and qabuliyat documents, built
+              sarais and a horse-post system, and built the Rohtas fort and a mosque in the Purana
+              Qila. He died at Kalinjar in 1545 and is buried at Sasaram (Bihar).
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [mughal-babur-humayun]
+            patterns:
+              - key: reforms
+                title: Sher Shah's reforms and buildings
+                example_stem: "Who introduced the silver coin called 'rupiya'?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+          - slug: mughal-akbar
+            title: "Akbar: conquests and religious policy"
+            summary: >-
+              Akbar (born at Amarkot in 1542) became emperor in 1556 at 13 under the regent Bairam
+              Khan; his army defeated Hemu in the Second Battle of Panipat (5 November 1556). He
+              abolished the pilgrim tax (1563) and jaziya (1564), married into Rajput families,
+              fought Maharana Pratap at Haldighati (1576, Mughal army led by Man Singh), built the
+              Ibadat Khana at Fatehpur Sikri (1575), issued the Mahzar (1579) and started
+              Din-i-Ilahi (1582) under his policy of sulh-i-kul. His courtiers included Abul Fazl
+              (Akbarnama, Ain-i-Akbari), Faizi, Birbal, Todar Mal, Tansen, Man Singh and Abdur Rahim
+              Khan-i-Khanan.
+            difficulty: medium
+            weight: 2.0
+            prerequisites: [sher-shah-suri]
+            patterns:
+              - key: events-years
+                title: Akbar's events and years
+                example_stem: "The Battle of Haldighati was fought in which year?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: courtiers
+                title: Akbar's courtiers and their works
+                example_stem: "'Ain-i-Akbari' was written by"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+            shortcuts:
+              - key: akbar-timeline
+                title: Akbar in five years
+                kind: memory
+                rule: "1556 Panipat II; 1564 jaziya abolished; 1575 Ibadat Khana; 1576 Haldighati; 1582 Din-i-Ilahi. Ibadat Khana (75) comes one year before Haldighati (76)."
+                pattern: events-years
+          - slug: mughal-jahangir-shah-jahan
+            title: "Jahangir and Shah Jahan"
+            summary: >-
+              Jahangir (1605-1627) hung a chain of justice (Zanjir-i-Adl) at Agra, married Nur Jahan
+              (1611), executed Guru Arjan Dev (1606), wrote the Tuzuk-i-Jahangiri, and received the
+              Englishmen William Hawkins and Sir Thomas Roe, who won permission for a factory at
+              Surat; painting peaked with Ustad Mansur and Abul Hasan. Shah Jahan (1628-1658) built
+              the Taj Mahal for Mumtaz Mahal (architect Ustad Ahmad Lahori), the Red Fort and Jama
+              Masjid at Shahjahanabad (Delhi) and the Peacock Throne; after the war of succession
+              (1657-58) Aurangzeb imprisoned him in Agra Fort.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [mughal-akbar]
+            patterns:
+              - key: events
+                title: Events of Jahangir's and Shah Jahan's reigns
+                example_stem: "Sir Thomas Roe came to the court of which Mughal emperor?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: buildings
+                title: Buildings of Shah Jahan
+                example_stem: "Who was the chief architect of the Taj Mahal?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 15
+          - slug: mughal-aurangzeb
+            title: Aurangzeb
+            summary: >-
+              Aurangzeb (Alamgir, 1658-1707) won the war of succession at Samugarh (1658),
+              reimposed jaziya (1679), executed Guru Tegh Bahadur (1675), had the Fatawa-i-Alamgiri
+              compiled and banned music at court. He annexed Bijapur (1686) and Golconda (1687) but
+              spent his last decades fighting the Marathas in the Deccan and faced Jat, Satnami,
+              Sikh and Rajput revolts. The Bibi ka Maqbara at Aurangabad was built by his son for
+              his wife, and the Badshahi Mosque at Lahore in his reign; he died at Ahmednagar in
+              1707.
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [mughal-jahangir-shah-jahan]
+            patterns:
+              - key: policies
+                title: Aurangzeb's policies and conflicts
+                example_stem: "Which Mughal emperor reimposed the jaziya in 1679?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+          - slug: later-mughals
+            title: Later Mughals and the decline of the empire
+            summary: >-
+              After 1707 the empire weakened under Bahadur Shah I and his successors; the Sayyid
+              brothers acted as kingmakers, and Farrukhsiyar's farman of 1717 gave the English East
+              India Company duty-free trade in Bengal. Nadir Shah of Persia defeated Muhammad Shah
+              ('Rangila') at Karnal in 1739 and carried off the Peacock Throne and the Kohinoor;
+              Ahmad Shah Abdali invaded repeatedly. Shah Alam II fought at Buxar (1764) and granted
+              the Diwani (1765); the last emperor, Bahadur Shah Zafar, led the 1857 revolt and died in
+              exile in Rangoon (1862).
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [mughal-aurangzeb]
+            patterns:
+              - key: invasion
+                title: Invasions and decline
+                example_stem: "Nadir Shah invaded India during the reign of which Mughal emperor?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 15
+      - key: administration-culture
+        title: Mughal administration, architecture and painting
+        concepts:
+          - slug: mughal-administration-mansabdari
+            title: "Mughal administration: mansabdari and land revenue"
+            summary: >-
+              Akbar's mansabdari system ranked officers by zat (personal rank) and sawar (cavalry
+              they kept), usually paid through jagirs. Todar Mal's dahsala (zabti) system of 1580
+              fixed revenue on the average produce and prices of the previous ten years. The empire
+              was divided into subas, sarkars and parganas; central officers were the Wakil, the
+              Diwan (finance), the Mir Bakshi (military and mansabdars), the Mir Saman (royal
+              household and karkhanas) and the Sadr-us-Sudur (religious grants); faujdars ran
+              districts and kotwals towns.
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [mughal-akbar]
+            patterns:
+              - key: officer-role
+                title: Mughal officer and duty
+                example_stem: "In the Mughal administration, the Mir Bakshi was the head of"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 15
+              - key: revenue-system
+                title: Revenue systems
+                example_stem: "The 'dahsala' system of land revenue was introduced by Akbar's minister"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+            shortcuts:
+              - key: zat-sawar
+                title: Zat is self, sawar is horse
+                kind: memory
+                rule: "Zat = personal rank and pay; sawar = number of horsemen. Mir Bakshi pays the army, Mir Saman runs the household, Sadr looks after religion."
+                pattern: officer-role
+          - slug: mughal-architecture-painting
+            title: Mughal architecture and painting
+            summary: >-
+              Humayun's Tomb in Delhi was the first garden tomb (charbagh) of the subcontinent. Akbar
+              built Agra Fort and Fatehpur Sikri (Buland Darwaza for the Gujarat victory, Panch Mahal,
+              tomb of Salim Chishti); his tomb at Sikandra was completed by Jahangir. Nur Jahan's tomb
+              of Itimad-ud-Daulah introduced white marble with pietra dura. Shah Jahan's reign was
+              the high point: Taj Mahal, Red Fort, Jama Masjid. Painting began with Mir Sayyid Ali
+              and Abdus Samad (the Hamzanama under Akbar) and peaked under Jahangir.
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [mughal-jahangir-shah-jahan]
+            patterns:
+              - key: monument-builder
+                title: Mughal monument and builder
+                example_stem: "The Buland Darwaza at Fatehpur Sikri was built to commemorate Akbar's victory over"
+                frequency: high
+                difficulty: medium
+                target_seconds: 15
+
+  - key: marathas
+    title: Marathas
+    concepts:
+      - slug: shivaji-maratha-state
+        title: Shivaji and the Maratha state
+        summary: >-
+          Shivaji was born at Shivneri fort (1630) to Shahaji Bhonsle and Jijabai. He killed Afzal
+          Khan of Bijapur (1659), attacked Shaista Khan at Pune (1663), sacked Surat (1664), signed
+          the Treaty of Purandar with Jai Singh (1665), escaped from Agra (1666) and was crowned
+          Chhatrapati at Raigad in 1674. He governed with a council of eight ministers, the
+          Ashtapradhan (headed by the Peshwa), and collected chauth (one-fourth) and sardeshmukhi
+          (one-tenth) from neighbouring territories; he died in 1680.
+        difficulty: medium
+        weight: 1.5
+        patterns:
+          - key: events
+            title: Events in Shivaji's life
+            example_stem: "Shivaji was crowned Chhatrapati in 1674 at which fort?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: administration
+            title: Ashtapradhan and taxes
+            example_stem: "'Chauth' collected by the Marathas was what fraction of the land revenue?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+      - slug: peshwas
+        title: The Peshwas and the Third Battle of Panipat
+        summary: >-
+          Under Shahu the Peshwas became the real rulers: Balaji Vishwanath (first Peshwa, 1713),
+          Baji Rao I (greatest general; defeated the Nizam at Palkhed in 1728) and Balaji Baji Rao
+          (Nana Saheb), during whose rule the Marathas under Sadashivrao Bhau lost the Third
+          Battle of Panipat (14 January 1761) to Ahmad Shah Abdali. The Maratha confederacy
+          included the Gaekwads (Baroda), Holkars (Indore), Scindias (Gwalior) and Bhonsles
+          (Nagpur); the last Peshwa, Baji Rao II, signed the Treaty of Bassein (1802) and was
+          pensioned off in 1818.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [shivaji-maratha-state]
+        patterns:
+          - key: peshwa-fact
+            title: Peshwa and event
+            example_stem: "Who was the first Peshwa under Shahu?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+          - key: panipat-three
+            title: Third Battle of Panipat
+            example_stem: "The Third Battle of Panipat (1761) was fought between the Marathas and"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: three-panipats
+            title: 1526, 1556, 1761
+            kind: memory
+            rule: "Panipat I (1526) Babur vs Ibrahim Lodi; Panipat II (1556) Akbar (Bairam Khan) vs Hemu; Panipat III (1761) Marathas vs Ahmad Shah Abdali. The first two are 30 years apart."
+            pattern: panipat-three
+
+  - key: sikhs
+    title: Sikh Gurus and the Sikh kingdom
+    concepts:
+      - slug: sikh-gurus
+        title: The ten Sikh Gurus
+        summary: >-
+          Guru Nanak (1469-1539, born at Talwandi, now Nankana Sahib) founded Sikhism and the
+          langar. Angad standardised the Gurmukhi script; Amar Das set up the manji system; Ram Das
+          founded Amritsar on land granted by Akbar; Arjan Dev compiled the Adi Granth (1604),
+          built the Harmandir Sahib and was executed by Jahangir (1606); Hargobind built the Akal
+          Takht and armed the Sikhs; Har Rai and Har Krishan followed; Tegh Bahadur was executed by
+          Aurangzeb (1675); Gobind Singh founded the Khalsa at Anandpur Sahib on Baisakhi 1699 and
+          declared the Guru Granth Sahib the eternal Guru before his death at Nanded (1708).
+        difficulty: medium
+        weight: 1.2
+        patterns:
+          - key: guru-work
+            title: Guru and contribution
+            example_stem: "Which Sikh Guru compiled the Adi Granth?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: guru-order
+            title: Order of the Gurus
+            example_stem: "Who was the fifth Sikh Guru?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: guru-sequence
+            title: Five names, three Hars, two more
+            kind: memory
+            rule: "Nanak, Angad, Amar Das, Ram Das, Arjan Dev (N-A-A-R-A), then three 'Har': Hargobind, Har Rai, Har Krishan, then Tegh Bahadur and Gobind Singh: 'Nanak's Ashram Always Rings Aloud; Har, Har, Har; Then Gobind'."
+            pattern: guru-order
+      - slug: banda-bahadur-ranjit-singh
+        title: Banda Bahadur, the misls and Maharaja Ranjit Singh
+        summary: >-
+          Banda Singh Bahadur led a Sikh uprising after Guru Gobind Singh, took Sirhind (1710),
+          abolished zamindari in his territory and was executed in 1716. The Sikhs then organised
+          into twelve misls. Ranjit Singh of the Sukerchakia misl captured Lahore (1799), became
+          Maharaja (1801), signed the Treaty of Amritsar (1809) with the British fixing the Sutlej
+          as the boundary, modernised his army with European officers and covered the Harmandir
+          Sahib with gold; he was called Sher-e-Punjab and died in 1839.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [sikh-gurus]
+        patterns:
+          - key: ranjit
+            title: Ranjit Singh's kingdom
+            example_stem: "Maharaja Ranjit Singh signed the Treaty of Amritsar (1809) with the British. Which river did it fix as the boundary?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15

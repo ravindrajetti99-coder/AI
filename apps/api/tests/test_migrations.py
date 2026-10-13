@@ -11,7 +11,7 @@ from alembic import command
 from alembic.autogenerate import compare_metadata
 from alembic.migration import MigrationContext
 from conftest import PG_ADMIN_URL, alembic_config
-from sqlalchemy import Column, DateTime, MetaData, String, Table, Uuid, create_engine, inspect, make_url, pool, select
+from sqlalchemy import Column, DateTime, Float, Integer, MetaData, String, Table, Uuid, create_engine, inspect, make_url, pool, select
 
 from app.core.db import Base, JSONType
 from app.jobs.models import Job
@@ -121,3 +121,85 @@ def test_generation_jobs_move_into_the_job_queue_and_back(scratch_url):
     with eng.connect() as conn:
         assert sorted(conn.execute(select(old_jobs.c.kind, old_jobs.c.status)).all()) == [("lessons", s) for s in ("done", "failed", "queued", "queued")]
     eng.dispose()
+
+
+def test_content_engine_columns_backfill_existing_rows(scratch_url):
+    """0005 gives existing courses the open policy and no targets, and existing nodes and links
+    no tiers (meaning every exam stage)."""
+    eng = create_engine(scratch_url, poolclass=pool.NullPool)
+    cfg = alembic_config()
+
+    def migrate(fn, rev):
+        with eng.begin() as conn:
+            cfg.attributes["connection"] = conn
+            fn(cfg, rev)
+
+    migrate(command.upgrade, "0004")
+    meta = MetaData()
+    courses = Table(
+        "courses",
+        meta,
+        Column("id", Uuid),
+        *(Column(n, String) for n in ("slug", "title", "description", "domain", "level", "status", "color")),
+        Column("locales", JSONType),
+        *(Column(n, DateTime(timezone=True)) for n in ("created_at", "updated_at")),
+    )
+    nodes = Table(
+        "course_nodes",
+        meta,
+        *(Column(n, Uuid) for n in ("id", "course_id", "parent_id")),
+        Column("node_type", String),
+        Column("title", String),
+        Column("position", Integer),
+    )
+    concepts = Table(
+        "concepts",
+        meta,
+        Column("id", Uuid),
+        *(Column(n, String) for n in ("slug", "title", "summary", "domain")),
+        Column("difficulty_base", Float),
+        *(Column(n, DateTime(timezone=True)) for n in ("created_at", "updated_at")),
+    )
+    links = Table("node_concepts", meta, *(Column(n, Uuid) for n in ("id", "node_id", "concept_id")), Column("weight", Float), Column("position", Integer))
+    now = datetime.now(UTC)
+    ids = {k: uuid.uuid4() for k in ("course", "node", "concept", "link")}
+    with eng.begin() as conn:
+        conn.execute(
+            courses.insert().values(
+                id=ids["course"],
+                slug="c",
+                title="C",
+                description="",
+                domain="academic",
+                level="x",
+                status="published",
+                color="x",
+                locales=["en"],
+                created_at=now,
+                updated_at=now,
+            )
+        )
+        conn.execute(nodes.insert().values(id=ids["node"], course_id=ids["course"], parent_id=None, node_type="module", title="M", position=0))
+        conn.execute(
+            concepts.insert().values(id=ids["concept"], slug="k", title="K", summary="", domain="academic", difficulty_base=0.0, created_at=now, updated_at=now)
+        )
+        conn.execute(links.insert().values(id=ids["link"], node_id=ids["node"], concept_id=ids["concept"], weight=1.0, position=0))
+    migrate(command.upgrade, "head")
+    head = MetaData()
+    with eng.connect() as conn:
+        c = Table("courses", head, autoload_with=conn)
+        n = Table("course_nodes", head, autoload_with=conn)
+        nc = Table("node_concepts", head, autoload_with=conn)
+        row = conn.execute(select(c.c.content_policy, c.c.content_targets)).one()
+        assert (row.content_policy, _json(row.content_targets)) == ("open", {})
+        assert [(r.key, _json(r.tiers)) for r in conn.execute(select(n.c.key, n.c.tiers))] == [(None, [])]
+        assert [_json(r.tiers) for r in conn.execute(select(nc.c.tiers))] == [[]]
+    migrate(command.downgrade, "0004")
+    eng.dispose()
+
+
+def _json(value):
+    """Reflected JSON columns come back decoded on PostgreSQL and as text on SQLite."""
+    import json
+
+    return json.loads(value) if isinstance(value, str) else value

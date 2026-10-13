@@ -6,10 +6,11 @@ import { type FormEvent, useEffect, useRef, useState } from "react";
 
 import { RequireAuth, useAuth } from "@/components/auth";
 import { LessonView } from "@/components/lesson";
+import { StudyPackView } from "@/components/study-pack";
 import { Badge, Button, ButtonLink, Card, cx, ErrorNote, Loading, Notice, PageHeader, Tabs, TextArea } from "@/components/ui";
 import { api } from "@/lib/api";
 import { useApi } from "@/lib/hooks";
-import type { ConceptDetail, Lesson } from "@/lib/types";
+import type { ConceptDetail, Lesson, StudyPack } from "@/lib/types";
 
 const LEVELS = [
   { id: "1", label: "Beginner" },
@@ -154,6 +155,9 @@ function LearnView() {
   const [level, setLevel] = useState<LevelId>("1");
   const [locale, setLocale] = useState(me?.preferred_locale === "te" ? "te" : "en");
   const lesson = useApi<Lesson>(`/concepts/${concept}/lesson`, { level, locale });
+  const staff = me?.role === "admin" || me?.role === "reviewer";
+  const [preview, setPreview] = useState(false);
+  const pack = useApi<StudyPack>(`/concepts/${concept}/study-pack`, preview ? { preview: true } : undefined);
   const [generating, setGenerating] = useState(false);
   const [genError, setGenError] = useState<unknown>(null);
   const [completed, setCompleted] = useState(false);
@@ -232,6 +236,11 @@ function LearnView() {
                   {lesson.data.id && <FlagButton lessonId={lesson.data.id} />}
                 </div>
               </>
+            ) : lesson.data?.can_generate === false ? (
+              <div className="space-y-2 py-6 text-center">
+                <p className="font-medium">The {LEVELS.find((l) => l.id === level)?.label.toLowerCase()} lesson is on its way.</p>
+                <p className="text-sm text-muted">{lesson.data.note ?? "It is being prepared and reviewed by the content team."} Practice and the study pack below are available meanwhile.</p>
+              </div>
             ) : (
               <div className="space-y-3 py-6 text-center">
                 <p className="font-medium">No {LEVELS.find((l) => l.id === level)?.label.toLowerCase()} lesson yet.</p>
@@ -243,6 +252,13 @@ function LearnView() {
               </div>
             )}
           </Card>
+          {staff && (
+            <label className="flex items-center gap-2 text-sm text-muted">
+              <input type="checkbox" checked={preview} onChange={(e) => setPreview(e.target.checked)} />
+              Preview study pack items still in review
+            </label>
+          )}
+          {pack.error ? <ErrorNote error={pack.error} /> : pack.data ? <StudyPackView pack={pack.data} /> : null}
         </div>
         <div className="space-y-4">
           {(d.prerequisites.length > 0 || d.unlocks.length > 0) && (

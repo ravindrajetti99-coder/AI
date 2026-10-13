@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 from app.ai import gateway
 from app.ai.engines import language, mentor
 from app.core.db import as_utc, get_db
-from app.core.deps import get_current_user, rate_limit_ai
+from app.core.deps import get_current_user, is_staff, rate_limit_ai
 from app.core.errors import AppError, NotFound
 from app.modules.assessment import service as qservice
 from app.modules.assessment.models import Question
@@ -26,6 +26,8 @@ router = APIRouter(tags=["me"])
 @router.post("/courses/{slug}/enroll", status_code=201)
 def enroll(slug: str, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     course = catalog.get_course(db, slug)
+    if not catalog.visible(course, is_staff(user)):
+        raise NotFound("Course not found")
     existing = db.scalar(select(Enrollment).where(Enrollment.user_id == user.id, Enrollment.course_id == course.id))
     if not existing:
         db.add(Enrollment(user_id=user.id, course_id=course.id))

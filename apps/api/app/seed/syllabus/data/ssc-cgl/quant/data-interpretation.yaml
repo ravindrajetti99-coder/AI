@@ -1,0 +1,550 @@
+key: data-interpretation
+title: Data Interpretation
+strategies:
+  - key: approach
+    title: "DI: read the chart once, calculate smart"
+    summary: >-
+      SSC sets DI as a group of questions on one table or chart (table, bar diagram, pie chart,
+      line graph, histogram or frequency polygon, sometimes two displays together). The maths is
+      percentage, ratio, average and growth; the time goes into reading the data and dividing.
+      Read the title, units and scale once, compute shared totals once, and approximate whenever
+      the options are far apart.
+    seconds_per_question: 45
+    accuracy_target: 0.9
+    tactics:
+      - "Before the first question, read the title, units (thousands, lakhs, crores, %) and the axis scale; most DI errors are unit or base errors."
+      - "Compute the totals the set will need (row sums, the pie's total, the value of 1% or 1°) once and reuse them across its questions."
+      - "Approximate when the options are more than about 5% apart; calculate exactly only when they are close."
+      - "Use the fraction table (1/8 = 12.5%, 1/12 = 8.33%, 1/16 = 6.25%) to turn divisions into recognisable fractions."
+    avoid:
+      - "Dividing by the wrong base in a percentage-change question: the base is the earlier (or the named) value."
+      - "Reading bar heights without checking where the axis starts or what one gridline is worth."
+
+topics:
+  - key: calculation-skills
+    title: DI calculation skills
+    concepts:
+      - slug: di-percentage-based
+        title: Percentage based DI
+        summary: "Most DI questions are percentages: a part as a percentage of the total, one value as a percentage of another, what percent more or less, and a percentage of a percentage. Identify the base the question names before dividing."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [percentage-basics, percentage-fraction-conversion, percentage-comparison]
+        formulas:
+          - key: share
+            name: Percentage share of a total
+            expression: "share % = (part / total) × 100"
+            example: {problem: "45 out of a total of 360.", solution: "45/360 × 100 = 12.5%"}
+        patterns:
+          - key: share-of-total
+            title: Part as a percentage of the total
+            example_stem: "A table shows a firm's sales (₹ lakh) in four regions: North 180, South 240, East 120, West 260. What percentage of the total sales came from the South?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: percent-more-less
+            title: What percent more or less one value is than another
+            example_stem: "From the same table, by what percent are the West's sales more than the East's?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: percent-of-percent
+            title: Percentage of a percentage (nested data)
+            example_stem: "In a college of 2,500 students, 40% are girls and 30% of the girls study science. How many girls study science?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: recognise-fraction
+            title: Turn the division into a known fraction
+            kind: shortcut
+            rule: "Simplify the ratio to a fraction you know as a percentage before dividing: 240/800 = 3/10 = 30%; 140/120 = 7/6 = 116.67%."
+            example: {problem: "By what percent is 260 more than 120?", standard: "(260 − 120)/120 × 100 = 14000/120 = 116.67%", shortcut: "140/120 = 7/6 = 1 + 1/6 → 100% + 16.67% = 116.67%", seconds_saved: 15}
+            pattern: percent-more-less
+          - key: threshold-not-share
+            title: Compare with a threshold instead of computing shares
+            kind: elimination
+            rule: "For 'which items have more than r% of the total' questions, compute r% of the total once and compare the raw values with it."
+            example: {problem: "Which regions have more than 25% of total sales of 800?", standard: "Compute each region's share", shortcut: "25% of 800 = 200: South (240) and West (260)", seconds_saved: 20}
+            pattern: share-of-total
+
+      - slug: di-ratio-average
+        title: Ratio and average based DI
+        summary: "DI questions often ask the ratio of two values or totals, or an average over years or items, and how many items lie above the average. Simplify ratios by their HCF and find averages from totals or from deviations about an assumed value."
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [di-percentage-based]
+        formulas:
+          - key: average
+            name: Average of the data values
+            expression: "average = sum of the values / number of values"
+            example: {problem: "Profits of 120, 150, 135, 180 and 210.", solution: "795/5 = 159"}
+        patterns:
+          - key: ratio-of-totals
+            title: Ratio of two values or totals
+            example_stem: "Production (thousand tonnes) of two plants over three years: Plant A 45, 60, 75; Plant B 50, 70, 90. Find the ratio of A's total production to B's."
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: above-average
+            title: Average over years and items above the average
+            example_stem: "A company's profits (₹ crore) for 2019-2023 are 120, 150, 135, 180 and 210. In how many years was the profit above the five-year average?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 35
+        shortcuts:
+          - key: assumed-average
+            title: Average by deviations from a base
+            kind: shortcut
+            rule: "Pick a convenient base, add the deviations of all values from it and divide only the deviation sum."
+            example: {problem: "Average of 120, 150, 135, 180, 210", standard: "795/5 = 159", shortcut: "base 150: −30 + 0 − 15 + 30 + 60 = 45; 45/5 = 9; average = 159", seconds_saved: 15}
+            pattern: above-average
+          - key: ratio-of-averages
+            title: Ratio of averages = ratio of totals
+            kind: shortcut
+            rule: "When both averages are over the same number of items, their ratio equals the ratio of the totals; skip the division."
+            example: {problem: "Ratio of A's average to B's average over the same 3 years", shortcut: "180 : 210 = 6 : 7", seconds_saved: 10}
+            pattern: ratio-of-totals
+
+      - slug: di-growth-rate
+        title: Growth rate and percentage change in DI
+        summary: "Year-on-year growth = (this year − last year) / last year × 100, and the change over a period is measured from its first value. SSC asks the year with the highest or lowest growth, the percentage change between two years and comparisons of growth; the largest absolute increase is not always the largest percentage increase."
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [percentage-change, di-percentage-based]
+        formulas:
+          - key: yoy-growth
+            name: Year-on-year growth
+            expression: "growth % = (current − previous) / previous × 100"
+            example: {problem: "Sales rise from 150 to 180.", solution: "30/150 × 100 = 20%"}
+          - key: period-change
+            name: Change over a period
+            expression: "change % = (last value − first value) / first value × 100"
+            example: {problem: "Sales of 120 in 2019 and 210 in 2023.", solution: "90/120 × 100 = 75%"}
+        patterns:
+          - key: highest-growth-year
+            title: Year with the highest (or lowest) percentage growth
+            example_stem: "A firm's sales (₹ crore) for 2019-2023 are 120, 150, 135, 180 and 210. In which year was the percentage increase over the previous year the highest?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: change-between-years
+            title: Percentage change between two given years
+            example_stem: "From the same data, by what percent did sales rise from 2019 to 2023?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: absolute-vs-percent
+            title: Largest absolute increase versus largest percentage increase
+            example_stem: "A country's exports (₹ thousand crore) in four successive years were 40, 60, 85 and 120. In which year was the percentage growth the highest, and in which the absolute growth?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: compare-ratios
+            title: Compare current/previous ratios
+            kind: shortcut
+            rule: "The year with the largest ratio current/previous has the largest growth; compare the ratios as simple fractions (150/120 = 5/4, 180/135 = 4/3) instead of computing each percentage."
+            example: {problem: "Highest growth among 120 → 150 → 135 → 180 → 210", standard: "Compute 25%, −10%, 33.3% and 16.7%", shortcut: "5/4, a fall, 4/3, 7/6: 4/3 is largest → 2022", seconds_saved: 20}
+            pattern: highest-growth-year
+          - key: small-base
+            title: Same rise, smaller base wins
+            kind: elimination
+            rule: "Skip years where the value fell; between equal or similar rises, the one on the smaller base has the larger percentage growth."
+            example: {problem: "Exports 40, 60, 85, 120", shortcut: "rises 20, 25, 35 on bases 40, 60, 85: 20/40 = 50% beats 25/60 and 35/85 (both below 42%); largest absolute rise is the last year's 35", seconds_saved: 15}
+            pattern: absolute-vs-percent
+
+      - slug: di-approximation
+        title: Approximation in DI
+        summary: "DI options are usually spread wide, so rounding values to convenient numbers and using fraction equivalents gives the answer without exact division. Round numerator and denominator in the same direction to keep the ratio steady, and calculate exactly only when options are close."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [percentage-fraction-conversion, di-percentage-based]
+        patterns:
+          - key: approximate-percentage
+            title: Approximate percentage of awkward numbers
+            example_stem: "A state produced 4,873 tonnes of rice out of a national total of 19,620 tonnes. Approximately what percentage is this? (a) 19% (b) 25% (c) 31% (d) 35%"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: compare-fractions
+            title: Largest or smallest of several ratios
+            example_stem: "Exports and imports (₹ crore) of four firms are A 347 and 412, B 518 and 587, C 263 and 309, D 435 and 501. Which firm has the highest ratio of exports to imports?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 45
+        shortcuts:
+          - key: round-to-fraction
+            title: Round to a nearby simple fraction
+            kind: approximation
+            rule: "Round both numbers to values that make a known fraction, then convert the fraction to a percentage."
+            example: {problem: "4,873 as a percentage of 19,620", standard: "4873/19620 × 100 = 24.84%", shortcut: "≈ 4,900/19,600 = 1/4 = 25%", seconds_saved: 25}
+            pattern: approximate-percentage
+          - key: gap-from-one
+            title: Compare ratios just below 1 by their gaps
+            kind: approximation
+            rule: "When every ratio is a little below 1, the largest ratio has the smallest (denominator − numerator) / denominator."
+            example: {problem: "347/412, 518/587, 263/309, 435/501", standard: "Divide each: 0.842, 0.882, 0.851, 0.868", shortcut: "gaps 65/412 ≈ 0.16, 69/587 ≈ 0.12, 46/309 ≈ 0.15, 66/501 ≈ 0.13; smallest gap → B", seconds_saved: 20}
+            pattern: compare-fractions
+
+  - key: table-di
+    title: Table DI
+    concepts:
+      - slug: di-table
+        title: "Table DI: rows, columns and totals"
+        summary: "A table gives exact values by row and column (for example years × products). SSC asks totals, percentage shares, year-on-year change, ratios, averages, counts of entries meeting a condition and missing values from a given total or average."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [di-percentage-based, di-ratio-average]
+        patterns:
+          - key: share-in-a-column
+            title: Share of an entry in a row or column total
+            example_stem: "Units sold (thousands) of models P, Q and R in 2021, 2022 and 2023 are: P 30, 36, 42; Q 25, 30, 40; R 45, 39, 38. What percentage of the total 2023 sales was model Q's?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 35
+          - key: count-condition
+            title: Count the entries that meet a condition
+            example_stem: "From the same table, in how many of the three years did model P sell more than model R?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: missing-value
+            title: Missing value from a given total or average
+            example_stem: "A table gives the marks of five students; four of them are 72, 65, 58 and 80, and the average of all five is 68. Find the fifth student's marks."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+        shortcuts:
+          - key: margin-totals
+            title: Write the totals in the margin first
+            kind: alternative
+            rule: "Before the first question, add the row and column totals the set is likely to use; most questions in a table set reuse them."
+            example: {problem: "Share, ratio and average questions on the 2023 column", shortcut: "2023 total = 42 + 40 + 38 = 120 once; Q's share = 40/120 = 33.33%, average = 40, P : R = 42 : 38", seconds_saved: 30}
+            pattern: share-in-a-column
+          - key: average-balance
+            title: Missing value by balancing deviations
+            kind: shortcut
+            rule: "Missing value = average − (sum of the known values' deviations from the average)."
+            example: {problem: "Average 68; known marks 72, 65, 58, 80", standard: "5 × 68 − (72 + 65 + 58 + 80) = 340 − 275", shortcut: "deviations +4, −3, −10, +12 = +3, so the fifth = 68 − 3 = 65", seconds_saved: 10}
+            pattern: missing-value
+
+  - key: bar-graphs
+    title: Bar graph
+    concepts:
+      - slug: di-bar-graph
+        title: Bar graph (bar diagram) with simple bars
+        summary: "A bar diagram shows one quantity per category or year as bar lengths against a scale, with gaps between bars. SSC asks the highest or lowest value, differences, percentage changes and averages read from the bars; check the scale, the units and whether the axis starts at zero."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [di-percentage-based, di-growth-rate]
+        patterns:
+          - key: read-and-compare
+            title: Change or comparison between two bars
+            example_stem: "A bar graph shows the number of students (in hundreds) who passed an exam in 2019-2023 as 12, 15, 18, 14 and 21. Find the percentage increase from 2022 to 2023."
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: average-of-bars
+            title: Average or total of the bars
+            example_stem: "From the same graph, find the average number of students who passed per year."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+        shortcuts:
+          - key: gridline-gap
+            title: Read the gap, not both bars
+            kind: shortcut
+            rule: "For a change between two bars, count the gap between their tops in scale units and divide by the earlier bar; convert units once at the end."
+            example: {problem: "Bars at 14 and 21 (hundreds)", standard: "1,400 → 2,100: (2100 − 1400)/1400 × 100", shortcut: "gap 7 units on 14 → 1/2 = 50%", seconds_saved: 10}
+            pattern: read-and-compare
+          - key: bar-deviations
+            title: Average from a base line
+            kind: shortcut
+            rule: "Choose a gridline near the middle as base and average the bars' deviations from it."
+            example: {problem: "Bars 12, 15, 18, 14, 21", standard: "80/5 = 16", shortcut: "base 15: −3 + 0 + 3 − 1 + 6 = 5 → +1 → 16 hundred = 1,600", seconds_saved: 10}
+            pattern: average-of-bars
+
+      - slug: di-multiple-bar-graph
+        title: Multiple and stacked bar graphs
+        summary: "A multiple (grouped) bar graph puts two or more series side by side for each year or category; a stacked (component) bar shows the parts that make up a total. SSC asks comparisons between series, counts of years meeting a condition, ratios of series totals and the share of a component in a stacked bar."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [di-bar-graph, di-ratio-average]
+        patterns:
+          - key: two-series-compare
+            title: Comparing two series year by year
+            example_stem: "A double bar graph shows imports and exports (₹ crore) of a country for 2020-2023: imports 60, 75, 80, 85; exports 50, 70, 88, 82. In how many years did exports exceed 90% of imports?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: series-totals
+            title: Ratio of the totals of two series
+            example_stem: "From the same graph, find the ratio of total imports to total exports over the four years."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: stacked-share
+            title: Share of a component in a stacked bar
+            example_stem: "A stacked bar shows a family's monthly expenses of ₹40,000: food ₹12,000, rent ₹10,000, education ₹8,000 and the rest on other items. What percentage goes to other items?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+        shortcuts:
+          - key: threshold-per-year
+            title: Compute the threshold, not the ratio
+            kind: shortcut
+            rule: "For 'exports exceeded r% of imports', compute r% of each import value (90% = value − 10%) and compare with the export bar."
+            example: {problem: "Imports 60, 75, 80, 85; exports 50, 70, 88, 82", standard: "Divide exports by imports for each year", shortcut: "thresholds 54, 67.5, 72, 76.5 → exceeded in 2021, 2022, 2023: 3 years", seconds_saved: 15}
+            pattern: two-series-compare
+
+  - key: pie-charts
+    title: Pie chart
+    concepts:
+      - slug: di-pie-chart
+        title: "Pie chart: percentages and central angles"
+        summary: "A pie chart splits a total into sectors; a sector's central angle = its percentage × 3.6° (100% = 360°). SSC asks a sector's value from the total, the central angle of a sector, and differences or ratios between sectors, with the chart given in percentages or in degrees."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [di-percentage-based]
+        formulas:
+          - key: central-angle
+            name: Central angle of a sector
+            expression: "angle = (value / total) × 360° = percentage × 3.6°"
+            example: {problem: "A sector is 15% of the total.", solution: "15 × 3.6° = 54°"}
+          - key: sector-value
+            name: Value of a sector from its angle
+            expression: "value = (angle / 360°) × total"
+            example: {problem: "A 72° sector of a ₹50,000 budget.", solution: "72/360 × 50,000 = ₹10,000"}
+        patterns:
+          - key: sector-value
+            title: Value of a sector or the difference between sectors
+            example_stem: "A pie chart shows a family's monthly budget of ₹60,000: food 30%, rent 25%, education 15%, transport 10%, savings 20%. How much more is spent on rent than on transport?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: central-angle
+            title: Central angle of a sector
+            example_stem: "In the same pie chart, what is the central angle of the education sector?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: degree-pie
+            title: Pie chart given in degrees
+            example_stem: "In a pie chart of 1,800 students by stream, the arts sector has a central angle of 84°. How many students study arts?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: unit-value
+            title: Value of 1% or 1° once
+            kind: shortcut
+            rule: "Compute total/100 (or total/360) once; every sector is a multiple of it."
+            example: {problem: "84° of 1,800 students", standard: "84/360 × 1800 = 151200/360", shortcut: "1° = 1800/360 = 5 students, so 84° = 420", seconds_saved: 15}
+            pattern: degree-pie
+          - key: subtract-first
+            title: Subtract percentages before converting
+            kind: shortcut
+            rule: "For a difference between two sectors, subtract their percentages (or angles) first and convert once."
+            example: {problem: "Rent 25% vs transport 10% of ₹60,000", standard: "15,000 − 6,000", shortcut: "15% of 60,000 = ₹9,000", seconds_saved: 10}
+            pattern: sector-value
+
+      - slug: di-two-pie-charts
+        title: Two pie charts and pie chart with a table
+        summary: "When two pie charts have different totals (for example two years), equal percentages do not mean equal values: convert each sector with its own total. Pie-with-table sets give the percentage split in the chart and a further breakdown (for example a male : female ratio) in a table."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [di-pie-chart, di-ratio-average]
+        patterns:
+          - key: different-totals
+            title: Same item in two pie charts with different totals
+            example_stem: "Two pie charts show a firm's expenses in 2022 (total ₹40 lakh) and 2023 (total ₹50 lakh). Salaries were 30% in 2022 and 28% in 2023. By how much did the salary expense change?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: pie-with-table
+            title: Pie chart split further by a table
+            example_stem: "A pie chart shows the 2,400 employees of a company by department: HR 15%, Sales 35%, IT 30%, Finance 20%. A table gives the male : female ratio as HR 1 : 2, Sales 5 : 2, IT 3 : 1, Finance 1 : 1. How many women work in Sales and IT together?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 50
+        shortcuts:
+          - key: compare-products
+            title: Compare percentage × total
+            kind: shortcut
+            rule: "To compare a sector across two pies, compare percentage × total as plain products and convert only the final difference."
+            example: {problem: "30% of ₹40 lakh vs 28% of ₹50 lakh", standard: "12 lakh and 14 lakh separately", shortcut: "30 × 40 = 1200 vs 28 × 50 = 1400 → difference 200/100 = ₹2 lakh more", seconds_saved: 15}
+            pattern: different-totals
+
+  - key: line-graphs
+    title: Line graph
+    concepts:
+      - slug: di-line-graph
+        title: "Line graph: trends and changes"
+        summary: "A line graph plots values over time, with one or more lines; the steepness between two points shows the size of the change. SSC asks the period with the greatest rise or fall, percentage change between years, averages, and comparisons between two lines such as income and expenditure."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [di-growth-rate]
+        patterns:
+          - key: steepest-change
+            title: Period with the highest percentage rise or fall
+            example_stem: "A line graph shows a company's revenue (₹ crore) for 2018-2023 as 40, 45, 60, 55, 70 and 77. In which year was the percentage increase over the previous year the highest?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: two-lines
+            title: Gap or ratio between two lines
+            example_stem: "Two lines show a firm's income and expenditure (₹ lakh) for 2020-2023: income 50, 60, 72, 80; expenditure 40, 52, 60, 68. In which year was the profit as a percentage of expenditure the highest?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 45
+        shortcuts:
+          - key: slope-trap
+            title: Steepest segment is not always the largest percentage
+            kind: elimination
+            rule: "The steepest segment shows the largest absolute change; for percentage change, compare rises relative to their starting points and favour segments that start low."
+            example: {problem: "Revenue 40, 45, 60, 55, 70, 77", standard: "Compute all five yearly percentages", shortcut: "rises of 15 happen twice (45 → 60 and 55 → 70); the smaller base 45 wins: 15/45 = 33.3% in 2020", seconds_saved: 15}
+            pattern: steepest-change
+          - key: ratio-not-difference
+            title: Profit percentage from the ratio of the lines
+            kind: shortcut
+            rule: "Profit % on expenditure = (income/expenditure − 1) × 100, so compare income/expenditure ratios directly."
+            example: {problem: "Income/expenditure 50/40, 60/52, 72/60, 80/68", shortcut: "1.25, about 1.15, 1.2, about 1.18 → 2020 is highest (25%)", seconds_saved: 15}
+            pattern: two-lines
+
+  - key: frequency-graphs
+    title: Histogram and frequency polygon
+    concepts:
+      - slug: di-histogram
+        title: Histogram
+        summary: "A histogram shows a frequency distribution of continuous class intervals as adjacent bars with no gaps; bar areas are proportional to the frequencies, so bar heights are proportional to the frequencies only when the class widths are equal. SSC asks frequencies, totals and percentages read from a histogram and the class with the highest frequency."
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [di-bar-graph]
+        patterns:
+          - key: read-frequency
+            title: Percentage of observations in a range of classes
+            example_stem: "A histogram shows the marks of 50 students in classes 0-10, 10-20, 20-30, 30-40 and 40-50 with frequencies 5, 8, 15, 12 and 10. What percentage of the students scored 30 or more?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: unequal-width
+            title: Histogram with unequal class widths
+            example_stem: "In a histogram the class 0-10 has frequency 8 and is drawn 8 units high. The class 10-30 has frequency 20. How high should its bar be?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: smaller-side
+            title: Count the smaller side
+            kind: shortcut
+            rule: "For 'at least' or 'less than' questions, add whichever side has fewer classes and subtract from the total if needed."
+            example: {problem: "Students scoring 30 or more out of 50 (frequencies 5, 8, 15, 12, 10)", standard: "50 − (5 + 8 + 15) = 22", shortcut: "12 + 10 = 22 → 22/50 = 44%", seconds_saved: 10}
+            pattern: read-frequency
+          - key: density
+            title: Height = frequency ÷ class width
+            kind: shortcut
+            rule: "With unequal widths, scale each bar's height to frequency per unit width, using the same scale for every bar."
+            example: {problem: "0-10 with f = 8 drawn 8 high; 10-30 with f = 20", shortcut: "density 8/10 = 0.8 ↔ height 8, so 20/20 = 1 ↔ height 10", seconds_saved: 20}
+            pattern: unequal-width
+
+      - slug: di-frequency-polygon
+        title: Frequency polygon
+        summary: "A frequency polygon joins the points (class mark, frequency) with straight lines and is usually closed by adding a zero-frequency class at each end; it can be drawn from a histogram by joining the midpoints of the bar tops. SSC asks class marks, frequencies read from the polygon and comparisons of two polygons."
+        difficulty: easy
+        weight: 0.8
+        prerequisites: [di-histogram]
+        formulas:
+          - key: class-mark
+            name: Class mark
+            expression: "class mark = (lower limit + upper limit) / 2"
+            example: {problem: "Class 20-30.", solution: "(20 + 30)/2 = 25"}
+        patterns:
+          - key: read-polygon
+            title: Frequencies read from the polygon's vertices
+            example_stem: "A frequency polygon of the ages of 60 people has vertices at (15, 0), (25, 10), (35, 18), (45, 20), (55, 12) and (65, 0). How many people are aged 30-50?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: class-intervals
+            title: Class intervals from class marks
+            example_stem: "The vertices of a frequency polygon are plotted at 12.5, 17.5, 22.5 and 27.5 on the x-axis. What are the class intervals?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: marks-to-classes
+            title: Width = gap between class marks
+            kind: shortcut
+            rule: "The class width is the difference between consecutive class marks; each class runs from mark − width/2 to mark + width/2."
+            example: {problem: "Class marks 12.5, 17.5, 22.5, 27.5", shortcut: "width 5 → 10-15, 15-20, 20-25, 25-30", seconds_saved: 15}
+            pattern: class-intervals
+          - key: vertex-to-class
+            title: Each vertex is one class
+            kind: memory
+            rule: "Each vertex's x-value is a class mark and its y-value that class's frequency; the end vertices with frequency 0 are the added empty classes."
+            example: {problem: "Ages 30-50 from vertices (35, 18) and (45, 20)", shortcut: "classes 30-40 and 40-50 → 18 + 20 = 38", seconds_saved: 10}
+            pattern: read-polygon
+
+  - key: caselet-mixed
+    title: Caselet DI and mixed graphs
+    concepts:
+      - slug: di-caselet
+        title: Caselet DI (data given in a paragraph)
+        summary: "A caselet gives the data as a paragraph instead of a chart. Turn it into a small table or a two-way grid before answering; the questions are then ordinary percentage, ratio and average work."
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [di-table]
+        patterns:
+          - key: paragraph-to-table
+            title: Two-way split described in words
+            example_stem: "A school has 1,200 students, 45% of them girls. 60% of the boys and 50% of the girls play a sport. How many students do not play any sport?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 50
+          - key: ratio-and-percent
+            title: Ratio split followed by percentages
+            example_stem: "A company has 800 employees; graduates and non-graduates are in the ratio 5 : 3. 40% of the graduates and 25% of the non-graduates are women. How many women work there?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 45
+        shortcuts:
+          - key: two-way-grid
+            title: Build a 2 × 2 grid
+            kind: alternative
+            rule: "Rows for one split (boys/girls), columns for the other (play/do not play); fill the totals first, then the cells; each question then reads one cell."
+            example: {problem: "1,200 students, 45% girls; 60% of boys and 50% of girls play", standard: "Re-read the paragraph for every question", shortcut: "boys 660 = 396 play + 264 not; girls 540 = 270 + 270; not playing = 264 + 270 = 534", seconds_saved: 30}
+            pattern: paragraph-to-table
+
+      - slug: di-mixed-graphs
+        title: Mixed graphs (two displays combined)
+        summary: "A mixed DI set links two displays, such as a bar graph of totals with pie charts or a table of shares, or bars with a line for a second quantity. Decide which display gives each number, combine them (share × total) and keep units consistent."
+        difficulty: hard
+        weight: 1.0
+        prerequisites: [di-multiple-bar-graph, di-pie-chart, di-line-graph]
+        patterns:
+          - key: bar-and-pie
+            title: Totals from a bar graph, shares from a pie chart
+            example_stem: "A bar graph gives a company's total sales as ₹80 crore in 2022 and ₹100 crore in 2023; pie charts show product X's share as 25% in 2022 and 22% in 2023. Find the percentage change in X's sales."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 45
+          - key: bar-and-line
+            title: Quantities from bars, rates from a line
+            example_stem: "Bars show a factory's production (thousand units): 2021 40, 2022 50, 2023 60; a line shows the percentage of production sold: 80%, 70% and 80%. In which year were the most units left unsold?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 45
+        shortcuts:
+          - key: combine-changes
+            title: Combine the change in total and in share
+            kind: shortcut
+            rule: "If the total changes by a% and the share changes by b% of itself, the item changes by a + b + ab/100 percent."
+            example: {problem: "Total 80 → 100 (+25%), share 25% → 22% (−12% of itself)", standard: "20 crore → 22 crore = +10%", shortcut: "25 − 12 − 3 = +10%", seconds_saved: 20}
+            pattern: bar-and-pie
+          - key: unsold-share
+            title: Work with the complement rate
+            kind: shortcut
+            rule: "For 'unsold' or 'failed' questions multiply each bar by (100 − line value)% directly."
+            example: {problem: "Production 40, 50, 60 with 80%, 70%, 80% sold", shortcut: "unsold 20% × 40 = 8, 30% × 50 = 15, 20% × 60 = 12 → 2022", seconds_saved: 10}
+            pattern: bar-and-line

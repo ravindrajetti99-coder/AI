@@ -52,13 +52,20 @@ test("lesson viewer: levels, Telugu, diagram, flashcards, tutor and draft genera
   await page.getByRole("button", { name: "Ask", exact: true }).click();
   await expect(page.getByText(/Here is what the lesson says/)).toBeVisible();
 
+  // Percentage basics is part of the SSC CGL exam course: learners get reviewed lessons only.
   await page.getByRole("tab", { name: "Expert" }).click();
-  await page.getByRole("button", { name: "Generate a draft lesson" }).click();
-  await expect(page.getByText(/Draft built from course material without an AI model/)).toBeVisible();
+  await expect(page.getByText("The expert lesson is on its way.")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Generate a draft lesson" })).toHaveCount(0);
 
   await page.getByRole("tab", { name: "Beginner" }).click();
   await page.getByRole("button", { name: "✓ I have learned this" }).click();
   await expect(page.getByText(/first revision is scheduled for day 3/)).toBeVisible();
+
+  // Open courses still let a learner draft a missing lesson.
+  await page.goto("/learn/python-loops");
+  await page.getByRole("tab", { name: "Expert" }).click();
+  await page.getByRole("button", { name: "Generate a draft lesson" }).click();
+  await expect(page.getByText(/Draft built from course material without an AI model/)).toBeVisible();
 });
 
 test("timed mock test with negative marking and a full report", async ({ page }) => {

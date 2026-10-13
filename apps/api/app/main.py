@@ -13,6 +13,7 @@ from app.core.db import Base, SessionLocal, engine
 from app.core.errors import install_error_handlers
 from app.jobs.worker import start_embedded
 from app.modules.admin.router import router as admin_router
+from app.modules.assessment.pyq_router import router as pyq_router
 from app.modules.assessment.router import router as assessment_router
 from app.modules.catalog.router import router as catalog_router
 from app.modules.content.router import router as content_router
@@ -61,7 +62,7 @@ def create_app() -> FastAPI:
         return response
 
     install_error_handlers(app)
-    for r in (identity_router, catalog_router, content_router, assessment_router, learning_router, admin_router):
+    for r in (identity_router, catalog_router, content_router, assessment_router, learning_router, admin_router, pyq_router):
         app.include_router(r, prefix=s.api_prefix)
 
     @app.get(f"{s.api_prefix}/health", tags=["ops"])

@@ -2,6 +2,7 @@
 
 Upserts exam profiles, courses, the course tree, the shared concept graph, lessons,
 flashcards, questions (with solution steps and rubrics) and one mock test per course.
+Exam courses kept as syllabus data (`app/seed/syllabus`) load after the Python courses.
 Every item has a stable key (slug, concept + level + locale, `Question.external_key`),
 so re-running updates content in place instead of duplicating it. Seeded questions that
 disappear from the seed files are retired, never deleted, so learners' attempts survive.
@@ -21,7 +22,6 @@ from app.core.db import utcnow
 from app.modules.assessment import service as qservice
 from app.modules.assessment.models import (
     DIFFICULTY_B,
-    QUESTION_TYPES,
     STEP_KINDS,
     Question,
     QuestionConcept,
@@ -37,6 +37,8 @@ from app.modules.identity.models import User
 from app.modules.ingest import service as ingest
 from app.modules.learning.models import TestAttempt
 from app.seed.courses import ALL_COURSES
+from app.seed.syllabus import ALL_SYLLABI, SyllabusError, load_syllabus_file
+from app.seed.syllabus.loader import load_syllabus
 
 GENERATED_PER_CONCEPT = 12
 MOCK_QUESTIONS = 20
@@ -62,38 +64,10 @@ def _set(obj, stats: Counter, kind: str, **values) -> None:
 
 def validate_question(key: str, item: dict) -> None:
     """Structural checks so a typo in seed content fails loudly instead of shipping a broken key."""
-    qtype, p = item.get("qtype"), item.get("payload", {})
-    if qtype not in QUESTION_TYPES:
-        raise SeedError(f"{key}: unknown qtype {qtype!r}")
-    if not item.get("stem", "").strip():
-        raise SeedError(f"{key}: empty stem")
-    if item.get("difficulty", "medium") not in DIFFICULTY_B:
-        raise SeedError(f"{key}: unknown difficulty {item.get('difficulty')!r}")
-    ids = [str(o["id"]).lower() for o in p.get("options", [])]
-    if qtype in ("mcq", "assertion_reason", "case_study"):
-        if len(ids) < 2 or len(set(ids)) != len(ids) or str(p.get("answer", "")).lower() not in ids:
-            raise SeedError(f"{key}: answer {p.get('answer')!r} is not one of the options {ids}")
-        texts = [o["text"] for o in p["options"]]
-        if len(set(texts)) != len(texts):
-            raise SeedError(f"{key}: duplicate option texts {texts}")
-    elif qtype == "multi":
-        answers = [str(a).lower() for a in p.get("answers", [])]
-        if not answers or any(a not in ids for a in answers):
-            raise SeedError(f"{key}: answers {answers} are not all options {ids}")
-    elif qtype == "numerical":
-        if not isinstance(p.get("answer"), (int, float)):
-            raise SeedError(f"{key}: numerical answer must be a number")
-    elif qtype == "coding":
-        if not p.get("function_name") or not p.get("tests"):
-            raise SeedError(f"{key}: coding questions need function_name and tests")
-        if not any(not t.get("hidden") for t in p["tests"]):
-            raise SeedError(f"{key}: coding questions need at least one visible example test")
-    elif qtype in ("descriptive", "interview"):
-        if not item.get("rubric"):
-            raise SeedError(f"{key}: {qtype} questions need a rubric")
-    elif qtype == "speaking":
-        if not p.get("sentence"):
-            raise SeedError(f"{key}: speaking questions need a sentence")
+    try:
+        qservice.validate_item(key, item)
+    except ValueError as exc:
+        raise SeedError(str(exc)) from exc
 
 
 def _question_items(slug: str, spec: dict) -> list[tuple[str, dict, str]]:
@@ -150,6 +124,7 @@ def upsert_course(db: Session, spec: dict, exam: ExamProfile | None, stats: Coun
         color=spec.get("color", "indigo"),
         exam_profile_id=exam.id if exam else None,
         status=spec.get("status", "published"),
+        content_policy=spec.get("content_policy", "open"),
     )
     db.flush()
     return course
@@ -325,6 +300,7 @@ def upsert_questions(db: Session, slug: str, concept: Concept, spec: dict, stats
             source=source,
             pyq_year=item.get("pyq_year"),
             locale=item.get("locale", "en"),
+            stem_hash=qservice.stem_hash(item["stem"]),
         )
         if q.status == "retired" and q.external_key:  # retired by an earlier load, back in the seed
             q.status = "verified"
@@ -398,14 +374,24 @@ def bootstrap_admin(db: Session, stats: Counter) -> User | None:
 # --------------------------------------------------------------------------- entry point
 
 
-def load(db: Session, courses: list[ModuleType] | None = None, only: list[str] | None = None, build_tests: bool = True) -> Counter:
-    """Load seed courses in one transaction. `only` filters by course slug."""
+def load(
+    db: Session, courses: list[ModuleType] | None = None, only: list[str] | None = None, build_tests: bool = True, syllabi: list[str] | None = None
+) -> Counter:
+    """Load seed courses and syllabus courses in one transaction. `only` filters by course slug."""
     stats: Counter = Counter()
     bootstrap_admin(db, stats)
     every = courses or ALL_COURSES
-    modules = [m for m in every if not only or m.COURSE["slug"] in only]
-    if only and len(modules) != len(set(only)):
-        raise SeedError(f"unknown course slug in {only}; known: {sorted(m.COURSE['slug'] for m in every)}")
+    try:
+        all_syllabi = [load_syllabus_file(name) for name in (ALL_SYLLABI if syllabi is None else syllabi)]
+    except SyllabusError as exc:
+        raise SeedError(str(exc)) from exc
+    known = [m.COURSE["slug"] for m in every] + [syl.course.slug for syl in all_syllabi]
+    if only and set(only) - set(known):
+        raise SeedError(f"unknown course slug in {only}; known: {sorted(known)}")
+    chosen_syllabi = [syl for syl in all_syllabi if not only or syl.course.slug in only]
+    # A syllabus may reuse concepts that a seed course defines; that course is loaded with it.
+    reused = set().union(*(syl.refs for syl in chosen_syllabi)) if chosen_syllabi else set()
+    modules = [m for m in every if not only or m.COURSE["slug"] in only or reused & set(m.CONCEPTS)]
     # Specs come from every course, even with `only`, so a reused concept keeps the weight its
     # owning course gives it and partial loads never disagree with full ones.
     specs: dict[str, dict] = {}
@@ -434,6 +420,12 @@ def load(db: Session, courses: list[ModuleType] | None = None, only: list[str] |
                 upsert_flashcards(db, concept, spec.get("flashcards", []), stats)
                 upsert_questions(db, slug, concept, spec, stats)
             loaded.append(course)
+        # Syllabus courses (exam courses kept as data); their content comes from the content engine.
+        for syl in chosen_syllabi:
+            try:
+                load_syllabus(db, syl, stats)
+            except LookupError as exc:
+                raise SeedError(str(exc)) from exc
         db.flush()
         if build_tests:
             for course in loaded:
@@ -442,5 +434,5 @@ def load(db: Session, courses: list[ModuleType] | None = None, only: list[str] |
     except Exception:
         db.rollback()
         raise
-    stats["courses.loaded"] = len(loaded)
+    stats["courses.loaded"] = len(loaded) + len(chosen_syllabi)
     return stats

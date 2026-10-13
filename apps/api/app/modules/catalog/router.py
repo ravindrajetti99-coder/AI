@@ -5,7 +5,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.core.db import get_db
-from app.core.deps import require_admin
+from app.core.deps import get_optional_user, is_staff, require_admin
 from app.core.errors import Conflict, NotFound
 from app.modules.assessment.models import Question, QuestionConcept
 from app.modules.catalog import service
@@ -59,12 +59,16 @@ def list_courses(domain: str | None = None, q: str = "", db: Session = Depends(g
 
 
 @router.get("/courses/{slug}", response_model=CourseDetail)
-def course_detail(slug: str, db: Session = Depends(get_db)):
+def course_detail(slug: str, user: User | None = Depends(get_optional_user), db: Session = Depends(get_db)):
     course = service.get_course(db, slug)
+    if not service.visible(course, is_staff(user)):
+        raise NotFound("Course not found")
     detail = CourseDetail.model_validate(course)
     detail.concept_count, detail.question_count = service.course_counts(db, [course.id]).get(course.id, (0, 0))
     if course.exam_profile_id:
         detail.exam_profile = ExamProfileOut.model_validate(db.get(ExamProfile, course.exam_profile_id))
+    detail.exams = [ExamProfileOut.model_validate(e) for e in service.course_exams(db, course)]
+    detail.strategies = service.course_strategies(db, course, depth=1)
     detail.tree = service.build_tree(db, course.id)
     return detail
 

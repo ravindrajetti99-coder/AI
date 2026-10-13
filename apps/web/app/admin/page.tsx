@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, useEffect, useState } from "react";
+import { type FormEvent, Fragment, useEffect, useState } from "react";
 
 import { RequireAuth, useAuth } from "@/components/auth";
 import { LessonView } from "@/components/lesson";
@@ -8,9 +8,9 @@ import { STEP_LABELS } from "@/components/question";
 import { Badge, Button, Card, Empty, ErrorNote, Field, Loading, Notice, PageHeader, Select, Stat, Tabs, TextArea } from "@/components/ui";
 import { api } from "@/lib/api";
 import { useApi } from "@/lib/hooks";
-import type { Course, CourseDetail, LessonBody, Option, TreeNode, User } from "@/lib/types";
+import type { AdminCourse, Course, CourseDetail, Coverage, CoverageBucket, LessonBody, Option, PyqImportRow, PyqSource, TreeNode, User } from "@/lib/types";
 
-type Tab = "overview" | "review" | "generate" | "documents" | "flags" | "usage" | "users" | "invites";
+type Tab = "overview" | "review" | "generate" | "documents" | "flags" | "usage" | "coverage" | "pyq" | "users" | "invites";
 
 // --------------------------------------------------------------------------- overview
 
@@ -40,9 +40,13 @@ function Overview() {
 
 // --------------------------------------------------------------------------- review queue
 
+const AUTHORED = ["formula", "shortcut", "pattern", "strategy"] as const;
+type AuthoredType = (typeof AUTHORED)[number];
+
 type QueueItem = {
-  asset_type: "lesson" | "question" | "flashcard" | "note";
+  asset_type: "lesson" | "question" | "flashcard" | "note" | AuthoredType;
   id: string;
+  key?: string;
   concept: string;
   source: string;
   level?: number;
@@ -89,6 +93,78 @@ function QuestionPreview({ content }: { content: Record<string, unknown> }) {
   );
 }
 
+function text(v: unknown): string {
+  return typeof v === "string" ? v : v === undefined || v === null ? "" : JSON.stringify(v);
+}
+
+function AuthoredPreview({ item }: { item: QueueItem }) {
+  const c = item.content as Record<string, unknown>;
+  const list = (v: unknown) => (Array.isArray(v) ? (v as unknown[]).map(text) : []);
+  const example = (c.example ?? {}) as Record<string, unknown>;
+  return (
+    <div className="space-y-2 text-sm">
+      <p className="text-xs text-muted">{item.key}</p>
+      {item.asset_type === "formula" && (
+        <>
+          <p className="font-medium">{text(c.name)}</p>
+          <p className="rounded bg-surface-2 px-2 py-1 font-mono">{text(c.expression)}</p>
+          {list(c.variables).length > 0 && <p className="text-muted">{(c.variables as { symbol: string; meaning: string }[]).map((v) => `${v.symbol}: ${v.meaning}`).join("; ")}</p>}
+          {text(c.conditions) && <p>{text(c.conditions)}</p>}
+        </>
+      )}
+      {item.asset_type === "shortcut" && (
+        <>
+          <p className="font-medium">
+            {text(c.title)} <Badge tone="green">{text(c.kind)}</Badge>
+          </p>
+          <p>{text(c.rule)}</p>
+          {text(c.when_to_use) && <p className="text-muted">When: {text(c.when_to_use)}</p>}
+          {list(c.steps).length > 0 && (
+            <ol className="ml-5 list-decimal">
+              {list(c.steps).map((x, i) => (
+                <li key={i}>{x}</li>
+              ))}
+            </ol>
+          )}
+          {text(example.standard) && <p className="text-muted">Standard: {text(example.standard)}</p>}
+        </>
+      )}
+      {item.asset_type === "pattern" && (
+        <>
+          <p className="font-medium">
+            {text(c.title)} <Badge>{text(c.frequency)}</Badge> <Badge>{text(c.difficulty)}</Badge> <span className="text-xs text-muted">~{text(c.target_seconds)} s</span>
+          </p>
+          {text(c.description) && <p className="text-muted">{text(c.description)}</p>}
+          {text(c.example_stem) && <p className="italic">“{text(c.example_stem)}”</p>}
+        </>
+      )}
+      {item.asset_type === "strategy" && (
+        <>
+          <p className="font-medium">{text(c.title)}</p>
+          {text(c.summary) && <p className="text-muted">{text(c.summary)}</p>}
+          {list(c.attempt_order).length > 0 && (
+            <ol className="ml-5 list-decimal">
+              {list(c.attempt_order).map((x, i) => (
+                <li key={i}>{x}</li>
+              ))}
+            </ol>
+          )}
+          <ul className="ml-5 list-disc">
+            {list(c.tactics).map((x, i) => (
+              <li key={i}>{x}</li>
+            ))}
+          </ul>
+        </>
+      )}
+      {example.problem !== undefined && (
+        <p className="text-muted">
+          Example: {text(example.problem)} → {text(example.solution ?? example.shortcut)}
+        </p>
+      )}
+    </div>
+  );
+}
+
 function ReviewCard({ item, onDecided }: { item: QueueItem; onDecided: () => void }) {
   const [editing, setEditing] = useState(false);
   const [edits, setEdits] = useState(() => JSON.stringify(editableContent(item), null, 2));
@@ -130,6 +206,8 @@ function ReviewCard({ item, onDecided }: { item: QueueItem; onDecided: () => voi
         </div>
       ) : item.asset_type === "question" ? (
         <QuestionPreview content={item.content} />
+      ) : (AUTHORED as readonly string[]).includes(item.asset_type) ? (
+        <AuthoredPreview item={item} />
       ) : (
         <dl className="space-y-2 text-sm">
           {Object.entries(item.content).map(([k, v]) => (
@@ -145,9 +223,13 @@ function ReviewCard({ item, onDecided }: { item: QueueItem; onDecided: () => voi
         <Button size="sm" onClick={() => decide("approve")} busy={busy}>
           {editing ? "Save edits and approve" : "Approve"}
         </Button>
-        <Button size="sm" variant="secondary" onClick={() => setEditing(!editing)}>
-          {editing ? "Cancel editing" : "Edit"}
-        </Button>
+        {item.source === "syllabus" ? (
+          <span className="self-center text-xs text-muted">From the syllabus files: change it there to edit.</span>
+        ) : (
+          <Button size="sm" variant="secondary" onClick={() => setEditing(!editing)}>
+            {editing ? "Cancel editing" : "Edit"}
+          </Button>
+        )}
         <Button size="sm" variant="danger" onClick={() => decide("reject")} busy={busy}>
           Reject
         </Button>
@@ -168,6 +250,10 @@ function ReviewQueue() {
           <option value="question">Questions</option>
           <option value="flashcard">Flashcards</option>
           <option value="note">Notes</option>
+          <option value="formula">Formulas</option>
+          <option value="shortcut">Shortcuts</option>
+          <option value="pattern">Exam patterns</option>
+          <option value="strategy">Exam strategies</option>
         </Select>
         <span className="text-sm text-muted">AI drafts stay invisible to learners until approved.</span>
       </div>
@@ -845,6 +931,335 @@ function Invites() {
   );
 }
 
+// --------------------------------------------------------------------------- coverage
+
+const ASSET_NAMES: Record<string, string> = {
+  lessons: "lessons",
+  formulas: "formulas",
+  shortcuts: "shortcuts",
+  patterns: "patterns",
+  practice_questions: "practice Qs",
+  mock_questions: "mock Qs",
+  flashcards: "flashcards",
+};
+
+function missingText(missing: Record<string, number | string[]>) {
+  const parts = Object.entries(missing).map(([k, v]) => `${Array.isArray(v) ? v.length : v} ${ASSET_NAMES[k] ?? k}`);
+  return parts.length ? parts.join(", ") : "complete";
+}
+
+function BucketRow({ b, onOpen, indent }: { b: CoverageBucket & { key: string }; onOpen?: () => void; indent?: boolean }) {
+  return (
+    <tr className="border-t border-line">
+      <td className={indent ? "py-1.5 pl-4" : "py-1.5 font-medium"}>
+        {onOpen ? (
+          <button className="text-left text-brand-600 hover:underline" onClick={onOpen}>
+            {b.title}
+          </button>
+        ) : (
+          b.title
+        )}
+      </td>
+      <td className="py-1.5 text-right tabular-nums">
+        {b.complete}/{b.concepts}
+      </td>
+      <td className="py-1.5 text-right tabular-nums">{b.percent}%</td>
+      <td className="py-1.5 pl-3 text-xs text-muted">{missingText(b.missing)}</td>
+    </tr>
+  );
+}
+
+function CoverageTab() {
+  const courses = useApi<AdminCourse[]>("/admin/courses");
+  const [slug, setSlug] = useState("ssc-cgl");
+  const [scope, setScope] = useState<string | null>(null);
+  const report = useApi<Coverage>(`/admin/courses/${slug}/coverage`, scope ? { scope } : undefined);
+  const r = report.data;
+  return (
+    <div className="space-y-4">
+      <div className="flex flex-wrap items-center gap-3">
+        <Select
+          aria-label="Course"
+          value={slug}
+          onChange={(e) => {
+            setSlug(e.target.value);
+            setScope(null);
+          }}
+          className="w-80"
+        >
+          {(courses.data ?? []).map((c) => (
+            <option key={c.slug} value={c.slug}>
+              {c.title} {c.status !== "published" ? "(draft)" : ""}
+            </option>
+          ))}
+        </Select>
+        <span className="text-sm text-muted">Verified content against each concept&apos;s requirements.</span>
+      </div>
+      <ErrorNote error={report.error ?? courses.error} />
+      {report.loading && !r ? (
+        <Loading />
+      ) : r ? (
+        <>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <Stat label="Concepts complete" value={`${r.totals.complete}/${r.totals.concepts}`} hint={`${r.totals.percent}%`} />
+            <Stat label="Content policy" value={r.course.content_policy === "reviewed_only" ? "Reviewed only" : "Open"} hint={r.course.status} />
+            <Stat label="Ready to publish" value={r.ready ? "Yes" : "No"} hint={missingText(r.totals.missing)} />
+          </div>
+          <Card title="By subject and chapter">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="text-left text-xs text-muted">
+                  <th className="py-1 font-normal">Part</th>
+                  <th className="py-1 text-right font-normal">Complete</th>
+                  <th className="py-1 text-right font-normal">%</th>
+                  <th className="py-1 pl-3 font-normal">Still missing (verified)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {r.subjects.map((s) => (
+                  <Fragment key={s.key}>
+                    <BucketRow b={s} onOpen={() => setScope(s.key)} />
+                    {s.chapters.map((ch) => (
+                      <BucketRow key={`${s.key}.${ch.key}`} b={ch} indent onOpen={() => setScope(`${s.key}.${ch.key}`)} />
+                    ))}
+                  </Fragment>
+                ))}
+              </tbody>
+            </table>
+          </Card>
+          {r.concepts && (
+            <Card title={`Concepts in ${scope}`} action={<Button size="sm" variant="secondary" onClick={() => setScope(null)}>Close</Button>}>
+              <ul className="space-y-1 text-sm">
+                {r.concepts.map((c) => (
+                  <li key={c.concept_id} className="flex flex-wrap justify-between gap-2 border-t border-line py-1.5">
+                    <span>
+                      {c.title} <span className="text-xs text-muted">{c.slug}</span>
+                    </span>
+                    <span className={Object.keys(c.missing).length ? "text-xs text-muted" : "text-xs text-emerald-700"}>{missingText(c.missing)}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          )}
+          {r.mocks.map((m) => (
+            <Card key={m.exam} title={`${m.name}: ${m.mocks_planned} full mocks planned`} action={<Badge tone={m.ready ? "green" : "amber"}>{m.ready ? "pool ready" : "pool short"}</Badge>}>
+              <table className="w-full text-sm">
+                <tbody>
+                  {m.sections.map((s) => (
+                    <tr key={s.name} className="border-t border-line">
+                      <td className="py-1.5">{s.name}</td>
+                      <td className="py-1.5 text-right tabular-nums">
+                        {s.available}/{s.needed} mock-pool questions
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </Card>
+          ))}
+        </>
+      ) : null}
+    </div>
+  );
+}
+
+// --------------------------------------------------------------------------- previous-year questions
+
+const LICENCES = ["public-government-document", "owned", "licensed", "permission-granted"];
+
+function PyqTab() {
+  const imports = useApi<PyqImportRow[]>("/admin/pyq/imports");
+  const sources = useApi<PyqSource[]>("/admin/pyq/sources");
+  const unmapped = useApi<{ id: string; external_key: string; stem: string; status: string }[]>("/admin/pyq/unmapped");
+  const [format, setFormat] = useState<"json" | "csv">("json");
+  const [content, setContent] = useState("");
+  const [filename, setFilename] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<unknown>(null);
+  const [open, setOpen] = useState<PyqImportRow | null>(null);
+
+  async function reloadAll() {
+    await Promise.all([imports.reload(), sources.reload(), unmapped.reload()]);
+  }
+
+  async function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const f = new FormData(e.currentTarget);
+    setBusy(true);
+    setError(null);
+    try {
+      const paperFields = ["key", "exam", "tier", "year", "exam_date", "shift", "title", "source", "source_url", "licence"];
+      const paper = Object.fromEntries(paperFields.map((k) => [k, String(f.get(k) ?? "")]).filter(([, v]) => v !== ""));
+      const body: Record<string, unknown> = { filename: filename || `paper.${format}`, format, content, dry_run: f.get("dry_run") === "on" };
+      if (format === "csv" || paper.key) body.paper = { ...paper, year: Number(paper.year) };
+      await api("/admin/pyq/imports", { body });
+      await reloadAll();
+    } catch (err) {
+      setError(err);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div className="grid gap-6 lg:grid-cols-2">
+      <Card title="Import a paper">
+        <form className="space-y-3" onSubmit={submit}>
+          <p className="text-sm text-muted">
+            One paper per file. Every paper needs its source and the licence it is used under. Questions arrive in the review queue; rows without a concept are listed below for mapping.
+          </p>
+          <Select label="Format" value={format} onChange={(e) => setFormat(e.target.value as "json" | "csv")}>
+            <option value="json">JSON ({"{"}paper, questions{"}"})</option>
+            <option value="csv">CSV (number, stem, option_a…option_e, answer, concepts, pattern, …)</option>
+          </Select>
+          <input
+            type="file"
+            accept=".json,.csv,text/csv,application/json"
+            aria-label="Paper file"
+            className="text-sm"
+            onChange={async (e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                setFilename(file.name);
+                setContent(await file.text());
+              }
+            }}
+          />
+          <TextArea label="Or paste the file" rows={6} value={content} onChange={(e) => setContent(e.target.value)} className="font-mono text-xs" />
+          <fieldset className="grid gap-2 sm:grid-cols-2">
+            <legend className="mb-1 text-sm font-medium">Paper {format === "json" ? "(optional: overrides the file)" : ""}</legend>
+            <Field label="Key" name="key" placeholder="ssc-cgl:tier1:2024-09-09:s1" required={format === "csv"} />
+            <Field label="Exam" name="exam" placeholder="ssc-cgl" required={format === "csv"} />
+            <Field label="Tier" name="tier" placeholder="tier1" />
+            <Field label="Year" name="year" type="number" required={format === "csv"} />
+            <Field label="Exam date" name="exam_date" type="date" />
+            <Field label="Shift" name="shift" />
+            <Field label="Source" name="source" placeholder="SSC answer key" required={format === "csv"} />
+            <Field label="Source URL" name="source_url" />
+            <Select label="Licence" name="licence" defaultValue="">
+              <option value="">(from the file)</option>
+              {LICENCES.map((l) => (
+                <option key={l} value={l}>
+                  {l}
+                </option>
+              ))}
+            </Select>
+          </fieldset>
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" name="dry_run" /> Dry run (validate and report, write nothing)
+          </label>
+          <ErrorNote error={error} />
+          <Button type="submit" busy={busy} disabled={!content}>
+            Import
+          </Button>
+        </form>
+      </Card>
+      <div className="space-y-6">
+        <Card title="Imports" action={<Button size="sm" variant="secondary" onClick={reloadAll}>Refresh</Button>}>
+          <ErrorNote error={imports.error} />
+          {!imports.data?.length ? (
+            <p className="text-sm text-muted">No imports yet.</p>
+          ) : (
+            <ul className="space-y-2 text-sm">
+              {imports.data.map((i) => (
+                <li key={i.id} className="rounded-lg border border-line p-2">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-medium">{i.filename}</span>
+                    <Badge tone={i.status === "done" ? "green" : i.job_status === "failed" ? "red" : "amber"}>{i.job_status === "failed" ? "failed" : i.status}</Badge>
+                    {i.dry_run && <Badge>dry run</Badge>}
+                  </div>
+                  <div className="mt-1 text-xs text-muted">
+                    {i.summary.paper} · {i.summary.rows ?? 0} rows
+                    {i.status === "done" &&
+                      ` · ${i.summary.created ?? 0} new, ${i.summary.updated ?? 0} updated, ${i.summary.unchanged ?? 0} unchanged, ${i.summary.duplicate ?? 0} duplicates, ${i.summary.invalid ?? 0} invalid, ${i.summary.unmapped ?? 0} unmapped`}
+                  </div>
+                  {i.job_error && <p className="mt-1 text-xs text-rose-700">{i.job_error}</p>}
+                  {i.error_count > 0 && (
+                    <button className="mt-1 text-xs text-brand-600 hover:underline" onClick={async () => setOpen(await api<PyqImportRow>(`/admin/pyq/imports/${i.id}`))}>
+                      Show {i.error_count} problem{i.error_count === 1 ? "" : "s"}
+                    </button>
+                  )}
+                  {open?.id === i.id && (
+                    <ul className="mt-2 space-y-1 text-xs">
+                      {open.errors?.map((e) => (
+                        <li key={e.row}>
+                          Row {e.row}: {e.error}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </Card>
+        <Card title="Papers">
+          {!sources.data?.length ? (
+            <p className="text-sm text-muted">No papers imported yet.</p>
+          ) : (
+            <ul className="space-y-1 text-sm">
+              {sources.data.map((p) => (
+                <li key={p.id} className="flex justify-between gap-2 border-t border-line py-1">
+                  <span>
+                    {p.title || p.key} <span className="text-xs text-muted">{p.licence}</span>
+                  </span>
+                  <span className="tabular-nums">{p.questions} Qs</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Card>
+        <Card title="Unmapped questions">
+          {!unmapped.data?.length ? (
+            <p className="text-sm text-muted">Every imported question is mapped to a concept.</p>
+          ) : (
+            <ul className="space-y-3">
+              {unmapped.data.map((q) => (
+                <MapRow key={q.id} q={q} onMapped={unmapped.reload} />
+              ))}
+            </ul>
+          )}
+        </Card>
+      </div>
+    </div>
+  );
+}
+
+function MapRow({ q, onMapped }: { q: { id: string; external_key: string; stem: string }; onMapped: () => void }) {
+  const [error, setError] = useState<unknown>(null);
+  return (
+    <li className="rounded-lg border border-line p-2 text-sm">
+      <p className="text-xs text-muted">{q.external_key}</p>
+      <p className="my-1">{q.stem}</p>
+      <form
+        className="flex flex-wrap gap-2"
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const f = new FormData(e.currentTarget);
+          setError(null);
+          try {
+            const concepts = String(f.get("concepts") ?? "")
+              .split(",")
+              .map((x) => x.trim())
+              .filter(Boolean);
+            await api(`/admin/questions/${q.id}/mapping`, { body: { concepts, pattern: String(f.get("pattern") ?? "") || null } });
+            onMapped();
+          } catch (err) {
+            setError(err);
+          }
+        }}
+      >
+        <input name="concepts" placeholder="concept slugs, comma separated" aria-label="Concepts" className="min-w-0 flex-1 rounded border border-line bg-surface px-2 py-1 text-xs" required />
+        <input name="pattern" placeholder="pattern key (optional)" aria-label="Pattern" className="min-w-0 flex-1 rounded border border-line bg-surface px-2 py-1 text-xs" />
+        <Button size="sm" type="submit" variant="secondary">
+          Map
+        </Button>
+      </form>
+      <ErrorNote error={error} className="mt-1" />
+    </li>
+  );
+}
+
 function Admin() {
   const { me } = useAuth();
   const [tab, setTab] = useState<Tab>("overview");
@@ -855,6 +1270,8 @@ function Admin() {
     { id: "documents", label: "Documents" },
     { id: "flags", label: "Flags" },
     { id: "usage", label: "AI usage" },
+    { id: "coverage", label: "Coverage" },
+    { id: "pyq", label: "PYQ import" },
     ...(me?.role === "admin"
       ? [
           { id: "users" as Tab, label: "Users" },
@@ -872,6 +1289,8 @@ function Admin() {
       {tab === "documents" && <Documents />}
       {tab === "flags" && <Flags />}
       {tab === "usage" && <AiUsage />}
+      {tab === "coverage" && <CoverageTab />}
+      {tab === "pyq" && <PyqTab />}
       {tab === "users" && <Users />}
       {tab === "invites" && <Invites />}
     </div>

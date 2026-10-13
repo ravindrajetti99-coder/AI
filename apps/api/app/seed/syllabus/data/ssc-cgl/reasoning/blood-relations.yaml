@@ -1,0 +1,186 @@
+key: blood-relations
+title: Blood relations
+strategies:
+  - key: approach
+    title: "Blood relations: draw the tree, never assume gender"
+    summary: >-
+      Every blood-relation question is solved fastest on a small family tree drawn while
+      reading: generations in rows, couples joined, gender marked only when the words fix it.
+    seconds_per_question: 40
+    accuracy_target: 0.9
+    tactics:
+      - "Use one notation every time: + for male, − for female, a double line for a couple, a vertical line for parent and child, a horizontal line for siblings."
+      - "In pointing and introduction questions, start from 'my …' at the end of the sentence and work outwards."
+      - "In coded relations, translate symbol by symbol from left to right into tree links."
+    avoid:
+      - "Assuming a gender from a name or from 'sibling', 'child' or 'parent'."
+      - "Answering 'brother' when the tree only shows 'sibling of unknown gender'."
+
+topics:
+  - key: basics
+    title: Relation terms and generations
+    concepts:
+      - slug: family-relation-terms
+        title: Family relation terms and generations
+        summary: >-
+          The vocabulary of relations: paternal and maternal sides, in-laws, nephew and niece,
+          cousins, and the generation each relation sits in. SSC chains rely on knowing, for
+          example, that the father's brother's son is a cousin and the brother's wife is a
+          sister-in-law.
+        difficulty: easy
+        weight: 1.0
+        formulas:
+          - key: relation-chart
+            name: Relation chart
+            expression: >-
+              father's or mother's father = grandfather; father's brother = uncle (paternal);
+              mother's brother = maternal uncle; father's sister = aunt; child of an uncle or aunt
+              = cousin; brother's or sister's son = nephew, daughter = niece; husband's or wife's
+              brother, or sister's husband = brother-in-law; husband's or wife's sister, or
+              brother's wife = sister-in-law; son's wife = daughter-in-law; daughter's husband =
+              son-in-law
+        patterns:
+          - key: one-step-relation
+            title: Name a short relation
+            example_stem: "How is my father's sister's son related to me?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: in-law-relation
+            title: In-law relations
+            example_stem: "Rita's husband's sister is Rita's what?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: generation-levels
+            title: Mark generation levels
+            kind: shortcut
+            rule: "Give each generation a level (grandparents +2, parents +1, self 0, children −1, grandchildren −2); the relation is fixed by the level, the side (paternal or maternal) and the gender."
+            example: {problem: "My mother's father's only son is my?", standard: "Draw the full tree", shortcut: "+2 on the mother's side, then his son at +1, male → mother's brother → maternal uncle", seconds_saved: 10}
+            pattern: one-step-relation
+
+  - key: puzzles
+    title: Blood relation puzzles
+    concepts:
+      - slug: blood-relation-chains
+        title: Blood relation chains (direct statements)
+        summary: >-
+          A chain of statements ('A is the brother of B; B is the sister of C; C is the father
+          of D') leads to one question: how is X related to Y? Draw the tree as you read and fix
+          a gender only when the words fix it.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [family-relation-terms]
+        patterns:
+          - key: chain-statement
+            title: Relation from a chain of statements
+            example_stem: "A is the brother of B. B is the sister of C. C is the father of D. How is A related to D?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: gender-unknown
+            title: Relation when a gender is not given
+            example_stem: "P is the sibling of Q. Q is the son of R. How is P related to R?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: draw-while-reading
+            title: Draw while reading
+            kind: shortcut
+            rule: "Put each person on the tree the moment they appear, with + or − only when gender is stated or implied by a word like 'brother' or 'mother'."
+            example: {problem: "A brother of B; B sister of C; C father of D; A to D?", standard: "Reread the statements several times", shortcut: "A(+), B(−) and C(+) are siblings in one row; D below C → A is D's uncle", seconds_saved: 15}
+            pitfalls: ["'B is the sister of C' tells you B is female, not C."]
+            pattern: chain-statement
+
+      - slug: blood-relation-pointing-photo
+        title: Pointing and introduction puzzles
+        summary: >-
+          A person points to a photograph or introduces someone with a nested description ('her
+          mother is the only daughter of my mother'). Decode from the speaker outwards,
+          replacing each nested phrase by one relation.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [family-relation-terms]
+        patterns:
+          - key: photograph
+            title: Pointing to a photograph
+            example_stem: "Pointing to a photograph, a man said, 'Her mother is the only daughter of my mother.' How is the woman in the photograph related to the man?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: introduction
+            title: Introducing a person
+            example_stem: "Introducing a man, a woman said, 'His father is the only son of my father's father.' How is the woman related to the man?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: innermost-first
+            title: Decode the innermost phrase first
+            kind: shortcut
+            rule: "Start from 'my …' at the end and replace it step by step: 'the only daughter of my mother', said by a man, is 'my sister'; then read the rest."
+            example: {problem: "A man: 'Her mother is the only daughter of my mother.'", standard: "Draw three generations", shortcut: "Only daughter of my mother = my sister → her mother is my sister → she is my niece", seconds_saved: 15}
+            pitfalls: ["If the speaker is a woman, 'the only daughter of my mother' is the speaker herself."]
+            pattern: photograph
+
+      - slug: coded-blood-relations
+        title: Coded blood relations
+        summary: >-
+          Symbols stand for relations ('A + B' means A is the mother of B, 'A × B' means A is the
+          father of B …); decode an expression into a chain, or pick the expression that shows a
+          given relation.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [blood-relation-chains]
+        patterns:
+          - key: decode-expression
+            title: Decode a coded expression
+            example_stem: "If 'A + B' means 'A is the mother of B', 'A − B' means 'A is the brother of B', 'A × B' means 'A is the father of B' and 'A ÷ B' means 'A is the sister of B', what does 'P + Q − R' mean?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: find-expression
+            title: Expression showing a given relation
+            example_stem: "Using the same codes, which expression shows that M is the uncle of T?"
+            frequency: medium
+            difficulty: hard
+            target_seconds: 50
+        shortcuts:
+          - key: gender-of-first
+            title: Check the first symbol's gender
+            kind: elimination
+            rule: "For 'which expression shows …' questions, the first symbol after the first person fixes that person's gender; drop options that give the wrong gender, then decode the rest."
+            example: {problem: "Which expression shows M is the uncle of T?", standard: "Decode all four expressions fully", shortcut: "An uncle is male: options starting 'M +' or 'M ÷' (mother, sister) are out at once", seconds_saved: 20}
+            pattern: find-expression
+
+      - slug: family-tree-puzzles
+        title: Family tree puzzles (several members)
+        summary: >-
+          A family of six to eight members is described through relations, sometimes with
+          professions or ages; questions ask for a relation, the number of male members or the
+          number of couples. Build the tree generation by generation and keep unknown genders marked.
+        difficulty: hard
+        weight: 0.8
+        prerequisites: [blood-relation-chains]
+        patterns:
+          - key: family-of-n
+            title: Count members of a kind
+            example_stem: "In a family of six, A and B are a married couple. C, the son of A, is married to D. E is the sister of C, and F is the son of D. How many male members are there in the family?"
+            frequency: medium
+            difficulty: hard
+            target_seconds: 60
+          - key: relation-in-tree
+            title: Relation between two members of the tree
+            example_stem: "In the same family, how is E related to F?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: three-rows
+            title: Three-row tree
+            kind: shortcut
+            rule: "Draw three rows (grandparents, parents, children) before reading and drop each person into a row as soon as the generation is known; couples sit side by side in the same row."
+            example: {problem: "A–B couple, C son of A married to D, E sister of C, F son of D", shortcut: "Row 1: A = B; row 2: C(+) = D(−), E(−); row 3: F(+) → males C, F and one of A, B = 3", seconds_saved: 20}
+            pattern: family-of-n

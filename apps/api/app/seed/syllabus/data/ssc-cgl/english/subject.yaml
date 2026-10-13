@@ -1,0 +1,48 @@
+key: english
+title: English Language and Comprehension
+description: >-
+  Grammar, vocabulary and the SSC question types built on them: error spotting, fill in the
+  blanks, cloze tests, sentence improvement, rearrangement and reading comprehension. Tier 1
+  English Comprehension (25 questions) and Tier 2 Module I of Section II (45 questions).
+tiers: [tier1, tier2]
+strategies:
+  - key: approach
+    title: "English: grammar rules plus daily reading"
+    summary: >-
+      English carries the most marks in Tier 2. Grammar rules decide error spotting and
+      improvement questions; vocabulary and reading speed decide the rest.
+    seconds_per_question: 30
+    accuracy_target: 0.9
+    attempt_order:
+      - "Vocabulary (synonyms, antonyms, idioms, one word, spellings)"
+      - "Voice and narration"
+      - "Fill in the blanks and sentence improvement"
+      - "Error spotting"
+      - "Cloze test and reading comprehension (read the questions first)"
+    tactics:
+      - "Read one editorial a day and note ten new words with a sentence each."
+      - "Check every error-spotting sentence for subject-verb agreement, tense and preposition first."
+      - "Revise previous-year vocabulary: SSC repeats idioms and one-word substitutions."
+    avoid:
+      - "Choosing an answer because it sounds familiar without checking the grammar rule."
+chapters:
+  - parts-of-speech
+  - tenses
+  - subject-verb-agreement
+  - articles
+  - prepositions
+  - conjunctions
+  - voice
+  - narration
+  - sentence-structure
+  - synonyms
+  - antonyms
+  - one-word-substitution
+  - idioms-phrases
+  - spellings
+  - error-spotting
+  - fill-in-the-blanks
+  - cloze-test
+  - sentence-improvement
+  - sentence-rearrangement
+  - reading-comprehension

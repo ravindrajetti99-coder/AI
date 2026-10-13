@@ -1,0 +1,625 @@
+key: physics
+title: "General Science: Physics"
+strategies:
+  - key: approach
+    title: "Physics in GA: units, instruments and the law behind a daily-life fact"
+    summary: >-
+      GA physics questions test a unit, an instrument, the law that explains an everyday
+      observation or a one-step numerical. They are answered from memory in seconds, so the
+      score comes from tables learnt well (units, instruments, mirrors and lenses, waves) and
+      from linking every law to two or three familiar examples.
+    seconds_per_question: 20
+    accuracy_target: 0.85
+    tactics:
+      - "Learn every quantity with its SI unit, and the scientist each named unit honours."
+      - "Tie each law to everyday examples (inertia: passengers jerk forward when a bus brakes; Bernoulli: lift on aircraft wings)."
+      - "For one-step numericals (kinetic energy, power, lens power, echo distance), write the formula first and convert units (cm to m, minutes to seconds)."
+      - "Revise the instrument list and the electromagnetic spectrum weekly with flashcards."
+    avoid:
+      - "Mixing up mass and weight, speed and velocity, or heat and temperature in statement questions."
+
+topics:
+  - key: units
+    title: Units and measurement
+    concepts:
+      - slug: si-units-and-conversions
+        title: "SI units, derived units and conversions"
+        summary: >-
+          SI has seven base units: metre (length), kilogram (mass), second (time), ampere
+          (electric current), kelvin (temperature), mole (amount of substance) and candela
+          (luminous intensity); all others are derived, many named after scientists (newton,
+          joule, watt, pascal, hertz, coulomb, volt, ohm, tesla, weber). SSC asks the SI unit of a
+          quantity and the meaning of practical units: light year, astronomical unit and parsec
+          measure distance, nautical mile is used at sea and in air, horsepower measures power and
+          the kilowatt hour measures energy.
+        difficulty: easy
+        weight: 1.5
+        formulas:
+          - key: base-units
+            name: The seven SI base units
+            expression: "length: metre (m); mass: kilogram (kg); time: second (s); electric current: ampere (A); temperature: kelvin (K); amount of substance: mole (mol); luminous intensity: candela (cd)"
+          - key: derived-units
+            name: Common derived units
+            expression: "force: newton (N = kg m/s²); work and energy: joule (J = N m); power: watt (W = J/s); pressure: pascal (Pa = N/m²); frequency: hertz (Hz = 1/s); charge: coulomb (C = A s); potential difference: volt (V = J/C); resistance: ohm (Ω = V/A); magnetic field: tesla (T); magnetic flux: weber (Wb); power of a lens: dioptre (1/m)"
+          - key: practical-units
+            name: Practical units and conversions
+            expression: "1 light year ≈ 9.46 × 10¹⁵ m; 1 astronomical unit ≈ 1.496 × 10¹¹ m; 1 parsec ≈ 3.26 light years; 1 nautical mile = 1.852 km; 1 horsepower ≈ 746 W; 1 kWh = 3.6 × 10⁶ J; 1 calorie ≈ 4.186 J; 1 ångström = 10⁻¹⁰ m; 1 micron = 10⁻⁶ m; 1 fermi = 10⁻¹⁵ m"
+            example: {problem: "How many joules are there in 2 kWh?", solution: "2 × 1000 W × 3600 s = 7.2 × 10⁶ J"}
+          - key: prefixes
+            name: SI prefixes
+            expression: "pico 10⁻¹², nano 10⁻⁹, micro 10⁻⁶, milli 10⁻³, centi 10⁻², kilo 10³, mega 10⁶, giga 10⁹, tera 10¹²"
+        patterns:
+          - key: unit-of-quantity
+            title: SI unit of a physical quantity
+            description: "Name the SI unit of a quantity, or the quantity a unit measures."
+            example_stem: "What is the SI unit of pressure?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: practical-unit-meaning
+            title: What a practical unit measures
+            description: "Light year, parsec, nautical mile, horsepower, kWh: identify the quantity or convert."
+            example_stem: "A light year is a unit of which physical quantity?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: light-year-trap
+            title: Light year measures distance, not time
+            kind: elimination
+            rule: "Light year, astronomical unit and parsec are all distances (parsec is the largest); a 'year' in the name does not make it a unit of time."
+            example: {problem: "Light year is a unit of: time / distance / speed / intensity", shortcut: "Astronomical units are always distances → distance", seconds_saved: 5}
+            pattern: practical-unit-meaning
+            pitfalls: ["Choosing 'time' because of the word 'year'."]
+
+  - key: motion
+    title: "Motion and Newton's laws"
+    concepts:
+      - slug: motion-speed-velocity-acceleration
+        title: "Motion: speed, velocity, acceleration and circular motion"
+        summary: >-
+          Distance and speed are scalars; displacement, velocity and acceleration are vectors.
+          Acceleration is the rate of change of velocity (m/s²); a body moving in a circle at
+          constant speed is still accelerated because its direction changes, and the centripetal
+          force needed points towards the centre (banking of roads, the centrifuge and cream
+          separator use this). SSC asks scalar and vector identification, the equations of motion
+          and what the slope or area of a motion graph means.
+        difficulty: easy
+        weight: 1.0
+        formulas:
+          - key: equations-of-motion
+            name: Equations of uniformly accelerated motion
+            expression: "v = u + at;  s = ut + ½at²;  v² = u² + 2as"
+            variables:
+              - {symbol: u, meaning: initial velocity}
+              - {symbol: v, meaning: final velocity}
+              - {symbol: a, meaning: acceleration}
+              - {symbol: s, meaning: displacement}
+              - {symbol: t, meaning: time}
+            conditions: "Only when the acceleration is constant."
+            example: {problem: "A car starts from rest with an acceleration of 2 m/s². Find its velocity and the distance covered after 5 s.", solution: "v = 0 + 2 × 5 = 10 m/s; s = ½ × 2 × 5² = 25 m"}
+          - key: average-speed
+            name: Average speed over equal distances
+            expression: "average speed = total distance / total time = 2ab/(a + b) for two equal distances at speeds a and b"
+            example: {problem: "A bus goes to a town at 40 km/h and returns at 60 km/h. Find its average speed.", solution: "2 × 40 × 60 / 100 = 48 km/h"}
+          - key: centripetal-force
+            name: Centripetal force
+            expression: "F = mv²/r, directed towards the centre of the circle"
+          - key: graphs
+            name: Reading motion graphs
+            expression: "slope of distance-time graph = speed; slope of velocity-time graph = acceleration; area under velocity-time graph = displacement"
+        patterns:
+          - key: scalar-vector
+            title: Scalar or vector quantity
+            example_stem: "Which of the following is a vector quantity? (a) speed (b) distance (c) displacement (d) work"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: equation-numerical
+            title: One-step equations of motion
+            example_stem: "A ball dropped from rest falls freely for 3 s. Taking g = 10 m/s², how far does it fall?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+
+      - slug: newtons-laws-of-motion
+        title: "Newton's laws of motion, momentum and friction"
+        summary: >-
+          First law (law of inertia): a body stays at rest or in uniform motion in a straight line
+          unless an external force acts; mass is the measure of inertia. Second law: force equals
+          the rate of change of momentum, F = ma, where momentum p = mv (unit newton for force).
+          Third law: to every action there is an equal and opposite reaction (rocket propulsion,
+          recoil of a gun, swimming, walking); total momentum is conserved when no external force
+          acts. Friction opposes motion; static friction is greater than sliding friction, which is
+          greater than rolling friction, so wheels, ball bearings and lubricants reduce it. SSC
+          asks which law explains a daily example and simple F = ma or momentum numericals.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [motion-speed-velocity-acceleration]
+        formulas:
+          - key: second-law
+            name: Newton's second law
+            expression: "F = ma = (mv − mu)/t"
+            example: {problem: "A force accelerates a 2 kg ball at 3 m/s². Find the force.", solution: "F = 2 × 3 = 6 N"}
+          - key: momentum
+            name: Momentum and impulse
+            expression: "p = mv;  impulse = F × t = change in momentum"
+          - key: conservation
+            name: Conservation of momentum (gun recoil)
+            expression: "m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂;  recoil speed of a gun V = mv/M"
+            example: {problem: "A 4 kg gun fires a 0.02 kg bullet at 400 m/s. Find the recoil speed of the gun.", solution: "V = 0.02 × 400 / 4 = 2 m/s"}
+        patterns:
+          - key: law-from-example
+            title: Which law explains an everyday observation
+            description: "Inertia (bus braking, dusting a carpet), second law (a fielder pulling hands back while catching), third law (rocket, gun recoil, swimming)."
+            example_stem: "A cricket fielder pulls his hands back while catching a fast ball. Which law of motion explains this?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: force-momentum-numerical
+            title: Force, momentum and recoil numericals
+            example_stem: "What force is needed to give a mass of 5 kg an acceleration of 4 m/s²?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: three-laws-map
+            title: One keyword per law
+            kind: memory
+            rule: "First law = inertia (resists change: bus braking, dusting a carpet); second law = force and time (F = ma, catching a ball, sand pits for long jump); third law = pairs of forces (rocket, recoil, swimming, walking)."
+            example: {problem: "Rocket propulsion is based on", shortcut: "Pairs of forces → third law (also conservation of momentum)", seconds_saved: 5}
+            pattern: law-from-example
+
+  - key: work-energy
+    title: "Work, energy and power"
+    concepts:
+      - slug: work-energy-power
+        title: "Work, energy and power"
+        summary: >-
+          Work W = F × s × cos θ (joule) is done only when a force moves its point of application
+          along its direction; a force perpendicular to the motion does no work. Kinetic energy is
+          ½mv² and potential energy mgh; energy is conserved and only changes form (a fan turns
+          electrical into mechanical energy, a generator mechanical into electrical, a cell
+          chemical into electrical, a solar cell light into electrical). Power is the rate of
+          doing work, P = W/t, in watts; 1 horsepower ≈ 746 W.
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [newtons-laws-of-motion]
+        formulas:
+          - key: work
+            name: Work done by a force
+            expression: "W = F × s × cos θ"
+            conditions: "θ is the angle between the force and the displacement; W = 0 when θ = 90°."
+          - key: kinetic-energy
+            name: Kinetic energy
+            expression: "KE = ½mv² = p²/2m"
+            example: {problem: "Find the kinetic energy of a 2 kg ball moving at 3 m/s.", solution: "½ × 2 × 3² = 9 J"}
+          - key: potential-energy
+            name: Gravitational potential energy
+            expression: "PE = mgh"
+            example: {problem: "A 5 kg box is lifted 10 m (g = 9.8 m/s²). Find its potential energy.", solution: "5 × 9.8 × 10 = 490 J"}
+          - key: power
+            name: Power
+            expression: "P = W/t;  1 W = 1 J/s;  1 hp ≈ 746 W"
+            example: {problem: "A motor does 6,000 J of work in 2 minutes. Find its power.", solution: "6000 / 120 = 50 W"}
+        patterns:
+          - key: ke-scaling
+            title: Change in kinetic energy when speed or momentum changes
+            example_stem: "If the velocity of a body is doubled, its kinetic energy becomes"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: energy-conversion
+            title: Energy conversion in a device
+            example_stem: "An electric generator converts"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: square-law
+            title: Kinetic energy goes as the square of speed
+            kind: shortcut
+            rule: "Speed × n → KE × n²; for the same mass, momentum × n → KE × n²; for the same momentum, KE ∝ 1/m."
+            example: {problem: "Speed is tripled. KE becomes?", standard: "Compute ½m(3v)² and divide by ½mv²", shortcut: "3² = 9 times", seconds_saved: 10}
+            pattern: ke-scaling
+
+  - key: gravitation
+    title: Gravitation
+    concepts:
+      - slug: gravitation-and-satellites
+        title: "Gravitation, acceleration due to gravity and satellites"
+        summary: >-
+          Newton's law of gravitation: F = Gm₁m₂/r² with G = 6.67 × 10⁻¹¹ N m²/kg², so doubling the
+          distance makes the force one-fourth. On Earth g ≈ 9.8 m/s²; g is greater at the poles than
+          at the equator, decreases with height and with depth and is zero at the centre of the
+          Earth; on the Moon g is about one-sixth of Earth's, so weight (mg, in newtons) changes but
+          mass does not. Escape velocity from Earth is about 11.2 km/s; a geostationary satellite
+          orbits about 36,000 km above the equator with a 24-hour period, and astronauts in orbit
+          feel weightless because they are in free fall. Kepler's laws: planets move in ellipses
+          with the Sun at one focus, sweep equal areas in equal times, and T² ∝ r³.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [newtons-laws-of-motion]
+        formulas:
+          - key: law-of-gravitation
+            name: Universal law of gravitation
+            expression: "F = G m₁ m₂ / r²,  G = 6.67 × 10⁻¹¹ N m²/kg²"
+            example: {problem: "The distance between two masses is halved. What happens to the force?", solution: "F ∝ 1/r², so it becomes 4 times"}
+          - key: weight
+            name: Weight and g
+            expression: "W = mg;  g = GM/R² ≈ 9.8 m/s² on Earth;  g on the Moon ≈ g/6"
+            example: {problem: "A man of mass 60 kg goes to the Moon. Find his mass and approximate weight there (g = 9.8 m/s²).", solution: "Mass stays 60 kg; weight ≈ 60 × 9.8 / 6 ≈ 98 N"}
+          - key: escape-orbital
+            name: Escape and orbital velocity
+            expression: "v_escape = √(2gR) ≈ 11.2 km/s;  v_orbit (near the surface) = √(gR) ≈ 7.9 km/s;  v_escape = √2 × v_orbit"
+          - key: kepler-third
+            name: "Kepler's third law"
+            expression: "T² ∝ r³ (square of the orbital period ∝ cube of the mean distance from the Sun)"
+        patterns:
+          - key: g-variation
+            title: Variation of g, mass and weight
+            example_stem: "At which place on the Earth's surface is the acceleration due to gravity maximum?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: satellite-facts
+            title: Escape velocity, geostationary orbit and weightlessness
+            example_stem: "What is the time period of a geostationary satellite?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: inverse-square
+            title: Inverse-square scaling
+            kind: shortcut
+            rule: "Distance × n → gravitational force ÷ n²; both masses doubled → force × 4."
+            example: {problem: "Distance tripled, force becomes?", shortcut: "1/3² = 1/9 of the original", seconds_saved: 10}
+
+  - key: fluids
+    title: Pressure and fluids
+    concepts:
+      - slug: pressure-and-pascals-law
+        title: "Pressure, atmospheric pressure and Pascal's law"
+        summary: >-
+          Pressure is force per unit area, P = F/A (pascal): sharp knives and needles have a small
+          area and cut easily, while wide straps, broad tyres and a camel's feet spread the load.
+          Liquid pressure increases with depth (P = hρg), so dams are thicker at the base;
+          atmospheric pressure at sea level is about 1.013 × 10⁵ Pa (76 cm of mercury), falls with
+          altitude and is measured with a barometer, where a sudden fall in the reading warns of a
+          storm. Pascal's law: pressure applied to an enclosed fluid is transmitted equally in all
+          directions, the principle of the hydraulic lift, hydraulic press and hydraulic brakes.
+        difficulty: easy
+        weight: 1.0
+        formulas:
+          - key: pressure
+            name: Pressure
+            expression: "P = F/A;  1 Pa = 1 N/m²"
+            example: {problem: "A force of 100 N acts on 0.5 m². Find the pressure.", solution: "100 / 0.5 = 200 Pa"}
+          - key: liquid-pressure
+            name: Pressure at a depth in a liquid
+            expression: "P = hρg"
+            variables:
+              - {symbol: h, meaning: depth}
+              - {symbol: ρ, meaning: density of the liquid}
+          - key: atmosphere
+            name: Standard atmospheric pressure
+            expression: "1 atm ≈ 1.013 × 10⁵ Pa = 76 cm of mercury ≈ 10.3 m of water"
+          - key: pascal-hydraulic
+            name: Hydraulic machine
+            expression: "F₁/A₁ = F₂/A₂"
+            example: {problem: "In a hydraulic lift the small piston is 10 cm² and the large one 1,000 cm². What load does 50 N on the small piston lift?", solution: "50 × 1000/10 = 5,000 N"}
+        patterns:
+          - key: pressure-examples
+            title: Pressure in daily life
+            example_stem: "Why are the walls of a dam made thicker at the bottom?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: barometer-hydraulics
+            title: Barometer readings and Pascal's law devices
+            example_stem: "A hydraulic brake works on the principle of"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+
+      - slug: buoyancy-archimedes-principle
+        title: "Buoyancy, density and Archimedes' principle"
+        summary: >-
+          A body in a fluid feels an upward buoyant force (upthrust) equal to the weight of the
+          fluid it displaces (Archimedes' principle). It floats when its density is less than the
+          fluid's, and a floating body displaces its own weight of liquid (law of flotation): a
+          steel ship floats because its hollow shape displaces a large volume, it is easier to
+          float in sea water than in river water, a ship rises a little on entering the sea, and
+          about nine-tenths of an iceberg stays under water. Relative density = density of a
+          substance ÷ density of water; it is measured with a hydrometer, and a lactometer checks
+          the purity of milk.
+        difficulty: easy
+        weight: 1.1
+        prerequisites: [pressure-and-pascals-law]
+        formulas:
+          - key: buoyant-force
+            name: Buoyant force
+            expression: "upthrust = V × ρ_fluid × g = weight of the fluid displaced"
+          - key: relative-density
+            name: Relative density
+            expression: "relative density = density of the substance / density of water (no unit)"
+          - key: fraction-submerged
+            name: Fraction of a floating body under the liquid
+            expression: "fraction submerged = ρ_body / ρ_liquid"
+            example: {problem: "Wood of density 600 kg/m³ floats in water (1,000 kg/m³). What fraction is under water?", solution: "600/1000 = 0.6, i.e. 60%"}
+        patterns:
+          - key: floating-sinking
+            title: Floating and sinking in daily life
+            example_stem: "When a ship sails from a river into the sea, it"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: density-instruments
+            title: Density-measuring instruments
+            example_stem: "Which instrument is used to test the purity of milk?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: denser-floats-higher
+            title: Denser liquid, higher float
+            kind: memory
+            rule: "The denser the liquid, the less of a floating body sinks into it (sea water > river water); floating ice that melts leaves the water level unchanged."
+            example: {problem: "Ice floating in a glass of water melts. The water level", shortcut: "Stays the same", seconds_saved: 10}
+            pattern: floating-sinking
+
+      - slug: surface-tension-viscosity-bernoulli
+        title: "Surface tension, capillarity, viscosity and Bernoulli's principle"
+        summary: >-
+          Surface tension makes a liquid surface behave like a stretched film: raindrops and
+          mercury drops are spherical, some insects walk on water, and soaps and detergents lower
+          it so that water wets and cleans better; it decreases as temperature rises. Capillary
+          action (rise of a liquid in a narrow tube) lifts oil up a lamp wick and water in blotting
+          paper, towels and soil. Viscosity is a fluid's internal friction (honey and glycerine are
+          highly viscous); a liquid's viscosity falls on heating. Bernoulli's principle: where a
+          fluid flows faster its pressure is lower, which explains the lift on aeroplane wings,
+          roofs blown off in storms and the working of a sprayer (atomiser).
+        difficulty: easy
+        weight: 1.0
+        formulas:
+          - key: continuity
+            name: Equation of continuity
+            expression: "A₁v₁ = A₂v₂ (a fluid flows faster where the pipe is narrower)"
+          - key: bernoulli
+            name: "Bernoulli's equation (along a streamline)"
+            expression: "P + ½ρv² + ρgh = constant"
+        patterns:
+          - key: phenomenon-property
+            title: Which property explains the phenomenon
+            example_stem: "Raindrops are spherical because of"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: bernoulli-applications
+            title: "Applications of Bernoulli's principle"
+            example_stem: "The upward lift on the wings of an aeroplane is explained by"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+
+  - key: heat
+    title: Heat and thermodynamics
+    concepts:
+      - slug: heat-temperature-and-change-of-state
+        title: "Heat, temperature, thermal expansion and change of state"
+        summary: >-
+          Heat is energy in transit (joule; 1 calorie ≈ 4.186 J) and temperature measures hotness
+          (kelvin, °C, °F); normal body temperature is about 37 °C (98.6 °F), a clinical thermometer
+          reads 35-42 °C, and −40 is the same on the Celsius and Fahrenheit scales. Most substances
+          expand on heating (gaps in railway tracks, sagging wires in summer), but water contracts
+          from 0 °C to 4 °C, so it is densest at 4 °C and lakes freeze from the top. Water's high
+          specific heat makes it a good coolant and hot-water-bag filler. Latent heat is taken in
+          at constant temperature during a change of state (ice: about 336 J/g; steam: about
+          2,260 J/g), so steam burns are worse than burns from boiling water; evaporation causes
+          cooling (sweating, earthen pots); boiling point falls with pressure (cooking is slow in
+          the hills) and rises with it (a pressure cooker works at about 120 °C).
+        difficulty: medium
+        weight: 1.3
+        formulas:
+          - key: temperature-scales
+            name: Temperature scale conversion
+            expression: "C/5 = (F − 32)/9 = (K − 273)/5;  K = C + 273.15"
+            example: {problem: "Convert 37 °C to °F.", solution: "F = 37 × 9/5 + 32 = 66.6 + 32 = 98.6 °F"}
+          - key: specific-heat
+            name: Heat for a change of temperature
+            expression: "Q = m c ΔT;  c(water) ≈ 4,186 J/(kg °C) = 1 cal/(g °C)"
+            example: {problem: "Heat needed to warm 2 kg of water by 10 °C (c ≈ 4,200 J/kg °C).", solution: "2 × 4200 × 10 = 84,000 J"}
+          - key: latent-heat
+            name: Heat for a change of state
+            expression: "Q = m L;  L(fusion of ice) ≈ 336 J/g = 80 cal/g;  L(vaporisation of water) ≈ 2,260 J/g = 540 cal/g"
+            example: {problem: "Heat needed to melt 10 g of ice at 0 °C.", solution: "10 × 336 = 3,360 J (= 800 cal)"}
+        patterns:
+          - key: scale-conversion
+            title: Temperature scales and thermometers
+            example_stem: "At what temperature do the Celsius and Fahrenheit scales show the same reading?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: everyday-heat-effects
+            title: Expansion, latent heat and boiling point in daily life
+            example_stem: "Why does food take longer to cook at high altitudes?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: scale-anchors
+            title: Temperature anchors
+            kind: memory
+            rule: "−40 °C = −40 °F; 0 °C = 32 °F = 273 K; 37 °C = 98.6 °F; 100 °C = 212 °F; every 5 °C = 9 °F."
+            example: {problem: "50 °C in °F", shortcut: "50 = 10 × 5 → 10 × 9 = 90 above 32 → 122 °F", seconds_saved: 10}
+            pattern: scale-conversion
+
+      - slug: heat-transfer-and-thermodynamics
+        title: "Conduction, convection, radiation and the laws of thermodynamics"
+        summary: >-
+          Heat travels by conduction (through solids by contact: metals conduct well, wood, air and
+          wool are poor conductors), convection (by movement of a fluid: land and sea breezes,
+          heating of water in a pot, a room heater kept low) and radiation (no medium needed:
+          sunlight crosses space). Dark, dull surfaces absorb and emit radiation best and shiny,
+          white surfaces reflect it, so light clothes are worn in summer; a thermos (vacuum) flask
+          stops all three with a vacuum gap and silvered walls. Laws of thermodynamics: zeroth
+          (bodies in thermal equilibrium with a third are in equilibrium with each other: the basis
+          of thermometers), first (energy is conserved: ΔU = Q − W), second (heat flows on its own
+          only from hot to cold, so no heat engine is 100% efficient and a refrigerator needs work
+          to pump heat out).
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [heat-temperature-and-change-of-state]
+        formulas:
+          - key: first-law
+            name: First law of thermodynamics
+            expression: "ΔU = Q − W (heat supplied = rise in internal energy + work done by the system)"
+          - key: carnot-efficiency
+            name: Maximum efficiency of a heat engine
+            expression: "η = 1 − T₂/T₁ (temperatures in kelvin)"
+            example: {problem: "An engine works between 500 K and 300 K. Find its maximum efficiency.", solution: "1 − 300/500 = 0.4 = 40%"}
+        patterns:
+          - key: mode-of-transfer
+            title: Mode of heat transfer in an example
+            example_stem: "A sea breeze during the day is an example of heat transfer by"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: thermos-laws
+            title: Thermos flask, absorbers and the laws of thermodynamics
+            example_stem: "Why is it better to wear light-coloured clothes in summer?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: three-c-r
+            title: Contact, current, rays
+            kind: memory
+            rule: "Conduction = contact (solids); convection = currents (liquids and gases); radiation = rays (no medium, vacuum included)."
+            example: {problem: "Heat of the Sun reaches the Earth by", shortcut: "Through empty space → rays → radiation", seconds_saved: 5}
+            pattern: mode-of-transfer
+
+  - key: waves-sound
+    title: Waves and sound
+    concepts:
+      - slug: sound-waves-and-characteristics
+        title: "Sound waves: propagation, speed, pitch and loudness"
+        summary: >-
+          Sound is a mechanical, longitudinal wave (compressions and rarefactions) that needs a
+          medium and cannot travel through a vacuum. It is fastest in solids and slowest in gases:
+          about 332 m/s in air at 0 °C and about 343 m/s at 20 °C, about 1,500 m/s in water and
+          nearly 6,000 m/s in steel; in air it travels faster as temperature and humidity rise.
+          Pitch depends on frequency (women's and children's voices are shriller because their
+          frequency is higher), loudness on amplitude (measured in decibels) and quality or timbre
+          on the waveform. Light, by contrast, is a transverse electromagnetic wave.
+        difficulty: easy
+        weight: 1.2
+        formulas:
+          - key: wave-equation
+            name: Wave speed
+            expression: "v = f λ;  T = 1/f"
+            example: {problem: "A sound of frequency 170 Hz travels at 340 m/s. Find its wavelength.", solution: "λ = 340/170 = 2 m"}
+        patterns:
+          - key: speed-in-media
+            title: Speed of sound in different media
+            example_stem: "In which of the following does sound travel fastest? (a) air (b) water (c) steel (d) vacuum"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: characteristics
+            title: Pitch, loudness, frequency and amplitude
+            example_stem: "The pitch of a sound depends on its"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: solid-liquid-gas
+            title: Sound order is the reverse of light's
+            kind: memory
+            rule: "Sound: solids > liquids > gases, and none in vacuum. Light: fastest in vacuum, slower in denser media."
+            example: {problem: "Sound cannot travel through", shortcut: "Vacuum (sound needs a medium)", seconds_saved: 5}
+            pattern: speed-in-media
+
+      - slug: echo-ultrasound-doppler-effect
+        title: "Audible range, infrasound, ultrasound, echo and the Doppler effect"
+        summary: >-
+          Humans hear 20 Hz to 20,000 Hz; lower frequencies are infrasound (produced by
+          earthquakes, whales and elephants) and higher ones ultrasound (used by bats and dolphins,
+          in SONAR, ultrasonography and ultrasonic cleaning). An echo is heard separately only if
+          the reflecting surface is at least about 17 m away, because the ear retains a sound for
+          about 0.1 s; repeated reflections cause reverberation, reduced in halls with curtains and
+          sound-absorbing boards. The Doppler effect is the change in heard frequency when source
+          and listener move relative to each other (an approaching horn sounds higher), used in
+          police speed guns and Doppler scans; a body faster than sound produces a sonic boom.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [sound-waves-and-characteristics]
+        formulas:
+          - key: echo-distance
+            name: Distance from an echo
+            expression: "d = v × t / 2 (the sound goes to the reflector and back)"
+            example: {problem: "A shout's echo from a cliff is heard after 3 s; sound travels at 330 m/s. How far is the cliff?", solution: "330 × 3 / 2 = 495 m"}
+          - key: minimum-echo
+            name: Minimum distance for a distinct echo
+            expression: "d_min = v × 0.1 s / 2 ≈ 344 × 0.1 / 2 ≈ 17.2 m"
+        patterns:
+          - key: infra-ultra
+            title: Infrasound and ultrasound in nature and technology
+            example_stem: "Bats find their way in the dark using"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: echo-numerical
+            title: Echo distance and depth by SONAR
+            example_stem: "A ship's SONAR receives the echo of a pulse 2 s after sending it. If sound travels at 1,500 m/s in sea water, how deep is the sea bed?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: halve-the-time
+            title: Halve the time first
+            kind: shortcut
+            rule: "Echo time covers the distance twice; multiply speed by half the time."
+            example: {problem: "Echo after 2 s, v = 1,500 m/s", standard: "2d = 1500 × 2, so d = 1500", shortcut: "1500 × 1 = 1,500 m", seconds_saved: 5}
+            pattern: echo-numerical
+            pitfalls: ["Forgetting to halve and answering 3,000 m."]
+
+      - slug: electromagnetic-spectrum
+        title: "Electromagnetic waves and their uses"
+        summary: >-
+          Electromagnetic waves are transverse, need no medium and travel at 3 × 10⁸ m/s in a
+          vacuum. In order of increasing frequency (decreasing wavelength): radio waves
+          (broadcasting, mobile phones), microwaves (radar, microwave ovens, satellite links),
+          infrared (heat radiation, TV remote controls, night vision), visible light (about
+          400-700 nm), ultraviolet (sterilisation, vitamin D formation in skin; mostly absorbed by
+          the ozone layer), X-rays (imaging bones, discovered by Röntgen) and gamma rays (from
+          nuclei; cancer radiotherapy, sterilising equipment). Sound and ultrasound are mechanical
+          waves, not electromagnetic.
+        difficulty: medium
+        weight: 1.1
+        prerequisites: [sound-waves-and-characteristics]
+        formulas:
+          - key: em-wave-speed
+            name: Speed of electromagnetic waves
+            expression: "c = f λ = 3 × 10⁸ m/s in vacuum"
+            example: {problem: "Find the wavelength of an FM signal of 100 MHz.", solution: "λ = 3 × 10⁸ / 10⁸ = 3 m"}
+        patterns:
+          - key: wave-use
+            title: Which wave is used for a purpose
+            example_stem: "Which electromagnetic waves are used in TV remote controls?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: spectrum-order
+            title: Order of the spectrum by wavelength or frequency
+            example_stem: "Which of these has the shortest wavelength? (a) radio waves (b) microwaves (c) X-rays (d) infrared"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: spectrum-mnemonic
+            title: Radio to gamma in one sentence
+            kind: memory
+            rule: "'Raging Martians Invaded Venus Using X-ray Guns': radio, microwave, infrared, visible, ultraviolet, X-ray, gamma, in order of increasing frequency and decreasing wavelength."
+            example: {problem: "Which has a higher frequency, ultraviolet or infrared?", shortcut: "U comes after I in the sentence → ultraviolet", seconds_saved: 10}
+            pattern: spectrum-order

@@ -1,0 +1,743 @@
+key: ancient-history
+title: Ancient Indian History
+strategies:
+  - key: approach
+    title: "Ancient history: link every fact to a ruler, place or text"
+    summary: >-
+      SSC asks ancient history as one-line recall: who founded or patronised what, which site
+      or capital belongs to which dynasty, which text was written by whom, and the dates of the
+      Buddhist councils and great battles. Facts stick when they are stored as pairs and tables.
+    seconds_per_question: 15
+    accuracy_target: 0.85
+    tactics:
+      - "Learn each dynasty as a card: founder, greatest ruler, capital, one inscription, one monument, one visitor."
+      - "Keep match-the-following tables (site–river–find, council–place–king–president, author–text) and revise them weekly."
+      - "Anchor dates to a few fixed points: 563/483 BCE (Buddha), 321 BCE (Chandragupta), 261 BCE (Kalinga), 78 CE (Saka era), 319-20 CE (Gupta era), 606 CE (Harsha)."
+    avoid:
+      - "Mixing up the two Chandraguptas, the two Pulakeshins or the Shaka and Gupta eras."
+
+topics:
+  - key: prehistoric
+    title: Prehistoric period
+    concepts:
+      - slug: prehistoric-stone-age-india
+        title: "Prehistoric India: Stone Age to Chalcolithic cultures"
+        summary: >-
+          The Stone Age is divided into Palaeolithic (hunting-gathering, hand axes), Mesolithic
+          (microliths, first animal domestication) and Neolithic (farming, polished tools,
+          settled villages), followed by the Chalcolithic (copper and stone) cultures such as
+          Ahar-Banas, Malwa and Jorwe. SSC asks site facts: Bhimbetka rock shelters (Madhya
+          Pradesh, rock paintings, UNESCO site), Mehrgarh (Balochistan, earliest farming in the
+          subcontinent), Burzahom (Kashmir, pit dwellings and dogs buried with their masters) and
+          Inamgaon (Chalcolithic, Maharashtra).
+        difficulty: easy
+        weight: 0.8
+        patterns:
+          - key: site-feature
+            title: Match a prehistoric site with its feature or age
+            example_stem: "Pit dwellings and the burial of dogs with their masters are associated with which Neolithic site?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: age-feature
+            title: Identify the age from its tools or way of life
+            example_stem: "Microliths are the characteristic tools of which period?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: three-sites
+            title: Three sites, three firsts
+            kind: memory
+            rule: "Bhimbetka = Paintings, Mehrgarh = Farming, Burzahom = Pits and dogs. Remember the order Palaeo → Meso (micro tools) → Neo (new farming) → Chalco (copper)."
+            pattern: site-feature
+
+  - key: indus-valley
+    title: Indus Valley (Harappan) civilisation
+    concepts:
+      - slug: harappan-civilisation-sites
+        title: "Harappan sites: location, river, excavator and finds"
+        summary: >-
+          The mature Harappan phase dates to about 2600-1900 BCE. Harappa (on the Ravi, found by
+          Daya Ram Sahni, 1921) and Mohenjo-daro (on the Indus in Sindh, R.D. Banerji, 1922; Great
+          Bath, granary, bronze dancing girl, Pashupati seal, priest-king) were the first sites
+          dug. Lothal (Gujarat, dockyard), Kalibangan (Rajasthan, on the Ghaggar, ploughed field
+          and fire altars), Dholavira (Kutch, water reservoirs and a signboard, UNESCO 2021),
+          Rakhigarhi (Haryana, largest site in India), Chanhudaro (bead making, no citadel) and
+          Ropar (Punjab, first site excavated after independence) are the sites SSC asks most.
+        difficulty: medium
+        weight: 1.5
+        patterns:
+          - key: site-find
+            title: Match a Harappan site with its find
+            example_stem: "The remains of a dockyard have been found at which Harappan site?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: site-state-river
+            title: Locate a site by state or river
+            example_stem: "Kalibangan, a Harappan site, is located on the banks of which river?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: site-hooks
+            title: One hook per site
+            kind: memory
+            rule: "Mohenjo-daro = 'mound of the dead': Bath, Granary, Dancing girl, Pashupati. Lothal = Lot of boats (dockyard). Kalibangan = 'black bangles': ploughed field. Dholavira = water tanks. Chanhudaro = beads, no citadel."
+            pattern: site-find
+            pitfalls: ["The Great Granary and the dancing girl are from Mohenjo-daro, not Harappa."]
+      - slug: harappan-civilisation-features
+        title: "Harappan town planning, economy, religion and decline"
+        summary: >-
+          Harappan cities had a grid plan, burnt-brick houses, covered drains and usually a raised
+          citadel and a lower town. The people were the first to grow cotton, traded with
+          Mesopotamia (which called the region Meluha), used standard weights, worshipped a Mother
+          Goddess and a 'proto-Shiva' (Pashupati) and wrote an undeciphered pictographic script;
+          the humped bull and the unicorn are common seal motifs. They used copper and bronze but
+          not iron, and the civilisation declined after about 1900 BCE.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [harappan-civilisation-sites]
+        patterns:
+          - key: feature
+            title: Identify a feature of the Harappan civilisation
+            example_stem: "Which metal was NOT known to the people of the Indus Valley civilisation?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: statement
+            title: Choose the correct statement about Harappan life
+            example_stem: "Which of the following crops was first cultivated by the Harappans?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+
+  - key: vedic
+    title: Vedic period
+    concepts:
+      - slug: vedic-literature
+        title: "Vedic literature: Vedas, Brahmanas, Aranyakas, Upanishads"
+        summary: >-
+          There are four Vedas: the Rigveda (oldest; 10 mandalas, 1,028 hymns; the Gayatri Mantra
+          addressed to Savitri is in the third mandala and the Purusha Sukta describing the four
+          varnas in the tenth), the Samaveda (melodies, the root of Indian music), the Yajurveda
+          (sacrificial formulas) and the Atharvaveda (charms, spells and medicine). Each has
+          Brahmanas, Aranyakas and Upanishads; 'Satyameva Jayate' comes from the Mundaka
+          Upanishad. The six Vedangas are Shiksha, Kalpa, Vyakarana, Nirukta, Chhanda and Jyotisha.
+        difficulty: easy
+        weight: 1.2
+        patterns:
+          - key: veda-content
+            title: Which Veda contains or deals with what
+            example_stem: "Which Veda is a collection of charms and spells and also contains early ideas of medicine?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: source-of-phrase
+            title: Source of a famous phrase or hymn
+            example_stem: "The phrase 'Satyameva Jayate' in the State Emblem of India is taken from which text?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: four-vedas
+            title: Rig hymns, Sama songs, Yajur rituals, Atharva magic
+            kind: memory
+            rule: "Rig = Richa (hymns of praise, oldest); Sama = Saman (melody, music); Yajur = Yajna (sacrificial formulas); Atharva = charms and medicine."
+            pattern: veda-content
+      - slug: vedic-society-polity
+        title: "Early and later Vedic society, polity and religion"
+        summary: >-
+          The early (Rigvedic) Vedic people, c. 1500-1000 BCE, lived in the Sapta Sindhu region,
+          were mainly pastoral (wealth counted in cattle), had tribal assemblies called Sabha and
+          Samiti, and worshipped Indra (most hymns) and Agni; the Battle of Ten Kings was fought
+          on the Parushni (Ravi) and won by Sudas. In the later Vedic period, c. 1000-600 BCE,
+          people moved into the Ganga-Yamuna doab, used iron, turned to agriculture, the varna
+          system hardened, kings performed Rajasuya and Ashvamedha sacrifices, and Prajapati,
+          Vishnu and Rudra rose in importance.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [vedic-literature]
+        patterns:
+          - key: early-vs-later
+            title: Early versus later Vedic features
+            example_stem: "Which god is addressed in the largest number of hymns of the Rigveda?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: rigvedic-rivers
+            title: Rigvedic names of rivers
+            example_stem: "Which present-day river was known as 'Parushni' in the Rigveda?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: river-names
+            title: Rigvedic river names
+            kind: memory
+            rule: "Vitasta = Jhelum, Asikni = Chenab, Parushni = Ravi, Vipas = Beas, Sutudri = Sutlej, Sindhu = Indus. West to east the modern order is Jhelum, Chenab, Ravi, Beas, Sutlej: 'J-C-R-B-S'."
+            pattern: rigvedic-rivers
+
+  - key: mahajanapadas
+    title: Mahajanapadas and the rise of Magadha
+    concepts:
+      - slug: sixteen-mahajanapadas
+        title: The sixteen Mahajanapadas and their capitals
+        summary: >-
+          Buddhist texts (Anguttara Nikaya) list 16 Mahajanapadas of the 6th century BCE. Key
+          capitals: Magadha – Rajagriha (Girivraja), later Pataliputra; Kosala – Shravasti; Vatsa
+          – Kaushambi; Avanti – Ujjain and Mahishmati; Kashi – Varanasi; Anga – Champa; Vajji –
+          Vaishali (a republican confederacy); Malla – Kushinagar and Pava; Kuru – Indraprastha;
+          Panchala – Ahichchhatra and Kampilya; Surasena – Mathura; Gandhara – Taxila; Assaka – on
+          the Godavari (the only one south of the Vindhyas).
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: capital
+            title: Match a Mahajanapada with its capital
+            example_stem: "Shravasti was the capital of which Mahajanapada?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: south-one
+            title: The southern odd one out
+            kind: memory
+            rule: "Assaka is the only Mahajanapada south of the Vindhyas (on the Godavari); Vajji and Malla were republics (ganas), the rest monarchies."
+            pattern: capital
+      - slug: rise-of-magadha
+        title: "Rise of Magadha: Haryanka, Shishunaga and Nanda dynasties"
+        summary: >-
+          Magadha grew into an empire under the Haryanka king Bimbisara (contemporary of the
+          Buddha, expanded by marriage alliances and annexed Anga) and his son Ajatashatru (who
+          killed him, defeated the Vajjis and hosted the First Buddhist Council); Udayin founded
+          Pataliputra. The Shishunagas destroyed Avanti (Kalashoka held the Second Buddhist
+          Council), and the Nandas under Mahapadma Nanda built the first great empire; Dhana Nanda
+          ruled when Alexander invaded the north-west in 326 BCE and fought Porus on the Hydaspes
+          (Jhelum).
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [sixteen-mahajanapadas]
+        patterns:
+          - key: founder-dynasty
+            title: Ruler and dynasty of Magadha
+            example_stem: "Who among the following founded the city of Pataliputra?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+          - key: alexander
+            title: Alexander's invasion
+            example_stem: "On the banks of which river did Alexander fight the Battle of Hydaspes against Porus?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: hsn
+            title: H-S-N, then Maurya
+            kind: memory
+            rule: "Magadha's dynasties in order: Haryanka (Bimbisara, Ajatashatru, Udayin) → Shishunaga (Kalashoka) → Nanda (Mahapadma, Dhana) → Maurya. Mnemonic: 'Have Some Nuts, Maurya'."
+
+  - key: buddhism-jainism
+    title: Buddhism and Jainism
+    concepts:
+      - slug: buddha-life-teachings
+        title: "Gautama Buddha: life and teachings"
+        summary: >-
+          Siddhartha, of the Shakya clan, was born in 563 BCE (traditional date) at Lumbini, son of
+          Suddhodana and Mahamaya. He left home at 29 (the Great Renunciation), attained
+          enlightenment at Bodh Gaya under a pipal tree by the Niranjana river, gave his first
+          sermon at Sarnath (Dharmachakra Pravartana) and died (Mahaparinirvana) at Kushinagar in
+          483 BCE at 80. He taught the Four Noble Truths, the Eightfold Path and the Middle Path,
+          and preached in Pali; the triratna are Buddha, Dhamma and Sangha.
+        difficulty: easy
+        weight: 1.5
+        patterns:
+          - key: place-event
+            title: Place of an event in the Buddha's life
+            example_stem: "Where did Gautama Buddha deliver his first sermon?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: symbol-event
+            title: Symbol of an event in the Buddha's life
+            example_stem: "In Buddhist art, which symbol represents the Mahaparinirvana of the Buddha?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: four-places
+            title: L-B-S-K and the five symbols
+            kind: memory
+            rule: "Places in order of life: Lumbini (birth) → Bodh Gaya (enlightenment) → Sarnath (first sermon) → Kushinagar (death). Symbols: birth – lotus and bull, renunciation – horse, enlightenment – Bodhi tree, first sermon – wheel, death – stupa."
+            pattern: symbol-event
+      - slug: buddhist-councils-texts
+        title: "Buddhist councils, texts and sects"
+        summary: >-
+          Four Buddhist councils: 1st at Rajagriha (483 BCE, under Ajatashatru, presided by
+          Mahakassapa; Sutta and Vinaya compiled), 2nd at Vaishali (383 BCE, Kalashoka; first
+          split), 3rd at Pataliputra (c. 250 BCE, Ashoka, Moggaliputta Tissa; Abhidhamma added) and
+          4th at Kundalvana in Kashmir (1st century CE, Kanishka, Vasumitra with Ashvaghosha; split
+          into Hinayana and Mahayana). The Tripitaka (Vinaya, Sutta, Abhidhamma) is in Pali, and
+          the Jatakas tell of the Buddha's earlier births.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [buddha-life-teachings]
+        patterns:
+          - key: council-match
+            title: Match a council with its place, patron or president
+            example_stem: "The Fourth Buddhist Council was held in Kashmir under the patronage of which ruler?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+          - key: pitaka
+            title: Contents of the Tripitaka
+            example_stem: "Which Pitaka contains the rules of conduct for Buddhist monks?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: rvpk
+            title: Rajagriha, Vaishali, Pataliputra, Kashmir
+            kind: memory
+            rule: "Places R-V-P-K ('Real Very Proud Kings') with patrons Ajatashatru, Kalashoka, Ashoka, Kanishka: the patrons' names alternate A-K-A-K."
+            pattern: council-match
+      - slug: jainism-mahavira
+        title: "Jainism: Tirthankaras, Mahavira and teachings"
+        summary: >-
+          Jainism has 24 Tirthankaras: Rishabhanatha (Adinath) the first, Parshvanath the 23rd and
+          Vardhamana Mahavira the 24th. Mahavira was born at Kundagrama near Vaishali (c. 540 BCE)
+          to Siddhartha and Trishala, attained kaivalya under a sal tree by the Rijupalika river
+          and died at Pavapuri; he added brahmacharya to Parshvanath's four vows. The triratna are
+          right faith, right knowledge and right conduct; the sects are Digambara (Bhadrabahu) and
+          Shvetambara (Sthulabhadra); the councils were at Pataliputra and Vallabhi; and the
+          Gomateshwara (Bahubali) statue at Shravanabelagola was raised by Chamundaraya.
+        difficulty: medium
+        weight: 1.2
+        patterns:
+          - key: tirthankara
+            title: Tirthankaras and Mahavira's life
+            example_stem: "Who was the 23rd Tirthankara of Jainism?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: compare-buddhism
+            title: Jain versus Buddhist teachings
+            example_stem: "'Right faith, right knowledge and right conduct' are the three jewels of which religion?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: jain-buddha-places
+            title: Pair the places
+            kind: memory
+            rule: "Buddha: born Lumbini, died Kushinagar. Mahavira: born Kundagrama, died Pavapuri. Buddha's tree is the pipal, Mahavira's the sal."
+            pattern: tirthankara
+
+  - key: mauryan
+    title: Mauryan empire
+    concepts:
+      - slug: chandragupta-maurya-administration
+        title: "Chandragupta Maurya, Bindusara and Mauryan administration"
+        summary: >-
+          Chandragupta Maurya, guided by Chanakya (Kautilya, author of the Arthashastra),
+          overthrew Dhana Nanda around 321 BCE, defeated Seleucus Nicator (305 BCE), whose envoy
+          Megasthenes wrote Indica, and late in life became a Jain and died at Shravanabelagola.
+          His son Bindusara (called Amitraghata) followed the Ajivikas. The empire was run from
+          Pataliputra through a council of ministers, provinces under princes, officials such as
+          the Samaharta (revenue) and Sannidhata (treasury), and a city council of six committees
+          described by Megasthenes.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [rise-of-magadha]
+        patterns:
+          - key: who-wrote
+            title: Sources on the Mauryas
+            example_stem: "'Indica', an account of Mauryan India, was written by"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: mauryan-officials
+            title: Mauryan officials and administration
+            example_stem: "In the Mauryan administration, the Samaharta was in charge of"
+            frequency: low
+            difficulty: medium
+            target_seconds: 15
+      - slug: ashoka-dhamma-edicts
+        title: "Ashoka: Kalinga war, Dhamma and edicts"
+        summary: >-
+          Ashoka (c. 268-232 BCE) fought the Kalinga war in 261 BCE, described in Major Rock Edict
+          XIII, then adopted Buddhism and preached Dhamma through Dhamma Mahamattas, the Third
+          Buddhist Council and missions (his son Mahendra and daughter Sanghamitra went to Sri
+          Lanka). His edicts are mostly in Prakrit in the Brahmi script (Kharosthi in the
+          north-west, Greek and Aramaic in Afghanistan), call him Devanampiya Piyadasi, name him
+          'Ashoka' at Maski, and were deciphered by James Prinsep in 1837. The Sarnath Lion Capital
+          is India's national emblem; the empire ended when Pushyamitra Shunga killed Brihadratha
+          (c. 185 BCE).
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [chandragupta-maurya-administration]
+        patterns:
+          - key: edict-facts
+            title: Facts about Ashoka's inscriptions
+            example_stem: "Which of Ashoka's Major Rock Edicts describes the Kalinga war?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+          - key: script-decipher
+            title: Script and decipherment
+            example_stem: "Who first deciphered the Brahmi script of Ashoka's inscriptions?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: edict-13
+            title: Edict 13 is unlucky for Kalinga
+            kind: memory
+            rule: "Major Rock Edict XIII = Kalinga war; Maski edict = the name 'Ashoka'; Prinsep = decipherment (1837); Sarnath capital = national emblem."
+            pattern: edict-facts
+
+  - key: post-mauryan
+    title: Post-Mauryan period
+    concepts:
+      - slug: shunga-satavahana-kharavela
+        title: "Shungas, Kanvas, Satavahanas and Kharavela"
+        summary: >-
+          Pushyamitra Shunga founded the Shunga dynasty (Patanjali, author of the Mahabhashya,
+          lived in his time); the Heliodorus pillar at Vidisha was raised by a Greek envoy at a
+          Shunga court. The Kanvas followed. In the Deccan the Satavahanas (founder Simuka;
+          capital Pratishthana/Paithan; greatest king Gautamiputra Satakarni, praised in his
+          mother Gautami Balashri's Nasik inscription) used Prakrit, issued lead coins, named
+          kings after their mothers and made the first known land grants to Brahmanas and monks.
+          Kharavela of Kalinga, a Jain king, is known from the Hathigumpha inscription at
+          Udayagiri.
+        difficulty: medium
+        weight: 0.9
+        prerequisites: [ashoka-dhamma-edicts]
+        patterns:
+          - key: dynasty-fact
+            title: Dynasty, ruler and inscription
+            example_stem: "The Hathigumpha inscription gives an account of the reign of which king?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+          - key: satavahana
+            title: Satavahana features
+            example_stem: "Which dynasty is known for naming its kings after their mothers, such as Gautamiputra?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+      - slug: indo-greeks-shakas-kushanas
+        title: "Indo-Greeks, Shakas and Kushanas (Kanishka)"
+        summary: >-
+          The Indo-Greeks were the first to issue coins clearly attributed to kings and the first
+          gold coins in India; their king Menander (Milinda) discussed Buddhism with Nagasena
+          (Milindapanho). Among the Shakas, Rudradaman I left the Junagadh inscription, the first
+          long inscription in Sanskrit. The Kushana Kanishka, whose reign is linked to the Saka era
+          of 78 CE, ruled from Purushapura (Peshawar), held the Fourth Buddhist Council,
+          patronised Mahayana Buddhism, Ashvaghosha (Buddhacharita) and the physician Charaka; the
+          Gandhara (Greco-Buddhist) and Mathura (red sandstone) schools of art flourished.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [buddhist-councils-texts]
+        patterns:
+          - key: ruler-fact
+            title: Foreign ruler and his achievement
+            example_stem: "The Saka era, used in the national calendar of India, begins in which year?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: art-schools
+            title: Gandhara and Mathura schools of art
+            example_stem: "Which school of art is known for Buddha images showing Greek influence?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: kanishka-k
+            title: Kanishka's 'K' facts
+            kind: memory
+            rule: "Kanishka: Kashmir council, Kushana, 78 CE (Saka era), court of Ashvaghosha, Nagarjuna, Vasumitra and Charaka; capital Purushapura."
+            pattern: ruler-fact
+
+  - key: gupta
+    title: Gupta empire
+    concepts:
+      - slug: gupta-empire-rulers
+        title: "Gupta empire: rulers and achievements"
+        summary: >-
+          Chandragupta I began the Gupta era in 319-20 CE, married the Lichchhavi princess
+          Kumaradevi and took the title Maharajadhiraja. Samudragupta's conquests are recorded in
+          the Prayag Prashasti (Allahabad Pillar inscription) by Harisena; V.A. Smith called him
+          the 'Napoleon of India' and his coins show him playing the veena. Chandragupta II
+          Vikramaditya defeated the Shakas, issued silver coins, had Kalidasa at court and was
+          visited by Fa-Hien; Kumaragupta I founded Nalanda; Skandagupta repelled the Hunas. The
+          age is called a 'golden age' for art, literature and science.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [indo-greeks-shakas-kushanas]
+        patterns:
+          - key: ruler-achievement
+            title: Match a Gupta ruler with an achievement
+            example_stem: "Which Gupta ruler is known as the 'Napoleon of India'?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: inscription-author
+            title: Inscriptions and their authors
+            example_stem: "The Allahabad Pillar inscription praising Samudragupta was composed by"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: gupta-ladder
+            title: One fact per Gupta ruler
+            kind: memory
+            rule: "Chandragupta I – era 319-20 and Kumaradevi; Samudragupta – Prayag Prashasti, Napoleon, veena; Chandragupta II – Shakas, Fa-Hien, Kalidasa; Kumaragupta I – Nalanda; Skandagupta – Hunas."
+            pattern: ruler-achievement
+            pitfalls: ["Chandragupta Maurya (Megasthenes) is not Chandragupta II (Fa-Hien)."]
+
+  - key: harsha
+    title: Harsha and his times
+    concepts:
+      - slug: harshavardhana
+        title: Harshavardhana of Kannauj
+        summary: >-
+          Harsha of the Pushyabhuti (Vardhana) dynasty ruled from 606 CE (start of the Harsha era)
+          to 647 CE, moving his capital from Thanesar to Kannauj. He was defeated on the Narmada
+          by the Chalukya king Pulakeshin II (recorded in the Aihole inscription). His court poet
+          Banabhatta wrote Harshacharita and Kadambari; Harsha himself wrote the plays Ratnavali,
+          Nagananda and Priyadarshika. The Chinese pilgrim Hiuen Tsang visited him, studied at
+          Nalanda and described the Kannauj assembly and the five-yearly assembly at Prayag.
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [gupta-empire-rulers]
+        patterns:
+          - key: harsha-facts
+            title: Harsha's court, writers and visitors
+            example_stem: "Who wrote 'Harshacharita'?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: harsha-rival
+            title: Harsha's rivals
+            example_stem: "Which ruler defeated Harshavardhana on the banks of the Narmada?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+
+  - key: sangam
+    title: Sangam age
+    concepts:
+      - slug: sangam-age
+        title: "Sangam age: literature and the Chera, Chola and Pandya kingdoms"
+        summary: >-
+          Sangam literature was produced in assemblies of Tamil poets at Madurai under Pandya
+          patronage. Key works: Tolkappiyam (grammar), the Ettuthogai and Pattuppattu anthologies,
+          Tirukkural by Thiruvalluvar, and the epics Silappatikaram (Ilango Adigal, story of
+          Kannagi and Kovalan) and Manimekalai (Sattanar). The three kingdoms were the Cheras
+          (capital Vanji, emblem bow), Cholas (Uraiyur and the port Puhar, emblem tiger; Karikala
+          built the Kallanai dam on the Kaveri) and Pandyas (Madurai, emblem fish, pearl port
+          Korkai).
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: text-author
+            title: Sangam text and author
+            example_stem: "'Silappatikaram' was written by"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: kingdom-emblem
+            title: Kingdom, capital and emblem
+            example_stem: "The tiger was the royal emblem of which Sangam kingdom?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: emblems
+            title: Bow, tiger, fish
+            kind: memory
+            rule: "In the order Chera, Chola, Pandya the emblems are Bow, Tiger, Fish ('Big Tigers Fish'); capitals Vanji, Uraiyur, Madurai."
+            pattern: kingdom-emblem
+
+  - key: south-kingdoms
+    title: South Indian kingdoms
+    concepts:
+      - slug: pallavas-kanchi
+        title: Pallavas of Kanchipuram
+        summary: >-
+          The Pallavas ruled from Kanchipuram. Mahendravarman I wrote the play Mattavilasa
+          Prahasana and began rock-cut temples; Narasimhavarman I (Mamalla) defeated and killed
+          Pulakeshin II in 642 CE, took Vatapi and built the monolithic rathas at Mamallapuram
+          (Mahabalipuram); Narasimhavarman II (Rajasimha) built the Shore Temple and the
+          Kailasanatha temple at Kanchi. The Mahabalipuram monuments, including Arjuna's Penance,
+          are a UNESCO World Heritage site (1984).
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: builder
+            title: Who built which Pallava monument
+            example_stem: "The Shore Temple at Mahabalipuram was built during the reign of"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+          - key: capital
+            title: Capital of the Pallavas
+            example_stem: "Which city was the capital of the Pallavas?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+      - slug: chalukyas-badami
+        title: Chalukyas of Badami (Vatapi)
+        summary: >-
+          The Chalukyas of Badami (Vatapi) rose in the 6th century under Pulakeshin I.
+          Pulakeshin II defeated Harsha on the Narmada; his Aihole inscription (634 CE) was
+          composed by Ravikirti. He was killed by the Pallava Narasimhavarman I in 642 CE. The
+          Chalukyas built early stone temples at Aihole ('cradle of Indian temple architecture'),
+          Badami and Pattadakal (UNESCO, 1987), where the Virupaksha temple was built by queen
+          Lokamahadevi; the Rashtrakuta Dantidurga ended their rule in the mid-8th century.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [harshavardhana]
+        patterns:
+          - key: inscription
+            title: Aihole inscription and Pulakeshin II
+            example_stem: "The Aihole inscription, which describes the victories of Pulakeshin II, was composed by"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+          - key: temple-site
+            title: Chalukyan temple sites
+            example_stem: "Which place is known as the 'cradle of Indian temple architecture'?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+      - slug: imperial-cholas
+        title: Imperial Cholas and Chola local self-government
+        summary: >-
+          Vijayalaya founded the imperial Chola line at Thanjavur in the mid-9th century. Rajaraja
+          I (985-1014) built the Brihadeeswara temple at Thanjavur and conquered northern Sri Lanka
+          and the Maldives; Rajendra I took the title Gangaikonda Chola after his Ganga expedition,
+          built the capital Gangaikondacholapuram and sent a naval expedition to Srivijaya in
+          South-East Asia. The Uttaramerur inscriptions of Parantaka I describe village assemblies
+          (ur, sabha) chosen by lot (kudavolai); Chola bronzes such as Nataraja are famous, and the
+          Great Living Chola Temples are a UNESCO site.
+        difficulty: medium
+        weight: 1.2
+        patterns:
+          - key: ruler-work
+            title: Chola ruler and achievement
+            example_stem: "The Brihadeeswara temple at Thanjavur was built by"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: local-government
+            title: Chola village administration
+            example_stem: "The Uttaramerur inscriptions give information about which aspect of Chola rule?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: raja-rajendra
+            title: Father builds, son sails
+            kind: memory
+            rule: "Rajaraja I (father) – Thanjavur temple, Sri Lanka; Rajendra I (son) – Ganga expedition, Gangaikondacholapuram, navy to Srivijaya."
+            pattern: ruler-work
+
+  - key: literature-science
+    title: Ancient literature, science and learning
+    concepts:
+      - slug: ancient-sanskrit-literature
+        title: "Ancient literature: authors and their works"
+        summary: >-
+          SSC pairs authors with works: Valmiki – Ramayana; Ved Vyasa – Mahabharata (the
+          Bhagavad Gita is in its Bhishma Parva); Panini – Ashtadhyayi (grammar); Patanjali –
+          Mahabhashya and Yoga Sutras; Kautilya – Arthashastra; Kalidasa – Abhijnanashakuntalam,
+          Meghaduta, Raghuvamsha, Kumarasambhava; Bhasa – Svapnavasavadattam; Shudraka –
+          Mrichchhakatika; Vishakhadatta – Mudrarakshasa; Banabhatta – Harshacharita and
+          Kadambari; Bharata – Natyashastra; Vishnu Sharma – Panchatantra; Amarasimha –
+          Amarakosha; Jayadeva – Gita Govinda; Kalhana – Rajatarangini (history of Kashmir).
+        difficulty: medium
+        weight: 1.2
+        patterns:
+          - key: author-work
+            title: Match the author with the work
+            example_stem: "Who wrote 'Mudrarakshasa'?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 10
+          - key: work-subject
+            title: Subject of a classical text
+            example_stem: "'Natyashastra' is an ancient treatise on"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: kalidasa-seven
+            title: Kalidasa's seven works
+            kind: memory
+            rule: "Three plays (Abhijnanashakuntalam, Malavikagnimitram, Vikramorvashiyam), two epics (Raghuvamsha, Kumarasambhava), two lyrics (Meghaduta, Ritusamhara): 3-2-2."
+            pattern: author-work
+      - slug: ancient-science-mathematics
+        title: "Ancient science, mathematics and medicine"
+        summary: >-
+          Aryabhata wrote the Aryabhatiya (499 CE), held that the earth rotates on its axis,
+          explained eclipses and gave π ≈ 3.1416; India's first satellite (1975) was named after
+          him. Varahamihira wrote Pancha Siddhantika and Brihat Samhita; Brahmagupta's
+          Brahmasphutasiddhanta (628 CE) gave rules for zero and negative numbers; Bhaskaracharya
+          (12th century) wrote Siddhanta Shiromani, which includes Lilavati. Baudhayana's Sulba
+          Sutras state the right-triangle (Pythagoras) rule, Charaka wrote on medicine (Charaka
+          Samhita), Sushruta on surgery (Sushruta Samhita), and Kanada proposed an atomic theory.
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: scientist-work
+            title: Scientist and contribution
+            example_stem: "'Sushruta Samhita' is an ancient Indian text on"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: mathematician
+            title: Mathematician and book
+            example_stem: "'Lilavati' is a part of which mathematician's work?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: medicine-surgery
+            title: Charaka cures, Sushruta cuts
+            kind: memory
+            rule: "Charaka = medicine (physic), Sushruta = surgery (both start with S). Aryabhata = astronomy and π, Brahmagupta = zero rules, Bhaskara II = Lilavati."
+            pattern: scientist-work
+      - slug: ancient-travellers-universities
+        title: Foreign travellers and ancient universities
+        summary: >-
+          Megasthenes (Greek envoy of Seleucus) visited Chandragupta Maurya and wrote Indica;
+          Fa-Hien (Faxian) came in the reign of Chandragupta II; Hiuen Tsang (Xuanzang) in the
+          reign of Harsha, studying at Nalanda (his account is the Si-yu-ki); I-tsing came in the
+          late 7th century. Takshashila (Taxila) was an early centre of learning; Nalanda (Bihar)
+          was founded by Kumaragupta I and destroyed by Bakhtiyar Khalji around 1200 (its ruins are
+          a UNESCO site since 2016); Vikramashila was founded by the Pala king Dharmapala; Vallabhi
+          flourished in Gujarat.
+        difficulty: easy
+        weight: 1.2
+        patterns:
+          - key: traveller-ruler
+            title: Traveller and the ruler he visited
+            example_stem: "Which Chinese pilgrim visited India during the reign of Harshavardhana?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: university-founder
+            title: University and its founder
+            example_stem: "Vikramashila University was founded by which ruler?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: m-f-h
+            title: M-F-H in time order
+            kind: memory
+            rule: "Megasthenes → Maurya (both M); Hiuen Tsang → Harsha (both H); Fa-Hien sits between them with Chandragupta II (Gupta). Time order: Megasthenes, Fa-Hien, Hiuen Tsang, I-tsing."
+            pattern: traveller-ruler

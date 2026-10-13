@@ -1,0 +1,501 @@
+key: average
+title: Average
+strategies:
+  - key: approach
+    title: "Average: think in totals and deviations"
+    summary: >-
+      Almost every average question is solved by converting averages into totals (average ×
+      count) or by tracking how far each item is from the average. A handful of one-line formulas
+      cover members joining, leaving or being replaced.
+    seconds_per_question: 30
+    accuracy_target: 0.95
+    tactics:
+      - "Turn every average into a total (average × count) before adding or removing members."
+      - "Use the one-line rules: newcomer = A + (n + 1)d, leaver = A − (n − 1)d, replacement difference = n × d."
+      - "Add deviations from an assumed or target average instead of adding long lists."
+      - "Combine groups with a weighted average or alligation, never the plain mean of the group averages."
+    avoid:
+      - "Averaging two averages directly when the groups have different sizes."
+      - "Forgetting that every member grows a year older each year in age-average questions."
+
+topics:
+  - key: basic
+    title: Basic average
+    concepts:
+      - slug: average-basics
+        title: "Basic average: sum, count and properties"
+        summary: "Average = sum of the observations ÷ number of observations, so sum = average × number. Adding k to every item raises the average by k; multiplying every item by k multiplies the average by k. The assumed-mean (deviation) method speeds up long lists."
+        difficulty: easy
+        weight: 1.3
+        formulas:
+          - key: definition
+            name: Average and total
+            expression: "average = (x₁ + x₂ + … + xₙ)/n;  sum = average × n"
+            example: {problem: "Find the average of 47, 52, 55, 48 and 58.", solution: "260/5 = 52"}
+          - key: assumed-mean
+            name: Assumed-mean method
+            expression: "average = A + (sum of deviations from A)/n"
+            example: {problem: "Average of 47, 52, 55, 48, 58 with A = 50.", solution: "Deviations −3, 2, 5, −2, 8 add to 10; 50 + 10/5 = 52"}
+          - key: uniform-change
+            name: Same change to every item
+            expression: "each item + k ⇒ average + k;  each item × k ⇒ average × k"
+            example: {problem: "The average of 8 numbers is 25. Each is multiplied by 3 and then 4 is added.", solution: "25 × 3 + 4 = 79"}
+        patterns:
+          - key: average-of-list
+            title: Average of a list of numbers
+            example_stem: "Find the average of 136, 142, 128, 150 and 139."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: uniform-change
+            title: Effect of changing every item
+            example_stem: "The average of 10 numbers is 18. If each number is increased by 20%, and then 3 is subtracted from each, find the new average."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: assumed-mean
+            title: Assumed mean
+            kind: shortcut
+            rule: "Pick a round number near the middle, add the deviations of all items from it (with signs), divide by n and add to the assumed number."
+            example: {problem: "136, 142, 128, 150, 139", standard: "Add all five: 695 ÷ 5", shortcut: "A = 140: −4 + 2 − 12 + 10 − 1 = −5; 140 − 5/5 = 139", seconds_saved: 15}
+            pattern: average-of-list
+
+      - slug: average-consecutive-numbers
+        title: Average of consecutive, odd and even numbers
+        summary: "For numbers in arithmetic progression (consecutive integers, consecutive odd or even numbers, multiples of a number), the average is (first + last)/2 and equals the middle term. Standard results: first n natural numbers (n + 1)/2, first n odd numbers n, first n even numbers n + 1."
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [average-basics]
+        formulas:
+          - key: ap-average
+            name: Average of an arithmetic progression
+            expression: "average = (first term + last term)/2 = middle term"
+            example: {problem: "Find the average of the first 20 multiples of 7.", solution: "(7 + 140)/2 = 73.5"}
+          - key: standard-averages
+            name: Standard averages
+            expression: "first n natural numbers: (n + 1)/2;  first n odd numbers: n;  first n even numbers: n + 1"
+            example: {problem: "Average of the first 25 odd numbers and of the first 30 even numbers.", solution: "25 and 31"}
+          - key: squares-cubes
+            name: Average of squares and cubes
+            expression: "squares of the first n natural numbers: (n + 1)(2n + 1)/6;  cubes: n(n + 1)²/4"
+            example: {problem: "Average of the squares and of the cubes of 1 to 10.", solution: "11 × 21/6 = 38.5 and 10 × 121/4 = 302.5"}
+          - key: ends-from-average
+            name: Smallest and largest from the average
+            expression: "n terms with common difference d and average A: smallest = A − (n − 1)d/2, largest = A + (n − 1)d/2"
+        patterns:
+          - key: consecutive-largest
+            title: Largest or smallest of consecutive numbers from the average
+            example_stem: "The average of seven consecutive odd numbers is 43. Find the largest of them."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: standard-series
+            title: Average of the first n natural, odd or even numbers
+            example_stem: "Find the average of the first 40 even natural numbers."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: multiples-in-range
+            title: Average of multiples in a range
+            example_stem: "Find the average of all the numbers between 10 and 100 that are divisible by 6."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: middle-term
+            title: The middle term is the average
+            kind: shortcut
+            rule: "For an odd count the average is the middle term; for an even count it is the mean of the two middle terms. Step (n − 1)/2 places either way to reach the ends."
+            example: {problem: "7 consecutive odd numbers average 43; the largest?", standard: "Write x, x + 2, …, x + 12 and solve 7x + 42 = 301", shortcut: "43 is the 4th term; 3 steps of 2 above it: 49", seconds_saved: 15}
+            pattern: consecutive-largest
+
+  - key: weighted
+    title: Weighted average
+    concepts:
+      - slug: average-weighted
+        title: "Weighted average: combined average of groups"
+        summary: "When groups of different sizes are combined, the overall average is Σ(nᵢaᵢ)/Σnᵢ, not the plain mean of the group averages. It lies between the group averages, nearer the larger group, and alligation gives the ratio of the group sizes from the averages."
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [average-basics]
+        formulas:
+          - key: combined
+            name: Combined average
+            expression: "combined average = (n₁a₁ + n₂a₂ + …)/(n₁ + n₂ + …)"
+            example: {problem: "30 students average 60 marks and 20 students average 70.", solution: "(1,800 + 1,400)/50 = 64"}
+          - key: group-ratio
+            name: Group sizes from the averages
+            expression: "n₁ : n₂ = (a₂ − a) : (a − a₁)"
+            example: {problem: "Sections averaging 50 and 80 combine to an average of 62.", solution: "(80 − 62) : (62 − 50) = 18 : 12 = 3 : 2"}
+        patterns:
+          - key: combined-average
+            title: Combined average of two groups
+            example_stem: "The average marks of 45 students in section A are 62 and of 30 students in section B are 72. Find the average marks of both sections together."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: one-group-unknown
+            title: Average of one group from the combined average
+            example_stem: "The average age of 30 boys in a class is 14 years and the average age of the whole class of 50 students is 13.6 years. Find the average age of the girls."
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: group-sizes
+            title: Sizes of the groups from their averages
+            example_stem: "The average salary in a firm is ₹25,000. Managers average ₹60,000 and the other staff ₹20,000. If there are 120 employees, how many are managers?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: shift-from-one-group
+            title: Shift from one group's average
+            kind: shortcut
+            rule: "Combined average = a₁ + n₂(a₂ − a₁)/(n₁ + n₂): start from the first group's average and add the second group's share of the gap."
+            example: {problem: "45 students at 62 and 30 at 72", standard: "(2,790 + 2,160)/75", shortcut: "62 + 30 × 10/75 = 62 + 4 = 66", seconds_saved: 15}
+            pattern: combined-average
+          - key: alligate-groups
+            title: Alligation for group sizes
+            kind: alternative
+            rule: "Write the two group averages and the combined average in an alligation cross; the gaps give the ratio of the group sizes."
+            example: {problem: "Averages ₹60,000 and ₹20,000, overall ₹25,000, 120 staff", shortcut: "Managers : others = 5,000 : 35,000 = 1 : 7, so 120/8 = 15 managers", seconds_saved: 20}
+            pattern: group-sizes
+
+  - key: missing
+    title: Missing value and wrongly noted values
+    concepts:
+      - slug: average-missing-value
+        title: "Missing value: unknown items and overlapping groups"
+        summary: "A missing item is the required total minus the known items: n × average − sum of the others. When two overlapping groups share an item (the first six and the last six of eleven numbers, Monday to Wednesday and Tuesday to Thursday), the shared item comes from the difference of the group totals."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [average-basics]
+        formulas:
+          - key: missing
+            name: Missing item
+            expression: "missing item = n × average − (sum of the known items)"
+            example: {problem: "The average of 6 numbers is 45; five of them are 40, 42, 48, 50 and 38.", solution: "270 − 218 = 52"}
+          - key: middle-item
+            name: Common item of two overlapping groups
+            expression: "2k − 1 items with average A; first k average P and last k average Q  ⇒  kth item = k(P + Q) − (2k − 1)A"
+            example: {problem: "11 numbers average 30; the first 6 average 28 and the last 6 average 33.", solution: "6th number = 6 × 61 − 11 × 30 = 366 − 330 = 36"}
+          - key: required-next
+            name: Next value for a target average
+            expression: "required next value = (n + 1) × target average − n × current average"
+        patterns:
+          - key: find-missing
+            title: Find the missing item
+            example_stem: "The average of five numbers is 64. Four of them are 58, 71, 60 and 66. Find the fifth number."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: overlapping-groups
+            title: Overlapping groups (the common middle item)
+            example_stem: "The average of 13 results is 48. The average of the first seven is 45 and that of the last seven is 52. Find the seventh result."
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: days-of-week
+            title: Overlapping days of the week
+            example_stem: "The average temperature from Monday to Wednesday was 37 °C and from Tuesday to Thursday 34 °C. If Thursday's temperature was 4/5 of Monday's, find Thursday's temperature."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: net-deviation
+            title: Cancel the net deviation
+            kind: shortcut
+            rule: "Write each known item as its deviation from the average; the missing item must cancel their net deviation."
+            example: {problem: "Average 64; known 58, 71, 60, 66", standard: "5 × 64 − 255 = 65", shortcut: "Deviations −6, +7, −4, +2 = −1, so the fifth is 64 + 1 = 65", seconds_saved: 10}
+            pattern: find-missing
+          - key: shared-item
+            title: Shared item = group totals minus the whole
+            kind: shortcut
+            rule: "For overlapping groups, shared item = (total of group 1 + total of group 2) − total of all items."
+            example: {problem: "13 results average 48; first 7 average 45, last 7 average 52", shortcut: "315 + 364 − 624 = 55", seconds_saved: 15}
+            pattern: overlapping-groups
+
+      - slug: average-wrong-values
+        title: "Wrongly noted values: correcting an average"
+        summary: "If an item was recorded wrongly, the total is off by (wrong − correct), so the average is off by (wrong − correct)/n. Correct the total or shift the average by the error spread over n. With the digits of a two-digit number reversed, the error is 9 × the difference of the digits."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [average-basics]
+        formulas:
+          - key: correction
+            name: Corrected average
+            expression: "correct average = old average + (correct value − wrong value)/n"
+            example: {problem: "40 numbers average 35, but 48 was read as 84.", solution: "35 + (48 − 84)/40 = 35 − 0.9 = 34.1"}
+          - key: reversed-digits
+            name: Reversed digits
+            expression: "(10a + b) − (10b + a) = 9(a − b)"
+            example: {problem: "63 was entered as 36.", solution: "Error = 9 × 3 = 27"}
+        patterns:
+          - key: one-wrong-value
+            title: One value copied wrongly
+            example_stem: "The average of 25 observations was found to be 46. Later it was found that one observation, 62, had been copied as 37. Find the correct average."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: count-from-error
+            title: Number of items from the change in average
+            example_stem: "A student's marks were entered as 74 instead of 47, which raised the class average by 0.75. How many students are in the class?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: several-wrong
+            title: Several values read wrongly
+            example_stem: "The average of 30 numbers is 52. Two numbers, 45 and 63, were read as 54 and 36. Find the correct average."
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: spread-error
+            title: Spread the error over n
+            kind: shortcut
+            rule: "Change in average = (correct − wrong)/n; there is no need to rebuild the total."
+            example: {problem: "Average 46 of 25 items; 62 copied as 37", standard: "Total 1,150 − 37 + 62 = 1,175, then ÷ 25", shortcut: "46 + 25/25 = 47", seconds_saved: 15}
+            pattern: one-wrong-value
+
+  - key: changes
+    title: Inclusion, exclusion and replacement problems
+    concepts:
+      - slug: average-inclusion-exclusion
+        title: Inclusion and exclusion of a member
+        summary: "When one member joins a group of n whose average is A and the average becomes A + d, the newcomer's value is A + (n + 1)d. When one member leaves and the average of the remaining n − 1 becomes A + d, the leaver's value is A − (n − 1)d. Use a negative d when the average falls."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [average-basics]
+        formulas:
+          - key: joins
+            name: Value of a member who joins
+            expression: "newcomer = A + (n + 1)d"
+            variables:
+              - {symbol: "A", meaning: "average of the original n members"}
+              - {symbol: "n", meaning: "original number of members"}
+              - {symbol: "d", meaning: "change in the average (negative if it falls)"}
+            example: {problem: "24 students average 40 kg; with the teacher the average rises by 1 kg.", solution: "Teacher = 40 + 25 × 1 = 65 kg"}
+          - key: leaves
+            name: Value of a member who leaves
+            expression: "leaver = A − (n − 1)d"
+            example: {problem: "10 players average 25 years; when one leaves, the rest average 24.", solution: "d = −1: leaver = 25 + 9 = 34 years"}
+          - key: several-join
+            name: Several members join
+            expression: "total of the k newcomers = (n + k)(A + d) − nA"
+        patterns:
+          - key: teacher-included
+            title: A new member included (the teacher's age or weight)
+            example_stem: "The average age of 35 students is 14 years. When the teacher's age is included, the average rises by 6 months. Find the teacher's age."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: member-leaves
+            title: A member leaves the group
+            example_stem: "The average weight of 16 members of a team is 58 kg. When one member leaves, the average weight of the rest falls by 0.4 kg. Find the weight of the member who left."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: several-new-members
+            title: Several new members join
+            example_stem: "The average salary of 20 employees is ₹24,000. When 5 new employees join, the average becomes ₹23,000. Find the average salary of the new employees."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: newcomer-rule
+            title: Newcomer = old average + new count × change
+            kind: shortcut
+            rule: "The newcomer brings the old average plus enough to raise every one of the n + 1 members by d."
+            example: {problem: "35 students average 14 years; with the teacher, +0.5", standard: "36 × 14.5 − 35 × 14 = 522 − 490", shortcut: "14 + 36 × 0.5 = 32 years", seconds_saved: 15}
+            pattern: teacher-included
+          - key: leaver-rule
+            title: Leaver = old average − remaining count × change
+            kind: shortcut
+            rule: "The leaver's value is the old average minus the change spread over the n − 1 who remain (a fall in the average means the leaver was above it)."
+            example: {problem: "16 members average 58 kg; after one leaves, −0.4", shortcut: "58 + 15 × 0.4 = 64 kg", seconds_saved: 15}
+            pattern: member-leaves
+
+      - slug: average-replacement
+        title: "Replacement problems: one member replaced by another"
+        summary: "If one member of a group of n is replaced and the average changes by d, the newcomer differs from the person replaced by n × d: new = old + nd (d negative when the average falls). The group size does not change, so only the difference matters."
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [average-basics]
+        formulas:
+          - key: replacement
+            name: Value of the replacement
+            expression: "new member = replaced member + n × d"
+            example: {problem: "The average weight of 8 men rises by 2.5 kg when a man of 65 kg is replaced.", solution: "New man = 65 + 8 × 2.5 = 85 kg"}
+          - key: two-replaced
+            name: Two or more members replaced
+            expression: "sum of the new members = sum of the replaced members + n × d"
+        patterns:
+          - key: weight-of-new
+            title: Weight or age of the new member
+            example_stem: "The average weight of 10 oarsmen in a boat increases by 1.8 kg when one of them, weighing 58 kg, is replaced by a new man. Find the weight of the new man."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: average-falls
+            title: Average falls after a replacement
+            example_stem: "The average age of a committee of 12 members falls by 2 years when a member aged 60 is replaced by a new member. Find the age of the new member."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: two-replaced
+            title: Two members replaced
+            example_stem: "The average age of 8 men increases by 2 years when two of them, aged 30 and 34, are replaced by two women. Find the average age of the women."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: n-times-change
+            title: Difference = n × change
+            kind: shortcut
+            rule: "New member − replaced member = (group size) × (change in the average); no totals needed."
+            example: {problem: "10 oarsmen, +1.8 kg, 58 kg man replaced", standard: "Compare totals 10A and 10(A + 1.8)", shortcut: "58 + 10 × 1.8 = 76 kg", seconds_saved: 15}
+            pattern: weight-of-new
+
+  - key: age
+    title: Age average
+    concepts:
+      - slug: average-age
+        title: "Age average: families and groups over time"
+        summary: "Every member of a group ages one year per year, so after t years the average age rises by t if the members do not change, and the total rises by n × t. Births, deaths and new members are then handled like inclusion or exclusion, after first moving every average to the same date."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [average-inclusion-exclusion]
+        formulas:
+          - key: over-time
+            name: Average and total over time
+            expression: "average after t years = present average + t;  total after t years = present total + n × t"
+            example: {problem: "5 family members average 24 years now. Their average after 3 years?", solution: "24 + 3 = 27 years"}
+          - key: new-member-age
+            name: Age of a new member
+            expression: "new member's age = (n + 1) × new average − n × (old average + t)"
+            example: {problem: "3 years ago a family of 5 averaged 17 years; with a baby born since, the 6 members now average 17.", solution: "6 × 17 − 5 × 20 = 102 − 100 = 2 years"}
+        patterns:
+          - key: baby-born
+            title: A child born since, average unchanged or changed
+            example_stem: "Three years ago the average age of a family of 5 members was 17 years. A baby has been born since then, and the present average age of the family is still 17 years. How old is the baby?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: couple-and-child
+            title: Couple's average at marriage and family average now
+            example_stem: "The average age of a husband and wife was 25 years when they married 6 years ago. The average age of the husband, the wife and their child is now 22 years. How old is the child?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: group-in-past
+            title: Ages of group members from past averages
+            example_stem: "Five years ago the average age of A, B and C was 25 years and that of B and C was 20 years. Find A's present age."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: move-to-today
+            title: Move every average to the same date
+            kind: shortcut
+            rule: "Before comparing, shift each average by the years passed: an average of 17 three years ago is 20 today for the same 5 people."
+            example: {problem: "5 members averaged 17 three years ago; 6 average 17 now", standard: "Form an equation in the baby's age", shortcut: "5 × 20 = 100 now; 6 × 17 = 102; baby = 2 years", seconds_saved: 20}
+            pattern: baby-born
+
+  - key: marks
+    title: Marks average
+    concepts:
+      - slug: average-marks
+        title: "Marks average: subjects, students and target scores"
+        summary: "Marks questions apply averages to exams: total marks = average × number of papers, the score needed in the next paper to reach a target average, the average without one subject, and the numbers of passed and failed candidates from their averages."
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [average-missing-value, average-weighted]
+        formulas:
+          - key: next-paper
+            name: Marks needed in the next paper
+            expression: "marks needed = (n + 1) × target average − n × current average = target + n × (target − current)"
+            example: {problem: "Average 72 in 5 subjects; target 75 over 6 subjects.", solution: "6 × 75 − 5 × 72 = 450 − 360 = 90"}
+          - key: pass-fail
+            name: Passed and failed candidates
+            expression: "passed : failed = (overall − failed average) : (passed average − overall)"
+            example: {problem: "Passed average 39, failed 15, overall 35, 120 candidates.", solution: "20 : 4 = 5 : 1, so 100 passed"}
+        patterns:
+          - key: target-average
+            title: Marks needed for a target average
+            example_stem: "A student's average in 6 subjects is 68. How many marks must he score in the 7th subject to raise his average to 70?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: passed-failed
+            title: Number of candidates who passed
+            example_stem: "The average marks of 150 candidates were 42. The average of those who passed was 50 and of those who failed 20. How many candidates passed?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: subject-excluded
+            title: Average without one subject
+            example_stem: "A student's average in 5 subjects is 76. Excluding Mathematics, his average in the other 4 is 73. Find his marks in Mathematics."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: target-plus-rise
+            title: Next score = target + papers so far × rise
+            kind: shortcut
+            rule: "To lift an average from A to B with one more paper, the new paper needs B + n(B − A), where n is the number of papers already taken."
+            example: {problem: "Average 68 in 6 papers, target 70", standard: "7 × 70 − 6 × 68 = 490 − 408", shortcut: "70 + 6 × 2 = 82", seconds_saved: 15}
+            pattern: target-average
+
+  - key: cricket
+    title: Cricket runs and batting average
+    concepts:
+      - slug: average-cricket-batting
+        title: "Cricket: batting and bowling averages"
+        summary: "Exam questions usually treat a batsman's average as total runs ÷ innings (in real cricket it is runs ÷ times dismissed). The runs needed in the next innings to raise the average by d are old average + (n + 1)d. A bowler's average is runs conceded per wicket, so a better spell lowers it."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [average-inclusion-exclusion]
+        formulas:
+          - key: next-innings
+            name: Runs needed in the next innings
+            expression: "runs in the (n + 1)th innings = old average + (n + 1) × rise in average"
+            example: {problem: "Average 32 after 10 innings; raise it by 4 in the 11th.", solution: "32 + 11 × 4 = 76 runs"}
+          - key: bowling
+            name: Bowling average and wickets taken before
+            expression: "bowling average = runs conceded/wickets;  wickets before = (B × k − R)/(A − B)"
+            variables:
+              - {symbol: "A, B", meaning: "bowling average before and after the match"}
+              - {symbol: "k, R", meaning: "wickets taken and runs conceded in the match"}
+            example: {problem: "Average 14.5 runs per wicket; takes 4 wickets for 30 runs and the average falls to 14.", solution: "(14 × 4 − 30)/(14.5 − 14) = 26/0.5 = 52 wickets before the match"}
+        patterns:
+          - key: runs-next-innings
+            title: Runs needed in the next innings
+            example_stem: "A batsman's average after 16 innings is 42. How many runs must he score in the 17th innings to raise his average to 45?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: average-after-innings
+            title: Average after an innings from the rise
+            example_stem: "A cricketer scores 87 runs in his 18th innings, which raises his average by 3. Find his average after the 18th innings."
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: bowling-average
+            title: Bowling average and wickets
+            example_stem: "A bowler's average is 14.5 runs per wicket. In the next match he takes 4 wickets for 30 runs, and his average falls to 14. How many wickets had he taken before this match?"
+            frequency: low
+            difficulty: hard
+            target_seconds: 45
+        shortcuts:
+          - key: innings-rule
+            title: Latest score = old average + innings × rise
+            kind: shortcut
+            rule: "Runs in the latest innings = old average + (new number of innings) × (rise in average); reverse it to find the old average from the score."
+            example: {problem: "87 runs in the 18th innings raise the average by 3", standard: "Solve 17x + 87 = 18(x + 3)", shortcut: "Old average = 87 − 18 × 3 = 33, so the new average is 36", seconds_saved: 20}
+            pattern: average-after-innings
+
+  - key: speed
+    title: Average speed
+    concepts:
+      - ref: average-speed
+        weight: 0.8

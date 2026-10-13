@@ -1,0 +1,298 @@
+key: memory-storage
+title: "Computer memory, storage and back-up devices"
+strategies:
+  - key: approach
+    title: "Memory: place it on the hierarchy"
+    summary: >-
+      Memory questions test the memory hierarchy (what is fastest, what is volatile), the RAM and ROM
+      families, the capacities of storage media and backup methods. Most can be answered by placing the
+      item on the hierarchy and asking whether it keeps its data without power.
+    seconds_per_question: 25
+    accuracy_target: 0.9
+    tactics:
+      - "Draw the hierarchy once: registers → cache → RAM → SSD/hard disk → optical disc/tape; speed and cost per bit fall and capacity rises going down."
+      - "Remember the one-word difference in each pair: SRAM flip-flops vs DRAM capacitors; EPROM ultraviolet vs EEPROM electrical."
+      - "Learn the standard capacities: floppy 1.44 MB, CD 700 MB, DVD 4.7 GB, Blu-ray 25 GB."
+    avoid:
+      - "Treating every ROM as unchangeable: EPROM, EEPROM and flash can all be erased and rewritten."
+
+topics:
+  - key: memory-organisation
+    title: Computer memory and memory organisation
+    concepts:
+      - slug: computer-memory-hierarchy
+        title: "Memory hierarchy: primary, secondary, volatile and non-volatile memory"
+        summary: >-
+          Primary memory (registers, cache, RAM and ROM) is accessed directly by the CPU; secondary memory
+          (hard disk, SSD, optical discs, pen drives, tape) stores data permanently and is reached through
+          input/output. Going down the hierarchy from registers to cache, RAM, secondary and offline storage,
+          access time and capacity increase while cost per bit falls. Volatile memory (registers, cache, RAM)
+          loses its contents when the power goes off; non-volatile memory (ROM, flash, disks) keeps them.
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [computer-cpu-components]
+        patterns:
+          - key: fastest-slowest
+            title: Fastest, slowest, costliest or largest memory
+            example_stem: "Which of the following has the shortest access time? (a) RAM (b) Cache (c) Register (d) Hard disk"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: volatile
+            title: Volatile and non-volatile, primary and secondary
+            example_stem: "Which of the following memories loses its contents when the computer is switched off?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: hierarchy-order
+            title: "Really Clever Rats Steal Hard Tofu"
+            kind: memory
+            rule: "Registers, Cache, RAM, SSD, Hard disk, Tape: fastest and costliest per bit first, largest and cheapest last."
+            pattern: fastest-slowest
+            pitfalls: ["ROM is primary memory but non-volatile; 'primary' and 'volatile' are not the same thing."]
+      - slug: computer-memory-organisation
+        title: "Memory organisation: cells, addresses, word length and access methods"
+        summary: >-
+          Main memory is an array of cells, each with its own address; in byte-addressable memory each address
+          holds one byte. A CPU with n address lines can address 2ⁿ locations, so the address-bus width sets the
+          maximum memory (16 lines → 64 KB, 20 lines → 1 MB, 32 lines → 4 GB). RAM gives random access (any cell
+          in the same time), magnetic tape sequential access and disks direct access.
+        difficulty: hard
+        weight: 0.8
+        prerequisites: [computer-memory-hierarchy, computer-data-units]
+        formulas:
+          - key: addressable
+            name: Addressable memory
+            expression: "locations = 2ⁿ;  capacity = 2ⁿ × size of one location"
+            variables:
+              - {symbol: n, meaning: number of address lines (address-bus width in bits)}
+            conditions: "For byte-addressable memory, the size of one location is 1 byte."
+            example: {problem: "Maximum memory with a 20-bit address bus and byte addressing?", solution: "2²⁰ bytes = 1 MB"}
+          - key: address-lines
+            name: Address lines needed
+            expression: "n = log₂(number of locations)"
+            example: {problem: "Address lines needed for 64 KB of byte-addressable memory?", solution: "64 KB = 2⁶ × 2¹⁰ = 2¹⁶ bytes, so 16 lines"}
+        patterns:
+          - key: bus-capacity
+            title: Address-bus width and memory size
+            example_stem: "A processor has a 32-bit address bus and byte-addressable memory. What is the largest memory it can address?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+          - key: access-method
+            title: Random, sequential and direct access
+            example_stem: "Data on a magnetic tape can be read only by which method of access?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+  - key: primary-memory
+    title: "Primary memory: RAM, ROM and cache"
+    concepts:
+      - slug: computer-ram
+        title: "RAM: SRAM and DRAM"
+        summary: >-
+          RAM (random access memory) is the volatile, read-write main memory that holds the operating system,
+          programs and data in use. Static RAM keeps each bit in a flip-flop, needs no refreshing, is faster and
+          costlier and is used for cache; dynamic RAM stores each bit as charge on a tiny capacitor that must be
+          refreshed periodically, is cheaper and denser and is used as main memory (SDRAM, DDR4, DDR5).
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [computer-memory-hierarchy]
+        patterns:
+          - key: sram-dram
+            title: SRAM versus DRAM
+            example_stem: "Which type of RAM must be refreshed periodically to keep its data?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: ram-features
+            title: Features of RAM
+            example_stem: "RAM is called 'random access' memory because:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: static-stays
+            title: Static stays, dynamic drains
+            kind: memory
+            rule: "Static RAM stays put (no refresh) and is speedy, so it is used for cache; dynamic RAM's capacitors drain, so it needs refreshing and is used as cheaper main memory."
+            pattern: sram-dram
+      - slug: computer-rom
+        title: "ROM: PROM, EPROM, EEPROM, flash and firmware"
+        summary: >-
+          ROM (read-only memory) is non-volatile and holds firmware such as the BIOS start-up program. Mask ROM
+          is written at the factory; PROM (programmable ROM) can be written once by the user; EPROM (erasable
+          PROM) is erased with ultraviolet light and rewritten; EEPROM (electrically erasable PROM) is erased
+          electrically, byte by byte; flash memory is a fast EEPROM variant erased in blocks, used in pen drives,
+          memory cards, SSDs and modern BIOS chips.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [computer-memory-hierarchy]
+        patterns:
+          - key: rom-type
+            title: Which type of ROM
+            example_stem: "Which memory chip is erased by exposing it to ultraviolet light?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: firmware
+            title: Firmware and BIOS
+            example_stem: "Programs that are permanently stored in ROM chips are known as:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: read-letters
+            title: Read the letters before ROM
+            kind: memory
+            rule: "P = Programmable (once); E = Erasable (by ultraviolet light); EE = Electrically Erasable. Flash = EEPROM that erases a block in a flash."
+            pattern: rom-type
+      - slug: computer-cache-virtual-memory
+        title: Cache memory and virtual memory
+        summary: >-
+          Cache is a small, very fast SRAM between the CPU and RAM that keeps recently and frequently used data
+          and instructions, in levels L1 (smallest and fastest, inside each core), L2 and L3; finding the data
+          there is a cache hit, otherwise a miss. Virtual memory works the other way: the operating system uses
+          part of the disk (the page file or swap space) as an extension of RAM, moving pages in and out, so
+          programs larger than RAM can run, though more slowly.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [computer-ram]
+        formulas:
+          - key: hit-ratio
+            name: Cache hit ratio
+            expression: "hit ratio = hits / (hits + misses)"
+            example: {problem: "Of 200 memory accesses, 180 are found in the cache. Find the hit ratio.", solution: "180 / 200 = 0.9 (90%)"}
+        patterns:
+          - key: cache-position
+            title: Purpose and position of cache
+            example_stem: "Cache memory acts as a buffer between:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: virtual-memory
+            title: Virtual memory
+            example_stem: "Virtual memory lets a computer use part of which device as if it were main memory?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+  - key: secondary-storage
+    title: Secondary storage devices
+    concepts:
+      - slug: computer-magnetic-storage
+        title: "Magnetic storage: hard disk, floppy disk and magnetic tape"
+        summary: >-
+          Magnetic media store bits as magnetised spots. A hard disk has spinning platters divided into
+          concentric tracks and sectors (a cylinder is the same track on every surface), read by moving
+          read/write heads, and its access time is the seek time plus the rotational latency. The 3.5-inch
+          high-density floppy disk held 1.44 MB; magnetic tape is cheap, high-capacity and sequential-access,
+          so it is still used for backups and archives.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [computer-memory-hierarchy]
+        formulas:
+          - key: disk-capacity
+            name: Hard disk capacity
+            expression: "capacity = surfaces × tracks per surface × sectors per track × bytes per sector"
+            example: {problem: "4 surfaces, 1024 tracks per surface, 64 sectors per track, 512 bytes per sector.", solution: "4 × 1024 × 64 × 512 = 13,42,17,728 bytes = 2²⁷ bytes = 128 MB"}
+          - key: latency
+            name: Average rotational latency
+            expression: "average latency = ½ × (60 / RPM) seconds"
+            example: {problem: "Average rotational latency of a 7200 RPM disk?", solution: "60 / 7200 = 8.33 ms per turn; half of it ≈ 4.17 ms"}
+        patterns:
+          - key: disk-structure
+            title: Tracks, sectors and cylinders
+            example_stem: "The concentric circles on the surface of a hard disk platter, on which data is recorded, are called:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: magnetic-media
+            title: Floppy disk and magnetic tape facts
+            example_stem: "What was the storage capacity of a standard 3.5-inch high-density floppy disk?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+      - slug: computer-optical-storage
+        title: "Optical storage: CD, DVD and Blu-ray"
+        summary: >-
+          Optical discs are read by a laser that detects pits and lands along a single spiral track. A CD holds
+          about 700 MB, a single-layer DVD 4.7 GB (8.5 GB dual-layer) and a single-layer Blu-ray disc 25 GB
+          (50 GB dual-layer), its higher capacity coming from the shorter-wavelength blue-violet laser. ROM discs
+          are read-only, R discs can be written once and read many times, and RW discs can be erased and
+          rewritten.
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [computer-memory-hierarchy]
+        patterns:
+          - key: disc-capacity
+            title: Capacity of optical discs
+            example_stem: "What is the usual capacity of a single-sided, single-layer DVD?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: rom-r-rw
+            title: ROM, R and RW discs
+            example_stem: "A CD-R disc can be:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: capacity-ladder
+            title: "0.7, 4.7, 25"
+            kind: memory
+            rule: "CD 0.7 GB (700 MB), DVD 4.7 GB, Blu-ray 25 GB; a second layer roughly doubles the capacity (DVD 8.5 GB, Blu-ray 50 GB)."
+            pattern: disc-capacity
+      - slug: computer-flash-storage
+        title: "Flash storage: pen drives, memory cards and SSDs"
+        summary: >-
+          Flash memory is non-volatile, electrically erasable semiconductor storage with no moving parts. Pen
+          drives (USB flash drives), SD and microSD memory cards and solid-state drives (SSDs) use it; an SSD is
+          faster, quieter, lighter and more shock-resistant than a hard disk but costs more per gigabyte.
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [computer-rom]
+        patterns:
+          - key: ssd-hdd
+            title: SSD versus hard disk
+            example_stem: "Which of the following storage devices has no moving parts? (a) Hard disk (b) DVD drive (c) Solid-state drive (d) Tape drive"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+  - key: backup
+    title: Back-up devices and data backup
+    concepts:
+      - slug: computer-backup
+        title: Back-up devices and backup methods
+        summary: >-
+          A backup is a spare copy of data kept so it can be restored after accidental deletion, hardware
+          failure, theft or ransomware. Back-up devices include external hard disks, tape drives, optical discs,
+          pen drives, network-attached storage (NAS) and cloud storage. A full backup copies everything, an
+          incremental backup copies what changed since the last backup of any kind and a differential backup
+          what changed since the last full backup; the 3-2-1 rule keeps 3 copies on 2 kinds of media with 1
+          copy off-site.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [computer-magnetic-storage]
+        patterns:
+          - key: backup-types
+            title: Full, incremental and differential backup
+            example_stem: "A backup that copies only the files changed since the last full backup is called a:"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: backup-devices
+            title: Back-up devices
+            example_stem: "Which storage medium is traditionally used for low-cost, high-capacity sequential backups in data centres?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: increment-difference
+            title: Increment from the last, difference from the full
+            kind: memory
+            rule: "Incremental = changes since the last backup of any kind (restore needs the full plus every incremental); differential = the difference from the last full backup (restore needs the full plus the latest differential)."
+            pattern: backup-types

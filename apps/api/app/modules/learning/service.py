@@ -238,7 +238,7 @@ def choose_question(
     stmt = (
         select(Question)
         .join(QuestionConcept, QuestionConcept.question_id == Question.id)
-        .where(QuestionConcept.concept_id == concept_id, Question.status == "verified")
+        .where(QuestionConcept.concept_id == concept_id, Question.status == "verified", Question.pool != "mock")  # mock pool: mock tests only
     )
     if types:
         stmt = stmt.where(Question.qtype.in_(types))

@@ -1,0 +1,325 @@
+key: software-os
+title: "Software and the Windows operating system"
+strategies:
+  - key: approach
+    title: "Software and Windows: classify first, then recall"
+    summary: >-
+      Questions here classify software (system, application, utility), contrast language translators,
+      list operating-system functions and types, and test Windows: desktop elements, Windows Explorer,
+      file extensions and keyboard shortcuts. The shortcut and extension questions are pure recall and
+      the quickest marks in the module.
+    seconds_per_question: 25
+    accuracy_target: 0.9
+    tactics:
+      - "Sort any program into system, application or utility software before reading the options."
+      - "Learn compiler, interpreter and assembler as one table: what each translates and how it reports errors."
+      - "Practise the Windows shortcuts on a real computer; a shortcut used ten times is rarely forgotten."
+    avoid:
+      - "Mixing up Windows shortcuts with Office shortcuts: Ctrl+F is Find in Word but Win+E opens File Explorer."
+
+topics:
+  - key: software
+    title: Types of software
+    concepts:
+      - slug: computer-software-types
+        title: "System software, application software, utilities and software licences"
+        summary: >-
+          System software runs the computer itself: the operating system, device drivers, utilities and
+          language translators. Application software does the user's tasks (word processors, spreadsheets,
+          browsers, media players, accounting packages), and utility software maintains the system (antivirus,
+          disk clean-up, defragmenter, file compression, backup). By licence, software is proprietary (closed
+          source, e.g. MS Windows, MS Office), open source (source code free to study and change, e.g. Linux,
+          LibreOffice, Firefox), freeware (free of cost but closed) or shareware (free trial, then paid).
+        difficulty: easy
+        weight: 1.3
+        patterns:
+          - key: classify-software
+            title: System, application or utility
+            example_stem: "Which of the following is an example of system software? (a) MS Excel (b) Device driver (c) Media player (d) Web browser"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: licence-type
+            title: Open source, freeware, shareware and proprietary
+            example_stem: "Software whose source code is made freely available for anyone to study, modify and share is called:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: who-is-served
+            title: Ask whom the program serves
+            kind: elimination
+            rule: "If it serves the machine (runs, controls or translates), it is system software; if it maintains the machine, a utility; if it serves the user's own task, application software."
+            pattern: classify-software
+      - slug: computer-languages-translators
+        title: "Programming languages and translators: compiler, interpreter and assembler"
+        summary: >-
+          Machine language (binary) is the only language the CPU understands directly; assembly language uses
+          mnemonics such as ADD and MOV and is converted by an assembler; high-level languages (FORTRAN, COBOL,
+          BASIC, C, C++, Java, Python) are English-like and portable. A compiler translates the whole source
+          program into object code before it runs and lists all errors together, an interpreter translates and
+          runs one statement at a time and stops at the first error; linkers join object files and loaders put
+          programs into memory. Creators often asked: C by Dennis Ritchie, C++ by Bjarne Stroustrup, Java by
+          James Gosling, Python by Guido van Rossum.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [computer-software-types]
+        patterns:
+          - key: translator
+            title: Compiler, interpreter or assembler
+            example_stem: "Which translator converts a complete high-level program into machine code in one go before it is run?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: language-levels
+            title: Language levels and their creators
+            example_stem: "Which of the following is a low-level language? (a) Python (b) Assembly language (c) Java (d) COBOL"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: book-vs-interpreter
+            title: Translator of a book, interpreter of a speech
+            kind: memory
+            rule: "A compiler is like translating a whole book before anyone reads it (faster to run later); an interpreter is like a live interpreter at a speech, line by line, stopping at the first problem."
+            pattern: translator
+            pitfalls: ["An assembler translates assembly language, not a high-level language."]
+
+  - key: operating-system
+    title: Operating system basics
+    concepts:
+      - slug: computer-os-functions
+        title: "Operating system: functions, kernel, shell and user interface"
+        summary: >-
+          The operating system is the system software that acts as an interface between the user and the
+          hardware: it manages processes, memory, files, input/output devices and security. Its core is the
+          kernel; the shell or user interface may be a command-line interface (CLI, as in MS-DOS) or a graphical
+          user interface (GUI, as in Windows). Examples: Windows and MS-DOS (Microsoft), macOS and iOS (Apple),
+          Unix, Linux (open source, started by Linus Torvalds in 1991) and Android (Google, based on Linux).
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [computer-software-types]
+        patterns:
+          - key: os-function
+            title: Functions of an operating system
+            example_stem: "Which of the following is NOT a function of an operating system? (a) Memory management (b) Process management (c) Spell checking (d) File management"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: os-examples
+            title: Examples and interfaces of operating systems
+            example_stem: "Which of the following operating systems uses only a command-line interface? (a) Windows 11 (b) MS-DOS (c) macOS (d) Android"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+      - slug: computer-os-types
+        title: Types of operating systems
+        summary: >-
+          A batch OS runs grouped jobs without user interaction; a multiprogramming OS keeps several programs in
+          memory so that the CPU is never idle; a multitasking (time-sharing) OS gives each task a short time
+          slice so that many seem to run at once; a multiprocessing OS uses two or more CPUs; a real-time OS
+          must respond within strict time limits (air-traffic control, industrial robots, medical devices); a
+          distributed OS makes several networked computers work as one; and a network OS manages shared
+          resources on a network. Single-user and multi-user, mobile and embedded systems are also asked.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [computer-os-functions]
+        patterns:
+          - key: os-type-use
+            title: Which type of OS for a job
+            example_stem: "Which type of operating system is required where responses must come within a fixed, very short time, as in missile guidance?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: multi-terms
+            title: Multiprogramming, multitasking and multiprocessing
+            example_stem: "An operating system that uses two or more processors within a single computer is called:"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+        shortcuts:
+          - key: multi-what
+            title: Look at the word after 'multi'
+            kind: memory
+            rule: "Multi-programming = many programs in memory; multi-tasking = many tasks sharing CPU time; multi-processing = many processors; multi-threading = many threads within one program."
+            pattern: multi-terms
+      - slug: computer-booting
+        title: "Booting: BIOS, POST and cold and warm boot"
+        summary: >-
+          Booting is the start-up process that loads the operating system into RAM. On power-on the BIOS (or its
+          successor UEFI) in ROM runs the POST (power-on self-test) to check the hardware, then the bootstrap
+          loader finds and loads the operating system. Starting from power off is a cold boot; restarting a
+          computer that is already on is a warm boot.
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [computer-os-functions, computer-rom]
+        patterns:
+          - key: cold-warm
+            title: Cold and warm booting
+            example_stem: "Restarting a computer that is already switched on, without turning off the power, is called:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: post-bios
+            title: POST, BIOS and the boot sequence
+            example_stem: "The diagnostic test that checks the hardware every time a computer is switched on is called:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+  - key: windows
+    title: Windows operating system
+    concepts:
+      - slug: computer-windows-desktop
+        title: "Windows desktop: Start menu, taskbar, icons, windows and Recycle Bin"
+        summary: >-
+          Windows is Microsoft's GUI operating system (Windows 1.0 in 1985; later 95, XP, 7, 10 and 11). The
+          desktop shows icons and shortcuts (marked with an arrow), the taskbar with the Start button, pinned and
+          open programs and the notification area (system tray) with the clock; every window has a title bar
+          with Minimise, Maximise/Restore and Close buttons. Files deleted from a hard disk go to the Recycle Bin
+          and can be restored until it is emptied; Shift+Delete, and deletion from most pen drives, removes them
+          permanently. Settings and Control Panel change the system, and Task Manager shows running programs.
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [computer-os-functions]
+        patterns:
+          - key: desktop-element
+            title: Desktop and window elements
+            example_stem: "The area at the right end of the Windows taskbar that shows the clock, volume and network icons is called the:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: recycle-bin
+            title: Recycle Bin and deleted files
+            example_stem: "In Windows, files deleted from the hard disk with the Delete key are first moved to:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+      - slug: computer-windows-explorer
+        title: "Windows Explorer (File Explorer): files, folders, drives and paths"
+        summary: >-
+          Windows Explorer, renamed File Explorer in Windows 8, manages files and folders: it has a navigation
+          pane, an address bar showing the path (for example C:\Users\Ravi\Documents), a search box and views
+          such as Details, List and Icons. Folders can hold files and sub-folders in a tree whose top is the root
+          directory of a drive (C: is usually the drive with Windows; A: and B: were floppy drives). A file name
+          cannot contain \ / : * ? " < > |. Ctrl+click selects scattered items, Shift+click a continuous range,
+          and dragging within one drive moves a file while dragging to another drive copies it.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [computer-windows-desktop]
+        patterns:
+          - key: explorer-task
+            title: Tasks in Windows Explorer
+            example_stem: "In Windows Explorer, which method selects several files that are NOT next to each other?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: paths-drives
+            title: Paths, drives and folder structure
+            example_stem: "In the path C:\\Users\\Ravi\\Notes.txt, what does 'C:' denote?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: ctrl-shift-select
+            title: Ctrl picks, Shift spans
+            kind: memory
+            rule: "Ctrl+click picks items one by one (scattered); Shift+click spans everything between the first and the last item clicked."
+            pattern: explorer-task
+      - slug: computer-file-extensions
+        title: File names and file extensions
+        summary: >-
+          The extension after the dot tells the file type and the program that opens it: .docx/.doc (Word),
+          .xlsx/.xls (Excel), .pptx/.ppt (PowerPoint), .accdb (Access), .pdf (Portable Document Format), .txt
+          (plain text), .rtf (rich text), .exe (executable program), .bat (batch file), .dll (dynamic link
+          library), .jpg, .png, .gif and .bmp (images), .mp3 and .wav (audio), .mp4, .avi and .mkv (video),
+          .html (web page), .csv (comma-separated values), .zip and .rar (compressed archives) and .apk (Android
+          app). The 'x' at the end of Office extensions marks the XML-based format introduced in Office 2007.
+        difficulty: easy
+        weight: 1.3
+        patterns:
+          - key: extension-program
+            title: Extension and the program that makes it
+            example_stem: "A file saved with the extension .pptx was most likely created in:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: extension-type
+            title: File type from the extension
+            example_stem: "Which of the following extensions denotes a compressed archive file? (a) .exe (b) .zip (c) .bmp (d) .dll"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: x-and-m
+            title: The last letter of Office extensions
+            kind: memory
+            rule: "Office 2007 and later add 'x' for the normal XML format (.docx, .xlsx, .pptx) and 'm' for macro-enabled files (.docm, .xlsm, .pptm); 'dot', 'xlt' and 'pot' mark templates (.dotx, .xltx, .potx)."
+            pattern: extension-program
+      - slug: computer-windows-shortcuts
+        title: Windows keyboard shortcuts
+        summary: >-
+          Common Windows shortcuts: Ctrl+C copy, Ctrl+X cut, Ctrl+V paste, Ctrl+Z undo, Ctrl+Y redo, Ctrl+A
+          select all; Alt+Tab switches between open programs and Alt+F4 closes the active one; Win+D shows the
+          desktop, Win+E opens File Explorer, Win+L locks the computer, Win+R opens Run, Win+I opens Settings;
+          Ctrl+Shift+Esc opens Task Manager; F2 renames, F5 refreshes, Shift+Delete deletes permanently, Alt+Enter
+          shows properties; Print Screen copies the screen and Win+Print Screen saves a screenshot file.
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [computer-keyboard, computer-windows-desktop]
+        patterns:
+          - key: which-shortcut
+            title: Which key combination does a task
+            example_stem: "Which key combination locks a Windows computer immediately?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: what-shortcut-does
+            title: What a key combination does
+            example_stem: "In Windows, what does the key combination Alt+F4 do?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: win-initials
+            title: Windows key + the initial letter
+            kind: memory
+            rule: "Win+D = Desktop, Win+E = Explorer, Win+L = Lock, Win+R = Run, Win+S = Search, Win+M = Minimise all; Ctrl+X cuts like scissors and Ctrl+V sits next to C on the keyboard for paste."
+            pattern: which-shortcut
+            pitfalls: ["Ctrl+Alt+Delete opens the security screen; Ctrl+Shift+Esc opens Task Manager directly."]
+
+  - key: office
+    title: Basics of Microsoft Office
+    concepts:
+      - slug: computer-ms-office-suite
+        title: "Microsoft Office suite: applications and common features"
+        summary: >-
+          Microsoft Office is a suite of application programs: Word (word processor), Excel (spreadsheet),
+          PowerPoint (presentations), Access (database management, .accdb files), Outlook (e-mail with calendar
+          and contacts) and OneNote (notes); the subscription version has been called Microsoft 365 since 2020.
+          The programs share the ribbon of tabs and groups (since Office 2007), the Quick Access Toolbar, the File
+          tab's Backstage view (since Office 2010), the Office Clipboard and common shortcuts such as Ctrl+N,
+          Ctrl+O, Ctrl+S and Ctrl+P. Free alternatives include LibreOffice (Writer, Calc, Impress) and Google
+          Docs, Sheets and Slides.
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [computer-software-types]
+        patterns:
+          - key: office-app
+            title: Which Office program for a task
+            example_stem: "Which Microsoft Office application is used to create and manage databases?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: common-features
+            title: Features common to Office programs
+            example_stem: "The small customisable toolbar that holds commands such as Save, Undo and Redo, and can be shown above or below the ribbon, is called the:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: office-equivalents
+            title: Office and its free equivalents
+            kind: memory
+            rule: "Word = Writer = Docs (text); Excel = Calc = Sheets (numbers); PowerPoint = Impress = Slides (presentations); Access = Base (databases)."
+            pattern: office-app

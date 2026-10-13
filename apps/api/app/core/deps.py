@@ -39,6 +39,26 @@ def get_current_user(
     return user
 
 
+def get_optional_user(
+    creds: HTTPAuthorizationCredentials | None = Depends(bearer),
+    db: Session = Depends(get_db),
+) -> User | None:
+    """The signed-in user on public endpoints, or None (a bad or expired token counts as anonymous)."""
+    if not creds:
+        return None
+    try:
+        return get_current_user(creds, db)
+    except Unauthorized:
+        return None
+
+
+STAFF_ROLES = ("reviewer", "admin")
+
+
+def is_staff(user: User | None) -> bool:
+    return bool(user and user.role in STAFF_ROLES)
+
+
 def require_roles(*roles: str):
     def _check(user: User = Depends(get_current_user)) -> User:
         if user.role not in roles:
@@ -48,7 +68,7 @@ def require_roles(*roles: str):
     return _check
 
 
-require_staff = require_roles("reviewer", "admin")
+require_staff = require_roles(*STAFF_ROLES)
 require_admin = require_roles("admin")
 
 

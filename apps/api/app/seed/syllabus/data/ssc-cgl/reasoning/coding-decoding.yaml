@@ -1,0 +1,252 @@
+key: coding-decoding
+title: Coding and decoding
+strategies:
+  - key: approach
+    title: "Coding: find the rule from one word, check it on a second letter"
+    summary: >-
+      A code language applies one rule to every word: shift letters, replace them by opposite
+      letters, rearrange them, turn them into numbers, or substitute whole words. Find the rule
+      from the given word and code pair, confirm it on at least two letters, then apply it.
+    seconds_per_question: 35
+    accuracy_target: 0.9
+    tactics:
+      - "Compare the first and last letters of the word and its code first: they reveal a shift, an opposite-letter rule or a reversal of order."
+      - "If the code uses exactly the same letters as the word, it is a rearrangement; number the positions."
+      - "For number codes, compute the sum of letter positions first; most number codes are a simple function of it."
+      - "For sentence codes, compare two sentences that share exactly one word."
+    avoid:
+      - "Fixing a rule from one letter only; a step pattern like +1, +2, +3 looks like +1 on the first letter."
+
+topics:
+  - key: letter-coding
+    title: Letter coding
+    concepts:
+      - slug: letter-shift-coding
+        title: Letter shift coding
+        summary: >-
+          Each letter of a word is moved forward or backward by a fixed or patterned step (+1,
+          −2, +1 and −1 alternately, +1 +2 +3 …), sometimes with the order of the letters
+          reversed. Find the rule from the given word and apply it to a new word, or decode a code.
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [alphabet-positions-opposites]
+        patterns:
+          - key: code-new-word
+            title: "Coding decoding: code a new word by the same rule"
+            example_stem: "In a certain code language, CHAIR is written as SJBID. How will TABLE be written in that language?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: decode-word
+            title: Decode a given code
+            example_stem: "In a certain code language, FISH is written as GKVL. What does CQDX stand for in that language?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: ends-first
+            title: Compare the end letters first
+            kind: shortcut
+            rule: "Compare the first and last letters of the word with the first and last letters of the code; this shows the shift and whether the order is reversed, and eliminates most options."
+            example: {problem: "CHAIR → SJBID", standard: "Map all five letters before looking at the options", shortcut: "The code starts with S = R + 1, the word's last letter shifted → every letter +1, order reversed", seconds_saved: 15}
+            pattern: code-new-word
+
+      - slug: reverse-opposite-letter-coding
+        title: Opposite-letter coding
+        summary: >-
+          Each letter is replaced by its opposite letter (A ↔ Z, B ↔ Y; positions add to 27),
+          sometimes combined with a shift or a reversal of order. Suspect it when the code
+          letters sit at the far end of the alphabet from the word's letters.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [alphabet-positions-opposites]
+        formulas:
+          - key: opposite-code
+            name: Opposite-letter code
+            expression: "code position = 27 − original position"
+            example: {problem: "Code GOLD by opposite letters.", solution: "G 7 → 20 T, O 15 → 12 L, L 12 → 15 O, D 4 → 23 W → TLOW"}
+        patterns:
+          - key: opposite-code
+            title: Word coded by opposite letters
+            example_stem: "In a certain code language, GOLD is written as TLOW. How will SILVER be written in that language?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: opposite-plus-shift
+            title: Opposite letter followed by a shift
+            example_stem: "In a certain code language, DEAR is written as XWAJ. How will LAMP be written in that language?"
+            frequency: low
+            difficulty: hard
+            target_seconds: 45
+        shortcuts:
+          - key: sum-test
+            title: The 27 sum test
+            kind: shortcut
+            rule: "Add the positions of each letter and its code letter: a sum of 27 every time means opposite letters; 28 means opposite plus one, 26 means opposite minus one."
+            example: {problem: "DEAR → XWAJ", standard: "Try shifts letter by letter", shortcut: "D + X = 4 + 24 = 28, E + W = 5 + 23 = 28 → opposite letter + 1", seconds_saved: 20}
+            pitfalls: ["Opposite plus one wraps for A (A → Z → A), so that pair sums to 2, not 28."]
+            pattern: opposite-plus-shift
+
+      - slug: letter-rearrangement-coding
+        title: Rearrangement coding
+        summary: >-
+          The letters themselves do not change, they are moved: the word is reversed, its
+          halves are reversed separately, or neighbouring letters are swapped in pairs. Compare
+          letter positions, not letter values.
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: half-reverse
+            title: Parts of the word reversed
+            example_stem: "In a certain code language, TEACHER is written as CAETREH. How will ORANGES be written in that language?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: pair-swap
+            title: Neighbouring letters swapped
+            example_stem: "In a certain code language, MOBILE is written as OMIBEL. How will LAPTOP be written in that language?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: position-order
+            title: Write the code as a position order
+            kind: shortcut
+            rule: "If the code uses exactly the same letters as the word, number the word's letters 1, 2, 3 … and write the code as a sequence of these numbers; apply the same sequence to the new word."
+            example: {problem: "TEACHER → CAETREH", standard: "Look for letter shifts", shortcut: "Code = positions 4 3 2 1 | 7 6 5 → reverse the first four and the last three letters", seconds_saved: 15}
+            pattern: half-reverse
+
+  - key: number-coding
+    title: Letter-position number coding
+    concepts:
+      - slug: letter-number-coding
+        title: Letter-to-number coding
+        summary: >-
+          Words are coded as numbers built from letter positions: each letter's position
+          written in turn, the reverse positions, the sum of positions, or the sum multiplied by
+          or added to the number of letters. Find the rule from one or two coded words.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [alphabet-positions-opposites]
+        formulas:
+          - key: word-sum
+            name: Sum of letter positions
+            expression: "word sum = sum of the positions of its letters (A = 1 … Z = 26)"
+            example: {problem: "Word sum of DOG", solution: "4 + 15 + 7 = 26"}
+        patterns:
+          - key: positions-code
+            title: Positions written side by side
+            example_stem: "If CAT is coded as 3120, how will DOG be coded?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: sum-based
+            title: Code built from the sum of positions
+            example_stem: "In a certain code language, BAT is written as 46 and CAP as 40. How will DOG be written in that language?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: sum-first
+            title: Try the sum first
+            kind: shortcut
+            rule: "Compute the sum of positions of each coded word and compare it with its code (equal, double, sum + number of letters, sum × number of letters) before trying letter-by-letter rules."
+            example: {problem: "BAT = 46, CAP = 40, DOG = ?", standard: "Try per-letter codes", shortcut: "Sums 23 and 20 → codes are double → DOG = 26 × 2 = 52", seconds_saved: 20}
+            pattern: sum-based
+
+  - key: word-coding
+    title: Substitution and sentence coding
+    concepts:
+      - slug: substitution-coding
+        title: Substitution coding
+        summary: >-
+          Names of things are swapped ('sky' is called 'sea', 'sea' is called 'water' …); answer
+          with the substitute name, not the real one. Find the real answer first, then replace
+          it by what it is called.
+        difficulty: easy
+        weight: 0.8
+        patterns:
+          - key: what-is-called
+            title: Answer with the substituted name
+            example_stem: "If 'sky' is called 'sea', 'sea' is called 'water', 'water' is called 'air' and 'air' is called 'cloud', where do fish live?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: colour-substitution
+            title: Colour substitution
+            example_stem: "If red means blue, blue means green, green means yellow and yellow means white, what is the colour of grass?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: two-step
+            title: Real answer first, then its name
+            kind: shortcut
+            rule: "Answer the question in real life first (fish live in water), then look up what that real word is called (water is called 'air')."
+            example: {problem: "Where do fish live? ('water' is called 'air')", shortcut: "Real answer water → called 'air' → air", seconds_saved: 10}
+            pitfalls: ["Answering with the real word, or with the word that is called 'water' (sea)."]
+            pattern: what-is-called
+
+      - slug: sentence-word-coding
+        title: Sentence coding (common word method)
+        summary: >-
+          Several sentences are given with their codes ('mo na pa' means 'tea is hot'); the code
+          of a word is found by comparing two sentences that share it, because the code they
+          share belongs to the word they share.
+        difficulty: medium
+        weight: 1.2
+        patterns:
+          - key: find-word-code
+            title: Code of a given word
+            example_stem: "In a certain code language, 'mo na pa' means 'tea is hot', 'na ka ta' means 'coffee is cold' and 'pa ri so' means 'hot milk please'. What is the code for 'hot'?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: undetermined-code
+            title: Code that cannot be fixed
+            description: "Two words always appear together, so their codes cannot be told apart."
+            example_stem: "In a certain code language, 'ka la ho' means 'birds fly high', 'ho ka ma' means 'kites fly high' and 'la pa' means 'birds sing'. The code for which word cannot be determined?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 45
+        shortcuts:
+          - key: intersect
+            title: Intersect two sentences
+            kind: shortcut
+            rule: "Put two sentences that share the word side by side; the code common to both is the word's code. Strike known codes to fix the rest."
+            example: {problem: "'mo na pa' = tea is hot; 'pa ri so' = hot milk please; code for 'hot'?", shortcut: "Shared word 'hot', shared code 'pa' → hot = pa", seconds_saved: 15}
+            pattern: find-word-code
+
+  - key: case-coding
+    title: Small and capital letters/numbers coding
+    concepts:
+      - slug: small-capital-letter-number-coding
+        title: "Small and capital letters/numbers coding, decoding and classification"
+        summary: >-
+          Codes that mix small letters, capital letters and digits, where case matters ('a' and
+          'A' are different symbols). Questions apply a rule that changes case or replaces
+          letters with digits, ask for the code of a word or its decoding, or ask which code does
+          not follow the rule the others share.
+        difficulty: medium
+        weight: 0.7
+        prerequisites: [letter-shift-coding]
+        patterns:
+          - key: case-rule-code
+            title: Code a word with a case rule
+            example_stem: "In a code, every vowel is written as a capital letter, every consonant is replaced by the next letter in small type, and the order is kept. How is TIGER written in this code?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 35
+          - key: case-classification
+            title: Odd code out by a case rule
+            example_stem: "Three of the following four codes follow the same rule and one does not. Select the odd one: aB2, cD4, eF6, gH9"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: case-as-attribute
+            title: Treat case as a separate attribute
+            kind: shortcut
+            rule: "Check case first (which characters are capital and why: vowel, position, rule), then the letters, then the digits; each is usually a separate rule."
+            example: {problem: "aB2, cD4, eF6, gH9 — odd one", standard: "Compare whole codes by eye", shortcut: "Digit = position of the capital letter: B 2, D 4, F 6, but H is 8, not 9 → gH9", seconds_saved: 15}
+            pattern: case-classification

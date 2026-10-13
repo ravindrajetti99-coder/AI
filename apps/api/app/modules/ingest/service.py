@@ -119,6 +119,7 @@ def pick_mock_questions(db: Session, course: Course, count: int) -> list[Questio
         ).all()
         pool = [q for q in pool if q not in chosen]
         rng.shuffle(pool)
+        pool.sort(key=lambda q: q.pool != "mock")  # held-back mock questions first (stable sort keeps the shuffle)
         chosen += pool[:want]
     return chosen[:count]
 

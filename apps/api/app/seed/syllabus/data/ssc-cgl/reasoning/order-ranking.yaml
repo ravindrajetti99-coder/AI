@@ -1,0 +1,209 @@
+key: order-ranking
+title: Order and ranking
+strategies:
+  - key: approach
+    title: "Ranking: one formula and a line diagram"
+    summary: >-
+      Most ranking questions reduce to total = left rank + right rank − 1, applied once or
+      twice. Draw the row as a line with the known positions marked; for comparisons of height,
+      age or marks, keep one ordered chain.
+    seconds_per_question: 30
+    accuracy_target: 0.95
+    tactics:
+      - "Ranks from opposite ends: add and subtract 1. Ranks from the same end: subtract."
+      - "After two people swap places, each simply takes over the other's old ranks."
+      - "For comparisons, write one chain (tallest on the left) and insert each person as you read."
+    avoid:
+      - "Forgetting to check whether two positions cross when counting the people between them."
+
+topics:
+  - key: ranking
+    title: Ranking in a row or list
+    concepts:
+      - slug: rank-from-both-ends
+        title: "Ranking: position from both ends"
+        summary: >-
+          In a row or ranking list, a person's positions from the two ends add to one more than
+          the total: total = left rank + right rank − 1. SSC asks for the total, a rank from the
+          other end, or the class size when some students failed or were absent.
+        difficulty: easy
+        weight: 1.5
+        formulas:
+          - key: total
+            name: Total from the two ranks
+            expression: "total = L + R − 1"
+            variables:
+              - {symbol: L, meaning: rank from the left (or top)}
+              - {symbol: R, meaning: rank from the right (or bottom)}
+            example: {problem: "Ravi is 12th from the left and 17th from the right.", solution: "12 + 17 − 1 = 28 people"}
+          - key: other-end
+            name: Rank from the other end
+            expression: "R = total − L + 1"
+            example: {problem: "In a row of 30, Asha is 8th from the left. Her rank from the right?", solution: "30 − 8 + 1 = 23rd"}
+        patterns:
+          - key: total-in-row
+            title: Total number in a row
+            example_stem: "In a row of boys, Amit is 15th from the left and 9th from the right. How many boys are there in the row?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: rank-with-failures
+            title: Class size with failed or absent students
+            example_stem: "In a class, Sonu ranks 9th from the top and 28th from the bottom among the students who passed. 4 students failed and 3 were absent. How many students are there in the class?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: add-or-subtract
+            title: Opposite ends add, same end subtracts
+            kind: memory
+            rule: "Two ranks of one person from opposite ends: add them and subtract 1. Two ranks from the same end: subtract them."
+            example: {problem: "Sonu 9th from the top, 28th from the bottom among passed students", shortcut: "9 + 28 − 1 = 36 passed; add the 4 failed and 3 absent → 43", seconds_saved: 10}
+            pattern: rank-with-failures
+
+      - slug: rank-interchange
+        title: Rank after interchanging positions
+        summary: >-
+          Two people swap places, and one person's new rank from an end is given; the swapped
+          person takes over the other's ranks, which fixes the total or a new rank.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [rank-from-both-ends]
+        formulas:
+          - key: inherit
+            name: Ranks after a swap
+            expression: "after A and B interchange, A's new rank from either end = B's old rank from that end (and vice versa)"
+            example: {problem: "In a row of 40, P is 13th from the left and Q is 9th from the right. They interchange. P's new rank from the left?", solution: "Q was 40 − 9 + 1 = 32nd from the left, so P is now 32nd"}
+        patterns:
+          - key: interchange-total
+            title: Total from ranks before and after a swap
+            example_stem: "In a row, A is 10th from the left and B is 15th from the right. They interchange their positions, and A becomes 22nd from the left. How many people are there in the row?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: interchange-new-rank
+            title: New rank after a swap
+            example_stem: "In a row of 40 children, P is 13th from the left and Q is 9th from the right. If they interchange positions, what is P's new position from the left?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: inherit-rank
+            title: The swapped person inherits the rank
+            kind: shortcut
+            rule: "Combine A's new rank from one end with B's old rank from the other end; together they describe the same seat."
+            example: {problem: "A 10th from left, B 15th from right; after the swap A is 22nd from left", standard: "Draw the row before and after", shortcut: "Seat = 22nd from left and 15th from right → 22 + 15 − 1 = 36", seconds_saved: 20}
+            pattern: interchange-total
+
+      - slug: persons-between-ranks
+        title: Persons between two ranks and the minimum number in a queue
+        summary: >-
+          Find how many people stand between two people, or the least or greatest number of
+          people in a queue, from their ranks. Ranks from the same end are subtracted; with
+          ranks from opposite ends, first check whether the two positions cross.
+        difficulty: hard
+        weight: 1.0
+        prerequisites: [rank-from-both-ends]
+        formulas:
+          - key: between-same-end
+            name: Between two ranks from the same end
+            expression: "people between = |r₁ − r₂| − 1"
+            example: {problem: "Ranks 7th and 19th from the top", solution: "19 − 7 − 1 = 11 between"}
+          - key: between-opposite-ends
+            name: Between two ranks from opposite ends
+            expression: "if L + R < N: between = N − (L + R);  if L + R > N (positions cross): between = L + R − N − 2"
+            variables:
+              - {symbol: N, meaning: total in the row}
+              - {symbol: L, meaning: one person's rank from the left}
+              - {symbol: R, meaning: the other person's rank from the right}
+            example: {problem: "40 in a row; A is 25th from the left and B 20th from the right", solution: "25 + 20 = 45 > 40, so between = 45 − 40 − 2 = 3"}
+          - key: queue-size
+            name: Least and greatest queue size
+            expression: "with k people between them: greatest N = L + R + k;  least N = L + R − k − 2 (the two cross; possible only if L ≥ k + 2 and R ≥ k + 2)"
+            variables:
+              - {symbol: L, meaning: A's rank from the front}
+              - {symbol: R, meaning: B's rank from the back}
+              - {symbol: k, meaning: people between A and B}
+            example: {problem: "A is 7th from the front, B is 10th from the back, 3 people between them", solution: "greatest 7 + 10 + 3 = 20; least 7 + 10 − 3 − 2 = 12"}
+        patterns:
+          - key: between-count
+            title: Number of people between two people
+            example_stem: "In a row of 50 students, Raj is 18th from the left and Simran is 20th from the right. How many students are there between them?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: minimum-in-queue
+            title: Minimum number in a queue
+            example_stem: "In a queue, A is 7th from the front and B is 10th from the back. There are 3 people between A and B. What is the minimum number of people in the queue?"
+            frequency: medium
+            difficulty: hard
+            target_seconds: 45
+        shortcuts:
+          - key: crossing-check
+            title: Check for crossing first
+            kind: shortcut
+            rule: "Compare L + R with the total: if it is smaller, between = total − L − R; if it is larger, the positions overlap and between = L + R − total − 2."
+            example: {problem: "50 students; Raj 18th from left, Simran 20th from right", standard: "Find both seats from the left and subtract", shortcut: "18 + 20 = 38 < 50 → 50 − 38 = 12 between", seconds_saved: 15}
+            pitfalls: ["Using N − (L + R) when the positions have crossed gives a negative or wrong answer."]
+            pattern: between-count
+
+  - key: order
+    title: Order arrangement
+    concepts:
+      - slug: order-arrangement-comparison
+        title: "Order arrangement: comparison of heights, ages and marks"
+        summary: >-
+          Statements compare people ('A is taller than B but shorter than C'); arrange them in
+          order and answer who is tallest, second heaviest or in the middle, or which fact cannot
+          be determined. Keep one chain written in order as you read.
+        difficulty: easy
+        weight: 1.2
+        patterns:
+          - key: who-is-tallest
+            title: Position in a comparison chain
+            example_stem: "Among P, Q, R, S and T, P is taller than Q but shorter than R. S is taller than R, and T is the shortest of all. Who is the second tallest?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: cannot-be-determined
+            title: What cannot be determined
+            example_stem: "A scored more than B but less than C. D scored more than B. Which of the following cannot be determined from this information?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: single-chain
+            title: One chain, inserted as you read
+            kind: shortcut
+            rule: "Write the people in one line from greatest to least, inserting each new person in place; put people whose place is not yet fixed in brackets above the chain."
+            example: {problem: "P > Q, R > P, S > R, T shortest", standard: "Write five separate inequalities and compare", shortcut: "Chain S > R > P > Q > T → second tallest R", seconds_saved: 15}
+            pattern: who-is-tallest
+
+      - slug: digit-number-arrangement
+        title: Number and digit arrangement
+        summary: >-
+          A number or a list of numbers is rearranged (digits in ascending order, digits
+          interchanged, each digit changed by a rule); count the digits that stay in place, or
+          find the largest, smallest or middle number after the change.
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: ascending-same-position
+            title: Digits that keep their place
+            example_stem: "If the digits of the number 5294716 are arranged in ascending order, how many digits will remain at the same position?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: number-set-operation
+            title: Numbers after a digit operation
+            example_stem: "Consider the numbers 384, 572, 916, 643 and 257. If the first and third digits of each number are interchanged, which number will be the largest?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: write-under
+            title: Write the new row under the old
+            kind: shortcut
+            rule: "Write the rearranged digits directly under the original and compare column by column; never rearrange in your head."
+            example: {problem: "5294716 in ascending order", standard: "Rearrange mentally and count", shortcut: "5294716 over 1245679 → only the 2 in the second place matches → 1", seconds_saved: 15}
+            pattern: ascending-same-position

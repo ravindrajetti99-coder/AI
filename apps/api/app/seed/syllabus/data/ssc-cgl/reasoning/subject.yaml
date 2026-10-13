@@ -1,0 +1,50 @@
+key: reasoning
+title: General Intelligence and Reasoning
+description: >-
+  Verbal and non-verbal reasoning: analogies, classification, series, coding, relations,
+  arrangements, logic, calendars and clocks, and figure-based questions. Tier 1 (25 questions)
+  and Tier 2 Module II of Section I (30 questions).
+tiers: [tier1, tier2]
+strategies:
+  - key: approach
+    title: "Reasoning: bank the quick marks"
+    summary: >-
+      Most reasoning questions are solvable in under 40 seconds once the pattern is known, which
+      makes this the highest-scoring section per minute.
+    seconds_per_question: 35
+    accuracy_target: 0.95
+    attempt_order:
+      - "Analogy, classification, series and coding (one-step questions)"
+      - "Direction, blood relation, ranking and calendar or clock"
+      - "Non-verbal: mirror and water images, paper folding, embedded figures"
+      - "Syllogism, statements and seating arrangements"
+      - "Figure counting and long puzzles last"
+    tactics:
+      - "Learn letter positions (A=1 … Z=26 and reverse) and their opposite pairs by heart."
+      - "Draw a quick diagram for direction, blood relation and arrangement questions every time."
+      - "For figure questions, track one element at a time (rotation, count, shading)."
+    avoid:
+      - "Assuming gender in blood-relation questions when it is not given."
+chapters:
+  - analogy
+  - classification
+  - series
+  - coding-decoding
+  - blood-relations
+  - direction-sense
+  - order-ranking
+  - seating-arrangement
+  - venn-diagrams
+  - syllogism
+  - statement-reasoning
+  - calendar
+  - clock
+  - mathematical-operations
+  - word-formation
+  - matching-indexing
+  - non-verbal-reasoning
+  - mirror-water-images
+  - paper-folding
+  - embedded-figures
+  - figure-counting
+  - critical-thinking

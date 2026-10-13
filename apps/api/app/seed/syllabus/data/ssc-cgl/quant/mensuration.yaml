@@ -1,0 +1,1674 @@
+key: mensuration
+title: Mensuration
+strategies:
+  - key: approach
+    title: "Mensuration: formula recall plus smart arithmetic"
+    summary: >-
+      Mensuration questions are one or two formula steps away from the answer: perimeter, area,
+      volume and surface area of standard 2D figures and 3D solids, plus conversions such as
+      melting and recasting. Speed comes from a memorised formula sheet, Pythagorean triplets,
+      π = 22/7 with radii in multiples of 7, and proportional reasoning for ratio and
+      percentage-change questions.
+    seconds_per_question: 50
+    accuracy_target: 0.9
+    tactics:
+      - "Keep a one-page sheet of every 2D and 3D formula (including Heron's formula, equilateral triangle results and the frustum) and revise it before every mock."
+      - "Take π = 22/7 when radii are multiples of 7 (or 3.5) and cancel the 7 before multiplying; keep π as a symbol when the options contain π."
+      - "For ratio and percentage-change questions use scaling: areas vary as the square of lengths, volumes as the cube."
+      - "In melting, recasting and water-displacement questions write 'volume before = volume after' and cancel π and common fractions at once."
+    avoid:
+      - "Confusing curved (lateral) and total surface area, or the slant height and the vertical height of a cone."
+      - "Mixing units: 1 m³ = 1000 litres, 1 litre = 1000 cm³, 1 hectare = 10,000 m²."
+
+topics:
+  - key: plane-figures
+    title: 2D mensuration (plane figures)
+    subtopics:
+      - key: square-rectangle
+        title: Square and rectangle
+        concepts:
+          - slug: square-area-perimeter-diagonal
+            title: "Square: area, perimeter and diagonal"
+            summary: "A square of side a has area a², perimeter 4a and diagonal a√2, so its area is also d²/2. SSC asks one of these from another and the cost of fencing or flooring a square field."
+            difficulty: easy
+            weight: 1.0
+            formulas:
+              - key: area-perimeter
+                name: Area and perimeter of a square
+                expression: "A = a²;  P = 4a"
+                variables:
+                  - {symbol: a, meaning: side}
+                  - {symbol: A, meaning: area}
+                  - {symbol: P, meaning: perimeter}
+                example: {problem: "Find the area and perimeter of a square of side 12 cm.", solution: "A = 12² = 144 cm²; P = 4 × 12 = 48 cm"}
+              - key: diagonal
+                name: Diagonal of a square
+                expression: "d = a√2;  A = d²/2"
+                variables:
+                  - {symbol: d, meaning: diagonal}
+                example: {problem: "The diagonal of a square is 16 cm. Find its area.", solution: "A = 16²/2 = 256/2 = 128 cm²"}
+            patterns:
+              - key: from-diagonal-or-perimeter
+                title: Area from the diagonal or the perimeter
+                example_stem: "The diagonal of a square is 18 cm. Find its area."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: fencing-cost
+                title: Cost of fencing or flooring a square field
+                example_stem: "The area of a square field is 1,764 m². Find the cost of fencing it at ₹12 per metre."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 30
+            shortcuts:
+              - key: half-diagonal-square
+                title: Area is half the square of the diagonal
+                kind: shortcut
+                rule: "Area of a square = d²/2; there is no need to find the side first."
+                example: {problem: "Diagonal 18 cm, find the area.", standard: "side = 18/√2 = 9√2, area = (9√2)² = 162 cm²", shortcut: "18²/2 = 324/2 = 162 cm²", seconds_saved: 10}
+                pattern: from-diagonal-or-perimeter
+
+          - slug: rectangle-area-perimeter-diagonal
+            title: "Rectangle: area, perimeter and diagonal"
+            summary: "A rectangle of length l and breadth b has area lb, perimeter 2(l + b) and diagonal √(l² + b²). SSC combines two of these facts (ratio and perimeter, or perimeter and diagonal) to find the sides or the area, and asks the cost of fencing, flooring or carpeting."
+            difficulty: easy
+            weight: 1.3
+            formulas:
+              - key: area-perimeter
+                name: Area and perimeter of a rectangle
+                expression: "A = l × b;  P = 2(l + b)"
+                variables:
+                  - {symbol: l, meaning: length}
+                  - {symbol: b, meaning: breadth}
+                example: {problem: "Find the area and perimeter of a rectangle 24 cm by 15 cm.", solution: "A = 24 × 15 = 360 cm²; P = 2(24 + 15) = 78 cm"}
+              - key: diagonal
+                name: Diagonal of a rectangle
+                expression: "d = √(l² + b²)"
+                example: {problem: "Find the diagonal of a rectangle 24 cm by 7 cm.", solution: "d = √(576 + 49) = √625 = 25 cm"}
+              - key: sum-identity
+                name: Perimeter, diagonal and area identity
+                expression: "(l + b)² = d² + 2lb, so area = [(P/2)² − d²] / 2"
+                example: {problem: "Perimeter 46 cm and diagonal 17 cm. Find the area.", solution: "l + b = 23; area = (529 − 289)/2 = 120 cm² (sides 15 and 8)"}
+            patterns:
+              - key: sides-from-ratio
+                title: Sides from the ratio and the perimeter or area
+                example_stem: "The length and breadth of a rectangle are in the ratio 5 : 3 and its perimeter is 64 cm. Find its area."
+                frequency: high
+                difficulty: easy
+                target_seconds: 30
+              - key: area-from-perimeter-diagonal
+                title: Area from the perimeter and the diagonal
+                example_stem: "The perimeter of a rectangle is 34 cm and its diagonal is 13 cm. Find its area."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: carpet-cost
+                title: Cost of carpeting, tiling or fencing
+                example_stem: "A hall 18 m long and 12 m wide is to be carpeted with a carpet 75 cm wide costing ₹40 per metre. Find the total cost."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 40
+            shortcuts:
+              - key: perimeter-diagonal-area
+                title: Area straight from perimeter and diagonal
+                kind: shortcut
+                rule: "Area = [(P/2)² − d²] / 2, because (l + b)² − (l² + b²) = 2lb."
+                example: {problem: "Perimeter 34 cm, diagonal 13 cm", standard: "Solve l + b = 17 and l² + b² = 169 to get 12 and 5, then 12 × 5 = 60", shortcut: "(17² − 13²)/2 = (289 − 169)/2 = 60 cm²", seconds_saved: 25}
+                pattern: area-from-perimeter-diagonal
+              - key: triplets
+                title: Pythagorean triplets for diagonals
+                kind: memory
+                rule: "Know 3-4-5, 5-12-13, 8-15-17, 7-24-25, 20-21-29, 9-40-41 and their multiples; SSC diagonals are almost always one of them."
+                example: {problem: "Diagonal of a 16 cm × 30 cm rectangle", shortcut: "16, 30 = 2 × (8, 15), so d = 2 × 17 = 34 cm", seconds_saved: 15}
+
+          - slug: rectangle-path-border-area
+            title: Path or border around a rectangle
+            summary: "A path of width w outside a rectangle l × b has area 2w(l + b + 2w); inside it, 2w(l + b − 2w); two cross roads through the middle parallel to the sides cover w(l + b) − w². SSC asks the path's area, its cost of gravelling or paving, and the width from a given area."
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [rectangle-area-perimeter-diagonal]
+            formulas:
+              - key: outside-path
+                name: Path all around, outside
+                expression: "area = (l + 2w)(b + 2w) − lb = 2w(l + b + 2w)"
+                variables:
+                  - {symbol: w, meaning: width of the path}
+                example: {problem: "A 40 m × 30 m garden has a 2.5 m wide path outside it. Find the path's area.", solution: "2 × 2.5 × (40 + 30 + 5) = 5 × 75 = 375 m² (check: 45 × 35 − 1200 = 375)"}
+              - key: inside-path
+                name: Path all around, inside
+                expression: "area = lb − (l − 2w)(b − 2w) = 2w(l + b − 2w)"
+                example: {problem: "The same garden has a 2.5 m wide path inside its boundary instead.", solution: "5 × (70 − 5) = 325 m² (check: 1200 − 35 × 25 = 325)"}
+              - key: cross-roads
+                name: Two cross roads through the middle
+                expression: "area = w(l + b) − w²"
+                conditions: "Both roads have width w and run parallel to the sides; the central square w × w is counted once."
+                example: {problem: "Two 3 m wide roads cross a 60 m × 40 m park parallel to its sides.", solution: "3 × 100 − 9 = 291 m²"}
+            patterns:
+              - key: path-outside
+                title: Area and cost of a path around a rectangular plot
+                example_stem: "A rectangular lawn 60 m × 40 m has a 5 m wide path around it on the outside. Find the cost of gravelling the path at ₹8 per m²."
+                frequency: high
+                difficulty: easy
+                target_seconds: 35
+              - key: cross-roads
+                title: Cross roads through a rectangular park
+                example_stem: "Two roads, each 4 m wide, run through the middle of an 80 m × 50 m park parallel to its sides. Find the area of the roads."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: width-from-area
+                title: Width of the path from its area
+                example_stem: "A path of uniform width runs outside a 20 m × 16 m garden. If the area of the path is 160 m², find its width."
+                frequency: low
+                difficulty: medium
+                target_seconds: 45
+            shortcuts:
+              - key: two-w-formula
+                title: One-step path formula
+                kind: shortcut
+                rule: "Outside path = 2w(l + b + 2w); inside path = 2w(l + b − 2w). Skip computing two rectangles."
+                example: {problem: "60 m × 40 m lawn, 5 m path outside", standard: "70 × 50 − 60 × 40 = 3500 − 2400 = 1100 m²", shortcut: "10 × (100 + 10) = 1100 m², cost 1100 × 8 = ₹8,800", seconds_saved: 10}
+                pattern: path-outside
+              - key: test-options
+                title: Test the options for the width
+                kind: elimination
+                rule: "Put each option for w into 2w(l + b + 2w) instead of solving the quadratic."
+                example: {problem: "20 m × 16 m garden, outside path of area 160 m²", standard: "4w² + 72w − 160 = 0, so (w + 20)(w − 2) = 0", shortcut: "w = 2: 4 × (36 + 4) = 160, matches", seconds_saved: 20}
+                pattern: width-from-area
+
+      - key: triangle
+        title: Triangle
+        concepts:
+          - slug: triangle-area-herons-formula
+            title: "Area of a triangle and Heron's formula"
+            summary: "Area = ½ × base × height; when the three sides are known, Heron's formula √[s(s − a)(s − b)(s − c)] with s = (a + b + c)/2 gives it. The area then gives the inradius (area/s) and circumradius (abc/(4 × area)). SSC asks area from sides, a height from the area, and r or R."
+            difficulty: medium
+            weight: 1.3
+            formulas:
+              - key: base-height
+                name: Area from base and height
+                expression: "Area = ½ × b × h"
+                variables:
+                  - {symbol: b, meaning: base}
+                  - {symbol: h, meaning: height (perpendicular to that base)}
+                example: {problem: "Base 14 cm, height 9 cm.", solution: "½ × 14 × 9 = 63 cm²"}
+              - key: heron
+                name: "Heron's formula"
+                expression: "Area = √[s(s − a)(s − b)(s − c)],  s = (a + b + c)/2"
+                variables:
+                  - {symbol: "a, b, c", meaning: the three sides}
+                  - {symbol: s, meaning: semi-perimeter}
+                example: {problem: "Find the area of a triangle with sides 13, 14 and 15 cm.", solution: "s = 21; √(21 × 8 × 7 × 6) = √7056 = 84 cm²"}
+              - key: two-sides-angle
+                name: Area from two sides and the included angle
+                expression: "Area = ½ × a × b × sin C"
+                example: {problem: "Two sides are 8 cm and 10 cm with an included angle of 30°.", solution: "½ × 8 × 10 × ½ = 20 cm²"}
+              - key: radii-from-area
+                name: Inradius and circumradius from the area
+                expression: "r = Area / s;  R = abc / (4 × Area)"
+                example: {problem: "Triangle with sides 13, 14, 15 cm (area 84 cm²).", solution: "r = 84/21 = 4 cm; R = 2730/336 = 65/8 = 8.125 cm"}
+            patterns:
+              - key: herons-area
+                title: Area from three sides
+                example_stem: "Find the area of a triangle whose sides are 17 cm, 25 cm and 26 cm."
+                frequency: high
+                difficulty: medium
+                target_seconds: 40
+              - key: height-from-sides
+                title: Height on a side from the area
+                example_stem: "The sides of a triangle are 13 cm, 14 cm and 15 cm. Find the length of the altitude on the side of 14 cm."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 40
+              - key: inradius-circumradius
+                title: Inradius or circumradius of a triangle
+                example_stem: "Find the inradius of a triangle with sides 7 cm, 24 cm and 25 cm."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: standard-triangles
+                title: Remember the standard Heron triangles
+                kind: memory
+                rule: "Areas to know: (13, 14, 15) → 84; (9, 10, 17) → 36; (17, 25, 26) → 204; (13, 13, 10) → 60; right triangles (5, 12, 13) → 30 and (7, 24, 25) → 84. Multiplying every side by k multiplies the area by k²."
+                example: {problem: "Area of a triangle with sides 26, 28, 30 cm", standard: "s = 42; √(42 × 16 × 14 × 12) = √112896 = 336", shortcut: "2 × (13, 14, 15), so area = 4 × 84 = 336 cm²", seconds_saved: 30}
+                pattern: herons-area
+              - key: right-first
+                title: Check for a right triangle first
+                kind: shortcut
+                rule: "If a² + b² = c², the area is ½ab and r = (a + b − c)/2; skip Heron's formula."
+                example: {problem: "Inradius of the triangle 7, 24, 25", standard: "s = 28, area by Heron = 84, r = 84/28 = 3", shortcut: "49 + 576 = 625, right-angled; r = (7 + 24 − 25)/2 = 3 cm", seconds_saved: 20}
+                pattern: inradius-circumradius
+
+          - slug: equilateral-triangle-area-radii
+            title: Equilateral triangle results
+            summary: "For an equilateral triangle of side a: height = (√3/2)a, area = (√3/4)a² = h²/√3, inradius = a/(2√3) = h/3 and circumradius = a/√3 = 2h/3. The perpendiculars from any interior point to the three sides add up to the height. SSC asks area from the height or perimeter, and its incircle and circumcircle."
+            difficulty: medium
+            weight: 1.4
+            prerequisites: [triangle-area-herons-formula]
+            formulas:
+              - key: height-area
+                name: Height and area
+                expression: "h = (√3/2)a;  Area = (√3/4)a² = h²/√3"
+                variables:
+                  - {symbol: a, meaning: side}
+                  - {symbol: h, meaning: height}
+                example: {problem: "Side 12 cm.", solution: "h = 6√3 cm; area = (√3/4) × 144 = 36√3 cm²"}
+              - key: radii
+                name: Inradius and circumradius
+                expression: "r = a/(2√3) = h/3;  R = a/√3 = 2h/3;  R = 2r"
+                example: {problem: "Side 6√3 cm.", solution: "h = 9 cm, r = 3 cm, R = 6 cm"}
+              - key: interior-point
+                name: Perpendiculars from an interior point
+                expression: "p₁ + p₂ + p₃ = h"
+                conditions: "p₁, p₂, p₃ are the perpendicular distances from any point inside the triangle to its three sides."
+                example: {problem: "The perpendiculars are 2, 3 and 5 cm. Find the area.", solution: "h = 10 cm; area = h²/√3 = 100/√3 cm²"}
+            patterns:
+              - key: area-from-height
+                title: Area from the height or the perimeter
+                example_stem: "The height of an equilateral triangle is 9 cm. Find its area."
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+              - key: incircle-circumcircle
+                title: Incircle and circumcircle of an equilateral triangle
+                example_stem: "Find the area of the circumcircle of an equilateral triangle of side 9 cm."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: interior-point
+                title: Perpendiculars from a point inside
+                example_stem: "From a point inside an equilateral triangle the perpendiculars to the three sides are 4 cm, 5 cm and 6 cm. Find the area of the triangle."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: h-squared
+                title: Area = h²/√3
+                kind: shortcut
+                rule: "When the height is given, area = h²/√3 directly."
+                example: {problem: "Height 9 cm", standard: "a = 18/√3 = 6√3; area = (√3/4) × 108 = 27√3", shortcut: "81/√3 = 27√3 cm²", seconds_saved: 15}
+                pattern: area-from-height
+              - key: one-two-three
+                title: "r : R : h = 1 : 2 : 3"
+                kind: memory
+                rule: "In an equilateral triangle r = h/3 and R = 2h/3, so r : R : h = 1 : 2 : 3 and the incircle and circumcircle areas are in the ratio 1 : 4."
+                example: {problem: "The incircle of an equilateral triangle has area 154 cm². Find the area of its circumcircle.", shortcut: "4 × 154 = 616 cm²", seconds_saved: 20}
+                pattern: incircle-circumcircle
+
+          - slug: right-isosceles-triangle-area
+            title: Right-angled and isosceles triangles
+            summary: "A right triangle with legs a, b and hypotenuse c has area ab/2, inradius (a + b − c)/2, circumradius c/2 and altitude to the hypotenuse ab/c. An isosceles triangle with equal sides a and base b has area (b/4)√(4a² − b²). SSC sets these with Pythagorean triplets."
+            difficulty: medium
+            weight: 1.1
+            prerequisites: [triangle-area-herons-formula]
+            formulas:
+              - key: right-triangle
+                name: Right triangle results
+                expression: "c² = a² + b²;  Area = ½ab;  r = (a + b − c)/2;  R = c/2"
+                example: {problem: "Legs 8 cm and 15 cm.", solution: "c = 17; area = 60 cm²; r = (8 + 15 − 17)/2 = 3 cm; R = 8.5 cm"}
+              - key: isosceles
+                name: Area of an isosceles triangle
+                expression: "Area = (b/4) × √(4a² − b²)"
+                variables:
+                  - {symbol: a, meaning: each equal side}
+                  - {symbol: b, meaning: base}
+                example: {problem: "Equal sides 13 cm, base 10 cm.", solution: "(10/4) × √(676 − 100) = 2.5 × 24 = 60 cm²"}
+              - key: isosceles-right
+                name: Isosceles right triangle
+                expression: "legs a, a: hypotenuse = a√2, area = a²/2"
+                example: {problem: "The hypotenuse of an isosceles right triangle is 10 cm.", solution: "leg = 5√2 cm; area = 50/2 = 25 cm²"}
+              - key: altitude-hypotenuse
+                name: Altitude on the hypotenuse
+                expression: "altitude = ab / c"
+                example: {problem: "Legs 6 cm and 8 cm.", solution: "c = 10; altitude = 48/10 = 4.8 cm"}
+            patterns:
+              - key: isosceles-area
+                title: Area of an isosceles triangle from its perimeter and base
+                example_stem: "The perimeter of an isosceles triangle is 36 cm and its base is 10 cm. Find its area."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 30
+              - key: right-from-perimeter
+                title: Right triangle from its perimeter and hypotenuse
+                example_stem: "The perimeter of a right-angled triangle is 60 cm and its hypotenuse is 25 cm. Find its area."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+              - key: altitude
+                title: Perpendicular from the right angle to the hypotenuse
+                example_stem: "The legs of a right triangle are 9 cm and 12 cm. Find the length of the perpendicular from the right angle to the hypotenuse."
+                frequency: low
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: area-from-sum
+                title: Area from the perimeter and hypotenuse
+                kind: shortcut
+                rule: "With a + b = perimeter − c, area = [(a + b)² − c²] / 4, because (a + b)² − c² = 2ab."
+                example: {problem: "Perimeter 60 cm, hypotenuse 25 cm", standard: "Solve a + b = 35 and a² + b² = 625 to get 15 and 20; area = 150", shortcut: "(35² − 25²)/4 = (1225 − 625)/4 = 150 cm²", seconds_saved: 25}
+                pattern: right-from-perimeter
+
+      - key: quadrilaterals
+        title: "Quadrilaterals: parallelogram, rhombus and trapezium"
+        concepts:
+          - slug: parallelogram-quadrilateral-area
+            title: Parallelogram and general quadrilateral area
+            summary: "A parallelogram's area is base × corresponding height = ab sin θ, and its diagonals satisfy d₁² + d₂² = 2(a² + b²); a diagonal splits it into two equal triangles. Any quadrilateral's area is ½ × diagonal × (sum of the perpendicular offsets to it). SSC asks a second height from the area and the other diagonal."
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [triangle-area-herons-formula, rectangle-area-perimeter-diagonal]
+            formulas:
+              - key: area
+                name: Area of a parallelogram
+                expression: "Area = base × height = a × b × sin θ"
+                variables:
+                  - {symbol: "a, b", meaning: adjacent sides}
+                  - {symbol: θ, meaning: angle between them}
+                example: {problem: "Adjacent sides 10 cm and 8 cm with an angle of 30°.", solution: "10 × 8 × ½ = 40 cm²"}
+              - key: diagonals
+                name: Diagonals of a parallelogram
+                expression: "d₁² + d₂² = 2(a² + b²)"
+                example: {problem: "Sides 7 cm and 9 cm, one diagonal 8 cm. Find the other.", solution: "d₂² = 2(49 + 81) − 64 = 196, so d₂ = 14 cm"}
+              - key: offsets
+                name: Any quadrilateral from a diagonal and offsets
+                expression: "Area = ½ × d × (h₁ + h₂)"
+                variables:
+                  - {symbol: d, meaning: a diagonal}
+                  - {symbol: "h₁, h₂", meaning: perpendiculars from the other two vertices to that diagonal}
+                example: {problem: "Diagonal 24 cm, offsets 8 cm and 6 cm.", solution: "½ × 24 × 14 = 168 cm²"}
+            patterns:
+              - key: second-height
+                title: Distance between the other pair of sides
+                example_stem: "The adjacent sides of a parallelogram are 15 cm and 10 cm. If the distance between the longer sides is 6 cm, find the distance between the shorter sides."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: other-diagonal
+                title: The other diagonal from sides and one diagonal
+                example_stem: "The sides of a parallelogram are 7 cm and 9 cm and one diagonal is 8 cm. Find the length of the other diagonal."
+                frequency: low
+                difficulty: medium
+                target_seconds: 30
+              - key: area-by-diagonal
+                title: Area from two sides and a diagonal
+                example_stem: "The sides of a parallelogram are 7 cm and 9 cm and one diagonal is 8 cm. Find its area."
+                frequency: low
+                difficulty: hard
+                target_seconds: 50
+            shortcuts:
+              - key: equal-products
+                title: Base × height is the same both ways
+                kind: shortcut
+                rule: "a × h_a = b × h_b = area, so h_b = a × h_a / b."
+                example: {problem: "Sides 15 cm and 10 cm, height on the 15 cm side is 6 cm", standard: "area = 90, then 90 ÷ 10", shortcut: "15 × 6 / 10 = 9 cm", seconds_saved: 10}
+                pattern: second-height
+              - key: double-triangle
+                title: Two triangles on a diagonal
+                kind: alternative
+                rule: "A diagonal halves a parallelogram: area = 2 × (Heron area of the triangle with the two sides and that diagonal)."
+                example: {problem: "Sides 7 cm, 9 cm, diagonal 8 cm", shortcut: "triangle 7, 8, 9: s = 12, area = √(12 × 5 × 4 × 3) = 12√5; parallelogram = 24√5 cm²", seconds_saved: 20}
+                pattern: area-by-diagonal
+
+          - slug: rhombus-area-side-diagonals
+            title: "Rhombus: area, side and diagonals"
+            summary: "A rhombus has four equal sides and diagonals that bisect each other at right angles: area = ½d₁d₂ = side × height, and side = ½√(d₁² + d₂²). SSC asks the area from the side (or perimeter) and one diagonal, the perimeter from the diagonals, and the height."
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [parallelogram-quadrilateral-area, right-isosceles-triangle-area]
+            formulas:
+              - key: area
+                name: Area of a rhombus
+                expression: "Area = ½ × d₁ × d₂ = a × h"
+                variables:
+                  - {symbol: "d₁, d₂", meaning: diagonals}
+                  - {symbol: a, meaning: side}
+                  - {symbol: h, meaning: height (distance between opposite sides)}
+                example: {problem: "Diagonals 16 cm and 30 cm.", solution: "½ × 16 × 30 = 240 cm²"}
+              - key: side
+                name: Side from the diagonals
+                expression: "a = ½ × √(d₁² + d₂²), i.e. 4a² = d₁² + d₂²"
+                example: {problem: "Diagonals 16 cm and 30 cm. Find the perimeter.", solution: "a = ½ × √(256 + 900) = ½ × 34 = 17 cm; perimeter = 68 cm"}
+            patterns:
+              - key: area-from-side-diagonal
+                title: Area from the perimeter and one diagonal
+                example_stem: "The perimeter of a rhombus is 52 cm and one of its diagonals is 24 cm. Find its area."
+                frequency: high
+                difficulty: medium
+                target_seconds: 35
+              - key: perimeter-from-diagonals
+                title: Side or perimeter from the diagonals
+                example_stem: "The diagonals of a rhombus are 24 cm and 10 cm. Find its perimeter."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: height
+                title: Height of a rhombus
+                example_stem: "The diagonals of a rhombus are 12 cm and 16 cm. Find the distance between its opposite sides."
+                frequency: low
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: half-diagonal-triplet
+                title: Half-diagonals and side make a triplet
+                kind: shortcut
+                rule: "(d₁/2, d₂/2, a) is a right triangle; spot the triplet (5-12-13, 8-15-17, 6-8-10) instead of taking square roots."
+                example: {problem: "Perimeter 52 cm, one diagonal 24 cm", standard: "a = 13; (d₂/2)² = 169 − 144 = 25; d₂ = 10; area = ½ × 24 × 10", shortcut: "13 with half-diagonal 12 → other half 5 (5-12-13); area = 2 × 12 × 5 = 120 cm²", seconds_saved: 20}
+                pattern: area-from-side-diagonal
+
+          - slug: trapezium-area-height
+            title: "Trapezium: area and height"
+            summary: "Area of a trapezium = ½ × (sum of the parallel sides) × the distance between them. When only the four sides are known, a line through one vertex parallel to a leg leaves a triangle with sides (a − b), c and d whose height is the trapezium's height. SSC asks the area, the height or a missing parallel side."
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [triangle-area-herons-formula, parallelogram-quadrilateral-area]
+            formulas:
+              - key: area
+                name: Area of a trapezium
+                expression: "Area = ½ × (a + b) × h"
+                variables:
+                  - {symbol: "a, b", meaning: parallel sides}
+                  - {symbol: h, meaning: distance between them}
+                example: {problem: "Parallel sides 20 cm and 12 cm, height 8 cm.", solution: "½ × 32 × 8 = 128 cm²"}
+              - key: four-sides
+                name: Height when all four sides are known
+                expression: "h = 2 × (area of the triangle with sides a − b, c, d) / (a − b)"
+                conditions: "a > b are the parallel sides, c and d the non-parallel sides."
+                example: {problem: "Parallel sides 25 cm and 11 cm, legs 13 cm and 15 cm.", solution: "triangle 14, 13, 15 has area 84, so h = 168/14 = 12 cm; area = ½ × 36 × 12 = 216 cm²"}
+            patterns:
+              - key: direct-area
+                title: Area from the parallel sides and height
+                example_stem: "The parallel sides of a trapezium are 18 cm and 26 cm and the distance between them is 9 cm. Find its area."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: missing-side
+                title: Missing parallel side or height from the area
+                example_stem: "The area of a trapezium is 360 cm², its height is 16 cm and one parallel side is 20 cm. Find the other parallel side."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: four-sides
+                title: Area from the four sides
+                example_stem: "The parallel sides of a trapezium are 25 cm and 11 cm and its non-parallel sides are 15 cm and 13 cm. Find its area."
+                frequency: low
+                difficulty: hard
+                target_seconds: 60
+            shortcuts:
+              - key: split-triangle
+                title: Shift a leg to form a triangle
+                kind: shortcut
+                rule: "Draw a line through an end of the shorter parallel side parallel to one leg; the triangle left over has sides (a − b), c, d and the same height as the trapezium."
+                example: {problem: "Parallel sides 25 and 11 cm, legs 15 and 13 cm", standard: "Drop two perpendiculars, write two Pythagoras equations in the unknown horizontal parts and solve", shortcut: "triangle 14, 13, 15: area 84, h = 12; area = ½ × 36 × 12 = 216 cm²", seconds_saved: 40}
+                pattern: four-sides
+
+      - key: regular-polygons
+        title: Regular polygons
+        concepts:
+          - slug: regular-polygon-hexagon-area
+            title: "Regular polygons: regular hexagon area and angles"
+            summary: "A regular polygon of n sides has each exterior angle 360°/n, each interior angle (n − 2) × 180°/n and n(n − 3)/2 diagonals. A regular hexagon of side a is six equilateral triangles: area = (3√3/2)a², longest diagonal 2a, shorter diagonal √3a. SSC asks hexagon area and the number of sides or diagonals from an angle."
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [equilateral-triangle-area-radii]
+            formulas:
+              - key: angles
+                name: Angles and diagonals of a regular polygon
+                expression: "exterior angle = 360°/n;  interior angle = (n − 2) × 180°/n;  diagonals = n(n − 3)/2"
+                variables:
+                  - {symbol: n, meaning: number of sides}
+                example: {problem: "Each interior angle is 140°. Find n and the number of diagonals.", solution: "exterior = 40°, n = 360/40 = 9; diagonals = 9 × 6/2 = 27"}
+              - key: hexagon-area
+                name: Area of a regular hexagon
+                expression: "Area = 6 × (√3/4)a² = (3√3/2)a²"
+                example: {problem: "Side 4 cm.", solution: "(3√3/2) × 16 = 24√3 cm²"}
+              - key: hexagon-lengths
+                name: Hexagon diagonals and radii
+                expression: "longest diagonal = 2a;  shorter diagonal = √3a;  circumradius = a;  inradius = (√3/2)a"
+                example: {problem: "Side 6 cm.", solution: "longest diagonal 12 cm, shorter diagonal 6√3 cm"}
+              - key: general-area
+                name: Area of any regular polygon
+                expression: "Area = (n × a² / 4) × cot(180°/n)"
+                conditions: "For a regular octagon this gives 2(1 + √2)a²."
+                example: {problem: "Regular octagon of side 2 cm.", solution: "2(1 + √2) × 4 = 8(1 + √2) cm²"}
+            patterns:
+              - key: hexagon-area
+                title: Area of a regular hexagon
+                example_stem: "Find the area of a regular hexagon whose perimeter is 36 cm."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: sides-from-angle
+                title: Number of sides or diagonals from an angle
+                example_stem: "Each interior angle of a regular polygon is 150°. How many diagonals does it have?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: hexagon-in-circle
+                title: Hexagon inscribed in a circle
+                example_stem: "A regular hexagon is inscribed in a circle of radius 8 cm. Find the area of the hexagon."
+                frequency: low
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: exterior-first
+                title: Go through the exterior angle
+                kind: shortcut
+                rule: "n = 360° / (180° − interior angle); quicker than solving (n − 2) × 180/n = angle."
+                example: {problem: "Interior angle 150°", standard: "(n − 2) × 180 = 150n, so 30n = 360", shortcut: "360/30 = 12 sides; diagonals = 12 × 9/2 = 54", seconds_saved: 15}
+                pattern: sides-from-angle
+              - key: six-triangles
+                title: Hexagon = six equilateral triangles
+                kind: memory
+                rule: "A regular hexagon splits into six equilateral triangles of its own side; inscribed in a circle, its side equals the radius."
+                example: {problem: "Hexagon inscribed in a circle of radius 8 cm", shortcut: "6 × (√3/4) × 64 = 96√3 cm²", seconds_saved: 15}
+                pattern: hexagon-in-circle
+
+      - key: circle
+        title: Circle, sector and segment
+        concepts:
+          - slug: circle-area-circumference
+            title: "Circle and semicircle: area and circumference"
+            summary: "A circle of radius r has circumference 2πr and area πr²; a semicircle has perimeter πr + 2r and area πr²/2, a quadrant area πr²/4. SSC asks conversions between radius, circumference and area, usually with π = 22/7 and radii in multiples of 7."
+            difficulty: easy
+            weight: 1.3
+            formulas:
+              - key: circle
+                name: Circumference and area
+                expression: "C = 2πr = πd;  A = πr²"
+                variables:
+                  - {symbol: r, meaning: radius}
+                  - {symbol: d, meaning: diameter}
+                example: {problem: "Radius 14 cm (π = 22/7).", solution: "C = 2 × 22/7 × 14 = 88 cm; A = 22/7 × 196 = 616 cm²"}
+              - key: semicircle
+                name: Semicircle
+                expression: "perimeter = πr + 2r = r(π + 2);  area = πr²/2"
+                example: {problem: "Radius 7 cm.", solution: "perimeter = 22 + 14 = 36 cm; area = 154/2 = 77 cm²"}
+              - key: area-from-circumference
+                name: Area from the circumference
+                expression: "A = C² / (4π)"
+                example: {problem: "Circumference 44 cm.", solution: "44² / (4 × 22/7) = 1936 × 7/88 = 154 cm²"}
+              - key: quadrant
+                name: Quadrant
+                expression: "area = πr²/4;  perimeter = πr/2 + 2r"
+                example: {problem: "Radius 14 cm.", solution: "area = 616/4 = 154 cm²; perimeter = 22 + 28 = 50 cm"}
+            patterns:
+              - key: area-from-circumference
+                title: Area from the circumference (or the reverse)
+                example_stem: "The circumference of a circle is 132 cm. Find its area."
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+              - key: combination-of-c-and-r
+                title: Radius from a combination such as C − r or C + d
+                example_stem: "The difference between the circumference and the radius of a circle is 37 cm. Find its area."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 30
+              - key: semicircle-perimeter
+                title: Semicircle or quadrant from its perimeter
+                example_stem: "The perimeter of a semicircular plate is 108 cm. Find its area."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: multiples-of-seven
+                title: Radius table for π = 22/7
+                kind: memory
+                rule: "r = 7, 14, 21, 28, 35 give C = 44, 88, 132, 176, 220 and A = 154, 616, 1386, 2464, 3850; C = 44r/7."
+                example: {problem: "Circumference 176 cm, find the area.", standard: "r = 176 × 7/44 = 28; A = 22/7 × 784", shortcut: "176 → r = 28 → A = 2464 cm²", seconds_saved: 15}
+                pattern: area-from-circumference
+              - key: factor-r
+                title: Factor out r
+                kind: shortcut
+                rule: "Write any mix as r × (factor): C − r = r(44/7 − 1) = 37r/7; semicircle perimeter = r(22/7 + 2) = 36r/7."
+                example: {problem: "Semicircle perimeter 108 cm", standard: "πr + 2r = 108, solve with π = 22/7", shortcut: "36r/7 = 108 → r = 21; area = 1386/2 = 693 cm²", seconds_saved: 15}
+                pattern: semicircle-perimeter
+
+          - slug: sector-arc-length-area
+            title: "Sector of a circle: arc length, area and perimeter"
+            summary: "A sector of angle θ is θ/360° of the circle: arc length = (θ/360°) × 2πr, area = (θ/360°) × πr² = ½ × arc × r, and perimeter = arc + 2r. SSC asks a sector's area or perimeter, the angle from given values, and the area swept by a clock hand."
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [circle-area-circumference]
+            formulas:
+              - key: arc
+                name: Arc length
+                expression: "l = (θ/360°) × 2πr"
+                variables:
+                  - {symbol: θ, meaning: central angle in degrees}
+                example: {problem: "r = 21 cm, θ = 60°.", solution: "1/6 × 132 = 22 cm"}
+              - key: area
+                name: Sector area
+                expression: "A = (θ/360°) × πr² = ½ × l × r"
+                example: {problem: "r = 21 cm, θ = 60°.", solution: "1/6 × 1386 = 231 cm² (or ½ × 22 × 21 = 231)"}
+              - key: perimeter
+                name: Perimeter of a sector
+                expression: "perimeter = l + 2r"
+                example: {problem: "r = 21 cm, θ = 60°.", solution: "22 + 42 = 64 cm"}
+            patterns:
+              - key: sector-area
+                title: Area or perimeter of a sector
+                example_stem: "Find the area of a sector of a circle of radius 14 cm with central angle 45°."
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+              - key: clock-hand
+                title: Area swept by a clock hand
+                example_stem: "The minute hand of a clock is 7 cm long. Find the area it sweeps in 20 minutes."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 30
+              - key: arc-and-radius
+                title: Sector area from arc length and radius
+                example_stem: "An arc of length 11 cm subtends an angle at the centre of a circle of radius 7 cm. Find the area of the sector."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: half-l-r
+                title: Area = ½ × arc × radius
+                kind: shortcut
+                rule: "When the arc length and radius are known, skip finding the angle."
+                example: {problem: "Arc 11 cm, radius 7 cm", standard: "θ = 11/44 × 360° = 90°; area = 154/4 = 38.5", shortcut: "½ × 11 × 7 = 38.5 cm²", seconds_saved: 15}
+                pattern: arc-and-radius
+              - key: clock-fraction
+                title: Minutes as a fraction of the hour
+                kind: shortcut
+                rule: "The minute hand sweeps (t/60) of the full circle in t minutes (6° per minute)."
+                example: {problem: "7 cm minute hand, 20 minutes", shortcut: "1/3 × 154 = 51⅓ cm²", seconds_saved: 10}
+                pattern: clock-hand
+
+          - slug: circle-segment-area
+            title: Segment of a circle
+            summary: "A segment is the region between a chord and its arc: minor segment area = sector area − area of the triangle formed by the chord and the two radii = (θ/360°)πr² − ½r² sin θ; the major segment is the rest of the circle. SSC asks mostly θ = 60°, 90° or 120°."
+            difficulty: medium
+            weight: 0.9
+            prerequisites: [sector-arc-length-area, triangle-area-herons-formula]
+            formulas:
+              - key: minor-segment
+                name: Minor segment area
+                expression: "A = (θ/360°) × πr² − ½ × r² × sin θ"
+                example: {problem: "r = 14 cm, θ = 90°.", solution: "154 − ½ × 196 = 154 − 98 = 56 cm²"}
+              - key: sixty-degree
+                name: Segment for θ = 60°
+                expression: "A = r² × (π/6 − √3/4)"
+                conditions: "The triangle is equilateral, so the chord equals the radius."
+                example: {problem: "r = 6 cm, θ = 60°.", solution: "36 × (π/6 − √3/4) = 6π − 9√3 cm²"}
+              - key: major-segment
+                name: Major segment
+                expression: "major segment = πr² − minor segment"
+                example: {problem: "r = 14 cm, θ = 90°.", solution: "616 − 56 = 560 cm²"}
+            patterns:
+              - key: right-angle-segment
+                title: Minor segment when the chord subtends 90°
+                example_stem: "A chord of a circle of radius 21 cm subtends a right angle at the centre. Find the area of the minor segment."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+              - key: sixty-segment
+                title: Segment cut off by a chord equal to the radius
+                example_stem: "A chord of length 10 cm subtends an angle of 60° at the centre of a circle. Find the area of the minor segment."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 40
+            shortcuts:
+              - key: two-sevenths
+                title: "90° segment = 2r²/7"
+                kind: shortcut
+                rule: "With π = 22/7 the minor segment for θ = 90° is r²(π − 2)/4 = 2r²/7."
+                example: {problem: "Radius 21 cm, chord subtends 90°", standard: "1386/4 − ½ × 441 = 346.5 − 220.5 = 126", shortcut: "2 × 441/7 = 126 cm²", seconds_saved: 20}
+                pattern: right-angle-segment
+              - key: chord-angle
+                title: Chord length gives the angle
+                kind: memory
+                rule: "A chord equal to r subtends 60°, a chord of r√2 subtends 90° and a chord of r√3 subtends 120° at the centre."
+                example: {problem: "Chord 7√2 cm in a circle of radius 7 cm; area of the minor segment", shortcut: "chord = r√2 → 90°; 2 × 49/7 = 14 cm²", seconds_saved: 20}
+                pattern: sixty-segment
+
+          - slug: ring-annulus-area
+            title: "Ring (annulus): area between concentric circles"
+            summary: "The ring between concentric circles of radii R and r has area π(R² − r²) = π(R + r)(R − r); a circular path of width w outside a circle of radius r has area πw(2r + w). SSC asks the ring's area from the two circumferences, circular tracks and the cost of paving them."
+            difficulty: easy
+            weight: 1.0
+            prerequisites: [circle-area-circumference]
+            formulas:
+              - key: ring
+                name: Area of a ring
+                expression: "A = π(R² − r²) = π(R + r)(R − r)"
+                variables:
+                  - {symbol: R, meaning: outer radius}
+                  - {symbol: r, meaning: inner radius}
+                example: {problem: "R = 21 cm, r = 14 cm.", solution: "22/7 × 35 × 7 = 770 cm²"}
+              - key: circular-path
+                name: Circular path of width w outside a circle
+                expression: "A = π[(r + w)² − r²] = πw(2r + w)"
+                example: {problem: "A circular garden of radius 28 m has a 3.5 m wide path outside it.", solution: "22/7 × 3.5 × 59.5 = 11 × 59.5 = 654.5 m²"}
+              - key: width-from-circumferences
+                name: Width of a ring from its circumferences
+                expression: "R − r = (C₁ − C₂) / (2π)"
+                example: {problem: "The circumferences differ by 44 cm.", solution: "width = 44 / (44/7) = 7 cm"}
+            patterns:
+              - key: from-circumferences
+                title: Ring area from the two circumferences
+                example_stem: "The circumferences of two concentric circles are 88 cm and 132 cm. Find the area of the ring between them."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 30
+              - key: circular-path-cost
+                title: Cost of a circular path or track
+                example_stem: "A circular park of radius 35 m has a 7 m wide path around it on the outside. Find the cost of paving the path at ₹20 per m²."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: sum-times-difference
+                title: Multiply the sum and difference of radii
+                kind: shortcut
+                rule: "π(R + r)(R − r) avoids squaring both radii."
+                example: {problem: "R = 21 cm, r = 14 cm", standard: "22/7 × (441 − 196) = 22/7 × 245 = 770", shortcut: "22/7 × 35 × 7 = 22 × 35 = 770 cm²", seconds_saved: 10}
+                pattern: from-circumferences
+              - key: path-width-shortcut
+                title: Path area = π × width × (2r + width)
+                kind: shortcut
+                rule: "For a path of width w around a circle of radius r, area = πw(2r + w); with w = 7 the factor πw is just 22."
+                example: {problem: "Radius 35 m, path 7 m outside, ₹20 per m²", standard: "22/7 × (42² − 35²) = 22/7 × 539 = 1694", shortcut: "22 × 77 = 1694 m²; cost = ₹33,880", seconds_saved: 15}
+                pattern: circular-path-cost
+
+          - slug: wheel-revolutions-distance
+            title: Wheel revolutions and distance covered
+            summary: "In one revolution a wheel covers its circumference 2πr, so distance = revolutions × 2πr. SSC asks the revolutions needed for a distance, the radius from distance and revolutions, speed from revolutions per minute, and two wheels of different sizes covering the same distance."
+            difficulty: easy
+            weight: 1.1
+            prerequisites: [circle-area-circumference]
+            formulas:
+              - key: revolutions
+                name: Revolutions and distance
+                expression: "distance = n × 2πr;  n = distance / (2πr)"
+                variables:
+                  - {symbol: n, meaning: number of revolutions}
+                  - {symbol: r, meaning: radius of the wheel}
+                example: {problem: "A wheel of radius 35 cm covers 1.1 km.", solution: "2πr = 220 cm; n = 1,10,000 / 220 = 500"}
+              - key: speed
+                name: Speed from revolutions per minute
+                expression: "speed = revolutions per minute × circumference"
+                example: {problem: "A wheel of diameter 70 cm turns at 250 rpm.", solution: "250 × 220 cm = 55,000 cm/min = 550 m/min = 33 km/h"}
+              - key: two-wheels
+                name: Two wheels over the same distance
+                expression: "n₁ × r₁ = n₂ × r₂"
+                example: {problem: "Wheels of radius 28 cm and 35 cm cover 1.76 km.", solution: "1,76,000/176 = 1000 and 1,76,000/220 = 800 revolutions; difference 200"}
+            patterns:
+              - key: revolutions-for-distance
+                title: Revolutions needed to cover a distance
+                example_stem: "How many revolutions will a wheel of diameter 1.4 m make to cover 1.32 km?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+              - key: speed-rpm
+                title: Speed from revolutions per minute
+                example_stem: "A wheel of radius 21 cm makes 500 revolutions per minute. Find its speed in km/h."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+              - key: two-wheels
+                title: Front and rear wheels of different sizes
+                example_stem: "The front and rear wheels of a cart have radii 28 cm and 35 cm. How many more revolutions does the front wheel make than the rear wheel in covering 1.76 km?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 40
+            shortcuts:
+              - key: inverse-radius
+                title: Revolutions vary inversely as the radius
+                kind: shortcut
+                rule: "For the same distance n₁/n₂ = r₂/r₁; find one wheel's revolutions and scale for the other."
+                example: {problem: "Radii 28 cm and 35 cm over 1.76 km", standard: "Compute both circumferences and divide twice", shortcut: "rear: 1,76,000/220 = 800; front = 800 × 35/28 = 1000; difference 200", seconds_saved: 15}
+                pattern: two-wheels
+              - key: cm-per-min-to-kmph
+                title: Convert cm per minute to km/h in one step
+                kind: shortcut
+                rule: "km/h = (cm per minute) × 60 / 1,00,000 = (cm per minute) × 0.0006."
+                example: {problem: "Radius 21 cm at 500 rpm", standard: "500 × 132 = 66,000 cm/min = 660 m/min = 39,600 m/h = 39.6 km/h", shortcut: "66,000 × 0.0006 = 39.6 km/h", seconds_saved: 15}
+                pattern: speed-rpm
+
+      - key: combined-figures
+        title: Inscribed and combined figures
+        concepts:
+          - slug: inscribed-circumscribed-figure-areas
+            title: Inscribed and circumscribed figures (circle, square, triangle)
+            summary: "Standard results link a figure to the circle inside or around it: a square of side a has incircle radius a/2 and circumcircle radius a/√2; the largest square in a circle of radius r has area 2r²; a rectangle inscribed in a circle has its diagonal as diameter; an equilateral triangle has r = a/(2√3), R = a/√3. SSC asks ratios of areas and the area left between the figures."
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [circle-area-circumference, square-area-perimeter-diagonal, equilateral-triangle-area-radii]
+            formulas:
+              - key: square-circles
+                name: Circles of a square
+                expression: "square of side a: incircle radius = a/2, circumcircle radius = a/√2 (areas 1 : 2)"
+                example: {problem: "Square of side 14 cm.", solution: "incircle area = 22/7 × 49 = 154 cm²; circumcircle area = 22/7 × 98 = 308 cm²"}
+              - key: square-in-circle
+                name: Largest square in a circle
+                expression: "diagonal = 2r;  area = (2r)²/2 = 2r²"
+                example: {problem: "Circle of radius 7 cm.", solution: "area of the square = 2 × 49 = 98 cm²"}
+              - key: rectangle-in-circle
+                name: Rectangle inscribed in a circle
+                expression: "diameter = diagonal = √(l² + b²)"
+                example: {problem: "A 6 cm × 8 cm rectangle is inscribed in a circle.", solution: "diameter = 10 cm; circle area = 25π cm²"}
+            patterns:
+              - key: area-ratio
+                title: Ratio of areas of inscribed and circumscribed circles
+                example_stem: "Find the ratio of the areas of the incircle and the circumcircle of a square."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: area-between
+                title: Area between a figure and its inscribed circle
+                example_stem: "A circle is inscribed in a square of side 14 cm. Find the area of the square not covered by the circle."
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+              - key: largest-square
+                title: Largest square cut from a circle
+                example_stem: "Find the area of the largest square that can be cut from a circular sheet of radius 10 cm."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: three-fourteenths
+                title: A circle in a square leaves 3/14 of it
+                kind: shortcut
+                rule: "With π = 22/7 the inscribed circle covers π/4 = 11/14 of the square, leaving 3/14."
+                example: {problem: "Square of side 14 cm with its incircle", standard: "196 − 22/7 × 49 = 196 − 154", shortcut: "196 × 3/14 = 42 cm²", seconds_saved: 15}
+                pattern: area-between
+              - key: ratio-table
+                title: Incircle to circumcircle area ratios
+                kind: memory
+                rule: "Incircle : circumcircle area is 1 : 2 for a square, 1 : 4 for an equilateral triangle and 3 : 4 for a regular hexagon."
+                example: {problem: "Ratio of the areas of the incircle and circumcircle of a regular hexagon", shortcut: "r = (√3/2)a, R = a → 3 : 4", seconds_saved: 20}
+                pattern: area-ratio
+
+          - slug: shaded-region-combined-figures
+            title: Shaded regions in combined figures
+            summary: "Shaded-area questions combine squares, rectangles, circles, semicircles and quadrants: write the shaded region as (whole figure) − (unshaded standard pieces) or as a sum of standard pieces. SSC favours quadrants at the corners of a square, the leaf formed by two quadrants, and the gap between touching circles."
+            difficulty: hard
+            weight: 1.0
+            prerequisites: [sector-arc-length-area, inscribed-circumscribed-figure-areas]
+            formulas:
+              - key: touching-circles-four
+                name: Gap between four touching circles
+                expression: "four circles of radius r with centres at the corners of a square of side 2r: enclosed area = 4r² − πr² = r²(4 − π)"
+                example: {problem: "r = 3.5 cm.", solution: "49 − 38.5 = 10.5 cm²"}
+              - key: leaf
+                name: Leaf (common part of two quadrants)
+                expression: "two quadrants of radius a drawn from opposite corners of a square of side a overlap in 2 × (πa²/4) − a² = a²(π/2 − 1)"
+                example: {problem: "a = 14 cm.", solution: "2 × 154 − 196 = 112 cm²"}
+              - key: touching-circles-three
+                name: Gap between three touching circles
+                expression: "three equal circles of radius r, each touching the other two: enclosed area = (√3 − π/2) × r²"
+                conditions: "Equilateral triangle of side 2r (area √3r²) minus three 60° sectors (πr²/2 in all)."
+                example: {problem: "r = 7 cm.", solution: "49√3 − 77 ≈ 84.87 − 77 = 7.87 cm² (π = 22/7)"}
+            patterns:
+              - key: corner-quadrants
+                title: Quadrants at the corners of a square
+                example_stem: "Four quadrants of radius 7 cm are drawn with centres at the corners of a square of side 14 cm. Find the area of the square not covered by the quadrants."
+                frequency: high
+                difficulty: easy
+                target_seconds: 30
+              - key: leaf-shape
+                title: Common area of two quadrants (leaf)
+                example_stem: "In a square of side 14 cm, two quadrants of radius 14 cm are drawn with centres at opposite corners. Find the area common to both quadrants."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 40
+              - key: touching-circles
+                title: Region enclosed by touching circles
+                example_stem: "Three coins of radius 7 cm are placed so that each touches the other two. Find the area enclosed between them."
+                frequency: medium
+                difficulty: hard
+                target_seconds: 45
+            shortcuts:
+              - key: four-quadrants-one-circle
+                title: Four corner quadrants make one circle
+                kind: memory
+                rule: "Four quadrants of equal radius together are one full circle of that radius; subtract one circle, not four pieces."
+                example: {problem: "Square of side 14 cm with quadrants of radius 7 cm at the corners", standard: "4 × (¼ × 22/7 × 49) = 154, then 196 − 154", shortcut: "one circle of radius 7 = 154; 196 − 154 = 42 cm²", seconds_saved: 15}
+                pattern: corner-quadrants
+              - key: leaf-four-sevenths
+                title: "Leaf = 4/7 of the square"
+                kind: shortcut
+                rule: "With π = 22/7, the leaf area a²(π/2 − 1) = 4a²/7."
+                example: {problem: "Square of side 14 cm, leaf of two quadrants", standard: "2 × 154 − 196 = 112", shortcut: "4 × 196/7 = 112 cm²", seconds_saved: 20}
+                pattern: leaf-shape
+
+  - key: solids
+    title: 3D mensuration (solids)
+    subtopics:
+      - key: cube-cuboid
+        title: Cube and cuboid
+        concepts:
+          - slug: cube-volume-surface-diagonal
+            title: "Cube: volume, surface area and diagonal"
+            summary: "A cube of edge a has volume a³, total surface area 6a², lateral surface area 4a² and body diagonal a√3. SSC asks one of these from another and the surface area of cubes joined end to end."
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [square-area-perimeter-diagonal]
+            formulas:
+              - key: volume-surface
+                name: Volume and surface area of a cube
+                expression: "V = a³;  TSA = 6a²;  LSA = 4a²"
+                variables:
+                  - {symbol: a, meaning: edge}
+                example: {problem: "Edge 5 cm.", solution: "V = 125 cm³; TSA = 150 cm²; LSA = 100 cm²"}
+              - key: diagonal
+                name: Diagonals of a cube
+                expression: "body diagonal = a√3;  face diagonal = a√2"
+                example: {problem: "The body diagonal is 6√3 cm. Find the volume.", solution: "a = 6 cm; V = 216 cm³"}
+              - key: cubes-in-a-row
+                name: Cubes joined end to end
+                expression: "n cubes of edge a in a row form a cuboid na × a × a with TSA = (4n + 2)a²"
+                example: {problem: "Three cubes of edge 4 cm are joined in a row.", solution: "(4 × 3 + 2) × 16 = 224 cm² (cuboid 12 × 4 × 4: 2(48 + 16 + 48) = 224)"}
+            patterns:
+              - key: from-diagonal
+                title: Surface area or volume from the diagonal
+                example_stem: "The diagonal of a cube is 8√3 cm. Find its total surface area."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: surface-to-volume
+                title: Volume from the surface area (or the reverse)
+                example_stem: "The total surface area of a cube is 294 cm². Find its volume."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: cubes-joined
+                title: Cubes joined to form a cuboid
+                example_stem: "Two cubes of edge 6 cm are joined end to end. Find the total surface area of the cuboid formed."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: hidden-faces
+                title: Each join hides two faces
+                kind: shortcut
+                rule: "n cubes in a row: TSA = 6na² − 2(n − 1)a² = (4n + 2)a²."
+                example: {problem: "Two cubes of edge 6 cm joined", standard: "cuboid 12 × 6 × 6: 2(72 + 36 + 72) = 360", shortcut: "(4 × 2 + 2) × 36 = 360 cm²", seconds_saved: 15}
+                pattern: cubes-joined
+              - key: square-cube-table
+                title: Squares and cubes on call
+                kind: memory
+                rule: "Know squares to 30 and cubes to 20 so that TSA → a² → a → a³ is instant."
+                example: {problem: "TSA 294 cm², find the volume", shortcut: "294/6 = 49 → a = 7 → 343 cm³", seconds_saved: 10}
+                pattern: surface-to-volume
+
+          - slug: cuboid-volume-surface-diagonal
+            title: "Cuboid (rectangular parallelepiped): volume, surface area and diagonal"
+            summary: "A cuboid (rectangular parallelepiped) l × b × h has volume lbh, total surface area 2(lb + bh + hl), area of the four walls 2h(l + b) and diagonal √(l² + b² + h²). SSC asks rooms, tanks and boxes: capacity in litres, cost of painting four walls, the longest rod that fits, and volume from the face areas."
+            difficulty: easy
+            weight: 1.3
+            prerequisites: [rectangle-area-perimeter-diagonal]
+            formulas:
+              - key: volume
+                name: Volume and capacity
+                expression: "V = l × b × h;  1 m³ = 1000 litres"
+                example: {problem: "A tank 3 m × 2 m × 1.5 m.", solution: "V = 9 m³ = 9000 litres"}
+              - key: surface
+                name: Surface area and four walls
+                expression: "TSA = 2(lb + bh + hl);  area of four walls = 2h(l + b)"
+                example: {problem: "A room 10 m × 8 m × 4 m.", solution: "walls = 2 × 4 × 18 = 144 m²; TSA = 2(80 + 32 + 40) = 304 m²"}
+              - key: diagonal
+                name: Diagonal (longest rod)
+                expression: "d = √(l² + b² + h²)"
+                example: {problem: "12 cm × 4 cm × 3 cm.", solution: "√(144 + 16 + 9) = √169 = 13 cm"}
+              - key: sum-identity
+                name: Edge sum, diagonal and surface area
+                expression: "(l + b + h)² = d² + TSA"
+                example: {problem: "The 12 edges add up to 76 cm and the diagonal is 13 cm. Find the TSA.", solution: "l + b + h = 19; TSA = 361 − 169 = 192 cm²"}
+            patterns:
+              - key: longest-rod
+                title: Longest rod that fits in a room or box
+                example_stem: "Find the length of the longest rod that can be placed in a room 12 m long, 9 m wide and 8 m high."
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+              - key: four-walls
+                title: Cost of painting the four walls, or capacity in litres
+                example_stem: "Find the cost of painting the four walls of a room 12 m long, 8 m wide and 5 m high at ₹15 per m²."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: face-areas
+                title: Volume from the areas of three adjacent faces
+                example_stem: "The areas of three adjacent faces of a cuboid are 24 cm², 32 cm² and 48 cm². Find its volume."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: face-product
+                title: Volume = √(product of three face areas)
+                kind: shortcut
+                rule: "(lb)(bh)(hl) = (lbh)², so V = √(product of the three adjacent face areas)."
+                example: {problem: "Faces 24, 32 and 48 cm²", standard: "Solve lb = 24, bh = 32, hl = 48 for l = 6, b = 4, h = 8", shortcut: "√(24 × 32 × 48) = √36864 = 192 cm³", seconds_saved: 30}
+                pattern: face-areas
+              - key: edge-sum-identity
+                title: TSA from the edge sum and the diagonal
+                kind: shortcut
+                rule: "TSA = (l + b + h)² − d², with l + b + h = (sum of the 12 edges)/4."
+                example: {problem: "Edge sum 76 cm, diagonal 13 cm", standard: "Guess the edges 12, 4, 3 and compute 2(48 + 12 + 36)", shortcut: "19² − 13² = 361 − 169 = 192 cm²", seconds_saved: 30}
+
+      - key: cylinder
+        title: Cylinder
+        concepts:
+          - slug: cylinder-volume-and-surface
+            title: "Right circular cylinder: volume, curved and total surface area"
+            summary: "A right circular cylinder of radius r and height h has volume πr²h, curved surface area 2πrh and total surface area 2πr(r + h). SSC asks one quantity from another with π = 22/7, ratios of two cylinders and capacity in litres."
+            difficulty: easy
+            weight: 1.4
+            prerequisites: [circle-area-circumference]
+            formulas:
+              - key: volume
+                name: Volume of a cylinder
+                expression: "V = πr²h"
+                variables:
+                  - {symbol: r, meaning: base radius}
+                  - {symbol: h, meaning: height}
+                example: {problem: "r = 7 cm, h = 10 cm.", solution: "154 × 10 = 1540 cm³ = 1.54 litres"}
+              - key: surface
+                name: Curved and total surface area
+                expression: "CSA = 2πrh;  TSA = 2πr(r + h)"
+                example: {problem: "r = 7 cm, h = 10 cm.", solution: "CSA = 44 × 10 = 440 cm²; TSA = 44 × 17 = 748 cm²"}
+              - key: ratio
+                name: Ratio of two cylinders
+                expression: "V₁/V₂ = (r₁/r₂)² × (h₁/h₂);  CSA₁/CSA₂ = (r₁/r₂) × (h₁/h₂)"
+                example: {problem: "Radii 2 : 3, heights 5 : 3.", solution: "V₁ : V₂ = 4 × 5 : 9 × 3 = 20 : 27"}
+            patterns:
+              - key: csa-to-volume
+                title: Volume from the curved surface area
+                example_stem: "The curved surface area of a cylinder is 1,320 cm² and its radius is 14 cm. Find its volume."
+                frequency: high
+                difficulty: medium
+                target_seconds: 35
+              - key: ratio-two-cylinders
+                title: Ratio of volumes or surfaces of two cylinders
+                example_stem: "The radii of two cylinders are in the ratio 3 : 2 and their heights in the ratio 4 : 9. Find the ratio of their volumes."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: tsa-and-csa
+                title: Radius or height from TSA and CSA
+                example_stem: "The total surface area of a solid cylinder is 462 cm² and its curved surface area is one-third of the total. Find its radius."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: volume-from-csa
+                title: V = CSA × r / 2
+                kind: shortcut
+                rule: "πr²h = (2πrh) × r/2, so the volume follows from the CSA and radius without finding h."
+                example: {problem: "CSA 1,320 cm², r = 14 cm", standard: "88h = 1320 → h = 15; V = 616 × 15", shortcut: "1320 × 14/2 = 9240 cm³", seconds_saved: 20}
+                pattern: csa-to-volume
+              - key: ends-difference
+                title: TSA − CSA = the two ends
+                kind: shortcut
+                rule: "TSA − CSA = 2πr² gives r directly."
+                example: {problem: "TSA 462 cm², CSA one-third of it", standard: "Set up 2πr(r + h) = 462 and 2πrh = 154 and solve", shortcut: "462 − 154 = 308 = 2πr² → r² = 49 → r = 7 cm", seconds_saved: 15}
+                pattern: tsa-and-csa
+
+          - slug: hollow-cylinder-pipe-flow
+            title: Hollow cylinder, pipes and flow of water
+            summary: "A hollow cylinder (pipe) with outer radius R, inner radius r and length h contains π(R² − r²)h of material; water flowing through a pipe of inner radius r at speed v delivers πr²v per unit time. SSC asks the metal in a pipe, the time to fill a tank and the rise in water level."
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [cylinder-volume-and-surface, ring-annulus-area]
+            formulas:
+              - key: hollow-volume
+                name: Volume of material in a hollow cylinder
+                expression: "V = π(R² − r²)h = π(R + r)(R − r)h"
+                example: {problem: "R = 4 cm, r = 3 cm, length 14 cm.", solution: "22/7 × 7 × 1 × 14 = 308 cm³"}
+              - key: flow
+                name: Flow through a pipe
+                expression: "volume per unit time = πr² × v"
+                variables:
+                  - {symbol: r, meaning: inner radius of the pipe}
+                  - {symbol: v, meaning: speed of the water}
+                example: {problem: "Inner radius 7 cm (0.07 m), speed 2 m/s.", solution: "22/7 × 0.0049 × 2 = 0.0308 m³/s = 30.8 litres per second"}
+              - key: hollow-surface
+                name: Total surface of a hollow cylinder
+                expression: "TSA = 2πh(R + r) + 2π(R² − r²)"
+                example: {problem: "R = 4 cm, r = 3 cm, h = 14 cm.", solution: "616 + 44 = 660 cm²"}
+            patterns:
+              - key: metal-in-pipe
+                title: Volume of metal in a pipe
+                example_stem: "An iron pipe 21 cm long has an outer diameter of 8 cm and a thickness of 1 cm. Find the volume of iron in it."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+              - key: time-to-fill
+                title: Time to fill a tank through a pipe
+                example_stem: "Water flows at 3 m/s through a pipe of internal diameter 14 cm into a tank 11 m long, 6 m wide and 2.1 m deep. In how many minutes will the tank be full?"
+                frequency: medium
+                difficulty: hard
+                target_seconds: 60
+            shortcuts:
+              - key: thickness
+                title: Sum of radii × thickness
+                kind: shortcut
+                rule: "Metal volume = π × (R + r) × (thickness) × length, where thickness = R − r."
+                example: {problem: "Outer radius 12 cm, inner radius 11 cm, length 7 cm", standard: "22/7 × (144 − 121) × 7 = 22 × 23", shortcut: "22/7 × 23 × 1 × 7 = 506 cm³", seconds_saved: 10}
+                pattern: metal-in-pipe
+              - key: rate-ratio
+                title: Time = tank volume ÷ flow per second
+                kind: shortcut
+                rule: "Work in metres and seconds throughout, then divide the tank's volume by πr²v once."
+                example: {problem: "Pipe diameter 14 cm at 3 m/s into an 11 m × 6 m × 2.1 m tank", standard: "Convert to litres per minute and to the tank's litres separately", shortcut: "flow = 0.0154 × 3 = 0.0462 m³/s; 138.6/0.0462 = 3000 s = 50 minutes", seconds_saved: 20}
+                pattern: time-to-fill
+
+      - key: cone
+        title: Cone and frustum
+        concepts:
+          - slug: cone-volume-and-surface
+            title: "Right circular cone: volume, slant height and surface area"
+            summary: "A right circular cone of radius r and height h has slant height l = √(r² + h²), volume (1/3)πr²h, curved surface area πrl and total surface area πr(l + r). A cone made by folding a sector has slant height = the sector's radius and base circumference = the arc length. SSC asks volume from the slant height, canvas for conical tents and cones made from sectors."
+            difficulty: medium
+            weight: 1.4
+            prerequisites: [cylinder-volume-and-surface, sector-arc-length-area]
+            formulas:
+              - key: slant
+                name: Slant height
+                expression: "l = √(r² + h²)"
+                example: {problem: "r = 7 cm, h = 24 cm.", solution: "l = √(49 + 576) = 25 cm"}
+              - key: volume
+                name: Volume of a cone
+                expression: "V = (1/3)πr²h"
+                example: {problem: "r = 7 cm, h = 24 cm.", solution: "(1/3) × 154 × 24 = 1232 cm³"}
+              - key: surface
+                name: Curved and total surface area
+                expression: "CSA = πrl;  TSA = πr(l + r)"
+                example: {problem: "r = 7 cm, l = 25 cm.", solution: "CSA = 22 × 25 = 550 cm²; TSA = 22 × 32 = 704 cm²"}
+              - key: sector-to-cone
+                name: Cone formed from a sector
+                expression: "l = R;  2πr = (θ/360°) × 2πR, so r = R × θ/360°"
+                variables:
+                  - {symbol: R, meaning: radius of the sector}
+                  - {symbol: θ, meaning: angle of the sector}
+                example: {problem: "Sector of radius 21 cm and angle 120°.", solution: "r = 21 × 1/3 = 7 cm, l = 21 cm, h = √(441 − 49) = 14√2 cm"}
+            patterns:
+              - key: volume-from-slant
+                title: Volume from slant height and radius
+                example_stem: "The slant height of a cone is 25 cm and its base radius is 7 cm. Find its volume."
+                frequency: high
+                difficulty: easy
+                target_seconds: 30
+              - key: conical-tent
+                title: Canvas for a conical tent
+                example_stem: "A conical tent has a base radius of 21 m and a height of 20 m. Find the area of canvas needed to make it."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+              - key: sector-folded
+                title: Cone made by folding a sector
+                example_stem: "A sector of radius 21 cm and central angle 120° is folded to form a cone. Find the radius of the base of the cone."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: triplets
+                title: Triplets for r, h and l
+                kind: memory
+                rule: "r, h and l form a right triangle; SSC uses 7-24-25, 20-21-29, 5-12-13, 8-15-17 and their multiples."
+                example: {problem: "l = 29 cm, r = 21 cm, find the volume", standard: "h = √(841 − 441) = √400 = 20", shortcut: "20-21-29 → h = 20; V = (1/3) × 1386 × 20 = 9240 cm³", seconds_saved: 15}
+                pattern: volume-from-slant
+              - key: one-two-three
+                title: "Cone : hemisphere : cylinder = 1 : 2 : 3"
+                kind: memory
+                rule: "A cone holds one-third of the cylinder on the same base and height; for the same radius r and height r, cone : hemisphere : cylinder volumes are 1 : 2 : 3."
+                example: {problem: "A cylinder holds 1,500 cm³. What does a cone with the same base and height hold?", shortcut: "1500/3 = 500 cm³", seconds_saved: 15}
+
+          - slug: frustum-cone-volume-surface
+            title: "Frustum of a cone: volume and surface area"
+            summary: "A frustum is what is left of a cone when its top is cut off parallel to the base. With end radii R and r, height h and slant height l = √(h² + (R − r)²): volume = (1/3)πh(R² + Rr + r²), curved surface area = π(R + r)l. SSC asks buckets and glasses, and the volume ratio when a cone is cut at a given height."
+            difficulty: hard
+            weight: 1.0
+            prerequisites: [cone-volume-and-surface]
+            formulas:
+              - key: volume
+                name: Volume of a frustum
+                expression: "V = (1/3)πh(R² + Rr + r²)"
+                variables:
+                  - {symbol: "R, r", meaning: radii of the two ends}
+                  - {symbol: h, meaning: height of the frustum}
+                example: {problem: "R = 14 cm, r = 7 cm, h = 6 cm.", solution: "(1/3) × 22/7 × 6 × (196 + 98 + 49) = 22/7 × 2 × 343 = 2156 cm³"}
+              - key: slant
+                name: Slant height of a frustum
+                expression: "l = √(h² + (R − r)²)"
+                example: {problem: "R = 14 cm, r = 7 cm, h = 24 cm.", solution: "l = √(576 + 49) = 25 cm"}
+              - key: surface
+                name: Curved and total surface area
+                expression: "CSA = π(R + r)l;  TSA = π(R + r)l + πR² + πr²"
+                example: {problem: "R = 14 cm, r = 7 cm, l = 25 cm.", solution: "CSA = 22/7 × 21 × 25 = 1650 cm²"}
+              - key: cut-cone
+                name: Cone cut parallel to its base
+                expression: "small cone = k³ × whole cone;  frustum = (1 − k³) × whole cone"
+                conditions: "k = height of the small (top) cone ÷ height of the whole cone."
+                example: {problem: "A cone is cut through the midpoint of its height.", solution: "k = ½: small cone = 1/8, frustum = 7/8 of the volume, ratio 1 : 7"}
+            patterns:
+              - key: bucket-volume
+                title: Capacity of a bucket or glass (frustum)
+                example_stem: "A bucket in the shape of a frustum has end radii 28 cm and 21 cm and a depth of 15 cm. Find its capacity in litres."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 45
+              - key: cut-at-height
+                title: Volume ratio after cutting a cone
+                example_stem: "A cone is cut by a plane parallel to its base through the midpoint of its height. Find the ratio of the volume of the small cone to that of the frustum."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: frustum-csa
+                title: Curved surface of a frustum
+                example_stem: "Find the curved surface area of a frustum with end radii 14 cm and 7 cm and height 24 cm."
+                frequency: low
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: cube-of-height-ratio
+                title: Cut cones scale as the cube of the height
+                kind: shortcut
+                rule: "If the cut is at fraction k of the height measured from the apex, small cone : frustum = k³ : (1 − k³)."
+                example: {problem: "Cut at the midpoint of the height", standard: "Compute both volumes with radii r/2, r and heights h/2, h", shortcut: "1/8 : 7/8 = 1 : 7 (a cut one-third of the way down gives 1 : 26)", seconds_saved: 30}
+                pattern: cut-at-height
+
+      - key: sphere
+        title: Sphere and hemisphere
+        concepts:
+          - slug: sphere-volume-and-surface
+            title: "Sphere: volume and surface area"
+            summary: "A sphere of radius r has volume (4/3)πr³ and surface area 4πr²; a hollow spherical shell with radii R and r holds (4/3)π(R³ − r³) of material. SSC asks the volume from the surface area, ratios of two spheres and shells."
+            difficulty: easy
+            weight: 1.4
+            prerequisites: [circle-area-circumference]
+            formulas:
+              - key: volume
+                name: Volume of a sphere
+                expression: "V = (4/3)πr³"
+                example: {problem: "r = 21 cm.", solution: "4/3 × 22/7 × 9261 = 38,808 cm³"}
+              - key: surface
+                name: Surface area of a sphere
+                expression: "S = 4πr²"
+                example: {problem: "r = 7 cm.", solution: "4 × 154 = 616 cm²"}
+              - key: shell
+                name: Spherical shell
+                expression: "V = (4/3)π(R³ − r³)"
+                example: {problem: "External radius 4 cm, internal radius 3 cm.", solution: "(4/3)π × 37 = 148π/3 cm³ ≈ 155.05 cm³ (π = 22/7)"}
+              - key: ratio
+                name: Ratios of two spheres
+                expression: "S₁/S₂ = (r₁/r₂)²;  V₁/V₂ = (r₁/r₂)³"
+                example: {problem: "Surface areas in the ratio 4 : 9.", solution: "radii 2 : 3, volumes 8 : 27"}
+            patterns:
+              - key: surface-to-volume
+                title: Volume from the surface area
+                example_stem: "The surface area of a sphere is 616 cm². Find its volume."
+                frequency: high
+                difficulty: easy
+                target_seconds: 30
+              - key: ratio-spheres
+                title: Ratio of surface areas from volumes (or the reverse)
+                example_stem: "The volumes of two spheres are in the ratio 64 : 27. Find the ratio of their surface areas."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: shell
+                title: Metal in a hollow sphere
+                example_stem: "A hollow metal sphere has external and internal diameters of 8 cm and 6 cm. Find the volume of metal in it."
+                frequency: low
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: through-radius
+                title: Convert ratios through the radius
+                kind: shortcut
+                rule: "Take the square root of a surface ratio or the cube root of a volume ratio to get the radius ratio, then raise it to the power needed."
+                example: {problem: "Volumes 64 : 27, find the surface ratio", standard: "Set (4/3)πr₁³ : (4/3)πr₂³ = 64 : 27 and solve", shortcut: "∛ → 4 : 3; squared → 16 : 9", seconds_saved: 15}
+                pattern: ratio-spheres
+              - key: v-from-s
+                title: V = S × r / 3
+                kind: shortcut
+                rule: "(4/3)πr³ = 4πr² × r/3, so once the radius is known the volume is the surface area × r/3."
+                example: {problem: "Surface area 616 cm²", standard: "r = 7; 4/3 × 22/7 × 343", shortcut: "616 × 7/3 = 1437⅓ cm³", seconds_saved: 10}
+                pattern: surface-to-volume
+
+          - slug: hemisphere-volume-and-surface
+            title: "Hemisphere: volume, curved and total surface area"
+            summary: "A solid hemisphere of radius r has volume (2/3)πr³, curved surface area 2πr² and total surface area 3πr² (curved part plus the flat circle). A hollow hemispherical bowl has an outer and an inner curved surface and a ring-shaped rim. SSC asks volume from the total surface area and bowls."
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [sphere-volume-and-surface]
+            formulas:
+              - key: volume
+                name: Volume of a hemisphere
+                expression: "V = (2/3)πr³"
+                example: {problem: "r = 21 cm.", solution: "2/3 × 22/7 × 9261 = 19,404 cm³"}
+              - key: surface
+                name: Curved and total surface area
+                expression: "CSA = 2πr²;  TSA = 3πr²"
+                example: {problem: "r = 7 cm.", solution: "CSA = 308 cm²; TSA = 462 cm²"}
+              - key: bowl
+                name: Hollow hemispherical bowl
+                expression: "total surface = 2πR² + 2πr² + π(R² − r²)"
+                variables:
+                  - {symbol: R, meaning: outer radius}
+                  - {symbol: r, meaning: inner radius}
+                example: {problem: "R = 10.5 cm, r = 7 cm.", solution: "π(220.5 + 98 + 61.25) = 379.75π = 1193.5 cm² (π = 22/7)"}
+            patterns:
+              - key: tsa-to-volume
+                title: Volume from the total surface area
+                example_stem: "The total surface area of a solid hemisphere is 4,158 cm². Find its volume."
+                frequency: high
+                difficulty: medium
+                target_seconds: 35
+              - key: csa-tsa-ratio
+                title: Ratios between hemisphere and sphere surfaces
+                example_stem: "Find the ratio of the curved surface area to the total surface area of a solid hemisphere."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+              - key: bowl
+                title: Painting or making a hemispherical bowl
+                example_stem: "A hemispherical bowl has an inner radius of 7 cm and is 3.5 cm thick. Find the total area to be painted, inside, outside and on the rim."
+                frequency: low
+                difficulty: hard
+                target_seconds: 50
+            shortcuts:
+              - key: sixty-six-sevenths
+                title: "TSA = 66r²/7"
+                kind: shortcut
+                rule: "With π = 22/7, 3πr² = 66r²/7, so r² = TSA × 7/66."
+                example: {problem: "TSA 4,158 cm²", standard: "3 × 22/7 × r² = 4158, solve", shortcut: "4158 × 7/66 = 441 → r = 21; V = 19,404 cm³", seconds_saved: 10}
+                pattern: tsa-to-volume
+              - key: sphere-comparison
+                title: Hemisphere versus sphere
+                kind: memory
+                rule: "Hemisphere volume is half the sphere's, but its TSA (3πr²) is three-quarters of the sphere's surface and its CSA : TSA = 2 : 3."
+                example: {problem: "A sphere's surface area is 616 cm². Find the TSA of a hemisphere of the same radius.", shortcut: "3/4 × 616 = 462 cm²", seconds_saved: 10}
+                pattern: csa-tsa-ratio
+
+      - key: prism-pyramid
+        title: Prism and pyramid
+        concepts:
+          - slug: right-prism-volume-surface
+            title: "Right prism: volume, lateral and total surface area"
+            summary: "A right prism has two congruent polygon bases joined by rectangular faces perpendicular to them: volume = base area × height, lateral surface area = base perimeter × height, total surface area = lateral surface + 2 × base area. SSC asks prisms on triangular (often equilateral), square and hexagonal bases."
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [cuboid-volume-surface-diagonal, equilateral-triangle-area-radii, regular-polygon-hexagon-area]
+            formulas:
+              - key: volume
+                name: Volume of a right prism
+                expression: "V = area of base × h"
+                variables:
+                  - {symbol: h, meaning: height (length) of the prism}
+                example: {problem: "Base a 3-4-5 cm right triangle, height 10 cm.", solution: "base area 6 cm²; V = 60 cm³"}
+              - key: surface
+                name: Lateral and total surface area
+                expression: "LSA = perimeter of base × h;  TSA = LSA + 2 × base area"
+                example: {problem: "The same prism.", solution: "LSA = 12 × 10 = 120 cm²; TSA = 120 + 12 = 132 cm²"}
+              - key: equilateral-base
+                name: Prism on an equilateral triangle
+                expression: "V = (√3/4) × a² × h"
+                example: {problem: "a = 6 cm, h = 10 cm.", solution: "9√3 × 10 = 90√3 cm³"}
+              - key: hexagonal-base
+                name: Prism on a regular hexagon
+                expression: "V = (3√3/2) × a² × h"
+                example: {problem: "a = 2 cm, h = 10 cm.", solution: "(3√3/2) × 4 × 10 = 60√3 cm³"}
+            patterns:
+              - key: triangular-prism
+                title: Volume of a prism on a triangular base
+                example_stem: "The base of a right prism is an equilateral triangle of side 8 cm and its height is 15 cm. Find its volume."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+              - key: height-from-tsa
+                title: Height of a prism from its surface area
+                example_stem: "A right prism has a square base of side 5 cm and a total surface area of 210 cm². Find its height."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 30
+              - key: hexagonal-prism
+                title: Prism on a regular hexagonal base
+                example_stem: "Find the volume of a right prism of height 12 cm whose base is a regular hexagon of side 2 cm."
+                frequency: low
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: base-times-height
+                title: One rule for every right prism
+                kind: memory
+                rule: "Every right prism (and cylinder): V = base area × h and LSA = base perimeter × h; only the base changes."
+                example: {problem: "Prism of height 10 cm on a triangle with sides 13, 14, 15 cm", shortcut: "base area 84 → V = 840 cm³; LSA = 42 × 10 = 420 cm²", seconds_saved: 15}
+                pattern: triangular-prism
+
+          - slug: regular-right-pyramid-volume-surface
+            title: Regular right pyramid with triangular or square base
+            summary: "A regular right pyramid has a regular polygon base with the apex directly above its centre: volume = (1/3) × base area × height, lateral surface area = ½ × base perimeter × slant height, total surface = lateral + base. For a square base of side a, slant height l = √(h² + (a/2)²); for an equilateral-triangle base, l = √(h² + a²/12)."
+            difficulty: hard
+            weight: 0.9
+            prerequisites: [right-prism-volume-surface, equilateral-triangle-area-radii]
+            formulas:
+              - key: volume
+                name: Volume of a pyramid
+                expression: "V = (1/3) × area of base × h"
+                example: {problem: "Square base of side 10 cm, height 12 cm.", solution: "(1/3) × 100 × 12 = 400 cm³"}
+              - key: surface
+                name: Lateral and total surface area
+                expression: "LSA = ½ × perimeter of base × slant height;  TSA = LSA + area of base"
+                example: {problem: "Square base 10 cm, height 12 cm.", solution: "l = √(144 + 25) = 13; LSA = ½ × 40 × 13 = 260 cm²; TSA = 360 cm²"}
+              - key: square-base
+                name: Square base of side a
+                expression: "slant height l = √(h² + (a/2)²);  lateral edge = √(h² + a²/2)"
+                example: {problem: "a = 10 cm, h = 12 cm.", solution: "l = 13 cm; lateral edge = √194 cm"}
+              - key: triangular-base
+                name: Equilateral-triangle base of side a
+                expression: "base area = (√3/4)a²;  slant height l = √(h² + a²/12);  regular tetrahedron of edge a: V = a³/(6√2)"
+                conditions: "a²/12 is the square of the base's inradius a/(2√3)."
+                example: {problem: "a = 6√3 cm, h = 4 cm.", solution: "inradius 3, l = 5; base area 27√3; LSA = ½ × 18√3 × 5 = 45√3 cm²; V = (1/3) × 27√3 × 4 = 36√3 cm³"}
+            patterns:
+              - key: square-pyramid-tsa
+                title: Surface area of a square pyramid
+                example_stem: "A right pyramid has a square base of side 16 cm and a height of 15 cm. Find its total surface area."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 40
+              - key: triangular-pyramid-volume
+                title: Volume of a pyramid on a triangular base
+                example_stem: "The base of a right pyramid is an equilateral triangle of side 10 cm and its height is 6√3 cm. Find its volume."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+              - key: triangular-lsa
+                title: Lateral surface of a triangular pyramid
+                example_stem: "A regular right pyramid has an equilateral-triangle base of side 6√3 cm and a height of 4 cm. Find its lateral surface area."
+                frequency: low
+                difficulty: hard
+                target_seconds: 50
+            shortcuts:
+              - key: slant-triangle
+                title: Slant height from height and base inradius
+                kind: shortcut
+                rule: "l² = h² + (inradius of the base)², where the inradius is a/2 for a square and a/(2√3) for an equilateral triangle; look for a triplet."
+                example: {problem: "Square base 16 cm, height 15 cm", standard: "Find the face triangle's height by coordinates", shortcut: "8-15-17 → l = 17; LSA = ½ × 64 × 17 = 544; TSA = 544 + 256 = 800 cm²", seconds_saved: 15}
+                pattern: square-pyramid-tsa
+              - key: one-third-prism
+                title: Pyramid = one-third of the prism
+                kind: memory
+                rule: "A pyramid has one-third the volume of the prism on the same base and height, just as a cone is one-third of a cylinder."
+                example: {problem: "A prism on an equilateral base of side 10 cm and height 6√3 cm has volume 450 cm³. Find the volume of the pyramid on the same base and height.", shortcut: "450/3 = 150 cm³", seconds_saved: 10}
+                pattern: triangular-pyramid-volume
+
+      - key: conversions
+        title: Melting, recasting and combined solids
+        concepts:
+          - slug: melting-recasting-solids
+            title: Melting and recasting (volume conservation)
+            summary: "When a solid is melted and recast, or immersed in water, its volume does not change: volume of the original = number of new solids × volume of each, and rise in water level × base area of the vessel = volume immersed. SSC asks the number of balls from a sphere, wire drawn from metal and the rise in water level."
+            difficulty: medium
+            weight: 1.4
+            prerequisites: [sphere-volume-and-surface, cone-volume-and-surface, cylinder-volume-and-surface]
+            formulas:
+              - key: conservation
+                name: Number of new solids
+                expression: "number of new solids = volume of the original / volume of one new solid"
+                example: {problem: "A sphere of radius 6 cm is recast into balls of radius 1 cm.", solution: "(6/1)³ = 216 balls"}
+              - key: wire
+                name: Sphere drawn into a wire
+                expression: "(4/3)πR³ = πr²L, so L = 4R³ / (3r²)"
+                variables:
+                  - {symbol: R, meaning: radius of the sphere}
+                  - {symbol: r, meaning: radius of the wire}
+                  - {symbol: L, meaning: length of the wire}
+                example: {problem: "A sphere of radius 3 cm is drawn into a wire of radius 0.1 cm.", solution: "L = 4 × 27 / (3 × 0.01) = 3600 cm = 36 m"}
+              - key: water-rise
+                name: Rise in water level
+                expression: "rise = volume immersed / base area of the vessel"
+                example: {problem: "A sphere of radius 3 cm is dropped into a cylinder of radius 6 cm containing water.", solution: "(4/3)π × 27 / (π × 36) = 36/36 = 1 cm"}
+            patterns:
+              - key: number-of-balls
+                title: Number of small solids from a big one
+                example_stem: "How many lead balls of radius 1 cm can be made from a sphere of radius 8 cm?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: recast-shape
+                title: Recasting into a different shape
+                example_stem: "A metallic sphere of radius 6 cm is melted and recast into a cone of base radius 6 cm. Find the height of the cone."
+                frequency: high
+                difficulty: medium
+                target_seconds: 30
+              - key: water-level
+                title: Rise in water level after immersion
+                example_stem: "A sphere of radius 9 cm is dropped into a cylindrical vessel of radius 12 cm partly filled with water. By how much does the water level rise?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: same-radius
+                title: Same-radius recasting results
+                kind: shortcut
+                rule: "Cancel π and r² at once: a sphere recast into a cone of the same radius has h = 4r; into a cylinder of the same radius, h = 4r/3."
+                example: {problem: "Sphere of radius 6 cm into a cone of radius 6 cm", standard: "(4/3)π × 216 = (1/3)π × 36 × h → 288 = 12h", shortcut: "h = 4 × 6 = 24 cm", seconds_saved: 20}
+                pattern: recast-shape
+              - key: cube-of-ratio
+                title: Number of balls = (R/r)³
+                kind: shortcut
+                rule: "Spheres into smaller spheres: count = (R/r)³; π and 4/3 cancel."
+                example: {problem: "Sphere of radius 8 cm into balls of radius 1 cm", standard: "(4/3)π × 512 ÷ (4/3)π × 1", shortcut: "8³ = 512 balls", seconds_saved: 15}
+                pattern: number-of-balls
+
+          - slug: combined-solids-volume-surface
+            title: Combined solids (cone, cylinder and hemisphere together)
+            summary: "Toys and capsules join standard solids: the volume is the sum (or difference) of the parts, while the surface area counts only the exposed faces, because joined circular faces are hidden. SSC asks a cone on a hemisphere, a cylinder with hemispherical ends and a cylinder with a cone scooped out."
+            difficulty: hard
+            weight: 1.0
+            prerequisites: [hemisphere-volume-and-surface, cone-volume-and-surface, cylinder-volume-and-surface]
+            formulas:
+              - key: capsule
+                name: Cylinder with two hemispherical ends
+                expression: "V = πr²h + (4/3)πr³;  surface = 2πrh + 4πr² = 2πr(h + 2r)"
+                conditions: "h is the length of the cylindrical part only; h + 2r is the overall length."
+                example: {problem: "r = 7 cm, cylindrical part 14 cm.", solution: "V = 2156 + 1437⅓ = 3593⅓ cm³; surface = 616 + 616 = 1232 cm²"}
+              - key: toy
+                name: Cone on a hemisphere
+                expression: "V = (1/3)πr²h + (2/3)πr³ = (1/3)πr²(h + 2r);  surface = πrl + 2πr²"
+                example: {problem: "r = 7 cm, cone height 24 cm (l = 25 cm).", solution: "V = (1/3) × 154 × 38 = 1950⅔ cm³; surface = 550 + 308 = 858 cm²"}
+              - key: scooped
+                name: Cone scooped out of a cylinder (same base and height)
+                expression: "V = (2/3)πr²h;  surface = 2πrh + πr² + πrl"
+                example: {problem: "r = 6 cm, h = 8 cm (l = 10 cm).", solution: "V = (2/3)π × 36 × 8 = 192π cm³; surface = 96π + 36π + 60π = 192π cm²"}
+            patterns:
+              - key: toy-volume
+                title: Volume of a toy (cone on a hemisphere)
+                example_stem: "A toy is a cone of radius 3.5 cm mounted on a hemisphere of the same radius. The total height of the toy is 17.5 cm. Find its volume."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 45
+              - key: capsule-surface
+                title: Surface area of a capsule
+                example_stem: "A capsule is a cylinder with two hemispherical ends of radius 3.5 mm. Its overall length is 17 mm. Find its surface area."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 40
+              - key: scooped-solid
+                title: Solid left after scooping a cone out of a cylinder
+                example_stem: "From a solid cylinder of radius 6 cm and height 8 cm, a cone of the same base and height is scooped out. Find the volume of the remaining solid."
+                frequency: low
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: capsule-length
+                title: "Capsule surface = 2πr × overall length"
+                kind: shortcut
+                rule: "2πrh + 4πr² = 2πr(h + 2r), and h + 2r is the capsule's overall length."
+                example: {problem: "r = 3.5 mm, overall length 17 mm", standard: "cylinder part 10 mm: 2 × 22/7 × 3.5 × 10 + 4 × 22/7 × 12.25 = 220 + 154", shortcut: "2 × 22/7 × 3.5 × 17 = 22 × 17 = 374 mm²", seconds_saved: 20}
+                pattern: capsule-surface
+              - key: factor-toy
+                title: Factor the toy's volume
+                kind: shortcut
+                rule: "Cone on a hemisphere: V = (1/3)πr²(h + 2r); compute πr² once."
+                example: {problem: "r = 3.5 cm, total height 17.5 cm (cone height 14 cm)", standard: "(1/3) × 38.5 × 14 + (2/3) × 22/7 × 42.875 separately", shortcut: "(1/3) × 38.5 × (14 + 7) = 38.5 × 7 = 269.5 cm³", seconds_saved: 15}
+                pattern: toy-volume
+
+  - key: dimension-change
+    title: Change in dimensions
+    concepts:
+      - slug: percentage-change-area-volume
+        title: Percentage change in area and volume
+        summary: "Area depends on two lengths and volume on three, so changes compound: if every length changes by x%, area changes by (2x + x²/100)% and volume by [(1 + x/100)³ − 1] × 100%; if length and breadth change by x% and y%, area changes by (x + y + xy/100)%. SSC asks the change in area or volume after a change in sides, radius or height, and the reverse."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [successive-percentage, rectangle-area-perimeter-diagonal, cube-volume-surface-diagonal]
+        formulas:
+          - key: area-two-sides
+            name: Two sides change by x% and y%
+            expression: "area change % = x + y + xy/100"
+            example: {problem: "Length +20%, breadth −10%.", solution: "20 − 10 − 2 = +8%"}
+          - key: area-all-lengths
+            name: Every length changes by x% (area)
+            expression: "area change % = 2x + x²/100"
+            example: {problem: "Radius of a circle +10%.", solution: "20 + 1 = +21%"}
+          - key: volume-all-lengths
+            name: Every length changes by x% (volume)
+            expression: "volume change % = [(1 + x/100)³ − 1] × 100 = 3x + 3x²/100 + x³/10000"
+            example: {problem: "Edge of a cube +10%.", solution: "30 + 3 + 0.1 = +33.1%"}
+          - key: radius-and-height
+            name: Cylinder or cone, radius and height change
+            expression: "new volume / old volume = (1 + x/100)² × (1 + y/100)"
+            conditions: "x% is the change in radius, y% the change in height (negative for a decrease)."
+            example: {problem: "Radius +10%, height −20%.", solution: "1.21 × 0.8 = 0.968, a 3.2% decrease"}
+        patterns:
+          - key: radius-change-area
+            title: Change in area when the side or radius changes
+            example_stem: "If the radius of a circle is increased by 20%, by what percent does its area increase?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: cube-change
+            title: Change in surface area and volume of a cube or sphere
+            example_stem: "Each edge of a cube is increased by 50%. Find the percentage increase in its surface area and in its volume."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: cylinder-mixed
+            title: Radius and height change in opposite directions
+            example_stem: "The radius of a cylinder is increased by 10% and its height is decreased by 10%. Find the percentage change in its volume."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: factor-power
+            title: Square or cube the multiplying factor
+            kind: shortcut
+            rule: "Write the change as a factor (+50% → 1.5, −20% → 0.8); square it for area, cube it for volume."
+            example: {problem: "Edge of a cube +50%", standard: "Compute (1.5a)³ and 6(1.5a)² and compare with a³ and 6a²", shortcut: "1.5² = 2.25 → +125% surface; 1.5³ = 3.375 → +237.5% volume", seconds_saved: 20}
+            pattern: cube-change
+          - key: repeated-abab
+            title: Apply x + y + xy/100 step by step
+            kind: shortcut
+            rule: "Treat r² × h as three successive changes: combine the two radius changes first, then the height change."
+            example: {problem: "Radius +10%, height −10%", standard: "(1.1)² × 0.9 − 1 = 1.089 − 1", shortcut: "10 & 10 → 21; 21 & −10 → 21 − 10 − 2.1 = +8.9%", seconds_saved: 15}
+            pattern: cylinder-mixed

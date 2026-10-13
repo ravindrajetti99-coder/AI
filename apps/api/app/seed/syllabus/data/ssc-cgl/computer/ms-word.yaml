@@ -1,0 +1,237 @@
+key: ms-word
+title: MS Word
+strategies:
+  - key: approach
+    title: "MS Word: know the tab for every task"
+    summary: >-
+      Word questions ask which tab or group holds a command, which shortcut does a task, and what a
+      feature such as mail merge, track changes or a section break does. Learn the ribbon tab by tab
+      with its main commands, and the shortcuts in families (formatting, alignment, file, navigation).
+    seconds_per_question: 25
+    accuracy_target: 0.9
+    tactics:
+      - "Learn one line per tab: Home formats, Insert adds objects, Design styles the page, Layout sets up the page, References cites, Mailings merges, Review checks, View shows."
+      - "Group the shortcuts: Ctrl+B/I/U for style, Ctrl+L/E/R/J for alignment, Ctrl+1/2/5 for line spacing."
+      - "When a question names an older version (2007 or 2010), remember that Watermark and Page Borders were then on the Page Layout tab."
+    avoid:
+      - "Confusing Ctrl+E (centre in Word) with Ctrl+E in other programs, or Ctrl+H (Replace in Word) with browser history."
+
+topics:
+  - key: basics
+    title: MS Word basics
+    concepts:
+      - slug: computer-word-interface
+        title: "MS Word interface: ribbon, tabs, views and file formats"
+        summary: >-
+          Microsoft Word is a word processor (first released in 1983). Since Word 2007 its commands sit on the
+          ribbon, grouped in tabs: File (Backstage view: New, Open, Save, Save As, Print, Options), Home,
+          Insert, Design, Layout, References, Mailings, Review and View, with the Quick Access Toolbar above and
+          the status bar (page and word count, views, zoom) below. Document views are Read Mode, Print Layout
+          (the default), Web Layout, Outline and Draft. Documents are saved as .docx (.doc for Word 97-2003),
+          templates as .dotx and macro-enabled documents as .docm.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [computer-ms-office-suite]
+        patterns:
+          - key: tab-for-command
+            title: Which tab holds a command
+            example_stem: "In MS Word 2019, the Watermark and Page Borders options are found on which tab?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: views-formats
+            title: Document views and file formats
+            example_stem: "What is the default file extension of a document saved in MS Word 2016?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: tab-sentence
+            title: One sentence for the ribbon
+            kind: memory
+            rule: "Home formats text, Insert adds things (tables, pictures, headers, page numbers, symbols), Design styles the whole page (themes, watermark, page colour, borders), Layout sets the paper (margins, orientation, size, columns, breaks), References cites (footnotes, table of contents), Mailings merges, Review checks (spelling, comments, track changes), View shows (views, ruler, zoom, macros)."
+            pattern: tab-for-command
+      - slug: computer-word-editing
+        title: "Editing and proofing: selection, find and replace, spelling and track changes"
+        summary: >-
+          A double-click selects a word, a triple-click a paragraph and Ctrl+click a sentence; in the left
+          margin one click selects a line and three clicks the whole document. Find (Ctrl+F) opens the Navigation
+          pane, Replace is Ctrl+H and Go To is Ctrl+G; cut and copied items collect on the Office Clipboard (up to 24
+          items). Spelling mistakes get a red wavy underline and grammar mistakes a blue double underline (green
+          in older versions); F7 runs Spelling and Grammar, Shift+F7 opens the Thesaurus, AutoCorrect fixes
+          common typing errors, and Track Changes (Review tab, Ctrl+Shift+E) records every edit for review with
+          comments.
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [computer-word-interface]
+        patterns:
+          - key: proofing
+            title: Proofing tools and their marks
+            example_stem: "In MS Word, a red wavy line under a word usually indicates:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: select-find
+            title: Selecting, finding and replacing text
+            example_stem: "Which key combination opens the Replace dialog box in MS Word?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: click-count
+            title: More clicks, bigger selection
+            kind: memory
+            rule: "In the text: 2 clicks = word, 3 clicks = paragraph. In the left margin: 1 click = line, 2 = paragraph, 3 = whole document."
+            pattern: select-find
+
+  - key: formatting
+    title: Formatting documents
+    concepts:
+      - slug: computer-word-formatting
+        title: "Character and paragraph formatting"
+        summary: >-
+          Character formatting changes the look of text: font, size (the list shows up to 72 pt, but any size
+          from 1 to 1638 pt can be typed), bold (Ctrl+B), italic (Ctrl+I), underline (Ctrl+U), subscript (Ctrl+=),
+          superscript (Ctrl+Shift+=), change case (Shift+F3) and colour; Format Painter copies formatting from
+          one place to another. Paragraph formatting sets alignment (left Ctrl+L, centre Ctrl+E, right Ctrl+R,
+          justify Ctrl+J), line spacing (Ctrl+1 single, Ctrl+5 1.5, Ctrl+2 double), indents, bullets and numbering
+          and styles such as Heading 1, which also build the table of contents.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [computer-word-interface]
+        patterns:
+          - key: formatting-shortcut
+            title: Formatting shortcuts
+            example_stem: "Which key combination justifies the selected paragraph in MS Word?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: formatting-feature
+            title: Formatting features
+            example_stem: "Which MS Word tool copies the formatting of selected text so it can be applied to other text?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: align-letters
+            title: Alignment letters
+            kind: memory
+            rule: "L = Left, R = Right, J = Justify, and E = cEntre (C is already Copy)."
+            pattern: formatting-shortcut
+            pitfalls: ["Ctrl+E centres a paragraph; it does not open the Find box."]
+      - slug: computer-word-page-layout
+        title: "Page layout: margins, orientation, breaks, columns, headers, footers and page numbers"
+        summary: >-
+          The Layout tab sets margins (1 inch on every side by default), orientation (portrait, the default, or
+          landscape), paper size, columns and breaks: a page break (Ctrl+Enter) starts a new page, while section
+          breaks (Next Page, Continuous, Even Page, Odd Page) let parts of one document have different margins,
+          orientation or headers. Headers, footers and page numbers are added from the Insert tab; the gutter
+          margin adds space for binding, and the Design tab adds watermarks, page colour and page borders.
+        difficulty: easy
+        weight: 1.1
+        prerequisites: [computer-word-formatting]
+        patterns:
+          - key: layout-option
+            title: Page set-up options
+            example_stem: "Which page orientation makes the page wider than it is tall?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: breaks-headers
+            title: Breaks, headers and footers
+            example_stem: "Text that appears at the top of every page of a document, such as a chapter name, is called the:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+  - key: tools
+    title: Tables, objects and mail merge
+    concepts:
+      - slug: computer-word-tables-objects
+        title: "Tables, pictures, references and other inserted objects"
+        summary: >-
+          The Insert tab adds tables, pictures, shapes, icons, SmartArt, charts, text boxes, WordArt, Drop Cap,
+          hyperlinks (Ctrl+K), symbols and equations. A table is built of rows and columns of cells; its
+          contextual Table Design and Layout tabs merge or split cells, and pressing Tab in the last cell adds a
+          new row. The References tab inserts footnotes (at the bottom of the page), endnotes (at the end of the
+          document), a table of contents, citations, captions and an index.
+        difficulty: easy
+        weight: 1.1
+        prerequisites: [computer-word-interface]
+        patterns:
+          - key: insert-object
+            title: Inserting objects
+            example_stem: "In MS Word, the feature that makes the first letter of a paragraph a large decorative capital is:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: tables-references
+            title: Tables, footnotes and table of contents
+            example_stem: "In MS Word, notes placed at the bottom of the page on which they are referenced are called:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+      - slug: computer-word-mail-merge
+        title: Mail merge
+        summary: >-
+          Mail merge (Mailings tab) produces many personalised letters, e-mails, envelopes or labels from one
+          main document and a data source such as an Excel sheet, an Access table or Outlook contacts. Merge
+          fields such as «Name» mark where each recipient's details go; Preview Results shows them, and Finish
+          & Merge creates individual documents, prints them or sends them as e-mail.
+        difficulty: medium
+        weight: 1.1
+        prerequisites: [computer-word-interface]
+        patterns:
+          - key: mail-merge-use
+            title: Purpose and parts of mail merge
+            example_stem: "Which MS Word feature is used to send the same letter to many people, each with their own name and address?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: mail-merge-steps
+            title: Main document, data source and merge fields
+            example_stem: "In mail merge, the file that contains the names and addresses of the recipients is called the:"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+        shortcuts:
+          - key: letter-plus-list
+            title: Letter + list = merge
+            kind: memory
+            rule: "Main document = the letter (same for all); data source = the list (one row per person); merge fields = the blanks that link them."
+            pattern: mail-merge-steps
+
+  - key: shortcuts
+    title: MS Word keyboard shortcuts
+    concepts:
+      - slug: computer-word-shortcuts
+        title: MS Word keyboard shortcuts
+        summary: >-
+          File and navigation shortcuts asked most: Ctrl+N new, Ctrl+O open, Ctrl+S save, F12 Save As, Ctrl+P
+          print, Ctrl+F2 print preview, Ctrl+W close; Ctrl+Home and Ctrl+End go to the start and end of the
+          document, Home and End to the start and end of the line; Ctrl+Enter inserts a page break and
+          Shift+Enter a line break; F4 repeats the last action, F7 checks spelling, Shift+F7 opens the Thesaurus,
+          Ctrl+K inserts a hyperlink, Ctrl+D opens the Font dialog and Ctrl+Shift+8 shows or hides formatting
+          marks (¶).
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [computer-word-formatting, computer-windows-shortcuts]
+        patterns:
+          - key: shortcut-for-task
+            title: Shortcut for a task
+            example_stem: "Which key opens the Save As dialog box in MS Word?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: task-of-shortcut
+            title: What a shortcut does
+            example_stem: "In MS Word, what does pressing Ctrl+End do?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: function-keys
+            title: Word's function-key ladder
+            kind: memory
+            rule: "F4 repeat, F5 Go To, F7 spelling (Shift+F7 thesaurus), F12 Save As (Ctrl+F12 open); Shift+F3 changes case."
+            pattern: shortcut-for-task

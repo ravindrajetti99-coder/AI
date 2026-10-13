@@ -1,0 +1,225 @@
+key: conjunctions
+title: Conjunctions
+strategies:
+  - key: approach
+    title: "Conjunctions: check the pair and the logic"
+    summary: >-
+      Conjunction questions test either a fixed pairing (neither…nor, no sooner…than, although
+      without but) or the logical relation between two ideas (contrast, cause, result, addition).
+      First look for half of a pair; if there is none, decide the relation between the clauses
+      before reading the options.
+    seconds_per_question: 25
+    accuracy_target: 0.9
+    tactics:
+      - "If a sentence has 'neither', 'no sooner', 'hardly', 'not only' or 'both', find its partner first."
+      - "Never accept 'but' after although/though, or a second 'not' inside unless, until or lest clauses."
+      - "For a blank between two clauses, label the relation (same direction, opposite, cause → effect) and choose the connector of that type."
+    avoid:
+      - "Using two conjunctions for one link ('Although… but', 'Since… therefore', 'that why')."
+
+topics:
+  - key: coordinating
+    title: Coordinating conjunctions
+    concepts:
+      - slug: english-coordinating-conjunctions
+        title: "Coordinating conjunctions: and, but, or, nor, so, yet, for"
+        summary: >-
+          Coordinating conjunctions join words or clauses of equal rank: and (addition), but and
+          yet (contrast), or (choice), nor (negative choice), so (result) and for (reason, after a
+          comma). 'Nor' after a negative clause takes inverted order ('He did not call, nor did he
+          write'), and one link needs only one conjunction: 'because… so' or 'as… so' joining the
+          same two clauses is an error.
+        difficulty: easy
+        weight: 1.0
+        patterns:
+          - key: choose-connector
+            title: "Fill in the blank: and, but, or, so by meaning"
+            example_stem: "He was very tired, ___ he kept working till midnight. (a) so (b) but (c) or (d) for"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: nor-inversion
+            title: "Spot the error: word order after 'nor'"
+            example_stem: "Identify the segment that contains an error: The clerk did not / reply to my letter, / nor he answered / my phone calls."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+
+  - key: correlative
+    title: Correlative conjunctions
+    concepts:
+      - slug: english-correlative-conjunctions
+        title: "Correlative conjunctions: either…or, neither…nor, not only…but also"
+        summary: >-
+          Correlatives come in fixed pairs: either…or, neither…nor, both…and, not only…but also,
+          whether…or, no sooner…than, hardly/scarcely…when, so…that, such…that, though…yet and
+          rather…than. Mixing partners is an error ('neither…or', 'both…as well as', 'no
+          sooner…when', 'hardly…than'), and each half must stand before the same kind of word ('He
+          lost not only his money but also his reputation'). 'No sooner' and 'hardly' at the start
+          take inversion: 'No sooner had he left than it began to rain'.
+        difficulty: medium
+        weight: 1.8
+        prerequisites: [english-coordinating-conjunctions]
+        formulas:
+          - key: pairs
+            name: Correlative pairs
+            expression: "either–or, neither–nor, both–and, not only–but also, whether–or, no sooner–than, hardly / scarcely / barely–when (or before), so–that, such–that, though–yet, rather–than, lest–should"
+            example: {problem: "Correct: 'Scarcely had the train stopped than the passengers got down.'", solution: "Scarcely had the train stopped when the passengers got down."}
+        patterns:
+          - key: wrong-partner
+            title: "Spot the error: wrong partner in a correlative pair"
+            example_stem: "Identify the segment that contains an error: No sooner had / the bell rung / when the students / rushed out of the class."
+            frequency: high
+            difficulty: medium
+            target_seconds: 20
+          - key: placement
+            title: "Sentence improvement: placement of the two halves"
+            example_stem: "Improve the underlined part: She not only speaks French but also German. (a) speaks not only French but also German (b) not only speaks French but German also (c) speaks French not only but also German (d) No improvement"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+          - key: pair-blank
+            title: "Fill in the blank: the first half of a pair"
+            example_stem: "___ the manager nor the clerks were aware of the change in rules. (a) Either (b) Neither (c) Both (d) Not only"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: find-partner
+            title: Find the partner first
+            kind: elimination
+            rule: "When the sentence holds one half of a pair, reject every option that does not supply its exact partner, whatever else the option says."
+            example: {problem: "Hardly had he reached home ___ it started raining. (a) than (b) when (c) then (d) and", shortcut: "Hardly → when; the other three break the pair.", seconds_saved: 10}
+            pattern: wrong-partner
+
+  - key: subordinating
+    title: Subordinating conjunctions
+    concepts:
+      - slug: english-subordinating-time-condition
+        title: Subordinating conjunctions of time and condition
+        summary: >-
+          Time conjunctions (when, while, as, since, until/till, before, after, as soon as) and
+          condition conjunctions (if, unless, provided that, in case, as long as) introduce clauses
+          that use the present tense for future time ('as soon as he arrives'). 'Unless' means 'if
+          not' and 'until' means 'up to the time when', so neither takes another 'not' in its own
+          clause ('Wait until he comes', not 'until he does not come'). 'Since' for time takes a
+          past simple clause after a present perfect main clause ('Two years have passed since he
+          left').
+        difficulty: medium
+        weight: 1.4
+        prerequisites: [english-coordinating-conjunctions, english-future-tenses]
+        patterns:
+          - key: until-not
+            title: "Spot the error: 'not' inside an until or unless clause"
+            example_stem: "Identify the segment that contains an error: The guards / will not open the gate / until the officer / does not arrive."
+            frequency: high
+            difficulty: medium
+            target_seconds: 20
+          - key: time-clause-tense
+            title: "Fill in the blank: tense after as soon as, when, before"
+            example_stem: "I will call you as soon as the results ___ declared. (a) will be (b) are (c) would be (d) will have been"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+      - slug: english-subordinating-reason-contrast
+        title: Subordinating conjunctions of reason, purpose, contrast and result
+        summary: >-
+          Because, since and as give a reason ('because of' takes a noun: 'because of the rain'); so
+          that and in order that show purpose with can/may (could/might after a past verb); lest
+          means 'so that… not' and takes 'should' or the base verb with no 'not' ('Walk carefully
+          lest you should fall'). Though, although and even though show contrast and may pair with
+          'yet' but never with 'but'; so…that and such…that show result ('He was so tired that he
+          slept at once').
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [english-coordinating-conjunctions]
+        patterns:
+          - key: although-but
+            title: "Spot the error: although/though followed by 'but'"
+            example_stem: "Identify the segment that contains an error: Although he worked / very hard, / but he could not / clear the examination."
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: lest-should
+            title: "Fill in the blank: lest + should"
+            example_stem: "Work hard lest you ___. (a) will fail (b) should fail (c) do not fail (d) failed"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+          - key: because-of
+            title: "Fill in the blank: because or because of, so or such"
+            example_stem: "The flight was delayed ___ the heavy fog. (a) because (b) because of (c) so (d) since"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+
+  - key: linking
+    title: Linking words and conjunction errors
+    concepts:
+      - slug: english-conjunctive-adverbs
+        title: "Linking words: however, therefore, moreover, nevertheless"
+        summary: >-
+          Conjunctive adverbs and transition phrases link sentences by meaning: addition (moreover,
+          furthermore, besides, in addition), contrast (however, nevertheless, nonetheless, on the
+          other hand, instead), result (therefore, hence, thus, consequently, as a result), sequence
+          (then, meanwhile, finally) and example (for instance). They are not conjunctions, so two
+          clauses joined by one need a semicolon or a full stop before it ('It rained; however, the
+          match went on'). SSC tests them in fill in the blanks, cloze passages and sentence
+          rearrangement.
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [english-coordinating-conjunctions]
+        patterns:
+          - key: contrast-connector
+            title: "Fill in the blank: connector by the logical relation"
+            example_stem: "The project was well planned; ___, it failed because of a shortage of funds. (a) therefore (b) moreover (c) however (d) hence"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: result-connector
+            title: "Fill in the blank: result or addition connector"
+            example_stem: "The roads were flooded. ___, the schools remained closed for two days. (a) Nevertheless (b) Consequently (c) However (d) Instead"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: label-relation
+            title: Label the relation first
+            kind: elimination
+            rule: "Before reading the options, mark the second sentence as same direction (+), opposite (×) or effect (→); then keep only connectors of that type."
+            example: {problem: "He is rich; ___, he lives simply.", shortcut: "Rich vs simple life = opposite → however / nevertheless only", seconds_saved: 10}
+            pattern: contrast-connector
+
+      - slug: english-conjunction-pitfalls
+        title: "Conjunction errors with than, as, that and whether"
+        summary: >-
+          Some words fix the word after them: 'than' follows other, rather, sooner and else, while
+          prefer, superior and senior take 'to'. Regard and treat take 'as' but consider takes no
+          'as' ('I consider him honest'); 'the same… as' compares and 'such… as' gives examples
+          ('such books as these'). 'Seldom or never' and 'seldom, if ever' are correct but 'seldom
+          or ever' is not; 'whether' (not 'if') follows a preposition and comes before 'or not' and
+          an infinitive; and an extra 'that' before a question word is an error ('He asked me that
+          where I lived').
+        difficulty: hard
+        weight: 1.2
+        prerequisites: [english-correlative-conjunctions, english-subordinating-reason-contrast]
+        patterns:
+          - key: consider-as
+            title: "Spot the error: 'consider as' and 'regard' without 'as'"
+            example_stem: "Identify the segment that contains an error: We consider him as / the best player / in the team / this season."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: rather-than
+            title: "Fill in the blank: than after rather, other, sooner"
+            example_stem: "She would rather resign ___ accept the unfair transfer. (a) but (b) than (c) to (d) instead"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: extra-that
+            title: "Spot the error: extra 'that' or a double conjunction"
+            example_stem: "Identify the segment that contains an error: The officer asked me / that why I had come / without an appointment / to his office."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20

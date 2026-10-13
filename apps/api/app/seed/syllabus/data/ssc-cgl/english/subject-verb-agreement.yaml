@@ -1,0 +1,310 @@
+key: subject-verb-agreement
+title: Subject Verb Agreement
+strategies:
+  - key: approach
+    title: "Agreement: find the true subject first"
+    summary: >-
+      Subject-verb agreement is the most frequent rule behind SSC error-spotting questions. The
+      trick is always the same: locate the real subject (not the nearest noun), decide whether it
+      is singular or plural by the rule for its type, then check the verb and any pronoun that
+      refers back to it.
+    seconds_per_question: 25
+    accuracy_target: 0.9
+    tactics:
+      - "Bracket phrases that start with of, as well as, along with, with, besides or like, then read subject + verb without them."
+      - "For or, nor, either…or, neither…nor and not only…but also, match the verb to the nearer subject."
+      - "For half, most, some, all, percentages and fractions, look at the noun after 'of'."
+      - "After fixing the verb, check that later pronouns (his, its, their) agree too."
+    avoid:
+      - "Matching the verb to the noun just before it ('The quality of the mangoes were')."
+
+topics:
+  - key: basic-rule
+    title: The basic rule of subject verb agreement
+    concepts:
+      - slug: english-sva-basic
+        title: "Subject verb agreement: the basic rule and the true subject"
+        summary: >-
+          A singular subject takes a singular verb (is, was, has, verb + s) and a plural subject a
+          plural verb. The verb agrees with the true subject, not with a noun in a phrase between
+          them ('The quality of the mangoes was poor'); a subject followed by as well as, along
+          with, together with, with, besides, in addition to, accompanied by, like or no less than
+          keeps the verb of the first subject. Gerunds, infinitives and clauses used as subjects
+          are singular ('What he says is true').
+        difficulty: easy
+        weight: 2.0
+        prerequisites: [english-present-tenses]
+        formulas:
+          - key: true-subject
+            name: Verb agrees with the first subject
+            expression: "subject + [of … / as well as … / along with … / together with … / besides … / like …] + verb agreeing with the subject"
+            example: {problem: "The captain, along with his players, (was / were) honoured.", solution: "was (the subject is 'the captain')"}
+        patterns:
+          - key: intervening-phrase
+            title: "Spot the error: verb agrees with the nearest noun instead of the subject"
+            example_stem: "Identify the segment that contains an error: The cost of the new machines / have gone up / by ten percent / this year."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: as-well-as
+            title: "Fill in the blank: subject + as well as / along with"
+            example_stem: "The principal, as well as the teachers, ___ present at the function. (a) were (b) was (c) are (d) have been"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: bracket-phrase
+            title: Bracket the phrase
+            kind: shortcut
+            rule: "Cross out everything from of / as well as / along with / with / besides up to the verb and read the sentence again."
+            example: {problem: "The box of chocolates (are / is) on the table.", standard: "Weigh 'chocolates' against 'box'", shortcut: "'The box … is on the table'", seconds_saved: 10}
+            pattern: intervening-phrase
+
+  - key: joined-subjects
+    title: Compound subjects
+    concepts:
+      - slug: english-sva-compound-subjects
+        title: "Subjects joined by and, or, nor, either…or, neither…nor"
+        summary: >-
+          Two subjects joined by 'and' take a plural verb unless they name one person or one idea
+          ('The poet and philosopher is dead', 'Bread and butter is his breakfast', 'Slow and
+          steady wins the race') or are preceded by each or every ('Every boy and girl was given a
+          book'). With or, nor, either…or, neither…nor and not only…but also, the verb agrees with
+          the nearer subject ('Neither the teacher nor the students were present').
+        difficulty: medium
+        weight: 1.8
+        prerequisites: [english-sva-basic]
+        formulas:
+          - key: proximity
+            name: Proximity rule
+            expression: "X or / nor / either…or / neither…nor / not only…but also Y + verb agreeing with Y"
+            example: {problem: "Either the students or the teacher (are / is) responsible.", solution: "is (the nearer subject 'the teacher' is singular)"}
+          - key: one-idea
+            name: One person or one idea with 'and'
+            expression: "the + noun + and + noun (one article) = one person → singular verb;  the + noun + and + the + noun = two persons → plural verb"
+            example: {problem: "The secretary and the treasurer (has / have) resigned.", solution: "have (two articles, two people)"}
+        patterns:
+          - key: proximity
+            title: "Spot the error: either…or / neither…nor with the wrong verb"
+            example_stem: "Identify the segment that contains an error: Neither the manager nor his assistants / was present / at the meeting / held yesterday."
+            frequency: high
+            difficulty: medium
+            target_seconds: 20
+          - key: same-person
+            title: "Fill in the blank: one person or two joined by 'and'"
+            example_stem: "The secretary and treasurer ___ been arrested for fraud. (a) have (b) has (c) are (d) were"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: each-every-and
+            title: "Spot the error: each/every + noun and noun"
+            example_stem: "Identify the segment that contains an error: Every man, woman and child / in the village / were given / a ration card."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+
+  - key: pronoun-subjects
+    title: Indefinite and distributive subjects
+    concepts:
+      - slug: english-sva-indefinite-pronouns
+        title: "Each, every, either, neither, many a, a number of"
+        summary: >-
+          Each, every, either, neither, everyone, everybody, someone, anybody, nobody and nothing
+          take a singular verb, even when followed by 'of + plural noun' ('Each of the boys has a
+          bicycle'). 'Many a' and 'more than one' take a singular noun and a singular verb ('Many a
+          student has failed'); 'a number of' takes a plural verb and 'the number of' a singular
+          one. 'None of' + an uncountable noun takes a singular verb; with a plural noun both forms
+          are used, so it is rarely the tested error.
+        difficulty: medium
+        weight: 1.8
+        prerequisites: [english-sva-basic]
+        formulas:
+          - key: singular-subjects
+            name: "Each/Every/Either/Neither + singular verb"
+            expression: "Each / Every / Either / Neither / Everyone / Nobody / Many a / More than one + singular verb;  a number of + plural verb;  the number of + singular verb"
+            example: {problem: "Each of the students (have / has) submitted the form.", solution: "has"}
+        patterns:
+          - key: each-of
+            title: "Spot the error: each/either/neither of + plural verb"
+            example_stem: "Identify the segment that contains an error: Each of the candidates / have been asked / to bring / two photographs."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: number-of
+            title: "Fill in the blank: a number of or the number of"
+            example_stem: "The number of road accidents ___ increasing every year. (a) are (b) is (c) have (d) were"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: many-a
+            title: "Spot the error: many a / more than one with a plural verb"
+            example_stem: "Identify the segment that contains an error: Many a soldier / have laid down / his life / for the nation."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+        shortcuts:
+          - key: number-memory
+            title: "'The number' is one number"
+            kind: memory
+            rule: "THE number of = one number → singular (is); A number of = many → plural (are)."
+            example: {problem: "A number of students (was / were) absent.", shortcut: "'A number' means many → were", seconds_saved: 5}
+            pattern: number-of
+
+  - key: noun-subjects
+    title: Special nouns as subjects
+    concepts:
+      - slug: english-sva-special-nouns
+        title: "Nouns plural in form: news, mathematics, scissors, titles"
+        summary: >-
+          News, mathematics, physics, economics, politics (as a subject), measles, mumps and billiards
+          are plural in form but take a singular verb; so do titles and names that are plural in
+          form ('The Arabian Nights is', 'The United States has'). Pair nouns (scissors, trousers,
+          spectacles, tongs) take a plural verb, but 'a pair of' takes a singular one ('A pair of
+          scissors is on the table'). 'The + adjective' for a class of people is plural ('The rich
+          are not always happy').
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [english-sva-basic, english-noun-number-case]
+        patterns:
+          - key: plural-form-singular
+            title: "Spot the error: news, mathematics or a title with a plural verb"
+            example_stem: "Identify the segment that contains an error: The news / of his promotion / were received / with great joy."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: pair-nouns
+            title: "Fill in the blank: pair nouns and 'a pair of'"
+            example_stem: "My spectacles ___ broken, so I have ordered a new pair. (a) is (b) are (c) has (d) was"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: the-adjective
+            title: "Spot the error: 'the + adjective' with a singular verb"
+            example_stem: "Identify the segment that contains an error: The poor / in this village / is getting / free rations every month."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+      - ref: english-collective-nouns
+        weight: 1.3
+        patterns:
+          - key: verb-pronoun-match
+            title: "Spot the error: verb and pronoun of a collective noun disagree"
+            example_stem: "Identify the segment that contains an error: The jury / has given / their verdict / after a long debate."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+      - slug: english-sva-quantities
+        title: "Amounts, fractions and 'of' phrases"
+        summary: >-
+          A sum of money, a period of time, a distance or a weight thought of as one amount takes a
+          singular verb ('Ten kilometres is a long walk', 'Five thousand rupees is not enough').
+          With fractions, percentages and words like half, most, some, all, a lot, plenty, the rest
+          and the majority, the verb agrees with the noun after 'of': 'Half of the milk is sour'
+          but 'Half of the apples are rotten'.
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [english-sva-basic, english-countable-uncountable-nouns]
+        formulas:
+          - key: of-noun
+            name: Quantity + of + noun
+            expression: "half / part / most / some / all / a lot / plenty / the rest / the majority / x% / a fraction + of + noun → verb agrees with that noun"
+            example: {problem: "Most of the work (are / is) done.", solution: "is ('work' is uncountable)"}
+        patterns:
+          - key: amount-singular
+            title: "Spot the error: an amount as one unit with a plural verb"
+            example_stem: "Identify the segment that contains an error: Three years / are a long time / to wait / for a promotion."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: fraction-of
+            title: "Fill in the blank: percentage or fraction + of + noun"
+            example_stem: "Sixty percent of the land in the district ___ under cultivation. (a) are (b) is (c) have (d) were"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+  - key: word-order
+    title: Inverted order and relative clauses
+    concepts:
+      - slug: english-sva-there-inverted
+        title: "There, here and inverted sentences"
+        summary: >-
+          In sentences beginning with There or Here, and in inverted sentences, the verb agrees with
+          the subject that follows it: 'There are many reasons', 'There is a lot of work', 'Here
+          comes the bus', 'On the hill stand two old temples'. Questions follow the same rule:
+          'Where are my keys?'
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [english-sva-basic]
+        patterns:
+          - key: there-is-are
+            title: "Spot the error: there is/are with the subject that follows"
+            example_stem: "Identify the segment that contains an error: There is / many opportunities / for skilled workers / in this sector."
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: inverted-verb
+            title: "Fill in the blank: verb in an inverted sentence"
+            example_stem: "Beside the old temple ___ two ancient wells. (a) is (b) was (c) are (d) has"
+            frequency: low
+            difficulty: medium
+            target_seconds: 20
+
+      - slug: english-sva-relative-clauses
+        title: "One of, one of those who, and relative clauses"
+        summary: >-
+          'One of + plural noun' takes a singular verb because 'one' is the subject ('One of my
+          friends is a doctor'). In a relative clause the verb agrees with the antecedent of
+          who/which/that: 'He is one of those who have helped me' (antecedent 'those'), but 'He is
+          the only one of the boys who has passed' (antecedent 'the only one'), and 'It is I who am
+          to blame'.
+        difficulty: hard
+        weight: 1.4
+        prerequisites: [english-sva-basic, english-relative-pronouns]
+        patterns:
+          - key: one-of
+            title: "Spot the error: 'one of' with a plural verb or a singular noun"
+            example_stem: "Identify the segment that contains an error: One of the main reasons / for the failure / of the project / were poor planning."
+            frequency: high
+            difficulty: medium
+            target_seconds: 20
+          - key: those-who
+            title: "Fill in the blank: one of those who / the only one who"
+            example_stem: "She is one of those teachers who ___ never late for class. (a) is (b) are (c) was (d) has been"
+            frequency: medium
+            difficulty: hard
+            target_seconds: 25
+          - key: it-is-i-who
+            title: "Fill in the blank: verb after 'It is I who'"
+            example_stem: "It is I who ___ responsible for the delay. (a) is (b) am (c) are (d) be"
+            frequency: low
+            difficulty: medium
+            target_seconds: 15
+
+  - key: pronoun-agreement
+    title: Pronoun-antecedent agreement
+    concepts:
+      - slug: english-pronoun-antecedent
+        title: Pronoun-antecedent agreement
+        summary: >-
+          A pronoun agrees with its antecedent in number, gender and person. Each, every, everyone,
+          either and neither take a singular pronoun ('Neither of the boys has done his homework'),
+          'one' takes 'one's' ('One must keep one's promise'), antecedents joined by 'and' take a
+          plural pronoun and those joined by or/nor take the pronoun of the nearer one. A
+          collective noun acting as a unit takes 'it/its' ('The committee gave its decision').
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [english-sva-indefinite-pronouns, english-pronoun-case]
+        patterns:
+          - key: each-his
+            title: "Spot the error: each/neither + their"
+            example_stem: "Identify the segment that contains an error: Each of the girls / must bring / their own lunch / on the trip tomorrow."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: one-ones
+            title: "Fill in the blank: one … one's"
+            example_stem: "One should always respect ___ elders. (a) his (b) their (c) one's (d) our"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15

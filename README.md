@@ -61,6 +61,8 @@ npm run dev                                   # http://localhost:3000 (proxies /
 
 `python -m app.seed` is idempotent: re-run it after editing anything in `app/seed/`. It upserts by stable keys, retires removed questions and never resets passwords. Use `--only <course-slug>` to load one course.
 
+Exam courses are kept as syllabus data (YAML) under `app/seed/syllabus/data/`: the complete SSC CGL course (Tier 1 and Tier 2, five subjects) loads as a staff-only draft whose content is generated once, reviewed and then served to every learner. `python -m app.seed.syllabus` validates the files without a database. See [docs/content-engine.md](docs/content-engine.md).
+
 In development the API runs background jobs itself (`EDU_JOBS_EMBEDDED_WORKER=true`, the default). To run them the way production does, set it to `false` and start a worker:
 
 ```bash
@@ -142,12 +144,13 @@ apps/api/app/worker.py    `python -m app.worker`
 apps/api/app/modules      identity, catalog, content, assessment, learning, ingest, admin, labs
 apps/api/app/ai           gateway, providers, retrieval, engines (teacher, questions, examiner,
                           code_review, language, mentor/career)
-apps/api/app/seed         seed loader, parametric generators, 6 seed courses
+apps/api/app/seed         seed loader, parametric generators, 6 seed courses, syllabus/ (exam
+                          courses as YAML: SSC CGL)
 apps/api/migrations       Alembic migrations
 apps/web/app              Next.js routes (dashboard, courses, learn, practice, tests, reviews,
                           lab/code, lab/language, career, profile, admin)
 apps/web/components       UI kit, question renderer, practice session, lesson view
 apps/web/e2e              Playwright tests
 infra/                    docker-compose.yml
-docs/                     phase-2-plan.md
+docs/                     phase-2-plan.md, content-engine.md
 ```

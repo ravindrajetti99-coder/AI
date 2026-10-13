@@ -1,0 +1,303 @@
+key: email-web
+title: "Working with the internet and e-mails: web, e-mail and e-banking"
+strategies:
+  - key: approach
+    title: "Internet services: terms, fields and safe habits"
+    summary: >-
+      This chapter covers what candidates use every day: browsing and searching, downloading and
+      uploading, managing an e-mail account and e-banking. Questions test exact terms (URL parts,
+      Cc and Bcc, Drafts and Outbox), browser features and shortcuts, payment systems (NEFT, RTGS,
+      IMPS, UPI) and the safety rules banks repeat.
+    seconds_per_question: 25
+    accuracy_target: 0.9
+    tactics:
+      - "Learn every e-mail field and folder with a one-line definition: Cc is seen by all, Bcc is hidden, Outbox waits to send, Drafts is unsent and saved."
+      - "Split a URL into scheme, domain and path before answering any URL question."
+      - "For payment systems remember who runs them: RBI runs NEFT and RTGS; NPCI runs IMPS, UPI, RuPay and AePS."
+    avoid:
+      - "Mixing up uploading (your computer → server) with downloading (server → your computer)."
+
+topics:
+  - key: web
+    title: Web browsing and searching
+    concepts:
+      - slug: computer-www-url-http
+        title: "World Wide Web, web pages, URL and HTTP/HTTPS"
+        summary: >-
+          The World Wide Web, invented by Tim Berners-Lee at CERN in 1989, is a system of linked hypertext pages
+          on the internet: a website is a collection of web pages under one domain, its first page is the home page,
+          and pages are written in HTML (HyperText Markup Language), styled with CSS and served by web servers. A
+          URL (Uniform Resource Locator) is a page's address, made of a scheme (https), a domain name
+          (www.example.com) and a path (/exams/notice.html). HTTP (HyperText Transfer Protocol) carries web pages;
+          HTTPS encrypts them with SSL/TLS, shown by a padlock in the address bar.
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [computer-internet-basics]
+        formulas:
+          - key: url-parts
+            name: Parts of a URL
+            expression: "scheme://domain name[:port]/path?query#fragment"
+            example: {problem: "Identify the parts of https://www.example.gov.in/results/2025.html", solution: "scheme https, domain www.example.gov.in, path /results/2025.html"}
+        patterns:
+          - key: web-terms
+            title: Web terms and full forms
+            example_stem: "In the address https://www.example.com/index.html, the part 'https' is known as the:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: http-https
+            title: HTTP versus HTTPS and web technologies
+            example_stem: "What does the padlock and 'https' at the start of a website address indicate?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: s-for-secure
+            title: S stands for Secure
+            kind: memory
+            rule: "HTTPS = HTTP + Secure (encrypted by TLS, port 443); plain HTTP uses port 80. The web is a service of the internet, not the internet itself."
+            pattern: http-https
+      - slug: computer-web-browsers
+        title: "Web browsers and browsing features"
+        summary: >-
+          A web browser fetches and displays web pages: Google Chrome, Mozilla Firefox, Microsoft Edge, Apple Safari
+          and Opera today; WorldWideWeb (1990) was the first browser, Mosaic (1993) the first popular graphical one,
+          followed by Netscape Navigator and Internet Explorer (retired in 2022). Browsers offer tabs (Ctrl+T new,
+          Ctrl+W close, Ctrl+Shift+T reopen), bookmarks or favourites (Ctrl+D), history (Ctrl+H), downloads,
+          private or incognito windows that keep no history or cookies after closing, refresh (F5) and extensions.
+          Cookies are small files that websites store in the browser to remember the user; the cache keeps copies of
+          pages to load them faster.
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [computer-www-url-http]
+        patterns:
+          - key: browser-feature
+            title: Browser features and terms
+            example_stem: "Small text files that a website stores on a user's computer to remember login details and preferences are called:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: browser-shortcut
+            title: Browser shortcuts and examples
+            example_stem: "Which key combination bookmarks the current web page in most browsers?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+      - slug: computer-search-engines
+        title: Search engines and searching the web
+        summary: >-
+          A search engine finds web pages for keywords: its crawler (spider or bot) visits pages, an index stores
+          what it found, and a ranking system orders the results. Google (founded in 1998 by Larry Page and Sergey
+          Brin), Bing (Microsoft), Yahoo, DuckDuckGo, Baidu and Yandex are examples; Archie (1990) is called the
+          first internet search engine. Search operators narrow results: quotation marks for an exact phrase, a
+          minus sign to exclude a word, site: for one website and filetype: for a file type such as PDF.
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [computer-www-url-http]
+        patterns:
+          - key: search-terms
+            title: Search engines and how they work
+            example_stem: "The program that a search engine uses to visit web pages automatically and collect their content is called a:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: search-operators
+            title: Search operators
+            example_stem: "Which search query finds only PDF files about the SSC syllabus?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 20
+
+  - key: transfer
+    title: Downloading and uploading
+    concepts:
+      - slug: computer-download-upload
+        title: "Downloading and uploading files"
+        summary: >-
+          Downloading copies data from a remote server or another computer to your own device; uploading sends data
+          from your device to a server, as when attaching a file, posting a photo or submitting a form. Files move by
+          HTTP, FTP or peer-to-peer (BitTorrent) transfer; streaming plays media while it arrives without keeping a
+          full copy. Transfer time depends on bandwidth in bits per second, and most home connections download faster
+          than they upload.
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [computer-www-url-http, computer-data-units]
+        formulas:
+          - key: transfer-time
+            name: Transfer time
+            expression: "time (s) = file size in bits / speed in bits per second;  bits = bytes × 8"
+            conditions: "Line speeds are in bits (Mbps), file sizes in bytes (MB); this sum ignores the 1000/1024 difference and protocol overhead."
+            example: {problem: "How long does a 50 MB file take to download at 10 Mbps?", solution: "50 × 8 = 400 megabits; 400 / 10 = 40 seconds"}
+        patterns:
+          - key: upload-download
+            title: Downloading versus uploading
+            example_stem: "Sending a scanned photograph from your computer to an online application portal is called:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: transfer-time
+            title: Time to transfer a file
+            example_stem: "A 200 MB video is downloaded over a 40 Mbps connection. About how long will it take?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: bytes-bits
+            title: Multiply MB by 8 before dividing by Mbps
+            kind: shortcut
+            rule: "Convert the file to megabits (× 8) and divide by the line speed in Mbps to get seconds."
+            example: {problem: "200 MB at 40 Mbps", standard: "Convert both to bytes per second and divide", shortcut: "200 × 8 / 40 = 40 s", seconds_saved: 10}
+            pattern: transfer-time
+            pitfalls: ["Dividing MB directly by Mbps gives an answer 8 times too small."]
+
+  - key: email
+    title: Managing an e-mail account
+    concepts:
+      - slug: computer-email-basics
+        title: "E-mail: addresses, fields, attachments and protocols"
+        summary: >-
+          Network e-mail was first sent by Ray Tomlinson in 1971, who chose the @ sign; an address has a user name
+          and a domain (ravi.kumar@example.com) and contains no spaces. A message has From, To, Cc (carbon copy,
+          visible to all recipients), Bcc (blind carbon copy, hidden from the other recipients), Subject, body,
+          attachments (paper-clip icon) and signature. SMTP sends mail, while POP3 downloads it to one device and
+          IMAP keeps it on the server in sync across devices; webmail services include Gmail, Outlook.com (which
+          began as Hotmail, co-founded in 1996 by Sabeer Bhatia and Jack Smith) and Yahoo Mail.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [computer-internet-basics]
+        patterns:
+          - key: cc-bcc
+            title: To, Cc and Bcc
+            example_stem: "Which field of an e-mail lets you send a copy to someone without the other recipients knowing?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: email-protocols
+            title: E-mail protocols and history
+            example_stem: "Which protocol is used to send e-mail from a mail client to the mail server?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: blind-copy
+            title: Blind means hidden
+            kind: memory
+            rule: "Cc = carbon copy, everyone sees it; Bcc = blind carbon copy, no one else sees it. SMTP (Simple Mail Transfer Protocol) sends; POP3 (Post Office Protocol) pulls mail off the server to one device; IMAP (Internet Message Access Protocol) keeps it on the server, in sync."
+            pattern: cc-bcc
+      - slug: computer-email-account
+        title: "Managing an e-mail account: folders, reply, forward, filters and security"
+        summary: >-
+          Creating an account needs a user name, a strong password and recovery details, and two-step verification
+          protects it. Mail is organised in folders or labels: Inbox (received), Drafts (saved but unsent), Outbox
+          (waiting to be sent), Sent, Spam or Junk (unsolicited bulk mail) and Trash or Deleted Items; Archive
+          removes a message from the inbox without deleting it. Reply answers the sender only, Reply All the sender
+          and all To and Cc recipients, and Forward sends the message (with its attachments) to someone new;
+          filters sort incoming mail automatically, the address book stores contacts and a vacation responder sends
+          automatic replies.
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [computer-email-basics]
+        patterns:
+          - key: folders
+            title: E-mail folders
+            example_stem: "An e-mail that has been written and saved but not yet sent is stored in the:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: reply-forward
+            title: Reply, Reply All and Forward
+            example_stem: "Which option sends a received e-mail, along with its attachments, to a person who was not among its recipients?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: drafts-outbox
+            title: Drafts are unfinished, Outbox is on its way
+            kind: memory
+            rule: "Drafts = you have not pressed Send; Outbox = you pressed Send but it has not left yet; Sent = it has left."
+            pattern: folders
+
+  - key: e-banking
+    title: E-banking and digital payments
+    concepts:
+      - slug: computer-ebanking
+        title: "E-banking: internet banking, mobile banking, NEFT, RTGS and IMPS"
+        summary: >-
+          E-banking lets customers bank through the internet, mobile apps, ATMs and phone. Fund transfers use NEFT
+          (National Electronic Funds Transfer, run by RBI, settled in half-hourly batches, no minimum amount), RTGS
+          (Real Time Gross Settlement, run by RBI, settled one by one in real time, for ₹2 lakh and above) and IMPS
+          (Immediate Payment Service, run by NPCI, instant and available round the clock); NEFT and RTGS have been
+          available 24×7 since December 2019 and December 2020. A branch is identified by its 11-character IFSC
+          (4 letters for the bank, a 0, then 6 characters for the branch) and its 9-digit MICR code printed on
+          cheques.
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [computer-internet-basics]
+        patterns:
+          - key: transfer-systems
+            title: NEFT, RTGS and IMPS
+            example_stem: "Which electronic fund-transfer system settles each transaction individually in real time and is meant for amounts of ₹2 lakh and above?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 20
+          - key: bank-codes
+            title: IFSC and MICR codes
+            example_stem: "How many characters does an IFSC code have?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: gross-real-time
+            title: Read the names
+            kind: memory
+            rule: "RTGS = Real Time, Gross (one by one, big amounts); NEFT = batches (half-hourly); IMPS = Immediate. RBI runs NEFT and RTGS, NPCI runs IMPS."
+            pattern: transfer-systems
+      - slug: computer-digital-payments
+        title: "Digital payments: UPI, cards, wallets, AePS and QR codes"
+        summary: >-
+          UPI (Unified Payments Interface), launched by NPCI in 2016, links bank accounts to a mobile app and moves
+          money instantly using a UPI ID or virtual payment address (name@bank), a QR code or a mobile number,
+          authorised by a UPI PIN; BHIM is NPCI's own UPI app and *99# offers USSD banking on basic phones. Other
+          systems: debit, credit and prepaid cards (RuPay is NPCI's card network; the CVV on the card guards online
+          use), wallets, AePS (Aadhaar Enabled Payment System, using Aadhaar and fingerprint at micro-ATMs), Bharat
+          BillPay, FASTag for tolls and the RBI's digital rupee (e₹).
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [computer-ebanking]
+        patterns:
+          - key: payment-system
+            title: Which payment system or body
+            example_stem: "Which organisation developed and operates the Unified Payments Interface (UPI)?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: payment-terms
+            title: UPI and card terms
+            example_stem: "In UPI, an identifier such as ravi@okbank that is used instead of an account number is called a:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+      - slug: computer-ebanking-safety
+        title: "Safe e-banking and digital payment practices"
+        summary: >-
+          Never share an OTP, PIN, CVV or password with anyone, since banks never ask for them; a UPI PIN is entered
+          only to pay money, never to receive it. Type the bank's address yourself and check for https and the correct
+          domain, use only official apps, avoid public computers, public Wi-Fi and screen-sharing apps for banking,
+          log out after use and keep SMS alerts on. Report fraud at once to the bank and to the national cyber-crime
+          helpline 1930 or cybercrime.gov.in.
+        difficulty: easy
+        weight: 1.1
+        prerequisites: [computer-digital-payments]
+        patterns:
+          - key: safe-practice
+            title: Safe and unsafe banking practices
+            example_stem: "A caller says money will be credited to your account once you scan a QR code and enter your UPI PIN. What should you do?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: pin-to-pay
+            title: PIN means money goes out
+            kind: memory
+            rule: "Entering a UPI PIN or OTP always sends money or approves something; receiving money never needs a PIN, a QR scan or an OTP."
+            pattern: safe-practice

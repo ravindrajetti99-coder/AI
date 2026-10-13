@@ -1,0 +1,249 @@
+key: fundamentals
+title: Computer Fundamentals
+strategies:
+  - key: approach
+    title: "Fundamentals: pioneers, generations, types and full forms"
+    summary: >-
+      Fundamentals questions are one-line recall: who designed which machine, which technology
+      defines each generation, how computers are classified and what an abbreviation stands for.
+      Learn them as small tables and revise them with flashcards until the answer comes before
+      the options are read.
+    seconds_per_question: 25
+    accuracy_target: 0.95
+    tactics:
+      - "Learn the five generations as one table: switching technology, memory, language and an example machine."
+      - "Pair every pioneer with one machine or idea (Babbage → Analytical Engine, Hollerith → punched-card tabulator, von Neumann → stored program)."
+      - "Revise abbreviations daily in small batches and say the full form aloud, word by word."
+    avoid:
+      - "Memorising exact generation years from a single book: the year ranges differ between sources, so learn the technology first."
+
+topics:
+  - key: history-generations
+    title: History and generations of computers
+    subtopics:
+      - key: history
+        title: History of computers
+        concepts:
+          - slug: computer-history
+            title: "History of computers: from the abacus to ENIAC"
+            summary: >-
+              Calculating aids grew from the abacus and Napier's bones (1617) to mechanical calculators
+              (Blaise Pascal's Pascaline, 1642; Leibniz's stepped reckoner), punched cards (Jacquard's
+              loom; Herman Hollerith's tabulating machine for the 1890 US census) and Charles Babbage's
+              Analytical Engine, the first design for a general-purpose programmable computer, which is
+              why Babbage is called the father of the computer. SSC asks inventor-invention pairs such as
+              Ada Lovelace (first computer programmer), Alan Turing (Turing machine), Eckert and Mauchly
+              (ENIAC, the first general-purpose electronic digital computer) and John von Neumann
+              (stored-program concept).
+            difficulty: easy
+            weight: 1.2
+            patterns:
+              - key: inventor-invention
+                title: Inventor and invention
+                description: "A pioneer is named and the machine or idea is asked, or the other way round."
+                example_stem: "The Analytical Engine, which had a 'mill' for calculation and a 'store' for memory, was designed by whom?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 15
+              - key: early-machines
+                title: Early electronic computers
+                description: "Facts about ENIAC, EDVAC, UNIVAC and the stored-program idea."
+                example_stem: "ENIAC, completed in the mid-1940s, was built mainly from which electronic component?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+            shortcuts:
+              - key: pioneer-pairs
+                title: One pioneer, one keyword
+                kind: memory
+                rule: "Tie each name to a single keyword: Pascal → adding machine; Jacquard → punched cards in a loom; Babbage → Difference and Analytical Engines; Lovelace → first program; Hollerith → census tabulator (his firm grew into IBM); Turing → Turing machine; von Neumann → stored program."
+                when_to_use: "Any question that pairs a person with a machine or idea."
+                pattern: inventor-invention
+                pitfalls: ["Ada Lovelace wrote programs for the Analytical Engine; she did not build a machine."]
+
+      - key: generations
+        title: Generations of computers
+        concepts:
+          - slug: computer-generations
+            title: Generations of computers
+            summary: >-
+              Computers are grouped into five generations by their main electronic component:
+              vacuum tubes (first: machine language, magnetic drums, ENIAC and UNIVAC), transistors
+              (second: assembly language and early high-level languages such as FORTRAN and COBOL),
+              integrated circuits (third: operating systems, keyboards and monitors, IBM System/360),
+              microprocessors built with VLSI (fourth: personal computers, from the Intel 4004 of
+              1971) and artificial intelligence with ULSI and parallel processing (fifth). SSC asks
+              which technology, language or machine belongs to which generation.
+            difficulty: easy
+            weight: 1.5
+            prerequisites: [computer-history]
+            patterns:
+              - key: technology-of-generation
+                title: Technology that defines a generation
+                example_stem: "Integrated circuits were the main switching component of which generation of computers?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 15
+              - key: feature-of-generation
+                title: Language, memory or machine of a generation
+                example_stem: "Which generation of computers was programmed only in machine language and used magnetic drums for memory?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: vtima
+                title: "V-T-I-M-A: the five generations in order"
+                kind: memory
+                rule: "Very Tiny ICs Make AI: Vacuum tubes, Transistors, Integrated circuits, Microprocessors (VLSI), Artificial intelligence (ULSI)."
+                example: {problem: "Which generation used transistors?", shortcut: "V-T-I-M-A: T is the 2nd letter, so the second generation.", seconds_saved: 10}
+                pattern: technology-of-generation
+                pitfalls:
+                  - "The transistor was invented in 1947, but computers built from transistors form the second generation (late 1950s)."
+                  - "The microprocessor (fourth generation) is a whole CPU on one chip; the integrated circuit (third) is the earlier, smaller-scale chip."
+
+  - key: types
+    title: Types of computers
+    concepts:
+      - slug: computer-types-by-data
+        title: "Types of computers by data: analog, digital and hybrid"
+        summary: >-
+          Analog computers work on continuous physical quantities such as voltage, pressure or
+          temperature (a slide rule or a mechanical speedometer works this way); digital computers work
+          on discrete values coded in binary 0 and 1; hybrid computers combine both, for example
+          hospital patient-monitoring systems that turn analog body signals into digital readings.
+          Almost all modern computers are digital.
+        difficulty: easy
+        weight: 1.0
+        patterns:
+          - key: classify-by-data
+            title: Analog, digital or hybrid
+            example_stem: "A computer that measures a patient's heartbeat as an analog signal and displays it as digital numbers is a:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: measure-count
+            title: Analog measures, digital counts
+            kind: memory
+            rule: "Analog = measures a continuous quantity; digital = counts discrete steps; hybrid = measures and then counts."
+            pattern: classify-by-data
+      - slug: computer-types-by-size
+        title: "Types of computers by size: supercomputer, mainframe, minicomputer and microcomputer"
+        summary: >-
+          Supercomputers are the fastest machines, rated in FLOPS and used for weather forecasting,
+          climate modelling and scientific simulation (India's PARAM series was built by C-DAC, PARAM 8000
+          in 1991 being the first); mainframes serve thousands of users at once for banks, railways and
+          insurance; minicomputers are mid-range systems for departments; microcomputers use a
+          microprocessor as the CPU (desktops, laptops, tablets, smartphones). Servers, workstations and
+          embedded computers in appliances are also asked.
+        difficulty: easy
+        weight: 1.2
+        patterns:
+          - key: match-use
+            title: Which type of computer for a job
+            example_stem: "Which type of computer is best suited to running a nationwide weather-forecasting model?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: size-order
+            title: Order by size or speed
+            example_stem: "Arrange in decreasing order of processing power: microcomputer, supercomputer, minicomputer, mainframe."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: smmm
+            title: "S-M-M-M from biggest to smallest"
+            kind: memory
+            rule: "Super, Mainframe, Mini, Micro: biggest to smallest. Super = speed (science), Mainframe = many users (banks, railways), Micro = me (personal computer)."
+            pattern: size-order
+
+  - key: organisation
+    title: Organisation of a computer
+    concepts:
+      - slug: computer-block-diagram
+        title: "Organisation of a computer: the block diagram"
+        summary: >-
+          A computer has an input unit, a central processing unit (arithmetic logic unit, control unit
+          and registers), a memory unit and an output unit, and works in the input-process-output-storage
+          cycle. In the von Neumann (stored-program) design, programs and data share the same memory and
+          the control unit fetches instructions from it one by one; SSC asks which unit does which job.
+        difficulty: easy
+        weight: 1.2
+        patterns:
+          - key: unit-function
+            title: Function of a unit in the block diagram
+            example_stem: "In the block diagram of a computer, which unit coordinates the working of all the other units?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: stored-program
+            title: Stored-program (von Neumann) concept
+            example_stem: "The idea that a program should be stored in memory along with its data is credited to:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: ipos
+            title: "IPOS: input, process, output, storage"
+            kind: memory
+            rule: "Every job follows Input → Process → Output, with Storage alongside; the CPU sits in the 'process' box and the control unit directs every arrow."
+            pattern: unit-function
+      - slug: computer-characteristics
+        title: "Data, information and characteristics of a computer"
+        summary: >-
+          Data are raw facts; information is data processed into a meaningful form. A computer is fast,
+          accurate, diligent (no tiredness), versatile and stores large amounts of data, but it has no
+          intelligence or judgement of its own, so wrong input gives wrong output (GIGO, garbage in,
+          garbage out). Hardware is the physical equipment, software the set of programs that runs on it.
+        difficulty: easy
+        weight: 0.8
+        patterns:
+          - key: data-information
+            title: Data versus information, hardware versus software
+            example_stem: "Processed data that is meaningful to the user is called:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: gigo
+            title: Characteristics and limitations
+            example_stem: "The principle that incorrect input produces incorrect output is known as:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+  - key: abbreviations
+    title: Common computer abbreviations
+    concepts:
+      - slug: computer-abbreviations
+        title: Common abbreviations and their full forms
+        summary: >-
+          SSC asks full forms in almost every paper: CPU (Central Processing Unit), ALU (Arithmetic Logic
+          Unit), RAM (Random Access Memory), ROM (Read-Only Memory), BIOS (Basic Input/Output System),
+          USB (Universal Serial Bus), GUI (Graphical User Interface), OCR, OMR, MICR, DPI (dots per inch),
+          LCD, LED, UPS (Uninterruptible Power Supply), SMPS (Switched-Mode Power Supply), PDF (Portable
+          Document Format), HTML, URL, HTTP, ISP, LAN, Wi-Fi, VoIP and more. Learn each with what the
+          term does, so look-alike expansions are easy to reject.
+        difficulty: easy
+        weight: 2.0
+        patterns:
+          - key: full-form
+            title: What does an abbreviation stand for
+            example_stem: "In computing, what does the abbreviation 'SMPS' stand for?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: wrong-expansion
+            title: Spot the wrongly expanded abbreviation
+            example_stem: "Which of the following is NOT correctly expanded? (a) GUI: Graphical User Interface (b) UPS: Uninterruptible Power Supply (c) USB: Universal System Bus (d) DPI: Dots Per Inch"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: expand-by-parts
+            title: Expand piece by piece
+            kind: memory
+            rule: "Split long abbreviations into known parts: EEPROM = EE (Electrically Erasable) + P (Programmable) + ROM; MICR = M (Magnetic) + I (Ink) + CR (Character Recognition); VoIP = Voice over IP."
+            when_to_use: "A long or unfamiliar abbreviation built from smaller familiar ones."
+            pattern: full-form
+            pitfalls: ["USB is Universal Serial Bus, not 'System' or 'Service' Bus: distractors change one word."]

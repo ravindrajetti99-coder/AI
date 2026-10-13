@@ -1,0 +1,748 @@
+key: statistics-probability
+title: Statistics and Probability
+tiers: [tier2]
+strategies:
+  - key: approach
+    title: "Statistics and probability: tabulate first, then one formula"
+    summary: >-
+      Tier 2 Mathematical Abilities includes statistics (central tendency, dispersion, tables
+      and graphs) and simple probability. The questions are short once the data is laid out:
+      a frequency table with class marks and cumulative frequencies for statistics, and a
+      correctly counted sample space for probability.
+    seconds_per_question: 60
+    accuracy_target: 0.85
+    tactics:
+      - "For grouped data write columns for class, class mark x, f, fx and cumulative frequency before applying any formula."
+      - "For the median and mode of grouped data, identify the median or modal class first; most errors come from the wrong class or a wrong cumulative frequency."
+      - "In probability, count the sample space first (2ⁿ for n coins, 6ⁿ for n dice, 52 cards, nCr for drawing r items) and use the complement for 'at least one'."
+      - "Remember the empirical relation mode = 3 median − 2 mean and the effect of ax + b on averages and spread; they answer many questions without data."
+    avoid:
+      - "Using class limits instead of class marks for the mean of grouped data."
+      - "Counting aces as face cards (face cards are only J, Q and K: 12 cards)."
+
+topics:
+  - key: data-presentation
+    title: "Presentation of data: tables and graphs"
+    concepts:
+      - slug: statistics-frequency-distribution
+        title: Frequency distribution, class marks and cumulative frequency
+        summary: "Raw data is grouped into class intervals with frequencies; the class mark is the midpoint, the class width the difference between the limits, and the cumulative frequency the running total ('less than' or 'more than' type). Inclusive classes (10-19, 20-29) are converted to exclusive ones (9.5-19.5, 19.5-29.5) before the median and mode formulas are used."
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [di-table]
+        formulas:
+          - key: class-mark-width
+            name: Class mark and class width
+            expression: "class mark = (lower limit + upper limit) / 2;  class width = upper limit − lower limit"
+            example: {problem: "Class 30-40.", solution: "class mark 35, width 10"}
+          - key: cumulative
+            name: Cumulative frequency
+            expression: "cf of a class = sum of the frequencies of all classes up to and including it"
+            example: {problem: "Frequencies 5, 8, 15.", solution: "cumulative frequencies 5, 13, 28"}
+          - key: inclusive-to-exclusive
+            name: Inclusive to exclusive classes
+            expression: "subtract half the gap between classes from each lower limit and add it to each upper limit"
+            example: {problem: "Classes 10-19 and 20-29 (gap 1).", solution: "9.5-19.5 and 19.5-29.5"}
+        patterns:
+          - key: frequency-from-cf
+            title: Frequency of a class from cumulative frequencies
+            example_stem: "The 'less than' cumulative frequencies of the classes 0-10, 10-20, 20-30 and 30-40 are 6, 16, 34 and 40. Find the frequency of the class 20-30."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: limits-from-marks
+            title: Class limits from class marks
+            example_stem: "The class marks of a distribution are 15, 25, 35 and 45. Find the upper limit of the last class."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: difference-of-cf
+            title: Frequency = difference of consecutive cf
+            kind: shortcut
+            rule: "A class's frequency is its cumulative frequency minus that of the class before it."
+            example: {problem: "cf 6, 16, 34, 40; frequency of the third class", shortcut: "34 − 16 = 18", seconds_saved: 10}
+            pattern: frequency-from-cf
+          - key: mark-plus-half-width
+            title: Limits = class mark ± half the width
+            kind: shortcut
+            rule: "Width = gap between class marks; each class runs from mark − width/2 to mark + width/2."
+            example: {problem: "Class marks 15, 25, 35, 45", shortcut: "width 10 → last class 40-50, upper limit 50", seconds_saved: 10}
+            pattern: limits-from-marks
+
+      - slug: statistics-tables-and-graphs
+        title: "Use of tables and graphs: histogram, frequency polygon, bar diagram and pie chart"
+        summary: "Choose and read the right display: a histogram or frequency polygon for grouped continuous data, a bar diagram for separate categories, a pie chart for the parts of a whole and an ogive for cumulative frequency. With unequal class widths a histogram's heights must be frequency densities. SSC asks which display suits the data and statistics such as the modal class read from a graph."
+        difficulty: easy
+        weight: 0.8
+        prerequisites: [di-histogram, di-frequency-polygon, di-bar-graph, di-pie-chart, statistics-frequency-distribution]
+        formulas:
+          - key: frequency-density
+            name: Bar height for unequal class widths
+            expression: "height = frequency / class width (× a chosen standard width)"
+            example: {problem: "Class 20-40 with frequency 30, standard width 10.", solution: "30/20 × 10 = 15"}
+          - key: pie-angle
+            name: Pie chart angle of a category
+            expression: "angle = (frequency / total frequency) × 360°"
+            example: {problem: "45 of 180 observations.", solution: "45/180 × 360° = 90°"}
+        patterns:
+          - key: choose-display
+            title: Which graph suits the data
+            example_stem: "Which display is most suitable to show the share of each item in a family's total expenditure? (a) histogram (b) frequency polygon (c) pie chart (d) ogive"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: modal-class-from-graph
+            title: Modal class and percentages read from a histogram
+            example_stem: "A histogram with class width 10 shows frequencies 4, 9, 16, 13 and 8 for the classes 0-10 to 40-50. Find the modal class and the percentage of observations in it."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+        shortcuts:
+          - key: display-map
+            title: One line per display
+            kind: memory
+            rule: "Histogram: continuous classes, adjacent bars; bar diagram: separate categories with gaps; frequency polygon: class marks joined; pie chart: parts of a whole; ogive: cumulative frequencies."
+            example: {problem: "Which display joins the class marks?", shortcut: "frequency polygon", seconds_saved: 10}
+            pattern: choose-display
+
+  - key: central-tendency
+    title: Measures of central tendency
+    concepts:
+      - slug: statistics-arithmetic-mean
+        title: Arithmetic mean of ungrouped and grouped data
+        summary: "Mean = Σx/n for raw data and Σfx/Σf for a frequency table, x being the class mark for grouped data. The assumed-mean (deviation) and step-deviation methods give the same answer with smaller numbers. SSC asks the mean of a frequency table, a missing frequency for a given mean and the corrected mean after a wrong entry."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [statistics-frequency-distribution]
+        formulas:
+          - key: raw-mean
+            name: Mean of raw data
+            expression: "x̄ = Σx / n"
+            example: {problem: "4, 8, 15, 16, 23, 42.", solution: "108/6 = 18"}
+          - key: grouped-mean
+            name: Mean of a frequency distribution
+            expression: "x̄ = Σfx / Σf"
+            conditions: "x is the value, or the class mark for grouped data."
+            example: {problem: "x = 10, 20, 30 with f = 3, 5, 2.", solution: "(30 + 100 + 60)/10 = 19"}
+          - key: step-deviation
+            name: Assumed mean and step deviation
+            expression: "x̄ = A + Σfd/Σf with d = x − A;  x̄ = A + (Σfu/Σf) × h with u = (x − A)/h"
+            variables:
+              - {symbol: A, meaning: assumed mean}
+              - {symbol: h, meaning: class width}
+            example: {problem: "x = 10, 20, 30 with f = 3, 5, 2; A = 20, h = 10.", solution: "u = −1, 0, 1; Σfu = −3 + 2 = −1; x̄ = 20 + (−1/10) × 10 = 19"}
+          - key: corrected-mean
+            name: Corrected mean
+            expression: "corrected mean = (n × wrong mean − wrong value + correct value) / n"
+            example: {problem: "The mean of 20 numbers is 45, but 64 was read as 46.", solution: "(900 − 46 + 64)/20 = 918/20 = 45.9"}
+        patterns:
+          - key: grouped-mean
+            title: Mean of a grouped frequency distribution
+            example_stem: "Find the mean of the distribution with classes 0-10, 10-20, 20-30, 30-40 and 40-50 and frequencies 4, 6, 10, 6 and 4."
+            frequency: high
+            difficulty: medium
+            target_seconds: 45
+          - key: missing-frequency
+            title: Missing frequency for a given mean
+            example_stem: "The mean of the values 2, 4, 6 and 8 with frequencies 3, 5, k and 2 is 4.8. Find k."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 45
+          - key: corrected-mean
+            title: Correct mean after a misread observation
+            example_stem: "The mean of 30 observations was 42. Later it was found that 58 had been misread as 28. Find the correct mean."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+        shortcuts:
+          - key: symmetric-frequencies
+            title: Symmetric frequencies → middle class mark
+            kind: shortcut
+            rule: "If the frequencies are symmetric about the middle class, the mean is that class's mark."
+            example: {problem: "Classes 0-10 to 40-50 with frequencies 4, 6, 10, 6, 4", standard: "Σfx = 750, Σf = 30, mean = 25", shortcut: "symmetric about 20-30 → mean = 25", seconds_saved: 35}
+            pattern: grouped-mean
+          - key: correction-shift
+            title: Shift the mean by (correct − wrong)/n
+            kind: shortcut
+            rule: "A correction changes the mean by (correct value − wrong value)/n."
+            example: {problem: "Mean 42 of 30 values; 58 misread as 28", standard: "(1260 − 28 + 58)/30 = 1290/30", shortcut: "42 + 30/30 = 43", seconds_saved: 15}
+            pattern: corrected-mean
+
+      - slug: statistics-median
+        title: Median of ungrouped and grouped data
+        summary: "The median is the middle value of data arranged in order: the ((n + 1)/2)th value for odd n and the mean of the (n/2)th and (n/2 + 1)th values for even n. For grouped data, median = l + ((N/2 − cf)/f) × h, using the median class, the first class whose cumulative frequency reaches N/2."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [statistics-frequency-distribution]
+        formulas:
+          - key: ungrouped-median
+            name: Median of raw data
+            expression: "odd n: the ((n + 1)/2)th value;  even n: the mean of the (n/2)th and (n/2 + 1)th values (data in order)"
+            example: {problem: "3, 7, 9, 12, 15, 20.", solution: "n = 6: (9 + 12)/2 = 10.5"}
+          - key: grouped-median
+            name: Median of grouped data
+            expression: "median = l + ((N/2 − cf) / f) × h"
+            variables:
+              - {symbol: l, meaning: lower boundary of the median class}
+              - {symbol: N, meaning: total frequency}
+              - {symbol: cf, meaning: cumulative frequency of the class before the median class}
+              - {symbol: f, meaning: frequency of the median class}
+              - {symbol: h, meaning: class width}
+            example: {problem: "Classes 0-10 to 40-50 with frequencies 5, 8, 15, 12, 10 (N = 50).", solution: "N/2 = 25; cf 5, 13, 28 → median class 20-30; 20 + (12/15) × 10 = 28"}
+        patterns:
+          - key: ungrouped-median
+            title: Median of a list of numbers
+            example_stem: "Find the median of 17, 31, 12, 27, 15, 19, 23 and 28."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: grouped-median
+            title: Median of a grouped frequency distribution
+            example_stem: "Find the median of the distribution with classes 10-20, 20-30, 30-40, 40-50 and 50-60 and frequencies 4, 8, 16, 7 and 5."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 50
+        shortcuts:
+          - key: ap-median
+            title: Data in arithmetic progression
+            kind: shortcut
+            rule: "For values in arithmetic progression, median = mean = (first + last)/2."
+            example: {problem: "Median of 3, 7, 11, …, 99", standard: "Count 25 terms and find the 13th: 3 + 12 × 4", shortcut: "(3 + 99)/2 = 51", seconds_saved: 20}
+          - key: fraction-of-class
+            title: Read the formula as a fraction of the class
+            kind: shortcut
+            rule: "(N/2 − cf)/f is how far into the median class the median lies; when it is a simple fraction, the median follows at once."
+            example: {problem: "N = 40, cf before 30-40 is 12, f = 16", standard: "30 + ((20 − 12)/16) × 10", shortcut: "8/16 = halfway through 30-40 → 35", seconds_saved: 10}
+            pattern: grouped-median
+
+      - slug: statistics-mode
+        title: Mode of ungrouped and grouped data
+        summary: "The mode is the most frequent value; a data set can have one mode, several, or none. For grouped data, mode = l + ((f₁ − f₀)/(2f₁ − f₀ − f₂)) × h, using the modal class (highest frequency) and the frequencies of its neighbours."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [statistics-frequency-distribution]
+        formulas:
+          - key: grouped-mode
+            name: Mode of grouped data
+            expression: "mode = l + ((f₁ − f₀) / (2f₁ − f₀ − f₂)) × h"
+            variables:
+              - {symbol: l, meaning: lower limit of the modal class}
+              - {symbol: f₁, meaning: frequency of the modal class}
+              - {symbol: f₀, meaning: frequency of the class before it}
+              - {symbol: f₂, meaning: frequency of the class after it}
+              - {symbol: h, meaning: class width}
+            example: {problem: "Classes 0-10 to 40-50 with frequencies 5, 8, 15, 12, 10.", solution: "modal class 20-30: 20 + (7/(30 − 8 − 12)) × 10 = 20 + 7 = 27"}
+        patterns:
+          - key: ungrouped-mode
+            title: Mode of a list of values
+            example_stem: "Find the mode of 4, 7, 2, 7, 9, 4, 7, 3, 4 and 7."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: grouped-mode
+            title: Mode of a grouped frequency distribution
+            example_stem: "Find the mode of the distribution with classes 10-20, 20-30, 30-40, 40-50 and 50-60 and frequencies 5, 9, 21, 13 and 2."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 45
+        shortcuts:
+          - key: equal-neighbours
+            title: Equal neighbours → class mark
+            kind: shortcut
+            rule: "If f₀ = f₂, the mode is the midpoint of the modal class."
+            example: {problem: "Modal class 30-40 with f₁ = 18 and neighbours 10 and 10", standard: "30 + (8/16) × 10", shortcut: "35", seconds_saved: 20}
+            pattern: grouped-mode
+
+      - slug: statistics-empirical-relation
+        title: "Empirical relation: mode = 3 median − 2 mean"
+        summary: "For a moderately skewed distribution, mode ≈ 3 median − 2 mean, equivalently mean − mode = 3(mean − median). SSC gives two of the three averages and asks the third; in a symmetric distribution mean = median = mode."
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [statistics-arithmetic-mean, statistics-median, statistics-mode]
+        formulas:
+          - key: empirical
+            name: Empirical relation
+            expression: "mode = 3 × median − 2 × mean"
+            conditions: "Approximate; holds for moderately skewed distributions."
+            example: {problem: "Mean 24, median 26.", solution: "mode = 78 − 48 = 30"}
+          - key: rearranged
+            name: Median or mean from the other two
+            expression: "median = (mode + 2 × mean)/3;  mean = (3 × median − mode)/2"
+            example: {problem: "Mode 30, mean 24.", solution: "median = (30 + 48)/3 = 26"}
+        patterns:
+          - key: find-third
+            title: Third average from the other two
+            example_stem: "In a moderately skewed distribution the mean is 34.5 and the mode is 28.5. Find the median."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: difference-form
+            title: Differences between the averages
+            example_stem: "In a moderately skewed distribution the mean exceeds the median by 3. By how much does the mean exceed the mode?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+        shortcuts:
+          - key: difference-rule
+            title: mean − mode = 3(mean − median)
+            kind: shortcut
+            rule: "Work with differences: mean − mode = 3(mean − median)."
+            example: {problem: "Mean 34.5, mode 28.5", standard: "median = (28.5 + 69)/3 = 97.5/3", shortcut: "mean − mode = 6 → mean − median = 2 → median = 32.5", seconds_saved: 10}
+            pattern: find-third
+          - key: skew-order
+            title: Order of the averages and skewness
+            kind: memory
+            rule: "Symmetric: mean = median = mode; positively skewed: mode < median < mean; negatively skewed: mean < median < mode."
+            example: {problem: "Mean 50, median 48", shortcut: "mode = 144 − 100 = 44 < median < mean → positively skewed", seconds_saved: 10}
+
+  - key: dispersion
+    title: Measures of dispersion
+    concepts:
+      - slug: statistics-range
+        title: Range and coefficient of range
+        summary: "Range = largest value − smallest value, the simplest measure of spread; the coefficient of range (L − S)/(L + S) compares spreads of data sets. For grouped data use the upper limit of the last class and the lower limit of the first."
+        difficulty: easy
+        weight: 0.8
+        prerequisites: [statistics-frequency-distribution]
+        formulas:
+          - key: range
+            name: Range
+            expression: "range = L − S"
+            variables:
+              - {symbol: L, meaning: largest value}
+              - {symbol: S, meaning: smallest value}
+            example: {problem: "12, 45, 23, 67, 34.", solution: "67 − 12 = 55"}
+          - key: coefficient
+            name: Coefficient of range
+            expression: "coefficient of range = (L − S) / (L + S)"
+            example: {problem: "L = 67, S = 12.", solution: "55/79 ≈ 0.70"}
+        patterns:
+          - key: direct-range
+            title: Range of a data set
+            example_stem: "Find the range of 23, 41, 17, 56, 38, 29 and 62."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: range-after-change
+            title: Range after the data is transformed
+            example_stem: "The range of a data set is 40. Every value is multiplied by 3 and then 5 is added. What is the new range?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: range-transform
+            title: Additions do not change the range
+            kind: shortcut
+            rule: "Adding a constant leaves the range unchanged; multiplying every value by k multiplies the range by |k|."
+            example: {problem: "Range 40; each x → 3x + 5", standard: "new L − new S = (3L + 5) − (3S + 5)", shortcut: "3 × 40 = 120", seconds_saved: 15}
+            pattern: range-after-change
+
+      - slug: statistics-mean-deviation
+        title: Mean deviation basics
+        summary: "Mean deviation is the average of the absolute deviations from the mean (or the median): MD = Σ|x − x̄|/n, or Σf|x − x̄|/Σf for a frequency table. It is least when taken about the median. SSC asks direct calculation for small data sets."
+        difficulty: medium
+        weight: 0.7
+        prerequisites: [statistics-arithmetic-mean, statistics-median]
+        formulas:
+          - key: md-raw
+            name: Mean deviation of raw data
+            expression: "MD = Σ|x − x̄| / n  (about the mean;  use the median in place of x̄ for MD about the median)"
+            example: {problem: "2, 4, 6, 8, 10.", solution: "mean 6; |deviations| 4, 2, 0, 2, 4 = 12; MD = 12/5 = 2.4"}
+          - key: md-grouped
+            name: Mean deviation of a frequency table
+            expression: "MD = Σf|x − x̄| / Σf"
+            example: {problem: "x = 1, 2, 3 with f = 2, 6, 2.", solution: "mean 2; Σf|d| = 2 + 0 + 2 = 4; MD = 4/10 = 0.4"}
+          - key: coefficient
+            name: Coefficient of mean deviation
+            expression: "coefficient = MD / (the mean or median it is taken about)"
+            example: {problem: "MD 2.4 about a mean of 6.", solution: "2.4/6 = 0.4"}
+        patterns:
+          - key: md-about-mean
+            title: Mean deviation about the mean
+            example_stem: "Find the mean deviation about the mean of 3, 7, 9, 11 and 15."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: md-about-median
+            title: Mean deviation about the median
+            example_stem: "Find the mean deviation about the median of 4, 6, 9, 13 and 18."
+            frequency: low
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: symmetric-pairs
+            title: Double one side for symmetric data
+            kind: shortcut
+            rule: "For data symmetric about the mean, add the absolute deviations on one side and double them."
+            example: {problem: "3, 7, 9, 11, 15 (mean 9)", standard: "6 + 2 + 0 + 2 + 6 = 16", shortcut: "(6 + 2) × 2 = 16 → MD = 3.2", seconds_saved: 10}
+            pattern: md-about-mean
+
+      - slug: statistics-variance-sd
+        title: Variance and standard deviation
+        summary: "Variance is the mean of the squared deviations, σ² = Σ(x − x̄)²/n = Σx²/n − x̄², and the standard deviation σ is its square root; the coefficient of variation σ/x̄ × 100 compares consistency (lower is more consistent). SSC asks the SD of small data sets, the variance of the first n natural numbers and which series is more consistent."
+        difficulty: hard
+        weight: 1.0
+        prerequisites: [statistics-arithmetic-mean, statistics-mean-deviation]
+        formulas:
+          - key: variance
+            name: Variance and standard deviation
+            expression: "σ² = Σ(x − x̄)²/n = Σx²/n − x̄²;  σ = √σ²"
+            example: {problem: "2, 4, 6, 8, 10.", solution: "mean 6; squared deviations 16 + 4 + 0 + 4 + 16 = 40; σ² = 8; σ = 2√2 (check: 220/5 − 36 = 8)"}
+          - key: grouped-variance
+            name: Variance of a frequency table
+            expression: "σ² = Σf(x − x̄)² / Σf"
+            example: {problem: "x = 1, 2, 3 with f = 2, 6, 2.", solution: "mean 2; Σfd² = 2 + 0 + 2 = 4; σ² = 0.4"}
+          - key: natural-numbers
+            name: First n natural numbers
+            expression: "σ² = (n² − 1)/12"
+            example: {problem: "1, 2, …, 10.", solution: "99/12 = 8.25; σ ≈ 2.87"}
+          - key: cv
+            name: Coefficient of variation
+            expression: "CV = (σ / x̄) × 100"
+            example: {problem: "σ = 4, mean = 50.", solution: "CV = 8%"}
+        patterns:
+          - key: sd-small-set
+            title: Standard deviation of a small data set
+            example_stem: "Find the standard deviation of 5, 7, 9, 11 and 13."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+          - key: natural-numbers
+            title: Variance of the first n natural numbers
+            example_stem: "Find the variance of the first 15 natural numbers."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: consistency
+            title: Which series is more consistent
+            example_stem: "Batsman A has a mean score of 50 with standard deviation 10; batsman B has a mean of 40 with standard deviation 6. Who is more consistent?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: ap-sd
+            title: Equally spaced data
+            kind: shortcut
+            rule: "For n values in arithmetic progression with common difference d, σ = d × √((n² − 1)/12)."
+            example: {problem: "SD of 5, 7, 9, 11, 13", standard: "mean 9; (16 + 4 + 0 + 4 + 16)/5 = 8; σ = 2√2", shortcut: "d = 2, n = 5: 2 × √(24/12) = 2√2", seconds_saved: 30}
+            pattern: sd-small-set
+
+      - slug: statistics-change-of-origin-scale
+        title: Effect of change of origin and scale on averages and spread
+        summary: "If every observation x becomes ax + b, the mean, median and mode become a × (old value) + b, while the range, mean deviation and standard deviation are multiplied by |a| and the variance by a². Adding a constant shifts the averages but leaves the spread unchanged."
+        difficulty: medium
+        weight: 0.9
+        prerequisites: [statistics-variance-sd, statistics-range]
+        formulas:
+          - key: averages
+            name: Averages under y = ax + b
+            expression: "ȳ = a × x̄ + b  (the same for the median and the mode)"
+            example: {problem: "Mean 20; each x becomes 3x − 4.", solution: "new mean = 60 − 4 = 56"}
+          - key: spread
+            name: Spread under y = ax + b
+            expression: "σ_y = |a| × σ_x;  variance_y = a² × variance_x;  range_y = |a| × range_x"
+            example: {problem: "SD 5; each x becomes −2x + 7.", solution: "new SD = 10, new variance = 100"}
+        patterns:
+          - key: transform-mean-sd
+            title: New mean and SD after y = ax + b
+            example_stem: "The mean and standard deviation of a data set are 30 and 4. Each value is multiplied by 2 and then 5 is subtracted. Find the new mean and standard deviation."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: add-constant
+            title: Adding or subtracting a constant
+            example_stem: "The variance of 10 observations is 9. If 6 is added to each observation, what is the new variance?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: drop-b
+            title: Drop the '+ b' for spread
+            kind: shortcut
+            rule: "For SD, variance, range and mean deviation only the multiplier matters: ignore b, use |a| (or a² for variance)."
+            example: {problem: "Variance 9; each x becomes 3x + 2", standard: "Recompute deviations of the new values", shortcut: "9 × 3² = 81", seconds_saved: 15}
+            pattern: transform-mean-sd
+
+  - key: probability
+    title: Probability
+    concepts:
+      - slug: probability-simple-events
+        title: "Calculation of simple probabilities: sample space and events"
+        summary: "For equally likely outcomes, P(E) = number of favourable outcomes / total number of outcomes, so 0 ≤ P(E) ≤ 1; an impossible event has probability 0 and a sure event 1, and the probabilities of all outcomes add up to 1. SSC asks simple probabilities with numbers, letters of a word and everyday experiments."
+        difficulty: easy
+        weight: 1.0
+        formulas:
+          - key: classical
+            name: Classical probability
+            expression: "P(E) = n(E) / n(S)"
+            variables:
+              - {symbol: n(E), meaning: number of outcomes favourable to E}
+              - {symbol: n(S), meaning: number of equally likely outcomes in the sample space}
+            example: {problem: "A number from 1 to 20 is chosen at random. P(multiple of 3)?", solution: "3, 6, 9, 12, 15, 18 → 6/20 = 3/10"}
+          - key: bounds
+            name: Range of a probability
+            expression: "0 ≤ P(E) ≤ 1;  P(impossible event) = 0;  P(sure event) = 1"
+            example: {problem: "P(getting 7 on one throw of a die).", solution: "0 (impossible)"}
+        patterns:
+          - key: number-selection
+            title: Number chosen at random from a range
+            example_stem: "A number is chosen at random from 1 to 50. Find the probability that it is a prime number."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: letters-of-word
+            title: Letter chosen from a word
+            example_stem: "A letter is chosen at random from the word 'PROBABILITY'. Find the probability that it is a vowel."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: count-multiples
+            title: Count multiples by division
+            kind: shortcut
+            rule: "Multiples of k from 1 to N: ⌊N/k⌋. Multiples of a or b (a, b co-prime): ⌊N/a⌋ + ⌊N/b⌋ − ⌊N/ab⌋."
+            example: {problem: "P(a number from 1 to 50 is a multiple of 2 or 3)", standard: "List all such numbers and count", shortcut: "25 + 16 − 8 = 33 → 33/50", seconds_saved: 20}
+            pattern: number-selection
+          - key: primes-memory
+            title: Prime counts to know
+            kind: memory
+            rule: "There are 4 primes up to 10, 8 up to 20, 10 up to 30, 15 up to 50 and 25 up to 100."
+            example: {problem: "P(prime) for a number chosen from 1 to 50", shortcut: "15/50 = 3/10", seconds_saved: 20}
+            pattern: number-selection
+
+      - slug: probability-coins
+        title: Probability with coins
+        summary: "Tossing n coins (or one coin n times) gives 2ⁿ equally likely outcomes, and the number of outcomes with exactly r heads is nCr. SSC asks exactly, at least and at most a given number of heads or tails with 2, 3 or 4 coins."
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [probability-simple-events]
+        formulas:
+          - key: coins
+            name: Outcomes with n coins
+            expression: "n(S) = 2ⁿ;  P(exactly r heads) = nCr / 2ⁿ"
+            example: {problem: "3 coins, exactly 2 heads.", solution: "3C2/8 = 3/8 (HHT, HTH, THH)"}
+        patterns:
+          - key: exactly-heads
+            title: Exactly r heads
+            example_stem: "Three coins are tossed together. Find the probability of getting exactly two heads."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: at-least-tails
+            title: At least or at most a number of heads or tails
+            example_stem: "Four coins are tossed. What is the probability of getting at least one tail?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: pascal-row
+            title: Pascal's triangle rows
+            kind: memory
+            rule: "Outcome counts by number of heads: 2 coins 1-2-1, 3 coins 1-3-3-1, 4 coins 1-4-6-4-1 (out of 4, 8, 16)."
+            example: {problem: "4 coins, exactly 2 heads", standard: "List all 16 outcomes", shortcut: "6/16 = 3/8", seconds_saved: 20}
+            pattern: exactly-heads
+          - key: all-same-complement
+            title: At least one = 1 − all the other face
+            kind: shortcut
+            rule: "P(at least one tail with n coins) = 1 − 1/2ⁿ."
+            example: {problem: "4 coins, at least one tail", shortcut: "1 − 1/16 = 15/16", seconds_saved: 15}
+            pattern: at-least-tails
+
+      - slug: probability-dice
+        title: Probability with dice
+        summary: "One die has 6 outcomes and two dice 36 ordered pairs. SSC asks the probability of a given sum, a doublet, a sum that is prime, even or a multiple, a given product, and at least one six."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [probability-simple-events]
+        formulas:
+          - key: sample-space
+            name: Outcomes with dice
+            expression: "one die: 6;  two dice: 36;  n dice: 6ⁿ"
+            example: {problem: "P(doublet) with two dice.", solution: "6/36 = 1/6"}
+          - key: sum-count
+            name: Ways to get a sum s with two dice
+            expression: "ways = s − 1 for s = 2 to 7;  ways = 13 − s for s = 7 to 12"
+            example: {problem: "Sum 9 with two dice.", solution: "13 − 9 = 4 ways: (3, 6), (4, 5), (5, 4), (6, 3) → 4/36 = 1/9"}
+        patterns:
+          - key: sum-of-two
+            title: Given sum with two dice
+            example_stem: "Two dice are thrown. Find the probability that the sum of the numbers is 8."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: at-least-one-six
+            title: At least one six
+            example_stem: "Two dice are thrown together. Find the probability of getting at least one six."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+          - key: sum-condition
+            title: Sum that is prime, even or a multiple
+            example_stem: "Two dice are thrown. Find the probability that the sum of the numbers is a prime number."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: six-minus-gap
+            title: Ways = 6 − |s − 7|
+            kind: shortcut
+            rule: "With two dice the number of ways to get the sum s is 6 − |s − 7| (1 way for 2 or 12, 6 ways for 7)."
+            example: {problem: "Sum 8", standard: "List (2, 6), (3, 5), (4, 4), (5, 3), (6, 2)", shortcut: "6 − 1 = 5 → 5/36", seconds_saved: 20}
+            pattern: sum-of-two
+          - key: no-six-complement
+            title: At least one six = 1 − (5/6)ⁿ
+            kind: shortcut
+            rule: "P(no six in n dice) = (5/6)ⁿ, so P(at least one six) = 1 − (5/6)ⁿ."
+            example: {problem: "Two dice, at least one six", standard: "Count (6, x) and (x, 6) without double-counting (6, 6): 11", shortcut: "1 − 25/36 = 11/36", seconds_saved: 15}
+            pattern: at-least-one-six
+
+      - slug: probability-cards
+        title: Probability with a deck of cards
+        summary: "A standard deck has 52 cards in 4 suits of 13 (spades and clubs black, hearts and diamonds red), each suit A, 2-10, J, Q, K: so 26 red, 26 black, 4 of each rank and 12 face cards (J, Q, K). SSC asks the probability of drawing a card of a type, of one type or another (subtract the overlap), and occasionally of two cards drawn together."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [probability-simple-events]
+        formulas:
+          - key: one-card
+            name: One card of a given type
+            expression: "P = number of such cards / 52"
+            example: {problem: "A red face card.", solution: "6/52 = 3/26"}
+          - key: addition-rule
+            name: One type or another
+            expression: "P(A or B) = P(A) + P(B) − P(A and B)"
+            example: {problem: "A king or a heart.", solution: "4/52 + 13/52 − 1/52 = 16/52 = 4/13"}
+          - key: two-cards
+            name: Two cards drawn together
+            expression: "n(S) = 52C2 = 1326"
+            example: {problem: "Both cards are kings.", solution: "4C2/52C2 = 6/1326 = 1/221"}
+        patterns:
+          - key: one-card-type
+            title: One card of a given colour, suit or rank
+            example_stem: "A card is drawn at random from a well-shuffled pack of 52 cards. Find the probability that it is a black face card."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: either-or
+            title: Card of one type or another
+            example_stem: "A card is drawn from a pack of 52 cards. Find the probability that it is a queen or a diamond."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+          - key: two-cards
+            title: Two cards drawn together
+            example_stem: "Two cards are drawn together from a pack of 52 cards. Find the probability that both are hearts."
+            frequency: low
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: deck-map
+            title: Deck facts
+            kind: memory
+            rule: "52 cards; 4 suits × 13; 26 red and 26 black; 4 of each rank; 12 face cards (6 red, 6 black); the 4 aces are not face cards."
+            example: {problem: "P(a red card that is not a face card)", shortcut: "26 − 6 = 20 → 20/52 = 5/13", seconds_saved: 10}
+            pattern: one-card-type
+          - key: count-without-overlap
+            title: Count the union directly
+            kind: shortcut
+            rule: "Count one whole set, then add only the members of the other set not already counted."
+            example: {problem: "Queen or diamond", standard: "4/52 + 13/52 − 1/52", shortcut: "13 diamonds + 3 other queens = 16 → 16/52 = 4/13", seconds_saved: 10}
+            pattern: either-or
+
+      - slug: probability-balls-from-bag
+        title: Probability of drawing balls from a bag
+        summary: "From a bag of coloured balls, one ball drawn has P = (balls of that colour)/(total). When two or more are drawn together (without replacement), count with combinations: P = (ways to choose the wanted balls)/(total C r). SSC asks one ball of a colour or not of a colour, two balls of the same or of different colours, and draws with replacement."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [probability-simple-events]
+        formulas:
+          - key: combinations
+            name: Combinations
+            expression: "nCr = n! / (r! × (n − r)!);  nC2 = n(n − 1)/2"
+            example: {problem: "8C2.", solution: "8 × 7/2 = 28"}
+          - key: two-balls
+            name: Two balls drawn together
+            expression: "P(both colour A) = aC2 / NC2;  P(one A and one B) = (a × b) / NC2"
+            example: {problem: "Bag of 5 red and 3 blue balls; two drawn.", solution: "both red = 10/28 = 5/14; one of each = 15/28; both blue = 3/28"}
+          - key: with-replacement
+            name: With replacement
+            expression: "P(A then B) = (a/N) × (b/N)"
+            example: {problem: "5 red and 3 blue; red then blue, with replacement.", solution: "5/8 × 3/8 = 15/64"}
+        patterns:
+          - key: one-ball
+            title: One ball of (or not of) a colour
+            example_stem: "A bag contains 6 red, 4 white and 5 black balls. One ball is drawn at random. Find the probability that it is not white."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: same-colour
+            title: Two balls of the same colour
+            example_stem: "A bag contains 4 red and 6 green balls. Two balls are drawn at random. Find the probability that both are of the same colour."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: one-of-each
+            title: Two balls of different colours
+            example_stem: "A bag contains 5 white and 7 black balls. Two balls are drawn at random. Find the probability that one is white and the other black."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: step-by-step
+            title: Multiply draw by draw
+            kind: alternative
+            rule: "Without replacement, P(both red) = (r/N) × ((r − 1)/(N − 1)); for one of each colour, multiply by 2 for the two orders."
+            example: {problem: "4 red and 6 green, both the same colour", standard: "(4C2 + 6C2)/10C2 = (6 + 15)/45", shortcut: "4/10 × 3/9 + 6/10 × 5/9 = 12/90 + 30/90 = 42/90 = 7/15", seconds_saved: 10}
+            pattern: same-colour
+          - key: complement-colour
+            title: Not a colour = all the others
+            kind: shortcut
+            rule: "P(not white) = (total − white)/total; no need to add the other colours' probabilities."
+            example: {problem: "6 red, 4 white, 5 black; P(not white)", shortcut: "(15 − 4)/15 = 11/15", seconds_saved: 10}
+            pattern: one-ball
+
+      - slug: probability-complementary-events
+        title: "Complementary events and 'at least one'"
+        summary: "The complement of an event A ('not A') has P(not A) = 1 − P(A). It turns 'at least one' questions into one subtraction, P(at least one) = 1 − P(none), with independent events multiplying: P(A and B) = P(A) × P(B). SSC uses it with coins, dice and two people solving a problem independently."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [probability-coins, probability-dice]
+        formulas:
+          - key: complement
+            name: Complement rule
+            expression: "P(not A) = 1 − P(A)"
+            example: {problem: "P(rain) = 0.35.", solution: "P(no rain) = 0.65"}
+          - key: at-least-one
+            name: At least one
+            expression: "P(at least one) = 1 − P(none)"
+            example: {problem: "3 coins, at least one head.", solution: "1 − 1/8 = 7/8"}
+          - key: independent
+            name: Independent events
+            expression: "P(A and B) = P(A) × P(B);  P(at least one of A, B) = 1 − (1 − P(A))(1 − P(B))"
+            example: {problem: "A solves a problem with probability 1/2, B with 1/3, independently.", solution: "P(solved) = 1 − (1/2)(2/3) = 2/3"}
+        patterns:
+          - key: not-event
+            title: Probability that an event does not happen
+            example_stem: "The probability that a student passes an exam is 0.72. What is the probability that the student fails?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: problem-solved
+            title: Problem solved by at least one of two people
+            example_stem: "The probabilities that A and B can solve a problem are 2/5 and 1/4. If both try independently, find the probability that the problem is solved."
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: at-least-one-head
+            title: At least one success in repeated trials
+            example_stem: "Five coins are tossed. Find the probability of getting at least one head."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: complement-first
+            title: Count the opposite for 'at least'
+            kind: shortcut
+            rule: "P(at least one) = 1 − P(none); P(none) is a single product."
+            example: {problem: "A 2/5, B 1/4; P(problem solved)", standard: "P(A only) + P(B only) + P(both) = 6/20 + 3/20 + 2/20 = 11/20", shortcut: "1 − (3/5)(3/4) = 1 − 9/20 = 11/20", seconds_saved: 25}
+            pattern: problem-solved

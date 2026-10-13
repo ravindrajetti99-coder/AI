@@ -62,3 +62,47 @@ class ContentFlag(IdMixin, TimestampMixin, Base):
     user_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id", ondelete="CASCADE"))
     reason: Mapped[str] = mapped_column(Text)
     resolved: Mapped[int] = mapped_column(Integer, default=0)
+
+
+class Formula(IdMixin, TimestampMixin, Base):
+    """A formula or rule of a concept (the formula sheet is built from these)."""
+
+    __tablename__ = "formulas"
+
+    concept_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("concepts.id", ondelete="CASCADE"), index=True)
+    key: Mapped[str] = mapped_column(String(160), unique=True)
+    name: Mapped[str] = mapped_column(String(200))
+    expression: Mapped[str] = mapped_column(Text)  # plain text with standard notation, e.g. "A = P(1 + r/100)^n"
+    variables: Mapped[list] = mapped_column(JSONType, default=list)  # [{symbol, meaning}]
+    conditions: Mapped[str] = mapped_column(Text, default="")  # when it applies
+    example: Mapped[dict] = mapped_column(JSONType, default=dict)  # {problem, solution}
+    locale: Mapped[str] = mapped_column(String(10), default="en")
+    position: Mapped[int] = mapped_column(Integer, default=0)
+    status: Mapped[str] = mapped_column(String(20), default="verified", index=True)
+    source: Mapped[str] = mapped_column(String(20), default="manual")  # manual | ai
+    reviewed_by: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)
+
+
+SHORTCUT_KINDS = ("shortcut", "alternative", "elimination", "approximation", "memory")
+
+
+class Shortcut(IdMixin, TimestampMixin, Base):
+    """A short trick or alternative fast method, ideally tied to the exam pattern it cracks."""
+
+    __tablename__ = "shortcuts"
+
+    concept_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("concepts.id", ondelete="CASCADE"), index=True)
+    pattern_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, ForeignKey("question_patterns.id", ondelete="SET NULL"), nullable=True, index=True)
+    key: Mapped[str] = mapped_column(String(160), unique=True)
+    title: Mapped[str] = mapped_column(String(200))
+    kind: Mapped[str] = mapped_column(String(20), default="shortcut")  # see SHORTCUT_KINDS
+    rule: Mapped[str] = mapped_column(Text)
+    when_to_use: Mapped[str] = mapped_column(Text, default="")
+    steps: Mapped[list] = mapped_column(JSONType, default=list)
+    example: Mapped[dict] = mapped_column(JSONType, default=dict)  # {problem, standard, shortcut, seconds_saved}
+    pitfalls: Mapped[list] = mapped_column(JSONType, default=list)
+    locale: Mapped[str] = mapped_column(String(10), default="en")
+    position: Mapped[int] = mapped_column(Integer, default=0)
+    status: Mapped[str] = mapped_column(String(20), default="verified", index=True)
+    source: Mapped[str] = mapped_column(String(20), default="manual")
+    reviewed_by: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)

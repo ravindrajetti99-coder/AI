@@ -1,0 +1,356 @@
+key: data-representation
+title: "Data representation: number systems, units and codes"
+strategies:
+  - key: approach
+    title: "Number systems: convert through binary"
+    summary: >-
+      This chapter gives the only calculation questions of the module: number-system conversions,
+      binary arithmetic and data-unit conversions, plus recall of ASCII, Unicode and BCD facts. A
+      memorised powers-of-two table and the 3-bit and 4-bit grouping rules turn almost every
+      conversion into a 20-second job.
+    seconds_per_question: 35
+    accuracy_target: 0.9
+    tactics:
+      - "Write the powers of two from 2⁰ = 1 to 2¹⁰ = 1024 at the top of the rough sheet before the section starts."
+      - "Convert between binary, octal and hexadecimal by grouping bits (3 for octal, 4 for hex); go through decimal only when decimal is asked."
+      - "Check a conversion in reverse when the options are close: expand the answer back to decimal."
+    avoid:
+      - "Reading the remainders top-down after repeated division: the last remainder is the most significant digit."
+      - "Mixing 1 KB = 1024 bytes (binary convention, used in SSC questions) with 1 kB = 1000 bytes (decimal)."
+
+topics:
+  - key: number-systems
+    title: Number systems and conversions
+    subtopics:
+      - key: bases
+        title: Binary, octal, decimal and hexadecimal
+        concepts:
+          - slug: computer-number-systems
+            title: "Number systems: binary, octal, decimal and hexadecimal"
+            summary: >-
+              A number system with base (radix) b uses the digits 0 to b − 1 and gives each position a
+              place value that is a power of b. Binary (base 2) uses 0 and 1, octal (base 8) uses 0 to 7,
+              decimal (base 10) uses 0 to 9 and hexadecimal (base 16) uses 0 to 9 and A to F for 10 to 15.
+              Computers work in binary; each binary digit is a bit, the leftmost being the most significant
+              bit (MSB) and the rightmost the least significant (LSB).
+            difficulty: easy
+            weight: 1.2
+            formulas:
+              - key: place-value
+                name: Positional value of a number
+                expression: "(dₙ…d₂d₁d₀)_b = dₙ × bⁿ + … + d₂ × b² + d₁ × b + d₀"
+                variables:
+                  - {symbol: b, meaning: "base (radix): 2, 8, 10 or 16"}
+                  - {symbol: d, meaning: "digit, from 0 to b − 1"}
+                example: {problem: "Write the place values of (1011)₂.", solution: "1 × 8 + 0 × 4 + 1 × 2 + 1 × 1 = 11"}
+            patterns:
+              - key: base-digits
+                title: Base and valid digits of a number system
+                example_stem: "Which of the following is NOT a valid octal number? (a) 1257 (b) 7701 (c) 1829 (d) 3046"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+              - key: hex-digits
+                title: Hexadecimal letters
+                example_stem: "In the hexadecimal number system, the digit E stands for which decimal value?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+            shortcuts:
+              - key: hex-letters
+                title: A to F count on from ten
+                kind: memory
+                rule: "A = 10, B = 11, C = 12, D = 13, E = 14, F = 15: the largest digit of any base b is b − 1 (1 in binary, 7 in octal, F in hex)."
+                pattern: hex-digits
+      - key: from-decimal
+        title: Decimal to binary, octal and hexadecimal
+        concepts:
+          - slug: computer-decimal-to-other
+            title: "Conversion from decimal to binary, octal and hexadecimal"
+            summary: >-
+              To convert a decimal whole number, divide repeatedly by the new base and read the remainders
+              from the last to the first; to convert a decimal fraction, multiply repeatedly by the base and
+              read the integer parts from the first to the last. For binary, subtracting the largest powers
+              of two is often faster.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [computer-number-systems]
+            formulas:
+              - key: repeated-division
+                name: Repeated division by the base
+                expression: "N ÷ b gives remainder r₀, the quotient ÷ b gives r₁, … until the quotient is 0; then N = (rₖ…r₁r₀)_b"
+                conditions: "Whole numbers; read the remainders bottom-up."
+                example: {problem: "Convert 45 to binary.", solution: "45 → 22 r1 → 11 r0 → 5 r1 → 2 r1 → 1 r0 → 0 r1; reading upwards (101101)₂"}
+              - key: repeated-multiplication
+                name: Repeated multiplication for fractions
+                expression: "multiply the fraction by b, record the integer part, repeat with the new fraction; read the integer parts top-down"
+                example: {problem: "Convert 0.625 to binary.", solution: "0.625 × 2 = 1.25 → 1; 0.25 × 2 = 0.5 → 0; 0.5 × 2 = 1.0 → 1; so (0.101)₂"}
+            patterns:
+              - key: decimal-to-binary
+                title: Decimal to binary
+                example_stem: "What is the binary equivalent of the decimal number 53?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 30
+              - key: decimal-to-octal-hex
+                title: Decimal to octal or hexadecimal
+                example_stem: "Convert (300)₁₀ into hexadecimal."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: powers-of-two
+                title: Subtract powers of two
+                kind: shortcut
+                rule: "Write the number as a sum of distinct powers of two; put 1 under each power used and 0 under the rest."
+                steps: ["List 64, 32, 16, 8, 4, 2, 1", "Take the largest power not above the number and subtract it", "Repeat with the remainder", "Mark used powers 1, unused 0"]
+                example: {problem: "53 in binary", standard: "Six divisions by 2 and reading remainders", shortcut: "53 = 32 + 16 + 4 + 1 → 110101", seconds_saved: 15}
+                pattern: decimal-to-binary
+                pitfalls: ["Write a 0 for every skipped power between the highest and the lowest, or the answer loses digits."]
+      - key: to-decimal
+        title: Binary, octal and hexadecimal to decimal
+        concepts:
+          - slug: computer-other-to-decimal
+            title: "Conversion from binary, octal and hexadecimal to decimal"
+            summary: >-
+              Multiply each digit by its place value (a power of the base) and add. Digits after the point
+              take negative powers: in binary 0.1 = 1/2, 0.01 = 1/4 and 0.001 = 1/8.
+            difficulty: easy
+            weight: 1.3
+            prerequisites: [computer-number-systems]
+            formulas:
+              - key: expansion
+                name: Expansion by place values
+                expression: "(d₂d₁d₀.d₋₁)_b = d₂ × b² + d₁ × b + d₀ + d₋₁ × b⁻¹"
+                example: {problem: "Convert (157)₈ and (2F)₁₆ to decimal.", solution: "1 × 64 + 5 × 8 + 7 = 111; 2 × 16 + 15 = 47"}
+            patterns:
+              - key: binary-to-decimal
+                title: Binary to decimal
+                example_stem: "What is the decimal value of the binary number 101101.11?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 30
+              - key: hex-octal-to-decimal
+                title: Octal or hexadecimal to decimal
+                example_stem: "The hexadecimal number 1A3 is equal to which decimal number?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: double-and-add
+                title: Double and add (Horner's method)
+                kind: shortcut
+                rule: "Read the binary digits left to right: start at 0, and for each digit double the running total and add the digit."
+                example: {problem: "101101 to decimal", standard: "32 + 8 + 4 + 1", shortcut: "1 → 2 → 5 → 11 → 22 → 45", seconds_saved: 5}
+                pattern: binary-to-decimal
+      - key: between-bases
+        title: Conversion between binary, octal and hexadecimal
+        concepts:
+          - slug: computer-binary-octal-hex
+            title: "Conversion between binary, octal and hexadecimal"
+            summary: >-
+              Because 8 = 2³ and 16 = 2⁴, one octal digit is exactly 3 bits and one hexadecimal digit exactly
+              4 bits. Group binary digits in threes or fours starting from the binary point (pad with zeros on
+              the left), and convert octal to hexadecimal through binary rather than through decimal.
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [computer-other-to-decimal, computer-decimal-to-other]
+            formulas:
+              - key: grouping
+                name: Bit grouping
+                expression: "1 octal digit = 3 bits;  1 hexadecimal digit = 4 bits"
+                example: {problem: "Convert (110101101)₂ to octal and hexadecimal.", solution: "110 101 101 → (655)₈;  0001 1010 1101 → (1AD)₁₆ (both equal 429)"}
+            patterns:
+              - key: binary-to-octal-hex
+                title: Binary to octal or hexadecimal
+                example_stem: "What is the hexadecimal equivalent of (10111011)₂?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: octal-to-hex
+                title: Octal to hexadecimal and back
+                example_stem: "Convert (725)₈ into hexadecimal."
+                frequency: low
+                difficulty: medium
+                target_seconds: 40
+            shortcuts:
+              - key: via-binary
+                title: Octal ↔ hex through binary
+                kind: shortcut
+                rule: "Expand each octal digit to 3 bits, regroup the bit string in fours from the right, and read each group as a hex digit."
+                example: {problem: "(725)₈ to hexadecimal", standard: "725₈ = 469₁₀, then divide by 16 twice", shortcut: "111 010 101 → 1 1101 0101 → 1D5", seconds_saved: 20}
+                pattern: octal-to-hex
+      - key: binary-arithmetic
+        title: Binary arithmetic and complements
+        concepts:
+          - slug: computer-binary-arithmetic
+            title: "Binary arithmetic, 1's and 2's complement"
+            summary: >-
+              Binary addition follows 0 + 0 = 0, 0 + 1 = 1, 1 + 1 = 10 (write 0, carry 1) and 1 + 1 + 1 = 11.
+              The 1's complement of a binary number flips every bit and the 2's complement is the 1's complement
+              plus 1; computers store negative integers in 2's complement, so an n-bit signed integer ranges
+              from −2ⁿ⁻¹ to 2ⁿ⁻¹ − 1 (−128 to 127 for 8 bits), while n unsigned bits range from 0 to 2ⁿ − 1.
+            difficulty: medium
+            weight: 0.8
+            prerequisites: [computer-other-to-decimal]
+            formulas:
+              - key: complements
+                name: 1's and 2's complement
+                expression: "1's complement = invert every bit;  2's complement = 1's complement + 1"
+                example: {problem: "Find the 2's complement of 0101.", solution: "1's complement 1010, plus 1 = 1011 (−5 in 4-bit 2's complement)"}
+              - key: ranges
+                name: Range of n-bit integers
+                expression: "unsigned: 0 to 2ⁿ − 1;  2's complement signed: −2ⁿ⁻¹ to 2ⁿ⁻¹ − 1"
+                example: {problem: "Largest unsigned number in 8 bits?", solution: "2⁸ − 1 = 255"}
+            patterns:
+              - key: binary-sum
+                title: Binary addition and subtraction
+                example_stem: "What is the sum of the binary numbers 1011 and 0110?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: complement
+                title: 1's and 2's complement
+                example_stem: "What is the 2's complement of the binary number 10110?"
+                frequency: low
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: copy-then-flip
+                title: 2's complement in one pass
+                kind: shortcut
+                rule: "From the right, copy every bit up to and including the first 1, then flip all the bits to its left."
+                example: {problem: "2's complement of 10110", standard: "Invert to 01001, then add 1", shortcut: "Copy '10', flip '101' → 01010", seconds_saved: 10}
+                pattern: complement
+
+  - key: units
+    title: Units of data
+    concepts:
+      - slug: computer-data-units
+        title: "Units of data: bit, nibble, byte, KB, MB, GB, TB and beyond"
+        summary: >-
+          The bit (binary digit, 0 or 1) is the smallest unit; 4 bits make a nibble and 8 bits a byte. In
+          the binary convention used in SSC questions each larger unit is 1024 (2¹⁰) times the one before:
+          1 KB = 1024 bytes, 1 MB = 1024 KB, then GB, TB, PB (petabyte), EB (exabyte), ZB (zettabyte) and
+          YB (yottabyte). Storage makers use powers of 1000, which is why a '1 TB' disk shows about 931 GB
+          in Windows.
+        difficulty: easy
+        weight: 1.5
+        formulas:
+          - key: binary-units
+            name: Binary data units
+            expression: "1 byte = 8 bits; 1 nibble = 4 bits; 1 KB = 2¹⁰ bytes = 1024 bytes; 1 MB = 2²⁰ bytes; 1 GB = 2³⁰ bytes; 1 TB = 2⁴⁰ bytes; 1 PB = 2⁵⁰ bytes"
+            conditions: "Each step up (KB → MB → GB → TB → PB → EB → ZB → YB) multiplies by 1024; each step down divides by 1024."
+            example: {problem: "How many KB are there in 4 GB?", solution: "4 × 1024 × 1024 = 41,94,304 KB"}
+          - key: bits-in
+            name: Bits in a quantity of data
+            expression: "bits = bytes × 8"
+            example: {problem: "How many bits are there in 1 MB?", solution: "1 MB = 10,48,576 bytes = 10,48,576 × 8 = 83,88,608 bits"}
+        patterns:
+          - key: unit-order
+            title: Order of data units
+            example_stem: "Which of the following is the largest unit of storage? (a) Gigabyte (b) Petabyte (c) Terabyte (d) Exabyte"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: unit-conversion
+            title: Conversion between data units
+            example_stem: "How many bytes are there in 2 KB?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: unit-ladder
+            title: "Kind Men Give Tea, People Eat Zesty Yams"
+            kind: memory
+            rule: "K, M, G, T, P, E, Z, Y: kilo, mega, giga, tera, peta, exa, zetta, yotta, each 1024 times the previous one in the binary convention."
+            pattern: unit-order
+            pitfalls: ["A nibble (4 bits) sits between the bit and the byte; it is smaller than a byte, not larger."]
+          - key: power-steps
+            title: Count the steps, multiply by 2¹⁰ per step
+            kind: shortcut
+            rule: "Count the steps between two units and multiply by 2¹⁰ for each step: GB to KB is 2 steps, so × 2²⁰."
+            example: {problem: "8 GB in KB", standard: "8 × 1024 × 1024 written out", shortcut: "2³ × 2²⁰ = 2²³ KB", seconds_saved: 10}
+            pattern: unit-conversion
+
+  - key: codes
+    title: Character codes and logic
+    subtopics:
+      - key: character-codes
+        title: "ASCII, Unicode, EBCDIC and BCD"
+        concepts:
+          - slug: computer-character-codes
+            title: "Character codes: ASCII, Unicode, EBCDIC, ISCII and BCD"
+            summary: >-
+              ASCII (American Standard Code for Information Interchange) is a 7-bit code for 128 characters
+              ('A' = 65, 'a' = 97, '0' = 48, space = 32), extended to 256 characters with 8 bits; EBCDIC
+              (Extended Binary Coded Decimal Interchange Code) is IBM's 8-bit code for mainframes; ISCII is the
+              Indian Script Code for Information Interchange. Unicode gives one code point to every character
+              of every script (Indian scripts included) and is stored as UTF-8, UTF-16 or UTF-32; its first 128
+              code points are the ASCII characters. BCD (Binary Coded Decimal) writes each decimal digit as its
+              own 4-bit group.
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [computer-decimal-to-other]
+            formulas:
+              - key: bcd
+                name: BCD (8421) code
+                expression: "each decimal digit → its 4-bit binary value, written side by side"
+                example: {problem: "Write 59 in BCD.", solution: "5 = 0101, 9 = 1001, so 0101 1001 (not the pure binary 111011)"}
+              - key: ascii-letters
+                name: ASCII letter values
+                expression: "code of the k-th capital letter = 64 + k;  lowercase code = capital code + 32"
+                example: {problem: "ASCII code of 'e'?", solution: "'E' = 64 + 5 = 69, so 'e' = 69 + 32 = 101"}
+            patterns:
+              - key: code-facts
+                title: Bits and characters of each code
+                example_stem: "How many characters can be represented in standard 7-bit ASCII?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 15
+              - key: unicode-purpose
+                title: Unicode and Indian scripts
+                example_stem: "Which coding standard is designed to represent the characters of almost all the world's writing systems, including Devanagari and Telugu?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+            shortcuts:
+              - key: ascii-anchors
+                title: Three anchors, 65-97-48
+                kind: memory
+                rule: "Remember 'A' = 65, 'a' = 97 and '0' = 48; count on from the nearest anchor, and lowercase is always 32 more than uppercase."
+                pattern: code-facts
+      - key: logic-gates
+        title: Logic gates and Boolean algebra
+        concepts:
+          - slug: computer-logic-gates
+            title: Logic gates and truth tables
+            summary: >-
+              Logic gates are the circuits that process bits: AND gives 1 only when all inputs are 1, OR gives
+              1 when any input is 1, NOT inverts its input, NAND and NOR are the inverted AND and OR, XOR gives 1
+              when the inputs differ and XNOR when they are the same. NAND and NOR are universal gates (any
+              circuit can be built from either alone), and Boolean algebra, due to George Boole, describes them.
+            difficulty: medium
+            weight: 0.6
+            prerequisites: [computer-number-systems]
+            formulas:
+              - key: de-morgan
+                name: De Morgan's laws
+                expression: "(A · B)′ = A′ + B′;  (A + B)′ = A′ · B′"
+              - key: truth-table-rows
+                name: Rows in a truth table
+                expression: "rows = 2ⁿ for n inputs"
+                example: {problem: "How many rows does the truth table of a 3-input gate have?", solution: "2³ = 8"}
+            patterns:
+              - key: gate-output
+                title: Output of a gate
+                example_stem: "For which inputs does a two-input NOR gate give the output 1?"
+                frequency: low
+                difficulty: easy
+                target_seconds: 20
+              - key: universal-gates
+                title: Universal gates
+                example_stem: "Which pair of gates is known as universal gates?"
+                frequency: low
+                difficulty: easy
+                target_seconds: 15

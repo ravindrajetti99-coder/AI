@@ -14,9 +14,11 @@ from app.core.deps import limiter, require_admin, require_staff
 from app.core.errors import AppError, NotFound
 from app.jobs import service as jobs
 from app.modules.assessment import service as qservice
-from app.modules.assessment.models import QUESTION_TYPES, Question, QuestionConcept, Rubric
-from app.modules.catalog.models import Concept, Course
-from app.modules.content.models import ContentFlag, Flashcard, Lesson, Note
+from app.modules.assessment.models import QUESTION_TYPES, Question, QuestionConcept, QuestionPattern, Rubric
+from app.modules.catalog import service as catalog
+from app.modules.catalog.models import Concept, Course, ExamStrategy
+from app.modules.content import coverage
+from app.modules.content.models import ContentFlag, Flashcard, Formula, Lesson, Note, Shortcut
 from app.modules.identity.models import User
 from app.modules.identity.service import audit
 from app.modules.ingest import service
@@ -25,7 +27,18 @@ from app.modules.learning.models import Attempt, Enrollment
 
 router = APIRouter(prefix="/admin", tags=["admin"])
 
-ASSETS = {"lesson": Lesson, "question": Question, "flashcard": Flashcard, "note": Note}
+ASSETS = {
+    "lesson": Lesson,
+    "question": Question,
+    "flashcard": Flashcard,
+    "note": Note,
+    "formula": Formula,
+    "shortcut": Shortcut,
+    "pattern": QuestionPattern,
+    "strategy": ExamStrategy,
+}
+# Concept-level content of exam courses: written in the syllabus files or generated, reviewed here.
+AUTHORED = {"formula", "shortcut", "pattern", "strategy"}
 
 
 @router.post("/documents", status_code=201)
@@ -133,11 +146,40 @@ def _concept_title(db: Session, cid) -> str:
     return c.title if c else ""
 
 
+def _authored_content(asset_type: str, x) -> dict:
+    if asset_type == "formula":
+        return {"name": x.name, "expression": x.expression, "variables": x.variables, "conditions": x.conditions, "example": x.example}
+    if asset_type == "shortcut":
+        return {"title": x.title, "kind": x.kind, "rule": x.rule, "when_to_use": x.when_to_use, "steps": x.steps, "example": x.example, "pitfalls": x.pitfalls}
+    if asset_type == "pattern":
+        return {
+            "title": x.title,
+            "description": x.description,
+            "example_stem": x.example_stem,
+            "frequency": x.frequency,
+            "tiers": x.tiers,
+            "difficulty": x.difficulty,
+            "target_seconds": x.target_seconds,
+        }
+    return {"title": x.title, **x.body}
+
+
 @router.get("/review-queue")
-def review_queue(asset_type: str | None = None, _: User = Depends(require_staff), db: Session = Depends(get_db)):
+def review_queue(asset_type: str | None = None, limit: int = Query(100, ge=1, le=500), _: User = Depends(require_staff), db: Session = Depends(get_db)):
     out = []
+    for kind in sorted(AUTHORED):
+        if asset_type not in (None, kind):
+            continue
+        model = ASSETS[kind]
+        for x in db.scalars(select(model).where(model.status == "in_review").order_by(model.created_at, model.key).limit(limit)).all():
+            if kind == "strategy":
+                course = db.get(Course, x.course_id)
+                where = course.title if course else ""
+            else:
+                where = _concept_title(db, x.concept_id)
+            out.append({"asset_type": kind, "id": str(x.id), "key": x.key, "concept": where, "source": x.source, "content": _authored_content(kind, x)})
     if asset_type in (None, "lesson"):
-        for x in db.scalars(select(Lesson).where(Lesson.status == "in_review").order_by(Lesson.created_at).limit(100)).all():
+        for x in db.scalars(select(Lesson).where(Lesson.status == "in_review").order_by(Lesson.created_at).limit(limit)).all():
             out.append(
                 {
                     "asset_type": "lesson",
@@ -150,7 +192,7 @@ def review_queue(asset_type: str | None = None, _: User = Depends(require_staff)
                 }
             )
     if asset_type in (None, "question"):
-        for x in db.scalars(select(Question).where(Question.status == "in_review").order_by(Question.created_at).limit(100)).all():
+        for x in db.scalars(select(Question).where(Question.status == "in_review").order_by(Question.created_at).limit(limit)).all():
             cid = db.scalar(select(QuestionConcept.concept_id).where(QuestionConcept.question_id == x.id))
             rubric = db.scalar(select(Rubric).where(Rubric.question_id == x.id))
             out.append(
@@ -171,7 +213,7 @@ def review_queue(asset_type: str | None = None, _: User = Depends(require_staff)
                 }
             )
     if asset_type in (None, "flashcard"):
-        for x in db.scalars(select(Flashcard).where(Flashcard.status == "in_review").limit(100)).all():
+        for x in db.scalars(select(Flashcard).where(Flashcard.status == "in_review").limit(limit)).all():
             out.append(
                 {
                     "asset_type": "flashcard",
@@ -182,7 +224,7 @@ def review_queue(asset_type: str | None = None, _: User = Depends(require_staff)
                 }
             )
     if asset_type in (None, "note"):
-        for x in db.scalars(select(Note).where(Note.status == "in_review").limit(100)).all():
+        for x in db.scalars(select(Note).where(Note.status == "in_review").limit(limit)).all():
             out.append(
                 {
                     "asset_type": "note",
@@ -209,11 +251,15 @@ def decide(asset_type: str, asset_id: uuid.UUID, body: DecisionIn, user: User = 
     if not asset:
         raise NotFound("Asset not found")
     if body.edits:
+        if asset_type in AUTHORED and asset.source == "syllabus":
+            raise AppError("This item comes from the syllabus files; change it there (the edit is then reviewed again).", status=422)
         try:
             _apply_edits(asset_type, asset, body.edits)
         except ValidationError as exc:
             raise AppError(f"Invalid edits: {exc.errors()[0]['loc']} {exc.errors()[0]['msg']}", status=422) from exc
     asset.status = "verified" if body.decision == "approve" else "retired"
+    if asset_type in AUTHORED:
+        asset.reviewed_by = user.id  # also marks a rejection, so a re-seed does not resurrect it
     if asset_type == "lesson" and body.decision == "approve":
         asset.reviewed_by = user.id
         # one verified lesson per concept/level/locale: retire older verified versions
@@ -232,8 +278,45 @@ def decide(asset_type: str, asset_id: uuid.UUID, body: DecisionIn, user: User = 
     return {"id": str(asset.id), "status": asset.status}
 
 
+class FormulaEdits(BaseModel, extra="forbid"):
+    name: str | None = Field(default=None, min_length=1)
+    expression: str | None = Field(default=None, min_length=1)
+    variables: list[dict] | None = None
+    conditions: str | None = None
+    example: dict | None = None
+
+
+class ShortcutEdits(BaseModel, extra="forbid"):
+    title: str | None = Field(default=None, min_length=1)
+    rule: str | None = Field(default=None, min_length=1)
+    when_to_use: str | None = None
+    steps: list[str] | None = None
+    example: dict | None = None
+    pitfalls: list[str] | None = None
+
+
+class PatternEdits(BaseModel, extra="forbid"):
+    title: str | None = Field(default=None, min_length=1)
+    description: str | None = None
+    example_stem: str | None = None
+    frequency: str | None = Field(default=None, pattern="^(high|medium|low|rare)$")
+    difficulty: str | None = Field(default=None, pattern="^(easy|medium|hard)$")
+    target_seconds: int | None = Field(default=None, ge=10, le=600)
+
+
+class StrategyEdits(BaseModel, extra="forbid"):
+    title: str | None = Field(default=None, min_length=1)
+    body: dict | None = None
+
+
+AUTHORED_EDITS = {"formula": FormulaEdits, "shortcut": ShortcutEdits, "pattern": PatternEdits, "strategy": StrategyEdits}
+
+
 def _apply_edits(asset_type: str, asset, edits: dict) -> None:
-    if asset_type == "lesson":
+    if asset_type in AUTHORED_EDITS:
+        for k, v in AUTHORED_EDITS[asset_type].model_validate(edits).model_dump(exclude_none=True).items():
+            setattr(asset, k, v)
+    elif asset_type == "lesson":
         from app.ai.schemas import LessonOut
 
         asset.body = LessonOut.model_validate({**asset.body, **edits}).model_dump()
@@ -309,6 +392,34 @@ def resolve_flag(flag_id: uuid.UUID, user: User = Depends(require_staff), db: Se
     audit(db, user.id, "flag_resolve", "flag", flag.id)
     db.commit()
     return {"id": str(flag.id), "resolved": True}
+
+
+# ---------------------------------------------------------------- courses and coverage
+
+
+@router.get("/courses")
+def all_courses(_: User = Depends(require_staff), db: Session = Depends(get_db)):
+    """Every course, drafts included (the public list shows published courses only)."""
+    rows = db.scalars(select(Course).order_by(Course.domain, Course.title)).all()
+    return [
+        {
+            "id": str(c.id),
+            "slug": c.slug,
+            "title": c.title,
+            "domain": c.domain,
+            "status": c.status,
+            "content_policy": c.content_policy,
+            "has_targets": bool(c.content_targets),
+        }
+        for c in rows
+    ]
+
+
+@router.get("/courses/{slug}/coverage")
+def course_coverage(slug: str, scope: str | None = None, _: User = Depends(require_staff), db: Session = Depends(get_db)):
+    """Verified content against the course's requirements, per subject and chapter; `scope`
+    ("subject" or "subject.chapter") also lists that part's concepts and their gaps."""
+    return coverage.course_coverage(db, catalog.get_course(db, slug), scope)
 
 
 @router.get("/ai/status")
@@ -430,7 +541,8 @@ def stats(_: User = Depends(require_staff), db: Session = Depends(get_db)):
         "in_review": count(Lesson, Lesson.status == "in_review")
         + count(Question, Question.status == "in_review")
         + count(Flashcard, Flashcard.status == "in_review")
-        + count(Note, Note.status == "in_review"),
+        + count(Note, Note.status == "in_review")
+        + sum(count(ASSETS[k], ASSETS[k].status == "in_review") for k in AUTHORED),
         "enrollments": count(Enrollment),
         "attempts_7d": count(Attempt, Attempt.attempted_at >= datetime.now(UTC) - timedelta(days=7)),
         "documents": count(SourceDocument),

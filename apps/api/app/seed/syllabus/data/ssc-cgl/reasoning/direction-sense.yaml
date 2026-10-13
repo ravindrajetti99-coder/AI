@@ -1,0 +1,234 @@
+key: direction-sense
+title: Direction sense test
+strategies:
+  - key: approach
+    title: "Direction sense: sketch every move"
+    summary: >-
+      Draw a quick sketch with north at the top for every direction question; track turns in
+      degrees and distances as east–west and north–south totals. Shortest distance is then one
+      Pythagoras step, usually a familiar triple.
+    seconds_per_question: 40
+    accuracy_target: 0.9
+    tactics:
+      - "Draw the compass (N up, E right) before the first move; mark the start point clearly."
+      - "Turn left and right relative to the direction being faced, not relative to the page."
+      - "Add the east–west legs and the north–south legs separately, then apply Pythagoras."
+    avoid:
+      - "Treating 'turns left' as 'goes west' when the person is not facing north."
+
+topics:
+  - key: turns
+    title: Directions and turns
+    concepts:
+      - slug: directions-and-turns
+        title: Directions and turns
+        summary: >-
+          The four main and four intermediate directions, left and right turns (a right turn is
+          90° clockwise), and turns given in degrees. Questions ask which way a person faces or
+          walks after several turns.
+        difficulty: easy
+        weight: 1.2
+        formulas:
+          - key: net-turn
+            name: Net turn
+            expression: "right turn = 90° clockwise;  left turn = 90° anticlockwise;  net turn = (clockwise degrees − anticlockwise degrees), reduced mod 360°"
+            example: {problem: "Facing north: right, right, left", solution: "+90 + 90 − 90 = +90° → east"}
+        patterns:
+          - key: after-turns
+            title: Direction after left and right turns
+            example_stem: "Rohan walks north, turns right, then turns right again and then turns left. In which direction is he walking now?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: degree-turns
+            title: Turns given in degrees
+            example_stem: "A man faces south. He turns 135° anticlockwise and then 180° clockwise. Which direction is he facing now?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: add-angles
+            title: Add the turns as angles
+            kind: shortcut
+            rule: "Convert every turn into degrees (right = +90, left = −90, clockwise +, anticlockwise −), add them and apply the total once to the starting direction."
+            example: {problem: "Facing west: right, left, left, left", standard: "Track each turn on a sketch", shortcut: "+90 − 90 − 90 − 90 = −180° → opposite of west → east", seconds_saved: 10}
+            pattern: after-turns
+
+      - slug: rotated-direction-mapping
+        title: Renamed (rotated) directions
+        summary: >-
+          Directions are renamed by a rotation ('if north becomes south-east …'); every other
+          direction is renamed by the same angle and sense. Find the rotation from the given pair
+          and apply it.
+        difficulty: medium
+        weight: 0.5
+        prerequisites: [directions-and-turns]
+        formulas:
+          - key: rotation
+            name: Same rotation for every direction
+            expression: "new name = old direction rotated by the angle that takes the given direction to its new name"
+            conditions: "Number the directions clockwise from north: N 0°, NE 45°, E 90°, SE 135°, S 180°, SW 225°, W 270°, NW 315°."
+            example: {problem: "If north becomes south-east, what does west become?", solution: "0° → 135° is +135°; 270° + 135° = 405° − 360° = 45° → north-east"}
+        patterns:
+          - key: renamed-direction
+            title: Name of a direction after renaming
+            example_stem: "If north becomes south-east and east becomes south-west, what will west become?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+          - key: anticlockwise-renaming
+            title: Renaming by an anticlockwise rotation
+            example_stem: "If south-east becomes north and north-east becomes west, what will west become?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: compass-angles
+            title: Work in compass angles
+            kind: shortcut
+            rule: "Replace every direction by its angle (N 0, NE 45, E 90 … NW 315), find the rotation from the given pair and add it to the asked direction."
+            example: {problem: "SE becomes N; what is W?", standard: "Redraw the whole compass", shortcut: "135° → 0° is −135°; 270° − 135° = 135° → south-east", seconds_saved: 15}
+            pattern: anticlockwise-renaming
+
+  - key: distance
+    title: Distance and position
+    concepts:
+      - slug: direction-distance-displacement
+        title: Distance and shortest distance from the start
+        summary: >-
+          A person walks several legs at right angles; find the shortest distance and direction
+          from the start. Net the north–south legs and the east–west legs separately, then use
+          Pythagoras.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [directions-and-turns]
+        formulas:
+          - key: pythagoras
+            name: Shortest distance
+            expression: "shortest distance = √(x² + y²)"
+            variables:
+              - {symbol: x, meaning: net east–west distance}
+              - {symbol: y, meaning: net north–south distance}
+            example: {problem: "6 km north, then 8 km east", solution: "√(36 + 64) = 10 km, north-east of the start"}
+        patterns:
+          - key: shortest-distance
+            title: Shortest distance from the starting point
+            example_stem: "Ravi walks 10 m south, turns left and walks 6 m, turns left and walks 18 m, then turns right and walks 9 m. How far is he from the starting point?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: final-direction
+            title: Direction of the final point from the start
+            example_stem: "In the same walk, in which direction is Ravi now with respect to his starting point?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: triples
+            title: Pythagorean triples
+            kind: memory
+            rule: "Learn 3-4-5 (and multiples such as 6-8-10), 5-12-13, 8-15-17, 7-24-25 and 20-21-29; SSC distances are almost always one of them."
+            example: {problem: "Net 15 m east and 8 m north", standard: "√(225 + 64) = √289", shortcut: "8-15-17 → 17 m", seconds_saved: 10}
+            pattern: shortest-distance
+          - key: net-legs
+            title: Cancel opposite legs first
+            kind: shortcut
+            rule: "Add all north legs and subtract all south legs (likewise east and west) before drawing the final triangle."
+            example: {problem: "10 S, 6 E, 18 N, 9 E", shortcut: "N–S: 18 − 10 = 8 N; E–W: 6 + 9 = 15 E → 17 m north-east", seconds_saved: 15}
+
+      - slug: relative-direction-of-points
+        title: Relative direction of points
+        summary: >-
+          Statements place points relative to one another ('P is 5 m north of Q; R is 3 m east
+          of Q'); find the direction of one point as seen from another. Draw all points on one
+          sketch and read the direction from the reference point to the target.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [direction-distance-displacement]
+        patterns:
+          - key: point-direction
+            title: Direction of one point from another
+            example_stem: "Point A is 10 m west of point B. Point C is 6 m south of B. Point D is 10 m west of C. In which direction is A from D?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: with-respect-to
+            title: Direction with respect to a point
+            example_stem: "In the same arrangement, in which direction is C with respect to A?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: stand-at-reference
+            title: Stand at the reference point
+            kind: shortcut
+            rule: "'Direction of A from D' means stand at D and look at A: subtract D's coordinates from A's and read the signs (+x east, +y north)."
+            example: {problem: "B (0, 0), A (−10, 0), C (0, −6), D (−10, −6): direction of C from A?", shortcut: "C − A = (+10, −6) → east and south → south-east", seconds_saved: 15}
+            pattern: with-respect-to
+
+      - slug: coded-directions
+        title: Coded directions
+        summary: >-
+          Symbols stand for direction statements ('P @ Q' means P is 4 m east of Q …); decode a
+          chain of symbols into a sketch and find a direction or a distance.
+        difficulty: medium
+        weight: 0.6
+        prerequisites: [relative-direction-of-points]
+        patterns:
+          - key: decode-chain
+            title: Decode a chain of direction codes
+            example_stem: "'P @ Q' means P is 4 m east of Q, 'P # Q' means P is 3 m north of Q and 'P $ Q' means P is 4 m west of Q. If X @ Y # Z, what is the direction and distance of X from Z?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 45
+          - key: which-expression
+            title: Expression giving a stated position
+            example_stem: "Using the same codes, which expression shows that M is to the north-west of N?"
+            frequency: low
+            difficulty: hard
+            target_seconds: 50
+        shortcuts:
+          - key: vector-steps
+            title: Turn each code into a coordinate step
+            kind: shortcut
+            rule: "Write each code as a step (east +x, north +y) from the second point to the first and add the steps along the chain."
+            example: {problem: "X @ Y # Z", standard: "Sketch each statement separately", shortcut: "X = Y + (4, 0), Y = Z + (0, 3) → X − Z = (4, 3) → 5 m north-east", seconds_saved: 20}
+            pattern: decode-chain
+
+  - key: shadows
+    title: Shadows and the sun
+    concepts:
+      - slug: shadow-direction
+        title: Direction from shadows
+        summary: >-
+          The sun rises in the east, so in the morning shadows fall towards the west and in the
+          evening towards the east. Questions say on which side of a person a shadow falls (left,
+          right, behind) and ask which way the person faces.
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [directions-and-turns]
+        formulas:
+          - key: shadow-rule
+            name: Shadow direction
+            expression: "morning (after sunrise): shadow points west;  evening (before sunset): shadow points east"
+            conditions: "SSC questions avoid noon; treat the sun as due east in the morning and due west in the evening."
+        patterns:
+          - key: shadow-facing
+            title: Facing direction from the shadow
+            example_stem: "One morning after sunrise, Meena was standing facing a pole. The shadow of the pole fell exactly to her right. Which direction was she facing?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: two-people-shadow
+            title: Two people facing each other
+            example_stem: "One evening, two friends stood facing each other. The shadow of the first friend fell exactly to his left. Which direction was the second friend facing?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: fix-shadow-first
+            title: Fix the shadow's compass direction first
+            kind: shortcut
+            rule: "Write the shadow's direction first (morning west, evening east), then turn the person until the stated side (left, right, back) points there."
+            example: {problem: "Morning, shadow to the right", standard: "Try all four facing directions", shortcut: "Right = west → facing south", seconds_saved: 15}
+            pattern: shadow-facing

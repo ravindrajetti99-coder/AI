@@ -51,6 +51,15 @@ export function LessonView({ body, locale }: { body: LessonBody; locale: string 
           </ul>
         </Section>
       )}
+      {(body.solving_method?.length ?? 0) > 0 && (
+        <Section title="Solving method">
+          <ol className="ml-5 list-decimal space-y-1">
+            {body.solving_method?.map((step, i) => (
+              <li key={i}>{step}</li>
+            ))}
+          </ol>
+        </Section>
+      )}
       {body.common_mistakes.length > 0 && (
         <Section title="Common mistakes">
           <ul className="space-y-1">

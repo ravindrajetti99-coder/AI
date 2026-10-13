@@ -1,0 +1,58 @@
+# SSC CGL exam stages. The marks, counts and timings below drive mock tests, readiness and the
+# course page, so re-check them against each year's notice before building that cycle's mocks.
+as_of: "SSC CGL 2025 notice (scheme of examination unchanged since the 2023 restructure)"
+source: "Staff Selection Commission, Combined Graduate Level Examination notice, scheme of examination (ssc.gov.in)"
+verify: "Before each exam cycle, compare sections, question counts, marks, timings, negative marking and qualifying rules with the new notice and update this file."
+profiles:
+  - slug: ssc-cgl-tier1
+    name: SSC CGL Tier 1
+    body: Staff Selection Commission
+    domain: competitive
+    stage: tier1
+    pattern:
+      sections:
+        - {name: General Intelligence and Reasoning, subject: reasoning, questions: 25, marks: 50}
+        - {name: General Awareness, subject: general-awareness, questions: 25, marks: 50}
+        - {name: Quantitative Aptitude, subject: quant, questions: 25, marks: 50}
+        - {name: English Comprehension, subject: english, questions: 25, marks: 50}
+      marks_per_question: 2
+      negative_marks: 0.5
+      duration_minutes: 60
+      minutes_per_question: 0.6
+      default_section: Quantitative Aptitude
+      mode: Computer-based test
+      qualifying: true
+      notes:
+        - "Tier 1 shortlists candidates for Tier 2; the final merit list is drawn from Tier 2 Paper I."
+        - "All four sections share one 60-minute timer (80 minutes for candidates eligible for a scribe)."
+        - "Questions are multiple choice with four options; English Comprehension is set in English only, the rest in English and Hindi."
+
+  - slug: ssc-cgl-tier2
+    name: SSC CGL Tier 2 (Paper I)
+    body: Staff Selection Commission
+    domain: competitive
+    stage: tier2
+    pattern:
+      sections:
+        - {name: Mathematical Abilities, subject: quant, questions: 30, marks: 90, session: Session I, group: Section I, module: Module I}
+        - {name: Reasoning and General Intelligence, subject: reasoning, questions: 30, marks: 90, session: Session I, group: Section I, module: Module II}
+        - {name: English Language and Comprehension, subject: english, questions: 45, marks: 135, session: Session I, group: Section II, module: Module I}
+        - {name: General Awareness, subject: general-awareness, questions: 25, marks: 75, session: Session I, group: Section II, module: Module II}
+        - {name: Computer Knowledge, subject: computer, questions: 20, marks: 60, duration_minutes: 15, qualifying: true, session: Session I, group: Section III, module: Module I}
+      marks_per_question: 3
+      negative_marks: 1
+      duration_minutes: 135
+      minutes_per_question: 0.93
+      default_section: Mathematical Abilities
+      mode: Computer-based test
+      components:
+        - name: Data Entry Speed Test
+          duration_minutes: 15
+          qualifying: true
+          session: Session II
+          description: "Section III Module II: one data-entry (typing) task on a computer, held on the same day as Session I."
+      notes:
+        - "Section I (Mathematical Abilities + Reasoning) and Section II (English + General Awareness) get one hour each; Section III Module I (Computer Knowledge) gets 15 minutes. A section cannot be revisited once its time is over."
+        - "Negative marking is 1 mark per wrong answer in Sections I and II and in the Computer Knowledge module."
+        - "The Computer Knowledge module and the Data Entry Speed Test are qualifying: they must be passed but do not count towards the merit."
+        - "Paper II (Statistics, for Junior Statistical Officer posts) and other post-specific papers are outside this course."

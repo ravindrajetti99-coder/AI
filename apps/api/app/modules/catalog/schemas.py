@@ -26,6 +26,7 @@ class CourseOut(BaseModel):
     locales: list[str]
     status: str
     color: str
+    content_policy: str = "open"
     concept_count: int = 0
     question_count: int = 0
 
@@ -35,19 +36,24 @@ class ConceptBrief(BaseModel):
     slug: str
     title: str
     weight: float = 1.0
+    tiers: list[str] = []  # exam stages that test it in this course; empty = all
 
 
 class NodeOut(BaseModel):
     id: uuid.UUID
+    key: str | None = None
     node_type: str
     title: str
     position: int
+    tiers: list[str] = []
     concepts: list[ConceptBrief] = []
     children: list["NodeOut"] = []
 
 
 class CourseDetail(CourseOut):
     exam_profile: ExamProfileOut | None = None
+    exams: list[ExamProfileOut] = []  # every exam stage the course prepares for, main one first
+    strategies: list[dict] = []  # course- and subject-level exam strategies (verified)
     tree: list[NodeOut] = []
 
 

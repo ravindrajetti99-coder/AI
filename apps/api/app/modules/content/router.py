@@ -1,6 +1,6 @@
 import uuid
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, Request, Response
 from pydantic import BaseModel, Field
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -8,8 +8,8 @@ from sqlalchemy.orm import Session
 from app.ai import gateway
 from app.ai.engines import teacher
 from app.core.db import get_db
-from app.core.deps import get_current_user, rate_limit_ai
-from app.core.errors import NotFound
+from app.core.deps import get_current_user, is_staff, rate_limit_ai
+from app.core.errors import Forbidden, NotFound
 from app.modules.catalog import service as catalog
 from app.modules.content import service
 from app.modules.content.models import ContentFlag, Flashcard, Note
@@ -32,19 +32,48 @@ def get_lesson(
     lesson = service.find_lesson(db, concept.id, level, locale)
     if lesson:
         return service.lesson_out(lesson)
-    draft = service.find_lesson(db, concept.id, level, locale, statuses=("in_review",))
+    # Exam courses (reviewed_only) are generated once by staff, reviewed and then served to every
+    # learner: learners never see drafts there and never trigger generation.
+    strict = not is_staff(user) and catalog.reviewed_only(db, concept.id)
+    draft = None if strict else service.find_lesson(db, concept.id, level, locale, statuses=("in_review",))
     if draft:
         return service.lesson_out(draft, "AI draft: not yet verified by a reviewer.")
-    if not generate:
+    if not generate or strict:
         fallback = service.find_lesson(db, concept.id, level, "en") if locale != "en" else None
         if fallback:
             return service.lesson_out(fallback, f"Not yet available in '{locale}'; showing English.")
-        return {"id": None, "concept_id": str(concept.id), "level": level, "locale": locale, "body": None, "status": "missing", "can_generate": True}
+        missing = {"id": None, "concept_id": str(concept.id), "level": level, "locale": locale, "body": None, "status": "missing", "can_generate": not strict}
+        if strict:
+            missing["note"] = "This lesson is being prepared and reviewed by the content team."
+        return missing
     rate_limit_ai(user)
     lesson, res = service.generate_lesson(db, concept, level, locale, user.id, user.role)
     db.commit()
     note = "AI draft: not yet verified by a reviewer." if not res.offline else "Draft built from course material without an AI model."
     return service.lesson_out(lesson, (res.note + " " + note).strip())
+
+
+@router.get("/concepts/{concept_id}/study-pack")
+def study_pack(
+    concept_id: str,
+    request: Request,
+    response: Response,
+    preview: bool = False,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Formula sheet, shortcut sheet, exam patterns, PYQ analysis and strategies of a concept.
+    Stored content only (no AI call), with an ETag so clients revalidate cheaply."""
+    concept = catalog.get_concept(db, concept_id)
+    if preview and not is_staff(user):
+        raise Forbidden("Only staff can preview content in review")
+    pack = service.study_pack(db, concept, preview=preview)
+    tag = service.etag(pack)
+    headers = {"ETag": tag, "Cache-Control": "private, max-age=300" if not preview else "private, no-store"}
+    if tag in [t.strip() for t in request.headers.get("if-none-match", "").split(",")]:
+        return Response(status_code=304, headers=headers)
+    response.headers.update(headers)
+    return pack
 
 
 @router.get("/concepts/{concept_id}/flashcards")

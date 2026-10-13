@@ -14,6 +14,7 @@ test("staff generate a draft, review it and publish it", async ({ page }) => {
   await expect(page.getByText(/Created 2 · via offline/)).toBeVisible();
 
   await page.getByRole("tab", { name: "Review queue" }).click();
+  await page.getByLabel("Asset type").selectOption({ label: "Lessons" });
   const cards = page.getByRole("button", { name: "Approve" });
   await expect(cards).toHaveCount(2);
   await cards.first().click();

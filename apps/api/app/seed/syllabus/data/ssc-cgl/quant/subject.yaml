@@ -1,0 +1,43 @@
+key: quant
+title: Quantitative Aptitude
+description: >-
+  Arithmetic, algebra, geometry, mensuration, trigonometry, data interpretation and statistics:
+  Quantitative Aptitude in Tier 1 (25 questions) and Mathematical Abilities in Tier 2 (30 questions).
+tiers: [tier1, tier2]
+strategies:
+  - key: approach
+    title: "Quant: arithmetic first, then advanced maths"
+    summary: >-
+      Arithmetic (percentage to time and distance) is roughly half of the paper and the fastest
+      to master; advanced maths (algebra, geometry, trigonometry, mensuration) rewards formula
+      recall and standard results.
+    accuracy_target: 0.9
+    attempt_order:
+      - "Simplification and number system"
+      - "Arithmetic word problems"
+      - "Trigonometry and algebra (identities and standard values)"
+      - "Mensuration and geometry"
+      - "Data interpretation set (all its questions together)"
+    tactics:
+      - "Keep a personal formula sheet per chapter and revise it before every mock."
+      - "Use options: substitute values or check divisibility and unit digits before solving fully."
+      - "Practise mental calculation daily: squares to 30, cubes to 20, fraction-percentage table."
+    avoid:
+      - "Long algebraic expansion when substituting a simple value (like 0 or 1) satisfies the condition."
+chapters:
+  - number-system
+  - simplification
+  - percentage
+  - profit-loss
+  - interest
+  - ratio-proportion
+  - mixture-alligation
+  - average
+  - time-work
+  - speed-distance
+  - algebra
+  - geometry
+  - mensuration
+  - trigonometry
+  - data-interpretation
+  - statistics-probability

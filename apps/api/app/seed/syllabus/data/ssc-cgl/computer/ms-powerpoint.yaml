@@ -1,0 +1,163 @@
+key: ms-powerpoint
+title: MS PowerPoint
+strategies:
+  - key: approach
+    title: "PowerPoint: views, design, effects and the slide show"
+    summary: >-
+      PowerPoint questions are short recall: which view rearranges slides, what the Slide Master
+      controls, the difference between a transition and an animation, and the keys that start and
+      control a slide show. Two or three questions in a paper are common and each takes seconds.
+    seconds_per_question: 20
+    accuracy_target: 0.95
+    tactics:
+      - "Remember the pair: a transition moves between slides, an animation moves an object on a slide."
+      - "Learn the slide-show keys together: F5, Shift+F5, Esc, B, W, N and P."
+      - "Know which tab holds each group: Design (themes, slide size), Transitions, Animations, Slide Show (rehearse, set up), View (masters, Slide Sorter)."
+    avoid:
+      - "Answering 'Slide Master' for a question about one slide's layout: the master changes every slide based on it."
+
+topics:
+  - key: basics
+    title: MS PowerPoint basics
+    concepts:
+      - slug: computer-ppt-views
+        title: "Presentations, slides and views in PowerPoint"
+        summary: >-
+          A PowerPoint presentation (.pptx; .ppt for PowerPoint 97-2003; .ppsx opens directly as a slide show;
+          .potx is a template) is a set of slides, and Ctrl+M adds a new slide with a layout such as Title
+          Slide, Title and Content, Two Content or Blank. The views are Normal (the default editing view with
+          slide thumbnails and the notes pane), Outline View, Slide Sorter (thumbnails of all slides for
+          rearranging, deleting or hiding), Notes Page, Reading View and Slide Show; speaker notes are typed in
+          the notes pane and seen by the presenter in Presenter View.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [computer-ms-office-suite]
+        patterns:
+          - key: view-for-task
+            title: Which view for a task
+            example_stem: "Which PowerPoint view shows miniature versions of all the slides so that they can be rearranged easily?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: slides-files
+            title: Slides, layouts and file types
+            example_stem: "Which key combination inserts a new slide in MS PowerPoint?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: sorter-sorts
+            title: Slide Sorter sorts
+            kind: memory
+            rule: "Slide Sorter = sort (rearrange) slides; Normal = edit one slide; Notes Page = notes; Reading View = view in a window; Slide Show = full screen."
+            pattern: view-for-task
+      - slug: computer-ppt-design-master
+        title: "Themes, templates, slide size and the Slide Master"
+        summary: >-
+          The Design tab applies themes (matching colours, fonts and effects) and variants, sets the slide size
+          (widescreen 16:9, the default since PowerPoint 2013, or standard 4:3) and formats the background; a
+          template is a ready-made presentation design saved as .potx. The Slide Master (View tab) is the top
+          slide that stores the theme, fonts, placeholders and background for all slides, so a logo placed on it
+          appears on every slide; the Handout Master and Notes Master do the same for printed handouts and
+          notes pages.
+        difficulty: easy
+        weight: 1.1
+        prerequisites: [computer-ppt-views]
+        patterns:
+          - key: slide-master
+            title: Slide Master and its use
+            example_stem: "To make a company logo appear on every slide of a presentation, it is best placed on the:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: themes-size
+            title: Themes, templates and slide size
+            example_stem: "In PowerPoint 2016, what is the default slide size of a new presentation?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+  - key: content-effects
+    title: Slide content, transitions and animations
+    concepts:
+      - slug: computer-ppt-objects
+        title: "Inserting tables, pictures, charts, SmartArt and media"
+        summary: >-
+          The Insert tab adds new slides, tables, pictures, screenshots, a photo album, shapes, icons, SmartArt
+          (diagrams such as lists, cycles and hierarchies), charts, text boxes, WordArt, headers and footers,
+          slide numbers, date and time, equations, symbols, audio and video. Hyperlinks and action buttons (from
+          Shapes) jump to another slide, file or web page during the show.
+        difficulty: easy
+        weight: 0.9
+        prerequisites: [computer-ppt-views]
+        patterns:
+          - key: insert-object
+            title: Inserting objects on a slide
+            example_stem: "Which PowerPoint feature inserts ready-made diagrams such as organisation charts and process cycles?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+      - slug: computer-ppt-transitions-animations
+        title: Transitions and animations
+        summary: >-
+          A transition is the effect when one slide gives way to the next (Transitions tab: effect, sound,
+          duration, Apply To All, and advance on mouse click or after a set time). An animation is an effect
+          on an object within a slide (Animations tab): entrance (green icons), emphasis (yellow), exit (red)
+          and motion paths, ordered in the Animation Pane and timed On Click, With Previous or After Previous;
+          Animation Painter copies an animation to another object.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [computer-ppt-views]
+        patterns:
+          - key: transition-vs-animation
+            title: Transition versus animation
+            example_stem: "The visual effect that appears when a presentation moves from one slide to the next is called a:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: animation-types
+            title: Types and timing of animations
+            example_stem: "In PowerPoint, which category of animation makes an object leave the slide?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: traffic-lights
+            title: Animation colours are traffic lights
+            kind: memory
+            rule: "Green = entrance (go, object comes in), yellow = emphasis (attention), red = exit (object leaves); transitions belong to slides, animations to objects."
+            pattern: animation-types
+
+  - key: slide-show
+    title: Running a slide show
+    concepts:
+      - slug: computer-ppt-slide-show
+        title: "Slide show: starting, navigating, rehearsing and printing handouts"
+        summary: >-
+          F5 starts the show from the first slide and Shift+F5 from the current slide; during the show N, Enter,
+          Space or the right arrow go to the next slide, P or Backspace to the previous one, a slide number
+          followed by Enter jumps to that slide, B blacks and W whitens the screen, Ctrl+P switches to the pen
+          and Esc ends the show. The Slide Show tab also has Custom Slide Show, Set Up Slide Show, Hide Slide,
+          Rehearse Timings and Record Slide Show; handouts print 1, 2, 3, 4, 6 or 9 slides per page.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [computer-ppt-views]
+        patterns:
+          - key: show-keys
+            title: Slide-show keys
+            example_stem: "Which key starts a PowerPoint slide show from the currently selected slide?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: show-options
+            title: Slide Show tab options
+            example_stem: "Which PowerPoint option records how long each slide is shown while you practise the presentation?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: show-letters
+            title: Black, White, Next, Previous
+            kind: memory
+            rule: "B = Black screen, W = White screen, N = Next, P = Previous, Esc = end; F5 = from the start, Shift+F5 = from here."
+            pattern: show-keys

@@ -1,0 +1,480 @@
+key: mixture-alligation
+title: Mixture and Alligation
+strategies:
+  - key: approach
+    title: "Mixtures: alligate instead of solving equations"
+    summary: >-
+      Alligation is a shortcut for any weighted average of two things: prices, strengths of
+      solutions, average marks, interest rates or speeds. Most mixture questions become one
+      alligation cross, and repeated replacement is a successive percentage decrease.
+    seconds_per_question: 40
+    accuracy_target: 0.9
+    tactics:
+      - "Draw the alligation cross for any two-part weighted average: the gaps to the mean give the ratio of the quantities."
+      - "Alligate on the fraction of one component when mixing mixtures, and on cost price (not selling price) when a profit is involved."
+      - "For repeated replacement, multiply by (1 − x/V) once per operation, like successive percentage decreases."
+      - "When water is added or evaporated, hold the component that does not change."
+    avoid:
+      - "Alligating ratios (5 : 3) or selling prices directly instead of fractions (5/8) or cost prices."
+      - "Subtracting the drawn quantity n times instead of using the power (1 − x/V)ⁿ."
+
+topics:
+  - key: alligation
+    title: The alligation rule and mean price
+    concepts:
+      - slug: mean-price-of-mixture
+        title: Mean price of a mixture
+        summary: "The mean (average) price of a mixture is total cost ÷ total quantity: m = (c₁q₁ + c₂q₂)/(q₁ + q₂). It always lies between the cheapest and the dearest price, nearer the price of the larger quantity. SSC asks the mean price or the price of one ingredient from the mean."
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [ratio-basics]
+        formulas:
+          - key: mean-price
+            name: Mean price
+            expression: "m = (c₁q₁ + c₂q₂ + …)/(q₁ + q₂ + …)"
+            variables:
+              - {symbol: "cᵢ", meaning: "price per unit of ingredient i"}
+              - {symbol: "qᵢ", meaning: "quantity of ingredient i"}
+            example: {problem: "20 kg of rice at ₹30/kg is mixed with 30 kg at ₹40/kg. Find the price of the mixture.", solution: "(600 + 1,200)/50 = ₹36 per kg"}
+          - key: ratio-form
+            name: Mean price for a mixing ratio
+            expression: "mixed in the ratio x : y  ⇒  m = (c₁x + c₂y)/(x + y)"
+        patterns:
+          - key: mean-from-quantities
+            title: Mean price from quantities and prices
+            example_stem: "15 kg of tea at ₹240/kg is mixed with 25 kg of tea at ₹320/kg. Find the price per kg of the mixture."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: price-of-one-variety
+            title: Price of one ingredient from the mean price
+            example_stem: "8 kg of sugar costing ₹42/kg is mixed with 12 kg of another variety, and the mixture is worth ₹45.60/kg. Find the price of the second variety."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: deviation-mean
+            title: Start from the cheaper price
+            kind: shortcut
+            rule: "Mean price = cheaper price + (difference of the prices) × (share of the dearer quantity in the total)."
+            example: {problem: "20 kg at ₹30 and 30 kg at ₹40", standard: "(600 + 1,200)/50", shortcut: "30 + 10 × 30/50 = ₹36", seconds_saved: 15}
+            pattern: mean-from-quantities
+
+      - slug: alligation-rule
+        title: "The alligation rule: mixing two ingredients"
+        summary: "To mix two ingredients priced c (cheaper) and d (dearer) so that the mixture is worth m, take them in the ratio (d − m) : (m − c). Draw the cross: each ingredient's share is the gap between the other ingredient's price and the mean. SSC asks the mixing ratio or the quantity of one ingredient."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [mean-price-of-mixture]
+        formulas:
+          - key: rule
+            name: Rule of alligation
+            expression: "quantity of cheaper : quantity of dearer = (d − m) : (m − c)"
+            variables:
+              - {symbol: "c", meaning: "price (or value) of the cheaper ingredient"}
+              - {symbol: "d", meaning: "price (or value) of the dearer ingredient"}
+              - {symbol: "m", meaning: "mean price of the mixture, c < m < d"}
+            conditions: "All prices per the same unit (per kg, per litre)."
+            example: {problem: "Rice at ₹40/kg and ₹55/kg must give a mixture worth ₹45/kg.", solution: "(55 − 45) : (45 − 40) = 10 : 5 = 2 : 1"}
+        patterns:
+          - key: mixing-ratio
+            title: Ratio in which to mix two ingredients
+            example_stem: "In what ratio must rice at ₹36/kg be mixed with rice at ₹48/kg so that the mixture is worth ₹40.50/kg?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: quantity-of-other
+            title: Quantity of one ingredient given the other
+            example_stem: "How many kg of wheat at ₹28/kg must be mixed with 24 kg of wheat at ₹34/kg to get a mixture worth ₹30/kg?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: split-total
+            title: Split a total quantity between two ingredients
+            example_stem: "A grocer has 60 kg of a mixture of two pulses costing ₹80/kg and ₹95/kg, and the mixture is worth ₹86/kg. How much of the cheaper pulse is in it?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+        shortcuts:
+          - key: cross
+            title: The alligation cross
+            kind: shortcut
+            rule: "Write the two prices on top and the mean in the middle; subtract diagonally (d − m under c, m − c under d) and read the ratio of quantities."
+            steps: ["Top row: c and d", "Middle: m", "Bottom row: d − m (under c) and m − c (under d)"]
+            example: {problem: "₹36 and ₹48 to make ₹40.50", standard: "36x + 48y = 40.5(x + y), solve for x : y", shortcut: "7.5 : 4.5 = 5 : 3", seconds_saved: 20}
+            pattern: mixing-ratio
+
+      - slug: alligation-averages-percentages
+        title: Alligation with averages, percentages, interest rates and speeds
+        summary: "Alligation works for any weighted average, not only prices: average marks or salaries of two groups, percentage strengths of two solutions, simple-interest rates on two parts of a sum, or two speeds over parts of a journey. The ratio found is the ratio of whatever the average is taken over: people, litres, rupees lent or hours."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [alligation-rule, percentage-basics]
+        formulas:
+          - key: general
+            name: Alligation on any average
+            expression: "weight of group 1 : weight of group 2 = (x₂ − m) : (m − x₁)"
+            conditions: "The weights are what the average is taken over: people for average marks, sums lent for an interest rate, time (not distance) for an average speed."
+            example: {problem: "Boys average 60 marks, girls 75, and the class 66.", solution: "boys : girls = (75 − 66) : (66 − 60) = 9 : 6 = 3 : 2"}
+          - key: interest-parts
+            name: Sum lent at two rates
+            expression: "sum at r₁% : sum at r₂% = (r₂ − r) : (r − r₁), where r = overall rate"
+            example: {problem: "₹12,000 is lent partly at 5% and partly at 8% simple interest; the overall rate is 6%.", solution: "(8 − 6) : (6 − 5) = 2 : 1, so ₹8,000 at 5%"}
+        patterns:
+          - key: group-averages
+            title: Sizes of two groups from their averages
+            example_stem: "The average salary of all workers in a factory is ₹18,000. The 7 supervisors average ₹30,000 and the other workers ₹16,000. How many workers are there in all?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: solution-strengths
+            title: Mixing two solutions of different strengths
+            example_stem: "In what ratio should a 20% acid solution be mixed with a 50% acid solution to get a 30% acid solution?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: two-rates
+            title: A sum lent at two rates of interest
+            example_stem: "₹15,000 is lent in two parts, one at 6% and the other at 10% simple interest per annum. If the total interest for a year is ₹1,140, find the part lent at 6%."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: overall-first
+            title: Turn the total into an overall average first
+            kind: shortcut
+            rule: "Convert the total (interest, marks, distance) into an overall average (rate, mean mark, average speed), then alligate the two individual values around it."
+            example: {problem: "₹15,000 at 6% and 10%, total interest ₹1,140", standard: "0.06x + 0.10(15,000 − x) = 1,140", shortcut: "Overall rate 1,140/15,000 = 7.6%; (10 − 7.6) : (7.6 − 6) = 3 : 2, so ₹9,000 at 6%", seconds_saved: 25}
+            pattern: two-rates
+            pitfalls: ["For speeds, alligation gives the ratio of times, not of distances."]
+
+  - key: mixing
+    title: Mixing two or three mixtures
+    concepts:
+      - ref: mixture-ratio
+        weight: 1.0
+      - slug: mixing-two-mixtures
+        title: Mixing two mixtures to get a required ratio
+        summary: "When two mixtures of the same components are mixed, alligate on the fraction (or percentage) of one component in each: if the first has fraction f₁ of milk, the second f₂, and the result must have f, the volumes are in the ratio |f₂ − f| : |f − f₁|. For equal volumes, rewrite both ratios with the same total of parts and add."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [alligation-rule, mixture-ratio]
+        formulas:
+          - key: fraction-alligation
+            name: Alligation on the fraction of one component
+            expression: "V₁ : V₂ = |f₂ − f| : |f − f₁|"
+            variables:
+              - {symbol: "f₁, f₂", meaning: "fraction of the chosen component in mixtures 1 and 2"}
+              - {symbol: "f", meaning: "required fraction in the result"}
+            example: {problem: "Mixtures with milk : water 3 : 1 and 1 : 1 must give 2 : 1.", solution: "Milk fractions 3/4, 1/2 and target 2/3: |1/2 − 2/3| : |2/3 − 3/4| = 1/6 : 1/12 = 2 : 1"}
+          - key: equal-volumes
+            name: Equal volumes of two mixtures
+            expression: "equal volumes of a : b and c : d: scale both to the same parts total (LCM of a + b and c + d), then add term by term"
+            example: {problem: "Equal volumes of 3 : 1 and 5 : 3 are mixed.", solution: "3 : 1 = 6 : 2 (8 parts) and 5 : 3 (8 parts); result 11 : 5"}
+        patterns:
+          - key: ratio-to-mix
+            title: Ratio in which to mix two mixtures
+            example_stem: "Two vessels contain milk and water in the ratios 5 : 2 and 3 : 4. In what ratio should they be mixed to get a mixture with milk and water in the ratio 1 : 1?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: equal-quantities
+            title: Equal quantities of two mixtures or alloys
+            example_stem: "Equal quantities of two alloys containing copper and zinc in the ratios 3 : 1 and 5 : 3 are melted together. Find the ratio of copper to zinc in the new alloy."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: quantity-to-add
+            title: Quantity of one mixture to add to another
+            example_stem: "How many litres of a mixture with milk and water in the ratio 7 : 3 must be added to 20 L of a mixture with milk and water in the ratio 2 : 3 to get a mixture that is half milk?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: common-denominator
+            title: Put both fractions over one denominator
+            kind: shortcut
+            rule: "Express each mixture's fraction of the component over a common denominator and alligate on the numerators."
+            example: {problem: "5 : 2 and 3 : 4 to make 1 : 1", standard: "Solve (5x/7 + 3y/7) = (2x/7 + 4y/7)", shortcut: "Milk 5/7, 3/7 and 3.5/7: |3 − 3.5| : |3.5 − 5| = 0.5 : 1.5 = 1 : 3", seconds_saved: 20}
+            pattern: ratio-to-mix
+          - key: equal-parts
+            title: Equalise the parts total
+            kind: shortcut
+            rule: "For equal volumes, rewrite each ratio with the same total number of parts (LCM of the sums) and add the terms."
+            example: {problem: "Equal amounts of 3 : 1 and 5 : 3", shortcut: "6 : 2 + 5 : 3 = 11 : 5", seconds_saved: 15}
+            pattern: equal-quantities
+
+      - slug: mixing-three-mixtures
+        title: Mixing three or more mixtures or varieties
+        summary: "With three or more mixtures, add each component separately (milk from every vessel, water from every vessel), or for prices use total cost ÷ total quantity. When three varieties must give a mean price, questions fix the ratio of two of them, which reduces the problem to a two-ingredient alligation."
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [mixing-two-mixtures]
+        formulas:
+          - key: component-sum
+            name: Fraction of a component in the result
+            expression: "fraction in the result = Σ(Vᵢ × fᵢ)/ΣVᵢ"
+            example: {problem: "Equal volumes of milk and water mixtures 1 : 1, 2 : 1 and 3 : 1 are mixed.", solution: "Take 12 L of each: milk 6 + 8 + 9 = 23, water 6 + 4 + 3 = 13, so 23 : 13"}
+          - key: three-prices
+            name: Mean price of three varieties
+            expression: "m = (c₁x + c₂y + c₃z)/(x + y + z) for the mixing ratio x : y : z"
+            example: {problem: "Tea at ₹120, ₹150 and ₹170 per kg is mixed in the ratio 1 : 2 : 2.", solution: "(120 + 300 + 340)/5 = ₹152 per kg"}
+        patterns:
+          - key: three-vessels
+            title: Resulting ratio from three vessels
+            example_stem: "Three vessels of equal capacity hold mixtures of spirit and water in the ratios 2 : 1, 3 : 2 and 4 : 1. All three are poured into one container. Find the ratio of spirit to water in it."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+          - key: third-variety-price
+            title: Price of the third variety
+            example_stem: "Two varieties of rice costing ₹110/kg and ₹130/kg are mixed with a third variety in the ratio 1 : 1 : 2. If the mixture is worth ₹140/kg, find the price of the third variety."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: lcm-capacity
+            title: Choose a convenient capacity
+            kind: shortcut
+            rule: "Assume each vessel holds the LCM of the ratio sums, so every component comes out as a whole number."
+            example: {problem: "2 : 1, 3 : 2, 4 : 1 in equal vessels", standard: "Add fractions 2/3 + 3/5 + 4/5 and 1/3 + 2/5 + 1/5", shortcut: "Assume 15 L each: spirit 10 + 9 + 12 = 31, water 5 + 6 + 3 = 14, so 31 : 14", seconds_saved: 20}
+            pattern: three-vessels
+          - key: pair-first
+            title: Replace the fixed pair by its mean
+            kind: alternative
+            rule: "When two varieties are in a fixed ratio, replace them by their mean price, then alligate that mean against the third variety."
+            example: {problem: "₹110 and ₹130 at 1 : 1 with a third in 1 : 1 : 2, mean ₹140", shortcut: "The pair is 2 kg at ₹120 against 2 kg of the third; equal quantities put ₹140 midway, so the third is ₹160", seconds_saved: 15}
+            pattern: third-variety-price
+
+      - slug: mixture-concentration-change
+        title: "Changing strength: adding or evaporating a component"
+        summary: "Adding water to a solution, or evaporating water from it, changes its percentage strength but not the amount of the dissolved substance; adding the pure substance leaves the water unchanged. Equate the unchanged component before and after (p₁V₁ = p₂V₂ for that component). Fresh and dry fruit questions work the same way."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [mixture-ratio, percentage-basics]
+        formulas:
+          - key: fixed-part
+            name: The unchanged component
+            expression: "(percentage of the fixed component)₁ × V₁ = (percentage of the fixed component)₂ × V₂"
+            example: {problem: "How much water must evaporate from 40 L of a 15% salt solution to make it 20%?", solution: "0.15 × 40 = 0.20 × V₂, so V₂ = 30 L; evaporate 10 L"}
+          - key: add-water
+            name: Water to dilute from p% to q%
+            expression: "water to add = V(p − q)/q"
+            example: {problem: "30 L of 40% alcohol is diluted to 25%.", solution: "30 × 15/25 = 18 L of water (12 L alcohol in 48 L = 25%)"}
+          - key: add-pure
+            name: Pure substance to strengthen from p% to q%
+            expression: "pure substance to add = V(q − p)/(100 − q)"
+            example: {problem: "60 L of 20% acid is to become 40% acid.", solution: "60 × 20/60 = 20 L of pure acid (32 L in 80 L = 40%)"}
+        patterns:
+          - key: add-water-dilute
+            title: Water added to dilute a solution
+            example_stem: "How much water must be added to 24 L of a 35% alcohol solution to reduce its strength to 20%?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: fresh-dry
+            title: Evaporation and fresh and dry fruit
+            example_stem: "Fresh grapes contain 80% water and dry grapes 10% water. How many kg of dry grapes can be obtained from 36 kg of fresh grapes?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: add-pure
+            title: Pure substance added to strengthen a mixture
+            example_stem: "A 50 L mixture of milk and water contains 10% water. How much milk must be added so that water is only 4% of the mixture?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: inverse-percentages
+            title: Totals are in the inverse ratio of the fixed part's percentages
+            kind: shortcut
+            rule: "The unchanged part is p₁% of the old total and p₂% of the new, so new total = old total × p₁/p₂."
+            example: {problem: "36 kg of fresh grapes (80% water) dried to 10% water", standard: "Pulp 7.2 kg = 90% of x, solve for x", shortcut: "Non-water part 20% → 90%: 36 × 20/90 = 8 kg", seconds_saved: 20}
+            pattern: fresh-dry
+
+  - key: replacement
+    title: Replacement and repeated removal
+    concepts:
+      - slug: replacement-repeated-removal
+        title: "Replacement: repeated removal of a liquid (milk and water)"
+        summary: "If x litres are drawn from a vessel holding V litres of pure liquid and replaced with water, and this is done n times, the pure liquid left is V(1 − x/V)ⁿ; the factor (1 − x/V) applies once per operation. SSC asks the quantity left, the final ratio, or the amount drawn each time."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [mixture-ratio, successive-percentage]
+        formulas:
+          - key: repeated
+            name: Liquid left after n replacements
+            expression: "liquid left = V × (1 − x/V)ⁿ"
+            variables:
+              - {symbol: "V", meaning: "capacity of the vessel (kept full)"}
+              - {symbol: "x", meaning: "quantity drawn and replaced each time"}
+              - {symbol: "n", meaning: "number of operations"}
+            conditions: "The same quantity is drawn and replaced each time and the vessel is full again after each operation."
+            example: {problem: "A vessel has 80 L of milk. 8 L is drawn and replaced with water, three times in all.", solution: "80 × (72/80)³ = 80 × 0.729 = 58.32 L of milk"}
+          - key: starting-mixture
+            name: Starting from a mixture
+            expression: "if the vessel first holds M litres of the liquid in a mixture of V: liquid left = M × (1 − x/V)ⁿ"
+          - key: final-ratio
+            name: Final ratio
+            expression: "liquid : water = (1 − x/V)ⁿ : [1 − (1 − x/V)ⁿ]"
+            example: {problem: "40 L of milk; 4 L replaced with water twice.", solution: "Milk = 40 × 0.81 = 32.4 L, water = 7.6 L, so 81 : 19"}
+        patterns:
+          - key: quantity-left
+            title: Quantity left after repeated replacement
+            example_stem: "A vessel holds 50 L of pure milk. 5 L is drawn out and replaced with water. This is done two more times. How much milk is now in the vessel?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: final-ratio
+            title: Final ratio after repeated replacement
+            example_stem: "A container holds 40 L of milk. 4 L of milk is removed and replaced with water, and the process is repeated once more. Find the final ratio of milk to water."
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: amount-drawn
+            title: Quantity drawn each time
+            example_stem: "From a vessel holding 80 L of pure juice, a certain quantity is drawn and replaced with water. After this is done three times, the ratio of juice to water is 27 : 37. How many litres were drawn each time?"
+            frequency: medium
+            difficulty: hard
+            target_seconds: 45
+        shortcuts:
+          - key: successive-decrease
+            title: Treat each operation as a percentage decrease
+            kind: shortcut
+            rule: "Drawing x of V removes (x/V) × 100% of the liquid each time; chain the decreases like successive percentages (−10% three times: 100 → 90 → 81 → 72.9)."
+            example: {problem: "50 L of milk, 5 L replaced three times", standard: "50 × (45/50)³", shortcut: "−10% three times: 50 → 45 → 40.5 → 36.45 L", seconds_saved: 15}
+            pattern: quantity-left
+          - key: perfect-powers
+            title: Look for a perfect power
+            kind: shortcut
+            rule: "In 'find x' questions the final fraction of the liquid is a perfect square or cube; take the root to get 1 − x/V."
+            example: {problem: "Juice : water = 27 : 37 after 3 operations from 80 L", shortcut: "Juice fraction 27/64 = (3/4)³, so 1 − x/80 = 3/4 and x = 20 L", seconds_saved: 25}
+            pattern: amount-drawn
+
+      - slug: mixture-partial-replacement
+        title: Replacing part of a mixture to change its strength
+        summary: "When a fraction of a mixture is drawn off and replaced with water or with another mixture, the result is a blend of what remains and what was added. Alligation between the original strength and the added strength around the new strength gives the fraction replaced."
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [alligation-rule, mixture-ratio]
+        formulas:
+          - key: fraction-replaced
+            name: Fraction replaced by another mixture
+            expression: "fraction replaced = (original strength − new strength)/(original strength − added strength)"
+            example: {problem: "Part of a 40% solution is replaced with a 25% solution, giving 35%.", solution: "(40 − 35)/(40 − 25) = 1/3 of the solution was replaced"}
+          - key: with-water
+            name: Fraction replaced by water
+            expression: "fraction replaced by water = 1 − (new strength/original strength)"
+            example: {problem: "A mixture is 70% milk. What fraction must be replaced with water to make it 50% milk?", solution: "1 − 50/70 = 2/7"}
+        patterns:
+          - key: replace-with-water
+            title: Part of a mixture replaced with water
+            example_stem: "A vessel is full of syrup and water in the ratio 3 : 1. What fraction of the mixture must be drawn off and replaced with water so that the vessel is half syrup and half water?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: replace-with-solution
+            title: Part of a solution replaced with a weaker or stronger one
+            example_stem: "Some of a 50% sugar solution is replaced with a 20% sugar solution, and the result is a 30% solution. What fraction of the original solution was replaced?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: kept-against-added
+            title: Alligate the kept part against the added part
+            kind: shortcut
+            rule: "Remaining : replaced = (new − added) : (original − new); the replaced fraction is the second term over the sum."
+            example: {problem: "50% solution, part replaced by 20%, result 30%", standard: "0.5(1 − f) + 0.2f = 0.3", shortcut: "Remaining : replaced = 10 : 20, so 2/3 was replaced", seconds_saved: 20}
+            pattern: replace-with-solution
+
+  - key: profit
+    title: Mixture problems with profit
+    concepts:
+      - slug: mixture-with-profit
+        title: Mixture problems with profit and loss
+        summary: "When a mixture is sold at a price that gives a profit or loss, first find the cost price of the mixture, CP = SP × 100/(100 + profit %), then alligate the ingredients' cost prices around it. In reverse, the mean cost from the mixing ratio and the selling price give the profit percentage."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [alligation-rule, profit-loss]
+        formulas:
+          - key: mixture-cp
+            name: Cost price of the mixture
+            expression: "CP of mixture = SP × 100/(100 + p)  (p = profit %; use 100 − loss % for a loss)"
+            example: {problem: "Rice at ₹42 and ₹54 per kg is mixed and sold at ₹55/kg for a 10% profit. Find the mixing ratio.", solution: "CP = 55/1.1 = ₹50; (54 − 50) : (50 − 42) = 4 : 8 = 1 : 2"}
+          - key: profit-of-mixture
+            name: Profit percentage on a mixture
+            expression: "profit % = (SP − mean CP)/mean CP × 100"
+            example: {problem: "20 kg at ₹30 and 30 kg at ₹40 are mixed and sold at ₹45/kg.", solution: "Mean CP = ₹36; profit = 9/36 × 100 = 25%"}
+        patterns:
+          - key: ratio-for-profit
+            title: Mixing ratio for a target profit
+            example_stem: "In what ratio should tea costing ₹200/kg be mixed with tea costing ₹260/kg so that selling the mixture at ₹264/kg gives a profit of 20%?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: profit-on-mixture
+            title: Profit percentage on selling a mixture
+            example_stem: "A grocer mixes 30 kg of rice costing ₹40/kg with 20 kg costing ₹35/kg and sells the mixture at ₹47.50/kg. Find his profit percentage."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: quantity-for-profit
+            title: Quantity of one variety for a target profit
+            example_stem: "How many kg of sugar costing ₹38/kg must be mixed with 30 kg of sugar costing ₹48/kg so that selling the mixture at ₹48.30/kg gives a profit of 15%?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: strip-profit
+            title: Strip the profit first
+            kind: shortcut
+            rule: "Divide the selling price by the profit factor (+20% → × 5/6, +25% → × 4/5) to get the mixture's cost price; only then draw the alligation cross."
+            example: {problem: "₹200 and ₹260 tea, sold at ₹264 for 20% profit", standard: "Set up 264(x + y) = 1.2(200x + 260y)", shortcut: "264 × 5/6 = 220; (260 − 220) : (220 − 200) = 2 : 1", seconds_saved: 20}
+            pattern: ratio-for-profit
+            pitfalls: ["Alligating with the selling price instead of the cost price of the mixture."]
+
+      - slug: mixture-adulteration-profit
+        title: Adding water or a free component for profit
+        summary: "A seller who adds water (which costs nothing) and sells the mixture at the cost price of the pure product gains (water ÷ pure product) × 100 percent. Treat water as an ingredient priced zero and alligate; if the selling price is also above cost, strip that profit first."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [mixture-ratio, profit-loss]
+        formulas:
+          - key: gain-at-cp
+            name: Gain when sold at cost price
+            expression: "gain % = (quantity of water/quantity of pure product) × 100"
+            example: {problem: "Water and milk are mixed in the ratio 1 : 4 and sold at the cost price of milk.", solution: "Gain = 1/4 × 100 = 25%"}
+          - key: water-share
+            name: Water as a percentage of the mixture
+            expression: "water % of the mixture = gain/(100 + gain) × 100"
+            example: {problem: "A milkman gains 25% by adding water and selling at cost price.", solution: "Water = 25/125 × 100 = 20% of the mixture"}
+          - key: water-alligation
+            name: Water ratio with a mark-up
+            expression: "CP of mixture = SP × 100/(100 + p); milk : water = CP of mixture : (cost of milk − CP of mixture)"
+            example: {problem: "Milk costs ₹60/L; the mixture sells at ₹66/L for a 32% profit.", solution: "CP of mixture = 66/1.32 = ₹50; milk : water = 50 : 10 = 5 : 1"}
+        patterns:
+          - key: water-for-gain
+            title: Water added for a given gain
+            example_stem: "A milkman buys milk at ₹50 per litre, adds water and sells the mixture at ₹50 per litre. If he gains 20%, how much water does he add to each litre of milk?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: water-percentage
+            title: Percentage of water in the mixture
+            example_stem: "A vendor sells milk at its cost price but mixes water in it and gains 25%. What percentage of the mixture is water?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: water-with-markup
+            title: Water added and the price raised
+            example_stem: "Milk costs ₹60 per litre. A seller adds water and sells the mixture at ₹66 per litre, making a profit of 32%. Find the ratio of water to milk in the mixture."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: water-is-profit
+            title: The water is the profit
+            kind: shortcut
+            rule: "Selling at cost price, gain = water/milk. A gain of a/b means water : milk = a : b, and water is a/(a + b) of the mixture."
+            example: {problem: "Gain 25% at cost price; water as a percentage of the mixture?", standard: "Assume 100 L sold for the cost of 125 L, then compute", shortcut: "25% = 1/4: water : milk = 1 : 4, water = 1/5 = 20%", seconds_saved: 20}
+            pattern: water-percentage

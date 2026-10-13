@@ -1,0 +1,900 @@
+key: ratio-proportion
+title: Ratio and Proportion
+strategies:
+  - key: approach
+    title: "Ratio: work in units, not in rupees"
+    summary: >-
+      Ratio and proportion is the toolkit of arithmetic: partnership, mixtures, ages, time and
+      work and speed all reduce to it. Speed comes from working with one 'unit' of the ratio and
+      multiplying by its value only at the end.
+    seconds_per_question: 35
+    accuracy_target: 0.9
+    tactics:
+      - "Turn every condition into a ratio and find the value of one unit (known quantity ÷ its ratio term)."
+      - "Join A : B and B : C by making the common term equal with its LCM (the N method)."
+      - "In age and equal-savings questions, use the constant difference to equalise the ratios instead of forming equations."
+      - "Partnership profit follows capital × months: reduce the capitals first, then multiply by months."
+    avoid:
+      - "Forming a ratio before converting to the same unit (minutes and hours, paise and rupees)."
+      - "Using the plain capital ratio when partners invested for different periods."
+
+topics:
+  - key: basics
+    title: Basic ratio
+    concepts:
+      - slug: ratio-basics
+        title: "Basic ratio: meaning and simplest form"
+        summary: "A ratio a : b compares two quantities of the same kind by division (a/b) and has no unit. Convert to the same unit, divide by the HCF for the simplest form, and clear fractions or decimals with the LCM of the denominators. SSC asks to simplify ratios and to find a quantity from a ratio and one known value."
+        difficulty: easy
+        weight: 1.3
+        formulas:
+          - key: definition
+            name: Ratio as a fraction
+            expression: "a : b = a/b = ka : kb  (k ≠ 0)"
+            variables:
+              - {symbol: "a", meaning: "antecedent (first term)"}
+              - {symbol: "b", meaning: "consequent (second term)"}
+            conditions: "Both quantities must be in the same unit."
+            example: {problem: "Simplify 75 cm : 3 m.", solution: "3 m = 300 cm; 75 : 300 = 1 : 4"}
+          - key: fraction-ratio
+            name: Ratio of two fractions
+            expression: "p/q : r/s = ps : qr"
+            example: {problem: "Simplify 2/3 : 3/4.", solution: "2 × 4 : 3 × 3 = 8 : 9"}
+          - key: part-from-ratio
+            name: One quantity from the ratio and the other
+            expression: "A : B = a : b  ⇒  A = B × a/b"
+            example: {problem: "A : B = 5 : 7 and B = 84. Find A.", solution: "A = 84 × 5/7 = 60"}
+        patterns:
+          - key: simplify-units
+            title: Simplify a ratio with mixed units
+            example_stem: "Find the ratio of 45 minutes to 2 hours."
+            frequency: low
+            difficulty: easy
+            target_seconds: 15
+          - key: fraction-decimal-ratio
+            title: Ratio of fractions or decimals
+            example_stem: "Express 1/2 : 2/3 : 3/4 in its simplest form."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: quantity-from-ratio
+            title: Find a quantity from the ratio and one value
+            example_stem: "The ratio of boys to girls in a class is 7 : 5. If there are 35 boys, how many students are there in the class?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: lcm-clear
+            title: Clear fractions with the LCM
+            kind: shortcut
+            rule: "Multiply every term of a ratio of fractions by the LCM of the denominators to get whole numbers in one step."
+            example: {problem: "1/2 : 2/3 : 3/4", standard: "Convert to decimals 0.5 : 0.667 : 0.75 and scale up", shortcut: "× 12 gives 6 : 8 : 9", seconds_saved: 15}
+            pattern: fraction-decimal-ratio
+          - key: unit-value
+            title: Value of one ratio unit
+            kind: shortcut
+            rule: "Divide the known quantity by its ratio term to get one unit; multiply the unit by any other term (or by the sum of terms for the total)."
+            example: {problem: "Boys : girls = 7 : 5 with 35 boys; find the total", standard: "Girls = 35 × 5/7 = 25, total = 60", shortcut: "1 unit = 35/7 = 5; total = 12 units = 60", seconds_saved: 10}
+            pattern: quantity-from-ratio
+
+      - slug: equivalent-ratios
+        title: Equivalent ratio and comparison of ratios
+        summary: "Multiplying or dividing both terms by the same non-zero number gives an equivalent ratio (3 : 4 = 9 : 12). To compare a : b with c : d, cross-multiply: a : b > c : d when ad > bc. SSC asks for the greatest or least of several ratios and to arrange ratios in order."
+        difficulty: easy
+        weight: 0.8
+        prerequisites: [ratio-basics]
+        formulas:
+          - key: equivalent
+            name: Equivalent ratios
+            expression: "a : b = ka : kb = (a/k) : (b/k),  k ≠ 0"
+            example: {problem: "If 4 : x = 14 : 35, find x.", solution: "x = 4 × 35/14 = 10"}
+          - key: compare
+            name: Comparing two ratios
+            expression: "a/b > c/d  ⇔  ad > bc  (b, d > 0)"
+            example: {problem: "Compare 5 : 7 and 7 : 10.", solution: "5 × 10 = 50 > 7 × 7 = 49, so 5 : 7 is greater"}
+        patterns:
+          - key: greatest-ratio
+            title: Greatest or least of several ratios
+            example_stem: "Which of these ratios is the greatest: 3 : 5, 5 : 8, 7 : 11, 2 : 3?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: arrange-ratios
+            title: Arrange ratios in ascending or descending order
+            example_stem: "Arrange 4 : 7, 5 : 9 and 3 : 5 in ascending order."
+            frequency: low
+            difficulty: easy
+            target_seconds: 30
+          - key: missing-term-equivalent
+            title: Missing term of an equivalent ratio
+            example_stem: "If 6 : 15 = x : 40, find x."
+            frequency: low
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: cross-multiply
+            title: Compare by cross-products
+            kind: shortcut
+            rule: "To compare a/b and c/d, compare ad with bc instead of working out decimals; for a list, compare neighbours pairwise and keep the winner."
+            example: {problem: "Which is greater, 5 : 8 or 7 : 11?", standard: "0.625 against 0.636", shortcut: "5 × 11 = 55 < 8 × 7 = 56, so 7 : 11 is greater", seconds_saved: 10}
+            pattern: greatest-ratio
+          - key: difference-fraction
+            title: Difference-fraction test
+            kind: alternative
+            rule: "If c > a and d > b, then c/d > a/b exactly when (c − a)/(d − b) > a/b, because c/d lies between a/b and (c − a)/(d − b)."
+            example: {problem: "Compare 5/8 and 7/11.", shortcut: "(7 − 5)/(11 − 8) = 2/3 > 5/8, so 7/11 > 5/8", seconds_saved: 10}
+            pattern: greatest-ratio
+
+      - slug: ratio-term-change
+        title: "Changing a ratio: adding to or increasing its terms"
+        summary: "Questions change the terms of a ratio: the same number added to or subtracted from both terms, or each term increased by its own percentage. Set up (a + x)/(b + x) = c/d and solve, use the constant-difference trick, or test the options."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [equivalent-ratios, percentage-change]
+        formulas:
+          - key: add-same
+            name: Number added to each term
+            expression: "(a + x) : (b + x) = c : d  ⇒  x = (bc − ad)/(d − c)"
+            example: {problem: "What number must be added to each term of 5 : 7 to make it 7 : 8?", solution: "x = (7 × 7 − 5 × 8)/(8 − 7) = 9; check 14 : 16 = 7 : 8"}
+          - key: subtract-same
+            name: Number subtracted from each term
+            expression: "(a − x) : (b − x) = c : d  ⇒  x = (ad − bc)/(d − c)"
+            example: {problem: "What number must be subtracted from each term of 15 : 19 to make it 3 : 4?", solution: "x = (15 × 4 − 19 × 3)/(4 − 3) = 3; check 12 : 16 = 3 : 4"}
+          - key: percent-change-terms
+            name: Terms changed by percentages
+            expression: "A : B = a : b; A rises by p% and B by q%  ⇒  new ratio = a(100 + p) : b(100 + q)"
+            example: {problem: "Boys : girls = 5 : 4; boys increase by 20% and girls by 25%.", solution: "5 × 120 : 4 × 125 = 600 : 500 = 6 : 5"}
+        patterns:
+          - key: number-added
+            title: Number added to or subtracted from each term
+            example_stem: "What number should be subtracted from each of 23 and 39 so that the remainders are in the ratio 3 : 7?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: same-increase
+            title: The same amount added to two quantities in a ratio
+            example_stem: "The salaries of A and B are in the ratio 3 : 5. If each gets an increment of ₹6,000, the ratio becomes 9 : 13. Find B's present salary."
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: percent-increase-terms
+            title: Each term increased by a percentage
+            example_stem: "The numbers of students in classes X and Y are in the ratio 4 : 5. If X's strength rises by 25% and Y's by 20%, find the new ratio."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: constant-difference
+            title: The difference of the terms stays the same
+            kind: shortcut
+            rule: "Adding the same amount to both terms keeps their difference. Scale the old and new ratios so their term differences are equal; the change in either term is then the amount added."
+            steps:
+              - "Find the difference of terms in each ratio (5 − 3 = 2, 13 − 9 = 4)"
+              - "Scale the old ratio so its difference matches (3 : 5 → 6 : 10)"
+              - "The rise of a term (6 → 9) in units equals the amount added"
+            example: {problem: "3 : 5 becomes 9 : 13 after ₹6,000 is added to each; find B's salary", standard: "Solve (3k + 6000)/(5k + 6000) = 9/13", shortcut: "6 : 10 → 9 : 13 is 3 units = ₹6,000, so 1 unit = ₹2,000 and B = 10 units = ₹20,000", seconds_saved: 20}
+            pattern: same-increase
+            pitfalls: ["It works only when the same amount is added to (or subtracted from) both terms."]
+
+      - slug: compounded-ratios
+        title: Compounded, duplicate, sub-duplicate and inverse ratios
+        summary: "The compounded ratio of a : b and c : d is ac : bd. The duplicate ratio of a : b is a² : b², sub-duplicate √a : √b, triplicate a³ : b³, sub-triplicate ∛a : ∛b, and the inverse (reciprocal) ratio b : a. SSC asks to evaluate a combination of these forms."
+        difficulty: easy
+        weight: 0.8
+        prerequisites: [ratio-basics]
+        formulas:
+          - key: compound
+            name: Compounded ratio
+            expression: "compounded ratio of a : b, c : d and e : f = ace : bdf"
+            example: {problem: "Compound 2 : 3, 4 : 5 and 15 : 16.", solution: "2 × 4 × 15 : 3 × 5 × 16 = 120 : 240 = 1 : 2"}
+          - key: power-forms
+            name: Duplicate, sub-duplicate, triplicate, sub-triplicate and inverse ratios
+            expression: "duplicate a² : b²;  sub-duplicate √a : √b;  triplicate a³ : b³;  sub-triplicate ∛a : ∛b;  inverse 1/a : 1/b = b : a"
+            example: {problem: "Find the sub-duplicate ratio of 64 : 81.", solution: "√64 : √81 = 8 : 9"}
+        patterns:
+          - key: compound-of-forms
+            title: Compounded ratio of duplicate, sub-duplicate and inverse ratios
+            example_stem: "Find the ratio compounded of the duplicate ratio of 3 : 4, the sub-duplicate ratio of 64 : 36 and the inverse ratio of 3 : 2."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: single-form
+            title: Duplicate, triplicate or reciprocal of one ratio
+            example_stem: "What is the sub-triplicate ratio of 27 : 125?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: cancel-first
+            title: Cancel before multiplying
+            kind: shortcut
+            rule: "Write the compounded ratio as one fraction (product of antecedents over product of consequents) and cancel common factors before multiplying anything."
+            example: {problem: "Compound 9 : 16, 8 : 6 and 2 : 3", standard: "144 : 288 = 1 : 2", shortcut: "(9 × 8 × 2)/(16 × 6 × 3): 9/3 = 3, 8/16 = 1/2, 2/6 = 1/3, so 3 × 1/2 × 1/3 = 1/2", seconds_saved: 15}
+            pattern: compound-of-forms
+
+  - key: combining
+    title: Combining ratios (a:b and b:c)
+    concepts:
+      - slug: combining-ratios
+        title: "Combining ratios: a : b and b : c into a : b : c"
+        summary: "To join A : B and B : C, make the common term B equal using the LCM of its two values. If A : B = p : q and B : C = r : s, then A : B : C = pr : qr : qs and A : C = pr : qs. Equal multiples xA = yB = zC give A : B : C = 1/x : 1/y : 1/z."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [ratio-basics]
+        formulas:
+          - key: chain
+            name: Joining two ratios
+            expression: "A : B = p : q and B : C = r : s  ⇒  A : B : C = pr : qr : qs"
+            example: {problem: "A : B = 2 : 3 and B : C = 4 : 5. Find A : B : C.", solution: "2 × 4 : 3 × 4 : 3 × 5 = 8 : 12 : 15"}
+          - key: a-to-c
+            name: First to last term
+            expression: "A : C = pr : qs"
+            example: {problem: "A : B = 3 : 4 and B : C = 6 : 7. Find A : C.", solution: "3 × 6 : 4 × 7 = 18 : 28 = 9 : 14"}
+          - key: from-equal-multiples
+            name: Ratio from equal multiples
+            expression: "xA = yB = zC  ⇒  A : B : C = 1/x : 1/y : 1/z = yz : xz : xy"
+            example: {problem: "2A = 3B = 4C. Find A : B : C.", solution: "3 × 4 : 2 × 4 : 2 × 3 = 12 : 8 : 6 = 6 : 4 : 3"}
+          - key: four-terms
+            name: Joining three ratios
+            expression: "A : B = p : q, B : C = r : s, C : D = t : u  ⇒  A : B : C : D = prt : qrt : qst : qsu"
+        patterns:
+          - key: join-two-ratios
+            title: "Combine A : B and B : C into A : B : C"
+            example_stem: "If A : B = 3 : 5 and B : C = 4 : 7, find A : B : C."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: equal-multiples
+            title: Ratio from equal multiples or fractions of quantities
+            description: "Statements like 3A = 5B = 6C or 2/3 of A = 3/4 of B."
+            example_stem: "If 3A = 5B = 6C, find A : B : C."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: combine-then-value
+            title: Combined ratio with one actual value
+            example_stem: "The ratio of A's salary to B's is 4 : 5 and of B's to C's is 3 : 4. If C earns ₹12,000 more than A, find B's salary."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: n-method
+            title: The N method
+            kind: shortcut
+            rule: "Write A : B above B : C so the two B terms meet in the middle. A = p × r, B = q × r, C = q × s: the multiplications trace an N."
+            steps: ["Write p : q above r : s", "Multiply p by r, q by r, q by s", "Cancel any common factor"]
+            example: {problem: "A : B = 3 : 5, B : C = 4 : 7", standard: "Make B the LCM 20: A : B = 12 : 20, B : C = 20 : 35", shortcut: "3 × 4 : 5 × 4 : 5 × 7 = 12 : 20 : 35", seconds_saved: 10}
+            pattern: join-two-ratios
+          - key: lcm-split
+            title: Equal multiples through the LCM
+            kind: shortcut
+            rule: "For xA = yB = zC, let the common value be LCM(x, y, z); then A = LCM/x, B = LCM/y and C = LCM/z."
+            example: {problem: "3A = 5B = 6C", shortcut: "LCM 30: A = 10, B = 6, C = 5, so 10 : 6 : 5", seconds_saved: 15}
+            pattern: equal-multiples
+
+  - key: proportion
+    title: Proportion
+    concepts:
+      - slug: proportion-properties
+        title: "Proportion: product rule, componendo and dividendo"
+        summary: "a : b = c : d (a, b, c, d in proportion) means ad = bc: the product of the extremes equals the product of the means. Invertendo, alternendo, componendo, dividendo and componendo-dividendo [(a + b)/(a − b) = (c + d)/(c − d)] rewrite a proportion; SSC uses them to find a missing term or a ratio quickly. Three numbers a, b, c are in continued proportion when b² = ac."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [equivalent-ratios]
+        formulas:
+          - key: product-rule
+            name: Product of extremes and means
+            expression: "a : b :: c : d  ⇔  ad = bc"
+            example: {problem: "If 3 : 8 :: x : 56, find x.", solution: "8x = 3 × 56, so x = 21"}
+          - key: componendo-dividendo
+            name: Componendo and dividendo
+            expression: "a/b = c/d  ⇒  (a + b)/(a − b) = (c + d)/(c − d)"
+            conditions: "a ≠ b and c ≠ d. In reverse: (x + y)/(x − y) = m/n ⇒ x/y = (m + n)/(m − n)."
+            example: {problem: "(a + b)/(a − b) = 7/3. Find a : b.", solution: "a/b = (7 + 3)/(7 − 3) = 10/4, so a : b = 5 : 2"}
+          - key: make-proportional
+            name: Number added to four numbers to make them proportional
+            expression: "(a + x) : (b + x) :: (c + x) : (d + x)  ⇒  x = (bc − ad)/(a + d − b − c)"
+            example: {problem: "What number added to each of 6, 10, 15 and 23 makes them proportional?", solution: "x = (150 − 138)/(29 − 25) = 3; 9 : 13 :: 18 : 26 since 9 × 26 = 13 × 18 = 234"}
+          - key: continued
+            name: Continued proportion
+            expression: "a, b, c in continued proportion  ⇔  a : b = b : c  ⇔  b² = ac"
+        patterns:
+          - key: missing-term
+            title: Find the missing term of a proportion
+            example_stem: "If 0.75 : x :: 5 : 8, find x."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: number-to-proportional
+            title: Number added to or subtracted from four numbers to make them proportional
+            example_stem: "What number must be added to each of 3, 5, 7 and 10 so that the resulting numbers are in proportion?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: componendo-dividendo
+            title: Ratio of variables by componendo and dividendo
+            example_stem: "If (5x + 3y)/(5x − 3y) = 7/3, find x : y."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: cd-one-line
+            title: Componendo-dividendo in one line
+            kind: shortcut
+            rule: "(p + q)/(p − q) = m/n ⇒ p/q = (m + n)/(m − n): add and subtract the two numbers on the right."
+            example: {problem: "(5x + 3y)/(5x − 3y) = 7/3", standard: "Cross-multiply: 15x + 9y = 35x − 21y, so 20x = 30y", shortcut: "5x/3y = 10/4, so x/y = (10/4) × (3/5) = 3/2", seconds_saved: 15}
+            pattern: componendo-dividendo
+          - key: options-product
+            title: Test the options with the product rule
+            kind: elimination
+            rule: "The right number makes the product of the extremes equal the product of the means; check (a + x)(d + x) = (b + x)(c + x) for each option, smallest first."
+            example: {problem: "Number added to 3, 5, 7, 10 to make them proportional", shortcut: "Try 5: 8, 10, 12, 15 and 8 × 15 = 10 × 12 = 120", seconds_saved: 15}
+            pattern: number-to-proportional
+
+      - slug: mean-third-fourth-proportional
+        title: Mean, third and fourth proportional
+        summary: "The fourth proportional to a, b, c is d = bc/a (a : b :: c : d); the third proportional to a and b is b²/a (a : b :: b : c); the mean proportional between a and b is √(ab). SSC asks them directly or combines two of them in one question."
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [proportion-properties]
+        formulas:
+          - key: fourth
+            name: Fourth proportional
+            expression: "fourth proportional to a, b, c = bc/a"
+            example: {problem: "Find the fourth proportional to 4, 9 and 12.", solution: "9 × 12/4 = 27"}
+          - key: third
+            name: Third proportional
+            expression: "third proportional to a and b = b²/a"
+            example: {problem: "Find the third proportional to 9 and 12.", solution: "12²/9 = 144/9 = 16"}
+          - key: mean
+            name: Mean proportional
+            expression: "mean proportional between a and b = √(ab)"
+            example: {problem: "Find the mean proportional between 9 and 16.", solution: "√(9 × 16) = √144 = 12"}
+        patterns:
+          - key: direct-proportional
+            title: Find the mean, third or fourth proportional
+            example_stem: "Find the fourth proportional to 5, 8 and 15."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: combined-proportionals
+            title: Two proportionals in one question
+            example_stem: "If x is the mean proportional between 8 and 18 and y is the third proportional to 4 and 6, find x : y."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: surd-proportional
+            title: Mean proportional of surds or expressions
+            example_stem: "Find the mean proportional between (3 + √2) and (12 − 4√2)."
+            frequency: low
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: position-rule
+            title: Read the unknown from its position
+            kind: memory
+            rule: "Write the proportion a : b :: c : d. The unknown extreme = product of the means ÷ the other extreme (d = bc/a). Third proportional repeats b as both means (c = b × b/a); mean proportional repeats the unknown (x × x = ab)."
+            example: {problem: "Third proportional to 0.8 and 0.2", shortcut: "0.8 : 0.2 :: 0.2 : c, so c = 0.04/0.8 = 0.05", seconds_saved: 10}
+            pattern: direct-proportional
+
+  - key: variation
+    title: Direct and inverse proportion
+    concepts:
+      - slug: direct-proportion
+        title: Direct proportion (unitary method)
+        summary: "Two quantities are in direct proportion when they rise and fall in the same ratio: y = kx, so y₁/x₁ = y₂/x₂. Cost and quantity, wages and days, and distance and time at a fixed speed are typical; solve with the unitary method or by multiplying by the ratio of the changed quantity."
+        difficulty: easy
+        weight: 0.8
+        prerequisites: [ratio-basics]
+        formulas:
+          - key: direct
+            name: Direct variation
+            expression: "y ∝ x  ⇔  y = kx  ⇔  y₁/x₁ = y₂/x₂"
+            example: {problem: "12 pens cost ₹180. Find the cost of 20 pens.", solution: "180 × 20/12 = ₹300"}
+          - key: power-variation
+            name: Variation with a power
+            expression: "y ∝ xⁿ  ⇒  y₂/y₁ = (x₂/x₁)ⁿ"
+            example: {problem: "Area varies as the square of the radius. The radius rises by 20%.", solution: "Area factor = 1.2² = 1.44, a 44% increase"}
+        patterns:
+          - key: cost-quantity
+            title: Cost and quantity by the unitary method
+            example_stem: "If 15 kg of rice costs ₹825, how much will 22 kg cost?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: variation-constant
+            title: Find the constant of variation
+            example_stem: "y varies directly as x, and y = 42 when x = 6. Find y when x = 11."
+            frequency: low
+            difficulty: easy
+            target_seconds: 20
+          - key: power-variation
+            title: One quantity varies as a power of another
+            example_stem: "The weight of a solid metal sphere varies as the cube of its radius. If the radius is doubled, how many times heavier does it become?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 25
+        shortcuts:
+          - key: ratio-multiplier
+            title: Multiply by the ratio of the changed quantity
+            kind: shortcut
+            rule: "New value = old value × (new quantity/old quantity); cancel the fraction before multiplying."
+            example: {problem: "15 kg cost ₹825; cost of 22 kg?", standard: "₹825 ÷ 15 = ₹55 per kg, × 22", shortcut: "825 × 22/15 = 55 × 22 = ₹1,210", seconds_saved: 5}
+            pattern: cost-quantity
+
+      - slug: inverse-proportion
+        title: Inverse proportion (inverse variation)
+        summary: "Two quantities are in inverse proportion when one rises as the other falls in the same ratio: xy = k, so x₁y₁ = x₂y₂. Workers and days for a fixed job, speed and time for a fixed distance, and men and days for fixed provisions are the SSC favourites; joint variation combines direct and inverse parts."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [direct-proportion]
+        formulas:
+          - key: inverse
+            name: Inverse variation
+            expression: "y ∝ 1/x  ⇔  xy = k  ⇔  x₁y₁ = x₂y₂"
+            example: {problem: "8 workers take 15 days for a job. How long will 12 workers take?", solution: "8 × 15/12 = 10 days"}
+          - key: provisions-rule
+            name: Provisions (men × days of food left)
+            expression: "M₁ × (days of food left on the old plan) = M₂ × D₂"
+            example: {problem: "Food for 500 men for 30 days; after 10 days 100 men leave. How long does the rest last?", solution: "500 × 20 = 400 × D₂, so D₂ = 25 days"}
+          - key: joint
+            name: Joint variation
+            expression: "z ∝ x/y  ⇔  z = kx/y;  z ∝ xy  ⇔  z = kxy"
+            conditions: "Find k from one set of values, then substitute the other set."
+            example: {problem: "x varies directly as y and inversely as z; x = 6 when y = 4 and z = 2. Find x when y = 9 and z = 3.", solution: "6 = 4k/2 gives k = 3; x = 3 × 9/3 = 9"}
+        patterns:
+          - key: workers-days
+            title: Workers and days for a fixed job
+            example_stem: "18 men can build a wall in 20 days. How many men are needed to build it in 12 days?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: provisions
+            title: Provisions with men joining or leaving
+            example_stem: "A fort has food for 800 soldiers for 60 days. After 15 days, 100 more soldiers arrive. For how many more days will the food last?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: joint-variation
+            title: Combined (joint) variation
+            example_stem: "A varies directly as B² and inversely as C. If A = 8 when B = 4 and C = 6, find A when B = 6 and C = 9."
+            frequency: low
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: remaining-man-days
+            title: Use the man-days still left
+            kind: shortcut
+            rule: "Food left = original men × days still left on the original plan; divide by the new number of men."
+            example: {problem: "800 soldiers, 60 days; 100 join after 15 days", standard: "Total food 48,000 man-days; used 12,000; 36,000 ÷ 900", shortcut: "800 × 45/900 = 40 days", seconds_saved: 20}
+            pattern: provisions
+          - key: invert-ratio
+            title: Invert the ratio
+            kind: shortcut
+            rule: "If one quantity changes in the ratio a : b, an inversely proportional quantity changes in the ratio b : a."
+            example: {problem: "18 men take 20 days; men for 12 days?", shortcut: "Days 20 → 12 (5 : 3), so men 3 : 5: 18 × 5/3 = 30", seconds_saved: 10}
+            pattern: workers-days
+
+  - key: division
+    title: Division ratio
+    concepts:
+      - slug: dividing-in-given-ratio
+        title: "Division ratio: dividing a quantity in a given ratio"
+        summary: "To divide N in the ratio a : b : c, A's share is a/(a + b + c) × N. When the difference of two shares is known, one unit = difference ÷ difference of their terms. Conditions like 'A gets 2/3 of what B and C get together' or amounts taken from each share are turned into a plain ratio first."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [ratio-basics]
+        formulas:
+          - key: share
+            name: Share in a ratio
+            expression: "share of A = a/(a + b + c) × N"
+            example: {problem: "Divide ₹7,200 in the ratio 2 : 3 : 4.", solution: "1 unit = 7200/9 = 800: ₹1,600, ₹2,400 and ₹3,200"}
+          - key: from-difference
+            name: Unit from the difference of shares
+            expression: "one unit = (difference of two shares)/(difference of their ratio terms)"
+            example: {problem: "Shares are in the ratio 3 : 5 : 7 and C gets ₹2,400 more than A. Find the total.", solution: "4 units = 2,400, so 1 unit = 600 and the total = 15 × 600 = ₹9,000"}
+          - key: fraction-of-others
+            name: Share as a fraction of the others' total
+            expression: "A = (m/n)(B + C)  ⇒  A = m/(m + n) × total"
+            example: {problem: "A gets 2/3 of what B and C get together; the total is ₹1,500.", solution: "A = 2/5 × 1,500 = ₹600"}
+        patterns:
+          - key: shares-from-total
+            title: Shares from the total
+            example_stem: "₹5,460 is divided among A, B and C in the ratio 1/2 : 1/3 : 1/4. Find B's share."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: total-from-difference
+            title: Total or a share from the difference of shares
+            example_stem: "An amount is divided between P and Q in the ratio 5 : 8. If Q gets ₹1,350 more than P, find the amount."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: conditional-division
+            title: Division with conditions
+            description: "Fractions of the others' shares, or fixed amounts taken from or added to each share before the ratio applies."
+            example_stem: "Divide ₹1,230 among A, B and C so that if ₹5, ₹10 and ₹15 are taken from their shares respectively, the remainders are in the ratio 3 : 4 : 5. Find C's share."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: adjust-then-divide
+            title: Remove the fixed amounts first
+            kind: shortcut
+            rule: "When fixed amounts are taken from (or added to) the shares, adjust the total by the same amounts, divide the adjusted total in the ratio, then add them back (or take them off)."
+            example: {problem: "₹1,230 with ₹5, ₹10, ₹15 taken off, remainders 3 : 4 : 5", standard: "Solve (A − 5) : (B − 10) : (C − 15) = 3 : 4 : 5 with A + B + C = 1,230", shortcut: "1,230 − 30 = 1,200 → 300 : 400 : 500; C = 500 + 15 = ₹515", seconds_saved: 25}
+            pattern: conditional-division
+          - key: fraction-to-share
+            title: Fraction of the others becomes a fraction of the total
+            kind: shortcut
+            rule: "If A gets m/n of what the others get together, A gets m/(m + n) of the total."
+            example: {problem: "A gets 3/7 of what B and C get; total ₹4,000", shortcut: "A = 3/10 × 4,000 = ₹1,200", seconds_saved: 15}
+            pattern: conditional-division
+
+      - slug: income-expenditure-ratio
+        title: Income and expenditure ratio problems
+        summary: "Incomes in a : b and expenditures in c : d with savings given: write incomes ax, bx and expenditures cy, dy, and use income − expenditure = savings for each person. When both save the same amount, equalising the term differences gives the answer in one line."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [ratio-term-change, percentage-income-expenditure]
+        formulas:
+          - key: savings-equations
+            name: Savings equations
+            expression: "ax − cy = S₁ and bx − dy = S₂  (income − expenditure = savings)"
+            variables:
+              - {symbol: "a : b", meaning: "ratio of incomes"}
+              - {symbol: "c : d", meaning: "ratio of expenditures"}
+              - {symbol: "S₁, S₂", meaning: "savings of the two persons"}
+          - key: equal-savings
+            name: Both save the same amount
+            expression: "S₁ = S₂ = S  ⇒  x = S(c − d)/(bc − ad); incomes are ax and bx"
+            example: {problem: "Incomes 5 : 4, expenditures 3 : 2, each saves ₹2,000.", solution: "x = 2,000 × (3 − 2)/(12 − 10) = 1,000; incomes ₹5,000 and ₹4,000"}
+        patterns:
+          - key: equal-savings
+            title: Both persons save the same amount
+            example_stem: "The incomes of A and B are in the ratio 7 : 5 and their expenditures in the ratio 3 : 2. If each saves ₹4,000, find A's income."
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: savings-in-ratio
+            title: Savings in a given ratio
+            example_stem: "The incomes of P and Q are in the ratio 3 : 4 and their expenditures in the ratio 2 : 3. If P earns ₹30,000 a month and their savings are in the ratio 4 : 5, find Q's expenditure."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 45
+          - key: percent-change-income
+            title: Income and expenditure changing by percentages
+            example_stem: "The ratio of a family's income to its expenditure is 5 : 4. If the income rises by 20% and the expenditure by 10%, by what percent do the savings rise?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: equalise-differences
+            title: Make the term differences equal
+            kind: shortcut
+            rule: "When both save the same amount, scale the two ratios so that (first term − second term) is the same in both. Then one multiplier serves incomes and expenditures, and each saving = (income term − expenditure term) × multiplier."
+            example: {problem: "Incomes 3 : 2, expenditures 5 : 3, each saves ₹1,000", standard: "Solve 3x − 5y = 1,000 and 2x − 3y = 1,000", shortcut: "Differences 1 and 2: scale incomes to 6 : 4. Savings = 6 − 5 = 1 unit = ₹1,000, so incomes are ₹6,000 and ₹4,000", seconds_saved: 25}
+            pattern: equal-savings
+
+      - slug: coins-notes-ratio
+        title: Coins and notes problems
+        summary: "A bag holds coins or notes of different denominations with their numbers in a given ratio. The value of each kind is number × denomination, so one 'set' of coins (the ratio numbers) has a fixed value; total value ÷ value of one set gives the multiplier. If the values are in a ratio instead, numbers = value ÷ denomination. Convert paise to rupees first."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [dividing-in-given-ratio]
+        formulas:
+          - key: value-of-set
+            name: Multiplier from the value of one set
+            expression: "k = total value/(a·d₁ + b·d₂ + c·d₃); numbers of coins = ak, bk, ck"
+            variables:
+              - {symbol: "a : b : c", meaning: "ratio of the numbers of coins"}
+              - {symbol: "d₁, d₂, d₃", meaning: "denominations in rupees"}
+            example: {problem: "₹1, 50 p and 25 p coins in the number ratio 5 : 6 : 8, worth ₹210 in all.", solution: "One set = 5 + 3 + 2 = ₹10, so k = 21: 105, 126 and 168 coins"}
+          - key: number-from-value
+            name: Number ratio from a value ratio
+            expression: "number ratio = (value term₁ ÷ d₁) : (value term₂ ÷ d₂) : (value term₃ ÷ d₃)"
+            example: {problem: "Values of ₹1, 50 p and 25 p coins are in the ratio 1 : 2 : 3.", solution: "Numbers 1/1 : 2/0.5 : 3/0.25 = 1 : 4 : 12"}
+        patterns:
+          - key: number-ratio-given
+            title: Numbers in a ratio, total value given
+            example_stem: "A purse has ₹2, ₹1 and 50 p coins in the ratio 3 : 4 : 6 by number, worth ₹260 in all. How many ₹1 coins are there?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: value-ratio-given
+            title: Values in a ratio, find the number of coins
+            example_stem: "A box has 50 p, 25 p and 10 p coins whose values are in the ratio 5 : 9 : 4, worth ₹180 in all. How many 25 p coins are there?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: notes-count
+            title: Notes of different denominations
+            example_stem: "A cashier has ₹500, ₹200 and ₹100 notes in the ratio 2 : 3 : 5 by number, worth ₹42,000 in all. How many notes does he have?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 30
+        shortcuts:
+          - key: set-method
+            title: Value of one set
+            kind: shortcut
+            rule: "Treat the ratio numbers as one 'set' of coins, find its value once, and divide the total value by it to get the number of sets."
+            example: {problem: "₹2, ₹1, 50 p coins in 3 : 4 : 6 worth ₹260", standard: "Let the numbers be 3x, 4x, 6x and solve 6x + 4x + 3x = 260", shortcut: "One set = 6 + 4 + 3 = ₹13; 260/13 = 20 sets, so 80 coins of ₹1", seconds_saved: 15}
+            pattern: number-ratio-given
+
+  - key: partnership
+    title: Partnership Business
+    subtopics:
+      - key: simple
+        title: Simple partnership
+        concepts:
+          - slug: partnership-simple
+            title: "Partnership: profit in the ratio of capitals"
+            summary: "When partners invest for the same period, profit (or loss) is shared in the ratio of their capitals. SSC asks for one partner's share of the total profit, or for a capital from a share."
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [dividing-in-given-ratio]
+            formulas:
+              - key: capital-ratio
+                name: Profit in the ratio of capitals
+                expression: "P₁ : P₂ : P₃ = C₁ : C₂ : C₃  (all invested for the same time)"
+                example: {problem: "A, B and C invest ₹20,000, ₹30,000 and ₹50,000; the profit is ₹15,000.", solution: "2 : 3 : 5, so ₹3,000, ₹4,500 and ₹7,500"}
+              - key: capital-from-share
+                name: Capital from a profit share
+                expression: "C₂ = C₁ × P₂/P₁"
+                example: {problem: "A invests ₹36,000 and gets ₹6,000 of a ₹11,000 profit. Find B's capital.", solution: "B's share = ₹5,000; C₂ = 36,000 × 5/6 = ₹30,000"}
+            patterns:
+              - key: share-of-profit
+                title: A partner's share of the profit
+                example_stem: "A and B start a business with ₹45,000 and ₹60,000. Out of a profit of ₹14,000, find B's share."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: capital-from-share
+                title: Capital from a share of the profit
+                example_stem: "P invests ₹48,000 and Q some amount for one year. Of a profit of ₹13,500, Q gets ₹4,500. How much did Q invest?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: reduce-capitals
+                title: Reduce the capitals first
+                kind: shortcut
+                rule: "Divide all capitals by their HCF (drop common zeros) before sharing the profit; the profit is then split by small numbers."
+                example: {problem: "₹45,000 and ₹60,000 share ₹14,000", standard: "B = 14,000 × 60,000/1,05,000", shortcut: "3 : 4, so 1 unit = 2,000 and B = ₹8,000", seconds_saved: 10}
+                pattern: share-of-profit
+      - key: different-periods
+        title: Compound partnership (different time periods)
+        concepts:
+          - slug: partnership-different-periods
+            title: "Compound partnership: capitals for different time periods"
+            summary: "When capitals stay invested for different periods, profit is shared in the ratio of capital × time (in months). A partner who joins late, adds money or withdraws money midway gets the sum of capital × months over each stretch."
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [partnership-simple]
+            formulas:
+              - key: capital-time
+                name: Profit in the ratio of capital × time
+                expression: "P₁ : P₂ = C₁T₁ : C₂T₂"
+                example: {problem: "A invests ₹30,000 for 12 months; B joins after 4 months with ₹40,000. Share a profit of ₹34,000.", solution: "30,000 × 12 : 40,000 × 8 = 9 : 8, so A ₹18,000 and B ₹16,000"}
+              - key: changing-capital
+                name: Effective capital when it changes midway
+                expression: "effective capital = C₁t₁ + C₂t₂ + …  (each amount × months it stayed)"
+                example: {problem: "A starts with ₹50,000 and withdraws ₹20,000 after 6 months; B invests ₹40,000 for the year.", solution: "A: 50,000 × 6 + 30,000 × 6 = 4,80,000; B: 40,000 × 12 = 4,80,000; equal shares"}
+              - key: time-from-ratio
+                name: Time from the profit ratio
+                expression: "T₂ = (P₂/P₁) × C₁T₁/C₂"
+            patterns:
+              - key: joins-later
+                title: A partner joins after some months
+                example_stem: "P starts a business with ₹42,000. Some months later Q joins with ₹63,000. At the end of the year the profit is divided in the ratio 2 : 1. After how many months did Q join?"
+                frequency: high
+                difficulty: medium
+                target_seconds: 35
+              - key: adds-or-withdraws
+                title: Capital added or withdrawn midway
+                example_stem: "A and B invest ₹24,000 and ₹30,000. After 4 months A adds ₹6,000 and B withdraws ₹6,000. Find the ratio of their profits at the end of the year."
+                frequency: high
+                difficulty: medium
+                target_seconds: 45
+              - key: three-partners-periods
+                title: Three partners with different capitals and periods
+                example_stem: "A, B and C invest ₹15,000, ₹20,000 and ₹25,000 for 8, 9 and 6 months respectively. Out of a total profit of ₹19,500, find C's share."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: reduce-then-months
+                title: Reduce capitals, then multiply by months
+                kind: shortcut
+                rule: "Reduce the capitals to their simplest ratio first, multiply by the months, and reduce again; never multiply full rupee amounts."
+                example: {problem: "₹15,000, ₹20,000, ₹25,000 for 8, 9, 6 months", standard: "1,20,000 : 1,80,000 : 1,50,000", shortcut: "3 : 4 : 5 × 8, 9, 6 = 24 : 36 : 30 = 4 : 6 : 5", seconds_saved: 20}
+                pattern: three-partners-periods
+              - key: segment-table
+                title: Month-segment table
+                kind: alternative
+                rule: "When capital changes midway, list each partner's capital for each stretch with its months in a small table and add the products row by row."
+                example: {problem: "A: ₹24,000 for 4 months then ₹30,000 for 8; B: ₹30,000 for 4 months then ₹24,000 for 8", shortcut: "In thousands: A = 96 + 240 = 336, B = 120 + 192 = 312, so 14 : 13", seconds_saved: 15}
+                pattern: adds-or-withdraws
+      - key: working-sleeping
+        title: Working and sleeping partners
+        concepts:
+          - slug: partnership-working-sleeping
+            title: Working and sleeping partners
+            summary: "A working (active) partner manages the business and first takes an agreed salary or a percentage of the profit; a sleeping partner only invests. The remaining profit is then shared in the ratio of capital × time."
+            difficulty: medium
+            weight: 0.8
+            prerequisites: [partnership-different-periods]
+            formulas:
+              - key: working-share
+                name: Working partner's total share
+                expression: "working partner's total = management share (salary or m% of profit) + remaining profit × his capital fraction"
+                example: {problem: "A (working) invests ₹40,000 and B (sleeping) ₹60,000. A first takes 10% of the ₹20,000 profit; the rest is shared by capital.", solution: "A: 2,000 + 18,000 × 2/5 = ₹9,200; B: 18,000 × 3/5 = ₹10,800"}
+            patterns:
+              - key: percent-for-managing
+                title: Working partner takes a percentage of the profit
+                example_stem: "X and Y invest ₹50,000 and ₹30,000. X manages the business and first takes 20% of the profit; the rest is shared in the ratio of capitals. If X receives ₹14,000 in all, find the total profit."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 40
+              - key: salary-for-managing
+                title: Working partner draws a fixed salary
+                example_stem: "A and B invest ₹70,000 and ₹50,000. A, the working partner, draws ₹1,000 a month as salary. If the year's profit before his salary is ₹48,000 and the rest is shared in the ratio of capitals, find A's total earnings."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: managers-fraction
+                title: The working partner's fraction in one step
+                kind: shortcut
+                rule: "With a management share of m%, the working partner gets m/100 + (1 − m/100) × his capital fraction of the profit; divide his amount by this fraction to get the profit."
+                example: {problem: "X takes 20%, capitals 5 : 3, X gets ₹14,000 in all", standard: "0.2P + 0.8P × 5/8 = 14,000", shortcut: "0.2 + 0.8 × 5/8 = 0.7; profit = 14,000/0.7 = ₹20,000", seconds_saved: 20}
+                pattern: percent-for-managing
+                pitfalls: ["Applying the capital ratio to the whole profit before taking out the salary or management share."]
+
+  - key: mixture
+    title: Mixture ratio
+    concepts:
+      - slug: mixture-ratio
+        title: "Mixture ratio: quantities of components and adding a component"
+        summary: "In a mixture in the ratio a : b, the first component is a/(a + b) of the total. Adding or removing one pure component changes only that component, so hold the other fixed; when the contents of two vessels are mixed, add each component separately."
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [dividing-in-given-ratio]
+        formulas:
+          - key: component
+            name: Quantity of a component
+            expression: "quantity of A = a/(a + b) × total"
+            example: {problem: "60 L of milk and water in the ratio 7 : 3.", solution: "Milk = 42 L, water = 18 L"}
+          - key: add-component
+            name: Adding one component to change the ratio
+            expression: "A fixed: required quantity of B = A × d/c for the new ratio A : B = c : d; amount to add = required B − present B"
+            example: {problem: "60 L of milk and water is in the ratio 2 : 1. How much water must be added to make it 1 : 2?", solution: "Milk 40 L stays; water needed = 40 × 2 = 80 L; add 80 − 20 = 60 L"}
+          - key: combine-volumes
+            name: Contents of two vessels mixed
+            expression: "first component = aV₁/(a + b) + cV₂/(c + d); second = bV₁/(a + b) + dV₂/(c + d)"
+            example: {problem: "20 L of milk and water in 3 : 2 is mixed with 30 L in 7 : 3.", solution: "Milk 12 + 21 = 33 L, water 8 + 9 = 17 L, so 33 : 17"}
+        patterns:
+          - key: add-to-change-ratio
+            title: Add a component to reach a new ratio
+            example_stem: "A 40 L mixture has milk and water in the ratio 3 : 1. How much water must be added to make the ratio 3 : 2?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: quantity-from-new-ratio
+            title: Original quantity from the change in ratio
+            example_stem: "A mixture contains milk and water in the ratio 5 : 2. When 6 L of water is added, the ratio becomes 5 : 3. Find the quantity of milk."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: combine-two-vessels
+            title: Contents of two vessels poured together
+            example_stem: "Vessel P holds 24 L of milk and water in the ratio 5 : 3 and vessel Q holds 30 L in the ratio 2 : 3. Find the ratio of milk to water when both are mixed."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: fixed-component
+            title: Hold the unchanged component
+            kind: shortcut
+            rule: "When only one component is added, the other does not change. Write the new ratio so the unchanged component's term matches the old one; the increase in the other term, in units, is the added quantity."
+            example: {problem: "5 : 2 becomes 5 : 3 after adding 6 L of water", standard: "Solve 5x/(2x + 6) = 5/3", shortcut: "Milk term is 5 in both; water rose by 1 unit = 6 L, so milk = 5 × 6 = 30 L", seconds_saved: 20}
+            pattern: quantity-from-new-ratio
+          - key: scale-to-volume
+            title: Scale each ratio to its vessel's volume
+            kind: shortcut
+            rule: "Scale each vessel's ratio so its terms add up to that vessel's volume (for equal volumes, to the same total), then add the terms."
+            example: {problem: "24 L of 5 : 3 with 30 L of 2 : 3", shortcut: "5 : 3 × 3 = 15 : 9 and 2 : 3 × 6 = 12 : 18; total 27 : 27 = 1 : 1", seconds_saved: 15}
+            pattern: combine-two-vessels
+
+  - key: ages
+    title: Age problems
+    concepts:
+      - slug: age-ratio-problems
+        title: "Age problems: ratios of present, past and future ages"
+        summary: "The difference between two people's ages never changes, while both ages change by the same number of years. Write the present ages as ax and bx, shift both by n years and equate to the new ratio; equalising the term differences solves most SSC questions in seconds."
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [ratio-term-change]
+        formulas:
+          - key: ratio-shift
+            name: Present ratio and ratio after n years
+            expression: "(ax + n)/(bx + n) = c/d  ⇒  x = n(c − d)/(ad − bc)"
+            conditions: "Use −n for n years ago."
+            example: {problem: "Present ages are in the ratio 3 : 4; after 5 years they will be 4 : 5.", solution: "x = 5(4 − 5)/(15 − 16) = 5; ages 15 and 20 (after 5 years 20 : 25 = 4 : 5)"}
+          - key: constant-difference
+            name: Constant age difference
+            expression: "(A + t) − (B + t) = A − B for every t"
+        patterns:
+          - key: present-future-ratio
+            title: Present ratio and ratio after some years
+            example_stem: "The ratio of the present ages of Ravi and Sita is 5 : 7. Four years from now the ratio will be 3 : 4. Find Ravi's present age."
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: past-present-ratio
+            title: Ratio some years ago and the present ratio
+            example_stem: "Six years ago the ratio of the ages of A and B was 4 : 3. The ratio of their present ages is 6 : 5. Find B's present age."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: sum-and-ratio
+            title: Sum of ages and a future ratio
+            example_stem: "The sum of the present ages of a mother and her daughter is 60 years. After 6 years their ages will be in the ratio 2 : 1. Find the daughter's present age."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: equalise-age-gap
+            title: Make the age gaps equal
+            kind: shortcut
+            rule: "Scale both ratios so the difference of their terms is the same (it stands for the constant age gap). The change in either term, in units, then equals the years passed."
+            example: {problem: "Present 5 : 7, after 4 years 3 : 4", standard: "Solve (5x + 4)/(7x + 4) = 3/4", shortcut: "Gaps 2 and 1: scale 3 : 4 to 6 : 8. 5 → 6 is 1 unit = 4 years, so Ravi = 5 × 4 = 20", seconds_saved: 25}
+            pattern: present-future-ratio
+            pitfalls: ["Equalise the differences, not the first terms: the age gap is what stays constant."]
+
+      - slug: age-problems-equations
+        title: "Age problems: multiples, sums and differences of ages"
+        summary: "Statements like 'the father is three times as old as his son' or 'four years ago the sum of their ages was 40' become linear equations in one unknown. Shift every age by the same number of years, write the condition as an equation and solve; with whole-number options, back-solving is often faster."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [age-ratio-problems]
+        formulas:
+          - key: multiple-condition
+            name: Multiple now and a different multiple later
+            expression: "A = kB now and A + t = m(B + t)  ⇒  B = t(m − 1)/(k − m)"
+            example: {problem: "A father is 3 times as old as his son; after 10 years he will be twice as old.", solution: "B = 10(2 − 1)/(3 − 2) = 10; son 10, father 30 (after 10 years 40 = 2 × 20)"}
+          - key: sum-shift
+            name: Sum of ages after t years
+            expression: "sum of n people's ages after t years = present sum + n × t"
+        patterns:
+          - key: times-as-old
+            title: Times as old now and later
+            example_stem: "A man is four times as old as his son. After 16 years he will be only twice as old as his son. Find the son's present age."
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: sum-and-past
+            title: Sum of ages and a condition some years ago
+            example_stem: "The sum of the ages of a father and his son is 56 years. Four years ago the father was three times as old as the son. Find the father's present age."
+            frequency: high
+            difficulty: easy
+            target_seconds: 35
+          - key: past-and-future-multiple
+            title: Conditions in the past and in the future
+            example_stem: "Ten years ago a mother was four times as old as her daughter. Ten years from now she will be twice as old as her daughter. Find the daughter's present age."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: back-solve
+            title: Back-solve with the options
+            kind: elimination
+            rule: "Age options are few whole numbers: put each into both conditions and keep the one that satisfies both, starting with a middle option."
+            example: {problem: "Four times as old now, twice as old after 16 years; options 6, 8, 10, 12", standard: "Solve 4x + 16 = 2(x + 16)", shortcut: "Son 8 → father 32; after 16 years 48 and 24, and 48 = 2 × 24", seconds_saved: 15}
+            pattern: times-as-old
+          - key: multiple-formula
+            title: "B = t(m − 1)/(k − m)"
+            kind: shortcut
+            rule: "If A is k times B now and will be m times B after t years, B = t(m − 1)/(k − m); use −t for years ago."
+            example: {problem: "4 times now, twice after 16 years", shortcut: "B = 16 × 1/2 = 8 years", seconds_saved: 20}
+            pattern: times-as-old

@@ -1,0 +1,481 @@
+key: percentage
+title: Percentage
+strategies:
+  - key: approach
+    title: "Percentage: think in fractions"
+    summary: >-
+      Percentage is the language of arithmetic: profit and loss, interest, DI and population
+      questions all reduce to it. Speed comes from converting percentages to fractions and from
+      the successive-change formula.
+    seconds_per_question: 40
+    accuracy_target: 0.95
+    tactics:
+      - "Memorise the fraction table from 1/2 to 1/20 as percentages; it turns most questions into one multiplication."
+      - "Write every change as a multiplying factor (+20% → ×6/5, −25% → ×3/4) and chain the factors."
+      - "For 'what percent more/less' questions, always divide by the base the question names."
+    avoid:
+      - "Adding successive percentages directly (10% then 20% is 32%, not 30%)."
+
+topics:
+  - key: basics
+    title: Basic percentage
+    subtopics:
+      - key: meaning
+        title: Meaning of percentage
+        concepts:
+          - ref: percentage-basics
+            weight: 1.5
+            formulas:
+              - key: definition
+                name: Percentage of a quantity
+                expression: "p% of x = (p / 100) × x"
+                variables:
+                  - {symbol: p, meaning: the percentage}
+                  - {symbol: x, meaning: the quantity}
+                example: {problem: "Find 15% of 240.", solution: "15/100 × 240 = 36"}
+              - key: x-of-y
+                name: Swap rule
+                expression: "x% of y = y% of x"
+                conditions: "Use it when one of the two numbers is a friendlier percentage."
+                example: {problem: "Find 16% of 25.", solution: "= 25% of 16 = 4"}
+              - key: what-percent
+                name: What percent A is of B
+                expression: "A as a percentage of B = (A / B) × 100"
+                example: {problem: "36 is what percent of 48?", solution: "36/48 × 100 = 75%"}
+            patterns:
+              - key: direct-percentage
+                title: Direct percentage of a number
+                description: "Find p% of x, or what percent one number is of another."
+                example_stem: "What is 37.5% of 480?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: find-whole
+                title: Find the whole from a part
+                description: "A given percentage of an unknown number is known; find the number."
+                example_stem: "If 35% of a number is 84, find the number."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: fraction-swap
+                title: Swap to a friendlier percentage
+                kind: shortcut
+                rule: "x% of y equals y% of x, so compute whichever is easier."
+                when_to_use: "One number is a 'nice' percentage like 25, 50 or 20."
+                steps: ["Swap the two numbers", "Use the fraction equivalent of the nicer percentage"]
+                example: {problem: "8% of 75", standard: "8/100 × 75 = 6", shortcut: "75% of 8 = 3/4 × 8 = 6", seconds_saved: 5}
+                pattern: direct-percentage
+      - key: conversion
+        title: Conversion between fractions, decimals and percentages
+        concepts:
+          - slug: percentage-fraction-conversion
+            title: Fraction and percentage conversion
+            summary: "Convert fractions to percentages (× 100) and back (÷ 100 and simplify); the 1/2 to 1/20 table makes SSC calculations one-step."
+            difficulty: easy
+            weight: 1.5
+            prerequisites: [percentage-basics]
+            formulas:
+              - key: fraction-to-percent
+                name: Fraction to percentage
+                expression: "a/b = (a/b × 100)%"
+                example: {problem: "Write 3/8 as a percentage.", solution: "3/8 × 100 = 37.5%"}
+              - key: fraction-table
+                name: Key fraction equivalents
+                expression: "1/2 = 50%, 1/3 = 33.33%, 1/4 = 25%, 1/5 = 20%, 1/6 = 16.67%, 1/7 = 14.28%, 1/8 = 12.5%, 1/9 = 11.11%, 1/10 = 10%, 1/11 = 9.09%, 1/12 = 8.33%, 1/16 = 6.25%, 1/20 = 5%"
+                conditions: "Multiples follow directly: 3/8 = 3 × 12.5% = 37.5%."
+            patterns:
+              - key: convert
+                title: Convert between fraction and percentage
+                example_stem: "Express 5/16 as a percentage."
+                frequency: low
+                difficulty: easy
+                target_seconds: 15
+            shortcuts:
+              - key: table-multiples
+                title: Build from the fraction table
+                kind: memory
+                rule: "Know 1/n as a percentage for n = 2 to 20; any a/n is a times that value."
+                example: {problem: "5/12 as a percentage", shortcut: "5 × 8.33% = 41.67%", seconds_saved: 10}
+          - slug: percentage-decimal-conversion
+            title: Decimal and percentage conversion
+            summary: "Move the decimal point two places: 0.375 = 37.5% and 4.5% = 0.045. Multiplying factors like 1.2 or 0.85 express a change of +20% or −15%."
+            difficulty: easy
+            weight: 0.8
+            prerequisites: [percentage-basics]
+            formulas:
+              - key: decimal-to-percent
+                name: Decimal to percentage and back
+                expression: "d = (100 × d)%;  p% = p / 100"
+                example: {problem: "Write 0.065 as a percentage.", solution: "0.065 × 100 = 6.5%"}
+              - key: multiplying-factor
+                name: Multiplying factor of a change
+                expression: "after an r% increase: × (1 + r/100); after an r% decrease: × (1 − r/100)"
+                example: {problem: "Price ₹500 rises by 12%.", solution: "500 × 1.12 = ₹560"}
+            patterns:
+              - key: factor
+                title: Change written as a multiplying factor
+                example_stem: "A number is multiplied by 0.85. By what percent has it changed?"
+                frequency: low
+                difficulty: easy
+                target_seconds: 15
+
+  - key: applications
+    title: Percentage applications
+    subtopics:
+      - key: increase-decrease
+        title: Percentage increase and decrease
+        concepts:
+          - ref: percentage-change
+            weight: 1.5
+            formulas:
+              - key: change
+                name: Percentage change
+                expression: "% change = (new − old) / old × 100"
+                conditions: "Positive for an increase, negative for a decrease; the base is always the old value."
+                example: {problem: "Price rises from ₹80 to ₹92.", solution: "(92 − 80)/80 × 100 = 15% increase"}
+            patterns:
+              - key: change-from-values
+                title: Percentage change from two values
+                example_stem: "The price of sugar rises from ₹40 to ₹46 per kg. Find the percentage increase."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: consumption-adjustment
+                title: Price change and consumption adjustment
+                description: "Price rises by r%; by how much must consumption fall to keep spending unchanged?"
+                example_stem: "If the price of petrol increases by 25%, by what percent must a person reduce consumption so that expenditure stays the same?"
+                frequency: high
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: consumption
+                title: Keep the expense constant
+                kind: shortcut
+                rule: "If price rises by r%, consumption must fall by r/(100 + r) × 100%; if price falls by r%, consumption may rise by r/(100 − r) × 100%."
+                example: {problem: "Price up 25%", standard: "Set up E = P × C equations", shortcut: "25/125 × 100 = 20% less", seconds_saved: 20}
+                pattern: consumption-adjustment
+                pitfalls: ["Using 100 instead of 100 + r as the denominator."]
+      - key: successive
+        title: Successive percentage change
+        concepts:
+          - ref: successive-percentage
+            weight: 1.5
+            formulas:
+              - key: net-change
+                name: Net effect of two successive changes
+                expression: "net % = a + b + (a × b)/100"
+                conditions: "Use negative values for decreases."
+                example: {problem: "+20% then −10%", solution: "20 − 10 + (20 × −10)/100 = +8%"}
+            patterns:
+              - key: two-changes
+                title: Net effect of two changes
+                example_stem: "The price of an item is increased by 20% and then decreased by 20%. Find the net change."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: three-changes
+                title: Three or more successive changes
+                example_stem: "A town's population grows by 10%, 20% and 30% in three successive years. Find the total growth."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 40
+            shortcuts:
+              - key: abab
+                title: a + b + ab/100
+                kind: shortcut
+                rule: "Combine two changes with a + b + ab/100, then combine the result with the next change."
+                example: {problem: "+10%, +20%, +30%", shortcut: "10 & 20 → 32; 32 & 30 → 71.6%", seconds_saved: 30}
+                pattern: three-changes
+      - key: comparison
+        title: Comparison of percentages
+        concepts:
+          - slug: percentage-comparison
+            title: Comparing quantities with percentages
+            summary: "'A is r% more than B' and 'B is r% less than A' are different statements: the base changes. If A is r% more than B, B is r/(100 + r) × 100% less than A."
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [percentage-change]
+            formulas:
+              - key: more-less
+                name: More than / less than conversion
+                expression: "A = B(1 + r/100)  ⇒  B is r/(100 + r) × 100% less than A;  A = B(1 − r/100)  ⇒  B is r/(100 − r) × 100% more than A"
+                example: {problem: "A's salary is 25% more than B's. By what percent is B's less than A's?", solution: "25/125 × 100 = 20%"}
+            patterns:
+              - key: more-than-less-than
+                title: "A is more than B, how much is B less than A"
+                example_stem: "If A's income is 20% more than B's, by what percent is B's income less than A's?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: chain-comparison
+                title: Comparison through a third quantity
+                example_stem: "A is 20% more than C and B is 25% less than C. A is what percent of B?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: fraction-flip
+                title: Flip the fraction
+                kind: shortcut
+                rule: "Write r% as a fraction a/b. 'More by a/b' becomes 'less by a/(a + b)'; 'less by a/b' becomes 'more by a/(b − a)'."
+                example: {problem: "A is 25% (1/4) more than B", shortcut: "B is 1/5 = 20% less than A", seconds_saved: 15}
+                pattern: more-than-less-than
+      - key: reverse
+        title: Reverse percentage
+        concepts:
+          - slug: reverse-percentage
+            title: Reverse percentage (finding the original value)
+            summary: "When the value after a percentage change is known, divide by the multiplying factor to get the original: original = final ÷ (1 ± r/100)."
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [percentage-change, percentage-decimal-conversion]
+            formulas:
+              - key: original
+                name: Original value from the final value
+                expression: "original = final / (1 + r/100) after an increase;  original = final / (1 − r/100) after a decrease"
+                example: {problem: "After a 20% rise, a price is ₹720. Find the old price.", solution: "720 / 1.2 = ₹600"}
+            patterns:
+              - key: original-value
+                title: Find the value before the change
+                example_stem: "After a 15% discount an article sells for ₹1,700. What was its marked price?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+
+  - key: marks
+    title: Marks-based problems
+    concepts:
+      - slug: percentage-marks
+        title: Marks, pass marks and percentage scores
+        summary: "Exam-score questions: pass marks as a percentage of maximum marks, 'failed by' and 'passed by' margins, percentage scored and marks still required."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [percentage-basics]
+        formulas:
+          - key: pass-marks
+            name: Pass marks
+            expression: "pass marks = pass % × maximum marks / 100 = marks obtained + marks short (failed by) = marks obtained − margin (passed by)"
+            example: {problem: "A student gets 30% and fails by 15 marks; another gets 40% and passes by 35 marks. Find the maximum marks.", solution: "10% of max = 15 + 35 = 50, so max = 500"}
+          - key: percentage-score
+            name: Percentage score
+            expression: "percentage scored = marks obtained / maximum marks × 100"
+        patterns:
+          - key: two-students
+            title: Two candidates, failed by and passed by
+            description: "Two candidates' percentages and their margins below and above the pass mark give the maximum marks."
+            example_stem: "A candidate scoring 25% fails by 30 marks while another scoring 50% gets 20 marks more than the pass mark. Find the pass percentage."
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: maximum-marks
+            title: Find the maximum marks
+            example_stem: "To pass, a student needs 36% of the maximum marks. He gets 113 marks and fails by 85. Find the maximum marks."
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: required-marks
+            title: Marks required in the remaining papers
+            example_stem: "A student must score 60% overall in 5 papers of 100 marks each. He scores 55, 62, 48 and 70 in four. How much does he need in the fifth?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: marks-obtained
+            title: Marks obtained and percentage score
+            example_stem: "A student scored 342 out of 450. Find the percentage score."
+            frequency: low
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: difference-method
+            title: Difference of percentages equals difference of marks
+            kind: shortcut
+            rule: "(difference of the two percentages) × max / 100 = (failed-by marks) + (passed-by marks)."
+            example: {problem: "30% fails by 15, 40% passes by 35", shortcut: "10% = 50 → max 500", seconds_saved: 30}
+            pattern: two-students
+
+  - key: elections
+    title: Election problems
+    concepts:
+      - slug: percentage-elections
+        title: Votes, invalid votes and winning margins
+        summary: "Votes questions combine percentages of total votes, invalid votes removed first, and the winning margin as the difference of the two candidates' shares."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [percentage-basics]
+        formulas:
+          - key: valid-votes
+            name: Valid votes
+            expression: "valid votes = total votes × (100 − invalid %) / 100"
+          - key: margin
+            name: Winning margin (two candidates)
+            expression: "margin = (winner % − loser %) × valid votes / 100"
+            example: {problem: "Winner gets 58% of valid votes and wins by 2,400.", solution: "16% of valid votes = 2,400, so valid votes = 15,000"}
+        patterns:
+          - key: margin-to-total
+            title: Total votes from the winning margin
+            example_stem: "In an election between two candidates, 10% of votes were invalid. The winner got 55% of the valid votes and won by 1,800 votes. Find the total votes cast."
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: votes-of-candidate
+            title: Votes and vote share of a candidate
+            example_stem: "A candidate got 35% of the votes and lost by 6,000 votes to the only other candidate. How many votes did he get?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: invalid-votes
+            title: Invalid votes and voters who did not vote
+            example_stem: "In a town of 50,000 voters, 80% voted and 5% of those votes were invalid. How many valid votes were cast?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+
+  - key: population
+    title: Population problems
+    concepts:
+      - slug: percentage-population
+        title: Population growth and decline
+        summary: "Population changing by a fixed rate each year works like compound interest: multiply by (1 ± r/100) once per year; reverse the factor to find earlier values."
+        difficulty: medium
+        weight: 1.1
+        prerequisites: [successive-percentage]
+        formulas:
+          - key: growth
+            name: Population after n years
+            expression: "P_n = P × (1 + r/100)^n  (growth);  P_n = P × (1 − r/100)^n  (decline)"
+            example: {problem: "10,000 grows at 10% a year for 2 years.", solution: "10,000 × 1.1 × 1.1 = 12,100"}
+          - key: earlier
+            name: Population n years ago
+            expression: "P_earlier = P_now / (1 + r/100)^n"
+          - key: growth-rate
+            name: Growth rate between two values
+            expression: "r% = (P_end − P_start) / P_start × 100  (for one period)"
+        patterns:
+          - key: future-population
+            title: Population after n years
+            example_stem: "The population of a town is 1,25,000 and grows at 4% per annum. What will it be after 2 years?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: varying-rates
+            title: Different rates in different years
+            example_stem: "A city's population increases by 10% in the first year, decreases by 10% in the second and increases by 20% in the third. Find the net change."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: past-population
+            title: Population some years ago
+            example_stem: "The present population is 26,620 and it has grown at 10% a year. What was it 3 years ago?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 35
+
+  - key: income-expenditure
+    title: Income and expenditure
+    concepts:
+      - slug: percentage-income-expenditure
+        title: Income, expenditure and savings
+        summary: "Income = expenditure + savings. Changes in income and expenditure by given percentages fix the change in savings; work with assumed values (income 100) for speed."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [percentage-change]
+        formulas:
+          - key: savings
+            name: Savings identity
+            expression: "income = expenditure + savings;  savings % = savings / income × 100"
+            example: {problem: "Income ₹40,000 and expenditure ₹34,000.", solution: "savings = ₹6,000 = 15% of income"}
+        patterns:
+          - key: savings-change
+            title: Change in savings when income and expense change
+            example_stem: "A man saves 20% of his income. His income rises by 20% and his expenditure by 10%. By what percent do his savings rise?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: salary-share
+            title: Salary spent on heads of expense
+            example_stem: "A person spends 30% of his salary on rent, 20% of the rest on food and saves ₹11,200. Find his salary."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: assume-100
+            title: Assume income = 100
+            kind: alternative
+            rule: "Take income 100 and fill a small table (income, expense, savings) before and after; read the change straight from it."
+            example: {problem: "Saves 20%; income +20%, expense +10%", shortcut: "Before 100 = 80 + 20; after 120 = 88 + 32; savings +60%", seconds_saved: 25}
+            pattern: savings-change
+
+  - key: business
+    title: Business applications
+    concepts:
+      - slug: percentage-business
+        title: Profit, loss, discount and price change as percentages
+        summary: "The percentage view of trading: profit or loss % on cost, discount % on marked price, and how a price change alters revenue or quantity. Bridges this chapter to profit and loss."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [percentage-change]
+        formulas:
+          - key: revenue
+            name: Price-quantity effect on revenue
+            expression: "revenue change % = p + q + pq/100, where the price changes by p% and the quantity sold by q%"
+            example: {problem: "Price −20%, sales +30%", solution: "−20 + 30 − 6 = +4% revenue"}
+        patterns:
+          - key: price-sales-revenue
+            title: Price cut and sales rise, effect on revenue
+            example_stem: "A shopkeeper reduces the price of a TV by 20% and sales go up by 40%. Find the effect on revenue."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: percent-on-cost
+            title: Profit, loss or discount percentage
+            example_stem: "An article bought for ₹750 is sold for ₹840. Find the profit percentage."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+      - ref: profit-loss
+        weight: 0.6
+      - ref: discount
+        weight: 0.6
+
+  - key: advanced
+    title: Advanced percentage
+    concepts:
+      - slug: percentage-equivalent-change
+        title: Equivalent single percentage of multiple changes
+        summary: "Several successive changes equal one equivalent change; find it by chaining factors or with a + b + ab/100, and use it to compare offers and long chains."
+        difficulty: hard
+        weight: 1.0
+        prerequisites: [successive-percentage]
+        tiers: [tier2]
+        formulas:
+          - key: equivalent
+            name: Equivalent single change
+            expression: "1 + R/100 = (1 + a/100)(1 + b/100)(1 + c/100)…"
+            example: {problem: "Discounts of 10%, 20% and 25%", solution: "0.9 × 0.8 × 0.75 = 0.54, so one discount of 46%"}
+        patterns:
+          - key: equivalent-single
+            title: One change equal to many
+            example_stem: "Three successive discounts of 10%, 12% and 15% are equivalent to a single discount of?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+          - key: mixed-chain
+            title: Mixed increases and decreases on one quantity
+            example_stem: "The length of a rectangle increases by 20% and its breadth decreases by 20%. Find the change in area."
+            frequency: high
+            difficulty: medium
+            target_seconds: 25
+        shortcuts:
+          - key: fraction-chain
+            title: Multiply fraction factors
+            kind: shortcut
+            rule: "Write each change as a fraction (+20% = 6/5, −25% = 3/4) and multiply; cancel before multiplying."
+            example: {problem: "+25%, −20%, +10%", shortcut: "5/4 × 4/5 × 11/10 = 11/10 → +10%", seconds_saved: 25}
+            pattern: mixed-chain
+          - key: area-change
+            title: Area change from length and breadth
+            kind: shortcut
+            rule: "For a product (area, revenue, expenditure) use x + y + xy/100 with the two percentage changes."
+            example: {problem: "Length +20%, breadth −20%", shortcut: "20 − 20 − 4 = −4%", seconds_saved: 20}
+            pattern: mixed-chain

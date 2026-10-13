@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from app.jobs.context import JobContext
 
 # Every module that defines handlers. Workers and `enqueue` import these before looking up a kind.
-HANDLER_MODULES = ("app.modules.ingest.jobs", "app.modules.identity.jobs", "app.jobs.maintenance", "app.jobs.mail")
+HANDLER_MODULES = ("app.modules.ingest.jobs", "app.modules.identity.jobs", "app.modules.assessment.jobs", "app.jobs.maintenance", "app.jobs.mail")
 
 
 @dataclass(frozen=True)

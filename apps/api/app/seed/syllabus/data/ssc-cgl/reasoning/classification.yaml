@@ -1,0 +1,183 @@
+key: classification
+title: Classification
+strategies:
+  - key: approach
+    title: "Classification: find what three options share"
+    summary: >-
+      Classification (odd one out) gives four items, three of which share a property. Find a
+      property that exactly three share; the item left over is the answer. Numbers and letters
+      hide the rule in positions and operations, words in category or function.
+    seconds_per_question: 30
+    accuracy_target: 0.9
+    tactics:
+      - "Find the rule from two options that clearly agree, then test the other two; the one that fails is the answer."
+      - "For numbers, test in order: prime, square or cube (± 1), divisibility, then the pair or set rule."
+      - "For letter clusters, write the step pattern of each cluster (BDF → +2, +2) and compare the patterns."
+    avoid:
+      - "Settling for a broad property ('all are animals') when a more specific one splits the options 3–1."
+
+topics:
+  - key: semantic
+    title: Semantic classification
+    concepts:
+      - slug: semantic-word-classification
+        title: Odd word out (semantic classification)
+        summary: >-
+          Four words, three of which share a category, function or property; pick the odd one.
+          Also asked with word pairs (three pairs share one relationship). Use the most specific
+          common property, since a broad one never decides the answer.
+        difficulty: easy
+        weight: 1.5
+        patterns:
+          - key: odd-word
+            title: Odd word out
+            example_stem: "Select the odd word from the given options: Sparrow, Crow, Bat, Parrot"
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: odd-word-pair
+            title: Odd word pair out
+            example_stem: "Select the odd word pair: (a) Pen : Write (b) Knife : Cut (c) Needle : Sew (d) Book : Library"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: one-word-label
+            title: Label each option in one word
+            kind: elimination
+            rule: "Write a one-word label for each option (bird, bird, mammal, bird); the label that occurs once marks the answer. For pairs, label the relationship (tool–use, tool–use, tool–use, object–place)."
+            example: {problem: "Sparrow, Crow, Bat, Parrot", shortcut: "bird, bird, mammal, bird → Bat", seconds_saved: 5}
+            pattern: odd-word
+
+      - slug: gk-based-classification
+        title: "Knowledge-based classification (planets, states and capitals, instruments)"
+        summary: >-
+          Odd one out that needs general knowledge: planets and satellites, states and their
+          capitals, musical instruments by type, units by the quantity they measure, metals and
+          non-metals. SSC uses stable facts, not current affairs.
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [semantic-word-classification]
+        patterns:
+          - key: odd-gk-item
+            title: Odd item by a general-knowledge category
+            example_stem: "Select the odd one out: Mercury, Venus, Moon, Mars"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: odd-gk-pair
+            title: Odd pair by a general-knowledge relation
+            example_stem: "Select the odd pair: (a) Kerala : Thiruvananthapuram (b) Bihar : Patna (c) Odisha : Bhubaneswar (d) Gujarat : Ahmedabad"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: check-the-fact
+            title: Verify the relation of every pair
+            kind: elimination
+            rule: "State the relation for each pair in full ('Patna is the capital of Bihar'); the pair where the statement is false is the odd one, even if the two names are famous together."
+            example: {problem: "Gujarat : Ahmedabad among state–capital pairs", shortcut: "The capital of Gujarat is Gandhinagar, so Gujarat : Ahmedabad is odd", seconds_saved: 10}
+            pattern: odd-gk-pair
+
+  - key: symbolic-number
+    title: Symbolic/number classification
+    subtopics:
+      - key: number-classification
+        title: Number classification
+        concepts:
+          - slug: odd-number-out
+            title: Odd number out
+            summary: >-
+              Three numbers share a property (prime, perfect square or cube, square ± 1,
+              multiple of k, digit sum) and one does not. Test properties from the most common:
+              primes, squares and cubes, divisibility, then digit patterns.
+            difficulty: easy
+            weight: 1.2
+            formulas:
+              - key: divisibility
+                name: Divisibility tests
+                expression: "by 3 (or 9): digit sum divisible by 3 (or 9);  by 4: last two digits divisible by 4;  by 8: last three digits divisible by 8;  by 11: (sum of alternate digits) − (sum of the other digits) is 0 or a multiple of 11"
+                example: {problem: "Is 7,392 divisible by 11?", solution: "(7 + 9) − (3 + 2) = 11 → yes"}
+            patterns:
+              - key: odd-property
+                title: The number without the shared property
+                example_stem: "Select the odd number: 37, 41, 43, 49, 53"
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: odd-power
+                title: Odd number in a set of powers
+                example_stem: "Select the number that does not belong to the group: 9, 25, 49, 81, 121"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 25
+            shortcuts:
+              - key: prime-test
+                title: Test primes only up to √n
+                kind: shortcut
+                rule: "To check whether n is prime, divide it only by the primes up to √n."
+                example: {problem: "Is 391 prime?", standard: "Divide by every number in turn", shortcut: "√391 < 20; trying primes up to 19 gives 391 = 17 × 23, so it is not prime", seconds_saved: 20}
+                pattern: odd-property
+
+          - slug: number-pair-set-classification
+            title: Odd number pair or set out
+            summary: >-
+              Number pairs or triads where three follow a rule (b = a³, b = a² + k, middle =
+              product of the ends) and one breaks it. As in number set analogy, the rule acts on
+              whole numbers; check every option against the rule found from two of them.
+            difficulty: medium
+            weight: 2.0
+            prerequisites: [number-pair-analogy]
+            patterns:
+              - key: odd-pair
+                title: Odd number pair out
+                example_stem: "Select the odd number pair: (3, 27), (4, 64), (5, 125), (6, 206)"
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+              - key: odd-triad
+                title: Odd number set out
+                example_stem: "Select the set that is different from the others: (a) (2, 8, 4) (b) (3, 18, 6) (c) (5, 40, 8) (d) (4, 20, 6)"
+                frequency: high
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: rule-from-two
+                title: Rule from two agreeing options
+                kind: elimination
+                rule: "Find a rule that two options obviously share, then test the remaining two; stop as soon as one fails. Avoid testing four rules on four options."
+                example: {problem: "(2, 8, 4), (3, 18, 6), (5, 40, 8), (4, 20, 6)", shortcut: "2 × 4 = 8 and 3 × 6 = 18 → middle = product of ends; 5 × 8 = 40 fits, 4 × 6 = 24 ≠ 20 → (4, 20, 6)", seconds_saved: 15}
+                pattern: odd-triad
+
+      - key: letter-classification
+        title: Letter classification
+        concepts:
+          - slug: letter-cluster-classification
+            title: Odd letter cluster out
+            summary: >-
+              Letter clusters built with the same steps (+2, +2), the same opposite-letter
+              structure or the same vowel pattern; the odd cluster breaks it. Write positions and
+              compare the differences.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [alphabet-positions-opposites]
+            patterns:
+              - key: odd-steps
+                title: Odd cluster by letter steps
+                example_stem: "Select the odd letter-cluster: BDF, GIK, MOQ, RTW"
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+              - key: odd-opposite-pair
+                title: Odd pair of opposite letters
+                example_stem: "Select the odd letter pair: AZ, CX, EV, GS"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 25
+            shortcuts:
+              - key: step-pattern
+                title: Reduce each cluster to its step pattern
+                kind: shortcut
+                rule: "Convert each cluster to the steps between its letters; three clusters share one step pattern and the fourth does not."
+                example: {problem: "BDF, GIK, MOQ, RTW", standard: "Compare the clusters by eye", shortcut: "+2 +2, +2 +2, +2 +2, +2 +3 → RTW", seconds_saved: 15}
+                pattern: odd-steps

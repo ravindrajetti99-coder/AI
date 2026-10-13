@@ -29,17 +29,114 @@ export type Course = {
   locales: string[];
   status: string;
   color: string;
+  content_policy: "open" | "reviewed_only";
   concept_count: number;
   question_count: number;
 };
 
-export type ConceptBrief = { id: string; slug: string; title: string; weight: number };
+export type ConceptBrief = { id: string; slug: string; title: string; weight: number; tiers: string[] };
 
-export type TreeNode = { id: string; node_type: string; title: string; position: number; concepts: ConceptBrief[]; children: TreeNode[] };
+export type TreeNode = { id: string; key: string | null; node_type: string; title: string; position: number; tiers: string[]; concepts: ConceptBrief[]; children: TreeNode[] };
 
-export type ExamProfile = { id: string; slug: string; name: string; body: string; domain: string; pattern: Record<string, unknown> };
+export type ExamSection = {
+  name: string;
+  subject?: string;
+  questions: number;
+  marks: number;
+  marks_per_question?: number;
+  negative_marks?: number;
+  duration_minutes?: number;
+  qualifying?: boolean;
+  session?: string;
+  group?: string;
+  module?: string;
+};
 
-export type CourseDetail = Course & { exam_profile: ExamProfile | null; tree: TreeNode[] };
+export type ExamPattern = {
+  stage?: string;
+  sections?: ExamSection[];
+  marks_per_question?: number;
+  negative_marks?: number;
+  duration_minutes?: number;
+  qualifying?: boolean;
+  mode?: string;
+  components?: { name: string; duration_minutes: number; qualifying: boolean; session?: string; description?: string }[];
+  notes?: string[];
+};
+
+export type ExamProfile = { id: string; slug: string; name: string; body: string; domain: string; pattern: ExamPattern & Record<string, unknown> };
+
+export type Strategy = {
+  id: string;
+  key: string;
+  title: string;
+  scope: string;
+  scope_title: string;
+  exam: string | null;
+  status: string;
+  summary?: string;
+  minutes?: number;
+  seconds_per_question?: number;
+  target_attempts?: number;
+  accuracy_target?: number;
+  attempt_order?: string[];
+  tactics?: string[];
+  avoid?: string[];
+};
+
+export type CourseDetail = Course & { exam_profile: ExamProfile | null; exams: ExamProfile[]; strategies: Strategy[]; tree: TreeNode[] };
+
+export type Formula = {
+  id: string;
+  key: string;
+  name: string;
+  expression: string;
+  variables: { symbol: string; meaning: string }[];
+  conditions: string;
+  example: { problem?: string; solution?: string };
+  status: string;
+};
+
+export type Shortcut = {
+  id: string;
+  key: string;
+  title: string;
+  kind: "shortcut" | "alternative" | "elimination" | "approximation" | "memory";
+  rule: string;
+  when_to_use: string;
+  steps: string[];
+  example: { problem?: string; standard?: string; shortcut?: string; seconds_saved?: number };
+  pitfalls: string[];
+  pattern: string | null;
+  status: string;
+};
+
+export type QuestionPattern = {
+  id: string;
+  key: string;
+  title: string;
+  description: string;
+  example_stem: string;
+  frequency: "high" | "medium" | "low" | "rare";
+  tiers: string[];
+  difficulty: string;
+  target_seconds: number;
+  pyq_count: number;
+  status: string;
+};
+
+export type StudyPack = {
+  concept: { id: string; slug: string; title: string; summary: string };
+  lesson_levels: Record<string, number[]>;
+  flashcard_count: number;
+  formulas: Formula[];
+  shortcuts: Shortcut[];
+  patterns: QuestionPattern[];
+  pyq: { total: number; by_year: Record<string, number>; by_tier: Record<string, number>; first_year: number | null; last_year: number | null };
+  strategies: Strategy[];
+  reviewed_only: boolean;
+  preview: boolean;
+};
 
 export type ConceptDetail = {
   id: string;
@@ -61,6 +158,7 @@ export type LessonBody = {
   examples: { title: string; body: string }[];
   diagram: string;
   key_points: string[];
+  solving_method?: string[];
   common_mistakes: string[];
   memory_technique: string;
   exam_relevance: string;
@@ -275,4 +373,60 @@ export type TestReport = {
     explanation: string;
     feedback: Feedback;
   }[];
+};
+
+export type CoverageBucket = { title: string; concepts: number; complete: number; percent: number; missing: Record<string, number> };
+
+export type CoverageConcept = {
+  concept_id: string;
+  slug: string;
+  title: string;
+  subject: string;
+  chapter: string;
+  chapter_title: string;
+  tiers: string[];
+  have: Record<string, number> & { lessons: string[] };
+  missing: Record<string, number | string[]>;
+};
+
+export type Coverage = {
+  course: { slug: string; title: string; status: string; content_policy: string };
+  totals: CoverageBucket;
+  subjects: (CoverageBucket & { key: string; chapters: (CoverageBucket & { key: string })[] })[];
+  mocks: { exam: string; name: string; mocks_planned: number; ready: boolean; sections: { name: string; subject: string; questions_per_mock: number; needed: number; available: number }[] }[];
+  ready: boolean;
+  concepts?: CoverageConcept[];
+};
+
+export type AdminCourse = { id: string; slug: string; title: string; domain: string; status: string; content_policy: string; has_targets: boolean };
+
+export type PyqImportRow = {
+  id: string;
+  filename: string;
+  format: "json" | "csv";
+  dry_run: boolean;
+  status: string;
+  summary: { paper?: string; rows?: number; created?: number; updated?: number; unchanged?: number; duplicate?: number; invalid?: number; unmapped?: number; dry_run?: boolean };
+  error_count: number;
+  errors?: { row: number; number: number | null; outcome: string; error: string }[];
+  job_id: string | null;
+  job_status: string | null;
+  job_error: string;
+  created_at: string | null;
+  finished_at: string | null;
+};
+
+export type PyqSource = {
+  id: string;
+  key: string;
+  exam: string;
+  tier: string;
+  year: number;
+  exam_date: string;
+  shift: string;
+  title: string;
+  source: string;
+  source_url: string;
+  licence: string;
+  questions: number;
 };

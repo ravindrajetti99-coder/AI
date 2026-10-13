@@ -21,6 +21,7 @@ class LessonOut(BaseModel):
     examples: list[Example] = Field(default_factory=list)
     diagram: str = ""  # Mermaid source, optional
     key_points: list[str] = Field(default_factory=list)
+    solving_method: list[str] = Field(default_factory=list)  # step-by-step method for exam questions
     common_mistakes: list[str] = Field(default_factory=list)
     memory_technique: str = ""
     exam_relevance: str = ""

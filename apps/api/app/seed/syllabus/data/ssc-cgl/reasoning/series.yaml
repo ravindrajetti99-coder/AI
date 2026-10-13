@@ -1,0 +1,393 @@
+key: series
+title: Series
+strategies:
+  - key: approach
+    title: "Series: write the steps before guessing"
+    summary: >-
+      Number, letter and mixed series are solved by writing the step between terms (difference,
+      ratio or letter gap) under the series. Most series use one of a few rules: constant or
+      growing differences, × k ± c, squares and cubes, or two interleaved series.
+    seconds_per_question: 35
+    accuracy_target: 0.9
+    tactics:
+      - "Write the first differences under every number series; if they are not regular, try second differences, ratios, then alternate terms."
+      - "Convert letters to positions (EJOTY anchors) and treat each position in a letter cluster as its own series."
+      - "If terms grow very fast, test multiplication (× 2 + 1, × n) before differences."
+    avoid:
+      - "Stopping at a rule that fits only the first three terms; check it on every given term."
+
+topics:
+  - key: alphabet-series
+    title: Alphabet series
+    concepts:
+      - slug: alphabet-positions-opposites
+        title: Letter positions and opposite letters
+        summary: >-
+          Every letter has a forward position (A = 1 … Z = 26), a reverse position (27 − n) and
+          an opposite letter whose position adds with it to 27 (A–Z, M–N). These facts power
+          letter series, coding and analogy; SSC also asks direct questions like 'which letter is
+          7th to the right of the 10th letter from the left'.
+        difficulty: easy
+        weight: 1.5
+        formulas:
+          - key: reverse-opposite
+            name: Reverse position and opposite letter
+            expression: "reverse position = 27 − p;  opposite letter of the letter at p = the letter at 27 − p"
+            variables:
+              - {symbol: p, meaning: forward position of the letter (A = 1)}
+            example: {problem: "Reverse position and opposite letter of R", solution: "R = 18 → 27 − 18 = 9 → 9th from Z, and the opposite letter is I"}
+          - key: relative-position
+            name: Letter relative to another letter
+            expression: "k-th to the right of the m-th letter from the left = (m + k)-th from the left;  k-th to the left of the m-th letter from the right = (m + k)-th from the right = (27 − m − k)-th from the left"
+            example: {problem: "Which letter is 5th to the left of the 8th letter from the right?", solution: "(8 + 5) = 13th from the right = (27 − 13) = 14th from the left = N"}
+        patterns:
+          - key: position-question
+            title: Letter at a position relative to another
+            example_stem: "Which letter is the 7th to the right of the 10th letter from the left in the English alphabet?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: reverse-alphabet
+            title: Positions in the reversed alphabet
+            example_stem: "If the English alphabet is written in reverse order, which letter will be 6th to the left of the 15th letter from the left?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: ejoty
+            title: EJOTY anchors
+            kind: memory
+            rule: "E = 5, J = 10, O = 15, T = 20, Y = 25; reach any letter in one or two steps from the nearest anchor."
+            example: {problem: "Position of W", standard: "Count A, B, C … W", shortcut: "Y = 25, so W = 23", seconds_saved: 6}
+            pattern: position-question
+          - key: opposite-pairs
+            title: Opposite letter pairs
+            kind: memory
+            rule: "Opposite letters add to 27: AZ, BY, CX, DW, EV, FU, GT, HS, IR, JQ, KP, LO, MN. Tags help: BY (by), DW (dew), GT (G.T. Road), HS (high school), IR (Indian Railways), LO (love), MN (man)."
+            example: {problem: "Opposite letter of H", standard: "27 − 8 = 19 → S", shortcut: "HS (high school) → S", seconds_saved: 4}
+
+      - slug: letter-series
+        title: Letter series (single letters)
+        summary: >-
+          A sequence of single letters moving by a constant, growing or alternating step (B, E,
+          H, K …); find the next or missing letter. Convert to positions, find the step, and
+          wrap past Z when needed.
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [alphabet-positions-opposites]
+        patterns:
+          - key: constant-step
+            title: Letters with a constant step
+            example_stem: "Select the letter that comes next: B, E, H, K, N, ?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: growing-step
+            title: Letters with a growing step
+            example_stem: "Select the letter that comes next: A, C, F, J, O, ?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: gap-row
+            title: Write the gap row
+            kind: shortcut
+            rule: "Write the gaps between positions under the letters; a constant gap, a gap growing by 1, or two alternating gaps covers nearly every letter series."
+            example: {problem: "A, C, F, J, O, ?", standard: "Recite the alphabet looking for a pattern", shortcut: "Gaps +2, +3, +4, +5 → +6 → O(15) + 6 = 21 → U", seconds_saved: 15}
+            pattern: growing-step
+
+      - slug: letter-cluster-series
+        title: Letter cluster series
+        summary: >-
+          Each term is a group of letters; every position in the group follows its own step
+          (first letters +2, second letters −1, third letters +3 …). Solve one column at a time.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [letter-series]
+        patterns:
+          - key: column-steps
+            title: Cluster series with a step per position
+            example_stem: "Select the letter-cluster that can replace the question mark (?) in the series: DKM, FJP, HIS, JHV, ?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: opposite-pair-series
+            title: Series of opposite-letter pairs
+            example_stem: "Select the term that comes next: AZ, CX, FU, JQ, ?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: column-method
+            title: Read the clusters column by column
+            kind: shortcut
+            rule: "Read the first letters of all terms as one series, then the second letters, then the third; each column is a simple letter series."
+            example: {problem: "DKM, FJP, HIS, JHV, ?", standard: "Compare whole clusters", shortcut: "D F H J → L; K J I H → G; M P S V → Y → LGY", seconds_saved: 20}
+            pattern: column-steps
+
+      - slug: repeating-letter-pattern-series
+        title: Missing letters in a repeating pattern
+        summary: >-
+          A string such as 'a _ b c a a _ c a a b _' repeats a short block; find the letters
+          that fill the blanks, in order. Find the block length, split the string into blocks,
+          and fill each blank from the block.
+        difficulty: easy
+        weight: 1.0
+        patterns:
+          - key: fill-blanks
+            title: Fill the blanks of a repeating block
+            example_stem: "Which sequence of letters, when placed in the blanks one after another, will complete the letter series? a _ b c a a _ c a a b _"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: rotating-block
+            title: Blocks that rotate (abc, bca, cab)
+            example_stem: "Which sequence of letters, when placed in the blanks one after another, will complete the letter series? a b c b _ a c _ b a _ c"
+            frequency: low
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: block-length
+            title: Find the block length first
+            kind: shortcut
+            rule: "Count all places (letters and blanks) and try block lengths that divide the count (3, 4, 5, 6); the right length makes the complete blocks match."
+            example: {problem: "a _ b c a a _ c a a b _ (12 places)", standard: "Try letters in the blanks one by one", shortcut: "Block length 4 is 'aabc' → blanks a, b, c", seconds_saved: 20}
+            pitfalls: ["Some series rotate the block (abc, bca, cab); if identical blocks do not fit, check for rotation."]
+            pattern: fill-blanks
+
+  - key: number-series
+    title: Number series
+    concepts:
+      - slug: reasoning-number-series-differences
+        title: "Number series: difference method"
+        summary: >-
+          Series whose consecutive differences are constant, grow steadily, or form their own
+          series (second differences, squares, primes). The most common number series in SSC;
+          write the row of differences before guessing.
+        difficulty: easy
+        weight: 1.5
+        formulas:
+          - key: arithmetic-term
+            name: n-th term with a constant difference
+            expression: "t_n = a + (n − 1) × d"
+            variables:
+              - {symbol: a, meaning: first term}
+              - {symbol: d, meaning: common difference}
+            example: {problem: "10th term of 4, 9, 14, …", solution: "4 + 9 × 5 = 49"}
+        patterns:
+          - key: growing-difference
+            title: Differences growing by a constant
+            example_stem: "Select the number that comes next: 3, 7, 13, 21, 31, ?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: second-difference
+            title: Differences that form their own series
+            example_stem: "Select the number that comes next: 2, 3, 7, 16, 32, ?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: difference-row
+            title: Difference row
+            kind: shortcut
+            rule: "Write the first differences; if they are not constant, write the second differences or compare the first differences with squares, cubes or primes."
+            example: {problem: "2, 3, 7, 16, 32, ?", standard: "Guess multiplication rules", shortcut: "Differences 1, 4, 9, 16 are squares → next 25 → 57", seconds_saved: 20}
+            pattern: second-difference
+
+      - slug: reasoning-number-series-operations
+        title: "Number series: multiplication and mixed operations"
+        summary: >-
+          Each term comes from the previous one by an operation such as × 2 + 1, × 3 − 2, or a
+          growing operation (× 1 + 1, × 2 + 2, × 3 + 3 …). When terms grow fast, try
+          multiplication before differences.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [reasoning-number-series-differences]
+        patterns:
+          - key: multiply-add
+            title: Constant multiply-and-add rule
+            example_stem: "Select the number that comes next: 2, 5, 11, 23, 47, ?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: growing-operation
+            title: Operation that grows each step
+            example_stem: "Select the number that comes next: 3, 4, 10, 33, 136, ?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: ratio-check
+            title: Divide to find the multiplier
+            kind: shortcut
+            rule: "If terms roughly double or triple, divide each term by the previous one; the whole-number part gives the multiplier and the remainder gives the number added."
+            example: {problem: "3, 4, 10, 33, 136, ?", standard: "Differences 1, 6, 23, 103 lead nowhere", shortcut: "× 1 + 1, × 2 + 2, × 3 + 3, × 4 + 4 → 136 × 5 + 5 = 685", seconds_saved: 25}
+            pattern: growing-operation
+
+      - slug: reasoning-number-series-powers
+        title: "Number series: squares, cubes and primes"
+        summary: >-
+          Terms are squares, cubes or primes, or these with a small change (n² + 1, n³ − 1,
+          squares of primes). Recognising squares to 30, cubes to 15 and the 25 primes below 100
+          on sight solves these at once.
+        difficulty: easy
+        weight: 1.2
+        patterns:
+          - key: square-plus
+            title: Squares plus or minus a constant
+            example_stem: "Select the number that comes next: 2, 5, 10, 17, 26, ?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: cube-minus
+            title: Cubes plus or minus a constant
+            example_stem: "Select the number that comes next: 0, 7, 26, 63, 124, ?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: prime-based
+            title: Primes and squares of primes
+            example_stem: "Select the number that comes next: 4, 9, 25, 49, 121, ?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+        shortcuts:
+          - key: near-power
+            title: Spot the nearby power
+            kind: memory
+            rule: "Learn the primes below 100, squares to 30 and cubes to 15; a term one more or one less than such a number signals n² ± 1 or n³ ± 1."
+            example: {problem: "0, 7, 26, 63, 124, ?", standard: "Differences 7, 19, 37, 61, then second differences", shortcut: "Each term is one less than a cube (1, 8, 27, 64, 125) → 216 − 1 = 215", seconds_saved: 20}
+            pattern: cube-minus
+
+  - key: trends
+    title: "Trends: alternating and wrong-term series"
+    concepts:
+      - slug: alternating-number-series
+        title: Alternating and interleaved number series
+        summary: >-
+          Two independent series are interleaved (odd places and even places), or two
+          operations alternate (+2, × 2). If a series rises and falls or jumps irregularly,
+          split it into alternate terms.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [reasoning-number-series-differences]
+        patterns:
+          - key: two-series
+            title: Two series interleaved
+            example_stem: "Select the number that comes next: 2, 10, 4, 20, 8, 40, ?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: alternating-operations
+            title: Two operations used alternately
+            example_stem: "Select the number that comes next: 4, 6, 12, 14, 28, 30, ?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: split-alternate
+            title: Split into alternate terms
+            kind: shortcut
+            rule: "Underline alternate terms; if each set forms a simple series, continue the one the blank belongs to."
+            example: {problem: "2, 10, 4, 20, 8, 40, ?", standard: "Look for one rule for all terms", shortcut: "Places 1, 3, 5: 2, 4, 8 → the 7th term is 16", seconds_saved: 15}
+            pattern: two-series
+
+      - slug: wrong-term-number-series
+        title: Wrong term in a number series
+        summary: >-
+          One term breaks an otherwise regular series; find it. Fix the rule from the terms that
+          agree, then check each term, because one wrong term spoils the two differences next to it.
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [reasoning-number-series-differences, reasoning-number-series-powers]
+        patterns:
+          - key: wrong-term
+            title: Find the wrong number
+            example_stem: "Find the wrong number in the series: 5, 10, 17, 26, 38, 50"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: wrong-in-multiplicative
+            title: Wrong number in a multiplicative series
+            example_stem: "Find the wrong number in the series: 3, 7, 15, 31, 64, 127"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: two-bad-differences
+            title: The term between two bad differences
+            kind: shortcut
+            rule: "A single wrong term spoils the two differences on either side of it; the term between the two irregular differences is the wrong one."
+            example: {problem: "5, 10, 17, 26, 38, 50", standard: "Test each term against several rules", shortcut: "Differences 5, 7, 9, 12, 12 should be 5, 7, 9, 11, 13 → the term between the bad pair, 38, should be 37", seconds_saved: 20}
+            pattern: wrong-term
+
+  - key: alphanumeric
+    title: Alphanumeric series
+    concepts:
+      - slug: alphanumeric-series
+        title: Alphanumeric series
+        summary: >-
+          Terms combine letters and numbers (A2, C6, E12 …); the letter parts and the number
+          parts each follow their own rule. SSC also gives a string of letters, digits and
+          symbols and asks for the element at a position relative to another.
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [letter-series, reasoning-number-series-differences]
+        formulas:
+          - key: string-position
+            name: Element relative to another in a string
+            expression: "k-th to the right of the m-th element from the left = (m + k)-th from the left;  k-th to the left of it = (m − k)-th from the left"
+            example: {problem: "In 'R 4 # T 7 K @ 2 M 9', which element is 3rd to the right of the 4th from the left?", solution: "4 + 3 = 7th from the left = @"}
+        patterns:
+          - key: mixed-term
+            title: Letter-number terms
+            example_stem: "Select the term that comes next: A2, C6, E12, G20, ?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: string-element
+            title: Element at a position in a mixed string
+            example_stem: "In the sequence R 4 # T 7 K @ 2 M 9 $ P 3 E, which element is 4th to the left of the 10th element from the left?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: split-parts
+            title: Split letters from numbers
+            kind: shortcut
+            rule: "Write the letter parts as one series and the number parts as another and solve each separately."
+            example: {problem: "A2, C6, E12, G20, ?", standard: "Treat each term as one unit", shortcut: "Letters A C E G → I; numbers 2, 6, 12, 20 = 1×2, 2×3, 3×4, 4×5 → 30 → I30", seconds_saved: 15}
+            pattern: mixed-term
+
+  - key: semantic
+    title: Semantic series
+    concepts:
+      - slug: logical-word-sequence
+        title: Logical sequence of words
+        summary: >-
+          Arrange words in a meaningful order: stages of life or of a process, part to whole,
+          small to large, or the order of events (seed → plant → tree). SSC gives four or five
+          numbered words and options as number sequences.
+        difficulty: easy
+        weight: 1.2
+        patterns:
+          - key: life-process
+            title: Stages of life or of a process
+            example_stem: "Arrange the words in a logical and meaningful order: 1. Adult 2. Child 3. Infant 4. Old 5. Adolescent"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: part-whole
+            title: From part to whole
+            example_stem: "Arrange the words in a logical and meaningful order: 1. Page 2. Library 3. Book 4. Line 5. Shelf"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: anchor-ends
+            title: Fix the first and last word
+            kind: elimination
+            rule: "Find the first and last word (smallest and largest, or start and end of the process); usually only one option starts and ends with them."
+            example: {problem: "Page, Library, Book, Line, Shelf", standard: "Order all five words", shortcut: "Starts with Line (4), ends with Library (2) → only 4, 1, 3, 5, 2 fits", seconds_saved: 10}
+            pattern: part-whole

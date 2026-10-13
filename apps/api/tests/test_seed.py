@@ -22,7 +22,7 @@ from app.seed.loader import SeedError, load
 
 def test_reload_is_a_no_op(sdb):
     stats = load(sdb)
-    assert dict(stats) == {"courses.loaded": 6}
+    assert dict(stats) == {"courses.loaded": 7}  # 6 seed courses + the SSC CGL syllabus
 
 
 def test_only_filters_and_rejects_unknown_slugs(sdb):

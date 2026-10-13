@@ -1,0 +1,112 @@
+# SSC CGL: the complete course (Tier 1 and Tier 2 Paper I). The syllabus below is the whole exam;
+# lessons, questions and flashcards for every concept are generated once by the content engine,
+# reviewed, stored and then served to every learner. The course stays a draft (staff only) until
+# the coverage report shows its content is complete.
+slug: ssc-cgl
+title: "SSC CGL: Complete Preparation (Tier 1 and Tier 2)"
+description: >-
+  Every subject of SSC CGL, from first principles to exam speed: Quantitative Aptitude,
+  General Intelligence and Reasoning, English Language, General Awareness and Computer
+  Knowledge. Each concept comes with beginner and advanced lessons, a formula and shortcut
+  sheet, the question patterns SSC repeats, previous-year questions, practice sets and full
+  mock tests marked like the real exam.
+domain: competitive
+level: beginner to exam level
+locales: [en, te]
+color: amber
+status: draft
+content_policy: reviewed_only
+# Formulas, patterns, shortcuts and strategies below enter the review queue; a reviewer approves
+# them in the content studio. Changing one here sends it back for review.
+authored_status: in_review
+exams: [ssc-cgl-tier1, ssc-cgl-tier2]
+subjects: [quant, reasoning, english, general-awareness, computer]
+
+# Verified content each concept needs before it counts as complete (the coverage report and the
+# generation engine both read this). Subject and chapter entries override the default.
+content_requirements:
+  default:
+    lesson_levels: [1, 3]   # beginner and advanced
+    locales: [en]
+    formulas: 0
+    shortcuts: 1
+    patterns: 1
+    practice_questions: 12
+    mock_questions: 6
+    flashcards: 4
+  subjects:
+    quant: {formulas: 1, shortcuts: 2, patterns: 2, practice_questions: 20, mock_questions: 8}
+    reasoning: {shortcuts: 1, patterns: 2, practice_questions: 15, mock_questions: 8, flashcards: 2}
+    english: {shortcuts: 0, patterns: 1, practice_questions: 15, mock_questions: 8}
+    general-awareness: {shortcuts: 1, patterns: 1, practice_questions: 10, mock_questions: 5, flashcards: 8}
+    computer: {shortcuts: 0, patterns: 1, practice_questions: 10, mock_questions: 5, flashcards: 6}
+  chapters:
+    quant.data-interpretation: {formulas: 0, flashcards: 0}
+
+# Full mock tests wanted per exam stage (mock-pool questions needed = mocks × section questions).
+mock_targets:
+  ssc-cgl-tier1: 20
+  ssc-cgl-tier2: 10
+
+strategies:
+  - key: tier1-overall
+    title: "Tier 1: 100 questions in 60 minutes"
+    exam: ssc-cgl-tier1
+    summary: >-
+      Tier 1 is a speed test that only shortlists for Tier 2, so the goal is a safe score well
+      above the cut-off with high accuracy. One timer covers all four sections, which lets you
+      choose the order.
+    minutes: 60
+    seconds_per_question: 36
+    target_attempts: 85
+    accuracy_target: 0.9
+    attempt_order:
+      - "General Awareness (about 8 minutes: answer what you know, skip the rest)"
+      - "English Comprehension (about 12 minutes)"
+      - "General Intelligence and Reasoning (about 15 minutes)"
+      - "Quantitative Aptitude (about 22 minutes)"
+      - "Second pass over marked questions (remaining time)"
+    tactics:
+      - "Make two passes: first answer everything solvable in under a minute, mark the rest, then return."
+      - "With −0.5 per wrong answer, guess only after eliminating two options."
+      - "Start Quant with arithmetic and direct-formula questions; leave long geometry or DI sets for the second pass."
+      - "Take at least one full mock a week from the second month, and review every wrong or slow question."
+    avoid:
+      - "Spending more than 90 seconds on any single question in the first pass."
+      - "Changing answers on a hunch during the final minute."
+
+  - key: tier2-overall
+    title: "Tier 2 Paper I: section timers and +3/−1 marking"
+    exam: ssc-cgl-tier2
+    summary: >-
+      Tier 2 Paper I decides the merit. Each section has its own timer and a wrong answer costs a
+      full mark, so accuracy matters more than in Tier 1. Computer Knowledge only has to be
+      passed, but failing it disqualifies the whole paper.
+    minutes: 135
+    accuracy_target: 0.85
+    attempt_order:
+      - "Section I (60 minutes): Mathematical Abilities first while fresh (about 38 minutes), then Reasoning (about 22 minutes)"
+      - "Section II (60 minutes): English (about 35 minutes, reading comprehension last), then General Awareness (about 10 minutes), keep 15 minutes for review"
+      - "Section III (15 minutes): Computer Knowledge, secure the qualifying marks with care"
+    tactics:
+      - "With −1 per wrong answer, a guess pays only when you can rule out at least two options."
+      - "English carries 135 marks: build daily reading and vocabulary practice from the first week."
+      - "Practise every mock with the real section timers; you cannot carry spare time to the next section."
+      - "Prepare the Data Entry Speed Test separately with typing practice from the start; it is qualifying."
+    avoid:
+      - "Treating Computer Knowledge as optional because it is qualifying."
+      - "Attempting every Maths question: skip one or two lengthy ones to protect accuracy."
+
+  - key: study-plan
+    title: "Study plan: concepts first, then speed, then mocks"
+    summary: >-
+      The same syllabus serves both tiers, with Tier 2 asking more depth in Maths and English.
+      Learn each chapter in order, practise its patterns, then build exam speed with timed sets
+      and full mocks.
+    tactics:
+      - "Phase 1 (weeks 1-8): finish every concept's beginner lesson and practice set, one Quant and one Reasoning chapter at a time, with daily English and General Awareness."
+      - "Phase 2 (weeks 9-14): advanced lessons, shortcut sheets and previous-year questions chapter by chapter; timed sectional tests twice a week."
+      - "Phase 3 (from week 15): full mocks (Tier 1, then Tier 2), daily revision from the spaced-revision plan, and current affairs of the last 6-8 months."
+      - "Revise each concept on day 1, 3, 7, 15 and 30 after learning it (the daily plan schedules this)."
+    avoid:
+      - "Taking full mocks before the core concepts are covered: use sectional tests first."

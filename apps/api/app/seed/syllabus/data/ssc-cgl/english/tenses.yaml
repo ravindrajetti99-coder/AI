@@ -1,0 +1,305 @@
+key: tenses
+title: Tenses
+strategies:
+  - key: approach
+    title: "Tenses: the time marker decides"
+    summary: >-
+      Tense questions are decided by a time marker (since, for, ago, yesterday, by next year,
+      already) or by the tense of the other clause. Find that clue first, then pick the form that
+      matches it; most errors are a present perfect with a past time, a missing past perfect, or
+      'will' inside a time or if-clause.
+    seconds_per_question: 25
+    accuracy_target: 0.9
+    tactics:
+      - "Underline the time marker first: ago/yesterday/last → past simple; since/for up to now → present perfect (continuous); by + future time → future perfect."
+      - "With two past actions, put the earlier one in the past perfect."
+      - "In clauses after when, until, as soon as, if and unless, use the present tense for the future."
+      - "Check conditionals as a pair: if + past perfect goes with would have + V3."
+    avoid:
+      - "Using the past perfect for a single finished action ('I had seen him yesterday')."
+
+topics:
+  - key: present
+    title: Present tenses
+    concepts:
+      - ref: english-present-tenses
+        weight: 1.2
+        formulas:
+          - key: present-forms
+            name: Present simple and present continuous
+            expression: "present simple: subject + V1 (V1 + s/es with he, she, it);  present continuous: am / is / are + V-ing"
+            conditions: "Simple for habits, facts and timetables (always, usually, every day); continuous for now and temporary actions (now, at present, look!). State verbs (know, believe, own, have = possess, belong, seem) stay simple."
+            example: {problem: "Correct: 'I am knowing the answer.'", solution: "I know the answer (know is a state verb)."}
+        patterns:
+          - key: stative-continuous
+            title: "Spot the error: state verb in the continuous"
+            example_stem: "Identify the segment that contains an error: My uncle / is having / a large farm / near Guntur."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: simple-or-continuous
+            title: "Fill in the blank: present simple or continuous from the time marker"
+            example_stem: "Look! The children ___ in the rain. (a) play (b) are playing (c) plays (d) have play"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+      - slug: english-present-perfect
+        title: Present perfect and present perfect continuous
+        summary: >-
+          The present perfect (has/have + V3) links a past action to the present: experience, a
+          recent result or a state lasting up to now. It is never used with a definite past time
+          (yesterday, last year, ago, in 2015). An action that began in the past and is still going
+          on takes the present perfect continuous with since (point of time) or for (period): 'He
+          has been living here since 2015'; state verbs stay in the present perfect ('I have known
+          him for years').
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [english-present-tenses, english-past-simple]
+        formulas:
+          - key: since-for
+            name: Since and for with perfect tenses
+            expression: "since + point of time (since Monday, since 2015, since he left);  for + period (for two hours, for ten years);  main clause in the present perfect (continuous)"
+            example: {problem: "Correct: 'She is working in this office since 2018.'", solution: "She has been working in this office since 2018."}
+          - key: it-is-since
+            name: Period since a past event
+            expression: "It is / It has been + period + since + past simple"
+            example: {problem: "Correct: 'It is five years since we have met.'", solution: "It is five years since we met."}
+        patterns:
+          - key: past-time-marker
+            title: "Spot the error: present perfect with a definite past time"
+            example_stem: "Identify the segment that contains an error: I have met / the new manager / at the airport / yesterday evening."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: since-continuous
+            title: "Spot the error: present tense where 'since/for' needs the perfect"
+            example_stem: "Identify the segment that contains an error: My father / is teaching / in this school / for twenty years."
+            frequency: high
+            difficulty: medium
+            target_seconds: 25
+        shortcuts:
+          - key: marker-check
+            title: Past marker kills the perfect
+            kind: elimination
+            rule: "If the sentence contains yesterday, ago, last week, in 2019 or 'when' about a finished time, strike out every option with has/have + V3."
+            example: {problem: "She ___ her degree in 2019. (a) has completed (b) completed (c) has been completing (d) have completed", shortcut: "'in 2019' removes (a), (c) and (d): completed.", seconds_saved: 10}
+            pattern: past-time-marker
+
+  - key: past
+    title: Past tenses
+    concepts:
+      - ref: english-past-simple
+        weight: 1.2
+        patterns:
+          - key: did-base-form
+            title: "Spot the error: past form after 'did'"
+            example_stem: "Identify the segment that contains an error: The peon / did not came / to the office / yesterday."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: ago-past-simple
+            title: "Fill in the blank: past simple with ago, yesterday, last"
+            example_stem: "She ___ the city two years ago. (a) has left (b) left (c) had leaved (d) leaves"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+      - slug: english-past-continuous-perfect
+        title: Past continuous and past perfect
+        summary: >-
+          The past continuous (was/were + -ing) shows an action in progress at a past moment, often
+          interrupted by a past simple action ('I was reading when the lights went out'). The past
+          perfect (had + V3) marks the earlier of two past actions ('The train had left before we
+          reached the station') and is not used for a single past action. The past perfect
+          continuous (had been + -ing) shows an action that had gone on for some time before
+          another past point ('He had been waiting for an hour when the bus came').
+        difficulty: medium
+        weight: 1.4
+        prerequisites: [english-past-simple]
+        formulas:
+          - key: two-past-actions
+            name: Two past actions
+            expression: "earlier action → had + V3;  later action → past simple (linked by before, after, when, by the time, till)"
+            example: {problem: "When I reached the hall, the lecture (start).", solution: "When I reached the hall, the lecture had started."}
+        patterns:
+          - key: earlier-action
+            title: "Spot the error: missing past perfect for the earlier action"
+            example_stem: "Identify the segment that contains an error: By the time the fire brigade arrived, / the whole godown / was already / burnt down."
+            frequency: high
+            difficulty: medium
+            target_seconds: 25
+          - key: interrupted-action
+            title: "Fill in the blank: past continuous for an interrupted action"
+            example_stem: "While she ___ dinner, the guests arrived. (a) cooked (b) was cooking (c) has cooked (d) had been cook"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: single-past-perfect
+            title: "Sentence improvement: past perfect used for one past action"
+            example_stem: "Improve the underlined part: I had visited the museum last Sunday. (a) visited (b) have visited (c) was visited (d) No improvement"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+
+  - key: future
+    title: Future tenses
+    concepts:
+      - slug: english-future-tenses
+        title: Future tenses and future time clauses
+        summary: >-
+          Will/shall + base verb states future facts and decisions, 'be going to' shows plans and
+          signs, the present continuous shows fixed arrangements and the present simple timetables
+          ('The train leaves at six'). The future continuous (will be + -ing) is for an action in
+          progress at a future time and the future perfect (will have + V3) for one completed by a
+          future time, usually with 'by'. In clauses of time and condition (when, before, after,
+          until, as soon as, if, unless) the present tense replaces 'will': 'I will call you when
+          he comes'.
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [english-present-tenses]
+        formulas:
+          - key: time-clause
+            name: No 'will' in time and condition clauses
+            expression: "when / before / after / until / as soon as / if / unless + present tense (or present perfect),  main clause + will + V1"
+            example: {problem: "Correct: 'We will start the meeting as soon as the director will arrive.'", solution: "We will start the meeting as soon as the director arrives."}
+          - key: future-perfect
+            name: Future perfect with 'by'
+            expression: "by + future time → will have + V3"
+            example: {problem: "By next March, she (complete) her course.", solution: "By next March, she will have completed her course."}
+        patterns:
+          - key: will-in-clause
+            title: "Spot the error: 'will' in a time or if-clause"
+            example_stem: "Identify the segment that contains an error: Please wait here / until the doctor / will return / from the ward."
+            frequency: high
+            difficulty: medium
+            target_seconds: 20
+          - key: by-future-perfect
+            title: "Fill in the blank: future perfect or future continuous"
+            example_stem: "By the end of this year, the company ___ two new plants. (a) will open (b) will have opened (c) opens (d) is opening"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+
+  - key: sequence
+    title: Sequence of tenses
+    concepts:
+      - slug: english-tense-sequence
+        title: Sequence of tenses
+        summary: >-
+          When the main verb is in the past, a subordinate clause normally takes a past tense too
+          ('He said that he was tired'). Universal truths, habitual facts and proverbs stay in the
+          present ('The teacher said that the earth revolves round the sun'); a clause of comparison
+          after than or as may take any tense ('He liked you more than he likes me'); 'so that'
+          takes may/can after a present and might/could after a past main verb. A present or future
+          main verb allows any tense in the subordinate clause.
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [english-present-perfect, english-past-continuous-perfect]
+        formulas:
+          - key: sequence-rule
+            name: Sequence rule and its exceptions
+            expression: "past main verb → past in the subordinate clause;  except universal truths, habits, proverbs (present) and clauses of comparison (any tense)"
+            example: {problem: "Correct: 'She told me that she is unwell.'", solution: "She told me that she was unwell."}
+        patterns:
+          - key: past-main-clause
+            title: "Spot the error: present tense after a past main verb"
+            example_stem: "Identify the segment that contains an error: The clerk told us / that he is busy / with the audit / and could not meet us that day."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+          - key: universal-truth
+            title: "Spot the error: universal truth wrongly put into the past"
+            example_stem: "Identify the segment that contains an error: Our teacher / explained that / light travelled faster / than sound."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+          - key: so-that-modal
+            title: "Fill in the blank: might/could after a past main verb"
+            example_stem: "He worked day and night so that he ___ clear the examination. (a) may (b) can (c) might (d) will"
+            frequency: low
+            difficulty: medium
+            target_seconds: 20
+
+  - key: conditionals
+    title: Conditionals and the unreal past
+    concepts:
+      - slug: english-conditionals
+        title: Conditionals (if-clauses)
+        summary: >-
+          The zero conditional states facts (If you heat ice, it melts), the first real future
+          possibilities (If it rains, we will stay in), the second the unreal present (If I were
+          rich, I would travel; 'were' for every person) and the third the unreal past (If he had
+          studied, he would have passed). 'Would' never goes in the if-clause, 'unless' already
+          means 'if not', and 'if' can be dropped by inversion: 'Had I known', 'Were I you',
+          'Should you need help'.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [english-future-tenses, english-past-continuous-perfect]
+        formulas:
+          - key: conditional-types
+            name: The four conditionals
+            expression: "zero: if + present, present;  first: if + present, will + V1;  second: if + past (were), would + V1;  third: if + had + V3, would have + V3"
+            example: {problem: "Correct: 'If he would have left early, he would have caught the train.'", solution: "If he had left early, he would have caught the train."}
+          - key: inverted-conditional
+            name: Conditional without 'if'
+            expression: "If I had known → Had I known;  If I were → Were I;  If you should need → Should you need"
+            example: {problem: "Rewrite without 'if': If I had seen him, I would have told him.", solution: "Had I seen him, I would have told him."}
+        patterns:
+          - key: would-in-if
+            title: "Spot the error: 'would' or wrong tense in the if-clause"
+            example_stem: "Identify the segment that contains an error: If you would have informed me / in time, / I would have / booked the tickets."
+            frequency: high
+            difficulty: medium
+            target_seconds: 25
+          - key: second-conditional
+            title: "Fill in the blank: 'were' in the second conditional"
+            example_stem: "If I ___ the Prime Minister, I would make education free. (a) am (b) was being (c) were (d) had"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: unless-not
+            title: "Spot the error: 'unless' with another 'not'"
+            example_stem: "Identify the segment that contains an error: Unless you do not / submit the form / by Friday, / your claim will lapse."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: pair-check
+            title: Match the clause pair
+            kind: elimination
+            rule: "Read the main clause first: 'would have + V3' forces 'had + V3' in the if-clause; 'would + V1' forces a past form (were); 'will + V1' forces a present."
+            example: {problem: "If she ___ harder, she would have passed. (a) works (b) worked (c) had worked (d) would work", shortcut: "'would have passed' → third conditional → had worked", seconds_saved: 10}
+            pattern: would-in-if
+
+      - slug: english-unreal-past
+        title: "Unreal past: wish, as if, it is time, would rather"
+        summary: >-
+          Some structures use a past form for something that is not real. 'Wish' takes the past
+          simple for a present wish (I wish I knew; I wish I were taller), the past perfect for a
+          past regret (I wish I had listened) and 'would' for a change wanted from others. 'As if'
+          and 'as though' take 'were' or a past form ('He behaves as if he were the owner'); 'It is
+          (high) time' takes subject + past simple ('It is high time we left'); 'would rather' with
+          another subject takes the past ('I would rather you stayed').
+        difficulty: hard
+        weight: 1.0
+        prerequisites: [english-conditionals]
+        patterns:
+          - key: high-time
+            title: "Spot the error: 'It is high time' with a present verb"
+            example_stem: "Identify the segment that contains an error: It is high time / the government / takes strict action / against hoarders."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: wish-regret
+            title: "Fill in the blank: wish + past or past perfect"
+            example_stem: "I wish I ___ your advice before investing the money. (a) took (b) had taken (c) have taken (d) would take"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: as-if
+            title: "Sentence improvement: 'as if' + were"
+            example_stem: "Improve the underlined part: He talks as if he is the owner of the company. (a) as if he were (b) as if he has been (c) as though he is being (d) No improvement"
+            frequency: low
+            difficulty: medium
+            target_seconds: 20

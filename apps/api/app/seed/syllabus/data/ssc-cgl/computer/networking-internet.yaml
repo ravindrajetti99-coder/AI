@@ -1,0 +1,334 @@
+key: networking-internet
+title: "Basics of networking and the internet"
+strategies:
+  - key: approach
+    title: "Networking: one device, one layer, one job"
+    summary: >-
+      Networking questions ask the type of network for a given area, the property of a topology,
+      which device or protocol does a job, which OSI layer handles a task, and IP address, DNS and
+      cloud facts. Tie every device and protocol to its OSI layer and to one sentence of what it does.
+    seconds_per_question: 25
+    accuracy_target: 0.9
+    tactics:
+      - "Learn the OSI layers bottom-up with 'Please Do Not Throw Sausage Pizza Away' and put each device and protocol on its layer."
+      - "Remember the address sizes: MAC 48 bits, IPv4 32 bits, IPv6 128 bits."
+      - "Learn the common port numbers as one list: 20/21 FTP, 22 SSH, 23 Telnet, 25 SMTP, 53 DNS, 80 HTTP, 110 POP3, 143 IMAP, 443 HTTPS."
+    avoid:
+      - "Calling the internet and the World Wide Web the same thing: the web is one service that runs on the internet."
+
+topics:
+  - key: basics
+    title: "Network basics: LAN, MAN, WAN, topologies and media"
+    concepts:
+      - slug: computer-network-types
+        title: "Network types: PAN, LAN, MAN and WAN"
+        summary: >-
+          A computer network links devices to share data and resources. By area it is a PAN (personal area
+          network, a few metres around one person, e.g. Bluetooth), LAN (local area network: a building or
+          campus, fast and privately owned, using Ethernet or Wi-Fi), MAN (metropolitan area network: a city,
+          e.g. a cable TV network or LANs of one city joined together) or WAN (wide area network: a country or
+          the world, using leased lines and satellites; the internet is the largest WAN). By design a network is
+          client-server (central servers provide services) or peer-to-peer (every computer is equal).
+        difficulty: easy
+        weight: 1.3
+        patterns:
+          - key: type-by-area
+            title: Network type from its area
+            example_stem: "A network that connects the computers of the offices of one organisation spread over a single city is a:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: client-peer
+            title: Client-server and peer-to-peer
+            example_stem: "In which network model do all computers have equal status and share resources directly with each other?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: plmw
+            title: "P-L-M-W from small to large"
+            kind: memory
+            rule: "Personal (room) < Local (building) < Metropolitan (city) < Wide (country and world)."
+            pattern: type-by-area
+      - slug: computer-network-topologies
+        title: "Network topologies: bus, star, ring, mesh, tree and hybrid"
+        summary: >-
+          Topology is the layout of a network. In a bus, all nodes share one backbone cable with terminators at
+          its ends, so a break in the backbone stops the network; in a star, every node connects to a central hub
+          or switch (the commonest LAN layout, easy to extend, but the hub is a single point of failure); in a
+          ring, each node links to two neighbours and data travels round the loop, often with a token; in a mesh,
+          nodes have many direct links (a full mesh links every pair), giving the most reliability at the highest
+          cost; a tree is a hierarchy of stars on a backbone, and a hybrid mixes topologies.
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [computer-network-types]
+        formulas:
+          - key: mesh-links
+            name: Links in a full mesh
+            expression: "links = n(n − 1) / 2;  ports per device = n − 1"
+            variables:
+              - {symbol: n, meaning: number of devices}
+            example: {problem: "How many cables are needed to connect 8 computers in a full mesh?", solution: "8 × 7 / 2 = 28 cables, with 7 ports on each computer"}
+          - key: star-ring-links
+            name: Links in star and ring topologies
+            expression: "star: n links to the hub;  ring: n links;  bus: one backbone plus a drop line per device"
+        patterns:
+          - key: topology-feature
+            title: Property of a topology
+            example_stem: "In which topology are all the computers connected to a single central device such as a hub or switch?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: mesh-count
+            title: Links in a mesh topology
+            example_stem: "How many links are required to connect 6 devices in a fully connected mesh topology?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+        shortcuts:
+          - key: failure-test
+            title: Ask what happens when one part fails
+            kind: elimination
+            rule: "Backbone fails → bus is down; hub fails → star is down; one node fails → simple ring is broken; one link fails in a mesh → traffic takes another path."
+            pattern: topology-feature
+      - slug: computer-transmission-media
+        title: "Transmission media and modes: twisted pair, coaxial, optical fibre and wireless"
+        summary: >-
+          Guided (wired) media are twisted-pair cable (telephone and Ethernet LAN cable with RJ-45 plugs), coaxial
+          cable (cable TV) and optical fibre, which carries light pulses by total internal reflection and gives the
+          highest bandwidth, longest reach and immunity to electromagnetic interference. Unguided (wireless) media
+          are radio waves (Wi-Fi, Bluetooth), microwaves (line of sight, satellites) and infrared (remote controls).
+          Data flows in simplex (one way, as from keyboard to computer), half-duplex (both ways in turn, as a
+          walkie-talkie) or full-duplex (both ways at once, as a telephone call) mode; speed is measured in bits
+          per second.
+        difficulty: easy
+        weight: 1.1
+        prerequisites: [computer-network-types]
+        patterns:
+          - key: media-property
+            title: Properties of transmission media
+            example_stem: "Which transmission medium sends data as pulses of light and is not affected by electromagnetic interference?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: duplex-mode
+            title: Simplex, half-duplex and full-duplex
+            example_stem: "Communication by walkie-talkie, in which only one person can speak at a time, is an example of which mode?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+  - key: devices
+    title: Networking devices
+    concepts:
+      - slug: computer-networking-devices
+        title: "Networking devices: modem, hub, switch, bridge, router, repeater, gateway and NIC"
+        summary: >-
+          A modem (modulator-demodulator) converts digital signals to analog and back for telephone or cable
+          lines; a repeater regenerates a weak signal; a hub repeats every incoming signal to all its ports; a
+          switch sends each frame only to the port of the destination MAC address; a bridge joins two LAN
+          segments; a router connects different networks and forwards packets by IP address along the best path;
+          a gateway joins networks that use different protocols; an access point connects Wi-Fi devices to a
+          wired LAN, and a network interface card (NIC) with its unique MAC address connects a computer to the
+          network.
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [computer-network-topologies]
+        patterns:
+          - key: device-job
+            title: Which device does a job
+            example_stem: "Which device connects two different networks and forwards data packets using IP addresses?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: hub-switch-router
+            title: Hub, switch and router compared
+            example_stem: "Which device sends incoming data only to the port of the intended computer, unlike a hub that sends it to all ports?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: device-layers
+            title: Devices climb the OSI layers
+            kind: memory
+            rule: "Layer 1 (physical): repeater, hub, modem; layer 2 (data link): bridge, switch, NIC (MAC addresses); layer 3 (network): router (IP addresses); a gateway can work up to the application layer."
+            pattern: hub-switch-router
+
+  - key: protocols
+    title: "Networking protocols and models: OSI and TCP/IP"
+    concepts:
+      - slug: computer-osi-tcpip
+        title: "OSI model and TCP/IP model"
+        summary: >-
+          The OSI reference model of the International Organization for Standardization (ISO) has seven layers,
+          from bottom to top: Physical (bits over the medium), Data Link (frames, MAC addresses, error detection),
+          Network (packets, IP addresses, routing), Transport (segments, end-to-end delivery, TCP and UDP),
+          Session (opens and closes dialogues), Presentation (translation, encryption, compression) and
+          Application (user services such as HTTP, FTP, SMTP, DNS). The TCP/IP model used by the internet has
+          four layers: Network Access (Link), Internet, Transport and Application.
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [computer-networking-devices]
+        patterns:
+          - key: layer-function
+            title: Function of an OSI layer
+            example_stem: "Which layer of the OSI model is responsible for routing packets between networks?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 20
+          - key: layer-count-order
+            title: Number and order of layers
+            example_stem: "Which is the fourth layer of the OSI model, counting from the bottom?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: pizza
+            title: "Please Do Not Throw Sausage Pizza Away"
+            kind: memory
+            rule: "Bottom-up: Physical, Data Link, Network, Transport, Session, Presentation, Application. Top-down: 'All People Seem To Need Data Processing'."
+            example: {problem: "Fourth layer from the bottom?", shortcut: "Please Do Not Throw → Transport", seconds_saved: 10}
+            pattern: layer-count-order
+      - slug: computer-network-protocols
+        title: "Network protocols: TCP, UDP, IP, HTTP, FTP, SMTP, DHCP and others"
+        summary: >-
+          A protocol is a set of rules for communication. TCP is connection-oriented and reliable (it sets up a
+          connection with a three-way handshake and resends lost data); UDP is connectionless and faster but
+          unreliable (live video, voice calls, DNS queries); IP addresses and routes the packets. Application
+          protocols: HTTP and HTTPS (web pages, ports 80 and 443), FTP (file transfer, ports 20 and 21), SMTP (sends
+          e-mail, port 25), POP3 (110) and IMAP (143) (receive e-mail), DNS (names to addresses, port 53), DHCP
+          (assigns IP addresses automatically), Telnet (23) and SSH (22, encrypted) for remote login, ARP (finds the
+          MAC address for an IP address) and ICMP (error messages and ping); VoIP carries voice over IP networks.
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [computer-osi-tcpip]
+        patterns:
+          - key: protocol-job
+            title: Which protocol does a job
+            example_stem: "Which protocol automatically assigns an IP address to a computer when it joins a network?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: port-numbers
+            title: Well-known port numbers
+            example_stem: "Which port number is used by default for secure web traffic over HTTPS?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: tcp-udp
+            title: TCP is a registered letter, UDP a postcard
+            kind: memory
+            rule: "TCP confirms delivery and keeps order (web, e-mail, file transfer); UDP just sends, faster, with no guarantee (live streaming, calls, games, DNS)."
+            pattern: protocol-job
+
+  - key: internet
+    title: "The internet: IP addresses, DNS and connections"
+    concepts:
+      - slug: computer-ip-dns
+        title: "IP addresses, MAC addresses, domain names and DNS"
+        summary: >-
+          An IPv4 address is 32 bits written as four decimal numbers from 0 to 255 (e.g. 192.168.1.10), giving about
+          4.3 billion addresses; IPv6 uses 128 bits written as eight groups of hexadecimal digits separated by colons.
+          IPv4 classes by first number: A 1-126, B 128-191, C 192-223, D 224-239 (multicast), E 240-255
+          (experimental); 127.0.0.1 is the loopback (localhost), and 10.x.x.x, 172.16-31.x.x and 192.168.x.x are
+          private. A MAC address is the 48-bit physical address burnt into a network card. DNS (Domain Name System)
+          translates domain names such as www.india.gov.in into IP addresses; top-level domains include .com, .org,
+          .net, .edu, .gov and country codes such as .in.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [computer-network-protocols, computer-data-units]
+        formulas:
+          - key: address-space
+            name: Size of the address space
+            expression: "IPv4: 2³² ≈ 4.29 × 10⁹ addresses;  IPv6: 2¹²⁸ addresses"
+          - key: hosts
+            name: Usable hosts in a network
+            expression: "usable hosts = 2ʰ − 2, where h is the number of host bits"
+            conditions: "Two addresses are reserved: the network address and the broadcast address."
+            example: {problem: "Usable hosts in a class C network (24 network bits, 8 host bits)?", solution: "2⁸ − 2 = 254"}
+        patterns:
+          - key: address-bits
+            title: Bits and format of IP and MAC addresses
+            example_stem: "How many bits make up an IPv6 address?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: dns-domains
+            title: DNS and domain names
+            example_stem: "Which system converts a website's domain name into the IP address of its server?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: four-times
+            title: "48, 32, 128"
+            kind: memory
+            rule: "MAC 48 bits (6 bytes, hexadecimal), IPv4 32 bits (4 bytes, dotted decimal), IPv6 128 bits (16 bytes, colon-hexadecimal): IPv6 is four times as long as IPv4."
+            pattern: address-bits
+      - slug: computer-internet-basics
+        title: "The internet: history, ISPs, intranet, extranet and connection types"
+        summary: >-
+          The internet grew from ARPANET, started in 1969 by the US Department of Defense's ARPA, and moved to
+          TCP/IP (designed by Vint Cerf and Bob Kahn) in 1983; in India, VSNL opened public internet access on
+          15 August 1995. Users connect through an internet service provider (ISP) by dial-up, DSL over telephone
+          lines, cable, fibre (FTTH), leased lines, mobile data (4G, 5G), satellite or Wi-Fi hotspots. An intranet
+          is a private network inside an organisation that uses internet technology; an extranet opens part of it
+          to authorised outsiders such as suppliers.
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [computer-network-types]
+        patterns:
+          - key: internet-history
+            title: Origins of the internet
+            example_stem: "The internet developed from which network, set up in 1969 by the US Department of Defense?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: intranet-extranet
+            title: Internet, intranet and extranet
+            example_stem: "A private network that uses internet technology but is available only to an organisation's own employees is called:"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: intra-extra
+            title: Intra = inside, extra = outside too
+            kind: memory
+            rule: "Intranet = inside the organisation only; extranet = the intranet plus chosen outsiders (partners, suppliers); internet = everyone."
+            pattern: intranet-extranet
+
+  - key: cloud
+    title: Cloud computing basics
+    concepts:
+      - slug: computer-cloud-computing
+        title: "Cloud computing: service and deployment models"
+        summary: >-
+          Cloud computing delivers computing resources (servers, storage, software) over the internet on demand,
+          paid per use and scaled up or down quickly. Service models: IaaS (infrastructure: virtual machines and
+          storage), PaaS (platform: tools to build and run applications) and SaaS (software used in a browser, such
+          as Gmail, Google Docs or Microsoft 365). Deployment models: public, private, hybrid and community clouds;
+          large providers include Amazon Web Services, Microsoft Azure and Google Cloud, and cloud storage services
+          include Google Drive, OneDrive, Dropbox and the Government of India's DigiLocker.
+        difficulty: easy
+        weight: 1.1
+        prerequisites: [computer-internet-basics]
+        patterns:
+          - key: service-model
+            title: IaaS, PaaS or SaaS
+            example_stem: "Web-based e-mail such as Gmail, used without installing any software, is an example of which cloud service model?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: deployment-model
+            title: Deployment models and examples
+            example_stem: "A cloud set-up that combines an organisation's own private cloud with a public cloud is called a:"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: how-much-you-manage
+            title: Infrastructure, platform, software
+            kind: memory
+            rule: "IaaS gives you the bare machine (you manage the OS and apps); PaaS gives you the platform (you bring only your code); SaaS gives you the finished software (you just use it)."
+            pattern: service-model

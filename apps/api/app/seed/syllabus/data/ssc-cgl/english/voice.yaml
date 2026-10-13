@@ -1,0 +1,240 @@
+key: voice
+title: Active and Passive Voice
+strategies:
+  - key: approach
+    title: "Voice: tense first, then pronouns"
+    summary: >-
+      Voice questions give a sentence and four conversions; usually three of them get the tense
+      helper, the pronoun case or a preposition wrong. Fix the tense of the given verb first and
+      eliminate options with a different helper, then check the object pronoun after 'by' and
+      any preposition that must stay with the verb.
+    seconds_per_question: 30
+    accuracy_target: 0.95
+    tactics:
+      - "Name the active tense from its helper: has/have → has/have been; is/are + -ing → is/are being; had → had been; will → will be."
+      - "After 'by', the pronoun is objective (by him, by them, by whom)."
+      - "Questions stay questions and commands begin with 'Let' or 'You are requested/advised/ordered'."
+      - "Keep prepositional verbs whole: laughed at, looked after, dealt with."
+    avoid:
+      - "Choosing the option that is grammatical but in a different tense from the given sentence."
+
+topics:
+  - key: basic-conversion
+    title: Active/passive voice of verbs
+    concepts:
+      - slug: english-voice-basics
+        title: "Active to passive: the rule and the tense table"
+        summary: >-
+          To change active to passive, make the object the subject, use the form of 'be' that
+          matches the active tense + V3, and add 'by' + the agent in the objective case (he → by
+          him); only transitive verbs have a passive. Each tense keeps its time: writes → is
+          written, is writing → is being written, has written → has been written, wrote → was
+          written, was writing → was being written, had written → had been written, will write →
+          will be written, will have written → will have been written. Perfect continuous tenses
+          and the future continuous are normally not put into the passive.
+        difficulty: medium
+        weight: 2.0
+        prerequisites: [english-transitive-intransitive-verbs, english-present-perfect, english-past-continuous-perfect, english-pronoun-case]
+        formulas:
+          - key: tense-table
+            name: Passive forms by tense
+            expression: "present simple: am/is/are + V3;  present continuous: am/is/are being + V3;  present perfect: has/have been + V3;  past simple: was/were + V3;  past continuous: was/were being + V3;  past perfect: had been + V3;  future simple: will/shall be + V3;  future perfect: will/shall have been + V3"
+            conditions: "The passive verb agrees with its new subject (the old object)."
+            example: {problem: "She is cooking the food.", solution: "The food is being cooked by her."}
+          - key: pronoun-change
+            name: Pronoun change after 'by'
+            expression: "I → me, we → us, he → him, she → her, they → them, who → whom;  you and it do not change"
+            example: {problem: "They have invited us.", solution: "We have been invited by them."}
+        patterns:
+          - key: active-to-passive
+            title: "Select the passive voice of the given sentence"
+            example_stem: "Select the option that expresses the given sentence in passive voice: The workers have repaired the bridge. (a) The bridge was repaired by the workers. (b) The bridge has been repaired by the workers. (c) The bridge had been repaired by the workers. (d) The bridge is repaired by the workers."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: passive-to-active
+            title: "Select the active voice of the given sentence"
+            example_stem: "Select the option that expresses the given sentence in active voice: The thief was being chased by the police. (a) The police chased the thief. (b) The police were chasing the thief. (c) The police had chased the thief. (d) The police have been chasing the thief."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: helper-check
+            title: Match the tense helper first
+            kind: elimination
+            rule: "Read only the verb of the given sentence and write its passive helper (has → has been, was + -ing → was being, had → had been); strike out every option without exactly that helper before reading the rest."
+            steps: ["Find the active verb group", "Write the matching passive helper", "Eliminate options with any other helper", "Check the pronoun after 'by' in what is left"]
+            example: {problem: "They were painting the hall. → ?", standard: "Convert the whole sentence and compare four options", shortcut: "was/were + -ing → was/were being: only 'The hall was being painted by them' has it.", seconds_saved: 15}
+            pattern: active-to-passive
+
+  - key: sentence-types
+    title: Voice of imperative and interrogative sentences
+    concepts:
+      - slug: english-passive-imperatives
+        title: Passive of imperative sentences
+        summary: >-
+          Commands, requests and advice become passive with 'Let + object + be + V3' ('Open the
+          door' → 'Let the door be opened') or with 'You are requested / ordered / advised + to'
+          ('Please help me' → 'You are requested to help me'). A negative command takes 'Let …
+          not be + V3' or 'You are warned not to …' ('Do not touch the wire' → 'Let the wire not
+          be touched'), and a command without an object uses 'You are ordered to …' ('Get out' →
+          'You are ordered to get out').
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [english-voice-basics]
+        patterns:
+          - key: command
+            title: "Select the passive voice of a command"
+            example_stem: "Select the option that expresses the given sentence in passive voice: Shut the windows before you leave. (a) Let the windows be shut before you leave. (b) The windows are shut before you leave. (c) Let the windows shut before you leave. (d) The windows should shut before you leave."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: request-advice
+            title: "Select the passive voice of a request or advice"
+            example_stem: "Select the option that expresses the given sentence in passive voice: Please give me a glass of water. (a) A glass of water is given to me. (b) You are requested to give me a glass of water. (c) Let me be given a glass of water please. (d) A glass of water was requested by me."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+
+      - slug: english-passive-interrogatives
+        title: Passive of interrogative sentences
+        summary: >-
+          Questions stay questions. With a helping verb, the passive begins with the matching form
+          of be, have or the modal ('Did she sing a song?' → 'Was a song sung by her?'; 'Have you
+          finished the work?' → 'Has the work been finished by you?'). 'Who' as subject becomes
+          'By whom' ('Who broke the glass?' → 'By whom was the glass broken?'), 'Whom' becomes
+          'Who' ('Whom did you invite?' → 'Who was invited by you?'), and other question words keep
+          their place ('Why did he beat the dog?' → 'Why was the dog beaten by him?').
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [english-voice-basics]
+        patterns:
+          - key: yes-no
+            title: "Select the passive voice of a yes/no question"
+            example_stem: "Select the option that expresses the given sentence in passive voice: Did the committee approve the proposal? (a) Was the proposal approved by the committee? (b) Has the proposal been approved by the committee? (c) Is the proposal approved by the committee? (d) Did the proposal approved by the committee?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: wh-question
+            title: "Select the passive voice of a wh-question"
+            example_stem: "Select the option that expresses the given sentence in passive voice: Who wrote this letter? (a) Who was this letter written by him? (b) By whom was this letter written? (c) By whom this letter was written? (d) This letter was written by whom?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+
+  - key: special-structures
+    title: Special passive structures
+    concepts:
+      - slug: english-passive-modals-infinitives
+        title: Passive with modals and infinitives
+        summary: >-
+          With a modal, the passive is modal + be + V3 ('You must obey the rules' → 'The rules must
+          be obeyed') and, for the past, modal + have been + V3 ('You should have done it' → 'It
+          should have been done by you'). An infinitive becomes 'to be + V3' ('There is no time to
+          lose' → 'There is no time to be lost'; 'I want you to finish the work' → 'I want the work
+          to be finished by you'), and 'be to' follows the same pattern ('He is to deliver the
+          speech' → 'The speech is to be delivered by him').
+        difficulty: medium
+        weight: 1.4
+        prerequisites: [english-voice-basics, english-modals, english-infinitives]
+        patterns:
+          - key: modal-passive
+            title: "Select the passive voice: modal + be + V3"
+            example_stem: "Select the option that expresses the given sentence in passive voice: The doctor can cure this disease. (a) This disease can cured by the doctor. (b) This disease can be cured by the doctor. (c) This disease could be cured by the doctor. (d) This disease can been cured by the doctor."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: modal-perfect-passive
+            title: "Select the passive voice: modal + have been + V3"
+            example_stem: "Select the option that expresses the given sentence in passive voice: The government should have taken this step earlier. (a) This step should be taken by the government earlier. (b) This step should have been taken by the government earlier. (c) This step should had been taken by the government earlier. (d) This step was to be taken by the government earlier."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+          - key: infinitive-passive
+            title: "Select the passive voice: infinitive to be + V3"
+            example_stem: "Select the option that expresses the given sentence in passive voice: I want you to complete the assignment today. (a) I want the assignment completed today by you. (b) I want the assignment to be completed by you today. (c) The assignment is wanted to complete by you today. (d) You are wanted to complete the assignment today."
+            frequency: low
+            difficulty: hard
+            target_seconds: 30
+
+      - slug: english-passive-two-objects
+        title: Verbs with two objects and factitive verbs
+        summary: >-
+          Verbs like give, tell, show, offer, teach, lend and send take two objects and allow two
+          passives: 'He gave me a book' → 'I was given a book by him' or 'A book was given to me by
+          him'. With factitive verbs (make, elect, appoint, call, name, choose) the complement stays
+          after the verb: 'They elected him captain' → 'He was elected captain'.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [english-voice-basics]
+        patterns:
+          - key: two-passives
+            title: "Select the passive voice of a two-object sentence"
+            example_stem: "Select the option that expresses the given sentence in passive voice: The manager offered her a promotion. (a) She was offered a promotion by the manager. (b) She offered a promotion by the manager. (c) A promotion was offered by her to the manager. (d) She had been offered a promotion by the manager."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+          - key: factitive
+            title: "Select the passive voice: elect, appoint, make + complement"
+            example_stem: "Select the option that expresses the given sentence in passive voice: The members appointed him secretary. (a) He was appointed secretary by the members. (b) Secretary was appointed him by the members. (c) He appointed secretary by the members. (d) He has been appointed as secretary by members."
+            frequency: low
+            difficulty: medium
+            target_seconds: 20
+
+      - slug: english-passive-prepositions-agent
+        title: Prepositional verbs, other prepositions and the omitted agent
+        summary: >-
+          A verb that takes a preposition keeps it after V3 ('They laughed at him' → 'He was
+          laughed at'; 'She looks after the child' → 'The child is looked after by her'). Some
+          passives take a preposition other than by: known to, pleased with, satisfied with,
+          surprised at, shocked at, filled with, covered with, interested in, married to, contained
+          in, composed of. When the agent is people in general or unknown (people, someone, they),
+          it is dropped: 'Someone has stolen my purse' → 'My purse has been stolen'.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [english-voice-basics, english-adjective-noun-prepositions]
+        patterns:
+          - key: keep-preposition
+            title: "Select the passive voice of a prepositional verb"
+            example_stem: "Select the option that expresses the given sentence in passive voice: The children laughed at the joker. (a) The joker was laughed by the children. (b) The joker was laughed at by the children. (c) The joker laughed at the children. (d) The joker has been laughed at the children."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: other-preposition
+            title: "Fill in the blank: known to, pleased with, surprised at"
+            example_stem: "The result of the inquiry is not yet known ___ the public. (a) by (b) to (c) for (d) with"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: omitted-agent
+            title: "Select the passive voice when the agent is unknown"
+            example_stem: "Select the option that expresses the given sentence in passive voice: Someone has stolen my bicycle. (a) My bicycle has been stolen. (b) My bicycle was stolen by someone. (c) My bicycle had been stolen. (d) My bicycle is stolen by somebody."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+
+      - slug: english-passive-reporting-causative
+        title: "It is said that, made to do and have something done"
+        summary: >-
+          Reporting verbs (say, believe, know, report, think, consider) give two passives: 'People
+          say that he is rich' → 'It is said that he is rich' or 'He is said to be rich' (a past
+          action takes 'to have + V3': 'He is believed to have left'). After make, see, hear and
+          help the bare infinitive takes 'to' in the passive ('They made him work' → 'He was made
+          to work'), 'let' becomes 'be allowed to', and the causative 'have/get + object + V3' shows
+          a job done by someone else ('I had my car repaired').
+        difficulty: hard
+        weight: 1.0
+        prerequisites: [english-passive-modals-infinitives]
+        patterns:
+          - key: it-is-said
+            title: "Select the passive voice of a reporting-verb sentence"
+            example_stem: "Select the option that expresses the given sentence in passive voice: People believe that the old fort is haunted. (a) It is believed that the old fort is haunted. (b) The old fort is believed haunted by people. (c) It was believed that the old fort is haunted. (d) People are believed that the old fort is haunted."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+          - key: made-to
+            title: "Select the passive voice: make/see/let + bare infinitive"
+            example_stem: "Select the option that expresses the given sentence in passive voice: The guards made the prisoners carry heavy loads. (a) The prisoners were made carry heavy loads by the guards. (b) The prisoners were made to carry heavy loads by the guards. (c) Heavy loads were made to carry by the prisoners. (d) The prisoners had been made carrying heavy loads."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25

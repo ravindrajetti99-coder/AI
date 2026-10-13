@@ -1,0 +1,618 @@
+key: constitution
+title: The Constitution of India
+strategies:
+  - key: approach
+    title: "Constitution: anchor every fact to an article, a year or a committee"
+    summary: >-
+      Constitution questions are one-line recall: which article, which schedule, which
+      amendment, which source country, which committee. Learn facts in tagged pairs
+      (feature and source, amendment and change, article and subject) and revise them as
+      tables, because SSC rotates the same pairs across years.
+    seconds_per_question: 15
+    accuracy_target: 0.9
+    tactics:
+      - "Keep one revision sheet each for the parts, the 12 schedules, the sources and the landmark amendments."
+      - "Learn articles in blocks (Part III 12-35, Part IV 36-51, emergency 352-360) so a number can be placed even when not memorised."
+      - "For amendment questions, link the number to its headline change (42nd mini-constitution, 44th property right removed, 73rd/74th local bodies)."
+      - "In 'which of the following is correct' questions, eliminate options with a wrong year or wrong committee chairman first."
+    avoid:
+      - "Mixing up the 42nd (1976) and 44th (1978) Amendments, or the 73rd (panchayats) and 74th (municipalities)."
+
+topics:
+  - key: making
+    title: Making of the Constitution
+    concepts:
+      - slug: constitutional-development-british-acts
+        title: Constitutional development under British rule (1773-1947)
+        summary: >-
+          The Regulating Act 1773 began British Parliament's control of the East India Company
+          (Governor-General of Bengal, Supreme Court at Calcutta in 1774); the Charter Act 1833
+          created the Governor-General of India and the Government of India Act 1858 moved rule
+          to the Crown (Secretary of State for India, Viceroy). The Indian Councils Act 1909
+          (Morley-Minto) introduced separate electorates for Muslims, the Government of India Act
+          1919 (Montagu-Chelmsford) dyarchy in the provinces, and the Government of India Act 1935
+          provincial autonomy, a proposed all-India federation, three legislative lists and a
+          Federal Court; SSC asks which Act brought which feature.
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: act-feature
+            title: Which Act introduced the feature
+            description: "A feature (separate electorates, dyarchy, portfolio system, Federal Court, open competition for civil services) is matched to its Act."
+            example_stem: "Separate electorates for Muslims were first introduced by which Act?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 12
+          - key: act-chronology
+            title: Order and provisions of the Acts
+            example_stem: "Which Act designated the Governor-General of Bengal as the Governor-General of India?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: dyarchy-ladder
+            title: Dyarchy climbs from the provinces to the centre
+            kind: memory
+            rule: "1909 separate electorates; 1919 dyarchy in the provinces; 1935 provincial autonomy with dyarchy proposed at the centre."
+            example: {problem: "Which Act provided for dyarchy at the centre?", shortcut: "Dyarchy moved up one level after 1919, so the centre is 1935.", seconds_saved: 5}
+            pattern: act-feature
+            pitfalls: ["The 1935 Act's federation and central dyarchy never actually came into operation."]
+
+      - slug: constituent-assembly-of-india
+        title: Constituent Assembly and its committees
+        summary: >-
+          Set up in 1946 under the Cabinet Mission Plan with 389 seats (296 for British India,
+          93 for the princely states; 299 after Partition), its members were elected indirectly by
+          the provincial assemblies. It first met on 9 December 1946 (Sachchidananda Sinha as
+          temporary President), elected Rajendra Prasad President on 11 December 1946, adopted
+          Nehru's Objectives Resolution on 22 January 1947 and the Constitution on 26 November 1949,
+          which came fully into force on 26 January 1950 (2 years, 11 months and 18 days of work).
+          Committees: Drafting (B.R. Ambedkar, formed 29 August 1947, 7 members); Union Powers,
+          Union Constitution and States (Nehru); Provincial Constitution and the Advisory Committee
+          on Fundamental Rights and Minorities (Sardar Patel); Rules of Procedure and Steering
+          (Rajendra Prasad); B.N. Rau was the constitutional adviser.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [constitutional-development-british-acts]
+        patterns:
+          - key: dates-and-members
+            title: Key dates, strength and office-bearers
+            description: "First meeting, adoption date, commencement date, total strength, President, constitutional adviser."
+            example_stem: "On which date did the Constituent Assembly adopt the Constitution of India?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: committee-chairman
+            title: Committee and its chairman
+            example_stem: "Who was the chairman of the Provincial Constitution Committee of the Constituent Assembly?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 12
+        shortcuts:
+          - key: committee-owners
+            title: Nehru takes the Union, Patel the provinces, Prasad the procedure
+            kind: memory
+            rule: "Nehru: Union Powers, Union Constitution, States committees. Patel: Provincial Constitution and Fundamental Rights/Minorities advisory. Prasad: Rules of Procedure, Steering. Ambedkar: Drafting."
+            example: {problem: "Chairman of the Union Powers Committee?", shortcut: "'Union' → Nehru", seconds_saved: 5}
+            pattern: committee-chairman
+            pitfalls: ["The Fundamental Rights sub-committee was chaired by J.B. Kripalani, the parent Advisory Committee by Patel."]
+
+  - key: features
+    title: Sources, Preamble and salient features
+    concepts:
+      - slug: constitution-sources
+        title: Sources of the Constitution (borrowed features)
+        summary: >-
+          The Government of India Act 1935 is the largest source (federal scheme, office of
+          Governor, judiciary, public service commissions, emergency provisions). Borrowed features:
+          Britain (parliamentary government, rule of law, single citizenship, cabinet system, writs,
+          bicameralism), USA (Fundamental Rights, judicial review, independent judiciary,
+          impeachment of the President, Vice-President), Ireland (Directive Principles, nomination
+          to Rajya Sabha, method of electing the President), Canada (strong centre, residuary powers
+          with the centre, Governor appointed by the centre), Australia (Concurrent List, joint
+          sitting, freedom of trade), USSR (Fundamental Duties, social-economic-political justice),
+          France (republic, liberty-equality-fraternity), Weimar Germany (suspension of rights in
+          emergency), South Africa (amendment procedure, election of Rajya Sabha members) and Japan
+          (procedure established by law).
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [constituent-assembly-of-india]
+        patterns:
+          - key: feature-to-country
+            title: Feature borrowed from which country
+            example_stem: "The concept of the Concurrent List in the Indian Constitution was borrowed from the constitution of which country?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: odd-pair
+            title: Find the wrongly matched feature-source pair
+            example_stem: "Which pair is incorrectly matched? (a) Fundamental Duties – USSR (b) Directive Principles – Ireland (c) Residuary powers – USA (d) Joint sitting – Australia"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+        shortcuts:
+          - key: country-buckets
+            title: One idea per country
+            kind: memory
+            rule: "Britain = how Parliament works; USA = rights and courts; Ireland = directives and the President's election; Canada = strong centre; Australia = concurrent and joint; USSR = duties; France = republic ideals."
+            example: {problem: "Source of residuary powers with the centre?", shortcut: "Strong-centre idea → Canada", seconds_saved: 5}
+            pattern: feature-to-country
+            pitfalls: ["Residuary powers rest with the states in the USA; India's residuary powers with the centre come from Canada."]
+
+      - slug: preamble-of-constitution
+        title: The Preamble
+        summary: >-
+          Based on Nehru's Objectives Resolution, the Preamble declares the people of India as
+          the source of authority and India a Sovereign, Socialist, Secular, Democratic Republic,
+          promising Justice (social, economic, political), Liberty (of thought, expression, belief,
+          faith and worship), Equality (of status and opportunity) and Fraternity; it records the
+          date of adoption, 26 November 1949. It has been amended only once: the 42nd Amendment
+          (1976) added 'Socialist', 'Secular' and 'Integrity'. The Supreme Court held it is not
+          part of the Constitution in Berubari (1960) but is part of it in Kesavananda Bharati
+          (1973); it is not enforceable in court.
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [constituent-assembly-of-india]
+        patterns:
+          - key: keywords-amendment
+            title: Words of the Preamble and its amendment
+            example_stem: "Which words were added to the Preamble by the 42nd Constitutional Amendment Act, 1976?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: preamble-cases
+            title: Preamble in Supreme Court judgments
+            example_stem: "In which case did the Supreme Court hold that the Preamble is a part of the Constitution?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 12
+        shortcuts:
+          - key: sssdr-jlef
+            title: SSSDR and JLEF
+            kind: memory
+            rule: "Nature of the state in order: Sovereign, Socialist, Secular, Democratic, Republic (SSSDR). Objectives in order: Justice, Liberty, Equality, Fraternity (JLEF)."
+            example: {problem: "Which comes first in the Preamble, 'Secular' or 'Socialist'?", shortcut: "S-S-S-D-R: Sovereign, Socialist, Secular", seconds_saved: 5}
+            pattern: keywords-amendment
+
+      - slug: constitution-salient-features
+        title: Salient features of the Constitution
+        summary: >-
+          The world's lengthiest written constitution blends rigidity and flexibility, sets up a
+          federal system with a unitary bias (Article 1 calls India a 'Union of States'), a
+          parliamentary form of government, an integrated and independent judiciary, Fundamental
+          Rights, Directive Principles and Fundamental Duties, a secular state, single citizenship,
+          universal adult franchise (voting age cut from 21 to 18 by the 61st Amendment, 1988),
+          independent bodies such as the Election Commission and CAG, emergency provisions and,
+          after 1992, three tiers of government.
+        difficulty: easy
+        weight: 0.8
+        prerequisites: [constitution-sources]
+        patterns:
+          - key: feature-identification
+            title: Identify a salient feature
+            example_stem: "The Indian Constitution describes India as a 'Union of States'. In which article?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: federal-unitary
+            title: Federal and unitary features
+            description: "Sort features into federal (written constitution, division of powers, bicameralism) and unitary (strong centre, single citizenship, integrated judiciary, emergency provisions, appointment of Governors)."
+            example_stem: "Which of the following is a unitary feature of the Indian Constitution?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+
+  - key: structure
+    title: Parts, schedules and citizenship
+    concepts:
+      - slug: constitution-parts-articles
+        title: Parts of the Constitution and their articles
+        summary: >-
+          The original Constitution had 395 articles in 22 parts and 8 schedules; today it has 25
+          parts (IVA, IXA, IXB and XIVA added, Part VII repealed) and 12 schedules, while the
+          article numbering still ends at 395. Key parts: I Union and its territory (1-4), II
+          Citizenship (5-11), III Fundamental Rights (12-35), IV Directive Principles (36-51), IVA
+          Fundamental Duties (51A), V the Union (52-151), VI the States (152-237), VIII Union
+          territories, IX Panchayats, IXA Municipalities, IXB Co-operative societies, XI centre-state
+          relations, XII Finance, XIV Services, XIVA Tribunals, XV Elections (324-329), XVII Official
+          language (343-351), XVIII Emergency (352-360), XX Amendment (368).
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [constitution-salient-features]
+        patterns:
+          - key: part-subject
+            title: Which part deals with the subject
+            example_stem: "Part IX of the Indian Constitution deals with which subject?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: article-number
+            title: Article number of a provision
+            example_stem: "Which article of the Constitution deals with the amendment of the Constitution?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 12
+        shortcuts:
+          - key: anchor-articles
+            title: Anchor articles
+            kind: memory
+            rule: "Remember the first article of each block: 12 rights, 36 directives, 52 Union executive, 79 Parliament, 124 Supreme Court, 148 CAG, 152 states, 214 High Courts, 280 Finance Commission, 315 PSCs, 324 elections, 343 language, 352 emergency, 368 amendment."
+            example: {problem: "Article 315 is about?", shortcut: "315 anchors the Public Service Commissions", seconds_saved: 5}
+            pattern: article-number
+
+      - slug: constitution-schedules
+        title: The 12 Schedules
+        summary: >-
+          First: states and union territories; Second: emoluments of the President, Governors,
+          presiding officers, judges and CAG; Third: forms of oaths; Fourth: allocation of Rajya
+          Sabha seats; Fifth: scheduled areas and scheduled tribes; Sixth: tribal areas of Assam,
+          Meghalaya, Tripura and Mizoram; Seventh: Union, State and Concurrent Lists; Eighth: 22
+          languages (originally 14); Ninth: land-reform and other laws protected from challenge
+          (1st Amendment, 1951); Tenth: anti-defection (52nd Amendment, 1985); Eleventh: 29
+          subjects of panchayats (73rd Amendment); Twelfth: 18 subjects of municipalities (74th
+          Amendment).
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [constitution-parts-articles]
+        patterns:
+          - key: schedule-content
+            title: Content of a schedule
+            example_stem: "Which schedule of the Constitution contains provisions regarding anti-defection?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: eighth-schedule-languages
+            title: Eighth Schedule languages and when they were added
+            description: "Sindhi (21st Amendment, 1967); Konkani, Manipuri, Nepali (71st, 1992); Bodo, Dogri, Maithili, Santhali (92nd, 2003)."
+            example_stem: "Which of the following languages was added to the Eighth Schedule by the 92nd Amendment?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: tears-of-old-pm
+            title: TEARS OF OLD PM
+            kind: memory
+            rule: "Territory, Emoluments, Affirmations (oaths), Rajya Sabha seats, Scheduled areas, Other tribal areas (Sixth), Federal lists, Official languages, Land reforms (Ninth), Defection, Panchayats, Municipalities."
+            example: {problem: "Which schedule allocates Rajya Sabha seats?", shortcut: "T-E-A-R → R is the 4th letter → Fourth Schedule", seconds_saved: 8}
+            pattern: schedule-content
+            pitfalls: ["The oaths of the President, Vice-President and Governor are in Articles 60, 69 and 159, not in the Third Schedule."]
+
+      - slug: indian-citizenship
+        title: Citizenship (Articles 5-11) and the Citizenship Act 1955
+        summary: >-
+          Part II (Articles 5-11) only settled who was a citizen at the commencement of the
+          Constitution; Article 11 lets Parliament regulate citizenship, which it did through the
+          Citizenship Act 1955. Citizenship is acquired by birth, descent, registration,
+          naturalisation or incorporation of territory, and lost by renunciation, termination or
+          deprivation. India has single citizenship (from Britain); Overseas Citizenship of India
+          (OCI) is not dual citizenship; the Citizenship (Amendment) Act 2019 eased citizenship for
+          Hindu, Sikh, Buddhist, Jain, Parsi and Christian migrants from Afghanistan, Bangladesh
+          and Pakistan who entered India on or before 31 December 2014.
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [constitution-parts-articles]
+        patterns:
+          - key: modes
+            title: Modes of acquiring and losing citizenship
+            example_stem: "Which of the following is NOT a mode of acquiring Indian citizenship under the Citizenship Act, 1955?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 12
+          - key: citizenship-articles
+            title: Citizenship articles and features
+            example_stem: "Which article empowers Parliament to regulate the right of citizenship by law?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 12
+        shortcuts:
+          - key: bdrni-rtd
+            title: Five ways in, three ways out
+            kind: memory
+            rule: "In: Birth, Descent, Registration, Naturalisation, Incorporation of territory. Out: Renunciation (you give it up), Termination (automatic on taking another citizenship), Deprivation (the government takes it away)."
+            example: {problem: "Losing citizenship on voluntarily acquiring a foreign one is called?", shortcut: "Automatic loss → Termination", seconds_saved: 5}
+            pattern: modes
+
+  - key: territory
+    title: Union territories and special provisions
+    concepts:
+      - slug: states-reorganisation-articles-1-4
+        title: The Union and its territory (Articles 1-4) and reorganisation of states
+        summary: >-
+          Article 1 calls India, that is Bharat, a Union of States; Article 3 lets Parliament form
+          new states and alter boundaries or names by a simple-majority law, introduced on the
+          President's recommendation after referring it to the state legislature (whose views are
+          not binding). Andhra State (1953) was the first linguistic state; the Fazl Ali Commission
+          (with K.M. Panikkar and H.N. Kunzru) led to the States Reorganisation Act 1956 (14 states,
+          6 union territories). Later milestones: Gujarat and Maharashtra (1960), Nagaland (1963),
+          Haryana (1966), Sikkim (1975, 36th Amendment), Mizoram, Arunachal Pradesh and Goa (1987),
+          Chhattisgarh, Uttarakhand and Jharkhand (2000), Telangana (2014); since 2020 India has 28
+          states and 8 union territories.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [constitution-parts-articles]
+        patterns:
+          - key: state-formation
+            title: Formation of states in order
+            example_stem: "Which was the first state to be formed on a linguistic basis in independent India?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: article-3-procedure
+            title: Procedure for forming a new state
+            example_stem: "A bill to change the boundary of a state can be introduced in Parliament only on whose recommendation?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+
+      - slug: union-territories-special-provisions
+        title: Union territories and special provisions for states
+        summary: >-
+          Union territories are administered by the President through an administrator (Article
+          239); Puducherry got a legislature under Article 239A (14th Amendment, 1962) and Delhi
+          became the National Capital Territory with an assembly under Article 239AA (69th
+          Amendment, 1991). Article 370 (temporary provisions for Jammu and Kashmir) was made
+          inoperative in August 2019 and the state became two union territories (Jammu and Kashmir,
+          Ladakh) on 31 October 2019. Articles 371 to 371J give special provisions to Maharashtra and
+          Gujarat (371), Nagaland (371A), Assam (371B), Manipur (371C), Andhra Pradesh (371D, 371E),
+          Sikkim (371F), Mizoram (371G), Arunachal Pradesh (371H), Goa (371I) and Karnataka (371J).
+        difficulty: hard
+        weight: 0.7
+        prerequisites: [states-reorganisation-articles-1-4]
+        patterns:
+          - key: ut-legislature
+            title: Union territories with a legislature and their articles
+            example_stem: "Which article contains special provisions with respect to Delhi?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 12
+          - key: article-371-state
+            title: Special provision article for a state
+            example_stem: "Article 371A contains special provisions for which state?"
+            frequency: medium
+            difficulty: hard
+            target_seconds: 15
+
+  - key: amendment
+    title: Amendment of the Constitution
+    concepts:
+      - slug: constitutional-amendment-procedure
+        title: Amendment procedure (Article 368) and the basic structure limit
+        summary: >-
+          Article 368 (Part XX, procedure borrowed from South Africa) needs a special majority in
+          each House (majority of total membership and two-thirds of members present and voting);
+          federal provisions (election of the President, Supreme Court and High Courts, distribution
+          of legislative powers, the Seventh Schedule, representation of states in Parliament,
+          Article 368 itself) also need ratification by half the state legislatures by simple
+          majority. Some provisions (new states, legislative councils, Second Schedule, quorum,
+          citizenship) change by a simple-majority law outside Article 368. An amendment bill can
+          start in either House, needs no prior presidential permission, has no joint sitting, and
+          the President must assent (24th Amendment, 1971); Kesavananda Bharati (1973) bars any
+          amendment that destroys the basic structure.
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [constitution-parts-articles]
+        formulas:
+          - key: special-majority
+            name: Special majority under Article 368
+            expression: "passes if: votes in favour > total membership / 2  AND  votes in favour ≥ (2/3) × members present and voting"
+            conditions: "Both conditions in each House separately; for federal provisions, add ratification by at least half of the state legislatures."
+            example: {problem: "A House has 545 members; 450 are present and voting. What is the minimum number of votes needed?", solution: "More than 272.5 means at least 273; two-thirds of 450 is 300; so at least 300 votes"}
+        patterns:
+          - key: majority-type
+            title: Which majority a change needs
+            example_stem: "An amendment affecting the election of the President requires a special majority of Parliament and ratification by how many state legislatures?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+          - key: amendment-features
+            title: Features of the amendment process
+            example_stem: "Which of the following is true about a Constitution Amendment Bill? (a) It needs the President's prior recommendation (b) A joint sitting can be held on it (c) It can be introduced in either House (d) The President can return it"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+        shortcuts:
+          - key: three-tracks
+            title: Three tracks of amendment
+            kind: memory
+            rule: "Simple majority = housekeeping (new states, councils, quorum, salaries); special majority = rights and directives; special majority + half the states = anything that changes the federal balance."
+            example: {problem: "Abolishing a state's legislative council needs?", shortcut: "Housekeeping → simple majority law (Article 169), not Article 368", seconds_saved: 8}
+            pattern: majority-type
+
+      - slug: constitutional-amendments-1st-to-44th
+        title: Landmark amendments from the 1st to the 44th
+        summary: >-
+          1st (1951): Ninth Schedule, new grounds to restrict free speech, Article 15(4). 7th
+          (1956): states reorganised on linguistic lines, Part A-D classification ended. 24th
+          (1971): Parliament may amend any part including Fundamental Rights; presidential assent
+          to amendment bills made compulsory. 26th (1971): privy purses abolished. 36th (1975):
+          Sikkim a full state. 42nd (1976, 'mini-constitution', Swaran Singh Committee): Socialist,
+          Secular and Integrity in the Preamble, Fundamental Duties (Part IVA), tribunals (Part
+          XIVA), five subjects moved to the Concurrent List. 44th (1978): right to property removed
+          from Fundamental Rights (now Article 300A), 'armed rebellion' replaced 'internal
+          disturbance', Articles 20 and 21 cannot be suspended in an emergency.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [constitutional-amendment-procedure]
+        patterns:
+          - key: amendment-change
+            title: Amendment and the change it made
+            example_stem: "Which Constitutional Amendment Act removed the right to property from the list of Fundamental Rights?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: forty-second
+            title: Provisions of the 42nd Amendment
+            example_stem: "Which of the following was NOT done by the 42nd Amendment? (a) Fundamental Duties added (b) 'Integrity' added to the Preamble (c) Right to property deleted (d) Tribunals added"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: forty-two-adds-forty-four-restores
+            title: 42 adds, 44 restores
+            kind: memory
+            rule: "The 42nd (Emergency era) added words, duties, tribunals and a 6-year House term; the 44th (Janata era) undid emergency excesses and removed property as a Fundamental Right."
+            example: {problem: "Which amendment restored the Lok Sabha term to 5 years?", shortcut: "Restoring → 44th", seconds_saved: 5}
+            pattern: amendment-change
+
+      - slug: constitutional-amendments-52nd-to-106th
+        title: Landmark amendments from the 52nd to the 106th
+        summary: >-
+          52nd (1985): anti-defection Tenth Schedule. 61st (1988): voting age 21 to 18. 69th
+          (1991): Delhi as National Capital Territory. 73rd and 74th (1992): panchayats and
+          municipalities. 86th (2002): Article 21A (education for ages 6-14) and duty 51A(k). 91st
+          (2003): ministers capped at 15% of the House. 97th (2011): co-operative societies (Part
+          IXB). 101st (2016): GST. 102nd (2018): constitutional status for the National Commission for
+          Backward Classes. 103rd (2019): 10% reservation for economically weaker sections. 104th
+          (2019): SC/ST seat reservation extended and Anglo-Indian nomination ended. 106th (2023):
+          one-third of seats in the Lok Sabha and state assemblies reserved for women, effective
+          after the next delimitation.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [constitutional-amendments-1st-to-44th]
+        patterns:
+          - key: recent-amendment
+            title: Amendment number and subject
+            example_stem: "Which Constitutional Amendment Act provided 10% reservation for economically weaker sections?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: amendment-year-match
+            title: Match amendments with their subjects
+            example_stem: "Match the amendments with their subjects: 61st, 86th, 97th, 101st – (i) GST (ii) co-operative societies (iii) voting age (iv) right to education."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+
+  - key: emergency
+    title: Emergency provisions
+    concepts:
+      - slug: national-emergency-article-352
+        title: National emergency (Article 352)
+        summary: >-
+          The President may proclaim a national emergency on grounds of war, external aggression or
+          armed rebellion, only on the Union Cabinet's written advice (44th Amendment); both Houses
+          must approve it within one month by special majority, after which it lasts six months
+          and can be extended indefinitely by approval every six months, while the Lok Sabha can end
+          it by a simple-majority resolution. Article 358 suspends Article 19 automatically (war or
+          external aggression only) and Article 359 lets the President suspend enforcement of other
+          rights except Articles 20 and 21. It was proclaimed in 1962 (China), 1971 (Pakistan war)
+          and 1975 (internal disturbance).
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [constitution-parts-articles]
+        patterns:
+          - key: emergency-grounds-approval
+            title: Grounds, approval and duration
+            example_stem: "Within what period must a proclamation of national emergency be approved by both Houses of Parliament?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 12
+          - key: emergency-effects
+            title: Effect on Fundamental Rights
+            example_stem: "Which Fundamental Rights cannot be suspended even during a national emergency?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 12
+        shortcuts:
+          - key: plus-four
+            title: 352, 356, 360 step by four
+            kind: memory
+            rule: "National 352, state (President's rule) 356, financial 360. National needs approval in 1 month by special majority; the other two in 2 months by simple majority."
+            example: {problem: "Article for financial emergency?", shortcut: "352 + 4 + 4 = 360", seconds_saved: 5}
+            pattern: emergency-grounds-approval
+
+      - slug: presidents-rule-financial-emergency
+        title: President's rule (Article 356) and financial emergency (Article 360)
+        summary: >-
+          President's rule follows a failure of the constitutional machinery in a state (on the
+          Governor's report or otherwise); Parliament must approve it within two months by simple
+          majority, and it runs six months at a time up to three years, beyond one year only if a
+          national emergency is in force and the Election Commission certifies that elections cannot
+          be held. It was first imposed in Punjab (1951), and the S.R. Bommai case (1994) made it
+          subject to judicial review and the floor test. A financial emergency (Article 360) needs
+          approval within two months, lasts until revoked, allows cutting salaries including those
+          of judges, and has never been proclaimed.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [national-emergency-article-352]
+        patterns:
+          - key: presidents-rule-limits
+            title: Approval and maximum duration of President's rule
+            example_stem: "What is the maximum period for which President's rule can be imposed in a state?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 12
+          - key: financial-emergency-facts
+            title: Financial emergency facts
+            example_stem: "How many times has a financial emergency been declared in India?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+
+  - key: federalism
+    title: Federal structure and centre-state relations
+    concepts:
+      - slug: centre-state-legislative-relations
+        title: Centre-state legislative relations and the Seventh Schedule
+        summary: >-
+          Articles 245-255 divide law-making through the Seventh Schedule: Union List (defence,
+          foreign affairs, banking, railways, currency; originally 97 subjects), State List (police,
+          public order, public health, agriculture, local government; originally 66) and Concurrent
+          List (education, forests, criminal law, marriage; originally 47). Residuary powers lie with
+          Parliament (Article 248, from Canada); on a conflict in the Concurrent List the Union law
+          prevails (Article 254). Parliament may legislate on State List subjects in the national
+          interest after a Rajya Sabha resolution by two-thirds present and voting (Article 249),
+          during a national emergency (250), when two or more states ask (252) or to implement
+          treaties (253). The 42nd Amendment moved education, forests, weights and measures, wild
+          animals and birds, and administration of justice to the Concurrent List.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [constitution-schedules]
+        patterns:
+          - key: list-of-subject
+            title: Which list a subject belongs to
+            example_stem: "'Police' is a subject in which list of the Seventh Schedule?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: parliament-on-state-list
+            title: When Parliament can legislate on the State List
+            example_stem: "Under which article can Parliament make laws on a State List subject if the Rajya Sabha passes a resolution in the national interest?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: concurrent-five
+            title: The 42nd's five transfers
+            kind: memory
+            rule: "Five subjects moved from State to Concurrent in 1976: Education, Forests, Weights and measures, Wild animals and birds, Administration of justice (EF-WWA)."
+            example: {problem: "Is 'forests' a State or Concurrent subject?", shortcut: "One of the five 1976 transfers → Concurrent", seconds_saved: 5}
+            pattern: list-of-subject
+
+      - slug: centre-state-administrative-financial-relations
+        title: Administrative and financial relations, councils and commissions
+        summary: >-
+          States must exercise executive power so as to comply with Union laws and directions
+          (Articles 256-257); inter-state water disputes go to tribunals under Article 262; the
+          Inter-State Council (Article 263) was set up in 1990 on the Sarkaria Commission's
+          advice and is chaired by the Prime Minister. Zonal councils (five, statutory under the
+          States Reorganisation Act 1956) are chaired by the Union Home Minister. Taxes are shared
+          on the Finance Commission's recommendation (Article 280) and grants given under Article 275;
+          commissions on centre-state relations include Rajamannar (1969, Tamil Nadu), Sarkaria
+          (1983) and Punchhi (2007).
+        difficulty: medium
+        weight: 0.9
+        prerequisites: [centre-state-legislative-relations]
+        patterns:
+          - key: council-commission
+            title: Councils and commissions on centre-state relations
+            example_stem: "The Inter-State Council was set up in 1990 on the recommendation of which commission?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 12
+          - key: relation-article
+            title: Article governing an administrative or financial relation
+            example_stem: "Which article provides for the adjudication of disputes relating to inter-state rivers?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 12

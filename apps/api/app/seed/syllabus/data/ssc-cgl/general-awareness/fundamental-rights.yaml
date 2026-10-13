@@ -1,0 +1,475 @@
+key: fundamental-rights
+title: Fundamental Rights, Directive Principles and Fundamental Duties
+strategies:
+  - key: approach
+    title: "Rights, directives and duties: learn them by article group"
+    summary: >-
+      Almost every paper asks one question from Parts III, IV or IVA: the article of a right,
+      the meaning of a writ, the class of a directive or the list of duties. Learning the article
+      groups as blocks lets you place a provision even when the exact number is not remembered.
+    seconds_per_question: 12
+    accuracy_target: 0.9
+    tactics:
+      - "Fix the six rights to their blocks: 14-18, 19-22, 23-24, 25-28, 29-30 and 32."
+      - "For writs, recall the Latin meaning first; it usually decides the answer."
+      - "Separate directives into socialistic, Gandhian and liberal-intellectual with the anchor articles 39, 40 and 44."
+      - "Remember which rights are for citizens only (15, 16, 19, 29, 30) and which cannot be suspended (20, 21)."
+    avoid:
+      - "Calling the right to property a Fundamental Right: it has been a constitutional right under Article 300A since 1978."
+
+topics:
+  - key: rights
+    title: Fundamental Rights (Part III)
+    subtopics:
+      - key: nature
+        title: Nature and features of Fundamental Rights
+        concepts:
+          - slug: fundamental-rights-overview
+            title: "Fundamental Rights: features, Article 12 and Article 13"
+            summary: >-
+              Part III (Articles 12-35), called the Magna Carta of India and inspired by the US Bill
+              of Rights, guarantees six Fundamental Rights (seven originally; the right to property
+              was removed by the 44th Amendment, 1978). They are justiciable but not absolute,
+              bind the 'State' as defined in Article 12 (governments, legislatures, local and other
+              authorities), and Article 13 makes laws inconsistent with them void, the basis of
+              judicial review. Articles 15, 16, 19, 29 and 30 are for citizens only; the rest also
+              protect foreigners; all except Articles 20 and 21 can be suspended in a national
+              emergency.
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [constitution-parts-articles]
+            patterns:
+              - key: rights-basics
+                title: Number, part and features of Fundamental Rights
+                example_stem: "How many Fundamental Rights does the Constitution of India now guarantee?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: citizens-only
+                title: Rights available only to citizens
+                example_stem: "Which of the following Fundamental Rights is available only to citizens and not to foreigners? (a) Article 14 (b) Article 19 (c) Article 21 (d) Article 25"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 15
+            shortcuts:
+              - key: citizens-only-list
+                title: "Citizens-only: 15, 16, 19, 29, 30"
+                kind: memory
+                rule: "Discrimination (15), public jobs (16), the six freedoms (19) and the two cultural-educational rights (29, 30) are only for citizens; equality before law (14), life (21) and religion (25) protect every person."
+                example: {problem: "Is Article 21 available to a foreign tourist?", shortcut: "21 is not in 15-16-19-29-30, so yes", seconds_saved: 5}
+                pattern: citizens-only
+
+      - key: equality
+        title: Right to Equality (Articles 14-18)
+        concepts:
+          - slug: fundamental-rights-equality
+            title: "Right to Equality (Articles 14-18)"
+            summary: >-
+              Article 14 guarantees every person equality before law (a British idea) and equal
+              protection of laws (an American idea); Article 15 bars discrimination on grounds of
+              religion, race, caste, sex or place of birth but allows special provisions for women,
+              children, backward classes, SCs, STs and economically weaker sections; Article 16
+              gives equality of opportunity in public employment and permits reservation (Indra
+              Sawhney, 1992: 50% ceiling, creamy layer excluded). Article 17 abolishes untouchability
+              (Untouchability (Offences) Act 1955, renamed the Protection of Civil Rights Act in 1976)
+              and Article 18 abolishes titles except military and academic distinctions; awards such
+              as the Bharat Ratna are not titles (Balaji Raghavan, 1996).
+            difficulty: easy
+            weight: 1.5
+            prerequisites: [fundamental-rights-overview]
+            patterns:
+              - key: equality-article
+                title: Article of an equality provision
+                example_stem: "Abolition of untouchability is provided under which article of the Constitution?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: reservation-cases
+                title: Reservation and equality judgments
+                example_stem: "In which case did the Supreme Court fix a 50% ceiling on reservations and exclude the creamy layer?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 12
+            shortcuts:
+              - key: fourteen-to-eighteen
+                title: Law, grounds, jobs, untouchability, titles
+                kind: memory
+                rule: "14 equality before law, 15 no discrimination, 16 public jobs, 17 untouchability, 18 titles: the block moves from the general to the specific."
+                example: {problem: "Article for abolition of titles?", shortcut: "Last of the block → 18", seconds_saved: 5}
+                pattern: equality-article
+
+      - key: freedom
+        title: Right to Freedom (Articles 19-22)
+        concepts:
+          - slug: fundamental-rights-article-19-freedoms
+            title: "Right to Freedom: the six freedoms of Article 19"
+            summary: >-
+              Article 19(1) gives citizens six freedoms: (a) speech and expression, (b) to assemble
+              peaceably and without arms, (c) to form associations, unions or co-operative
+              societies, (d) to move freely and (e) to reside and settle anywhere in India, and (g)
+              to practise any profession, occupation, trade or business; 19(1)(f), property, was
+              deleted in 1978. Reasonable restrictions (19(2)-(6)) cover sovereignty and integrity of
+              India, security of the State, friendly relations with foreign states, public order,
+              decency or morality, contempt of court, defamation and incitement to an offence.
+              Freedom of the press and the right to information are read into 19(1)(a); Article 19
+              is suspended automatically in a national emergency declared for war or external
+              aggression.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [fundamental-rights-overview]
+            patterns:
+              - key: freedom-clause
+                title: Which freedom or clause
+                example_stem: "Freedom of the press is implied in which article of the Constitution?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: restriction-grounds
+                title: Grounds of reasonable restriction
+                example_stem: "Which of the following is NOT a ground for imposing reasonable restrictions on freedom of speech under Article 19(2)?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 15
+
+          - slug: fundamental-rights-life-liberty
+            title: "Articles 20-22: conviction, life and personal liberty, arrest and detention"
+            summary: >-
+              Article 20 bars ex post facto criminal laws, double jeopardy and self-incrimination;
+              Article 21 protects life and personal liberty except according to procedure
+              established by law (from Japan), widened by Maneka Gandhi (1978) to need a just, fair
+              and reasonable procedure and read to include privacy (K.S. Puttaswamy, 2017),
+              livelihood, a clean environment, speedy trial and free legal aid. Article 21A (86th
+              Amendment, 2002) gives free and compulsory education to children aged 6-14 (Right to
+              Education Act 2009). Article 22 entitles an arrested person to know the grounds,
+              consult a lawyer and be produced before a magistrate within 24 hours, and limits
+              preventive detention to three months unless an advisory board approves more.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [fundamental-rights-overview]
+            patterns:
+              - key: article-21-scope
+                title: Rights read into Article 21
+                example_stem: "The right to privacy was declared a Fundamental Right under Article 21 in which case?"
+                frequency: high
+                difficulty: medium
+                target_seconds: 12
+              - key: article-20-22
+                title: Protections under Articles 20, 21A and 22
+                example_stem: "Within how many hours must an arrested person be produced before the nearest magistrate under Article 22?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+            shortcuts:
+              - key: twenty-three-nos
+                title: "Article 20: three 'no's"
+                kind: memory
+                rule: "No retrospective criminal law, no punishment twice for the same offence, no forcing the accused to be a witness against himself."
+                example: {problem: "Protection against double jeopardy is in?", shortcut: "One of the three 'no's → Article 20", seconds_saved: 5}
+                pattern: article-20-22
+
+      - key: exploitation
+        title: Right against Exploitation (Articles 23-24)
+        concepts:
+          - slug: fundamental-rights-against-exploitation
+            title: "Right against Exploitation (Articles 23-24)"
+            summary: >-
+              Article 23 prohibits traffic in human beings, begar (forced unpaid labour) and other
+              forced labour, though the State may impose compulsory service for public purposes;
+              it protects citizens and foreigners against the State and private persons. Article 24
+              bars employing children below 14 in factories, mines or other hazardous work. Laws
+              giving effect include the Immoral Traffic (Prevention) Act 1956, the Bonded Labour
+              System (Abolition) Act 1976 and the Child Labour (Prohibition and Regulation) Act 1986,
+              amended in 2016 to ban employing children under 14 in all occupations except family
+              enterprises after school and adolescents (14-18) in hazardous work.
+            difficulty: easy
+            weight: 1.0
+            prerequisites: [fundamental-rights-overview]
+            patterns:
+              - key: exploitation-article
+                title: Article and age limits
+                example_stem: "Article 24 prohibits the employment of children below what age in factories, mines and hazardous occupations?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: exploitation-laws
+                title: Laws that give effect to Articles 23 and 24
+                example_stem: "The Bonded Labour System (Abolition) Act was passed in which year?"
+                frequency: low
+                difficulty: medium
+                target_seconds: 12
+
+      - key: religion
+        title: Right to Freedom of Religion (Articles 25-28)
+        concepts:
+          - slug: fundamental-rights-religion
+            title: "Right to Freedom of Religion (Articles 25-28)"
+            summary: >-
+              Article 25 gives all persons freedom of conscience and the right to freely profess,
+              practise and propagate religion, subject to public order, morality and health
+              (wearing and carrying kirpans is part of the Sikh religion); Article 26 lets religious
+              denominations manage their own affairs and property; Article 27 bars compelling anyone
+              to pay taxes for promoting a particular religion; Article 28 bars religious instruction
+              in institutions wholly maintained out of State funds. 'Secular' entered the Preamble
+              through the 42nd Amendment, and S.R. Bommai (1994) held secularism part of the basic
+              structure.
+            difficulty: easy
+            weight: 1.0
+            prerequisites: [fundamental-rights-overview]
+            patterns:
+              - key: religion-article
+                title: Which article of the religion group
+                example_stem: "Which article provides that no person shall be compelled to pay any tax for the promotion of a particular religion?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: secularism
+                title: Secularism in the Constitution
+                example_stem: "Which constitutional amendment added the word 'Secular' to the Preamble?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 10
+            shortcuts:
+              - key: conscience-to-classroom
+                title: Person, group, purse, classroom
+                kind: memory
+                rule: "25 the individual's faith, 26 the denomination's affairs, 27 your purse (no religious tax), 28 the classroom (no religious instruction in State-funded schools)."
+                example: {problem: "Religious instruction in a government school is barred by?", shortcut: "Classroom → 28", seconds_saved: 5}
+                pattern: religion-article
+
+      - key: cultural
+        title: Cultural and Educational Rights (Articles 29-30)
+        concepts:
+          - slug: fundamental-rights-cultural-educational
+            title: "Cultural and Educational Rights (Articles 29-30)"
+            summary: >-
+              Article 29 protects the right of any section of citizens with a distinct language,
+              script or culture to conserve it and bars denying admission to State-maintained or
+              aided institutions on grounds only of religion, race, caste or language; Article 30
+              gives all minorities, religious or linguistic, the right to establish and administer
+              educational institutions of their choice and forbids discrimination against them in
+              State aid. Article 29 protects any section of citizens, including the majority, while
+              Article 30 is for minorities only; the six notified national religious minorities are
+              Muslims, Christians, Sikhs, Buddhists, Parsis and Jains.
+            difficulty: easy
+            weight: 1.0
+            prerequisites: [fundamental-rights-overview]
+            patterns:
+              - key: minority-rights
+                title: Rights of minorities to educational institutions
+                example_stem: "The right of minorities to establish and administer educational institutions is given in which article?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: article-29-vs-30
+                title: Article 29 versus Article 30
+                example_stem: "Which statement is correct? (a) Article 29 protects only religious minorities (b) Article 30 covers linguistic minorities too (c) Article 30 applies to all citizens (d) Article 29 applies only to foreigners"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 15
+
+      - key: remedies
+        title: Right to Constitutional Remedies (Article 32) and writs
+        concepts:
+          - slug: right-to-constitutional-remedies
+            title: "Right to Constitutional Remedies (Article 32)"
+            summary: >-
+              Article 32, which B.R. Ambedkar called the 'heart and soul of the Constitution', is
+              itself a Fundamental Right: a person whose Fundamental Right is violated can move the
+              Supreme Court directly for directions, orders or writs. High Courts issue writs under
+              Article 226 both for Fundamental Rights and 'for any other purpose', so their writ
+              power is wider, but Article 226 is not a Fundamental Right. Article 32 is part of the
+              basic structure; during an emergency the right to move courts can be suspended under
+              Article 359, except for Articles 20 and 21, and Articles 33-34 let Parliament restrict
+              the rights of the armed forces and provide for martial law.
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [fundamental-rights-overview]
+            patterns:
+              - key: heart-and-soul
+                title: Article 32 and its description
+                example_stem: "Which article did Dr B.R. Ambedkar describe as the 'heart and soul' of the Constitution?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: article-32-vs-226
+                title: Writ jurisdiction of the Supreme Court and High Courts
+                example_stem: "Under which article can a High Court issue writs for the enforcement of Fundamental Rights and for any other purpose?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 12
+
+          - slug: writs
+            title: "Writs: habeas corpus, mandamus, prohibition, certiorari, quo warranto"
+            summary: >-
+              The Supreme Court (Article 32) and High Courts (Article 226) issue five writs taken
+              from English law. Habeas corpus ('to have the body') frees a person unlawfully
+              detained, by the State or a private person; mandamus ('we command') orders a public
+              official or body to do a public duty and does not lie against private persons, the
+              President or Governors; prohibition ('to forbid') stops a lower court or tribunal from
+              exceeding its jurisdiction while a case is pending; certiorari ('to be certified')
+              transfers a case or quashes an order already passed by a lower court or tribunal; quo
+              warranto ('by what authority') tests a person's legal right to hold a public office and
+              can be sought by any interested person.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [right-to-constitutional-remedies]
+            patterns:
+              - key: writ-meaning
+                title: Literal meaning of a writ
+                example_stem: "What is the literal meaning of the writ 'mandamus'?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: writ-situation
+                title: Which writ fits the situation
+                example_stem: "Which writ is issued by a higher court to a lower court to stop it from proceeding in a case beyond its jurisdiction?"
+                frequency: high
+                difficulty: medium
+                target_seconds: 15
+            shortcuts:
+              - key: prohibition-prevents-certiorari-cures
+                title: Prohibition prevents, certiorari cures
+                kind: memory
+                rule: "Both go to lower courts and tribunals: prohibition while the case is pending (preventive), certiorari after the order is passed (curative, quashes it)."
+                example: {problem: "A tribunal has already passed an order without jurisdiction. Which writ?", shortcut: "Already passed → cure → certiorari", seconds_saved: 8}
+                pattern: writ-situation
+                pitfalls: ["Habeas corpus is the writ that also runs against private persons; mandamus never does."]
+
+  - key: directives
+    title: Directive Principles of State Policy (Part IV)
+    concepts:
+      - slug: directive-principles-classification
+        title: "Directive Principles (Articles 36-51): classification"
+        summary: >-
+          Part IV, taken from the Irish Constitution, lists goals that courts cannot enforce but
+          that are 'fundamental in the governance of the country' (Article 37). Socialistic:
+          adequate livelihood, equal pay for equal work and no concentration of wealth (39), equal
+          justice and free legal aid (39A), right to work and public assistance (41), maternity
+          relief (42), living wage (43), workers in management (43A). Gandhian: village panchayats
+          (40), cottage industries (43), co-operatives (43B), welfare of SCs, STs and weaker sections
+          (46), prohibition of intoxicating drinks (47), no slaughter of cows and calves (48).
+          Liberal-intellectual: uniform civil code (44), early childhood care until age six (45),
+          modern agriculture (48), environment, forests and wildlife (48A), monuments (49),
+          separation of judiciary from executive (50), international peace (51).
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [fundamental-rights-overview]
+        patterns:
+          - key: directive-article
+            title: Article of a directive
+            example_stem: "Which article of the Directive Principles directs the State to secure a uniform civil code for citizens?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: classify-directive
+            title: Classify a directive as Gandhian, socialistic or liberal
+            example_stem: "Which of the following is a Gandhian principle among the Directive Principles of State Policy?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+          - key: added-directives
+            title: Directives added by amendments
+            description: "42nd (1976): 39(f), 39A, 43A, 48A; 44th (1978): 38(2) on reducing inequalities of income; 86th (2002): new Article 45; 97th (2011): 43B co-operatives."
+            example_stem: "Article 48A on protecting the environment was added by which amendment?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 12
+        shortcuts:
+          - key: anchor-39-40-44
+            title: "Anchors: 39 socialist, 40 Gandhian, 44 liberal"
+            kind: memory
+            rule: "Gandhian directives are 40, 43 (cottage industries), 43B, 46, 47, 48 (cows); 44, 45, 48A, 49, 50, 51 are liberal-intellectual; most of 38-43A are socialistic."
+            example: {problem: "Organisation of village panchayats is which type?", shortcut: "Article 40 → Gandhian anchor", seconds_saved: 5}
+            pattern: classify-directive
+
+      - slug: directive-principles-vs-fundamental-rights
+        title: Directive Principles versus Fundamental Rights
+        summary: >-
+          Directive Principles are non-justiciable and need laws to take effect, while Fundamental
+          Rights are justiciable limits on the State. Champakam Dorairajan (1951) held that rights
+          prevail over directives; after Golaknath (1967) the 24th and 25th Amendments (1971) added
+          Article 31C to protect laws implementing Article 39(b) and (c); Kesavananda Bharati (1973)
+          upheld that protection but kept judicial review, and Minerva Mills (1980) struck down the
+          42nd Amendment's extension of 31C to all directives, holding the balance between rights
+          and directives to be part of the basic structure. Laws giving effect to directives include
+          the 73rd Amendment panchayats (Article 40) and free legal aid under the Legal Services
+          Authorities Act 1987 (Article 39A).
+        difficulty: hard
+        weight: 0.8
+        prerequisites: [directive-principles-classification, constitutional-amendment-procedure]
+        patterns:
+          - key: justiciability
+            title: Justiciable or not
+            example_stem: "Which of the following is NOT enforceable by any court? (a) Fundamental Rights (b) Directive Principles (c) Right to constitutional remedies (d) Right to equality"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: conflict-cases
+            title: Cases on the conflict between rights and directives
+            example_stem: "In which case did the Supreme Court hold that harmony between Fundamental Rights and Directive Principles is a basic feature of the Constitution?"
+            frequency: medium
+            difficulty: hard
+            target_seconds: 15
+
+  - key: duties
+    title: Fundamental Duties (Article 51A)
+    concepts:
+      - slug: fundamental-duties
+        title: "Fundamental Duties (Article 51A)"
+        summary: >-
+          Part IVA (Article 51A) was added by the 42nd Amendment (1976) on the Swaran Singh
+          Committee's recommendation, the idea coming from the USSR; it listed 10 duties and the
+          86th Amendment (2002) added the 11th, for parents or guardians to provide opportunities
+          for education to children aged 6-14. The duties apply only to citizens and are not
+          directly enforceable: respect the Constitution, the National Flag and the National
+          Anthem; cherish the ideals of the freedom struggle; uphold sovereignty, unity and
+          integrity; defend the country; promote harmony and renounce practices derogatory to the
+          dignity of women; preserve the composite culture; protect the natural environment;
+          develop scientific temper; safeguard public property and abjure violence; strive for
+          excellence.
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [fundamental-rights-overview]
+        patterns:
+          - key: duty-identification
+            title: Is it a Fundamental Duty
+            example_stem: "Which of the following is NOT a Fundamental Duty? (a) To protect the natural environment (b) To develop scientific temper (c) To vote in public elections (d) To safeguard public property"
+            frequency: high
+            difficulty: easy
+            target_seconds: 12
+          - key: duties-origin
+            title: Origin and number of duties
+            example_stem: "On whose recommendation were the Fundamental Duties added to the Constitution?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: ten-plus-one
+            title: 42 gave ten, 86 gave one
+            kind: memory
+            rule: "The 42nd Amendment (1976) added 10 duties; the 86th (2002), which also created Article 21A, added the 11th duty (k) on education of children aged 6-14."
+            example: {problem: "Which amendment added the 11th Fundamental Duty?", shortcut: "Education duty pairs with Article 21A → 86th", seconds_saved: 5}
+            pattern: duties-origin
+            pitfalls: ["Voting and paying taxes are not listed Fundamental Duties."]
+
+  - key: other-rights
+    title: Rights outside Part III
+    concepts:
+      - slug: constitutional-rights-outside-part-three
+        title: Constitutional rights outside Part III
+        summary: >-
+          Some important rights are constitutional or legal rights outside Part III, enforceable
+          through ordinary courts and Article 226 but not Article 32: no tax without the authority
+          of law (Article 265), the right to property (Article 300A since the 44th Amendment),
+          freedom of trade, commerce and intercourse throughout India (Article 301) and universal
+          adult suffrage (Article 326). SSC asks whether a listed right is a Fundamental Right.
+        difficulty: medium
+        weight: 0.7
+        prerequisites: [fundamental-rights-overview]
+        patterns:
+          - key: fundamental-or-not
+            title: Fundamental Right or constitutional right
+            example_stem: "The right to property is now a ___ right under Article 300A."
+            frequency: high
+            difficulty: easy
+            target_seconds: 10

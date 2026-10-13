@@ -1,0 +1,1136 @@
+key: algebra
+title: Algebra
+strategies:
+  - key: approach
+    title: "Algebra: identities, substitution and the options"
+    summary: >-
+      Most SSC algebra questions ask for the value of an expression under a condition. Speed
+      comes from recognising the identity behind the expression and from putting simple values
+      that satisfy the condition; long expansion is almost never needed.
+    seconds_per_question: 45
+    accuracy_target: 0.9
+    tactics:
+      - "Memorise the square and cube identities and the x + 1/x ladder (squares, cubes, fourth and fifth powers) until they are automatic."
+      - "When a condition such as a + b + c = 0, xy = 1 or x + 1/x = 2 is given, put simple values that satisfy it and test the options."
+      - "For a pair of linear equations, compare the coefficient ratios before solving; for symmetric coefficients add and subtract the equations."
+      - "For maximum or minimum of a quadratic, use x = −b/2a or complete the square instead of trying values."
+    avoid:
+      - "Expanding long products when an identity or a value substitution gives the answer in one line."
+      - "Substituting values that break the given condition or make a denominator zero."
+
+topics:
+  - key: basic-algebra
+    title: Basic algebra
+    subtopics:
+      - key: expressions
+        title: Algebraic expressions
+        concepts:
+          - slug: algebraic-expressions-basics
+            title: "Algebraic expressions: terms, coefficients and evaluation"
+            summary: >-
+              An algebraic expression is built from variables and constants with +, −, × and ÷;
+              like terms (the same variables with the same powers) combine, unlike terms do not.
+              SSC asks for the value of an expression at given values, the degree and
+              coefficients of a polynomial, and the result of adding or multiplying expressions.
+            difficulty: easy
+            weight: 0.8
+            formulas:
+              - key: like-terms
+                name: Combining like terms
+                expression: "a·xⁿ + b·xⁿ = (a + b)·xⁿ;  terms with different variables or powers cannot be combined"
+                example: {problem: "Simplify 3x²y − 5xy² + 7x²y + 2xy².", solution: "(3 + 7)x²y + (−5 + 2)xy² = 10x²y − 3xy²"}
+              - key: exponent-laws
+                name: Laws of exponents in products
+                expression: "xᵐ × xⁿ = x^(m + n);  xᵐ ÷ xⁿ = x^(m − n);  (xᵐ)ⁿ = x^(mn)"
+                example: {problem: "Simplify (2x³y)(−3x²y⁴).", solution: "2 × (−3) = −6, x^(3 + 2) = x⁵, y^(1 + 4) = y⁵, so −6x⁵y⁵"}
+              - key: degree
+                name: Degree of a polynomial
+                expression: "degree = the highest sum of the exponents of the variables in any single term"
+                example: {problem: "Find the degree of 4x³y² − 7x⁴ + 2xy.", solution: "Term degrees are 5, 4 and 2, so the degree is 5"}
+            patterns:
+              - key: evaluate-expression
+                title: Value of an expression at given values
+                example_stem: "If x = 2 and y = −3, find the value of x³ − 2x²y + xy²."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: degree-coefficient
+                title: Degree and coefficients of a polynomial
+                example_stem: "What is the degree of the polynomial 5x²y³ − 3x⁴y + 7xy⁵ − 2?"
+                frequency: low
+                difficulty: easy
+                target_seconds: 15
+              - key: product-coefficient
+                title: Coefficient of a term in a product
+                example_stem: "Find the coefficient of x² in (2x − 3)(x² + 4x − 5)."
+                frequency: low
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: check-with-a-value
+                title: Check an expansion with one value
+                kind: elimination
+                rule: "Put a simple value such as x = 2 into the question and into each option; only an option with the same value can be the correct expansion or simplification."
+                when_to_use: "Options are expanded or simplified forms of the given expression."
+                example: {problem: "Which option equals (2x − 3)(x² + 4x − 5)?", standard: "Multiply term by term (six products) and collect like terms: 2x³ + 5x² − 22x + 15", shortcut: "At x = 2 the product is 1 × 7 = 7; keep only options that give 7 at x = 2", seconds_saved: 20}
+                pitfalls: ["x = 0 or x = 1 often makes two options equal; use a second value when more than one option survives."]
+
+      - key: polynomials
+        title: "Polynomials: remainder and factor theorem"
+        concepts:
+          - slug: polynomial-remainder-factor-theorem
+            title: "Polynomial basics: remainder and factor theorem"
+            summary: >-
+              When a polynomial p(x) is divided by (x − a) the remainder is p(a), and (x − a) is a
+              factor exactly when p(a) = 0. SSC asks for remainders, for an unknown coefficient
+              that makes a given binomial a factor, and for zeros of simple polynomials.
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [algebraic-expressions-basics]
+            formulas:
+              - key: remainder-theorem
+                name: Remainder theorem
+                expression: "remainder of p(x) ÷ (x − a) = p(a);  remainder of p(x) ÷ (ax + b) = p(−b/a)"
+                example: {problem: "Find the remainder when x³ − 3x² + 4x − 5 is divided by x − 2.", solution: "p(2) = 8 − 12 + 8 − 5 = −1"}
+              - key: factor-theorem
+                name: Factor theorem
+                expression: "(x − a) is a factor of p(x) ⇔ p(a) = 0"
+                example: {problem: "For what k is (x + 1) a factor of 2x³ + kx² − 5x + 2?", solution: "p(−1) = −2 + k + 5 + 2 = k + 5 = 0, so k = −5"}
+              - key: division-algorithm
+                name: Division algorithm
+                expression: "p(x) = d(x) × q(x) + r(x), where the degree of r(x) is less than the degree of d(x)"
+                example: {problem: "Divide x² + 5x + 7 by x + 2.", solution: "x² + 5x + 7 = (x + 2)(x + 3) + 1: quotient x + 3, remainder 1"}
+            patterns:
+              - key: find-remainder
+                title: Remainder on division by a linear binomial
+                example_stem: "What is the remainder when 4x³ − 2x² + x − 7 is divided by (2x − 1)?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 30
+              - key: unknown-coefficient
+                title: Unknown coefficient from a factor or a remainder
+                example_stem: "If (x − 3) is a factor of x³ − 2x² + ax − 6, find the value of a."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: two-factors
+                title: Two factors or two remainders give two unknowns
+                example_stem: "If (x − 1) and (x + 2) are both factors of x³ + ax² + bx − 6, find a + b."
+                frequency: low
+                difficulty: medium
+                target_seconds: 40
+            shortcuts:
+              - key: coefficient-sums
+                title: "x = 1 and x = −1 by coefficient sums"
+                kind: shortcut
+                rule: "p(1) is the sum of all coefficients, so (x − 1) is a factor when the coefficients add to 0; p(−1) is (sum of coefficients of even powers) − (sum of coefficients of odd powers), so (x + 1) is a factor when these two sums are equal."
+                example: {problem: "Is (x − 1) a factor of 3x³ − 5x² + 4x − 2?", standard: "Divide, or evaluate p(1) term by term", shortcut: "3 − 5 + 4 − 2 = 0, so yes", seconds_saved: 15}
+                pattern: unknown-coefficient
+
+      - key: surds
+        title: Elementary surds
+        concepts:
+          - slug: algebra-surds-rationalisation
+            title: "Elementary surds: rationalisation and conjugates"
+            summary: >-
+              A surd is an irrational root such as √2 or ∛5. Multiplying by the conjugate
+              (√a + √b ↔ √a − √b) rationalises a denominator because (√a + √b)(√a − √b) = a − b.
+              SSC asks to rationalise and simplify surd fractions, to compare surds and to find
+              x + 1/x or x² + 1/x² when x is a surd like 3 + 2√2.
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [algebra-square-identities]
+            formulas:
+              - key: conjugate-product
+                name: Conjugate product
+                expression: "(√a + √b)(√a − √b) = a − b;  (a + √b)(a − √b) = a² − b"
+                example: {problem: "Rationalise 1/(√5 − √3).", solution: "Multiply by (√5 + √3): (√5 + √3)/(5 − 3) = (√5 + √3)/2"}
+              - key: surd-laws
+                name: Laws of surds
+                expression: "√a × √b = √(ab);  √a ÷ √b = √(a/b);  √(a²b) = a√b (a ≥ 0)"
+                example: {problem: "Simplify √50 + √18 − √8.", solution: "5√2 + 3√2 − 2√2 = 6√2"}
+              - key: reciprocal-surd
+                name: Reciprocal of a + √b when a² − b = 1
+                expression: "if x = a + √b and a² − b = 1, then 1/x = a − √b, x + 1/x = 2a and x − 1/x = 2√b"
+                example: {problem: "If x = 3 + 2√2, find x + 1/x.", solution: "9 − 8 = 1, so 1/x = 3 − 2√2 and x + 1/x = 6"}
+            patterns:
+              - key: rationalise
+                title: Rationalise and simplify a surd fraction
+                example_stem: "Simplify (√7 + √3)/(√7 − √3)."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+              - key: surd-x-plus-reciprocal
+                title: Value of an expression when x is a surd
+                example_stem: "If x = 2 + √3, find the value of x² + 1/x²."
+                frequency: high
+                difficulty: medium
+                target_seconds: 30
+              - key: compare-surds
+                title: Compare or order surds
+                example_stem: "Which is the largest: √3 + √11, √5 + √9, √6 + √8 or √2 + √12?"
+                frequency: low
+                difficulty: medium
+                target_seconds: 40
+            shortcuts:
+              - key: conjugate-pair
+                title: Spot the reciprocal pair
+                kind: shortcut
+                rule: "For x = a + √b (or a − √b) with a² − b = 1, the reciprocal is the conjugate, so x + 1/x = 2a without any division."
+                example: {problem: "x = 5 − 2√6, find x² + 1/x².", standard: "Rationalise 1/x, add it to x, then square and subtract 2", shortcut: "25 − 24 = 1, so x + 1/x = 10 and x² + 1/x² = 100 − 2 = 98", seconds_saved: 30}
+                pattern: surd-x-plus-reciprocal
+              - key: closest-pair
+                title: "Equal sums: the closest pair gives the largest √a + √b"
+                kind: elimination
+                rule: "Among sums √a + √b with the same a + b, the sum is largest when a and b are closest together; among differences √a − √b with the same a − b, the difference is largest for the smallest numbers."
+                example: {problem: "Largest of √2 + √12, √6 + √8 and √5 + √9", shortcut: "Every pair adds to 14 and 6, 8 are closest, so √6 + √8", seconds_saved: 30}
+                pattern: compare-surds
+
+          - slug: binomial-surd-square-root
+            title: "Square root of a binomial surd: √(a ± 2√b)"
+            summary: >-
+              √(a + 2√b) = √x + √y and √(a − 2√b) = √x − √y, where x + y = a, xy = b and x > y.
+              Write the middle term as 2√b first (4√3 = 2√12). SSC asks to simplify such roots,
+              often inside a fraction or an x + 1/x question.
+            difficulty: medium
+            weight: 0.8
+            prerequisites: [algebra-surds-rationalisation]
+            formulas:
+              - key: binomial-root
+                name: Square root of a ± 2√b
+                expression: "√(a + 2√b) = √x + √y and √(a − 2√b) = √x − √y, where x + y = a, xy = b, x > y"
+                example: {problem: "Find √(11 − 2√30).", solution: "x + y = 11 and xy = 30 give 6 and 5, so √6 − √5"}
+              - key: make-two-root
+                name: Bring the middle term to the form 2√b
+                expression: "k√m = 2√(k²m/4)"
+                example: {problem: "Find √(7 + 4√3).", solution: "4√3 = 2√12; x + y = 7, xy = 12 give 4 and 3, so 2 + √3"}
+            patterns:
+              - key: simplify-root
+                title: Simplify the square root of a surd
+                example_stem: "Find the value of √(8 + 2√15)."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: root-in-expression
+                title: Surd root inside a larger expression
+                example_stem: "Simplify 1/√(9 − 2√14)."
+                frequency: low
+                difficulty: hard
+                target_seconds: 45
+            shortcuts:
+              - key: square-the-options
+                title: Square the options
+                kind: elimination
+                rule: "Square each option: (√x ± √y)² = (x + y) ± 2√(xy); the option whose square matches the given surd is the root."
+                example: {problem: "√(10 + 2√21) = ?", shortcut: "7 + 3 = 10 and 7 × 3 = 21, so √7 + √3", seconds_saved: 15}
+                pattern: simplify-root
+
+  - key: identities
+    title: Identities
+    subtopics:
+      - key: basic-identities
+        title: Basic algebraic identities
+        concepts:
+          - slug: algebra-square-identities
+            title: "Square identities: (a ± b)², a² − b² and (a + b + c)²"
+            summary: >-
+              (a + b)² = a² + 2ab + b², (a − b)² = a² − 2ab + b², a² − b² = (a + b)(a − b) and
+              (a + b + c)² = a² + b² + c² + 2(ab + bc + ca). SSC gives two of a + b, a − b, ab and
+              a² + b² and asks for another, and hides these identities in numerical calculations.
+            difficulty: easy
+            weight: 1.5
+            prerequisites: [algebraic-expressions-basics]
+            formulas:
+              - key: square-sum-difference
+                name: Square of a sum and of a difference
+                expression: "(a + b)² = a² + 2ab + b²;  (a − b)² = a² − 2ab + b²;  (a + b)² − (a − b)² = 4ab;  (a + b)² + (a − b)² = 2(a² + b²)"
+                example: {problem: "If a + b = 9 and ab = 14, find a² + b² and a − b.", solution: "a² + b² = 81 − 28 = 53; (a − b)² = 81 − 56 = 25, so a − b = ±5"}
+              - key: difference-of-squares
+                name: Difference of squares
+                expression: "a² − b² = (a + b)(a − b)"
+                example: {problem: "Evaluate 1013² − 987².", solution: "(1013 + 987)(1013 − 987) = 2000 × 26 = 52,000"}
+              - key: three-term-square
+                name: Square of a three-term sum
+                expression: "(a + b + c)² = a² + b² + c² + 2(ab + bc + ca)"
+                example: {problem: "If a + b + c = 11 and ab + bc + ca = 38, find a² + b² + c².", solution: "121 − 2 × 38 = 45"}
+            patterns:
+              - key: two-given-find-third
+                title: "Given a ± b and ab, find a² + b² or a ∓ b"
+                example_stem: "If x − y = 4 and xy = 21, find x² + y²."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: three-variable-square
+                title: Sum of squares or products of three variables
+                example_stem: "If a + b + c = 12 and a² + b² + c² = 50, find ab + bc + ca."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: numeric-identity
+                title: Identity hidden in a calculation
+                example_stem: "Find the value of 98 × 102 + 4."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: mean-and-half-difference
+                title: Product as a difference of squares
+                kind: shortcut
+                rule: "ab = [(a + b)/2]² − [(a − b)/2]²: write a product of two numbers as (their mean)² − (half their difference)²."
+                example: {problem: "Find 47 × 53.", standard: "Long multiplication", shortcut: "50² − 3² = 2500 − 9 = 2491", seconds_saved: 15}
+                pattern: numeric-identity
+
+          - slug: algebra-cube-identities
+            title: "Cube identities: (a ± b)³ and a³ ± b³"
+            summary: >-
+              (a + b)³ = a³ + b³ + 3ab(a + b), (a − b)³ = a³ − b³ − 3ab(a − b),
+              a³ + b³ = (a + b)(a² − ab + b²) and a³ − b³ = (a − b)(a² + ab + b²). SSC gives a + b
+              (or a − b) and ab and asks for a³ ± b³, or builds a numerical expression on these forms.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [algebra-square-identities]
+            formulas:
+              - key: cube-of-sum
+                name: Cube of a sum and of a difference
+                expression: "(a + b)³ = a³ + b³ + 3ab(a + b);  (a − b)³ = a³ − b³ − 3ab(a − b)"
+                example: {problem: "If a + b = 5 and ab = 6, find a³ + b³.", solution: "a³ + b³ = 5³ − 3 × 6 × 5 = 125 − 90 = 35"}
+              - key: sum-difference-of-cubes
+                name: Sum and difference of cubes
+                expression: "a³ + b³ = (a + b)(a² − ab + b²);  a³ − b³ = (a − b)(a² + ab + b²)"
+                example: {problem: "Factorise 27x³ − 8.", solution: "(3x)³ − 2³ = (3x − 2)(9x² + 6x + 4)"}
+              - key: difference-of-cubes-value
+                name: a³ − b³ from a − b and ab
+                expression: "a³ − b³ = (a − b)³ + 3ab(a − b)"
+                example: {problem: "If a − b = 4 and ab = 5, find a³ − b³.", solution: "64 + 3 × 5 × 4 = 124"}
+            patterns:
+              - key: cube-from-sum-product
+                title: "a³ ± b³ from a ± b and ab"
+                example_stem: "If x + y = 7 and xy = 10, find x³ + y³."
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+              - key: numeric-cube
+                title: Cube identity in a numerical expression
+                example_stem: "Find the value of (2.3)³ + (0.7)³ + 3 × 2.3 × 0.7 × 3."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: s-cubed-minus-3ps
+                title: "a³ + b³ = s³ − 3ps"
+                kind: shortcut
+                rule: "With s = a + b and p = ab, a³ + b³ = s³ − 3ps; there is no need to find a² + b² first."
+                example: {problem: "a + b = 10 and ab = 21, find a³ + b³.", standard: "a² + b² = 58, a² − ab + b² = 37, then 10 × 37", shortcut: "1000 − 3 × 21 × 10 = 370", seconds_saved: 15}
+                pattern: cube-from-sum-product
+
+      - key: abc-identity
+        title: "a³ + b³ + c³ − 3abc"
+        concepts:
+          - slug: abc-cube-identity
+            title: "a³ + b³ + c³ − 3abc and the a + b + c = 0 case"
+            summary: >-
+              a³ + b³ + c³ − 3abc = (a + b + c)(a² + b² + c² − ab − bc − ca)
+              = ½(a + b + c)[(a − b)² + (b − c)² + (c − a)²]. If a + b + c = 0 then
+              a³ + b³ + c³ = 3abc. SSC uses both forms, with numbers and with variables, in most papers.
+            difficulty: medium
+            weight: 1.8
+            prerequisites: [algebra-cube-identities]
+            formulas:
+              - key: abc-factor
+                name: Factor form
+                expression: "a³ + b³ + c³ − 3abc = (a + b + c)(a² + b² + c² − ab − bc − ca)"
+                example: {problem: "If a + b + c = 6 and ab + bc + ca = 11, find a³ + b³ + c³ − 3abc.", solution: "a² + b² + c² = 36 − 22 = 14, so the value is 6 × (14 − 11) = 18"}
+              - key: squares-of-differences
+                name: Squares-of-differences form
+                expression: "a³ + b³ + c³ − 3abc = ½(a + b + c)[(a − b)² + (b − c)² + (c − a)²]"
+                example: {problem: "Find a³ + b³ + c³ − 3abc for a = 101, b = 102, c = 103.", solution: "½ × 306 × (1 + 1 + 4) = 918"}
+              - key: zero-sum
+                name: The a + b + c = 0 case
+                expression: "if a + b + c = 0, then a³ + b³ + c³ = 3abc"
+                conditions: "Conversely, a³ + b³ + c³ = 3abc means a + b + c = 0 or a = b = c."
+                example: {problem: "Find 15³ − 8³ − 7³.", solution: "15 + (−8) + (−7) = 0, so the value is 3 × 15 × (−8) × (−7) = 2520"}
+            patterns:
+              - key: zero-sum-numeric
+                title: Cubes whose bases add to zero
+                example_stem: "Find the value of (−12)³ + 5³ + 7³."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: evenly-spaced
+                title: Consecutive or evenly spaced values
+                example_stem: "If x = 997, y = 998 and z = 999, find x² + y² + z² − xy − yz − zx."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: divided-form
+                title: "Fraction built on a³ + b³ + c³ − 3abc"
+                example_stem: "Find (a³ + b³ + c³ − 3abc)/(a² + b² + c² − ab − bc − ca) when a = 0.25, b = 0.35 and c = 0.4."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: check-the-sum
+                title: Add the bases first
+                kind: shortcut
+                rule: "Before cubing anything, add the three bases: if they sum to 0 the sum of cubes is 3 × their product; if the expression is divided by a² + b² + c² − ab − bc − ca, the answer is a + b + c."
+                example: {problem: "Simplify (x − 2y)³ + (2y − 3z)³ + (3z − x)³.", standard: "Expand the three cubes and collect terms", shortcut: "The bases add to 0, so the value is 3(x − 2y)(2y − 3z)(3z − x)", seconds_saved: 60}
+                pattern: zero-sum-numeric
+              - key: half-squared-differences
+                title: Use only the small differences
+                kind: shortcut
+                rule: "For close or evenly spaced numbers, a² + b² + c² − ab − bc − ca = ½[(a − b)² + (b − c)² + (c − a)²]."
+                example: {problem: "a = 51, b = 53, c = 55: find a² + b² + c² − ab − bc − ca.", shortcut: "½(4 + 4 + 16) = 12", seconds_saved: 40}
+                pattern: evenly-spaced
+
+      - key: reciprocal
+        title: "x + 1/x type problems"
+        concepts:
+          - slug: x-plus-reciprocal-squares
+            title: "x + 1/x and x − 1/x: squares and fourth powers"
+            summary: >-
+              If x + 1/x = k then x² + 1/x² = k² − 2 and x⁴ + 1/x⁴ = (k² − 2)² − 2; if x − 1/x = m
+              then x² + 1/x² = m² + 2. A condition written as x² − kx + 1 = 0 is the same as
+              x + 1/x = k. SSC asks these ladders in almost every paper.
+            difficulty: medium
+            weight: 1.8
+            prerequisites: [algebra-square-identities]
+            formulas:
+              - key: square-ladder
+                name: Squares from x ± 1/x
+                expression: "x² + 1/x² = (x + 1/x)² − 2 = (x − 1/x)² + 2;  x⁴ + 1/x⁴ = (x² + 1/x²)² − 2"
+                example: {problem: "If x + 1/x = 5, find x² + 1/x² and x⁴ + 1/x⁴.", solution: "x² + 1/x² = 25 − 2 = 23; x⁴ + 1/x⁴ = 23² − 2 = 527"}
+              - key: switch-sign
+                name: From x + 1/x to x − 1/x
+                expression: "(x − 1/x)² = (x + 1/x)² − 4;  x² − 1/x² = (x + 1/x)(x − 1/x)"
+                example: {problem: "If x + 1/x = 3 and x > 1, find x − 1/x and x² − 1/x².", solution: "(x − 1/x)² = 9 − 4 = 5, so x − 1/x = √5 and x² − 1/x² = 3√5"}
+              - key: quadratic-form
+                name: Quadratic form of the condition
+                expression: "x² − kx + 1 = 0 (x ≠ 0) ⇔ x + 1/x = k;  x² − kx − 1 = 0 ⇔ x − 1/x = k;  ax² − bx + a = 0 ⇔ x + 1/x = b/a"
+                example: {problem: "If x² − 6x + 1 = 0, find x² + 1/x².", solution: "Dividing by x gives x + 1/x = 6, so x² + 1/x² = 36 − 2 = 34"}
+            patterns:
+              - key: power-ladder
+                title: Higher even powers from x + 1/x
+                example_stem: "If x + 1/x = 4, find the value of x⁴ + 1/x⁴."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: hidden-reciprocal
+                title: Condition given as a quadratic
+                example_stem: "If x² − 4x − 1 = 0, find the value of x² + 1/x²."
+                frequency: high
+                difficulty: medium
+                target_seconds: 30
+              - key: fraction-form
+                title: Condition given as a fraction
+                example_stem: "If x/(x² + 1) = 1/3, find the value of x² + 1/x²."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: square-minus-two
+                title: Square and subtract 2
+                kind: shortcut
+                rule: "Each step up the even ladder squares the previous value and subtracts 2: x + 1/x = k gives k² − 2, then (k² − 2)² − 2, and so on for x⁸ + 1/x⁸."
+                example: {problem: "x + 1/x = 3, find x⁸ + 1/x⁸.", shortcut: "3 → 9 − 2 = 7 → 49 − 2 = 47 → 2209 − 2 = 2207", seconds_saved: 30}
+                pattern: power-ladder
+              - key: divide-by-x
+                title: Divide the quadratic by x
+                kind: shortcut
+                rule: "When the condition is x² − kx + 1 = 0 or x² − kx − 1 = 0, divide by x at once to get x + 1/x = k or x − 1/x = k; never solve for x."
+                example: {problem: "x² − 4x − 1 = 0, find x² + 1/x².", standard: "Solve x = 2 ± √5 and substitute", shortcut: "x − 1/x = 4, so x² + 1/x² = 16 + 2 = 18", seconds_saved: 40}
+                pattern: hidden-reciprocal
+
+          - slug: x-plus-reciprocal-cubes
+            title: "x + 1/x: cubes, fifth and sixth powers"
+            summary: >-
+              If x + 1/x = k then x³ + 1/x³ = k³ − 3k; if x − 1/x = m then x³ − 1/x³ = m³ + 3m.
+              Fifth and sixth powers come from products of lower ones, e.g.
+              x⁵ + 1/x⁵ = (x² + 1/x²)(x³ + 1/x³) − (x + 1/x). SSC asks these with integer and surd
+              values of k.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [x-plus-reciprocal-squares, algebra-cube-identities]
+            formulas:
+              - key: cube-ladder
+                name: Cubes from x ± 1/x
+                expression: "x³ + 1/x³ = (x + 1/x)³ − 3(x + 1/x);  x³ − 1/x³ = (x − 1/x)³ + 3(x − 1/x)"
+                example: {problem: "If x + 1/x = 4, find x³ + 1/x³.", solution: "64 − 12 = 52"}
+              - key: fifth-power
+                name: Fifth power
+                expression: "x⁵ + 1/x⁵ = (x² + 1/x²)(x³ + 1/x³) − (x + 1/x)"
+                example: {problem: "If x + 1/x = 3, find x⁵ + 1/x⁵.", solution: "x² + 1/x² = 7 and x³ + 1/x³ = 27 − 9 = 18, so 7 × 18 − 3 = 123"}
+              - key: sixth-power
+                name: Sixth power
+                expression: "x⁶ + 1/x⁶ = (x³ + 1/x³)² − 2 = (x² + 1/x²)³ − 3(x² + 1/x²)"
+                example: {problem: "If x + 1/x = 3, find x⁶ + 1/x⁶.", solution: "18² − 2 = 322 (check: 7³ − 3 × 7 = 343 − 21 = 322)"}
+            patterns:
+              - key: cube-value
+                title: "x³ + 1/x³ from x + 1/x"
+                example_stem: "If x + 1/x = 5, find the value of x³ + 1/x³."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: surd-k
+                title: "Surd value of x + 1/x or x − 1/x"
+                example_stem: "If x + 1/x = √5, find the value of x³ + 1/x³."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: fifth-power-value
+                title: Fifth powers and mixed expressions
+                example_stem: "If x + 1/x = 4, find the value of x⁵ + 1/x⁵."
+                frequency: low
+                difficulty: hard
+                target_seconds: 45
+            shortcuts:
+              - key: k-times-k-squared-minus-3
+                title: "x³ + 1/x³ = k(k² − 3)"
+                kind: memory
+                rule: "Write x³ + 1/x³ as k(k² − 3) where k = x + 1/x (and x³ − 1/x³ = m(m² + 3) where m = x − 1/x): one multiplication."
+                example: {problem: "x + 1/x = 6, find x³ + 1/x³.", standard: "216 − 18 = 198", shortcut: "6 × (36 − 3) = 6 × 33 = 198", seconds_saved: 10}
+                pattern: cube-value
+
+          - slug: x-reciprocal-special-values
+            title: "Special values: x + 1/x = 2, −2, 1, −1 and √3"
+            summary: >-
+              x + 1/x = 2 forces x = 1 and x + 1/x = −2 forces x = −1. For x + 1/x = 1 we get
+              x³ = −1, for x + 1/x = −1 we get x³ = 1, and for x + 1/x = √3 we get x⁶ = −1 (these x
+              are not real numbers, but the algebra holds). SSC uses them to ask for very high
+              powers such as x⁹⁹ + 1/x⁹⁹.
+            difficulty: hard
+            weight: 1.0
+            prerequisites: [x-plus-reciprocal-cubes]
+            formulas:
+              - key: plus-minus-two
+                name: "x + 1/x = ±2"
+                expression: "x + 1/x = 2 ⇒ (x − 1)² = 0 ⇒ x = 1;  x + 1/x = −2 ⇒ x = −1"
+                example: {problem: "If x + 1/x = 2, find x¹⁷ + 1/x¹⁹.", solution: "x = 1, so the value is 1 + 1 = 2"}
+              - key: plus-minus-one
+                name: "x + 1/x = ±1"
+                expression: "x + 1/x = 1 ⇒ x² − x + 1 = 0 ⇒ x³ = −1;  x + 1/x = −1 ⇒ x² + x + 1 = 0 ⇒ x³ = 1"
+                example: {problem: "If x + 1/x = −1, find x³⁰⁰ + x³⁰¹ + x³⁰².", solution: "x³ = 1, so the sum is 1 + x + x², which is 0 because x² + x + 1 = 0"}
+              - key: root-three
+                name: "x + 1/x = √3"
+                expression: "x + 1/x = √3 ⇒ x³ + 1/x³ = 3√3 − 3√3 = 0 ⇒ x⁶ = −1 and x¹² = 1"
+                example: {problem: "If x + 1/x = √3, find x¹⁸ + x¹² + x⁶ + 1.", solution: "x⁶ = −1, so −1 + 1 − 1 + 1 = 0"}
+            patterns:
+              - key: high-power-value
+                title: Very high powers under a special condition
+                example_stem: "If x + 1/x = 1, find the value of x⁹⁹ + 1/x⁹⁹."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: x-equals-one
+                title: "x + 1/x = 2 type"
+                example_stem: "If a + 1/a = 2, find the value of a⁵⁰ − 1/a⁵⁰."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+              - key: root-three-series
+                title: "x + 1/x = √3 with a series of powers"
+                example_stem: "If x + 1/x = √3, find the value of x³⁰ + x²⁴ + x¹⁸ + x¹² + x⁶ + 1."
+                frequency: low
+                difficulty: hard
+                target_seconds: 40
+            shortcuts:
+              - key: power-cycle
+                title: Reduce the exponent with the cycle
+                kind: shortcut
+                rule: "Find the power p with xᵖ = ±1 (p = 3 for x + 1/x = ±1, p = 6 for x + 1/x = √3), write the exponent as a multiple of p plus a remainder, and keep only the remainder with the right sign."
+                example: {problem: "If x + 1/x = √3, find x⁷² + x⁶⁶.", standard: "Find x as a complex number and raise it to the powers", shortcut: "x⁶ = −1: x⁷² = (x⁶)¹² = 1 and x⁶⁶ = (x⁶)¹¹ = −1, so the sum is 0", seconds_saved: 40}
+                pattern: root-three-series
+                pitfalls: ["x + 1/x = 2 and −2 are the only cases with real x; there x = ±1 directly."]
+
+      - key: conditional
+        title: Conditional identities and value substitution
+        concepts:
+          - slug: algebra-conditional-identities
+            title: "Conditional identities: sums of squares and a + b + c = 0"
+            summary: >-
+              A sum of squares of real numbers is 0 only when each square is 0, so conditions like
+              x² + y² − 6x + 8y + 25 = 0 fix the variables; a² + b² + c² = ab + bc + ca forces
+              a = b = c; and a + b + c = 0 gives a family of results such as
+              a²/bc + b²/ca + c²/ab = 3. SSC builds such a condition and asks for a simple
+              expression of the variables.
+            difficulty: hard
+            weight: 1.3
+            prerequisites: [algebra-square-identities, abc-cube-identity]
+            formulas:
+              - key: sum-of-squares-zero
+                name: Sum of squares equal to zero
+                expression: "p² + q² + r² = 0 (p, q, r real) ⇒ p = q = r = 0"
+                example: {problem: "If x² + y² − 6x + 8y + 25 = 0, find x + y.", solution: "(x − 3)² + (y + 4)² = 0, so x = 3, y = −4 and x + y = −1"}
+              - key: equal-variables
+                name: "a² + b² + c² = ab + bc + ca"
+                expression: "a² + b² + c² − ab − bc − ca = ½[(a − b)² + (b − c)² + (c − a)²] = 0 ⇒ a = b = c"
+                example: {problem: "If a² + b² + c² = ab + bc + ca, find (a + b + c)²/(a² + b² + c²).", solution: "a = b = c, so 9a²/3a² = 3"}
+              - key: zero-sum-results
+                name: "Results of a + b + c = 0"
+                expression: "a + b + c = 0 ⇒ a³ + b³ + c³ = 3abc;  a²/bc + b²/ca + c²/ab = 3;  (a + b)(b + c)(c + a) = −abc;  a² − bc = b² − ca = c² − ab"
+                example: {problem: "If a + b + c = 0, find (a + b)(b + c)(c + a)/abc.", solution: "(−c)(−a)(−b)/abc = −1"}
+            patterns:
+              - key: complete-squares
+                title: Complete the squares in a given condition
+                example_stem: "If 4a² + 9b² + 4a − 6b + 2 = 0, find the value of 2a + 3b."
+                frequency: high
+                difficulty: medium
+                target_seconds: 40
+              - key: forced-equality
+                title: Condition that forces a = b = c
+                example_stem: "If a² + b² + c² − ab − bc − ca = 0, find (a³ + b³ + c³)/abc."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 25
+              - key: zero-sum-consequence
+                title: "Consequences of a + b + c = 0"
+                example_stem: "If a + b + c = 0, find the value of a²/(bc) + b²/(ca) + c²/(ab)."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 25
+            shortcuts:
+              - key: constant-check
+                title: Split the constant into squares
+                kind: shortcut
+                rule: "In x² + y² + px + qy + c = 0, check whether c = (p/2)² + (q/2)²; if so the condition is a sum of two squares and x = −p/2, y = −q/2."
+                example: {problem: "x² + y² − 6x + 8y + 25 = 0", shortcut: "9 + 16 = 25, so x = 3 and y = −4", seconds_saved: 20}
+                pattern: complete-squares
+              - key: sample-values
+                title: Pick numbers that satisfy the condition
+                kind: alternative
+                rule: "For a + b + c = 0 take a = 1, b = 1, c = −2; for a = b = c take all equal to 1; evaluate the expression and match the options."
+                example: {problem: "If a + b + c = 0, find (a + b)(b + c)(c + a)/abc.", standard: "Replace a + b by −c and so on", shortcut: "a = b = 1, c = −2: (2)(−1)(−1)/(−2) = −1", seconds_saved: 20}
+                pattern: zero-sum-consequence
+
+          - slug: value-substitution-algebra
+            title: Value substitution (putting values) in algebra
+            summary: >-
+              When the answer holds for all values satisfying a condition, choose the simplest
+              values that satisfy it (0, 1, −1, equal values) and evaluate the expression and the
+              options. It is valid only if every condition is satisfied exactly and no denominator
+              becomes zero; if two options tie, test a second set of values.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [algebra-conditional-identities]
+            formulas:
+              - key: validity-rule
+                name: When substitution is valid
+                expression: "choose values that satisfy every given condition and keep every denominator non-zero; if two options give the same value, test a second set"
+                example: {problem: "If a + b = 1, find a³ + b³ + 3ab.", solution: "Put a = 1, b = 0: 1 + 0 + 0 = 1 (identity: a³ + b³ = 1 − 3ab when a + b = 1)"}
+              - key: standard-choices
+                name: Standard choices for common conditions
+                expression: "a + b + c = 0 → (1, 1, −2), or (1, −1, 0) when nothing is divided by abc;  a = b = c → (1, 1, 1);  xy = 1 → (1, 1) or (2, 1/2);  x + 1/x = 2 → x = 1"
+                example: {problem: "If xy = 1, find 1/(1 + x) + 1/(1 + y).", solution: "x = y = 1 gives 1/2 + 1/2 = 1"}
+            patterns:
+              - key: constant-answer
+                title: Expression that is a constant under a condition
+                example_stem: "If a + b + c = 0, find the value of 1/(a² + b² − c²) + 1/(b² + c² − a²) + 1/(c² + a² − b²)."
+                frequency: high
+                difficulty: medium
+                target_seconds: 30
+              - key: option-test
+                title: Test the options with values
+                example_stem: "If x = a(b − c), y = b(c − a) and z = c(a − b), then (x/a)³ + (y/b)³ + (z/c)³ is equal to?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: simplest-values
+                title: Put 0, 1 or equal values
+                kind: alternative
+                rule: "Pick values that satisfy the condition with the least arithmetic, compute the expression, and choose the option with the same value."
+                example: {problem: "If a + b + c = 0, find 1/(a² + b² − c²) + 1/(b² + c² − a²) + 1/(c² + a² − b²).", standard: "Use c = −(a + b) to turn each denominator into −2ab, −2bc, −2ca and add", shortcut: "a = b = 1, c = −2: 1/(−2) + 1/4 + 1/4 = 0", seconds_saved: 45}
+                pattern: constant-answer
+                pitfalls:
+                  - "The values must satisfy the condition exactly; a = b = c = 0 is useless when the expression divides by abc."
+                  - "If the answer contains variables, one set of values may match two options."
+
+  - key: simplification
+    title: Simplification and factorisation
+    concepts:
+      - slug: algebraic-simplification
+        title: Simplification of algebraic expressions and fractions
+        summary: >-
+          Simplify algebraic fractions by factorising numerator and denominator with identities
+          and cancelling common factors, and combine fractions over the LCM of their
+          denominators. SSC asks for the simplified value of long numerical or algebraic
+          expressions that collapse to a constant or a single term.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [algebra-square-identities, algebra-cube-identities]
+        formulas:
+          - key: cancel-after-factorising
+            name: Cancel after factorising
+            expression: "(a² − b²)/(a − b) = a + b;  (a³ − b³)/(a − b) = a² + ab + b²;  (a³ + b³)/(a + b) = a² − ab + b²"
+            conditions: "Denominators must be non-zero."
+            example: {problem: "Simplify (x⁴ − 16)/(x² + 4).", solution: "(x² − 4)(x² + 4)/(x² + 4) = x² − 4"}
+          - key: add-fractions
+            name: Adding algebraic fractions
+            expression: "p/q + r/s = (ps + qr)/(qs), or over the LCM of q and s"
+            example: {problem: "Simplify 1/(x − 1) − 1/(x + 1).", solution: "[(x + 1) − (x − 1)]/(x² − 1) = 2/(x² − 1)"}
+          - key: numeric-collapse
+            name: Numerical expressions that hide an identity
+            expression: "(a³ + b³)/(a² − ab + b²) = a + b;  (a³ − b³)/(a² + ab + b²) = a − b;  (a² + 2ab + b²)/(a + b) = a + b"
+            example: {problem: "Simplify (0.73³ + 0.27³)/(0.73² − 0.73 × 0.27 + 0.27²).", solution: "a + b = 0.73 + 0.27 = 1"}
+        patterns:
+          - key: numeric-identity
+            title: Numerical expression that collapses through an identity
+            example_stem: "Simplify (5.6³ − 3.6³)/(5.6² + 5.6 × 3.6 + 3.6²)."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: algebraic-fraction
+            title: Simplify an algebraic fraction
+            example_stem: "Simplify (x³ − 8)/(x² + 2x + 4) + (x² − 4)/(x + 2)."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: read-the-denominator
+            title: Read the pattern of the denominator
+            kind: shortcut
+            rule: "If the denominator is a² − ab + b² and the numerator a³ + b³, the answer is a + b; if the denominator is a² + ab + b² and the numerator a³ − b³, it is a − b. No cubing is needed."
+            example: {problem: "(7.5³ + 2.5³)/(7.5² − 7.5 × 2.5 + 2.5²)", standard: "437.5 ÷ 43.75 = 10 after computing every power", shortcut: "a + b = 7.5 + 2.5 = 10", seconds_saved: 40}
+            pattern: numeric-identity
+            pitfalls: ["Check the sign of the middle term: a³ + b³ pairs with −ab, a³ − b³ with +ab."]
+
+      - slug: algebraic-factorisation
+        title: Factorisation using identities and splitting the middle term
+        summary: >-
+          Factorise by spotting identity forms (difference of squares, perfect squares, sum and
+          difference of cubes), by splitting the middle term of a quadratic, and by adding and
+          subtracting a square: a⁴ + a²b² + b⁴ = (a² + ab + b²)(a² − ab + b²). SSC asks which
+          option is a factor, or uses factorisation to simplify a fraction.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [algebra-cube-identities]
+        formulas:
+          - key: split-middle-term
+            name: Splitting the middle term
+            expression: "ax² + bx + c: find p, q with p + q = b and pq = ac, write bx = px + qx and group"
+            example: {problem: "Factorise 6x² − 7x − 3.", solution: "pq = −18 and p + q = −7 give −9 and 2: 6x² − 9x + 2x − 3 = 3x(2x − 3) + (2x − 3) = (3x + 1)(2x − 3)"}
+          - key: fourth-power-trinomial
+            name: "a⁴ + a²b² + b⁴"
+            expression: "a⁴ + a²b² + b⁴ = (a² + b²)² − (ab)² = (a² + ab + b²)(a² − ab + b²)"
+            example: {problem: "Factorise x⁴ + x² + 1.", solution: "(x² + x + 1)(x² − x + 1)"}
+          - key: sixth-power-difference
+            name: "a⁶ − b⁶"
+            expression: "a⁶ − b⁶ = (a³ − b³)(a³ + b³) = (a − b)(a + b)(a² + ab + b²)(a² − ab + b²)"
+        patterns:
+          - key: which-is-factor
+            title: Which option is a factor
+            example_stem: "Which of the following is a factor of x⁴ + 4?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: factorise-to-simplify
+            title: Factorise to simplify a fraction
+            example_stem: "Simplify (x⁴ + x² + 1)/(x² + x + 1)."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: add-subtract-square
+            title: Add and subtract to make a square
+            kind: shortcut
+            rule: "For x⁴ + c type expressions with a missing middle term, complete a square and use the difference of squares: x⁴ + 4 = (x² + 2)² − (2x)²."
+            example: {problem: "Factorise x⁴ + 4.", standard: "Multiply out each option", shortcut: "(x² + 2)² − 4x² = (x² + 2x + 2)(x² − 2x + 2)", seconds_saved: 20}
+            pattern: which-is-factor
+          - key: divisibility-test
+            title: Test a factor with a value
+            kind: elimination
+            rule: "Put x = 1 (or 2): the value of a true factor must divide the value of the expression; options that fail are out."
+            example: {problem: "Is x² + 2 a factor of x⁴ + 4?", shortcut: "At x = 1 the expression is 5 and x² + 2 is 3, which does not divide 5, so no; x² + 2x + 2 gives 5, which does", seconds_saved: 20}
+            pattern: which-is-factor
+            pitfalls: ["Dividing is necessary but not sufficient; confirm with a second value."]
+
+  - key: linear-equations
+    title: Linear equations
+    subtopics:
+      - key: one-variable
+        title: Linear equations in one variable
+        concepts:
+          - slug: linear-equations-one-variable
+            title: Linear equations in one variable and word problems
+            summary: >-
+              ax + b = c (a ≠ 0) has the single solution x = (c − b)/a. Clear fractions by
+              multiplying by the LCM of the denominators. SSC asks for solutions of equations with
+              fractions and brackets and for short word problems (numbers, ages, coins) that reduce
+              to one equation.
+            difficulty: easy
+            weight: 0.8
+            prerequisites: [algebraic-expressions-basics]
+            formulas:
+              - key: solve-linear
+                name: Solution of a linear equation
+                expression: "ax + b = c ⇒ x = (c − b)/a (a ≠ 0)"
+                example: {problem: "Solve (x + 1)/3 + (x − 1)/4 = 3.", solution: "Multiply by 12: 4(x + 1) + 3(x − 1) = 36 → 7x + 1 = 36 → x = 5"}
+              - key: cross-multiply
+                name: Cross-multiplication
+                expression: "a/b = c/d ⇒ ad = bc (b, d ≠ 0)"
+                example: {problem: "Solve (2x + 1)/(x − 1) = 3.", solution: "2x + 1 = 3x − 3, so x = 4"}
+            patterns:
+              - key: solve-equation
+                title: Solve an equation with fractions
+                example_stem: "Solve: (3x − 2)/4 − (2x + 3)/3 = 2/3 − x."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 30
+              - key: word-problem
+                title: Number and age word problems
+                example_stem: "The sum of three consecutive odd numbers is 87. Find the largest of them."
+                frequency: low
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: back-substitute
+                title: Back-substitute the options
+                kind: elimination
+                rule: "Put each option into the equation; the one that balances both sides is the answer, often faster than clearing fractions."
+                example: {problem: "(3x − 2)/4 − (2x + 3)/3 = 2/3 − x, options 1, 2, 3, 4", standard: "Multiply by 12 and solve 13x = 26", shortcut: "x = 2: 1 − 7/3 = −4/3 and 2/3 − 2 = −4/3, so x = 2", seconds_saved: 15}
+                pattern: solve-equation
+
+      - key: two-variables
+        title: Linear equations in two variables
+        concepts:
+          - slug: linear-equations-two-variables
+            title: Solving a pair of linear equations in two variables
+            summary: >-
+              Solve a₁x + b₁y = c₁ and a₂x + b₂y = c₂ by elimination, substitution or
+              cross-multiplication. SSC asks for x, y or a combination like x + y, word problems
+              on costs and numbers, and equations in 1/x and 1/y that become linear after
+              substitution.
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [linear-equations-one-variable]
+            formulas:
+              - key: cross-multiplication
+                name: Cross-multiplication rule
+                expression: "a₁x + b₁y + c₁ = 0 and a₂x + b₂y + c₂ = 0 ⇒ x/(b₁c₂ − b₂c₁) = y/(c₁a₂ − c₂a₁) = 1/(a₁b₂ − a₂b₁)"
+                example: {problem: "Solve 2x + 3y − 13 = 0 and 3x − y − 3 = 0.", solution: "b₁c₂ − b₂c₁ = −9 − 13 = −22, c₁a₂ − c₂a₁ = −39 + 6 = −33, a₁b₂ − a₂b₁ = −2 − 9 = −11; x = 2, y = 3"}
+              - key: elimination
+                name: Elimination
+                expression: "multiply the equations so that one variable has equal coefficients, then add or subtract"
+                example: {problem: "Solve 47x + 31y = 63 and 31x + 47y = 15.", solution: "Adding: 78(x + y) = 78, so x + y = 1; subtracting: 16(x − y) = 48, so x − y = 3; x = 2, y = −1"}
+              - key: reciprocal-substitution
+                name: Equations in 1/x and 1/y
+                expression: "put u = 1/x and v = 1/y, solve the linear pair in u and v, then invert"
+                example: {problem: "Solve 2/x + 3/y = 13 and 5/x − 4/y = −2.", solution: "2u + 3v = 13 and 5u − 4v = −2 give u = 2, v = 3, so x = 1/2, y = 1/3"}
+            patterns:
+              - key: solve-pair
+                title: "Solve for x and y, or x + y"
+                example_stem: "If 3x + 4y = 18 and 4x + 3y = 17, find x + y and x − y."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: word-pair
+                title: Two-variable word problem
+                example_stem: "5 pens and 3 notebooks cost ₹110, while 3 pens and 5 notebooks cost ₹130. Find the cost of one notebook."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 30
+            shortcuts:
+              - key: swapped-coefficients
+                title: Add and subtract swapped coefficients
+                kind: shortcut
+                rule: "For ax + by = p and bx + ay = q, adding gives x + y = (p + q)/(a + b) and subtracting gives x − y = (p − q)/(a − b)."
+                example: {problem: "47x + 31y = 63 and 31x + 47y = 15", standard: "Multiply the equations by 31 and 47 and eliminate", shortcut: "x + y = 78/78 = 1 and x − y = 48/16 = 3, so x = 2, y = −1", seconds_saved: 40}
+                pattern: solve-pair
+
+          - slug: linear-equations-consistency
+            title: Consistency of a pair of linear equations
+            summary: >-
+              For a₁x + b₁y + c₁ = 0 and a₂x + b₂y + c₂ = 0: a₁/a₂ ≠ b₁/b₂ gives a unique solution
+              (intersecting lines), a₁/a₂ = b₁/b₂ = c₁/c₂ gives infinitely many (coincident lines),
+              and a₁/a₂ = b₁/b₂ ≠ c₁/c₂ gives none (parallel lines). SSC asks for the value of k
+              that makes a system consistent, inconsistent or uniquely solvable.
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [linear-equations-two-variables]
+            formulas:
+              - key: consistency-ratios
+                name: Conditions on the coefficient ratios
+                expression: "unique solution: a₁/a₂ ≠ b₁/b₂;  infinitely many: a₁/a₂ = b₁/b₂ = c₁/c₂;  no solution: a₁/a₂ = b₁/b₂ ≠ c₁/c₂"
+                conditions: "Write both equations in the same form (all terms on one side, or both constants on the right) before comparing."
+                example: {problem: "For what k do 2x + ky = 5 and 6x + 9y = 15 have infinitely many solutions?", solution: "2/6 = k/9 = 5/15 = 1/3, so k = 3"}
+              - key: no-solution
+                name: Inconsistent system
+                expression: "a₁/a₂ = b₁/b₂ ≠ c₁/c₂: the lines are parallel and there is no solution"
+                example: {problem: "For what k do kx + 3y = 7 and 12x + 9y = 5 have no solution?", solution: "k/12 = 3/9 gives k = 4, and 7/5 ≠ 1/3, so no solution"}
+            patterns:
+              - key: k-infinite
+                title: Value of k for infinitely many solutions
+                example_stem: "For what value of k will the equations 3x + 4y = 12 and 9x + ky = 36 have infinitely many solutions?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: k-no-solution
+                title: Value of k for no solution
+                example_stem: "For what value of k do the equations kx − 2y = 5 and 6x − 4y = 7 have no solution?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: unique-solution
+                title: Condition for a unique solution
+                example_stem: "For which value of p does the pair 2x + py = 4 and 4x + 6y = 9 fail to have a unique solution?"
+                frequency: low
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: ratio-check
+                title: Compare the x- and y-ratios first
+                kind: shortcut
+                rule: "Find k from a₁/a₂ = b₁/b₂ (both 'infinitely many' and 'no solution' need it), then compare with c₁/c₂ to see which case it is."
+                example: {problem: "kx − 2y = 5 and 6x − 4y = 7 have no solution; find k.", shortcut: "k/6 = −2/−4 = 1/2, so k = 3; 5/7 ≠ 1/2 confirms no solution", seconds_saved: 15}
+                pattern: k-no-solution
+
+      - key: graphs
+        title: Graphs of linear equations
+        concepts:
+          - slug: linear-equation-graphs
+            title: "Graphs of linear equations: intercepts, slope and intersection"
+            summary: >-
+              The graph of ax + by + c = 0 is a straight line with x-intercept −c/a, y-intercept
+              −c/b and slope −a/b; y = mx + c has slope m and y-intercept c, and x = a, y = b are
+              lines parallel to the y- and x-axes. SSC asks where a line cuts the axes, whether a
+              point lies on it and where two lines meet.
+            difficulty: easy
+            weight: 1.0
+            prerequisites: [linear-equations-two-variables]
+            formulas:
+              - key: intercepts
+                name: Intercepts
+                expression: "ax + by + c = 0 meets the x-axis at (−c/a, 0) and the y-axis at (0, −c/b);  intercept form x/p + y/q = 1"
+                example: {problem: "Where does 3x − 4y = 12 cut the axes?", solution: "y = 0 gives x = 4 and x = 0 gives y = −3: the points (4, 0) and (0, −3)"}
+              - key: slope-form
+                name: Slope of a line
+                expression: "y = mx + c has slope m and y-intercept c;  ax + by + c = 0 has slope −a/b"
+                example: {problem: "Find the slope of 2x + 3y = 6.", solution: "−2/3"}
+              - key: special-lines
+                name: Lines parallel to the axes
+                expression: "x = a is parallel to the y-axis; y = b is parallel to the x-axis; x = 0 is the y-axis and y = 0 the x-axis; y = mx passes through the origin"
+            patterns:
+              - key: axis-cut
+                title: Point where a line cuts an axis
+                example_stem: "At what point does the graph of 5x + 2y = 20 cut the x-axis?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+              - key: intersection-point
+                title: Point of intersection of two lines
+                example_stem: "At which point do the lines 2x − y = 1 and x + y = 8 intersect?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: point-on-line
+                title: Point on a line
+                example_stem: "If the point (2, k) lies on the line 3x − 2y = 4, find k."
+                frequency: low
+                difficulty: easy
+                target_seconds: 15
+            shortcuts:
+              - key: cover-up
+                title: Cover-up method for intercepts
+                kind: shortcut
+                rule: "For ax + by = c, cover the y-term to get the x-intercept c/a and cover the x-term to get the y-intercept c/b."
+                example: {problem: "Intercepts of 4x + 5y = 40", shortcut: "x = 40/4 = 10 and y = 40/5 = 8", seconds_saved: 10}
+                pattern: axis-cut
+
+          - slug: area-enclosed-by-lines
+            title: Area enclosed by lines and the axes
+            summary: >-
+              The line ax + by = c (a, b, c ≠ 0) and the two axes enclose a right triangle of area
+              ½ × |x-intercept| × |y-intercept| = c²/(2|ab|). For two lines and one axis, the base
+              lies on the axis and the height is the distance of their intersection point from it.
+              SSC asks this as the area of the triangle formed by the graphs and the coordinate axes.
+            difficulty: medium
+            weight: 1.3
+            prerequisites: [linear-equation-graphs]
+            formulas:
+              - key: line-with-axes
+                name: One line and the two axes
+                expression: "area = ½ × |c/a| × |c/b| = c²/(2|ab|) for ax + by = c;  for x/p + y/q = 1 the area is |pq|/2"
+                example: {problem: "Find the area of the triangle formed by 3x + 4y = 24 and the axes.", solution: "Intercepts 8 and 6: area = ½ × 8 × 6 = 24 square units (= 24²/(2 × 12))"}
+              - key: two-lines-one-axis
+                name: Two lines and one axis
+                expression: "with the x-axis: area = ½ × (distance between the two x-intercepts) × |y-coordinate of the intersection|;  with the y-axis use the y-intercepts and the x-coordinate"
+                example: {problem: "Find the area enclosed by x + y = 6, x − y = 2 and the x-axis.", solution: "x-intercepts 6 and 2 (base 4); the lines meet at (4, 2) (height 2); area = ½ × 4 × 2 = 4"}
+              - key: three-lines
+                name: Triangle from three lines
+                expression: "find the three vertices, then area = ½|x₁(y₂ − y₃) + x₂(y₃ − y₁) + x₃(y₁ − y₂)|"
+                example: {problem: "Find the area enclosed by y = x, y = −x and y = 4.", solution: "Vertices (0, 0), (4, 4), (−4, 4): base 8, height 4, area 16"}
+            patterns:
+              - key: line-and-axes
+                title: Area of the triangle formed by a line and the axes
+                example_stem: "Find the area of the triangle formed by the graph of 2x + 5y = 20 and the coordinate axes."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: two-lines-and-axis
+                title: Two lines and one axis
+                example_stem: "Find the area of the triangle formed by the lines 2x + y = 8, x − y = 1 and the y-axis."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 40
+            shortcuts:
+              - key: c-squared-over-2ab
+                title: "Area = c²/(2ab) directly"
+                kind: shortcut
+                rule: "For ax + by = c with the axes, the area is c²/(2|ab|); no need to find the intercepts."
+                example: {problem: "Area for 3x + 4y = 24 with the axes", shortcut: "576/24 = 24", seconds_saved: 10}
+                pattern: line-and-axes
+
+  - key: quadratic-equations
+    title: Quadratic equations
+    concepts:
+      - slug: quadratic-roots
+        title: "Solving quadratic equations: factorisation, formula and discriminant"
+        summary: >-
+          ax² + bx + c = 0 (a ≠ 0) has roots x = [−b ± √(b² − 4ac)]/(2a). The discriminant
+          D = b² − 4ac decides the nature of the roots: D > 0 real and distinct, D = 0 real and
+          equal, D < 0 no real roots. SSC asks for the roots, their nature and the value of k for
+          equal roots.
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [algebraic-factorisation]
+        formulas:
+          - key: quadratic-formula
+            name: Quadratic formula
+            expression: "x = [−b ± √(b² − 4ac)] / (2a)"
+            variables:
+              - {symbol: "a, b, c", meaning: "coefficients of x², x and the constant term"}
+            example: {problem: "Solve 2x² − 7x + 3 = 0.", solution: "D = 49 − 24 = 25, x = (7 ± 5)/4 = 3 or 1/2"}
+          - key: discriminant
+            name: Nature of the roots
+            expression: "D = b² − 4ac: D > 0 two distinct real roots;  D = 0 equal roots x = −b/(2a);  D < 0 no real roots;  D a perfect square (rational a, b, c) gives rational roots"
+            example: {problem: "For what k does x² − kx + 9 = 0 have equal roots?", solution: "k² − 36 = 0, so k = ±6"}
+        patterns:
+          - key: find-roots
+            title: Roots of a quadratic
+            example_stem: "Find the roots of 3x² − 5x − 2 = 0."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: equal-roots-k
+            title: Value of k for equal roots
+            example_stem: "For what positive value of k does 4x² + kx + 9 = 0 have equal roots?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: nature-of-roots
+            title: Nature of the roots
+            example_stem: "Which of these equations has no real roots: x² − 4x + 4 = 0, x² + 3x + 5 = 0, 2x² − 5x + 2 = 0 or x² − 9 = 0?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: sum-product-check
+            title: Check options with the sum and product
+            kind: elimination
+            rule: "A pair of numbers is the pair of roots only if their sum is −b/a and their product is c/a; test the options on these two numbers instead of solving."
+            example: {problem: "Roots of 2x² − 7x + 3 = 0?", shortcut: "The sum must be 7/2 and the product 3/2: only 3 and 1/2 fit", seconds_saved: 15}
+            pattern: find-roots
+
+      - slug: quadratic-sum-product-roots
+        title: Sum and product of roots, forming equations and symmetric expressions
+        summary: >-
+          For ax² + bx + c = 0 with roots α and β: α + β = −b/a and αβ = c/a. Symmetric
+          expressions such as α² + β², 1/α + 1/β and α³ + β³ follow from these two, and
+          x² − (α + β)x + αβ = 0 is the equation with given roots. SSC asks these directly and for
+          equations whose roots are reciprocals or multiples of the given roots.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [quadratic-roots, algebra-cube-identities]
+        formulas:
+          - key: sum-and-product
+            name: Sum and product of the roots
+            expression: "α + β = −b/a;  αβ = c/a"
+            example: {problem: "For 2x² − 6x + 3 = 0, find α² + β².", solution: "α + β = 3 and αβ = 3/2, so α² + β² = 9 − 3 = 6"}
+          - key: form-equation
+            name: Equation from its roots
+            expression: "x² − (sum of roots)x + (product of roots) = 0"
+            example: {problem: "Form the equation whose roots are 2 + √3 and 2 − √3.", solution: "Sum 4 and product 1: x² − 4x + 1 = 0"}
+          - key: symmetric-expressions
+            name: Symmetric expressions of the roots
+            expression: "α² + β² = (α + β)² − 2αβ;  (α − β)² = (α + β)² − 4αβ;  1/α + 1/β = (α + β)/αβ;  α³ + β³ = (α + β)³ − 3αβ(α + β)"
+            example: {problem: "For x² − 5x + 6 = 0, find 1/α + 1/β.", solution: "5/6"}
+          - key: transformed-roots
+            name: Reciprocal and scaled roots
+            expression: "roots 1/α, 1/β: cx² + bx + a = 0;  roots kα, kβ: ax² + kbx + k²c = 0"
+            example: {problem: "Find the equation whose roots are the reciprocals of the roots of 2x² − 5x + 3 = 0.", solution: "3x² − 5x + 2 = 0"}
+        patterns:
+          - key: symmetric-value
+            title: Value of a symmetric expression of the roots
+            example_stem: "If α and β are the roots of x² − 7x + 12 = 0, find α² + β²."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: form-from-roots
+            title: Form the equation from given roots
+            example_stem: "Which quadratic equation has the roots 3 and −5?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: one-root-given
+            title: One root given, find the other root or a coefficient
+            example_stem: "If one root of x² − kx + 15 = 0 is 3, find k and the other root."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: other-root-from-product
+            title: Other root from the product
+            kind: shortcut
+            rule: "If one root r is known, the other is (c/a) ÷ r; then the unknown coefficient comes from the sum."
+            example: {problem: "One root of x² − kx + 15 = 0 is 3.", standard: "Substitute x = 3 to find k, then factorise", shortcut: "Other root = 15/3 = 5, k = 3 + 5 = 8", seconds_saved: 15}
+            pattern: one-root-given
+
+      - slug: quadratic-max-min
+        title: Maximum and minimum of quadratic expressions
+        summary: >-
+          ax² + bx + c takes its extreme value (4ac − b²)/(4a) at x = −b/(2a): a minimum when
+          a > 0 and a maximum when a < 0. Completing the square gives the same result, and for
+          x > 0 the AM-GM inequality gives x + k/x ≥ 2√k. SSC asks for the least or greatest value
+          of such expressions.
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [quadratic-roots]
+        formulas:
+          - key: vertex-value
+            name: Extreme value of a quadratic
+            expression: "extreme value of ax² + bx + c = (4ac − b²)/(4a) = c − b²/(4a), at x = −b/(2a); a minimum if a > 0, a maximum if a < 0"
+            example: {problem: "Find the minimum value of x² − 6x + 14.", solution: "At x = 3: 9 − 18 + 14 = 5 (= 14 − 36/4)"}
+          - key: complete-square
+            name: Completing the square
+            expression: "ax² + bx + c = a(x + b/(2a))² + (4ac − b²)/(4a)"
+            example: {problem: "Find the maximum value of 5 + 4x − x².", solution: "−(x − 2)² + 9, so the maximum is 9 at x = 2"}
+          - key: am-gm
+            name: AM-GM minimum
+            expression: "for x > 0 and k > 0: x + k/x ≥ 2√k (equality at x = √k);  ax + b/x ≥ 2√(ab) for a, b, x > 0"
+            example: {problem: "Find the minimum of 4x + 9/x for x > 0.", solution: "2√36 = 12, at x = 3/2"}
+        patterns:
+          - key: min-value
+            title: Least value of a quadratic
+            example_stem: "Find the minimum value of 2x² − 8x + 11."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: max-value
+            title: Greatest value of a quadratic with a negative leading coefficient
+            example_stem: "What is the maximum value of 7 − 6x − 3x²?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: am-gm-min
+            title: "Minimum of x + k/x type expressions"
+            example_stem: "For x > 0, find the minimum value of x + 16/x."
+            frequency: low
+            difficulty: medium
+            target_seconds: 25
+        shortcuts:
+          - key: c-minus-b-squared
+            title: "Extreme value = c − b²/(4a)"
+            kind: shortcut
+            rule: "The extreme value is c − b²/(4a); when a = 1 it is c − (b/2)²."
+            example: {problem: "Minimum of x² + 10x + 30", standard: "Complete the square step by step", shortcut: "30 − 25 = 5", seconds_saved: 15}
+            pattern: min-value
+            pitfalls: ["Check the sign of a: with a positive leading coefficient there is only a minimum."]

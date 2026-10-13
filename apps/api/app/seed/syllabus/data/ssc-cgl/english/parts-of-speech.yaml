@@ -1,0 +1,529 @@
+key: parts-of-speech
+title: Parts of Speech
+strategies:
+  - key: approach
+    title: "Parts of speech: one rule behind every error"
+    summary: >-
+      Most error-spotting and sentence-improvement questions test one rule about one part of
+      speech: a plural uncountable noun, a wrong pronoun case, a double comparative, a misplaced
+      adverb or the wrong verb form after a preposition. Learn each rule with one model sentence
+      and name the word class of the underlined word before judging it.
+    seconds_per_question: 30
+    accuracy_target: 0.9
+    tactics:
+      - "Name the part of speech of the underlined word first; the rule to check follows from it."
+      - "Keep running lists: uncountable nouns (information, advice, luggage), verbs that take a gerund, Latin comparatives that take 'to'."
+      - "After a preposition a pronoun is objective (between you and me) and a verb takes -ing (fond of reading)."
+    avoid:
+      - "Judging by what sounds natural in Indian English ('cousin brother', 'myself Ravi', 'discuss about')."
+
+topics:
+  - key: nouns
+    title: Nouns
+    concepts:
+      - slug: english-countable-uncountable-nouns
+        title: Countable and uncountable nouns
+        summary: >-
+          Countable nouns have singular and plural forms and take a/an, many and few; uncountable
+          nouns (information, advice, furniture, luggage, baggage, equipment, machinery, scenery,
+          poetry, news) have no plural, take a singular verb and are counted with 'a piece of'.
+          SSC plants forms like 'informations', 'an advice' or 'many furniture' in error spotting.
+        difficulty: easy
+        weight: 1.5
+        formulas:
+          - key: uncountable-rule
+            name: Uncountable noun rule
+            expression: "uncountable noun → no plural -s, no a/an, singular verb; quantity with much / little / less / a piece of / an item of"
+            example: {problem: "Correct: 'He gave me many useful advices.'", solution: "He gave me a lot of useful advice (or: many useful pieces of advice)."}
+        patterns:
+          - key: plural-uncountable
+            title: "Spot the error: plural or a/an with an uncountable noun"
+            example_stem: "Identify the segment that contains an error: The tourists / could not carry / all their luggages / up the steep hill."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: much-many
+            title: "Fill in the blank: much or many, little or few with the noun"
+            example_stem: "There was not ___ furniture in the new office. (a) many (b) much (c) few (d) several"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: count-test
+            title: Can you put a number before it?
+            kind: elimination
+            rule: "If 'two ___' sounds wrong (two furnitures, two advices), the noun is uncountable: strike out every option with -s, a/an or many."
+            example: {problem: "She bought new ___ for the flat. (a) furnitures (b) a furniture (c) furniture (d) many furniture", shortcut: "'Two furnitures' is impossible, so only (c) survives.", seconds_saved: 10}
+            pattern: plural-uncountable
+
+      - slug: english-collective-nouns
+        title: Collective nouns
+        summary: >-
+          A collective noun (team, jury, committee, family, audience, crowd, government) takes a
+          singular verb and 'it' when the group acts as one unit and a plural verb and 'they' when
+          its members act separately ('The jury were divided in their opinions'). Cattle, police,
+          people, poultry, gentry and vermin are always plural. SSC also asks the right group word:
+          a flock of sheep, a pack of wolves, a swarm of bees, a herd of cattle, a fleet of ships.
+        difficulty: medium
+        weight: 1.2
+        patterns:
+          - key: unit-or-members
+            title: "Spot the error: collective noun as a unit or as members"
+            example_stem: "Identify the segment that contains an error: The committee / have submitted / its report / to the chairman."
+            frequency: high
+            difficulty: medium
+            target_seconds: 25
+          - key: always-plural
+            title: "Spot the error: police, cattle, people with a singular verb"
+            example_stem: "Identify the segment that contains an error: The police / has arrested / the two men / who robbed the bank."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: group-word
+            title: "Fill in the blank: the collective word for a group"
+            example_stem: "A ___ of wolves attacked the shepherd's flock at night. (a) herd (b) pack (c) swarm (d) school"
+            frequency: low
+            difficulty: easy
+            target_seconds: 15
+
+      - slug: english-noun-number-case
+        title: Number and possessive case of nouns
+        summary: >-
+          Compound nouns pluralise the main word (sons-in-law, passers-by, commanders-in-chief);
+          some nouns keep one form (sheep, deer, species, series, aircraft); a number used as an
+          adjective stays singular (a ten-rupee note, a five-year plan, two dozen eggs). The
+          possessive 's is used mainly with living beings and personified or time expressions
+          ('the boys' hostel', 'a week's leave'), 'of' with lifeless things ('the leg of the
+          table'), and in a compound noun the 's goes on the last word ('my sister-in-law's car').
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [english-countable-uncountable-nouns]
+        patterns:
+          - key: number-adjective
+            title: "Spot the error: number adjective or compound plural"
+            example_stem: "Identify the segment that contains an error: The government / has launched / a three-years programme / for rural roads."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: possessive
+            title: "Spot the error: possessive case"
+            example_stem: "Identify the segment that contains an error: My brother-in-laws' shop / is closed / on Sundays / and public holidays."
+            frequency: low
+            difficulty: medium
+            target_seconds: 25
+
+  - key: pronouns
+    title: Pronouns
+    concepts:
+      - slug: english-pronoun-case
+        title: Pronoun case (subjective and objective)
+        summary: >-
+          A pronoun used as a subject takes the subjective case (I, he, she, we, they) and one used
+          as the object of a verb or preposition takes the objective case (me, him, her, us, them):
+          'between you and me', 'Let him and me go', 'everyone except him'. After than or as the
+          case follows the hidden verb ('He is taller than I [am]'). With pronouns of different
+          persons the courteous order is second, third, first ('You, he and I').
+        difficulty: medium
+        weight: 1.5
+        formulas:
+          - key: pronoun-order
+            name: Order of personal pronouns
+            expression: "singular: 2nd, 3rd, 1st (you, he and I);  plural: 1st, 2nd, 3rd (we, you and they);  owning a fault: 1st first (I, you and he are to blame)"
+            example: {problem: "Correct: 'I, you and he will go to the fair.'", solution: "You, he and I will go to the fair."}
+        patterns:
+          - key: after-preposition
+            title: "Spot the error: subjective pronoun after a preposition or 'let'"
+            example_stem: "Identify the segment that contains an error: The manager / divided the work / between Ravi and I / before leaving."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: than-as
+            title: "Spot the error: pronoun after than or as"
+            example_stem: "Identify the segment that contains an error: My younger sister / sings / far better / than me."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+        shortcuts:
+          - key: drop-the-other
+            title: Remove the other noun
+            kind: shortcut
+            rule: "Cover the other half of a pair: 'between Ravi and I' becomes 'between I', which is clearly wrong; 'than me' becomes 'than me sing', so it must be 'than I'."
+            example: {problem: "The teacher praised Sita and I.", shortcut: "'The teacher praised I' is wrong, so 'Sita and me'.", seconds_saved: 10}
+            pattern: after-preposition
+
+      - slug: english-reflexive-pronouns
+        title: Reflexive, emphatic and reciprocal pronouns
+        summary: >-
+          Reflexive pronouns (myself, himself, ourselves, themselves) refer back to the subject and
+          can never be the subject ('Myself Ravi' is wrong). Avail, absent, pride and acquit take a
+          reflexive object ('He availed himself of the offer'), and enjoy needs one when it has no
+          other object; verbs like keep, stop, bathe, qualify and rest do not take one. Emphatic use
+          stresses the subject ('I myself saw it'); 'one' pairs with 'oneself' and 'one's'; 'each
+          other' is used for two and 'one another' for more than two.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [english-pronoun-case]
+        patterns:
+          - key: avail-absent
+            title: "Spot the error: missing reflexive after avail, absent, pride"
+            example_stem: "Identify the segment that contains an error: All the employees / should avail of / the new medical scheme / before March."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: reciprocal
+            title: "Fill in the blank: each other or one another"
+            example_stem: "The two brothers helped ___ in their studies. (a) one another (b) each other (c) themselves (d) theirselves"
+            frequency: low
+            difficulty: easy
+            target_seconds: 15
+
+      - slug: english-relative-pronouns
+        title: Relative pronouns (who, whom, whose, which, that)
+        summary: >-
+          Who (subject) and whom (object) refer to people, which to things and animals, whose shows
+          possession, and that can replace who or which in defining clauses. 'That' is preferred
+          after superlatives and after all, only, none, nothing and the same ('the best film that I
+          have seen'); a relative pronoun should stand next to its antecedent; and 'what' never
+          follows a noun ('the book that I wanted', not 'the book what I wanted').
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [english-pronoun-case]
+        formulas:
+          - key: who-whom
+            name: Who or whom test
+            expression: "answer the clause with he/him: he → who, him → whom"
+            example: {problem: "___ do you think will win the match?", solution: "'He will win' → Who (the words 'do you think' do not change the case)."}
+        patterns:
+          - key: who-whom
+            title: "Fill in the blank: who, whom or whose"
+            example_stem: "The officer ___ we met yesterday has been transferred. (a) who (b) whom (c) whose (d) which"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: that-after-superlative
+            title: "Spot the error: 'which' or 'what' where 'that' is needed"
+            example_stem: "Identify the segment that contains an error: This is / the most interesting novel / which I have / ever read."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+        shortcuts:
+          - key: he-him
+            title: He/him substitution
+            kind: shortcut
+            rule: "Turn the relative clause into a small sentence; if 'he' fits use who, if 'him' fits use whom."
+            example: {problem: "The candidate ___ the panel selected is my cousin.", standard: "Analyse the clause grammatically", shortcut: "'The panel selected him' → whom", seconds_saved: 10}
+            pattern: who-whom
+
+  - key: adjectives
+    title: Adjectives
+    concepts:
+      - slug: english-adjective-degrees
+        title: Degrees of comparison
+        summary: >-
+          Use 'than' after a comparative, 'the' before a superlative and 'the + comparative' for one
+          of two ('the taller of the two'). Senior, junior, superior, inferior, prior and
+          preferable take 'to'; double comparatives ('more better') are wrong; absolute adjectives
+          (unique, perfect, complete, ideal) are not compared; within one group use 'than any
+          other' ('taller than any other boy in the class'). Elder is used only for family members
+          and never with 'than'.
+        difficulty: medium
+        weight: 1.5
+        formulas:
+          - key: latin-comparatives
+            name: Comparatives that take 'to'
+            expression: "senior / junior / superior / inferior / prior / anterior / posterior / preferable + to;  prefer A to B"
+            example: {problem: "Correct: 'He is senior than me in service.'", solution: "He is senior to me in service."}
+        patterns:
+          - key: than-to
+            title: "Spot the error: 'than' after a Latin comparative or a double comparative"
+            example_stem: "Identify the segment that contains an error: This brand of tea / is far superior / than the one / we bought last month."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: any-other
+            title: "Sentence improvement: 'than any other' and 'the + comparative of the two'"
+            example_stem: "Improve the underlined part: Mount Everest is higher than any peak in the Himalayas. (a) than any other peak (b) than all peaks (c) than every peak (d) No improvement"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+          - key: confusable-forms
+            title: "Fill in the blank: elder/older, later/latter, farther/further"
+            example_stem: "Of the two proposals, the ___ seems more practical. (a) later (b) latter (c) last (d) latest"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+      - slug: english-adjective-order
+        title: Order and position of adjectives
+        summary: >-
+          Several adjectives before a noun follow the order opinion, size, age, shape, colour,
+          origin, material, purpose ('a lovely small old round wooden table'). Ordinals come before
+          cardinal numbers ('the first two chapters', not 'the two first chapters'), and some
+          adjectives follow the word they qualify ('something new', 'the members present', 'a
+          river ten metres deep').
+        difficulty: easy
+        weight: 0.7
+        formulas:
+          - key: osascomp
+            name: Order of adjectives
+            expression: "determiner → opinion → size → age → shape → colour → origin → material → purpose → noun"
+            example: {problem: "Arrange: a / leather / brown / beautiful / bag", solution: "a beautiful brown leather bag"}
+        patterns:
+          - key: arrange-adjectives
+            title: "Select the correct order of adjectives"
+            example_stem: "Select the correct option: (a) an Indian old huge temple (b) a huge old Indian temple (c) an old huge Indian temple (d) a huge Indian old temple"
+            frequency: low
+            difficulty: easy
+            target_seconds: 20
+          - key: ordinal-cardinal
+            title: "Spot the error: cardinal before ordinal"
+            example_stem: "Identify the segment that contains an error: The two first chapters / of the book / deal with / the history of the region."
+            frequency: low
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: osascomp-memory
+            title: OSASCOMP
+            kind: memory
+            rule: "Opinion, Size, Age, Shape, Colour, Origin, Material, Purpose: the closer the quality is to the noun's basic nature, the closer it stands to the noun."
+            example: {problem: "a ___ table: wooden, dining, beautiful", shortcut: "Opinion → material → purpose: a beautiful wooden dining table", seconds_saved: 10}
+            pattern: arrange-adjectives
+
+      - slug: english-quantifiers
+        title: "Quantifiers: few, a few, little, a little, less, fewer"
+        summary: >-
+          Few, a few and the few go with countable nouns; little, a little and the little with
+          uncountable ones. 'Few/little' mean hardly any (negative), 'a few/a little' mean some
+          (positive), 'the few/the little' mean all of a small amount ('the few books that he
+          had'). Fewer is for countables and less for uncountables; each is for two or more taken
+          one by one and every for more than two; 'some' goes in positive sentences and offers,
+          'any' in negatives and questions.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [english-countable-uncountable-nouns]
+        patterns:
+          - key: few-a-few
+            title: "Fill in the blank: few, a few or the few"
+            example_stem: "___ students passed the test, so the teacher was disappointed. (a) A few (b) Few (c) The few (d) Little"
+            frequency: high
+            difficulty: medium
+            target_seconds: 20
+          - key: less-fewer
+            title: "Spot the error: less with a countable noun"
+            example_stem: "Identify the segment that contains an error: This year / less candidates / applied for the post / than last year."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+
+  - key: adverbs
+    title: Adverbs
+    concepts:
+      - slug: english-adverbs
+        title: Position of adverbs and adjective-adverb choice
+        summary: >-
+          Frequency adverbs (always, often, never, seldom, usually) go before the main verb but after
+          'be' and after the first auxiliary ('He is always late', 'He has never lied'); 'enough'
+          follows its adjective ('good enough'); only, even and just stand next to the word they
+          qualify. Linking verbs (look, seem, feel, smell, taste, sound, become) take an adjective
+          ('The rose smells sweet'); hard/hardly, late/lately and near/nearly differ in meaning;
+          'very' goes with positive adjectives, 'much' with comparatives, and 'too' means 'more than
+          enough', not 'very'.
+        difficulty: medium
+        weight: 1.2
+        patterns:
+          - key: linking-verb
+            title: "Spot the error: adverb after a linking verb"
+            example_stem: "Identify the segment that contains an error: The food / at the new restaurant / tastes deliciously / but is costly."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: hard-hardly
+            title: "Fill in the blank: hard/hardly, late/lately, very/much/too"
+            example_stem: "He worked ___ all year and topped the examination. (a) hardly (b) hard (c) hardest (d) harder than"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: adverb-position
+            title: "Sentence improvement: position of frequency adverbs and 'enough'"
+            example_stem: "Improve the underlined part: She goes always to the temple on Fridays. (a) always goes (b) goes to always (c) is going always (d) No improvement"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+
+  - key: verbs
+    title: Verbs
+    subtopics:
+      - key: verb-types
+        title: Kinds of verbs
+        concepts:
+          - slug: english-transitive-intransitive-verbs
+            title: Transitive and intransitive verbs
+            summary: >-
+              A transitive verb needs an object (lay, raise, set); an intransitive verb does not (lie,
+              rise, sit), and only transitive verbs have a passive. SSC tests the confusable pairs
+              and their forms: lie–lay–lain (rest) and lay–laid–laid (put), rise–rose–risen and
+              raise–raised–raised, sit–sat–sat and set–set–set, fall–fell–fallen and
+              fell–felled–felled (cut down), hang–hung–hung (suspend) and hang–hanged–hanged
+              (execute).
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [english-past-simple]
+            formulas:
+              - key: confusable-pairs
+                name: Confusable verb pairs
+                expression: "intransitive: lie–lay–lain–lying, rise–rose–risen, sit–sat–sat, fall–fell–fallen;  transitive: lay–laid–laid–laying, raise–raised–raised, set–set–set, fell–felled–felled"
+                example: {problem: "Correct: 'He laid on the sofa all afternoon.'", solution: "He lay on the sofa all afternoon (lie = rest; past tense lay)."}
+            patterns:
+              - key: lie-lay
+                title: "Spot the error: lie/lay, rise/raise, sit/set"
+                example_stem: "Identify the segment that contains an error: The injured man / had laid on the road / for an hour / before help arrived."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 25
+              - key: transitive-object
+                title: "Fill in the blank: transitive or intransitive form"
+                example_stem: "Prices have ___ sharply since the budget. (a) raised (b) risen (c) rose (d) arisen up"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 20
+            shortcuts:
+              - key: object-test
+                title: Is there an object?
+                kind: elimination
+                rule: "If nothing receives the action, you need the intransitive verb (lie, rise, sit, fall); if something is put, lifted or placed, you need the transitive one (lay, raise, set, fell)."
+                example: {problem: "The sun ___ in the east. (rises / raises)", shortcut: "No object follows, so 'rises'.", seconds_saved: 5}
+                pattern: transitive-object
+      - key: modals
+        title: Modals
+        concepts:
+          - slug: english-modals
+            title: Modals and their uses
+            summary: >-
+              Modals (can, could, may, might, shall, should, will, would, must, ought to) take the
+              base verb without 'to', except 'ought to'; 'need' and 'dare' act as modals in negatives
+              and questions ('You need not go'). Modal + have + V3 refers to the past: 'must have'
+              (sure deduction), 'should have' (duty not done), 'could/might have' (possibility).
+              'Must not' forbids while 'need not' removes the necessity; 'would rather' and 'had
+              better' also take the base verb.
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [english-present-tenses]
+            formulas:
+              - key: modal-perfect
+                name: Modal perfect
+                expression: "modal + have + V3:  must have gone (I am sure he went), should have gone (he ought to have but did not), could/might have gone (perhaps he went)"
+                example: {problem: "The ground is wet. It ___ rained last night.", solution: "must have rained (a confident deduction about the past)"}
+            patterns:
+              - key: base-form
+                title: "Spot the error: 'to' or -s after a modal"
+                example_stem: "Identify the segment that contains an error: You need not / to worry about / the results; / you have worked hard."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: modal-meaning
+                title: "Fill in the blank: modal by meaning (must, should have, need not)"
+                example_stem: "You ___ me earlier; now it is too late to change the booking. (a) must tell (b) should have told (c) need not tell (d) may tell"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 20
+      - key: non-finites
+        title: Non-finites
+        concepts:
+          - slug: english-gerunds
+            title: Gerunds
+            summary: >-
+              A gerund is verb + ing used as a noun. It follows prepositions ('fond of reading',
+              'insisted on going') and verbs such as avoid, enjoy, mind, finish, deny, admit,
+              consider, suggest, practise and postpone. When 'to' is a preposition it also takes a
+              gerund: look forward to, object to, be used to, be accustomed to, with a view to, averse
+              to. A noun or pronoun before a gerund is possessive ('I dislike his coming late').
+            difficulty: medium
+            weight: 1.3
+            formulas:
+              - key: to-plus-ing
+                name: "'to' as a preposition"
+                expression: "look forward to / object to / be used to / be accustomed to / with a view to / averse to / addicted to / confess to + verb-ing"
+                example: {problem: "Correct: 'I look forward to meet you.'", solution: "I look forward to meeting you."}
+            patterns:
+              - key: preposition-to
+                title: "Spot the error: infinitive after prepositional 'to'"
+                example_stem: "Identify the segment that contains an error: He joined the evening classes / with a view to improve / his spoken English / for the interview."
+                frequency: high
+                difficulty: medium
+                target_seconds: 25
+              - key: verb-gerund
+                title: "Fill in the blank: verb followed by a gerund"
+                example_stem: "Would you mind ___ the window? (a) to open (b) open (c) opening (d) to opening"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+              - key: possessive-gerund
+                title: "Spot the error: objective pronoun before a gerund"
+                example_stem: "Identify the segment that contains an error: The principal objected / to him / coming late / every day."
+                frequency: low
+                difficulty: medium
+                target_seconds: 25
+            shortcuts:
+              - key: add-a-noun
+                title: Put a noun after 'to'
+                kind: shortcut
+                rule: "If a noun can follow the 'to' ('look forward to the holidays'), 'to' is a preposition and the verb after it takes -ing."
+                example: {problem: "She is used to ___ (work) late.", shortcut: "'used to the work' works, so 'used to working'.", seconds_saved: 10}
+                pattern: preposition-to
+
+          - slug: english-infinitives
+            title: Infinitives (with and without 'to')
+            summary: >-
+              The infinitive is to + base verb ('decided to leave'). The bare infinitive (no 'to')
+              follows modals, let, make, bid and active see, hear, watch and feel, as well as had
+              better, would rather and 'do nothing but' ('They made him wait'); the 'to' returns in
+              the passive ('He was made to wait'). Stop, remember, forget and try change meaning with
+              a gerund or an infinitive, and 'too + adjective + to' already has a negative sense.
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [english-modals]
+            formulas:
+              - key: too-to
+                name: too … to and so … that … not
+                expression: "too + adjective + to-infinitive = so + adjective + that + subject + cannot / could not"
+                example: {problem: "He is too weak to walk.", solution: "He is so weak that he cannot walk."}
+            patterns:
+              - key: bare-infinitive
+                title: "Spot the error: 'to' after let, make, see, had better"
+                example_stem: "Identify the segment that contains an error: The guard did not / let us to enter / the hall without / our identity cards."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: gerund-or-infinitive
+                title: "Fill in the blank: gerund or infinitive changes the meaning"
+                example_stem: "On the way home he stopped ___ some fruit. (a) buying (b) to buy (c) buy (d) for buying"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 20
+
+          - slug: english-participles
+            title: Participles
+            summary: >-
+              Participles are verb forms used as adjectives or to shorten clauses: the present
+              participle (-ing, active: 'a burning house'), the past participle (V3, passive: 'a broken
+              chair') and the perfect participle (having + V3: 'Having finished the work, he left').
+              An -ing adjective describes the cause and an -ed adjective the feeling ('a boring
+              lecture', 'bored students'). An opening participle phrase must refer to the subject of
+              the main clause; otherwise use an absolute phrase ('It being a holiday, the office was
+              closed').
+            difficulty: hard
+            weight: 1.0
+            prerequisites: [english-gerunds]
+            patterns:
+              - key: ing-ed
+                title: "Fill in the blank: -ing or -ed participle adjective"
+                example_stem: "The students were ___ by the long and repetitive lecture. (a) boring (b) bored (c) bore (d) boredom"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+              - key: dangling
+                title: "Spot the error: dangling participle"
+                example_stem: "Identify the segment that contains an error: Being a public holiday, / the bank / remained closed / the whole day."
+                frequency: medium
+                difficulty: hard
+                target_seconds: 30

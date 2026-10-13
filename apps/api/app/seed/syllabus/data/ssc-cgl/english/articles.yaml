@@ -1,0 +1,182 @@
+key: articles
+title: Articles
+strategies:
+  - key: approach
+    title: "Articles: sound, specificity and set phrases"
+    summary: >-
+      Article questions turn on three decisions: a or an (decided by sound), the or no article
+      (decided by whether the noun is specific, unique or general), and fixed uses that must be
+      remembered (the Himalayas, by bus, at night). Most SSC items are a missing 'the' before a
+      superlative, ordinal or 'only', or an extra 'the' before a general or abstract noun.
+    seconds_per_question: 20
+    accuracy_target: 0.9
+    tactics:
+      - "Say the next word aloud: an hour, an MBA, a university, a one-day match."
+      - "Before superlatives, ordinals, 'only' and 'same', expect 'the'."
+      - "General abstract nouns, languages, games and meals take no article unless a phrase makes them specific ('the history of India')."
+    avoid:
+      - "Adding 'a' to uncountable nouns: 'a good news', 'an advice', 'what a weather'."
+
+topics:
+  - key: indefinite
+    title: "Indefinite articles: a and an"
+    concepts:
+      - ref: english-articles
+        weight: 1.5
+        formulas:
+          - key: sound-rule
+            name: A or an by sound
+            expression: "a + consonant sound (a university, a European, a one-way street, a useful book);  an + vowel sound (an hour, an honest man, an heir, an MLA, an FIR, an X-ray, an SOS)"
+            example: {problem: "___ honour, ___ union, ___ MP", solution: "an honour (silent h), a union ('yoo' sound), an MP ('em' sound)"}
+        patterns:
+          - key: sound-not-letter
+            title: "Fill in the blank: a or an by the first sound"
+            example_stem: "He is ___ honest and hard-working officer. (a) a (b) an (c) the (d) no article"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: abbreviation
+            title: "Spot the error: a/an before abbreviations and silent h"
+            example_stem: "Identify the segment that contains an error: My cousin / is doing / a MBA course / at a university in Pune."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: say-it
+            title: Say it aloud
+            kind: shortcut
+            rule: "The first sound, not the first letter, decides: an hour ('aw'), an MLA ('em'), a university ('yoo'), a one-rupee coin ('wun')."
+            example: {problem: "___ European tourist", standard: "E is a vowel, so 'an'?", shortcut: "'Yoo-ropean' starts with a y sound → a European tourist", seconds_saved: 5}
+            pattern: sound-not-letter
+
+      - slug: english-article-a-an-uses
+        title: Special uses of a and an
+        summary: >-
+          A/an is used with a singular countable noun mentioned for the first time or as one of a
+          class ('He is a doctor'), in rates and frequency ('₹60 a kilo', 'twice a week'), after
+          what, such, quite, rather and many ('What a pity!', 'such a fool', 'many a man'), and in
+          phrases like a few, a little, a lot of, half an hour, a dozen and a hundred. It never goes
+          with uncountable or plural nouns: 'What beautiful weather!', not 'What a beautiful
+          weather!'; 'a piece of good news', not 'a good news'.
+        difficulty: easy
+        weight: 1.1
+        prerequisites: [english-articles, english-countable-uncountable-nouns]
+        patterns:
+          - key: what-a
+            title: "Spot the error: a/an with an uncountable noun"
+            example_stem: "Identify the segment that contains an error: What a / pleasant weather / we are having / this week!"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: rate-profession
+            title: "Fill in the blank: a/an in rates, frequency and professions"
+            example_stem: "The car was moving at eighty kilometres ___ hour. (a) a (b) an (c) the (d) per the"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+
+  - key: definite
+    title: The definite article
+    concepts:
+      - slug: english-article-the-uses
+        title: "Uses of 'the'"
+        summary: >-
+          'The' is used for something already mentioned or made definite ('the book you lent me'),
+          for unique things (the sun, the sky), and before superlatives, ordinals, 'only' and 'same'.
+          It goes before names of rivers, seas, oceans, mountain ranges, deserts, groups of islands
+          and plural country names (the Ganga, the Pacific, the Himalayas, the Thar, the Andamans,
+          the Netherlands), holy books, newspapers and famous buildings (the Gita, the Hindu, the
+          Taj Mahal), and musical instruments ('plays the flute'). 'The + adjective' names a class
+          of people (the rich), and 'the + singular noun' can stand for a whole class ('The cow is
+          a useful animal').
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [english-articles]
+        patterns:
+          - key: proper-names
+            title: "Fill in the blank: 'the' with rivers, mountain ranges, newspapers"
+            example_stem: "___ Himalayas protect northern India from the cold winds of Central Asia. (a) A (b) An (c) The (d) No article"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: superlative-ordinal
+            title: "Spot the error: missing 'the' before a superlative, ordinal or 'only'"
+            example_stem: "Identify the segment that contains an error: He is / only person / in our office / who speaks French."
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: instrument-class
+            title: "Spot the error: missing 'the' with an instrument or a class"
+            example_stem: "Identify the segment that contains an error: My sister / plays violin / beautifully / at every school function."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+  - key: omission-repetition
+    title: Omission and repetition of articles
+    concepts:
+      - slug: english-article-omission
+        title: Omission of articles
+        summary: >-
+          No article is used before names of persons, cities, countries, continents, single
+          mountains and lakes (India, Mount Everest); before languages, school subjects, games and
+          meals in general (Hindi, mathematics, cricket, lunch); before uncountable, abstract and
+          plural nouns in a general sense ('Honesty is the best policy', 'Dogs are loyal'); and
+          with 'man' meaning humankind. School, college, hospital, church, prison, court and bed
+          take no article when used for their main purpose ('He goes to school', but 'She went to
+          the school to meet the principal'), and set phrases drop it: by bus, at night, on foot,
+          at home, by heart, in fact.
+        difficulty: medium
+        weight: 1.4
+        prerequisites: [english-article-the-uses]
+        patterns:
+          - key: unwanted-the
+            title: "Spot the error: 'the' before an abstract noun, language or game in general"
+            example_stem: "Identify the segment that contains an error: The honesty / is / the best policy / in the long run."
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+          - key: school-or-the-school
+            title: "Fill in the blank: school or the school, bed or the bed"
+            example_stem: "His father went to ___ school to meet the principal. (a) a (b) the (c) an (d) no article"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+          - key: set-phrases
+            title: "Spot the error: article in a set phrase"
+            example_stem: "Identify the segment that contains an error: We travelled / to Shimla / by the bus / last summer."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: general-or-specific
+            title: General or made specific?
+            kind: elimination
+            rule: "If the noun is abstract, uncountable or plural and nothing after it (of…, that…, which…) makes it specific, strike out options with 'the'."
+            example: {problem: "___ history of Rajasthan is fascinating.", shortcut: "'of Rajasthan' makes it specific → The history", seconds_saved: 10}
+            pattern: unwanted-the
+
+      - slug: english-article-repetition
+        title: Repetition and position of articles
+        summary: >-
+          Repeating the article shows separate people or things: 'The secretary and the treasurer
+          have resigned' (two people) but 'The secretary and treasurer has resigned' (one person);
+          'a black and a white cow' (two cows) but 'a black and white cow' (one cow). The article
+          comes after such, what, half, quite and many ('such a man', 'half an hour', 'quite a
+          few') and after so/too/as + adjective ('too clever a man', 'as big a house as ours').
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [english-article-the-uses, english-sva-compound-subjects]
+        patterns:
+          - key: one-or-two
+            title: "Spot the error: repeated article and the number of the verb"
+            example_stem: "Identify the segment that contains an error: The headmaster and the secretary of the school / has / been invited / to the meeting."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: article-position
+            title: "Fill in the blank: position of the article after too/so/such"
+            example_stem: "He is ___ to be fooled by such tricks. (a) a too clever man (b) too clever a man (c) too a clever man (d) clever too a man"
+            frequency: low
+            difficulty: medium
+            target_seconds: 20

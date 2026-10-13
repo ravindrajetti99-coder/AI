@@ -1,0 +1,235 @@
+key: prepositions
+title: Prepositions
+strategies:
+  - key: approach
+    title: "Prepositions: learn them as fixed phrases"
+    summary: >-
+      Prepositions follow usage more than logic, so SSC questions reward memory: the fixed
+      preposition after a verb, adjective or noun (accused of, charged with, addicted to), the
+      time and place rules (on 15 August, since 2016, into the well) and verbs that take none at
+      all (discuss, reach, resemble). Learn each one in a short phrase, not as a single word.
+    seconds_per_question: 20
+    accuracy_target: 0.85
+    tactics:
+      - "Learn phrases in contrasting pairs: accuse of / charge with, angry with a person / at a thing, die of a disease / from a wound."
+      - "In error spotting, check the preposition right after the main verb, adjective or noun first."
+      - "Strike out 'about', 'with' or 'to' after discuss, resemble, reach, enter, attack and accompany."
+    avoid:
+      - "Translating from Telugu or Hindi word by word ('married with', 'discuss about', 'explain me')."
+
+topics:
+  - key: time
+    title: Prepositions of time
+    concepts:
+      - ref: english-prepositions-time
+        weight: 1.2
+        patterns:
+          - key: date-on
+            title: "Spot the error: in/on/at with dates, days and parts of the day"
+            example_stem: "Identify the segment that contains an error: He was born / in 15 August 1990 / in a small village / near Nellore."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: day-part
+            title: "Fill in the blank: 'in the morning' but 'on Monday morning'"
+            example_stem: "We will meet the contractor ___ Monday morning. (a) in (b) at (c) on (d) by"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+      - slug: english-prepositions-duration
+        title: "Since, for, from, during, by, until, within"
+        summary: >-
+          Since marks the starting point of an action that continues up to now and goes with
+          perfect tenses ('since Monday'); for gives a length of time ('for three days'); from
+          marks a starting point with any tense, often with to/till ('from 9 to 5'). During means
+          within a period ('during the war'), by means 'not later than' ('by 5 pm'), until or till
+          means 'up to that time' ('wait till 5 pm'), within means 'before the end of', and in
+          means 'after a period from now' ('I will be back in an hour').
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [english-prepositions-time, english-present-perfect]
+        patterns:
+          - key: since-from
+            title: "Spot the error: 'from' or 'for' where 'since' is needed"
+            example_stem: "Identify the segment that contains an error: She has been / working in this bank / from 2016 / as a cashier."
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: by-until
+            title: "Fill in the blank: by or until, in or within"
+            example_stem: "Please submit the report ___ Friday; the deadline will not be extended. (a) until (b) by (c) since (d) for"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+
+  - key: place
+    title: Prepositions of place and movement
+    concepts:
+      - slug: english-prepositions-place
+        title: Prepositions of place and movement
+        summary: >-
+          At marks a point (at the station, at the door), in an enclosed space or large area (in the
+          room, in Delhi) and on a surface or line (on the table, on the road); arrive takes 'at' a
+          building or small place and 'in' a city or country. Into and onto show movement ('He
+          jumped into the river'); across means from one side to the other, through means inside
+          from end to end, along means following the length; above means higher without contact and
+          over above and covering or crossing; to shows a destination and towards only a direction.
+          'Go home' takes no preposition.
+        difficulty: easy
+        weight: 1.1
+        patterns:
+          - key: in-into
+            title: "Spot the error: in/into, on/onto for movement"
+            example_stem: "Identify the segment that contains an error: The little boy / fell in / the well / while playing near it."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: across-through
+            title: "Fill in the blank: across, through, along, over"
+            example_stem: "The new railway tunnel goes ___ the mountain. (a) across (b) through (c) along (d) over"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: go-home
+            title: "Spot the error: preposition before 'home'"
+            example_stem: "Identify the segment that contains an error: After the meeting, / all the members / went to home / in their own cars."
+            frequency: low
+            difficulty: easy
+            target_seconds: 15
+
+      - slug: english-confusable-prepositions
+        title: "Confusable prepositions: beside/besides, between/among, by/with"
+        summary: >-
+          Beside means 'next to' and besides 'in addition to'; between is for two and among for
+          more than two; by names the doer and with the instrument ('killed by the robber with a
+          knife'). In time means early enough and on time punctually; at the end is the final
+          point and in the end means finally; made of keeps the material unchanged (a table made of
+          wood) while made from changes it (paper is made from wood). Despite takes no 'of' while
+          'in spite of' does, and 'due to' follows a noun or 'be' ('The delay was due to rain')
+          while 'owing to' and 'because of' give the reason for an action.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [english-prepositions-place]
+        patterns:
+          - key: between-among
+            title: "Fill in the blank: between/among, beside/besides"
+            example_stem: "The property was divided equally ___ the three brothers. (a) between (b) among (c) in (d) with"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: despite-of
+            title: "Spot the error: 'despite of' and 'due to' misuse"
+            example_stem: "Identify the segment that contains an error: Despite of / the heavy rain, / the match / was completed on time."
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: by-with
+            title: "Spot the error: by (doer) or with (instrument)"
+            example_stem: "Identify the segment that contains an error: The snake / was killed / by a stick / by the villagers."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+
+  - key: fixed
+    title: Fixed prepositions
+    concepts:
+      - slug: english-verb-prepositions
+        title: Verbs with fixed prepositions
+        summary: >-
+          Many verbs take one fixed preposition: abide by, accuse of, charge with, comply with,
+          consist of, depend on, insist on, persist in, prevent from, refrain from, abstain from,
+          succeed in, congratulate on, apologise to (a person) for (a fault), aim at, adhere to,
+          cope with, confide in, deprive of, dispose of, preside over. Some change meaning with the
+          preposition: part with (a thing) / from (a person), deal in (trade) / with (handle), die
+          of (a disease) / from (a cause such as a wound). SSC swaps them in error spotting and
+          fill in the blanks.
+        difficulty: medium
+        weight: 1.6
+        prerequisites: [english-transitive-intransitive-verbs]
+        patterns:
+          - key: swap-preposition
+            title: "Spot the error: wrong preposition after a verb"
+            example_stem: "Identify the segment that contains an error: The court / accused him for / taking bribes / from contractors."
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+          - key: verb-blank
+            title: "Fill in the blank: preposition after a verb"
+            example_stem: "The suspect was charged ___ murder. (a) of (b) with (c) for (d) on"
+            frequency: high
+            difficulty: medium
+            target_seconds: 10
+          - key: pair-meaning
+            title: "Fill in the blank: same verb, different preposition and meaning"
+            example_stem: "This shop deals ___ electronic goods. (a) with (b) in (c) at (d) on"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 10
+
+      - slug: english-adjective-noun-prepositions
+        title: Adjectives and nouns with fixed prepositions
+        summary: >-
+          Adjectives fix their prepositions: afraid of, aware of, capable of, fond of, proud of,
+          devoid of, confident of, good at, angry with (a person) and at (a thing), familiar with
+          (a thing) and to (a person: 'The rule is familiar to me'), different from, free from,
+          averse to, accustomed to, addicted to, married to, senior to, interested in, keen on,
+          responsible to (a person) for (a thing), grateful to (a person) for (a favour), eligible
+          for. So do nouns: access to, apology for, aptitude for, cure for, devotion to, fondness
+          for, key to, objection to, preference for, respect for.
+        difficulty: medium
+        weight: 1.4
+        patterns:
+          - key: adjective-preposition
+            title: "Spot the error: wrong preposition after an adjective"
+            example_stem: "Identify the segment that contains an error: Many young people / today are addicted with / social media / and online games."
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+          - key: noun-preposition
+            title: "Fill in the blank: preposition after a noun"
+            example_stem: "Doctors have not yet found a cure ___ the common cold. (a) of (b) to (c) for (d) from"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 10
+          - key: person-or-thing
+            title: "Fill in the blank: angry with/at, familiar with/to, responsible to/for"
+            example_stem: "The manager was angry ___ his assistant for the mistake. (a) at (b) with (c) on (d) upon"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+
+  - key: superfluous
+    title: Superfluous and missing prepositions
+    concepts:
+      - slug: english-superfluous-prepositions
+        title: Superfluous and missing prepositions
+        summary: >-
+          Some verbs take a direct object and no preposition: discuss (not 'discuss about'), reach,
+          enter a place (but 'enter into an agreement'), resemble, attack, accompany, order,
+          comprise, emphasise, approach, marry, request and investigate. Others cannot drop theirs:
+          listen to, wait for, reply to, explain something to someone ('Explain the rule to me', not
+          'Explain me the rule'), say to (but 'tell someone'), dispense with, search for (look for),
+          object to and comply with.
+        difficulty: medium
+        weight: 1.6
+        prerequisites: [english-verb-prepositions]
+        patterns:
+          - key: extra-preposition
+            title: "Spot the error: preposition after discuss, reach, enter, resemble"
+            example_stem: "Identify the segment that contains an error: The committee / discussed about / the new proposal / for two hours."
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: missing-preposition
+            title: "Spot the error: missing preposition (listen to, explain to, reply to)"
+            example_stem: "Identify the segment that contains an error: The teacher / explained us / the new chapter / very patiently."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+        shortcuts:
+          - key: built-in-preposition
+            title: The verb already contains the preposition
+            kind: elimination
+            rule: "Discuss already means 'talk about', resemble 'look like', reach 'arrive at', enter 'go into', accompany 'go with': any option adding about, like, at, into or with after them is wrong."
+            example: {problem: "The child resembles ___ his grandfather. (a) to (b) with (c) like (d) no preposition", shortcut: "resemble = look like → no preposition", seconds_saved: 10}
+            pattern: extra-preposition
