@@ -11,6 +11,7 @@ from app.ai import gateway
 from app.core.config import get_settings
 from app.core.db import Base, SessionLocal, engine
 from app.core.errors import install_error_handlers
+from app.jobs.worker import start_embedded
 from app.modules.admin.router import router as admin_router
 from app.modules.assessment.router import router as assessment_router
 from app.modules.catalog.router import router as catalog_router
@@ -21,10 +22,16 @@ from app.modules.learning.router import router as learning_router
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    if not get_settings().is_production:
+    s = get_settings()
+    if not s.is_production:
         # Dev/test convenience. Production runs `alembic upgrade head` before starting.
         Base.metadata.create_all(engine)
+    embedded = start_embedded() if s.jobs_embedded_worker else None
     yield
+    if embedded:
+        worker, thread = embedded
+        worker.stop()  # a running job goes back to the queue at its next checkpoint
+        thread.join(timeout=10)
 
 
 def create_app() -> FastAPI:

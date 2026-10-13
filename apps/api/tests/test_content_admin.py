@@ -2,6 +2,7 @@
 
 import uuid
 
+import pytest
 from conftest import API, concept_id, make_actor
 from sqlalchemy import select
 
@@ -116,24 +117,30 @@ def test_chunking_keeps_headings_pages_and_overlap():
 # --------------------------------------------------------------------------- generation jobs and review
 
 
-def run_job(admin, **body):
-    r = admin.post(f"{API}/admin/generate", json=body)
-    assert r.status_code == 202, r.text
-    job = admin.get(f"{API}/admin/jobs/{r.json()['job_id']}").json()  # background task ran after the response
-    assert job["status"] == "done", job
-    return job
+@pytest.fixture
+def run_job(admin, worker):
+    def run(**body):
+        r = admin.post(f"{API}/admin/generate", json=body)
+        assert r.status_code == 202, r.text
+        assert admin.get(f"{API}/admin/jobs/{r.json()['job_id']}").json()["status"] == "queued"
+        worker.drain()
+        job = admin.get(f"{API}/admin/jobs/{r.json()['job_id']}").json()
+        assert job["status"] == "done", job
+        return job
+
+    return run
 
 
-def test_generation_jobs_create_review_drafts(admin):
+def test_generation_jobs_create_review_drafts(admin, run_job):
     cid = str(concept_id("discount"))
-    lessons = run_job(admin, kind="lessons", concept_ids=[cid], levels=[3, 4])
-    assert [c["level"] for c in lessons["outputs"]["created"]] == [3, 4] and lessons["outputs"]["providers"] == ["offline"]
-    cards = run_job(admin, kind="flashcards", concept_ids=[cid], count=3)
-    assert cards["outputs"]["created"]
-    questions = run_job(admin, kind="questions", concept_ids=[cid], count=3)
-    assert questions["outputs"]["created"] or questions["outputs"]["skipped"] == 0
-    mock = run_job(admin, kind="mock_test", course_id=course_id(admin.client), count=10, title="Quick 10")
-    assert mock["outputs"]["created"][0]["title"] == "Quick 10"
+    lessons = run_job(kind="lessons", concept_ids=[cid], levels=[3, 4])
+    assert [c["level"] for c in lessons["result"]["created"]] == [3, 4] and lessons["result"]["providers"] == ["offline"]
+    cards = run_job(kind="flashcards", concept_ids=[cid], count=3)
+    assert cards["result"]["created"]
+    questions = run_job(kind="questions", concept_ids=[cid], count=3)
+    assert questions["result"]["created"] or questions["result"]["skipped"] == 0
+    mock = run_job(kind="mock_test", course_id=course_id(admin.client), count=10, title="Quick 10")
+    assert mock["result"]["created"][0]["title"] == "Quick 10"
     queue = admin.get(f"{API}/admin/review-queue").json()
     kinds = {item["asset_type"] for item in queue}
     assert {"lesson", "flashcard"} <= kinds
@@ -142,28 +149,30 @@ def test_generation_jobs_create_review_drafts(admin):
         assert audit.entity_id == lessons["id"]  # the job id, recorded after it exists
 
 
-def test_notes_job_summarises_an_uploaded_document(admin):
+def test_notes_job_summarises_an_uploaded_document(admin, run_job):
     doc = admin.post(f"{API}/admin/documents", files={"file": ("notes.md", NOTES, "text/markdown")}, data={"title": "Interest notes"}).json()
-    job = run_job(admin, kind="notes", document_id=doc["id"], concept_ids=[str(concept_id("compound-interest"))])
-    note = next(i for i in admin.get(f"{API}/admin/review-queue", params={"asset_type": "note"}).json() if i["id"] == job["outputs"]["created"][0]["id"])
+    job = run_job(kind="notes", document_id=doc["id"], concept_ids=[str(concept_id("compound-interest"))])
+    note = next(i for i in admin.get(f"{API}/admin/review-queue", params={"asset_type": "note"}).json() if i["id"] == job["result"]["created"][0]["id"])
     assert note["concept"] == "Compound interest"
     assert "Simple interest is the interest" in note["content"]["body"] and "Compound interest" in note["content"]["body"]
 
 
-def test_job_validation(admin, learner):
+def test_job_validation(admin, learner, worker):
     assert admin.post(f"{API}/admin/generate", json={"kind": "lessons"}).status_code == 400
     assert admin.post(f"{API}/admin/generate", json={"kind": "notes"}).status_code == 400
     assert admin.post(f"{API}/admin/generate", json={"kind": "lessons", "concept_ids": [str(concept_id("discount"))], "levels": [7]}).status_code == 400
     assert learner.post(f"{API}/admin/generate", json={"kind": "lessons", "concept_ids": []}).status_code == 403
     failed = admin.post(f"{API}/admin/generate", json={"kind": "mock_test", "course_id": str(uuid.uuid4())}).json()
-    assert admin.get(f"{API}/admin/jobs/{failed['job_id']}").json()["status"] == "failed"
+    worker.drain()
+    job = admin.get(f"{API}/admin/jobs/{failed['job_id']}").json()
+    assert (job["status"], job["attempts"], job["error"]) == ("failed", 1, "Course not found")  # bad input is not retried
 
 
-def test_review_decisions(admin, learner):
+def test_review_decisions(admin, learner, run_job):
     reviewer = make_actor(admin.client, "reviewer")
     cid = concept_id("discount")
-    job = run_job(admin, kind="lessons", concept_ids=[str(cid)], levels=[1])
-    draft_id = job["outputs"]["created"][0]["id"]
+    job = run_job(kind="lessons", concept_ids=[str(cid)], levels=[1])
+    draft_id = job["result"]["created"][0]["id"]
     edits = {"definition": "A discount is a reduction on the marked price."}
     r = reviewer.post(f"{API}/admin/assets/lesson/{draft_id}/decision", json={"decision": "approve", "edits": edits})
     assert r.json()["status"] == "verified"

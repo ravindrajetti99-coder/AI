@@ -179,7 +179,25 @@ function ReviewQueue() {
 
 // --------------------------------------------------------------------------- generation
 
-type Job = { id: string; kind: string; status: string; params: Record<string, unknown>; outputs: { created?: unknown[]; skipped?: number; providers?: string[] }; error: string; created_at: string };
+type Job = {
+  id: string;
+  kind: string;
+  queue: string;
+  status: "queued" | "running" | "done" | "failed" | "cancelled";
+  payload: Record<string, unknown>;
+  result: { created?: unknown[]; skipped?: number; providers?: string[] };
+  error: string;
+  attempts: number;
+  max_attempts: number;
+  cancel_requested: boolean;
+  created_at: string;
+  run_at: string;
+  started_at: string | null;
+  finished_at: string | null;
+};
+const JOB_TONES = { queued: "amber", running: "brand", done: "green", failed: "red", cancelled: "neutral" } as const;
+/** Queued this long without a first attempt: probably no worker is running. */
+const NO_WORKER_MS = 60_000;
 type Doc = { id: string; title: string; filename: string; status: string; pages: number; chunks: number; error: string; course_id: string | null; created_at: string };
 
 function flatConcepts(nodes: TreeNode[]): { id: string; title: string }[] {
@@ -189,21 +207,36 @@ function flatConcepts(nodes: TreeNode[]): { id: string; title: string }[] {
 function Generate() {
   const courses = useApi<Course[]>("/courses");
   const docs = useApi<Doc[]>("/admin/documents");
-  const jobs = useApi<Job[]>("/admin/jobs");
+  const jobs = useApi<Job[]>("/admin/jobs", { queue: "content" });
   const [kind, setKind] = useState("lessons");
   const [courseSlug, setCourseSlug] = useState("");
   const detail = useApi<CourseDetail>(courseSlug ? `/courses/${courseSlug}` : null);
   const [concepts, setConcepts] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<unknown>(null);
+  const [now, setNow] = useState(() => Date.now());
   const active = jobs.data?.some((j) => j.status === "queued" || j.status === "running");
+  const waiting = jobs.data?.some((j) => j.status === "queued" && j.attempts === 0 && now - Date.parse(j.run_at) > NO_WORKER_MS);
   const reloadJobs = jobs.reload;
 
   useEffect(() => {
     if (!active) return;
-    const t = setInterval(() => void reloadJobs(), 2000);
+    const t = setInterval(() => {
+      void reloadJobs();
+      setNow(Date.now());
+    }, 2000);
     return () => clearInterval(t);
   }, [active, reloadJobs]);
+
+  async function jobAction(run: () => Promise<unknown>) {
+    setError(null);
+    try {
+      await run();
+      await jobs.reload();
+    } catch (err) {
+      setError(err);
+    }
+  }
 
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -316,6 +349,14 @@ function Generate() {
         </form>
       </Card>
       <Card title="Recent jobs">
+        {waiting && (
+          <div className="mb-3">
+            <Notice tone="amber">
+              Jobs are waiting but no worker has picked them up. Start one with <code>python -m app.worker</code>, or run the API with{" "}
+              <code>EDU_JOBS_EMBEDDED_WORKER=true</code>.
+            </Notice>
+          </div>
+        )}
         {!jobs.data?.length ? (
           <p className="text-sm text-muted">No jobs yet.</p>
         ) : (
@@ -323,17 +364,32 @@ function Generate() {
             {jobs.data.map((j) => (
               <li key={j.id} className="py-2">
                 <div className="flex items-center gap-2">
-                  <Badge tone={j.status === "done" ? "green" : j.status === "failed" ? "red" : "amber"}>{j.status}</Badge>
-                  <span className="font-medium">{j.kind}</span>
+                  <Badge tone={JOB_TONES[j.status] ?? "neutral"}>{j.status === "running" && j.cancel_requested ? "cancelling" : j.status}</Badge>
+                  <span className="font-medium">{j.kind.replace(/^generate\./, "").replace("_", " ")}</span>
                   <span className="ml-auto text-xs text-muted">{new Date(j.created_at).toLocaleString()}</span>
+                  {(j.status === "queued" || (j.status === "running" && !j.cancel_requested)) && (
+                    <Button size="sm" variant="ghost" onClick={() => void jobAction(() => api(`/admin/jobs/${j.id}/cancel`, { method: "POST" }))}>
+                      Cancel
+                    </Button>
+                  )}
+                  {(j.status === "failed" || j.status === "cancelled") && (
+                    <Button size="sm" variant="secondary" onClick={() => void jobAction(() => api(`/admin/jobs/${j.id}/retry`, { method: "POST" }))}>
+                      Retry
+                    </Button>
+                  )}
                 </div>
-                {j.status === "done" && (
+                {(j.status === "done" || (j.status === "cancelled" && j.result.created?.length)) && (
                   <p className="mt-1 text-xs text-muted">
-                    Created {j.outputs.created?.length ?? 0}
-                    {j.outputs.skipped ? `, skipped ${j.outputs.skipped} invalid` : ""} · via {j.outputs.providers?.join(", ") || "n/a"}
+                    Created {j.result.created?.length ?? 0}
+                    {j.result.skipped ? `, skipped ${j.result.skipped} invalid` : ""} · via {j.result.providers?.join(", ") || "n/a"}
                   </p>
                 )}
-                {j.error && <p className="mt-1 text-xs text-rose-600">{j.error}</p>}
+                {j.status === "queued" && j.attempts > 0 && (
+                  <p className="mt-1 text-xs text-muted">
+                    Attempt {j.attempts} of {j.max_attempts} failed; retrying at {new Date(j.run_at).toLocaleTimeString()}
+                  </p>
+                )}
+                {j.error && (j.status === "failed" || j.status === "queued") && <p className="mt-1 text-xs text-rose-600">{j.error}</p>}
               </li>
             ))}
           </ul>

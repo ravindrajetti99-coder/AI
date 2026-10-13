@@ -122,5 +122,7 @@ jobs:
         run: cp .env.example .env && docker compose --env-file .env -f infra/docker-compose.yml config -q
       - name: Build the API image
         run: docker build -t eduverse-api:ci apps/api
+      - name: Worker runs from the API image
+        run: docker run --rm eduverse-api:ci python -m app.worker --once
       - name: Build the web image
         run: docker build -t eduverse-web:ci apps/web

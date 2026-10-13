@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-# EduVerse API: FastAPI on uvicorn. Migrations run at start-up (docker-entrypoint.sh).
+# EduVerse API and job worker: FastAPI on uvicorn. Migrations run at start-up (docker-entrypoint.sh).
 FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -29,6 +29,7 @@ USER eduverse
 ENV EDU_UPLOAD_DIR=/app/uploads \
     EDU_DATABASE_URL=sqlite:////app/data/eduverse.db
 EXPOSE 8000
+# The worker (`python -m app.worker`) runs from this image too; compose overrides this check for it.
 HEALTHCHECK --interval=15s --timeout=5s --start-period=40s --retries=5 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health', timeout=4)" || exit 1
 
