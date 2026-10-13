@@ -623,3 +623,491 @@ topics:
             rule: "'Raging Martians Invaded Venus Using X-ray Guns': radio, microwave, infrared, visible, ultraviolet, X-ray, gamma, in order of increasing frequency and decreasing wavelength."
             example: {problem: "Which has a higher frequency, ultraviolet or infrared?", shortcut: "U comes after I in the sentence → ultraviolet", seconds_saved: 10}
             pattern: spectrum-order
+
+  - key: light
+    title: "Light: reflection, refraction, lenses, human eye and dispersion"
+    subtopics:
+      - key: reflection
+        title: Reflection of light
+        concepts:
+          - slug: reflection-and-mirrors
+            title: "Reflection: plane, concave and convex mirrors"
+            summary: >-
+              Laws of reflection: the angle of incidence equals the angle of reflection, and the
+              incident ray, reflected ray and normal lie in one plane. A plane mirror forms a
+              virtual, erect, laterally inverted image of the same size, as far behind the mirror
+              as the object is in front; to see your full height you need a mirror at least half
+              your height. Concave (converging) mirrors are used as shaving and dentist's mirrors,
+              in torches and headlights and in solar furnaces; convex (diverging) mirrors give an
+              erect, diminished image over a wide field and are used as rear-view mirrors and at
+              blind turns. For a spherical mirror f = R/2.
+            difficulty: easy
+            weight: 1.2
+            formulas:
+              - key: mirror-formula
+                name: Mirror formula and focal length
+                expression: "1/f = 1/v + 1/u;  f = R/2;  magnification m = −v/u"
+                conditions: "Cartesian sign convention, distances measured from the pole."
+              - key: images-two-mirrors
+                name: Images formed by two inclined plane mirrors
+                expression: "n = 360/θ − 1"
+                conditions: "When 360/θ is an even number; for parallel mirrors (θ = 0) the number is infinite."
+                example: {problem: "How many images are formed by two plane mirrors at 60°?", solution: "360/60 − 1 = 5"}
+            patterns:
+              - key: mirror-uses
+                title: Which mirror is used where
+                example_stem: "Which mirror is used as a rear-view mirror in vehicles?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: image-count
+                title: Plane mirror images and their number
+                example_stem: "How many images of an object are formed by two plane mirrors inclined at 90° to each other?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+            shortcuts:
+              - key: convex-wide
+                title: Convex widens, concave concentrates
+                kind: memory
+                rule: "Convex = wide view (rear-view mirrors, shop security, road bends); concave = concentrate or enlarge (shaving, dentist, headlights, solar cooker)."
+                example: {problem: "A dentist's mirror is", shortcut: "Needs an enlarged image → concave", seconds_saved: 5}
+                pattern: mirror-uses
+      - key: refraction
+        title: Refraction and lenses
+        concepts:
+          - slug: refraction-and-lenses
+            title: "Refraction, total internal reflection and lenses"
+            summary: >-
+              Light bends when it passes from one medium to another because its speed changes
+              (3 × 10⁸ m/s in vacuum, slower in water and glass); refractive index n = c/v (water
+              about 1.33, glass about 1.5, diamond about 2.42). Refraction makes a pool look
+              shallower and a stick look bent in water, and atmospheric refraction makes stars
+              twinkle and the Sun visible a little before sunrise and after sunset. Total internal
+              reflection (light going from a denser to a rarer medium beyond the critical angle)
+              makes diamonds sparkle, causes mirages and carries signals in optical fibres. A
+              convex lens converges light (magnifying glass, camera, spectacles for
+              hypermetropia); a concave lens diverges it (spectacles for myopia); power P = 1/f
+              (f in metres) in dioptres, positive for convex and negative for concave lenses.
+            difficulty: medium
+            weight: 1.3
+            prerequisites: [reflection-and-mirrors]
+            formulas:
+              - key: refractive-index
+                name: Refractive index
+                expression: "n = c / v = sin i / sin r (Snell's law, from vacuum or air)"
+              - key: lens-formula
+                name: Lens formula
+                expression: "1/f = 1/v − 1/u;  magnification m = v/u"
+              - key: lens-power
+                name: Power of a lens
+                expression: "P = 1/f (f in metres) = 100/f (f in cm), in dioptres (D);  P = P₁ + P₂ for lenses in contact"
+                example: {problem: "Find the power of a concave lens of focal length 20 cm.", solution: "P = −100/20 = −5 D"}
+            patterns:
+              - key: refraction-daily-life
+                title: Refraction or total internal reflection in daily life
+                example_stem: "The sparkling of a diamond is due to"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: lens-power-sign
+                title: Power and nature of a lens
+                example_stem: "A lens has a power of +2 D. What are its focal length and type?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: hundred-over-f
+                title: Power = 100 ÷ focal length in cm
+                kind: shortcut
+                rule: "Keep f in cm and divide 100 by it; put + for convex and − for concave."
+                example: {problem: "Convex lens, f = 25 cm", standard: "f = 0.25 m, P = 1/0.25", shortcut: "100/25 = +4 D", seconds_saved: 5}
+                pattern: lens-power-sign
+      - key: eye
+        title: The human eye
+        concepts:
+          - slug: human-eye-and-defects-of-vision
+            title: "Human eye and defects of vision"
+            summary: >-
+              The convex eye lens forms a real, inverted image on the retina, whose rods sense dim
+              light and cones sense colour; the iris controls the size of the pupil and the ciliary
+              muscles change the focal length of the lens (accommodation). A normal eye sees
+              clearly from 25 cm (near point) to infinity, and persistence of vision (about 1/16 s)
+              makes films look continuous. Myopia (near-sightedness) is corrected with a concave
+              lens, hypermetropia (far-sightedness) with a convex lens, presbyopia (old age) often
+              with bifocal lenses and astigmatism with cylindrical lenses; cataract is clouding of
+              the eye lens, treated by surgery.
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [refraction-and-lenses]
+            formulas:
+              - key: myopia-lens
+                name: Corrective lens for myopia
+                expression: "f = −(far point distance);  P = 1/f"
+                example: {problem: "A myopic person's far point is 2 m. Find the power of the correcting lens.", solution: "f = −2 m, P = −0.5 D (concave)"}
+            patterns:
+              - key: defect-lens
+                title: Defect of vision and correcting lens
+                example_stem: "Myopia can be corrected by using a"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: eye-parts
+                title: Parts of the eye and their functions
+                example_stem: "Which part of the eye controls the amount of light entering it?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 10
+            shortcuts:
+              - key: m-for-minus
+                title: M for minus
+                kind: memory
+                rule: "Myopia → minus (negative power, concave lens); hypermetropia → plus (positive power, convex lens)."
+                example: {problem: "Spectacles of power −1.5 D correct", shortcut: "Minus → myopia", seconds_saved: 5}
+                pattern: defect-lens
+      - key: dispersion
+        title: Dispersion and scattering
+        concepts:
+          - slug: dispersion-and-scattering-of-light
+            title: "Dispersion, rainbow and scattering of light"
+            summary: >-
+              A prism splits white light into seven colours (VIBGYOR) because each colour bends by a
+              different amount: violet deviates most and red least. A rainbow, always seen with the
+              Sun behind the observer, forms by refraction, dispersion and internal reflection in
+              raindrops. Air molecules scatter shorter wavelengths more strongly, so the clear sky
+              looks blue, the Sun looks reddish at sunrise and sunset, and the sky looks dark to
+              astronauts above the atmosphere; red light scatters least and travels farthest
+              through fog, so it is used for danger signals. Clouds look white because large
+              droplets scatter all colours; the primary colours of light are red, green and blue.
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [refraction-and-lenses]
+            formulas:
+              - key: rayleigh
+                name: Rayleigh scattering rule
+                expression: "intensity of scattered light ∝ 1/λ⁴"
+                conditions: "For particles much smaller than the wavelength (air molecules)."
+            patterns:
+              - key: colour-phenomenon
+                title: Phenomenon behind a colour in nature
+                example_stem: "The blue colour of the clear sky is due to"
+                frequency: high
+                difficulty: easy
+                target_seconds: 10
+              - key: deviation-order
+                title: Deviation and wavelength order of colours
+                example_stem: "Which colour of white light is deviated the most by a glass prism?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 10
+            shortcuts:
+              - key: vibgyor
+                title: VIBGYOR, short to long
+                kind: memory
+                rule: "Violet has the shortest wavelength (most bent, most scattered); red the longest (least bent, least scattered)."
+                example: {problem: "Why are danger signals red?", shortcut: "Red scatters least → seen farthest", seconds_saved: 5}
+                pattern: deviation-order
+
+  - key: electricity
+    title: Electricity
+    subtopics:
+      - key: current-voltage
+        title: Current and potential difference
+        concepts:
+          - ref: electric-current
+            weight: 1.0
+            patterns:
+              - key: ga-charge-current-units
+                title: Units and measurement of charge and current
+                example_stem: "The SI unit of electric charge is"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 10
+          - ref: potential-difference
+            weight: 0.8
+            patterns:
+              - key: ga-voltmeter
+                title: Measuring potential difference
+                example_stem: "A voltmeter is always connected in a circuit in"
+                frequency: low
+                difficulty: easy
+                target_seconds: 10
+      - key: resistance
+        title: Resistance
+        concepts:
+          - ref: ohms-law
+            weight: 1.0
+            patterns:
+              - key: ga-ohms-law-statement
+                title: "Statement and conditions of Ohm's law"
+                example_stem: "Ohm's law holds only when which quantity is kept constant?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 10
+          - ref: resistivity
+            weight: 0.8
+            patterns:
+              - key: ga-resistance-factors
+                title: Factors affecting resistance and choice of materials
+                description: "Length, area, material and temperature; why heating elements use nichrome and wires use copper."
+                example_stem: "A wire is stretched to twice its length. Its resistance becomes"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 20
+            shortcuts:
+              - key: ga-stretch-rule
+                title: Stretching n times multiplies resistance by n²
+                kind: shortcut
+                rule: "Volume stays constant, so length × n gives area ÷ n and resistance × n²."
+                example: {problem: "Wire stretched to 3 times its length", standard: "R' = ρ(3L)/(A/3)", shortcut: "3² = 9 times", seconds_saved: 15}
+                pattern: ga-resistance-factors
+          - ref: resistors-series-parallel
+            weight: 1.0
+            patterns:
+              - key: ga-household-parallel
+                title: Series and parallel in household wiring
+                example_stem: "Why are electrical appliances in a house connected in parallel?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+      - key: heating-power
+        title: Heating effect and electric power
+        concepts:
+          - ref: heating-effect-current
+            weight: 1.0
+            patterns:
+              - key: ga-fuse-filament
+                title: Fuse wire, filament and heating elements
+                example_stem: "The filament of an electric bulb is made of tungsten because tungsten has"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 10
+          - ref: electric-power
+            weight: 1.2
+            patterns:
+              - key: ga-units-consumed
+                title: Units of electricity consumed
+                example_stem: "A 100 W bulb is used for 10 hours a day. How many units of electricity does it use in 30 days?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: ga-watt-hours
+                title: Units = watts × hours ÷ 1000
+                kind: shortcut
+                rule: "1 unit = 1 kWh; multiply power in watts by hours of use and divide by 1,000."
+                example: {problem: "100 W for 10 h a day for 30 days", shortcut: "100 × 300 / 1000 = 30 units", seconds_saved: 10}
+                pattern: ga-units-consumed
+      - key: domestic
+        title: Domestic electricity
+        concepts:
+          - slug: domestic-electricity-ac-dc
+            title: "Conductors, AC and DC, and domestic electric circuits"
+            summary: >-
+              Materials are conductors (silver is the best, then copper and aluminium, used for
+              wires), insulators (rubber, glass, plastic, dry wood), semiconductors (silicon and
+              germanium, used in diodes, transistors, LEDs and solar cells) or superconductors (zero
+              resistance below a very low critical temperature). A cell or battery gives direct
+              current (DC); Indian mains supply is alternating current (AC) at about 220-230 V and
+              50 Hz. House wiring has live (red), neutral (black) and earth (green) wires, with
+              appliances in parallel; a fuse or miniature circuit breaker (MCB) in the live wire
+              breaks the circuit on overloading or a short circuit, and earthing the metal body of
+              an appliance protects the user from shocks.
+            difficulty: easy
+            weight: 1.0
+            prerequisites: [resistors-series-parallel, heating-effect-current]
+            formulas:
+              - key: ac-reversals
+                name: Direction changes of AC
+                expression: "AC of frequency f reverses direction 2f times a second (50 Hz → 100 times)"
+            patterns:
+              - key: mains-safety
+                title: Mains supply and safety devices
+                example_stem: "What is the frequency of the AC mains supply in India?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 10
+              - key: material-class
+                title: Conductors, insulators and semiconductors
+                example_stem: "Which of the following is the best conductor of electricity? (a) copper (b) silver (c) gold (d) aluminium"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 10
+
+  - key: magnetism
+    title: Magnetism and electromagnetism
+    concepts:
+      - slug: magnetism-and-electromagnetism
+        title: "Magnetism, Earth's magnetism and electromagnetic induction"
+        summary: >-
+          A magnet has north and south poles (like poles repel, unlike poles attract) and its field
+          lines run from north to south outside the magnet; iron, cobalt and nickel are
+          ferromagnetic (strongly attracted). The Earth behaves like a huge magnet whose magnetic
+          south pole lies near the geographic North Pole, so a compass needle points north.
+          Oersted showed that a current produces a magnetic field (electromagnets use a soft-iron
+          core); Faraday showed that a changing magnetic field induces a current (electromagnetic
+          induction). An electric motor converts electrical energy into mechanical energy
+          (Fleming's left-hand rule), a generator or dynamo converts mechanical energy into
+          electrical energy (Fleming's right-hand rule), and a transformer, which works only on
+          AC, steps voltage up or down. The SI unit of magnetic field is the tesla.
+        difficulty: medium
+        weight: 1.1
+        prerequisites: [electric-current]
+        formulas:
+          - key: transformer
+            name: Transformer ratio
+            expression: "Vs / Vp = Ns / Np (ideal transformer)"
+            example: {problem: "A transformer has 100 primary turns and 10 secondary turns. Find the output for 220 V input.", solution: "220 × 10/100 = 22 V (step-down)"}
+          - key: fleming-rules
+            name: "Fleming's rules"
+            expression: "Left hand (motor): thumb = force/motion, first finger = field, second finger = current; right hand (generator): same fingers give the induced current"
+        patterns:
+          - key: device-principle
+            title: Principle and energy conversion of a device
+            example_stem: "An electric generator works on the principle of"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: magnets-earth
+            title: "Magnetic materials and the Earth's magnetism"
+            example_stem: "Which of the following is a ferromagnetic substance? (a) copper (b) aluminium (c) nickel (d) wood"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: left-motor
+            title: Left for motor, right for generator
+            kind: memory
+            rule: "Think 'geneRIGHTor': the right-hand rule is for generators, so the left-hand rule is for motors. A transformer works on AC only."
+            example: {problem: "Which rule gives the direction of force on a current-carrying conductor in a motor?", shortcut: "Motor → left-hand rule", seconds_saved: 5}
+            pattern: device-principle
+
+  - key: modern-physics
+    title: "Modern physics: atom, radioactivity and nuclear energy"
+    concepts:
+      - ref: atomic-structure-subatomic-particles
+        weight: 0.8
+      - slug: radioactivity-and-nuclear-energy
+        title: "Radioactivity, nuclear fission and nuclear fusion"
+        summary: >-
+          Radioactivity, the spontaneous decay of unstable nuclei, was discovered by Henri
+          Becquerel (1896) and studied by Marie and Pierre Curie (polonium and radium). Alpha
+          particles are helium nuclei (least penetrating, stopped by paper), beta particles are
+          electrons (stopped by a thin aluminium sheet) and gamma rays are electromagnetic waves
+          (most penetrating, reduced by thick lead or concrete); half-life is the time for half the
+          nuclei to decay, and carbon-14 (half-life about 5,730 years) dates fossils. Nuclear
+          fission splits a heavy nucleus such as uranium-235 when it absorbs a neutron and releases
+          more neutrons in a chain reaction: it powers nuclear reactors (moderator such as heavy
+          water or graphite slows neutrons; control rods of cadmium or boron absorb them) and the
+          atom bomb. Nuclear fusion joins light nuclei (hydrogen into helium), powers the Sun and
+          stars and the hydrogen bomb; the energy comes from the mass defect, E = mc².
+        difficulty: medium
+        weight: 1.1
+        prerequisites: [atomic-structure-subatomic-particles]
+        formulas:
+          - key: mass-energy
+            name: Mass-energy equivalence
+            expression: "E = mc²"
+            example: {problem: "Energy equivalent of 1 g of mass.", solution: "0.001 × (3 × 10⁸)² = 9 × 10¹³ J"}
+          - key: half-life
+            name: Amount left after n half-lives
+            expression: "N = N₀ × (1/2)ⁿ"
+            example: {problem: "What fraction of a radioactive sample remains after 3 half-lives?", solution: "(1/2)³ = 1/8"}
+        patterns:
+          - key: radiation-types
+            title: Alpha, beta and gamma radiation
+            example_stem: "Which radiation has the highest penetrating power?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: fission-fusion
+            title: Fission, fusion and parts of a nuclear reactor
+            example_stem: "The energy of the Sun is produced mainly by"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: split-join
+            title: Fission splits, fusion joins
+            kind: memory
+            rule: "Fission = split heavy (uranium, reactors, atom bomb); fusion = fuse light (hydrogen, Sun and stars, hydrogen bomb)."
+            example: {problem: "A hydrogen bomb works on", shortcut: "Hydrogen is light → joined → fusion", seconds_saved: 5}
+            pattern: fission-fusion
+
+  - key: instruments
+    title: Important instruments and inventions
+    concepts:
+      - slug: scientific-instruments-and-uses
+        title: "Scientific instruments and what they measure"
+        summary: >-
+          SSC regularly asks which instrument measures what: altimeter (altitude), ammeter
+          (current), voltmeter (potential difference), galvanometer (detects small currents),
+          anemometer (wind speed), barometer (atmospheric pressure), hygrometer (relative
+          humidity), hydrometer (relative density of liquids), lactometer (purity of milk),
+          manometer (pressure of gases), pyrometer (very high temperatures), thermostat (keeps
+          temperature constant), seismograph (earthquake waves), sphygmomanometer (blood pressure),
+          stethoscope (heart and lung sounds), audiometer (hearing), odometer (distance travelled by
+          a vehicle), speedometer (speed), tachometer (revolutions per minute), fathometer (depth
+          of the sea), SONAR (underwater objects by sound), RADAR (distant objects by radio waves),
+          periscope (seeing over obstacles, in submarines), sextant (angle of a star or the Sun,
+          for navigation), chronometer (accurate time at sea) and crescograph (plant growth,
+          invented by J.C. Bose).
+        difficulty: easy
+        weight: 1.5
+        patterns:
+          - key: instrument-quantity
+            title: What an instrument measures
+            example_stem: "A hygrometer is used to measure"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: purpose-instrument
+            title: Instrument for a stated purpose
+            example_stem: "Which instrument is used to measure blood pressure?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: word-roots
+            title: Decode the word root
+            kind: memory
+            rule: "hygro = moisture, anemo = wind, baro = pressure (weight), hydro = water, lacto = milk, pyro = fire, seismo = earthquake, sphygmo = pulse, tacho = speed, alti = height, odo = way, audio = hearing, cresco = grow."
+            example: {problem: "An anemometer measures", shortcut: "anemo = wind → wind speed", seconds_saved: 5}
+            pattern: instrument-quantity
+
+      - slug: inventions-and-inventors
+        title: "Inventions and their inventors"
+        summary: >-
+          Pairs SSC asks most: printing press with movable type (Johannes Gutenberg), telescope
+          (Hans Lippershey; improved and turned to the sky by Galileo), mercury thermometer
+          (Fahrenheit), barometer (Torricelli), improved steam engine (James Watt), electric
+          battery (Alessandro Volta), dynamo and electromagnetic induction (Michael Faraday),
+          telegraph and Morse code (Samuel Morse), dynamite (Alfred Nobel), telephone (Alexander
+          Graham Bell, 1876), phonograph and a practical electric bulb (Thomas Edison), radio
+          (Guglielmo Marconi), diesel engine (Rudolf Diesel), aeroplane (Wright brothers, 1903),
+          television (John Logie Baird), jet engine (Frank Whittle), radar (Robert Watson-Watt),
+          ballpoint pen (László Bíró), transistor (Bardeen, Brattain and Shockley, 1947), laser
+          (Theodore Maiman, 1960), computer's analytical engine (Charles Babbage) and the World
+          Wide Web (Tim Berners-Lee, 1989).
+        difficulty: easy
+        weight: 1.2
+        patterns:
+          - key: who-invented
+            title: Who invented a device
+            example_stem: "Who invented the telephone?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: inventor-to-invention
+            title: Invention credited to a named inventor
+            example_stem: "Which of the following was invented by Guglielmo Marconi? (a) radio (b) television (c) telephone (d) dynamo"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: group-by-person
+            title: Group inventions by person
+            kind: memory
+            rule: "Edison: phonograph, practical bulb, motion-picture camera; Faraday: dynamo, induction, laws of electrolysis; Bell: telephone; Marconi: radio; Baird: television."
+            example: {problem: "Phonograph was invented by", shortcut: "Edison's group → Thomas Edison", seconds_saved: 5}
+            pattern: who-invented

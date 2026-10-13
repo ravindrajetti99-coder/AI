@@ -1,0 +1,208 @@
+key: narration
+title: Narration (Direct and Indirect Speech)
+strategies:
+  - key: approach
+    title: "Narration: four checks in a fixed order"
+    summary: >-
+      Narration questions give a sentence in direct speech and four indirect versions (or the
+      reverse). Wrong options fail one of four checks: the reporting verb (said, told, asked,
+      requested, exclaimed), the tense change, the pronoun change or the time and place words.
+      Run the checks in that order and eliminate as you go.
+    seconds_per_question: 30
+    accuracy_target: 0.95
+    tactics:
+      - "Check the reporting verb first: 'said to' → told; question → asked; command → told/ordered + to; request → requested + to."
+      - "Move each tense one step back only when the reporting verb is in the past; keep universal truths in the present."
+      - "Apply the SON rule to pronouns, then change now, today, tomorrow, here and this."
+      - "Reported questions have statement word order and no 'that' or question mark."
+    avoid:
+      - "Keeping 'tomorrow' or 'here' unchanged in indirect speech when the reporting verb is past."
+
+topics:
+  - key: conversion-rules
+    title: Conversion into direct/indirect narration
+    concepts:
+      - slug: english-narration-basics
+        title: "Direct to indirect speech: reporting verb and tense changes"
+        summary: >-
+          In indirect speech the inverted commas go, 'that' introduces a statement, 'said to'
+          becomes 'told', and when the reporting verb is in the past each tense moves one step
+          back: present → past, present perfect and past simple → past perfect, will → would, can →
+          could, may → might, shall → should, must → had to (must stays for a permanent rule or a
+          deduction). Nothing changes when the reporting verb is in the present or future, for
+          universal truths, habits and proverbs, or for verbs already in the past perfect or with
+          would, could, should, might or ought to.
+        difficulty: medium
+        weight: 2.0
+        prerequisites: [english-tense-sequence]
+        formulas:
+          - key: backshift
+            name: Tense change in indirect speech (reporting verb in the past)
+            expression: "am/is/are → was/were;  V1 → V2;  is + V-ing → was + V-ing;  has/have + V3 → had + V3;  V2 → had + V3;  was + V-ing → had been + V-ing;  will/shall → would/should;  can → could;  may → might;  must → had to"
+            example: {problem: "He said, 'I have finished my work.'", solution: "He said that he had finished his work."}
+          - key: no-change
+            name: When the tense does not change
+            expression: "reporting verb in present or future;  universal truth, habitual fact or proverb;  past perfect;  would, could, should, might, ought to, used to"
+            example: {problem: "Mother says, 'Dinner is ready.'", solution: "Mother says that dinner is ready."}
+        patterns:
+          - key: statement
+            title: "Select the indirect speech of a statement"
+            example_stem: "Select the option that expresses the given sentence in indirect speech: Meena said, 'I am preparing for the exam.' (a) Meena said that she was preparing for the exam. (b) Meena said that she is preparing for the exam. (c) Meena told that she was preparing for the exam. (d) Meena said that I was preparing for the exam."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: no-change
+            title: "Select the indirect speech: universal truth or present reporting verb"
+            example_stem: "Select the option that expresses the given sentence in indirect speech: The teacher said, 'The sun rises in the east.' (a) The teacher said that the sun rose in the east. (b) The teacher said that the sun rises in the east. (c) The teacher told that the sun had risen in the east. (d) The teacher said the sun was rising in the east."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: four-checks
+            title: Reporting verb, tense, pronoun, time word
+            kind: elimination
+            rule: "Check the four parts in order and drop an option at the first failure; usually one option survives by the third check."
+            steps: ["Reporting verb (said / told + object / asked / requested)", "Tense moved one step back", "Pronouns by the SON rule", "Time and place words (tomorrow → the next day)"]
+            example: {problem: "He said to me, 'I met your brother yesterday.'", standard: "Convert the whole sentence, then compare", shortcut: "Keep only 'told me' → 'had met' → 'my brother' → 'the previous day': He told me that he had met my brother the previous day.", seconds_saved: 15}
+            pattern: statement
+
+      - slug: english-narration-pronouns-time
+        title: Pronoun, time and place changes
+        summary: >-
+          Pronouns change by the SON rule: the first person changes to match the Subject of the
+          reporting verb, the second person to match its Object, and the third person does Not
+          change. Words of nearness move to distance: now → then, today → that day, tonight → that
+          night, tomorrow → the next (following) day, yesterday → the previous day (the day before),
+          last night → the previous night, next week → the following week, ago → before, here →
+          there, this → that, these → those.
+        difficulty: medium
+        weight: 1.6
+        prerequisites: [english-narration-basics]
+        formulas:
+          - key: son-rule
+            name: SON rule for pronouns
+            expression: "1st person (I, we, my) → same person as the Subject of the reporting verb;  2nd person (you, your) → same person as the Object of the reporting verb;  3rd person → No change"
+            example: {problem: "She said to me, 'You can use my laptop.'", solution: "She told me that I could use her laptop."}
+          - key: time-place-words
+            name: Time and place words
+            expression: "now → then;  today → that day;  tomorrow → the next day;  yesterday → the previous day;  last night → the previous night;  next week → the following week;  ago → before;  here → there;  this → that;  these → those"
+        patterns:
+          - key: pronoun-change
+            title: "Select the indirect speech: pronoun change"
+            example_stem: "Select the option that expresses the given sentence in indirect speech: He said to me, 'You have helped my family a lot.' (a) He told me that I had helped his family a lot. (b) He told me that you had helped my family a lot. (c) He said to me that I have helped his family a lot. (d) He told me that he had helped my family a lot."
+            frequency: high
+            difficulty: medium
+            target_seconds: 25
+          - key: time-words
+            title: "Select the indirect speech: time and place words"
+            example_stem: "Select the option that expresses the given sentence in indirect speech: Ravi said, 'I will leave for Delhi tomorrow.' (a) Ravi said that he would leave for Delhi tomorrow. (b) Ravi said that he would leave for Delhi the next day. (c) Ravi said that I would leave for Delhi the next day. (d) Ravi said that he will leave for Delhi the next day."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+
+  - key: sentence-kinds
+    title: Narration of different kinds of sentences
+    concepts:
+      - slug: english-narration-questions
+        title: Reported questions
+        summary: >-
+          A reported question uses asked, enquired or wanted to know, drops the question mark and
+          the helping do/does/did, and puts the subject before the verb. Yes/no questions take if
+          or whether (He said to me, "Are you ready?" → He asked me if I was ready); wh-questions
+          keep the question word (She said, "Where do you live?" → She asked where I lived). 'That'
+          is never added before if, whether or the question word.
+        difficulty: medium
+        weight: 1.6
+        prerequisites: [english-narration-pronouns-time, english-embedded-questions]
+        patterns:
+          - key: yes-no-question
+            title: "Select the indirect speech of a yes/no question"
+            example_stem: "Select the option that expresses the given sentence in indirect speech: The officer said to her, 'Have you filled in the form?' (a) The officer asked her if she had filled in the form. (b) The officer asked her that had she filled in the form. (c) The officer asked her if she has filled in the form. (d) The officer told her whether she had filled in the form?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 25
+          - key: wh-question
+            title: "Select the indirect speech of a wh-question"
+            example_stem: "Select the option that expresses the given sentence in indirect speech: The stranger said to me, 'Where is the post office?' (a) The stranger asked me where was the post office. (b) The stranger asked me where the post office was. (c) The stranger told me where the post office is. (d) The stranger asked me that where the post office was."
+            frequency: high
+            difficulty: medium
+            target_seconds: 25
+
+      - slug: english-narration-commands
+        title: Commands, requests, advice and suggestions
+        summary: >-
+          Imperatives become reporting verb + object + to-infinitive: told, ordered or commanded for
+          orders, requested or begged for requests ('please' disappears), advised for advice (He
+          said to me, "Work hard." → He advised me to work hard); a negative command takes 'not
+          to' or 'forbade … to'. 'Let us' making a suggestion becomes 'suggested (proposed) that
+          they should …', while 'let' meaning 'allow' becomes 'requested … to let' or 'asked … to
+          allow'.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [english-narration-pronouns-time, english-infinitives]
+        patterns:
+          - key: order-request
+            title: "Select the indirect speech of a command or request"
+            example_stem: "Select the option that expresses the given sentence in indirect speech: The teacher said to the students, 'Do not make a noise.' (a) The teacher told the students not to make a noise. (b) The teacher told the students do not make a noise. (c) The teacher said the students not to make a noise. (d) The teacher requested the students that they should not make noise."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: let-us
+            title: "Select the indirect speech of a 'Let us' suggestion"
+            example_stem: "Select the option that expresses the given sentence in indirect speech: Rahul said to his friends, 'Let us go for a walk.' (a) Rahul told his friends to go for a walk. (b) Rahul suggested to his friends that they should go for a walk. (c) Rahul said to his friends that let them go for a walk. (d) Rahul ordered his friends to go for a walk."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+
+      - slug: english-narration-exclamations
+        title: Exclamations, wishes and greetings
+        summary: >-
+          Exclamations become statements with exclaimed (with joy, sorrow, surprise or wonder) and
+          'very' in place of what or how (He said, "Alas! I have lost my purse." → He exclaimed with
+          sorrow that he had lost his purse; "What a fine day it is!" → He exclaimed that it was a
+          very fine day). Wishes and prayers take wished or prayed ("May God bless you!" → She
+          prayed that God might bless me); greetings and thanks become verbs: wished him good
+          morning, bade them goodbye, thanked me.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [english-narration-pronouns-time]
+        patterns:
+          - key: exclamation
+            title: "Select the indirect speech of an exclamation"
+            example_stem: "Select the option that expresses the given sentence in indirect speech: The players said, 'Hurrah! We have won the cup.' (a) The players exclaimed with joy that they had won the cup. (b) The players said hurrah that they have won the cup. (c) The players exclaimed with sorrow that they had won the cup. (d) The players exclaimed that we had won the cup."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+          - key: wish-greeting
+            title: "Select the indirect speech of a wish, prayer or greeting"
+            example_stem: "Select the option that expresses the given sentence in indirect speech: The old man said to me, 'May you live long!' (a) The old man prayed that I might live long. (b) The old man said that may I live long. (c) The old man wished that I may live long. (d) The old man ordered me to live long."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+
+      - slug: english-narration-mixed
+        title: Mixed sentences, special cases and indirect to direct
+        summary: >-
+          When direct speech mixes sentence types, each part gets its own reporting verb joined by
+          'and added that', 'and asked' or 'and requested' (He said, "I am tired. Can you help me?"
+          → He said that he was tired and asked if I could help him). Yes and no become 'replied in
+          the affirmative/negative', a vocative such as 'Sir' becomes 'respectfully', and 'must'
+          stays for permanent duties. Converting indirect back to direct reverses every change:
+          restore the inverted commas, tense, pronouns, time words and the question or exclamation
+          mark.
+        difficulty: hard
+        weight: 1.2
+        prerequisites: [english-narration-questions, english-narration-commands, english-narration-exclamations]
+        patterns:
+          - key: mixed
+            title: "Select the indirect speech of a mixed sentence"
+            example_stem: "Select the option that expresses the given sentence in indirect speech: She said, 'I am late. Please wait for me.' (a) She said that she was late and requested me to wait for her. (b) She said that she is late and please wait for her. (c) She told that she was late and asked to wait for me. (d) She said that she was late and that I wait for her."
+            frequency: medium
+            difficulty: hard
+            target_seconds: 30
+          - key: indirect-to-direct
+            title: "Select the direct speech of the given sentence"
+            example_stem: "Select the option that expresses the given sentence in direct speech: The guide told us that the museum would remain closed the next day. (a) The guide said to us, 'The museum will remain closed tomorrow.' (b) The guide said to us, 'The museum would remain closed the next day.' (c) The guide said, 'The museum will remain closed the next day.' (d) The guide said to us, 'The museum is closed tomorrow.'"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30

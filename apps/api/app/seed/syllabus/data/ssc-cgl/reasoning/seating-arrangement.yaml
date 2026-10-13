@@ -1,0 +1,276 @@
+key: seating-arrangement
+title: Seating arrangement and puzzles
+strategies:
+  - key: approach
+    title: "Arrangements: definite clues first, cases on paper"
+    summary: >-
+      Arrangement questions (rows, circles, floors, boxes, schedules and attribute puzzles) are
+      solved by drawing the frame first, placing the clues that fix a position, then the
+      relative clues, and splitting into cases only when a clue allows two placements.
+    seconds_per_question: 60
+    accuracy_target: 0.85
+    tactics:
+      - "Draw the frame (row with its facing direction, circle, floor column, grid) before reading the clues."
+      - "Place clues that fix a position (end, middle, a given floor) first, then clues that link two people."
+      - "When a clue allows two placements, draw both cases side by side and strike one with the next clue."
+      - "In SSC, one puzzle often carries one question only: if it is long, attempt it in the second pass."
+    avoid:
+      - "Mixing up left and right for people facing south, facing the centre or facing outward."
+
+topics:
+  - key: linear
+    title: Seating in a line
+    concepts:
+      - slug: linear-seating-one-row
+        title: Seating in a line (one row)
+        summary: >-
+          Five to eight people sit in a row facing the same direction, usually north; clues fix
+          the ends, neighbours and gaps ('third to the right of'). When the row faces north, the
+          people's right is the reader's right; when it faces south, it is the reader's left.
+        difficulty: medium
+        weight: 1.5
+        patterns:
+          - key: row-facing-north
+            title: One row facing north
+            example_stem: "Seven friends A, B, C, D, E, F and G sit in a row facing north. C sits third to the right of A. D sits at one of the ends and is an immediate neighbour of A. B sits second to the left of F, and F is not an immediate neighbour of C. Who sits at the extreme right end?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 60
+          - key: row-facing-south
+            title: One row facing south
+            example_stem: "Six people P, Q, R, S, T and U sit in a row facing south. P sits at an extreme end. Q sits second to the left of P. R sits to the immediate right of T, who is not next to Q. Who sits to the immediate left of Q?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 60
+        shortcuts:
+          - key: fixed-clues-first
+            title: Fixed clues first, cases second
+            kind: shortcut
+            rule: "Start with clues that fix a position (an end, the middle, a fixed gap from a placed person); use neighbour clues only after that, and draw separate cases when a clue allows two placements."
+            example: {problem: "Seven in a row; C third to the right of A; D at an end next to A", standard: "Try placing A in every seat", shortcut: "D at an end with A beside it fixes A in seat 2 or 6; C three seats right of A rules out seat 6 → A in 2", seconds_saved: 30}
+            pitfalls: ["For a row facing south, 'to the right of' means towards the reader's left."]
+            pattern: row-facing-north
+
+      - slug: linear-seating-two-rows
+        title: Two parallel rows facing each other
+        summary: >-
+          Two rows of people face each other (one row facing north, the other south), so each
+          person faces someone in the other row. A person's left in one row is on the reader's
+          opposite side from a person's left in the other row.
+        difficulty: hard
+        weight: 0.8
+        prerequisites: [linear-seating-one-row]
+        patterns:
+          - key: facing-pair
+            title: Who faces whom
+            example_stem: "Eight people sit in two parallel rows of four, facing each other: A, B, C and D face north and P, Q, R and S face south. B sits at an end of his row. The person facing B sits second to the right of R. Q faces D, who is not next to B. Who faces B?"
+            frequency: medium
+            difficulty: hard
+            target_seconds: 75
+          - key: diagonal-position
+            title: Diagonally opposite positions
+            example_stem: "In the same arrangement, who sits diagonally opposite S?"
+            frequency: low
+            difficulty: hard
+            target_seconds: 45
+        shortcuts:
+          - key: mark-left-right
+            title: Mark L and R on both rows first
+            kind: shortcut
+            rule: "Draw an arrow showing the direction each row faces and write L and R at the ends of each row before placing anyone; the two rows have their left and right on opposite sides of the page."
+            example: {problem: "Row 1 faces north, row 2 faces south", shortcut: "Row 1: L on the page's left; row 2: L on the page's right", seconds_saved: 20}
+            pattern: facing-pair
+
+  - key: circular
+    title: Seating in a circle
+    concepts:
+      - slug: circular-seating
+        title: Seating in a circle
+        summary: >-
+          People sit around a round table, usually all facing the centre; then a person's left
+          is clockwise and right is anticlockwise (reversed for people facing outward). Clues
+          give neighbours, people sitting opposite and gaps.
+        difficulty: medium
+        weight: 1.5
+        formulas:
+          - key: circle-sides
+            name: Left and right in a circle
+            expression: "facing the centre: left = clockwise, right = anticlockwise;  facing outward: left = anticlockwise, right = clockwise;  with n people (n even) the person opposite is n/2 places away"
+        patterns:
+          - key: facing-centre
+            title: Circle with everyone facing the centre
+            example_stem: "Eight friends sit around a circular table facing the centre. A sits third to the left of B. C sits opposite A. D sits second to the right of C and next to E. Who sits second to the right of B?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 60
+          - key: mixed-facing
+            title: Some facing the centre, some facing outward
+            example_stem: "Six people sit around a circular table; some face the centre and some face outward. P faces the centre and sits second to the right of Q, who faces outward. Who sits to the immediate left of P?"
+            frequency: low
+            difficulty: hard
+            target_seconds: 75
+            tiers: [tier2]
+        shortcuts:
+          - key: anchor-top
+            title: Fix one person at the top
+            kind: shortcut
+            rule: "A circle has no fixed start: place the first definite person at the top and build everyone else from them; rotations of the same arrangement give the same answers."
+            example: {problem: "Eight around a table, A third to the left of B", standard: "Try B in several seats", shortcut: "Put B at the top; facing the centre, left is clockwise → A is three seats clockwise", seconds_saved: 20}
+            pattern: facing-centre
+
+      - slug: square-table-seating
+        title: Square and rectangular table seating
+        summary: >-
+          People sit at the corners and the middles of the sides of a square or rectangular
+          table, all facing the centre or some facing outside. Treat the table as a circle of
+          places, keeping track of which places are corners.
+        difficulty: hard
+        weight: 0.5
+        prerequisites: [circular-seating]
+        patterns:
+          - key: square-table
+            title: Square table with corner and side seats
+            example_stem: "Eight people sit around a square table: four at the corners and four at the middles of the sides, all facing the centre. A sits at a corner. B sits second to the right of A. C sits opposite B. Who sits at the corner to the immediate left of C?"
+            frequency: low
+            difficulty: hard
+            target_seconds: 75
+          - key: corner-or-side
+            title: Who sits at a corner
+            example_stem: "In the same arrangement, which of the following people sit at the middles of the sides?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: circle-of-eight
+            title: Unroll the table into a circle
+            kind: alternative
+            rule: "Number the eight places clockwise, alternating corner and side; then every 'second to the right' clue is two places along the circle, and corners are the odd (or even) places."
+            example: {problem: "A at a corner; B second to the right of A", shortcut: "Places 1 to 8, corners odd; A at 1 → B two places anticlockwise, also a corner", seconds_saved: 20}
+            pattern: square-table
+
+  - key: vertical
+    title: Floor and box puzzles
+    concepts:
+      - slug: floor-puzzles
+        title: Floor puzzles
+        summary: >-
+          People live on different floors of a building (the lowest floor is numbered 1, or the
+          ground floor is 0: read the question). Clues say who lives above or below whom and how
+          many floors apart. Draw a numbered column of floors.
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: floor-who
+            title: Who lives on a floor
+            example_stem: "A, B, C, D, E and F live on six different floors of a building; the lowest floor is numbered 1. B lives on an even-numbered floor immediately above C. A lives on the top floor. D lives two floors below E, and F does not live on floor 1. Who lives on floor 1?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 60
+          - key: floors-between
+            title: Floors between two people
+            example_stem: "In the same building, how many people live between A and D?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: number-floors
+            title: Number the floors before placing anyone
+            kind: shortcut
+            rule: "Write the floor numbers 1 to n from the bottom first; 'immediately above' means the next floor, 'above' means any higher floor."
+            example: {problem: "B on an even floor immediately above C", shortcut: "Pairs (C, B) can only be (1, 2), (3, 4) or (5, 6) → three cases to test", seconds_saved: 20}
+            pattern: floor-who
+
+      - slug: box-stacking-puzzles
+        title: Box puzzles (stacked boxes)
+        summary: >-
+          Boxes of different colours or contents are stacked one above another; clues give which
+          box is above another and how many boxes lie between two boxes. The method of floor
+          puzzles, with the stack drawn top to bottom.
+        difficulty: medium
+        weight: 0.7
+        prerequisites: [floor-puzzles]
+        patterns:
+          - key: box-position
+            title: Position of a box in the stack
+            example_stem: "Six boxes P, Q, R, S, T and U are stacked one above another. Two boxes are between P and S. Q is immediately above P. R is at the top, and T is not at the bottom. Which box is at the bottom?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 60
+          - key: boxes-between
+            title: Boxes between two boxes
+            example_stem: "In the same stack, how many boxes are between R and U?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: both-cases
+            title: Draw both cases of a gap clue
+            kind: shortcut
+            rule: "A clue like 'two boxes between P and S' allows S above or below P; draw both stacks at once and strike one with the next clue."
+            example: {problem: "Two boxes between P and S; Q immediately above P; R at the top", shortcut: "Case S above P vs P above S: R at the top and Q above P leave only one case", seconds_saved: 20}
+            pattern: box-position
+
+  - key: scheduling
+    title: Scheduling puzzles
+    concepts:
+      - slug: day-scheduling-puzzles
+        title: Scheduling puzzles (days and months)
+        summary: >-
+          Events or people are assigned to the days of a week or the months of a year; clues
+          say before or after and how many days apart. Draw the days in order as a column and
+          solve as a floor puzzle.
+        difficulty: medium
+        weight: 0.6
+        prerequisites: [floor-puzzles]
+        patterns:
+          - key: day-of-week
+            title: Events on days of the week
+            example_stem: "Seven lectures on different subjects are held from Monday to Sunday, one each day. History is held on Thursday. Two lectures are held between History and Physics. Chemistry is held immediately after Physics. On which day is Chemistry held?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 60
+          - key: months
+            title: Events in months of a year
+            example_stem: "Six friends have birthdays in six different months from January to June. M's birthday is in a month with 30 days. Two birthdays fall between M's and N's. Whose birthday is in March?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 60
+        shortcuts:
+          - key: days-as-floors
+            title: Treat days as floors
+            kind: alternative
+            rule: "List the days (or months) in a column; 'before' is below, 'after' is above, and 'k events between' is a gap of k rows."
+            example: {problem: "History on Thursday; two lectures between History and Physics", shortcut: "Physics is on Sunday or Monday; Chemistry the next day must exist → Physics Monday, Chemistry Tuesday", seconds_saved: 20}
+            pattern: day-of-week
+
+  - key: problem-solving
+    title: Problem solving
+    concepts:
+      - slug: attribute-matching-puzzles
+        title: "Problem solving: attribute matching puzzles"
+        summary: >-
+          Each person has several attributes (city, profession, favourite colour); clues link or
+          exclude pairs. Use a grid with a tick for a definite match and a cross for an
+          exclusion; each row and each column ends with exactly one tick.
+        difficulty: hard
+        weight: 0.8
+        patterns:
+          - key: grid-puzzle
+            title: Match people with attributes
+            example_stem: "Four friends Anil, Bina, Chetan and Deepa each like a different fruit: apple, mango, banana or grapes. Anil does not like mango or grapes. Bina likes banana. Chetan does not like apple. Who likes mango, if Deepa does not?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 60
+          - key: combined-arrangement
+            title: Arrangement combined with attributes
+            example_stem: "Five people sit in a row facing north, each with a different profession. The doctor sits at an end. The teacher sits next to the doctor. P, the engineer, sits in the middle. What is the profession of the person at the other end?"
+            frequency: low
+            difficulty: hard
+            target_seconds: 75
+        shortcuts:
+          - key: grid-crosses
+            title: Ticks and crosses grid
+            kind: shortcut
+            rule: "In an n × n grid, a row with n − 1 crosses has its tick in the last cell; after every new tick, cross out the rest of that row and column."
+            example: {problem: "Anil: not mango, not grapes; Bina: banana", shortcut: "Bina's tick crosses banana for everyone → Anil has only apple left", seconds_saved: 20}
+            pattern: grid-puzzle

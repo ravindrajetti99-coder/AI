@@ -1,0 +1,672 @@
+key: simplification
+title: Simplification
+strategies:
+  - key: approach
+    title: "Simplification: order first, then shortcuts"
+    summary: >-
+      Simplification questions are pure speed: apply BODMAS correctly, turn decimals and
+      recurring decimals into fractions, spot identities, surd and exponent rules, and
+      approximate only when the options are far apart.
+    seconds_per_question: 30
+    accuracy_target: 0.95
+    tactics:
+      - "Clear the bar and the brackets from the inside out and evaluate 'of' before ÷ and ×; then work ÷ and × left to right."
+      - "Convert recurring decimals and mixed numbers to fractions at the start, and cancel before multiplying."
+      - "Look for identities (a² − b², a³ ± b³) and telescoping patterns before multiplying anything out."
+      - "When the options differ by 10% or more, round every number to a friendly value and pick the nearest option."
+    avoid:
+      - "Doing addition before subtraction (or multiplication before division) instead of working left to right."
+      - "Approximating when the options are close together."
+
+topics:
+  - key: bodmas
+    title: BODMAS and simplification of expressions
+    concepts:
+      - slug: bodmas-order-of-operations
+        title: BODMAS rule and brackets
+        summary: "Order of operations: the bar (vinculum) first, then brackets (), {}, [] from the inside out, then 'of', then division and multiplication from left to right, then addition and subtraction from left to right. 'Of' means multiply but is done before ÷ and ×. Most simplification items test this order."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [natural-whole-numbers-integers]
+        formulas:
+          - key: order
+            name: Order of operations
+            expression: "bar → ( ) → { } → [ ] → of → ÷ and × (left to right) → + and − (left to right)"
+            example: {problem: "Simplify 48 ÷ 12 × 4 + 6 of 2 − 5.", solution: "6 of 2 = 12; 48 ÷ 12 × 4 = 16; 16 + 12 − 5 = 23"}
+          - key: of-rule
+            name: The 'of' operator
+            expression: "a ÷ b of c = a ÷ (b × c)"
+            example: {problem: "96 ÷ 4 of 6", solution: "96 ÷ 24 = 4 (not 96 ÷ 4 × 6 = 144)"}
+        patterns:
+          - key: multi-bracket
+            title: Simplify with nested brackets
+            example_stem: "Simplify: 24 − [18 − {12 − (9 − 6 ÷ 2)}]"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: of-and-division
+            title: Expressions with 'of', division and multiplication
+            example_stem: "Find the value of 96 ÷ 4 of 6 × 3 + 15 ÷ 5 × 2."
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: find-missing
+            title: Find the missing number (value of ?)
+            example_stem: "If 45 + 3 × ? − 12 ÷ 4 = 66, find the value of ?."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: of-first
+            title: "'Of' binds tighter than ÷"
+            kind: memory
+            rule: "Treat 'a of b' as one bracketed product (a × b) before any ÷ or × around it."
+            example: {problem: "96 ÷ 4 of 6 × 3", standard: "Left to right as 96 ÷ 4 × 6 × 3 = 432 (wrong)", shortcut: "96 ÷ (4 × 6) × 3 = 4 × 3 = 12"}
+            pattern: of-and-division
+          - key: unit-digit-check
+            title: Check the options by unit digit
+            kind: elimination
+            rule: "For whole-number expressions, compute only the unit digit of the result and strike out options that do not match."
+            example: {problem: "Value of 347 × 23 + 1,288 ÷ 4", standard: "Work out 7,981 + 322", shortcut: "1,288 ÷ 4 = 322; unit digits 7 × 3 → 1, and 1 + 2 = 3 → the answer ends in 3 (8,303)", seconds_saved: 20}
+      - slug: simplification-using-identities
+        title: Simplification using algebraic identities
+        summary: "Many simplification questions are identities in disguise: (a² − b²)/(a − b) = a + b, (a³ + b³)/(a² − ab + b²) = a + b, (a + b)² − (a − b)² = 4ab. Spotting the shape turns long decimal arithmetic into one line."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [bodmas-order-of-operations, decimal-fraction-operations]
+        formulas:
+          - key: difference-of-squares
+            name: Difference of squares
+            expression: "a² − b² = (a + b)(a − b)"
+            example: {problem: "(7.5 × 7.5 − 2.5 × 2.5) ÷ 10", solution: "(7.5 + 2.5)(7.5 − 2.5) ÷ 10 = 10 × 5 ÷ 10 = 5"}
+          - key: sum-difference-cubes
+            name: Sum and difference of cubes
+            expression: "a³ + b³ = (a + b)(a² − ab + b²);  a³ − b³ = (a − b)(a² + ab + b²)"
+            example: {problem: "(0.8³ + 0.2³) ÷ (0.8² − 0.8 × 0.2 + 0.2²)", solution: "= 0.8 + 0.2 = 1"}
+          - key: squares-of-sum-difference
+            name: Squares of a sum and a difference
+            expression: "(a + b)² + (a − b)² = 2(a² + b²);  (a + b)² − (a − b)² = 4ab"
+            example: {problem: "[(3.7 + 1.3)² − (3.7 − 1.3)²] ÷ (3.7 × 1.3)", solution: "4ab ÷ ab = 4"}
+          - key: three-cubes
+            name: Sum of three cubes
+            expression: "a³ + b³ + c³ − 3abc = (a + b + c)(a² + b² + c² − ab − bc − ca);  if a + b + c = 0 then a³ + b³ + c³ = 3abc"
+            example: {problem: "(0.5)³ + (0.3)³ − (0.8)³", solution: "0.5 + 0.3 − 0.8 = 0 → 3 × 0.5 × 0.3 × (−0.8) = −0.36"}
+        patterns:
+          - key: identity-fraction
+            title: Identity-shaped fractions with decimals
+            example_stem: "Simplify: (1.25³ − 0.75³) ÷ (1.25² + 1.25 × 0.75 + 0.75²)"
+            frequency: high
+            difficulty: medium
+            target_seconds: 25
+          - key: square-difference-numbers
+            title: Difference of squares with large numbers
+            example_stem: "Find the value of (853² − 147²) ÷ 706."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: spot-the-identity
+            title: Read the denominator to find the identity
+            kind: shortcut
+            rule: "If the denominator is a² − ab + b² (or a² + ab + b²) and the numerator a³ + b³ (or a³ − b³), the answer is a + b (or a − b) at once."
+            example: {problem: "(1.25³ − 0.75³) ÷ (1.25² + 1.25 × 0.75 + 0.75²)", standard: "Cube and square each decimal", shortcut: "a − b = 1.25 − 0.75 = 0.5", seconds_saved: 60}
+            pattern: identity-fraction
+      - slug: fast-multiplication-squaring
+        title: Fast multiplication and squaring
+        summary: "Mental techniques that save time in every simplification: multiplying by 5, 25, 11 or 99, squaring numbers near a base (100 or 50), squaring numbers ending in 5 and multiplying two numbers near 100. They also speed up checking options."
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [place-value-face-value]
+        formulas:
+          - key: ending-in-5
+            name: Square of a number ending in 5
+            expression: "(10a + 5)² = 100 × a(a + 1) + 25"
+            example: {problem: "85²", solution: "8 × 9 = 72 → 7,225"}
+          - key: base-square
+            name: Square near a base
+            expression: "(100 + x)² = 100(100 + 2x) + x²;  (50 + x)² = 100(25 + x) + x²"
+            example: {problem: "97² and 53²", solution: "100 × 94 + 9 = 9,409;  100 × 28 + 9 = 2,809"}
+          - key: special-multipliers
+            name: Multiplying by 5, 25, 99 and 11
+            expression: "× 5 = × 10 ÷ 2;  × 25 = × 100 ÷ 4;  × 99 = × 100 − the number;  × 11 (two digits ab) = a, (a + b), b with carry"
+            example: {problem: "68 × 11 and 436 × 99", solution: "6 | 14 | 8 → 748;  43,600 − 436 = 43,164"}
+          - key: near-base-product
+            name: Product of two numbers near a base
+            expression: "(B + a)(B + b) = B(B + a + b) + ab"
+            example: {problem: "104 × 97", solution: "100 × 101 + (4 × −3) = 10,100 − 12 = 10,088"}
+        patterns:
+          - key: mental-product
+            title: Products and squares inside simplification
+            example_stem: "Find the value of 105² − 95² + 999 × 25."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+        shortcuts:
+          - key: ending-five
+            title: Squares of numbers ending in 5
+            kind: shortcut
+            rule: "Multiply the number formed by the digits before the 5 by the next whole number and write 25 after it."
+            example: {problem: "115²", standard: "Long multiplication 115 × 115", shortcut: "11 × 12 = 132 → 13,225", seconds_saved: 20}
+            pattern: mental-product
+          - key: base-hundred
+            title: Base 100 for numbers near 100
+            kind: shortcut
+            rule: "For (100 + a)(100 + b): add a to the other number for the first part (× 100), then append a × b as the last two digits."
+            example: {problem: "96 × 93", standard: "Long multiplication", shortcut: "96 − 7 = 89 and (−4)(−7) = 28 → 8,928", seconds_saved: 20}
+            pattern: mental-product
+
+  - key: fractions-decimals
+    title: Fractions and decimals
+    concepts:
+      - ref: fraction-types-operations
+        weight: 1.2
+        patterns:
+          - key: complex-fraction
+            title: Simplify a complex fraction
+            example_stem: "Simplify: (3/4 + 2/3) ÷ (5/6 − 1/4)"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+      - ref: decimal-fraction-operations
+        weight: 1.0
+        patterns:
+          - key: decimal-ratio-equation
+            title: Ratio from a decimal equation
+            example_stem: "If 1.5x = 0.04y, find the value of (y − x)/(y + x)."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+      - slug: recurring-decimals
+        title: Recurring decimals and their conversion to fractions
+        summary: "A recurring decimal repeats a block of digits forever, written here as 0.(27) for 0.272727…. A pure recurring decimal is the repeating block over as many 9s as it has digits; a mixed one is (all the digits − the non-repeating digits) over as many 9s as repeating digits followed by as many 0s as non-repeating digits. SSC adds, subtracts and compares such decimals."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [decimal-fraction-operations, rational-irrational-numbers]
+        formulas:
+          - key: pure
+            name: Pure recurring decimal
+            expression: "0.(ab) = ab/99;  0.(abc) = abc/999"
+            example: {problem: "0.(36)", solution: "36/99 = 4/11"}
+          - key: mixed
+            name: Mixed recurring decimal
+            expression: "0.a(bc) = (abc − a)/990"
+            conditions: "In general: the 9s count the repeating digits and the 0s count the non-repeating digits after the point."
+            example: {problem: "0.2(45) = 0.2454545…", solution: "(245 − 2)/990 = 243/990 = 27/110"}
+          - key: with-whole-part
+            name: Recurring decimal with a whole part
+            expression: "k.(ab) = k + ab/99"
+            example: {problem: "2.(6)", solution: "2 + 6/9 = 2 2/3 = 8/3"}
+        patterns:
+          - key: convert-recurring
+            title: Convert a recurring decimal to a fraction
+            example_stem: "Express 0.3(18) = 0.3181818… as a fraction in its lowest terms."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: add-recurring
+            title: Add or subtract recurring decimals
+            example_stem: "Find the value of 0.(4) + 0.(37) + 0.(6) as a fraction."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: nines-and-zeros
+            title: Nines for repeating digits, zeros for the rest
+            kind: memory
+            rule: "Numerator: all the digits after the point minus the non-repeating ones. Denominator: one 9 per repeating digit, then one 0 per non-repeating digit."
+            example: {problem: "0.3(18)", standard: "Let x = 0.31818…, multiply by 10 and by 1,000 and subtract", shortcut: "(318 − 3)/990 = 315/990 = 7/22", seconds_saved: 25}
+            pattern: convert-recurring
+          - key: add-as-fractions
+            title: Add recurring decimals as fractions over 9s
+            kind: shortcut
+            rule: "Convert each to a fraction over 9, 99 or 999, bring them to one denominator of 9s and add; never add the decimal strings digit by digit."
+            example: {problem: "0.(4) + 0.(37) + 0.(6)", standard: "Write out many digits and add", shortcut: "44/99 + 37/99 + 66/99 = 147/99 = 49/33", seconds_saved: 20}
+            pattern: add-recurring
+      - slug: telescoping-fraction-series
+        title: Fraction series and telescoping sums
+        summary: "Series like 1/(1 × 2) + 1/(2 × 3) + … collapse because 1/(n(n + k)) = (1/k)(1/n − 1/(n + k)); products like (1 − 1/2)(1 − 1/3)…(1 − 1/n) cancel to 1/n. SSC sets them as long-looking simplification questions with short answers."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [fraction-types-operations]
+        formulas:
+          - key: split-term
+            name: Splitting a term
+            expression: "1/(n(n + k)) = (1/k) × (1/n − 1/(n + k))"
+            example: {problem: "1/(2 × 5) + 1/(5 × 8) + … + 1/(29 × 32)", solution: "(1/3)(1/2 − 1/32) = (1/3)(15/32) = 5/32"}
+          - key: consecutive-denominators
+            name: Consecutive factors in the denominators
+            expression: "1/(1 × 2) + 1/(2 × 3) + … + 1/(n(n + 1)) = 1 − 1/(n + 1) = n/(n + 1)"
+            example: {problem: "1/2 + 1/6 + 1/12 + … + 1/90", solution: "terms 1/(1 × 2) to 1/(9 × 10) → 9/10"}
+          - key: telescoping-products
+            name: Telescoping products
+            expression: "(1 − 1/2)(1 − 1/3)…(1 − 1/n) = 1/n;  (1 + 1/2)(1 + 1/3)…(1 + 1/n) = (n + 1)/2;  (1 − 1/2²)(1 − 1/3²)…(1 − 1/n²) = (n + 1)/(2n)"
+            example: {problem: "(1 − 1/3)(1 − 1/4)…(1 − 1/50)", solution: "2/3 × 3/4 × … × 49/50 = 2/50 = 1/25"}
+        patterns:
+          - key: sum-of-reciprocal-products
+            title: Sum of a fraction series
+            example_stem: "Find the value of 1/(3 × 7) + 1/(7 × 11) + 1/(11 × 15) + … + 1/(39 × 43)."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+          - key: product-series
+            title: Product of a fraction series
+            example_stem: "Simplify: (1 + 1/4)(1 + 1/5)(1 + 1/6) … (1 + 1/99)"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: first-minus-last
+            title: First minus last, divided by the gap
+            kind: shortcut
+            rule: "For a sum of 1/(a × b) terms where b − a = k throughout and each b is the next a, the sum is (1/first factor − 1/last factor) ÷ k."
+            example: {problem: "1/(3 × 7) + … + 1/(39 × 43)", standard: "Add ten fractions", shortcut: "(1/3 − 1/43) ÷ 4 = (40/129) ÷ 4 = 10/129", seconds_saved: 60}
+            pattern: sum-of-reciprocal-products
+          - key: keep-the-ends
+            title: In a telescoping product only the ends survive
+            kind: shortcut
+            rule: "Write each factor as a single fraction; each numerator cancels a neighbouring denominator, so only the unmatched numerator and denominator at the two ends survive."
+            example: {problem: "(1 + 1/4)(1 + 1/5) … (1 + 1/99)", standard: "Multiply the fractions in turn", shortcut: "5/4 × 6/5 × … × 100/99 = 100/4 = 25", seconds_saved: 30}
+            pattern: product-series
+      - slug: continued-fractions
+        title: Continued fractions
+        summary: "A continued fraction stacks fractions inside denominators, like 1 + 1/(1 + 1/(1 + 1/2)). Simplify from the bottom up, inverting at each step; SSC also asks for an unknown inside a continued fraction."
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [fraction-types-operations]
+        formulas:
+          - key: bottom-up
+            name: Bottom-up evaluation
+            expression: "a + 1/(b + 1/c) = a + c/(bc + 1)"
+            example: {problem: "1 + 1/(1 + 1/(1 + 1/2))", solution: "1 + 1/2 = 3/2 → 1 + 2/3 = 5/3 → 1 + 3/5 = 8/5"}
+        patterns:
+          - key: evaluate
+            title: Evaluate a continued fraction
+            example_stem: "Simplify: 2 + 1/(2 + 1/(2 + 1/2))"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: find-unknown
+            title: Find the unknown in a continued fraction
+            example_stem: "If 1/(2 + 1/(3 + 1/x)) = 10/23, find x."
+            frequency: low
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: invert-and-peel
+            title: Invert and peel off the whole numbers
+            kind: shortcut
+            rule: "To find an unknown, invert the given value and subtract the whole number at each level until the unknown stands alone."
+            example: {problem: "1/(2 + 1/(3 + 1/x)) = 10/23", standard: "Simplify the left side in terms of x and solve the equation", shortcut: "23/10 − 2 = 3/10 → 10/3 − 3 = 1/3 → x = 3", seconds_saved: 30}
+            pattern: find-unknown
+
+  - key: comparison
+    title: Comparison of fractions
+    concepts:
+      - slug: comparison-of-fractions
+        title: Comparison of fractions
+        summary: "Compare positive fractions by cross-multiplying (a/b > c/d ⇔ ad > bc), by converting to decimals, or by equal numerators or denominators. SSC asks for the largest or smallest fraction, ascending or descending order, and the difference between the largest and smallest."
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [fraction-types-operations]
+        formulas:
+          - key: cross-multiply
+            name: Cross-multiplication
+            expression: "a/b > c/d ⇔ ad > bc (b, d > 0)"
+            example: {problem: "Which is larger, 7/9 or 11/14?", solution: "7 × 14 = 98 < 9 × 11 = 99 → 11/14 is larger"}
+          - key: equal-parts
+            name: Equal numerators or denominators
+            expression: "equal denominators: the larger numerator gives the larger fraction;  equal numerators: the smaller denominator gives the larger fraction"
+          - key: equal-gap
+            name: Fractions with the same gap
+            expression: "for n/(n + k) with the same k > 0, the fraction with the larger n is larger"
+            example: {problem: "Largest of 5/7, 9/11 and 13/15", solution: "each is 2 short of its denominator → 13/15"}
+        patterns:
+          - key: largest-smallest
+            title: Largest or smallest fraction
+            example_stem: "Which of the following fractions is the largest? 5/8, 7/11, 9/14, 13/20"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: order
+            title: Ascending or descending order
+            example_stem: "Arrange in ascending order: 3/5, 4/7, 8/13, 7/11"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: difference-largest-smallest
+            title: Difference between the largest and smallest fractions
+            example_stem: "What is the difference between the largest and the smallest of 2/3, 3/4, 4/5 and 5/6?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: decimal-estimate
+            title: Compare by decimal estimates
+            kind: approximation
+            rule: "Convert each fraction to two or three decimal places using known values (1/7 = 0.143, 1/11 = 0.091); cross-multiply only the closest pair."
+            example: {problem: "Largest of 5/8, 7/11, 9/14, 13/20", standard: "Cross-multiply every pair", shortcut: "0.625, 0.636, 0.643, 0.65 → 13/20", seconds_saved: 25}
+            pattern: largest-smallest
+          - key: same-gap
+            title: Same gap below 1, larger denominator wins
+            kind: shortcut
+            rule: "For fractions just below 1 whose numerator is the same amount short of the denominator, the one with the larger denominator is the largest."
+            example: {problem: "Largest of 5/7, 9/11, 13/15, 17/19", standard: "Cross-multiply the pairs", shortcut: "all are 2 short → 17/19", seconds_saved: 20}
+            pattern: largest-smallest
+
+  - key: roots
+    title: Square roots and cube roots
+    concepts:
+      - slug: squares-and-square-roots
+        title: Squares and square roots
+        summary: "Find square roots by prime factorisation (one prime from each pair), by long division, or for perfect squares from the unit digit and the nearest known squares. A perfect square never ends in 2, 3, 7 or 8, and the square root of a decimal needs an even number of decimal places."
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [factors-multiples-prime-factorisation]
+        formulas:
+          - key: factor-pairs
+            name: Square root by prime factorisation
+            expression: "√N = product of one prime from each pair (every exponent of N must be even)"
+            example: {problem: "√7,056", solution: "7,056 = 2⁴ × 3² × 7² → 2² × 3 × 7 = 84"}
+          - key: unit-digit-map
+            name: Unit digit of a square root
+            expression: "square ends in 1 → root ends in 1 or 9;  4 → 2 or 8;  9 → 3 or 7;  6 → 4 or 6;  5 → 5;  00 → 0"
+          - key: decimal-root
+            name: Square roots of decimals and fractions
+            expression: "√(a/b) = √a/√b;  for a decimal, make the number of decimal places even and halve it"
+            example: {problem: "√0.000169", solution: "√169 = 13 with 6 ÷ 2 = 3 decimal places → 0.013"}
+        patterns:
+          - key: perfect-square-root
+            title: Square root of a perfect square
+            example_stem: "Find the square root of 1,08,241."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: root-expression
+            title: Expressions with square roots of decimals
+            example_stem: "Find the value of √0.0081 + √1.44 − √0.25."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: least-to-adjust
+            title: Least number to add or subtract for a perfect square
+            example_stem: "What least number must be subtracted from 7,250 to make it a perfect square?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: unit-digit-bracket
+            title: Unit digit plus bracketing
+            kind: shortcut
+            rule: "For a perfect square of up to 5 digits: the unit digit gives two candidate last digits; the part left after removing the last two digits fixes the tens part; comparing with the square of (tens part)5 picks the candidate."
+            steps:
+              - "Read the unit digit and list the two possible unit digits of the root"
+              - "Strike off the last two digits and find the largest square not exceeding what is left"
+              - "Compare the number with the square of that tens digit followed by 5"
+            example: {problem: "√7,744", standard: "Long division", shortcut: "ends in 4 → 2 or 8; 77 lies between 8² and 9² → 8_; 7,744 > 85² = 7,225 → 88", seconds_saved: 30}
+            pattern: perfect-square-root
+      - slug: cubes-and-cube-roots
+        title: Cubes and cube roots
+        summary: "The cube root of a perfect cube comes from its unit digit (2 and 8 swap, 3 and 7 swap, the other digits stay the same) and from the part left after removing the last three digits. Prime factorisation in triples gives exact roots and the smallest multiplier for a perfect cube."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [factors-multiples-prime-factorisation]
+        formulas:
+          - key: cube-unit-digit
+            name: Unit digit of a cube root
+            expression: "cube ends in 0, 1, 4, 5, 6 or 9 → root ends in the same digit;  2 ↔ 8;  3 ↔ 7"
+          - key: triples
+            name: Cube root by prime factorisation
+            expression: "∛N = product of one prime from each triple (every exponent of N must be a multiple of 3)"
+            example: {problem: "∛17,576", solution: "17,576 = 2³ × 13³ → 2 × 13 = 26"}
+          - key: cubes-table
+            name: Cubes of 11 to 20
+            expression: "1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859, 8000"
+        patterns:
+          - key: cube-root-perfect
+            title: Cube root of a perfect cube
+            example_stem: "Find the cube root of 4,05,224."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: smallest-for-cube
+            title: Smallest multiplier or divisor for a perfect cube
+            example_stem: "By what least number must 1,323 be multiplied to make it a perfect cube?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: cube-root-two-step
+            title: Unit digit plus leading group
+            kind: shortcut
+            rule: "The unit digit of the cube gives the unit digit of the root; the number left after striking off the last three digits gives the tens digit (the largest cube not exceeding it)."
+            example: {problem: "∛4,05,224", standard: "Prime-factorise 405,224", shortcut: "ends in 4 → 4; 405 lies between 7³ = 343 and 8³ = 512 → 7 → 74", seconds_saved: 30}
+            pattern: cube-root-perfect
+
+  - key: surds-indices
+    title: Surds and indices
+    subtopics:
+      - key: indices
+        title: Laws of exponents
+        concepts:
+          - slug: laws-of-exponents-indices
+            title: Laws of exponents (indices)
+            summary: "aᵐ × aⁿ = aᵐ⁺ⁿ, aᵐ ÷ aⁿ = aᵐ⁻ⁿ, (aᵐ)ⁿ = aᵐⁿ, (ab)ⁿ = aⁿbⁿ, a⁰ = 1, a⁻ⁿ = 1/aⁿ and a^(m/n) = (ⁿ√a)ᵐ. SSC asks to simplify expressions with powers and to solve for an unknown exponent by making the bases equal."
+            difficulty: easy
+            weight: 1.2
+            prerequisites: [factors-multiples-prime-factorisation]
+            formulas:
+              - key: product-quotient-power
+                name: Product, quotient and power laws
+                expression: "aᵐ × aⁿ = a^(m + n);  aᵐ ÷ aⁿ = a^(m − n);  (aᵐ)ⁿ = a^(mn);  (ab)ⁿ = aⁿbⁿ"
+                example: {problem: "Simplify 2⁵ × 2⁻² ÷ 2⁴.", solution: "2^(5 − 2 − 4) = 2⁻¹ = 1/2"}
+              - key: zero-negative-fractional
+                name: Zero, negative and fractional exponents
+                expression: "a⁰ = 1 (a ≠ 0);  a⁻ⁿ = 1/aⁿ;  a^(m/n) = (ⁿ√a)ᵐ"
+                example: {problem: "Find 27^(−2/3).", solution: "(∛27)⁻² = 3⁻² = 1/9"}
+              - key: equal-bases
+                name: Equal bases, equal exponents
+                expression: "if aˣ = aʸ (a > 0, a ≠ 1) then x = y"
+                example: {problem: "If 3^(2x − 1) = 243, find x.", solution: "243 = 3⁵ → 2x − 1 = 5 → x = 3"}
+            patterns:
+              - key: simplify-powers
+                title: Simplify expressions with powers
+                example_stem: "Simplify: 16^(3/4) × 81^(−1/4) × 32^(2/5)"
+                frequency: high
+                difficulty: easy
+                target_seconds: 30
+              - key: solve-exponent
+                title: Find the unknown exponent
+                example_stem: "If (3/5)ˣ × (5/3)^(2x) = 125/27, find x."
+                frequency: high
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: same-prime-base
+                title: Rewrite everything with the same prime base
+                kind: shortcut
+                rule: "Express every number as a power of one prime (4 = 2², 8 = 2³, 1/9 = 3⁻², 5/3 = (3/5)⁻¹), then work with the exponents only."
+                example: {problem: "If 8^(x − 1) = 4^(x + 1), find x.", standard: "Test values of x", shortcut: "2^(3x − 3) = 2^(2x + 2) → x = 5", seconds_saved: 20}
+                pattern: solve-exponent
+      - key: surds
+        title: Surds and comparing surds
+        concepts:
+          - slug: surds-operations-rationalisation
+            title: "Surds: operations and rationalisation"
+            summary: "A surd is an irrational root such as √3 or ∛5. Only like surds add (3√2 + 5√2 = 8√2), and √a × √b = √(ab). Rationalise a denominator a + √b by multiplying by its conjugate a − √b, since (a + √b)(a − √b) = a² − b; SSC often asks x + 1/x for values like x = 2 + √3."
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [laws-of-exponents-indices, rational-irrational-numbers, squares-and-square-roots]
+            formulas:
+              - key: like-surds
+                name: Operations on surds
+                expression: "m√a ± n√a = (m ± n)√a;  √a × √b = √(ab);  √a ÷ √b = √(a/b)"
+                example: {problem: "√50 + √18 − √8", solution: "5√2 + 3√2 − 2√2 = 6√2"}
+              - key: conjugate
+                name: Rationalising with the conjugate
+                expression: "1/(a + √b) = (a − √b)/(a² − b);  1/(√a + √b) = (√a − √b)/(a − b)"
+                example: {problem: "Rationalise 1/(√5 + √3).", solution: "(√5 − √3)/(5 − 3) = (√5 − √3)/2"}
+              - key: reciprocal-pair
+                name: Reciprocal surd pairs
+                expression: "if x = a + √b with a² − b = 1, then 1/x = a − √b, x + 1/x = 2a and x − 1/x = 2√b"
+                example: {problem: "If x = 2 + √3, find x² + 1/x².", solution: "x + 1/x = 4 → x² + 1/x² = 16 − 2 = 14"}
+            patterns:
+              - key: rationalise
+                title: Rationalise the denominator
+                example_stem: "Simplify: (√7 + √3)/(√7 − √3)"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: x-plus-reciprocal
+                title: x + 1/x with surd values
+                example_stem: "If x = 3 + 2√2, find the value of √x − 1/√x."
+                frequency: high
+                difficulty: medium
+                target_seconds: 35
+              - key: surd-sum
+                title: Add and multiply surds
+                example_stem: "Simplify: √72 + √162 − √128"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: reciprocal-check
+                title: Check whether a² − b = 1
+                kind: shortcut
+                rule: "If (a + √b)(a − √b) = 1, the two surds are reciprocals: x + 1/x = 2a and x − 1/x = 2√b with no rationalising."
+                example: {problem: "x = 5 + 2√6; find x + 1/x", standard: "Rationalise 1/(5 + 2√6) and add", shortcut: "25 − 24 = 1 → 1/x = 5 − 2√6 → x + 1/x = 10", seconds_saved: 25}
+                pattern: x-plus-reciprocal
+          - slug: comparing-surds
+            title: Comparing surds
+            summary: "To compare surds of different orders (√2, ∛3, ⁴√5), raise them all to the LCM of the root indices and compare the whole numbers. Differences like √(n + 1) − √n shrink as n grows, because √(n + 1) − √n = 1/(√(n + 1) + √n)."
+            difficulty: medium
+            weight: 0.9
+            prerequisites: [surds-operations-rationalisation]
+            formulas:
+              - key: common-order
+                name: Bring surds to a common order
+                expression: "to compare a^(1/m) and b^(1/n), raise both to the power L = LCM(m, n) and compare a^(L/m) with b^(L/n)"
+                example: {problem: "Compare √2, ∛3 and ⁶√6.", solution: "6th powers: 8, 9 and 6 → ∛3 > √2 > ⁶√6"}
+              - key: difference-compare
+                name: Comparing differences of square roots
+                expression: "√(n + k) − √n = k/(√(n + k) + √n): for the same k, the difference is larger when the numbers are smaller"
+                example: {problem: "Which is larger, √11 − √10 or √13 − √12?", solution: "√11 − √10 (smaller numbers, smaller denominator)"}
+              - key: sum-compare
+                name: Comparing sums of square roots
+                expression: "if a + b = c + d, then √a + √b > √c + √d ⇔ ab > cd (square both sides)"
+                example: {problem: "Which is larger, √5 + √7 or √3 + √9?", solution: "5 × 7 = 35 > 3 × 9 = 27 → √5 + √7"}
+            patterns:
+              - key: largest-surd
+                title: Largest or smallest of surds of different orders
+                example_stem: "Which is the greatest: ∛4, ⁴√6, √2 or ⁶√15?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+              - key: surd-differences
+                title: Compare differences or sums of square roots
+                example_stem: "Arrange in descending order: √8 − √7, √7 − √6, √6 − √5"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: lcm-power
+                title: Raise everything to the LCM power
+                kind: shortcut
+                rule: "Raise all the surds to the LCM of their root indices; compare the whole numbers that result."
+                example: {problem: "∛4, ⁴√6, √2, ⁶√15", standard: "Approximate each root as a decimal", shortcut: "12th powers: 256, 216, 64, 225 → ∛4 is the greatest", seconds_saved: 40}
+                pattern: largest-surd
+              - key: flip-to-sum
+                title: Flip a difference into a sum
+                kind: shortcut
+                rule: "√a − √b = (a − b)/(√a + √b): with equal (a − b), the pair with the smaller numbers has the larger difference."
+                example: {problem: "√8 − √7 or √6 − √5?", shortcut: "both are 1/(sum); √6 + √5 is the smaller sum → √6 − √5 is larger", seconds_saved: 20}
+                pattern: surd-differences
+          - slug: nested-radicals-surds
+            title: Square roots of surds and nested radicals
+            summary: "√(a + 2√b) = √x + √y when x + y = a and xy = b (and √(a − 2√b) = √x − √y for x > y). Infinite radicals settle to a fixed value: √(x + √(x + …)) = (1 + √(1 + 4x))/2 and √(x√(x√(x…))) = x."
+            difficulty: hard
+            weight: 0.8
+            prerequisites: [surds-operations-rationalisation]
+            formulas:
+              - key: denest
+                name: Square root of a + 2√b
+                expression: "√(a ± 2√b) = √x ± √y, where x + y = a, xy = b and x > y"
+                example: {problem: "√(7 + 2√10)", solution: "x + y = 7, xy = 10 → 5 and 2 → √5 + √2"}
+              - key: infinite-sum-radical
+                name: Infinite radicals with + and −
+                expression: "√(x + √(x + √(x + …))) = (1 + √(1 + 4x))/2;  √(x − √(x − √(x − …))) = (−1 + √(1 + 4x))/2"
+                example: {problem: "√(12 + √(12 + √(12 + …)))", solution: "(1 + √49)/2 = 4"}
+              - key: product-radical
+                name: Repeated product radicals
+                expression: "√(x√(x√(x…))) with n roots = x^(1 − 1/2ⁿ);  infinitely many roots = x"
+                example: {problem: "√(5√(5√5))", solution: "n = 3 → 5^(1 − 1/8) = 5^(7/8)"}
+            patterns:
+              - key: denest-root
+                title: Square root of a surd expression
+                example_stem: "Simplify: √(11 + 2√30) − √(8 − 2√15)"
+                frequency: medium
+                difficulty: hard
+                target_seconds: 45
+              - key: infinite-radical
+                title: Infinite nested radicals
+                example_stem: "Find the value of √(20 + √(20 + √(20 + …)))."
+                frequency: low
+                difficulty: medium
+                target_seconds: 25
+            shortcuts:
+              - key: sum-and-product
+                title: Find two numbers with sum a and product b
+                kind: shortcut
+                rule: "For √(a + 2√b), split b into a factor pair that adds up to a; the root is the sum of their square roots."
+                example: {problem: "√(11 + 2√30)", standard: "Square (√x + √y) and solve two equations", shortcut: "30 = 6 × 5 and 6 + 5 = 11 → √6 + √5", seconds_saved: 25}
+                pattern: denest-root
+              - key: consecutive-product
+                title: "Infinite radical of n(n + 1)"
+                kind: shortcut
+                rule: "If x = n(n + 1), then √(x + √(x + …)) = n + 1 and √(x − √(x − …)) = n."
+                example: {problem: "√(20 + √(20 + …))", shortcut: "20 = 4 × 5 → 5", seconds_saved: 20}
+                pattern: infinite-radical
+
+  - key: approximation
+    title: Approximation
+    concepts:
+      - slug: approximation-techniques
+        title: Approximation (approximate value questions)
+        summary: "When a question asks for an approximate value, round each number to a convenient nearby value (49.87% → 50%, 1,198 → 1,200, √626 → 25), turn near-friendly percentages into fractions and pick the nearest option. This is safe only when the options are well apart."
+        difficulty: easy
+        weight: 0.9
+        prerequisites: [bodmas-order-of-operations, squares-and-square-roots, percentage-fraction-conversion]
+        formulas:
+          - key: rounding
+            name: Rounding to friendly values
+            expression: "round to the nearest whole number, ten or friendly percentage;  √N ≈ the root of the nearest perfect square;  x% of y ≈ the nearest easy fraction × y"
+            example: {problem: "29.97% of 601.2 + √399 ≈ ?", solution: "30% of 600 + 20 = 180 + 20 = 200 (exact 200.15)"}
+          - key: root-approximation
+            name: Square root near a perfect square
+            expression: "√(n² + d) ≈ n + d/(2n) for small d"
+            example: {problem: "√50", solution: "7 + 1/14 ≈ 7.07"}
+        patterns:
+          - key: approximate-value
+            title: Approximate value of an expression
+            example_stem: "What is the approximate value of 24.95 × 15.98 ÷ 4.02 + 18.03% of 499.6?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: approx-roots
+            title: Approximate square and cube roots
+            example_stem: "√0.0402 is approximately: (a) 0.02 (b) 0.2 (c) 0.002 (d) 2"
+            frequency: low
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: fraction-rounding
+            title: Round percentages to fractions
+            kind: approximation
+            rule: "Replace near-friendly percentages by fractions (12.4% → 1/8, 33.4% → 1/3, 16.6% → 1/6) and round the base to a multiple of the denominator."
+            example: {problem: "33.27% of 899.8 + 16.71% of 360.4", standard: "Multiply out the decimals", shortcut: "1/3 × 900 + 1/6 × 360 = 300 + 60 = 360 (exact 359.58)", seconds_saved: 40}
+            pattern: approximate-value
+          - key: option-gap
+            title: Check the gap between the options first
+            kind: elimination
+            rule: "Before approximating, look at the options: if neighbours differ by 10% or more, round boldly to one or two significant figures; if they are close, keep more precision."
+            example: {problem: "24.95 × 15.98 ÷ 4.02 + 18.03% of 499.6 with options 160, 190, 220, 250", standard: "Exact calculation gives 189.26", shortcut: "25 × 16 ÷ 4 + 18% of 500 = 100 + 90 = 190", seconds_saved: 30}
+            pattern: approximate-value
