@@ -55,6 +55,19 @@ class Settings(BaseSettings):
     judge0_url: str = ""
     code_timeout_seconds: float = 3.0
 
+    # Background jobs. The API enqueues into the `jobs` table; workers (`python -m app.worker`)
+    # claim and run them. With jobs_embedded_worker the API process also runs a worker thread,
+    # which suits development, demos and single-instance deployments; set it to false when a
+    # separate worker service runs (docker compose does).
+    jobs_backend: Literal["database"] = "database"
+    jobs_embedded_worker: bool = True
+    jobs_poll_seconds: float = 5.0  # idle wait between checks (PostgreSQL wakes workers sooner)
+    jobs_heartbeat_seconds: float = 15.0
+    jobs_stale_after_seconds: float = 300.0  # no heartbeat for this long: the job is re-queued
+    jobs_retry_base_seconds: float = 30.0  # first retry delay; doubles per attempt
+    jobs_retention_days: int = 30  # finished jobs older than this are pruned
+    jobs_health_file: str = ""  # touched by the worker loop, read by `--healthcheck`
+
     # Uploads
     upload_dir: str = "./uploads"
     max_upload_mb: int = 25

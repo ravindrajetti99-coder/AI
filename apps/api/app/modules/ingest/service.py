@@ -1,29 +1,24 @@
-"""Admin content pipeline: parse uploads, chunk them, and run AI generation jobs."""
+"""Admin content pipeline: parse uploads, chunk them, and queue AI generation jobs."""
 
 import io
 import os
 import random
 import re
 import uuid
-from datetime import UTC, datetime
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.ai import gateway, retrieval
-from app.ai.engines import questions as qengine
-from app.ai.engines import teacher
+from app.ai import retrieval
 from app.core.config import get_settings
-from app.core.db import SessionLocal
 from app.core.errors import AppError
-from app.modules.assessment import service as qservice
+from app.jobs import service as jobs
+from app.jobs.models import Job
 from app.modules.assessment.models import OBJECTIVE_TYPES, Question, QuestionConcept, Test, TestItem
 from app.modules.catalog import service as catalog
 from app.modules.catalog.models import Concept, Course, ExamProfile
-from app.modules.content import service as content
-from app.modules.content.models import Flashcard, Note
 from app.modules.identity.models import User
-from app.modules.ingest.models import GenerationJob, SourceDocument
+from app.modules.ingest.models import SourceDocument
 
 ALLOWED = {".pdf": "application/pdf", ".txt": "text/plain", ".md": "text/markdown"}
 
@@ -76,7 +71,7 @@ def save_upload(db: Session, user: User, filename: str, data: bytes, title: str,
     return doc
 
 
-def _concepts_for(db: Session, params: dict) -> list[Concept]:
+def concepts_for(db: Session, params: dict) -> list[Concept]:
     ids = params.get("concept_ids") or []
     if ids:
         return [catalog.get_concept(db, str(i)) for i in ids]
@@ -85,96 +80,17 @@ def _concepts_for(db: Session, params: dict) -> list[Concept]:
     return []
 
 
-def run_job(job_id: uuid.UUID) -> None:
-    """Executes a generation job in its own session (called from a background task or worker)."""
-    db = SessionLocal()
-    try:
-        job = db.get(GenerationJob, job_id)
-        if not job:
-            return
-        job.status = "running"
-        db.commit()
-        user = db.get(User, job.created_by)
-        try:
-            job.outputs = _execute(db, job, user)
-            job.status = "done"
-        except Exception as exc:
-            db.rollback()
-            job = db.get(GenerationJob, job_id)
-            job.status, job.error = "failed", str(exc)[:1000]
-        job.finished_at = datetime.now(UTC)
-        db.commit()
-    finally:
-        db.close()
+GENERATION_KINDS = ("lessons", "questions", "flashcards", "notes", "mock_test")
 
 
-def _execute(db: Session, job: GenerationJob, user: User) -> dict:
-    p = job.params
-    out: dict = {"created": [], "skipped": 0, "providers": set()}
-    if job.kind == "lessons":
-        for concept in _concepts_for(db, p):
-            for level in p.get("levels", [1, 2]):
-                lesson, res = content.generate_lesson(db, concept, int(level), p.get("locale", "en"), user.id, user.role)
-                out["created"].append({"type": "lesson", "id": str(lesson.id), "concept": concept.title, "level": level})
-                out["providers"].add(res.provider)
-            db.commit()
-    elif job.kind == "questions":
-        for concept in _concepts_for(db, p):
-            ctx, course_id = content.exam_context_for(db, concept.id)
-            lesson = content.find_lesson(db, concept.id, 2, "en") or content.find_lesson(db, concept.id, 1, "en")
-            task = qengine.generate_task(
-                db, concept, p.get("qtype", "mcq"), p.get("difficulty", "medium"), int(p.get("count", 5)), ctx, lesson.body if lesson else None, course_id
-            )
-            res = gateway.run(db, task, user.id, user.role)
-            out["providers"].add(res.provider)
-            for gq in res.data.questions:
-                q = qservice.save_generated(db, gq, concept.id, "offline" if res.offline else "ai")
-                if q:
-                    out["created"].append({"type": "question", "id": str(q.id), "concept": concept.title})
-                else:
-                    out["skipped"] += 1
-            db.commit()
-    elif job.kind == "flashcards":
-        for concept in _concepts_for(db, p):
-            lesson = content.find_lesson(db, concept.id, 2, "en") or content.find_lesson(db, concept.id, 1, "en")
-            res = gateway.run(db, teacher.flashcards_task(db, concept, lesson.body if lesson else None, int(p.get("count", 6))), user.id, user.role)
-            out["providers"].add(res.provider)
-            for card in res.data.cards:
-                fc = Flashcard(concept_id=concept.id, front=card.front, back=card.back, source="offline" if res.offline else "ai", status="in_review")
-                db.add(fc)
-                db.flush()
-                out["created"].append({"type": "flashcard", "id": str(fc.id), "concept": concept.title})
-            db.commit()
-    elif job.kind == "notes":
-        doc = db.get(SourceDocument, uuid.UUID(p["document_id"]))
-        if not doc:
-            raise AppError("Document not found")
-        concept_ids = p.get("concept_ids") or []
-        res = gateway.run(db, teacher.notes_task(db, doc.title, _doc_text(db, doc)), user.id, user.role)
-        out["providers"].add(res.provider)
-        note = Note(
-            document_id=doc.id,
-            concept_id=uuid.UUID(str(concept_ids[0])) if concept_ids else None,
-            title=res.data.title,
-            body="\n".join(f"- {s}" for s in res.data.summary) + ("\n\nKey terms: " + ", ".join(res.data.key_terms) if res.data.key_terms else ""),
-            source="offline" if res.offline else "ai",
-            status="in_review",
-        )
-        db.add(note)
-        db.flush()
-        out["created"].append({"type": "note", "id": str(note.id)})
-        db.commit()
-    elif job.kind == "mock_test":
-        test = build_mock_test(db, uuid.UUID(p["course_id"]), int(p.get("count", 20)), p.get("title"))
-        out["created"].append({"type": "test", "id": str(test.id), "title": test.title})
-        db.commit()
-    else:
-        raise AppError(f"Unknown job kind {job.kind}")
-    out["providers"] = sorted(out["providers"])
-    return out
+def enqueue_generation(db: Session, user: User, kind: str, params: dict) -> Job:
+    """Queue a content-studio generation job (handlers in `ingest/jobs.py`); the caller commits."""
+    if kind not in GENERATION_KINDS:
+        raise AppError(f"Unknown generation kind {kind}")
+    return jobs.enqueue(db, f"generate.{kind}", params, created_by=user.id)
 
 
-def _doc_text(db: Session, doc: SourceDocument) -> str:
+def doc_text(db: Session, doc: SourceDocument) -> str:
     from app.modules.ingest.models import Chunk
 
     return "\n\n".join(db.scalars(select(Chunk.text).where(Chunk.document_id == doc.id).order_by(Chunk.ordinal)).all())

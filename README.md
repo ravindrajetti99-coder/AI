@@ -22,11 +22,13 @@ Staff get a **content studio**: upload source PDFs, generate lessons/questions/f
 ```
 apps/api   FastAPI · SQLAlchemy 2 · Pydantic v2 · Alembic     (Python 3.12+)
 apps/web   Next.js 16 · React 19 · Tailwind 4                 (Node 22)
-infra/     docker-compose: PostgreSQL 16 + pgvector, Redis, api, web
+infra/     docker-compose: PostgreSQL 16 + pgvector, Redis, api, worker, web
+docs/      plans (docs/phase-2-plan.md)
 ```
 
 - **Modular monolith.** `identity`, `catalog`, `content`, `assessment`, `learning`, `ingest`, `admin`, `labs`. Modules call each other's `service.py`, never each other's tables.
 - **AI gateway** (`app/ai/gateway.py`) is the only code that calls model providers. A task is a prompt, a Pydantic output schema and an offline fallback. The gateway handles caching, provider fallback (Anthropic → OpenAI → offline), one JSON-repair retry, per-user daily token budgets, refusal handling and metering into `llm_calls`.
+- **Background jobs** (`app/jobs/`) live in a PostgreSQL `jobs` table. The API enqueues in the same transaction as the change that caused the job; workers (`python -m app.worker`) claim with `SELECT … FOR UPDATE SKIP LOCKED` and are woken by `LISTEN/NOTIFY`. Heartbeats let any worker recover jobs from a dead one, transient errors retry with backoff, and handlers save checkpoints, so a retried AI job never regenerates (or pays for) finished work. Staff can cancel and retry jobs from the content studio.
 - **Retrieval** is BM25 over chunks of uploaded documents; pgvector is the documented upgrade path.
 - **Web → API.** The browser only talks to the web origin, and Next.js rewrites `/api/*` to the API, so the httpOnly refresh cookie stays first-party. Access tokens live in memory only (15 min); refresh tokens rotate with reuse detection.
 
@@ -37,7 +39,7 @@ cp .env.example .env          # set EDU_ADMIN_PASSWORD; add AI keys if you have 
 docker compose --env-file .env -f infra/docker-compose.yml up --build
 ```
 
-Open http://localhost:3000. Sign in with `EDU_ADMIN_EMAIL` / `EDU_ADMIN_PASSWORD` for the content studio, or register as a learner. The API container runs `alembic upgrade head` and (with `SEED_ON_START=true`) loads the seed courses on start. API docs are at http://localhost:8000/api/v1/docs.
+Open http://localhost:3000. Sign in with `EDU_ADMIN_EMAIL` / `EDU_ADMIN_PASSWORD` for the content studio, or register as a learner. The API container runs `alembic upgrade head` and (with `SEED_ON_START=true`) loads the seed courses on start; the `worker` container runs generation jobs (add more with `--scale worker=3`). API docs are at http://localhost:8000/api/v1/docs.
 
 ## Local development
 
@@ -57,10 +59,18 @@ npm run dev                                   # http://localhost:3000 (proxies /
 
 `python -m app.seed` is idempotent: re-run it after editing anything in `app/seed/`. It upserts by stable keys, retires removed questions and never resets passwords. Use `--only <course-slug>` to load one course.
 
+In development the API runs background jobs itself (`EDU_JOBS_EMBEDDED_WORKER=true`, the default). To run them the way production does, set it to `false` and start a worker:
+
+```bash
+cd apps/api
+python -m app.worker                          # all queues; or --queues content,maintenance
+python -m app.worker --once                   # run whatever is due, then exit
+```
+
 ## Tests
 
 ```bash
-cd apps/api && pytest                         # 157 tests, SQLite, offline AI (~15 s)
+cd apps/api && pytest                         # 184 tests, SQLite, offline AI (~20 s)
 EDU_TEST_POSTGRES_URL=postgresql+psycopg://postgres:postgres@localhost:5432/postgres pytest
                                               # same suite on PostgreSQL, schema from migrations
 cd apps/web && npm run lint && npm run typecheck && npm run build
@@ -93,6 +103,8 @@ All API settings are environment variables prefixed `EDU_` (see `.env.example` a
 | `EDU_REDIS_URL` | empty | Shared rate limits across API replicas; without it each process counts alone. |
 | `EDU_ANTHROPIC_API_KEY` / `EDU_OPENAI_API_KEY` | empty | Empty means offline engines. Models per tier: `claude-opus-5-5` / `claude-sonnet-5-5` / `claude-haiku-5-5`. |
 | `EDU_ANTHROPIC_SERVER_FALLBACKS` | `true` | On a safety decline, Anthropic re-runs the request on its recommended fallback model. |
+| `EDU_JOBS_EMBEDDED_WORKER` | `true` | The API process also runs a job worker. Set `false` when a separate `python -m app.worker` service runs (docker compose does). |
+| `EDU_JOBS_STALE_AFTER_SECONDS` | `300` | A running job whose worker has not heart-beaten for this long is retried by another worker. |
 | `EDU_CODE_RUNNER` | `local` | `local` is a resource-limited subprocess for development only; use `judge0` (with `EDU_JUDGE0_URL`) or `disabled` in production. |
 | `EDU_ADMIN_EMAIL` / `EDU_ADMIN_PASSWORD` | empty | First admin, created by the seed loader. |
 
@@ -107,6 +119,8 @@ All API settings are environment variables prefixed `EDU_` (see `.env.example` a
 
 ```
 apps/api/app/core         config, db, security, deps (auth, rate limits), errors
+apps/api/app/jobs         job queue: model, queue backend, worker, maintenance jobs
+apps/api/app/worker.py    `python -m app.worker`
 apps/api/app/modules      identity, catalog, content, assessment, learning, ingest, admin, labs
 apps/api/app/ai           gateway, providers, retrieval, engines (teacher, questions, examiner,
                           code_review, language, mentor/career)
@@ -117,4 +131,5 @@ apps/web/app              Next.js routes (dashboard, courses, learn, practice, t
 apps/web/components       UI kit, question renderer, practice session, lesson view
 apps/web/e2e              Playwright tests
 infra/                    docker-compose.yml
+docs/                     phase-2-plan.md
 ```

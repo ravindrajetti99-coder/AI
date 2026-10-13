@@ -14,24 +14,25 @@ Architecture doc: see the EduVerse AI architecture PDF (Phase 1). Owner: Ravindr
 - Learner model: Elo/IRT mastery (`learning/mastery.py`), revision ladder day 1/3/7/15/30, adaptive question choice targets ~70% success, prerequisite-gap detection, deterministic daily plan.
 - Code runner: `labs/runner.py` local subprocess with rlimits + `unshare -n` (dev only; config refuses `local` in production), Judge0 adapter for prod. The child never sees expected values; the parent compares results.
 - Rate limits: in-process sliding window, or Redis (`EDU_REDIS_URL`) shared by replicas with per-process fallback.
+- Jobs: `app/jobs/` — PostgreSQL `jobs` table, enqueued in the caller's transaction (`jobs.service.enqueue`), claimed with `FOR UPDATE SKIP LOCKED` + compare-and-set, woken by `LISTEN/NOTIFY` (SQLite: in-process wake + polling). `QueueBackend` abstracts the transport for a later Redis move. Workers: `python -m app.worker` (compose `worker` service) or a thread in the API (`EDU_JOBS_EMBEDDED_WORKER`, default true; compose sets false). Per-claim lease token fences every write; heartbeats + reaper recover dead workers' jobs; AppError/PermanentJobError fail at once, other errors retry with backoff; handlers call `ctx.save()` per unit of work (checkpoint commits with the content), so retries never redo finished items; cancel stops at the next checkpoint; SIGTERM hands the job back without using an attempt. Handlers register with `@registry.handler(kind, queue=...)` and must be listed in `registry.HANDLER_MODULES`. Generation handlers: `modules/ingest/jobs.py`; periodic `maintenance.prune` hourly.
 - Seed: `python -m app.seed` upserts by stable keys (`Question.external_key`), retires removed questions, validates answer keys, bootstraps the admin from `EDU_ADMIN_EMAIL`/`EDU_ADMIN_PASSWORD`, builds one mock per course. Quant/physics/accounting drills come from parametric generators (`seed/generators.py`).
 
-## Status (Phases 2-4 done; see git log)
+## Status (Phases 2-4 done; Phase 2 plan approved, see `docs/phase-2-plan.md`)
 - Seed loader + 6 courses: SSC quant, Class 10 Electricity, CA Foundation Depreciation, Python, Spoken English (Telugu), Interview Skills (reuses the self-introduction concept).
-- API: 157 pytest tests, passing on SQLite and on PostgreSQL 16 (`EDU_TEST_POSTGRES_URL`), plus migration drift check. Provider adapters are also tested through the real Anthropic/OpenAI SDKs over a mock HTTP transport. Bugs found by the suite are fixed (see commit "Add pytest suite and fix the bugs it found").
-- Alembic `0001_initial_schema` (36 tables), verified on PostgreSQL 16.
+- API: 184 pytest tests, passing on SQLite and on PostgreSQL 16 (`EDU_TEST_POSTGRES_URL`), plus migration drift check. Provider adapters are also tested through the real Anthropic/OpenAI SDKs over a mock HTTP transport. Bugs found by the suite are fixed (see commit "Add pytest suite and fix the bugs it found").
+- Alembic `0001_initial_schema` (36 tables) and `0002_jobs_queue` (`jobs` replaces `generation_jobs`, data copied both ways), verified on PostgreSQL 16.
+- Phase 2 PR #2 (job queue + worker) done on branch `claude/phase-2-job-queue`, stacked on PR #1.
 - Web: all learner pages + staff content studio; lint/typecheck/build clean; 7 Playwright e2e tests pass against a seeded API + production build.
 - Docker images for api and web build and run (verified in production mode against Postgres + Redis); `infra/docker-compose.yml`; `.env.example`; GitHub Actions CI; README.
 - Not yet run: the full `docker compose up` (sandbox had no Docker Hub pulls), and any live AI provider calls (no keys here; adapters are unit-tested with stubs).
 
-## Next steps (suggested order)
-1. Run CI on GitHub and `docker compose up` once on a real machine; fix anything environment-specific.
-2. Account basics: email verification and password reset (no endpoints yet).
-3. Move generation jobs from FastAPI `BackgroundTasks` to a Redis-backed worker (Arq/RQ) so long AI jobs survive restarts.
-4. Production code runner: Judge0 service (compose profile) and `EDU_CODE_RUNNER=judge0`.
-5. With API keys: try every AI task live, tune prompts, and add a small eval set per engine (lesson, questions, examiner, tutor).
-6. pgvector embeddings + BM25 hybrid retrieval; PYQ (previous-year question) import tooling; more courses and Telugu lessons; Telugu UI strings.
-7. Observability: structured logs, error tracking, request metrics.
+## Next steps (Phase 2, approved; details and decisions in `docs/phase-2-plan.md`, one PR each)
+1. PR #3: mail via Amazon SES (behind a `MailBackend` interface) + password reset + email verification + invite-only registration.
+2. PR #4: production AI configuration: secrets, smoke check, spend caps, prompt caching; eval set per engine once keys exist.
+3. PR #5: content ingestion: async `ingest.document` jobs, S3 storage, PostgreSQL full-text search, PYQ importer.
+4. PR #6: pilot deployment of SSC CGL Quant: web on Vercel, API + worker on Render/Railway/AWS, managed PostgreSQL; keep the ECS path.
+5. PR #7: bge-m3 embeddings (provider interface) + hybrid retrieval. PR #8: Judge0 integration interface only (deploy when the Python course launches).
+6. Still to do once: `docker compose up` on a real machine; observability (structured logs, Sentry, queue-age alert).
 
 ## Commands
 ```
@@ -39,7 +40,8 @@ Architecture doc: see the EduVerse AI architecture PDF (Phase 1). Owner: Ravindr
 cd apps/api
 pip install -e ".[dev]"
 python -m app.seed                                  # idempotent; --only <slug>, --no-tests
-EDU_ENV=development uvicorn app.main:app --reload   # docs at /api/v1/docs
+EDU_ENV=development uvicorn app.main:app --reload   # docs at /api/v1/docs; runs jobs in-process by default
+python -m app.worker                                # job worker (--queues a,b; --once; --healthcheck)
 pytest                                              # SQLite; EDU_TEST_POSTGRES_URL=... for PostgreSQL
 ruff check app tests && ruff format app tests
 alembic revision --autogenerate -m "..." && alembic upgrade head && alembic check

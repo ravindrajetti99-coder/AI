@@ -1,7 +1,7 @@
 import uuid
 from datetime import UTC, datetime, timedelta
 
-from fastapi import APIRouter, BackgroundTasks, Depends, File, Form, UploadFile
+from fastapi import APIRouter, Depends, File, Form, Query, UploadFile
 from pydantic import BaseModel, Field, ValidationError
 from sqlalchemy import case, func, select
 from sqlalchemy.orm import Session
@@ -10,6 +10,7 @@ from app.ai import gateway
 from app.core.db import as_utc, get_db
 from app.core.deps import require_staff
 from app.core.errors import AppError, NotFound
+from app.jobs import service as jobs
 from app.modules.assessment import service as qservice
 from app.modules.assessment.models import QUESTION_TYPES, Question, QuestionConcept, Rubric
 from app.modules.catalog.models import Concept, Course
@@ -17,7 +18,7 @@ from app.modules.content.models import ContentFlag, Flashcard, Lesson, Note
 from app.modules.identity.models import User
 from app.modules.identity.service import audit
 from app.modules.ingest import service
-from app.modules.ingest.models import GenerationJob, LlmCall, SourceDocument
+from app.modules.ingest.models import LlmCall, SourceDocument
 from app.modules.learning.models import Attempt, Enrollment
 
 router = APIRouter(prefix="/admin", tags=["admin"])
@@ -77,7 +78,7 @@ class GenerateIn(BaseModel):
 
 
 @router.post("/generate", status_code=202)
-def generate(body: GenerateIn, background: BackgroundTasks, user: User = Depends(require_staff), db: Session = Depends(get_db)):
+def generate(body: GenerateIn, user: User = Depends(require_staff), db: Session = Depends(get_db)):
     if body.kind in ("lessons", "questions", "flashcards") and not (body.course_id or body.concept_ids):
         raise AppError("Choose a course or concepts")
     if body.kind == "notes" and not body.document_id:
@@ -86,40 +87,43 @@ def generate(body: GenerateIn, background: BackgroundTasks, user: User = Depends
         raise AppError("Choose a course")
     if any(not 1 <= lv <= 4 for lv in body.levels):
         raise AppError("Levels are 1-4")
-    params = body.model_dump(mode="json", exclude={"kind"})
-    job = GenerationJob(created_by=user.id, kind=body.kind, params=params)
-    db.add(job)
-    db.flush()  # assigns job.id for the audit entry
+    job = service.enqueue_generation(db, user, body.kind, body.model_dump(mode="json", exclude={"kind"}))
     audit(db, user.id, "generate", "job", job.id, kind=body.kind)
-    db.commit()
-    background.add_task(service.run_job, job.id)
+    db.commit()  # the job and its audit entry become visible to workers together
     return {"job_id": str(job.id), "status": job.status}
 
 
-def _job_row(j: GenerationJob) -> dict:
-    return {
-        "id": str(j.id),
-        "kind": j.kind,
-        "status": j.status,
-        "params": j.params,
-        "outputs": j.outputs,
-        "error": j.error,
-        "created_at": as_utc(j.created_at).isoformat(),
-        "finished_at": as_utc(j.finished_at).isoformat() if j.finished_at else None,
-    }
-
-
 @router.get("/jobs")
-def jobs(_: User = Depends(require_staff), db: Session = Depends(get_db)):
-    return [_job_row(j) for j in db.scalars(select(GenerationJob).order_by(GenerationJob.created_at.desc()).limit(50)).all()]
+def list_jobs(
+    status: str | None = Query(None, pattern="^(queued|running|done|failed|cancelled)$"),
+    queue: str | None = None,
+    kind: str | None = None,
+    limit: int = Query(50, ge=1, le=200),
+    _: User = Depends(require_staff),
+    db: Session = Depends(get_db),
+):
+    return [jobs.row(j) for j in jobs.list_jobs(db, status=status, queue=queue, kind=kind, limit=limit)]
 
 
 @router.get("/jobs/{job_id}")
-def job(job_id: uuid.UUID, _: User = Depends(require_staff), db: Session = Depends(get_db)):
-    j = db.get(GenerationJob, job_id)
-    if not j:
-        raise NotFound("Job not found")
-    return _job_row(j)
+def get_job(job_id: uuid.UUID, _: User = Depends(require_staff), db: Session = Depends(get_db)):
+    return jobs.row(jobs.get(db, job_id))
+
+
+@router.post("/jobs/{job_id}/cancel")
+def cancel_job(job_id: uuid.UUID, user: User = Depends(require_staff), db: Session = Depends(get_db)):
+    job = jobs.cancel(db, job_id)
+    audit(db, user.id, "job_cancel", "job", job.id, kind=job.kind)
+    db.commit()
+    return jobs.row(job)
+
+
+@router.post("/jobs/{job_id}/retry")
+def retry_job(job_id: uuid.UUID, user: User = Depends(require_staff), db: Session = Depends(get_db)):
+    job = jobs.retry(db, job_id)
+    audit(db, user.id, "job_retry", "job", job.id, kind=job.kind)
+    db.commit()
+    return jobs.row(job)
 
 
 def _concept_title(db: Session, cid) -> str:

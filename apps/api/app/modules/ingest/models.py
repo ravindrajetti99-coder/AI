@@ -1,4 +1,4 @@
-"""Admin uploads, retrieval chunks, generation jobs and AI metering."""
+"""Admin uploads, retrieval chunks and AI metering. (Generation jobs live in the `jobs` table.)"""
 
 import uuid
 from datetime import datetime
@@ -37,19 +37,6 @@ class Chunk(IdMixin, Base):
     text: Mapped[str] = mapped_column(Text)
     tokens: Mapped[int] = mapped_column(Integer, default=0)
     terms: Mapped[dict] = mapped_column(JSONType, default=dict)  # term -> frequency, for BM25
-
-
-class GenerationJob(IdMixin, Base):
-    __tablename__ = "generation_jobs"
-
-    created_by: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id"))
-    kind: Mapped[str] = mapped_column(String(30))  # lessons | questions | flashcards | notes | mock_test
-    params: Mapped[dict] = mapped_column(JSONType, default=dict)
-    status: Mapped[str] = mapped_column(String(20), default="queued")  # queued|running|done|failed
-    outputs: Mapped[dict] = mapped_column(JSONType, default=dict)
-    error: Mapped[str] = mapped_column(Text, default="")
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
-    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
 class LlmCall(IdMixin, Base):

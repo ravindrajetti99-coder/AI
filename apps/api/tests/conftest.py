@@ -35,6 +35,7 @@ os.environ.update(
         "EDU_CODE_RUNNER": "local",
         "EDU_BCRYPT_ROUNDS": "4",
         "EDU_REDIS_URL": "",
+        "EDU_JOBS_EMBEDDED_WORKER": "false",  # tests run jobs explicitly with the `worker` fixture
     }
 )
 
@@ -52,6 +53,7 @@ from app.core.config import get_settings  # noqa: E402
 from app.core.db import Base, SessionLocal, engine  # noqa: E402
 from app.core.deps import limiter  # noqa: E402
 from app.core.security import create_access_token  # noqa: E402
+from app.jobs.worker import Worker  # noqa: E402
 from app.main import app  # noqa: E402
 from app.modules.assessment.models import Question  # noqa: E402
 from app.modules.catalog.models import Concept  # noqa: E402
@@ -208,6 +210,14 @@ def make_actor(client: TestClient, role: str = "learner", email: str | None = No
     with SessionLocal() as db:
         user = identity.create_user(db, email, "password-123", name, role=role)
     return Actor(client, user.id, role, email)
+
+
+@pytest.fixture
+def worker() -> Worker:
+    """A job worker for this test; `worker.drain()` runs every due job in the calling thread."""
+    w = Worker(name="test-worker")
+    yield w
+    w.backend.close()
 
 
 @pytest.fixture

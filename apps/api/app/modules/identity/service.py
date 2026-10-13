@@ -1,7 +1,7 @@
 import uuid
 from datetime import UTC, datetime, timedelta
 
-from sqlalchemy import select, update
+from sqlalchemy import delete, select, update
 from sqlalchemy.orm import Session
 
 from app.core.config import get_settings
@@ -92,6 +92,11 @@ def revoke_refresh(db: Session, raw: str) -> None:
             update(RefreshToken).where(RefreshToken.family_id == token.family_id, RefreshToken.revoked_at.is_(None)).values(revoked_at=datetime.now(UTC))
         )
         db.commit()
+
+
+def purge_expired_refresh_tokens(db: Session, now: datetime) -> int:
+    """Expired tokens can never be exchanged again (a replay gets 401 either way), so drop them."""
+    return db.execute(delete(RefreshToken).where(RefreshToken.expires_at < now)).rowcount
 
 
 def get_profile(db: Session, user: User) -> LearnerProfile:
