@@ -1,0 +1,73 @@
+# Full stack: PostgreSQL (with pgvector), Redis, the API and the web app.
+#
+#   cp .env.example .env        # then set real secrets
+#   docker compose --env-file .env -f infra/docker-compose.yml up --build
+#
+# Web: http://localhost:3000    API docs: http://localhost:8000/api/v1/docs
+name: eduverse
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: eduverse
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-eduverse}
+      POSTGRES_DB: eduverse
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U eduverse -d eduverse"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  api:
+    build: ../apps/api
+    env_file:
+      - path: ../.env
+        required: false
+    environment:
+      EDU_DATABASE_URL: postgresql+psycopg://eduverse:${POSTGRES_PASSWORD:-eduverse}@db:5432/eduverse
+      EDU_REDIS_URL: redis://redis:6379/0
+      EDU_CORS_ORIGINS: '["http://localhost:3000"]'
+      SEED_ON_START: ${SEED_ON_START:-true}
+      # Trust X-Forwarded-For from the web container so rate limits see learners' IPs.
+      # Keep the API port private (below it is bound to localhost only).
+      FORWARDED_ALLOW_IPS: "*"
+    volumes:
+      - uploads:/app/uploads
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ../apps/web
+      args:
+        API_URL: http://api:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  uploads:

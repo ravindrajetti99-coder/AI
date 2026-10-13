@@ -7,7 +7,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_prefix="EDU_", env_file=".env", extra="ignore")
+    # Reads the repo-root .env (shared with docker compose) and then apps/api/.env, which wins.
+    model_config = SettingsConfigDict(env_prefix="EDU_", env_file=("../../.env", ".env"), extra="ignore")
 
     env: Literal["development", "test", "production"] = "development"
     app_name: str = "EduVerse AI"
@@ -58,7 +59,9 @@ class Settings(BaseSettings):
     upload_dir: str = "./uploads"
     max_upload_mb: int = 25
 
-    # Rate limits (requests per minute)
+    # Rate limits (requests per minute). With a Redis URL the limits are shared by all API
+    # replicas; without one each process counts on its own.
+    redis_url: str = ""
     rate_limit_auth: int = 20
     rate_limit_ai: int = 30
 

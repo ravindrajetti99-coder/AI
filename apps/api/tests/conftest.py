@@ -34,6 +34,7 @@ os.environ.update(
         "EDU_ADMIN_PASSWORD": "",
         "EDU_CODE_RUNNER": "local",
         "EDU_BCRYPT_ROUNDS": "4",
+        "EDU_REDIS_URL": "",
     }
 )
 
