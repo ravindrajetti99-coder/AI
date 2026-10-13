@@ -1,0 +1,351 @@
+key: president
+title: President, Vice-President and Attorney General
+strategies:
+  - key: approach
+    title: "President and Vice-President: compare them side by side"
+    summary: >-
+      Questions on the Union executive test the electoral college, qualifications, oath, removal
+      and the President's veto, ordinance and pardoning powers. Most errors come from mixing up the
+      President with the Vice-President or the Governor, so learn them as a comparison table.
+    seconds_per_question: 15
+    accuracy_target: 0.9
+    tactics:
+      - "Make a table for President, Vice-President and Governor: who elects or appoints, age, term, oath by whom, resignation to whom, removal."
+      - "Remember who votes: MLAs vote for the President but not the Vice-President; nominated MPs vote for the Vice-President but not the President."
+      - "For pardon questions, decide first whether the President or the Governor is meant, then match the term (pardon, commutation, remission, respite, reprieve)."
+    avoid:
+      - "Writing 'impeachment' for the Vice-President: the Vice-President is removed by a Rajya Sabha resolution, not impeached."
+
+topics:
+  - key: election
+    title: Election of the President
+    concepts:
+      - slug: president-election
+        title: "Election of the President (Articles 52-62)"
+        summary: >-
+          The President is elected indirectly by an electoral college of the elected members of
+          both Houses of Parliament and of the legislative assemblies of the states and of Delhi
+          and Puducherry (Article 54; the two union territories added by the 70th Amendment, 1992);
+          nominated members and members of legislative councils do not vote. Voting is by
+          proportional representation through the single transferable vote by secret ballot (from
+          Ireland), each vote weighted by the 1971 census population; a candidate must be a citizen
+          aged at least 35, qualified to be a Lok Sabha member, holding no office of profit, and
+          needs 50 proposers and 50 seconders. The term is five years (Article 56) with re-election
+          allowed (only Rajendra Prasad was elected twice); the Chief Justice of India administers
+          the oath (Article 60), disputes go to the Supreme Court (Article 71) and a vacancy must be
+          filled within six months (Article 62).
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [parliament-structure-membership]
+        formulas:
+          - key: mla-vote-value
+            name: Value of an MLA's vote
+            expression: "value of one MLA's vote = (population of the state ÷ number of elected MLAs) ÷ 1000"
+            conditions: "Population of the 1971 census until the first census after 2026 is published."
+            example: {problem: "A state has a population of 1,00,00,000 and 200 elected MLAs. Find the value of one MLA's vote.", solution: "1,00,00,000 ÷ 200 = 50,000; 50,000 ÷ 1000 = 50"}
+          - key: mp-vote-value
+            name: Value of an MP's vote
+            expression: "value of one MP's vote = total value of the votes of all elected MLAs ÷ number of elected MPs"
+            example: {problem: "Suppose the votes of all elected MLAs are worth 5,43,200 in total and there are 776 elected MPs (543 + 233). Find the value of one MP's vote.", solution: "5,43,200 ÷ 776 = 700"}
+          - key: winning-quota
+            name: Quota to win
+            expression: "quota = (total value of valid votes ÷ 2) + 1, ignoring any fraction"
+            conditions: "If no candidate reaches the quota on first preferences, the lowest candidate is eliminated and his or her votes are transferred by second preferences."
+            example: {problem: "Valid votes are worth 10,00,000 in total. What is the quota?", solution: "10,00,000 ÷ 2 + 1 = 5,00,001"}
+        patterns:
+          - key: electoral-college
+            title: Who elects the President
+            example_stem: "Which of the following do NOT take part in the election of the President? (a) Elected MLAs of states (b) Nominated members of the Rajya Sabha (c) Elected members of the Lok Sabha (d) Elected members of the Delhi assembly"
+            frequency: high
+            difficulty: easy
+            target_seconds: 12
+          - key: election-rules
+            title: Qualifications, term, oath and vacancy
+            example_stem: "Who administers the oath of office to the President of India?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: elected-only
+            title: Only the elected elect the President
+            kind: memory
+            rule: "Electoral college = elected MPs + elected MLAs (states, Delhi, Puducherry). Anyone nominated, and every legislative council member, is out."
+            example: {problem: "Do nominated Rajya Sabha members vote for the President?", shortcut: "Nominated → out → No", seconds_saved: 5}
+            pattern: electoral-college
+
+  - key: powers
+    title: Powers of the President
+    concepts:
+      - slug: president-powers
+        title: "Powers of the President: executive, legislative, financial, judicial, military"
+        summary: >-
+          All executive action of the Union is taken in the President's name (Article 77) and the
+          President is supreme commander of the defence forces (Article 53). The President appoints
+          the Prime Minister and ministers, Governors, the Attorney General, CAG, Chief Election
+          Commissioner and Election Commissioners, UPSC members, Finance Commission members and
+          judges; summons and prorogues Parliament, dissolves the Lok Sabha, addresses Parliament at
+          the first session after a general election and of each year (Article 87), nominates 12
+          Rajya Sabha members, recommends money bills, controls the Contingency Fund, and may seek
+          the Supreme Court's opinion (Article 143). Under Article 74 the President acts on the
+          advice of the Council of Ministers headed by the Prime Minister: the 42nd Amendment made
+          the advice binding and the 44th allowed returning it once for reconsideration.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [president-election]
+        patterns:
+          - key: appointments
+            title: Appointments made by the President
+            example_stem: "Which of the following is NOT appointed by the President? (a) Chief Election Commissioner (b) Speaker of the Lok Sabha (c) Comptroller and Auditor General (d) Attorney General"
+            frequency: high
+            difficulty: easy
+            target_seconds: 12
+          - key: advice-article-74
+            title: Article 74 and the binding advice
+            example_stem: "Which constitutional amendment made it binding on the President to act on the advice of the Council of Ministers?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 12
+
+      - slug: president-veto-ordinance
+        title: "Veto powers and ordinance-making power (Articles 111, 123)"
+        summary: >-
+          On a bill passed by Parliament (Article 111) the President may use an absolute veto
+          (withhold assent), a suspensive veto (return a non-money bill once; if it is passed again,
+          with or without changes, assent must be given) or a pocket veto (keep it pending without
+          a time limit, used by Zail Singh on the Indian Post Office (Amendment) Bill, 1986); there
+          is no qualified veto, and assent to constitution amendment bills is compulsory (24th
+          Amendment). Under Article 123 the President can promulgate an ordinance when both Houses
+          are not in session; it has the force of law but lapses six weeks after Parliament
+          reassembles unless approved (so at most six months and six weeks), can be withdrawn at any
+          time, cannot amend the Constitution and is open to judicial review. Governors have the
+          same power under Article 213.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [president-powers, bills-ordinary-law-making-joint-sitting]
+        patterns:
+          - key: veto-type
+            title: Type of veto
+            example_stem: "Which veto did President Zail Singh use on the Indian Post Office (Amendment) Bill, 1986?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 12
+          - key: ordinance-rules
+            title: Ordinance-making power
+            example_stem: "An ordinance issued by the President ceases to operate after how many weeks from the reassembly of Parliament?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: six-and-six
+            title: Six months plus six weeks
+            kind: memory
+            rule: "Sessions are at most six months apart and an ordinance lapses six weeks after reassembly, so its maximum life is six months and six weeks."
+            example: {problem: "Maximum life of an ordinance?", shortcut: "6 months (gap) + 6 weeks (after reassembly)", seconds_saved: 8}
+            pattern: ordinance-rules
+
+      - slug: president-pardoning-power
+        title: "Pardoning power (Article 72)"
+        summary: >-
+          Under Article 72 the President can grant pardon (removes both sentence and conviction),
+          commutation (a lighter form of punishment, e.g. death to rigorous imprisonment), remission
+          (a shorter period without changing the nature of the punishment), respite (a lesser
+          sentence because of a special fact such as pregnancy or disability) and reprieve (a
+          temporary stay, especially of a death sentence). It covers offences under Union laws,
+          sentences of courts martial and all death sentences; a Governor (Article 161) acts for
+          offences under state laws, cannot pardon a death sentence (though he can commute, remit
+          or suspend it) and has no power over courts martial. The President acts on the Union
+          Cabinet's advice (Maru Ram, 1980) and judicial review is limited.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [president-powers]
+        patterns:
+          - key: pardon-term
+            title: Meaning of pardon, commutation, remission, respite, reprieve
+            example_stem: "Stay of the execution of a death sentence for a temporary period is called what?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 12
+          - key: president-vs-governor-pardon
+            title: President's versus Governor's pardoning power
+            example_stem: "Which of the following can the President do but a Governor cannot? (a) Remit a sentence (b) Pardon a death sentence (c) Commute a sentence under state law (d) Grant respite"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: five-r-ladder
+            title: From total to temporary
+            kind: memory
+            rule: "Pardon wipes out everything; commutation changes the kind; remission cuts the length; respite softens for a special reason; reprieve only delays."
+            example: {problem: "Two years' rigorous imprisonment reduced to one year's rigorous imprisonment?", shortcut: "Same kind, shorter length → remission", seconds_saved: 8}
+            pattern: pardon-term
+
+      - slug: president-discretionary-position
+        title: Constitutional position and situational discretion of the President
+        summary: >-
+          The President is the nominal (de jure) executive and the Prime Minister with the Council
+          of Ministers the real (de facto) executive, on the British model; there is no formal
+          discretion, but situational discretion arises in choosing a Prime Minister when no party
+          has a majority or the incumbent dies suddenly, dismissing a ministry that has lost the
+          Lok Sabha's confidence, and dissolving the Lok Sabha when the ministry has lost its
+          majority. The suspensive and pocket vetoes and the right to information from the Prime
+          Minister (Article 78) are the President's own, and Article 361 gives immunity from courts
+          for official acts and from criminal proceedings during the term.
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [president-powers]
+        patterns:
+          - key: nominal-executive
+            title: Nominal and real executive
+            example_stem: "In India's parliamentary system, the real executive power lies with whom?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: discretion-cases
+            title: Situations of presidential discretion
+            example_stem: "In which situation can the President act without the advice of the Council of Ministers?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 15
+
+  - key: removal
+    title: Impeachment of the President
+    concepts:
+      - slug: president-impeachment
+        title: "Impeachment of the President (Article 61)"
+        summary: >-
+          The President can be removed only by impeachment (Article 61) for 'violation of the
+          Constitution', a ground the Constitution does not define. Charges can start in either
+          House, signed by one-fourth of its members after 14 days' notice, and must be passed by
+          two-thirds of the total membership of that House; the other House investigates (the
+          President may appear or be represented) and, if it too passes the resolution by two-thirds
+          of its total membership, the President stands removed from that date. Nominated MPs take
+          part although they do not vote in the election, while elected MLAs, who vote in the
+          election, take no part; the process is from the USA and no President has been impeached.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [president-election]
+        patterns:
+          - key: impeachment-procedure
+            title: Ground and majority for impeachment
+            example_stem: "The President can be impeached for which reason?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: impeachment-participants
+            title: Who takes part in impeachment
+            example_stem: "Which of the following take part in the impeachment of the President but not in the election? (a) Elected MLAs (b) Nominated members of Parliament (c) Elected members of the Lok Sabha (d) Members of legislative councils"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: quarter-to-start-two-thirds-to-pass
+            title: One-fourth to start, two-thirds to pass
+            kind: memory
+            rule: "Notice signed by one-fourth of the House, 14 days' notice, then two-thirds of the total membership in each House."
+            example: {problem: "Signatures needed to start impeachment?", shortcut: "One-fourth of the House", seconds_saved: 5}
+            pattern: impeachment-procedure
+
+  - key: landmarks
+    title: Presidents of India
+    concepts:
+      - slug: presidents-of-india-landmarks
+        title: "Presidents of India: firsts and landmark facts"
+        summary: >-
+          Rajendra Prasad (1950-62) was the first President and the only one elected twice; S.
+          Radhakrishnan (1962-67), earlier the first Vice-President, is remembered on Teachers' Day
+          (5 September, his birthday); Zakir Husain (1967-69) was the first President to die in
+          office; V.V. Giri (1969) is the only President elected by counting second-preference
+          votes, and Chief Justice M. Hidayatullah the only CJI to act as President (1969);
+          Fakhruddin Ali Ahmed signed the 1975 Emergency proclamation; Neelam Sanjiva Reddy (1977) is
+          the only President elected unopposed; Zail Singh (1982) used the pocket veto; K.R.
+          Narayanan (1997) was the first Dalit President; A.P.J. Abdul Kalam (2002) was a scientist
+          known as the 'Missile Man'; Pratibha Patil (2007) was the first woman President; Droupadi
+          Murmu (2022) is the first President from a Scheduled Tribe.
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [president-election]
+        patterns:
+          - key: president-firsts
+            title: First and only facts about Presidents
+            example_stem: "Who was the first woman President of India?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: president-order
+            title: Order and tenure of Presidents
+            example_stem: "Who succeeded Dr Zakir Husain as the President of India (after an acting period)?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 12
+
+  - key: vice-president
+    title: Vice-President
+    concepts:
+      - slug: vice-president
+        title: "Vice-President of India (Articles 63-71)"
+        summary: >-
+          The Vice-President (office modelled on the USA's) is ex officio Chairman of the Rajya Sabha
+          (Article 64) and acts as President when the office is vacant, for at most six months,
+          during which he does not chair the Rajya Sabha and draws the President's emoluments. He is
+          elected by members of both Houses of Parliament, elected and nominated, but not by MLAs,
+          through proportional representation by single transferable vote in a secret ballot
+          (Article 66); a candidate must be a citizen aged at least 35 and qualified for the Rajya
+          Sabha. The term is five years, the President administers the oath (Article 69) and receives
+          the resignation, and removal is by a Rajya Sabha resolution passed by a majority of all
+          its then members and agreed to by the Lok Sabha, after 14 days' notice, with no ground
+          stated; S. Radhakrishnan was the first Vice-President.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [president-election, rajya-sabha-composition-powers]
+        patterns:
+          - key: vp-election-removal
+            title: Election and removal of the Vice-President
+            example_stem: "A resolution for the removal of the Vice-President can be introduced in which House?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: president-vs-vp
+            title: President versus Vice-President
+            example_stem: "Which statement is correct? (a) MLAs vote in the Vice-President's election (b) Nominated MPs vote in the Vice-President's election (c) The Vice-President is impeached like the President (d) The CJI administers the Vice-President's oath"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: parliament-only-college
+            title: The Vice-President is Parliament's choice
+            kind: memory
+            rule: "Vice-President: all MPs (elected and nominated), no MLAs; President: elected MPs and elected MLAs, no nominated members."
+            example: {problem: "Do nominated MPs vote for the Vice-President?", shortcut: "VP = all of Parliament → Yes", seconds_saved: 5}
+            pattern: president-vs-vp
+
+  - key: attorney-general
+    title: Attorney General
+    concepts:
+      - slug: attorney-general-of-india
+        title: "Attorney General of India (Article 76) and other law officers"
+        summary: >-
+          The Attorney General, the highest law officer of the Union, is appointed by the President
+          (Article 76), must be qualified to be a Supreme Court judge, has no fixed term and holds
+          office during the President's pleasure, with remuneration fixed by the President. He has
+          the right of audience in all courts in India and may speak in either House of Parliament
+          or its committees without a vote (Article 88), enjoying the privileges of an MP (Article
+          105); he is not a member of the Cabinet and may take private practice but not against the
+          Government of India. The Solicitor General and Additional Solicitors General are not
+          constitutional posts; a state's Advocate General is appointed by the Governor (Article
+          165); M.C. Setalvad was the first Attorney General.
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [president-powers]
+        patterns:
+          - key: ag-rights
+            title: Rights and position of the Attorney General
+            example_stem: "Which law officer has the right to take part in the proceedings of both Houses of Parliament but no right to vote there?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: ag-appointment
+            title: Appointment, qualification and article
+            example_stem: "Which article of the Constitution provides for the office of the Attorney General of India?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10

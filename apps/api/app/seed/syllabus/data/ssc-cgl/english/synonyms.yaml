@@ -1,0 +1,302 @@
+key: synonyms
+title: Synonyms
+strategies:
+  - key: approach
+    title: "Synonyms: meaning in context, then elimination"
+    summary: >-
+      Synonym questions take 10-15 seconds when the word is known and are pure guesswork when it
+      is not, so the real work is building vocabulary in themed groups and by roots. In the exam,
+      match the meaning the word has in its sentence and eliminate antonyms and words of a
+      different part of speech before choosing.
+    seconds_per_question: 15
+    accuracy_target: 0.85
+    tactics:
+      - "Learn words in theme groups (character, quantity, speech, change) with one sentence each, and revise them on the spaced schedule."
+      - "Strike out options that are antonyms or a different part of speech before comparing the rest."
+      - "For an unknown word, decode its root or prefix (bene = good, mal = bad, loqu = speak)."
+    avoid:
+      - "Picking a word that is merely associated with the question word (poverty for paucity)."
+
+topics:
+  - key: method
+    title: "Synonyms: method and context"
+    concepts:
+      - slug: english-synonyms-context
+        title: "Synonyms: method and words in context"
+        summary: >-
+          A synonym question asks for the word closest in meaning, either alone or underlined in a
+          sentence. The answer must match the meaning the word has in that sentence (fair
+          complexion vs fair decision), its part of speech and its strength and tone (furious is
+          stronger than annoyed); options that are only related in meaning, or that are antonyms,
+          are the usual traps.
+        difficulty: easy
+        weight: 1.5
+        patterns:
+          - key: standalone
+            title: "Select the most appropriate synonym of the given word"
+            example_stem: "Select the most appropriate synonym of the given word. CANDID (a) Frank (b) Clever (c) Cautious (d) Rude"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: in-context
+            title: "Select the synonym of the underlined word in a sentence"
+            example_stem: "Select the most appropriate synonym of the underlined word. The old man's frugal habits helped him save money (underlined: frugal). (a) wasteful (b) thrifty (c) careless (d) lavish"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: eliminate-then-substitute
+            title: Eliminate, then substitute
+            kind: elimination
+            rule: "Remove antonyms and options of a different part of speech, then put each remaining option into the sentence and keep the one that leaves the meaning unchanged."
+            example: {problem: "His conduct was IMPECCABLE. (a) faultless (b) faulty (c) fault (d) careless", shortcut: "(b) and (d) are opposite, (c) is a noun → faultless", seconds_saved: 10}
+            pattern: in-context
+
+  - key: word-groups
+    title: High-frequency synonyms by theme
+    concepts:
+      - slug: english-synonyms-character
+        title: "Synonyms: character and behaviour"
+        summary: >-
+          Frequently asked words for people's nature, with their closest synonyms: amiable and
+          affable (friendly), benevolent (kind, charitable), candid (frank), diligent
+          (industrious), frugal (thrifty), gregarious (sociable), haughty (arrogant), humble
+          (modest), meticulous (very careful), obstinate (stubborn, obdurate), prudent (wise,
+          judicious), timid (shy), audacious (bold, daring), callous (unfeeling), docile
+          (obedient), insolent (rude, disrespectful), magnanimous (generous), parsimonious
+          (stingy, miserly), zealous (enthusiastic), fickle (changeable).
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [english-synonyms-context]
+        patterns:
+          - key: character-word
+            title: "Synonym of a character word"
+            example_stem: "Select the most appropriate synonym of the given word. OBSTINATE (a) Stubborn (b) Polite (c) Obedient (d) Lazy"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: character-sentence
+            title: "Synonym of a character word in a sentence"
+            example_stem: "Select the most appropriate synonym of the underlined word. The parsimonious landlord refused to repair the leaking roof (underlined: parsimonious). (a) generous (b) miserly (c) strict (d) wealthy"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+
+      - slug: english-synonyms-quantity
+        title: "Synonyms: quantity, size and degree"
+        summary: >-
+          Words for amount and size that SSC repeats: abundant, copious, ample and plentiful (more
+          than enough), profuse (in large amounts), meagre, scanty and sparse (very little),
+          paucity, dearth and scarcity (shortage), plethora, surfeit and glut (excess), colossal,
+          enormous, immense and gigantic (huge), minute and minuscule (tiny), myriad and
+          innumerable (countless), negligible (too small to matter), excessive and inordinate
+          (beyond reasonable limits), adequate (sufficient).
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [english-synonyms-context]
+        patterns:
+          - key: quantity-word
+            title: "Synonym of a quantity word"
+            example_stem: "Select the most appropriate synonym of the given word. PAUCITY (a) Abundance (b) Scarcity (c) Poverty (d) Purity"
+            frequency: high
+            difficulty: medium
+            target_seconds: 10
+          - key: quantity-sentence
+            title: "Synonym of a quantity word in a sentence"
+            example_stem: "Select the most appropriate synonym of the underlined word. The village received a meagre supply of water during the summer (underlined: meagre). (a) plentiful (b) scanty (c) regular (d) clean"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+      - slug: english-synonyms-speech
+        title: "Synonyms: speech and expression"
+        summary: >-
+          Words about how people speak and write: eloquent and articulate (fluent, persuasive),
+          garrulous and loquacious (talkative), laconic, terse and succinct (brief), verbose and
+          prolix (wordy), reticent and taciturn (reserved, saying little), lucid (clear), cryptic
+          (mysterious), vociferous (loud and insistent), extol, laud and eulogise (praise highly),
+          deride, ridicule and mock (make fun of), admonish, reprimand and rebuke (scold), implore,
+          beseech and entreat (beg earnestly), reiterate (repeat), allude (refer indirectly),
+          denounce (condemn publicly).
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [english-synonyms-context]
+        patterns:
+          - key: speech-word
+            title: "Synonym of a speech word"
+            example_stem: "Select the most appropriate synonym of the given word. LACONIC (a) Lengthy (b) Brief (c) Lazy (d) Loud"
+            frequency: high
+            difficulty: medium
+            target_seconds: 10
+          - key: speech-sentence
+            title: "Synonym of a speech word in a sentence"
+            example_stem: "Select the most appropriate synonym of the underlined word. The audience was moved by the eloquent speech of the young leader (underlined: eloquent). (a) lengthy (b) articulate (c) noisy (d) boring"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+      - slug: english-synonyms-actions
+        title: "Synonyms: actions and change"
+        summary: >-
+          Verbs of change and action that SSC repeats: abate and subside (lessen), alleviate,
+          mitigate and allay (ease, reduce), augment (increase), curtail (cut short), deter
+          (discourage), dwindle (shrink), embellish and adorn (decorate), eradicate (root out),
+          exacerbate and aggravate (make worse), expedite and hasten (speed up), hamper, impede and
+          hinder (obstruct), procrastinate (delay), rectify (correct), relinquish and renounce
+          (give up), replenish (refill), revoke and rescind (cancel), squander (waste), thwart and
+          foil (prevent, frustrate), vanquish (defeat), wane (decline).
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [english-synonyms-context]
+        patterns:
+          - key: action-word
+            title: "Synonym of an action verb"
+            example_stem: "Select the most appropriate synonym of the given word. EXPEDITE (a) Delay (b) Hasten (c) Explain (d) Expand"
+            frequency: high
+            difficulty: medium
+            target_seconds: 10
+          - key: action-sentence
+            title: "Synonym of an action verb in a sentence"
+            example_stem: "Select the most appropriate synonym of the underlined word. The medicine helped to alleviate the patient's pain (underlined: alleviate). (a) increase (b) relieve (c) examine (d) cause"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+
+  - key: homonyms
+    title: Homonyms and confusable words
+    concepts:
+      - slug: english-homonyms
+        title: Homonyms and homophones
+        summary: >-
+          Homophones sound alike but differ in spelling and meaning: principal/principle,
+          stationary/stationery, complement/compliment, council/counsel, cite/site/sight,
+          aloud/allowed, altar/alter, berth/birth, coarse/course, dual/duel, idle/idol,
+          naval/navel, pray/prey, steal/steel, storey/story, waist/waste, waive/wave. Homonyms and
+          homographs share one spelling with different meanings (bank, bear, fair; lead, minute,
+          bow and tear even change their sound). SSC asks which word of a pair fits a blank or in
+          which sentence a word carries a given meaning.
+        difficulty: medium
+        weight: 1.1
+        patterns:
+          - key: pair-blank
+            title: "Fill in the blank: the right homophone"
+            example_stem: "The ___ of the school addressed the students on Independence Day. (a) principle (b) principal (c) principel (d) principles"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: homonym-sense
+            title: "Select the sentence in which the word has the given meaning"
+            example_stem: "In which sentence does 'fair' mean 'just'? (a) She has a fair complexion. (b) We went to the village fair. (c) The umpire's decision was fair. (d) The weather will be fair tomorrow."
+            frequency: low
+            difficulty: medium
+            target_seconds: 20
+
+      - slug: english-confusable-words
+        title: "Confusable words: affect/effect, accept/except"
+        summary: >-
+          Look-alike words with different meanings: affect (verb, influence) / effect (noun, result;
+          verb, bring about), accept (receive) / except (excluding), adapt (adjust) / adopt (take
+          up) / adept (skilled), advice (noun) / advise (verb), eligible (qualified) / illegible
+          (unreadable), emigrant (leaves a country) / immigrant (comes into one), eminent
+          (distinguished) / imminent (about to happen), ingenious (inventive) / ingenuous
+          (innocent, frank), loose (not tight) / lose (fail to keep), precede (come before) /
+          proceed (go on), respectfully / respectively (in the order given), continual (repeated) /
+          continuous (unbroken), economic / economical (thrifty), credible (believable) /
+          creditable (praiseworthy) / credulous (too ready to believe), judicial (of courts) /
+          judicious (wise), persecute (oppress) / prosecute (take to court), human / humane (kind),
+          industrial / industrious (hard-working), imaginary (unreal) / imaginative (creative).
+        difficulty: medium
+        weight: 1.4
+        prerequisites: [english-homonyms]
+        patterns:
+          - key: affect-effect
+            title: "Fill in the blank: affect or effect"
+            example_stem: "The new rules will not ___ the existing employees. (a) effect (b) affect (c) afect (d) effects"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: confusable-pair
+            title: "Fill in the blank: eminent/imminent, adapt/adopt, credible/creditable"
+            example_stem: "The weather office warned that a cyclone was ___. (a) eminent (b) imminent (c) immanent (d) prominent"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 10
+          - key: misused-word
+            title: "Spot the error: a confusable word in the wrong form"
+            example_stem: "Identify the segment that contains an error: The doctor / adviced him / to take complete rest / for a week."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: affect-verb
+            title: Affect is the Action
+            kind: memory
+            rule: "A for Action: affect is the verb; E for End result: effect is the noun ('The drought affected crops; its effect was severe'). Advice/advise: the noun has c, the verb has s (same for practice/practise in British spelling)."
+            example: {problem: "The medicine had no ___ on him.", shortcut: "After 'no', a noun (end result) is needed → effect", seconds_saved: 5}
+            pattern: affect-effect
+
+  - key: word-building
+    title: Word building
+    concepts:
+      - slug: english-root-words
+        title: Root words (Latin and Greek roots)
+        summary: >-
+          Common roots decode unfamiliar words in synonym, antonym and one-word questions: bene
+          (good: benevolent, benefactor), mal (bad: malice, malnutrition), chron (time: chronic,
+          chronology), graph and scrib (write: calligraphy, manuscript), phil (love:
+          philanthropy, bibliophile), mis/miso (hate: misanthrope, misogyny), path (feeling,
+          disease: apathy, pathology), voc (call, voice: vocal, revoke), spect, vid and vis (see:
+          spectator, evident, visible), dict (say: verdict, contradict), aud (hear: audible), loqu
+          (speak: loquacious, soliloquy), port (carry: portable), cred (believe: credible), omni
+          (all: omnipotent), anthrop (human: anthropology), theo (god: atheist), mort (death:
+          mortal), nym (name: pseudonym), gam (marriage: bigamy).
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: decode-word
+            title: "Find the meaning of a word from its root"
+            example_stem: "The word 'benefactor' most nearly means: (a) a person who gives help or money (b) a person who causes harm (c) a factory owner (d) a judge"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: root-meaning
+            title: "Select the word built on a given root"
+            example_stem: "Select the word whose root means 'time'. (a) chronic (b) cardiac (c) pathetic (d) graphic"
+            frequency: low
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: split-the-word
+            title: Split the word into its parts
+            kind: shortcut
+            rule: "Break an unknown word into prefix + root + suffix and translate each part: 'omni + scient' = all + knowing; 'mis + anthrop + e' = hate + human."
+            example: {problem: "Meaning of 'loquacious'?", shortcut: "loqu (speak) + -acious (full of) → talkative", seconds_saved: 10}
+            pattern: decode-word
+
+      - slug: english-prefixes-suffixes
+        title: Prefixes and suffixes
+        summary: >-
+          Prefixes change meaning: ante- (before: antecedent), anti- (against: antidote), circum-
+          (around: circumference), inter- (between: international), intra- (within: intrastate),
+          trans- (across: transmit), sub- (under: submarine), super- (above: supernatural), mono-
+          (one), bi- (two), poly- (many), pre- and post- (before and after), mis- (wrongly), co- and
+          con- (together). Suffixes change the part of speech: -ness, -ment, -tion, -ity and -ance
+          make nouns (kindness, development, decision, ability, acceptance); -ful, -less, -ous,
+          -ive and -able make adjectives; -ise/-ize, -ify and -en make verbs (modernise, simplify,
+          widen); -ly makes adverbs. SSC uses them in word-form blanks.
+        difficulty: easy
+        weight: 0.9
+        prerequisites: [english-root-words]
+        patterns:
+          - key: word-form
+            title: "Fill in the blank: the correct form of the word"
+            example_stem: "The ___ of the new bridge will take two years. (a) construct (b) constructive (c) construction (d) constructed"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: prefix-meaning
+            title: "Meaning of a word from its prefix"
+            example_stem: "To 'antedate' a cheque means to: (a) give it a later date (b) give it an earlier date (c) cancel it (d) sign it twice"
+            frequency: low
+            difficulty: medium
+            target_seconds: 15

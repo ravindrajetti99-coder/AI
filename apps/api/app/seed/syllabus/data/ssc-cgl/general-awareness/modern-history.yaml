@@ -1,0 +1,669 @@
+key: modern-history
+title: Modern Indian History
+strategies:
+  - key: approach
+    title: "Modern history: wars, Governors-General and Acts in sequence"
+    summary: >-
+      Modern history questions are mostly about years, treaties, the Governor-General or
+      Viceroy in office when something happened, the founders of reform bodies and the main
+      provisions of each Act. A timeline with the head of government beside each event answers
+      most of them.
+    seconds_per_question: 15
+    accuracy_target: 0.85
+    tactics:
+      - "Keep one master timeline 1498-1947 with the Governor-General/Viceroy beside each event; 'during whose tenure' questions are then one lookup."
+      - "Learn every war as war → years → Governor-General → treaty (e.g. Third Mysore War, 1790-92, Cornwallis, Treaty of Seringapatam)."
+      - "For Acts, remember one 'first' each: 1773 Supreme Court, 1784 Board of Control, 1833 GG of India, 1853 open competition, 1909 separate electorate, 1919 dyarchy in provinces, 1935 provincial autonomy."
+    avoid:
+      - "Mixing Lord Hastings (1813-23) with Warren Hastings (1773-85), or Minto I (1807-13) with Minto II (1905-10)."
+
+topics:
+  - key: european-arrival
+    title: Arrival of the Europeans
+    concepts:
+      - slug: european-trading-companies
+        title: "Portuguese, Dutch, English, Danish and French companies"
+        summary: >-
+          Vasco da Gama reached Calicut in 1498; Francisco de Almeida was the first Portuguese
+          viceroy and Albuquerque captured Goa from Bijapur in 1510. The Dutch company (1602) set
+          up its first factory at Masulipatnam (1605). The English East India Company received its
+          charter from Elizabeth I on 31 December 1600, set up its first permanent factory at
+          Surat (1613), built Fort St George at Madras (1639), got Bombay as part of a royal dowry
+          (1661) and founded Calcutta with Job Charnock (1690). The Danes settled at Tranquebar and
+          Serampore, and the French company (1664) made Pondicherry its headquarters.
+        difficulty: easy
+        weight: 1.2
+        patterns:
+          - key: first-factory
+            title: First factory or settlement of a company
+            example_stem: "Where did the Dutch set up their first factory in India?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+          - key: arrival-order
+            title: Order of arrival of the Europeans
+            example_stem: "Which European power came to India last as a trading company: the Dutch, the Danes, the French or the Portuguese?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: pdedf
+            title: Please Do Eat Delicious Food
+            kind: memory
+            rule: "Order of arrival as traders: Portuguese (1498), Dutch, English, Danes, French (1664)."
+            pattern: arrival-order
+      - slug: carnatic-wars
+        title: Anglo-French rivalry and the Carnatic Wars
+        summary: >-
+          The three Carnatic Wars decided the Anglo-French contest in south India. The First
+          (1746-48) ended with the Treaty of Aix-la-Chapelle; in the Second (1749-54) Robert Clive
+          won fame at Arcot (1751) and Dupleix was recalled; the Third (1756-63) was decided at the
+          Battle of Wandiwash (1760), where Eyre Coote defeated Count de Lally, and ended with the
+          Treaty of Paris (1763), after which the French kept only trading posts such as
+          Pondicherry, Karaikal, Mahe, Yanam and Chandernagore.
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [european-trading-companies]
+        patterns:
+          - key: decisive-battle
+            title: The decisive battle and treaty
+            example_stem: "Which battle ended French ambitions in India in 1760?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+
+  - key: british-expansion
+    title: British expansion in India
+    concepts:
+      - slug: plassey-buxar-bengal
+        title: "Battles of Plassey and Buxar and the conquest of Bengal"
+        summary: >-
+          Siraj-ud-Daulah, Nawab of Bengal, seized Calcutta in 1756 (the 'Black Hole' episode);
+          Robert Clive defeated him at Plassey on 23 June 1757 through the treachery of Mir Jafar,
+          who became Nawab. Mir Qasim, his successor, moved his capital to Monghyr and later
+          allied with Shuja-ud-Daulah of Awadh and the Mughal emperor Shah Alam II, but Hector
+          Munro defeated all three at Buxar in October 1764. The Treaty of Allahabad (1765) gave
+          the Company the Diwani (revenue rights) of Bengal, Bihar and Orissa, and Clive set up the
+          dual government (1765-72).
+        difficulty: easy
+        weight: 1.5
+        patterns:
+          - key: battle-facts
+            title: Battle, year and commanders
+            example_stem: "The Battle of Plassey was fought in which year?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: buxar-allies
+            title: Buxar and the Treaty of Allahabad
+            example_stem: "Who among the following did NOT fight against the English in the Battle of Buxar: Mir Qasim, Shuja-ud-Daulah, Shah Alam II or Siraj-ud-Daulah?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: plassey-buxar
+            title: Plassey one Nawab, Buxar three rulers
+            kind: memory
+            rule: "Plassey 1757 = Clive vs Siraj (one Nawab, won by treachery). Buxar 1764 = Munro vs Mir Qasim + Shuja-ud-Daulah + Shah Alam II (three rulers, won in battle) → Allahabad 1765 Diwani."
+            pattern: buxar-allies
+      - slug: anglo-mysore-wars
+        title: Anglo-Mysore Wars (Hyder Ali and Tipu Sultan)
+        summary: >-
+          Four wars were fought with Mysore: the First (1767-69, Treaty of Madras), the Second
+          (1780-84; Hyder Ali died in 1782; Treaty of Mangalore), the Third (1790-92; Cornwallis
+          forced Tipu to cede half his kingdom by the Treaty of Seringapatam) and the Fourth
+          (1799; under Wellesley, Tipu was killed defending Seringapatam and the Wodeyars were
+          restored). Tipu Sultan planted a 'Tree of Liberty' at Seringapatam, joined the Jacobin
+          Club and used iron-cased rockets.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [plassey-buxar-bengal]
+        patterns:
+          - key: war-treaty
+            title: War, Governor-General and treaty
+            example_stem: "The Treaty of Seringapatam (1792) ended which Anglo-Mysore war?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: m-m-s
+            title: Madras, Mangalore, Seringapatam, death
+            kind: memory
+            rule: "Treaties in order: Madras (1769) → Mangalore (1784) → Seringapatam (1792) → Tipu dies (1799). GGs: 2nd war Warren Hastings, 3rd Cornwallis, 4th Wellesley."
+            pattern: war-treaty
+      - slug: anglo-maratha-wars
+        title: Anglo-Maratha Wars
+        summary: >-
+          The First Anglo-Maratha War (1775-82) began over Raghunathrao's claim, saw a British
+          defeat at Wadgaon and ended with the Treaty of Salbai (1782) under Warren Hastings. The
+          Second (1803-05) followed the Treaty of Bassein (1802), by which Peshwa Baji Rao II
+          accepted the Subsidiary Alliance; Arthur Wellesley won at Assaye (1803). The Third
+          (1817-18), under Lord Hastings, ended the Peshwaship; Baji Rao II was pensioned off to
+          Bithur.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [plassey-buxar-bengal]
+        patterns:
+          - key: treaty
+            title: Treaties of the Maratha wars
+            example_stem: "The First Anglo-Maratha War ended with the Treaty of"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+      - slug: subsidiary-alliance-lapse-punjab
+        title: "Subsidiary Alliance, Doctrine of Lapse and the Anglo-Sikh wars"
+        summary: >-
+          Lord Wellesley's Subsidiary Alliance (1798) made Indian rulers keep and pay for a
+          British force and a Resident; the Nizam of Hyderabad was the first to accept it, followed
+          by Mysore, Awadh and the Peshwa. Lord Dalhousie's Doctrine of Lapse annexed states whose
+          rulers died without a natural heir: Satara (1848, the first), Jaitpur, Sambalpur, Jhansi
+          and Nagpur; Awadh was annexed in 1856 on the ground of misrule. After two Anglo-Sikh
+          wars (1845-46 and 1848-49) Dalhousie annexed Punjab in 1849.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [anglo-maratha-wars]
+        patterns:
+          - key: policy-author
+            title: Policy and its author
+            example_stem: "The Doctrine of Lapse was introduced by which Governor-General?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: first-state
+            title: First state under a policy
+            example_stem: "Which was the first state to accept the Subsidiary Alliance?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: w-s-d-l
+            title: Wellesley Subsidiary, Dalhousie Lapse
+            kind: memory
+            rule: "W-S: Wellesley → Subsidiary Alliance → first Hyderabad (1798). D-L: Dalhousie → Lapse → first Satara (1848). Awadh (1856) was annexed for 'misrule', not lapse."
+            pattern: first-state
+            pitfalls: ["Awadh is the classic wrong answer for Doctrine of Lapse questions."]
+
+  - key: governors-general
+    title: Governors-General and Viceroys
+    concepts:
+      - slug: governors-general-of-bengal
+        title: "Governors-General of Bengal (1773-1833)"
+        summary: >-
+          Warren Hastings (1773-85), the first Governor-General of Bengal under the Regulating
+          Act, ended the dual government, founded the Calcutta Madrasa (1781) and supported the
+          Asiatic Society of Bengal (William Jones, 1784). Cornwallis (1786-93) introduced the
+          Permanent Settlement (1793) and the Cornwallis Code and is called the father of the
+          civil services in India. Wellesley (1798-1805) brought the Subsidiary Alliance and Fort
+          William College (1800); Minto I signed the Treaty of Amritsar (1809); Lord Hastings
+          (1813-23) fought the Third Maratha War and the Anglo-Nepal War; Amherst fought the First
+          Anglo-Burmese War.
+        difficulty: medium
+        weight: 1.5
+        patterns:
+          - key: tenure-event
+            title: Event during whose tenure
+            example_stem: "The Permanent Settlement of Bengal was introduced during the tenure of"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: first-gg
+            title: First holders of offices
+            example_stem: "Who was the first Governor-General of Bengal?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+      - slug: governors-general-of-india
+        title: "Governors-General of India (1833-1858): Bentinck to Canning"
+        summary: >-
+          William Bentinck became the first Governor-General of India under the Charter Act of
+          1833; he abolished sati (1829), suppressed thuggee and passed the English Education Act
+          (1835) after Macaulay's Minute. Metcalfe freed the press (1835); Ellenborough annexed
+          Sindh (1843); Dalhousie (1848-56) applied the Doctrine of Lapse and opened the first
+          railway from Bombay to Thane (16 April 1853), telegraph lines and a uniform postal
+          system; Wood's Despatch (1854) came in his tenure. Canning saw the Widow Remarriage Act (1856),
+          the founding of the universities of Calcutta, Bombay and Madras (1857) and the 1857
+          revolt, and became the first Viceroy in 1858.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [governors-general-of-bengal]
+        patterns:
+          - key: reform-gg
+            title: Reform and Governor-General
+            example_stem: "Sati was declared illegal in 1829 by"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: dalhousie
+            title: Dalhousie's modernisation
+            example_stem: "The first railway line in India (1853) ran between"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: three-firsts
+            title: First GG of Bengal, of India, first Viceroy
+            kind: memory
+            rule: "Warren Hastings (1773, Bengal) → William Bentinck (1833, India) → Canning (1858, Viceroy). Last GG and first Viceroy are the same man: Canning."
+            pattern: reform-gg
+      - slug: viceroys-1858-1905
+        title: "Viceroys from Canning to Curzon (1858-1905)"
+        summary: >-
+          Mayo started the first (non-synchronous) census in 1872 and was the only Viceroy
+          assassinated in office (Andamans, 1872). Lytton held the Delhi Durbar of 1877 (Queen
+          Victoria proclaimed Empress of India) and passed the Vernacular Press Act and Arms Act
+          (1878). Ripon repealed the Vernacular Press Act, held the first regular census (1881),
+          passed the first Factory Act (1881), issued the local self-government resolution (1882),
+          set up the Hunter Commission and faced the Ilbert Bill controversy. Dufferin saw the
+          founding of the INC (1885); Lansdowne the Indian Councils Act (1892) and the Durand Line
+          (1893); Curzon passed the Indian Universities Act and Ancient Monuments Act (1904) and
+          partitioned Bengal (1905).
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [governors-general-of-india]
+        patterns:
+          - key: viceroy-event
+            title: Viceroy and event
+            example_stem: "The Vernacular Press Act of 1878 was passed during the viceroyalty of"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: father-of
+            title: '"Father of" titles of Viceroys'
+            example_stem: "Which Viceroy is called the 'father of local self-government' in India?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: lytton-ripon
+            title: Lytton gags, Ripon frees
+            kind: memory
+            rule: "Lytton passed the Vernacular Press Act (1878); Ripon repealed it (1882). Census: Mayo 1872 (first), Ripon 1881 (first regular, every 10 years since)."
+            pattern: viceroy-event
+      - slug: viceroys-1905-1947
+        title: "Viceroys from Minto to Mountbatten (1905-1947)"
+        summary: >-
+          Minto II: Muslim League (1906), Surat split (1907), Morley-Minto Reforms (1909). Hardinge
+          II: Delhi Durbar of 1911 (partition of Bengal annulled, capital to move to Delhi), bomb
+          attack on him (1912). Chelmsford: Rowlatt Act and Jallianwala Bagh (1919), GoI Act 1919,
+          Non-Cooperation. Reading: Chauri Chaura (1922), Kakori (1925). Irwin: Simon Commission,
+          Dandi March, Gandhi-Irwin Pact (1931). Willingdon: Communal Award, Poona Pact (1932), GoI
+          Act 1935. Linlithgow (longest tenure): August Offer, Cripps Mission, Quit India. Wavell:
+          Shimla Conference (1945), Cabinet Mission (1946). Mountbatten: the last Viceroy, 3 June
+          Plan and independence.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [viceroys-1858-1905]
+        patterns:
+          - key: viceroy-event
+            title: Viceroy during a national movement event
+            example_stem: "Who was the Viceroy of India when the Quit India Movement was launched?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: chronology
+            title: Chronological order of Viceroys
+            example_stem: "Arrange in chronological order: Irwin, Chelmsford, Linlithgow, Reading."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+        shortcuts:
+          - key: viceroy-chain
+            title: "My Hen Can Read In Winter Long Winter Mornings"
+            kind: memory
+            rule: "Minto II, Hardinge II, Chelmsford, Reading, Irwin, Willingdon, Linlithgow, Wavell, Mountbatten (1905 → 1947)."
+            pattern: chronology
+
+  - key: reform-movements
+    title: Socio-religious reform movements
+    concepts:
+      - slug: brahmo-samaj-bengal-reformers
+        title: "Raja Ram Mohan Roy, the Brahmo Samaj and Bengal reformers"
+        summary: >-
+          Raja Ram Mohan Roy founded the Atmiya Sabha (1815) and the Brahmo Sabha (1828, later the
+          Brahmo Samaj), campaigned against sati, published Sambad Kaumudi and Mirat-ul-Akhbar,
+          received the title 'Raja' from Mughal emperor Akbar II and died in Bristol (1833); he is
+          called the father of the Indian Renaissance. Debendranath Tagore led the Tattvabodhini
+          Sabha; Keshab Chandra Sen formed the Brahmo Samaj of India (1866), and the Sadharan
+          Brahmo Samaj split away in 1878. Ishwar Chandra Vidyasagar fought for the Widow
+          Remarriage Act (1856), Derozio led the Young Bengal movement, and the Prarthana Samaj
+          (Bombay, 1867; M.G. Ranade) shared Brahmo ideas.
+        difficulty: medium
+        weight: 1.5
+        patterns:
+          - key: founder-body
+            title: Founder of a reform organisation
+            example_stem: "Who founded the Brahmo Samaj?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: reformer-cause
+            title: Reformer and cause
+            example_stem: "The Hindu Widows' Remarriage Act of 1856 was passed largely because of the efforts of"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+      - slug: arya-samaj-ramakrishna-theosophy
+        title: "Arya Samaj, Ramakrishna Mission and the Theosophical Society"
+        summary: >-
+          Swami Dayanand Saraswati founded the Arya Samaj at Bombay in 1875, gave the call 'Go back
+          to the Vedas', wrote Satyarth Prakash and started the shuddhi movement; his followers set
+          up DAV schools and the Gurukul Kangri. Swami Vivekananda, disciple of Ramakrishna
+          Paramahamsa, spoke at the Parliament of Religions in Chicago (1893) and founded the
+          Ramakrishna Mission (1897, headquarters Belur Math). The Theosophical Society was founded
+          by Madame Blavatsky and Colonel Olcott in New York (1875), moved its headquarters to
+          Adyar (Madras), and was led in India by Annie Besant.
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [brahmo-samaj-bengal-reformers]
+        patterns:
+          - key: founder-year
+            title: Organisation, founder and year
+            example_stem: "The Ramakrishna Mission was founded in 1897 by"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: book-slogan
+            title: Book or slogan of a reformer
+            example_stem: "'Satyarth Prakash' was written by"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: year-1875
+            title: Three foundations of 1875
+            kind: memory
+            rule: "1875 saw the Arya Samaj (Bombay), the Theosophical Society (New York) and Sir Syed's MAO College (Aligarh): '1875 = three foundations'."
+            pattern: founder-year
+      - slug: muslim-reform-movements
+        title: "Muslim reform movements: Aligarh, Deoband, Ahmadiyya"
+        summary: >-
+          Sir Syed Ahmad Khan led the Aligarh movement for modern education, founded the Scientific
+          Society (1864) and the Muhammadan Anglo-Oriental College at Aligarh (1875), which became
+          Aligarh Muslim University in 1920, and published Tahzib-ul-Akhlaq. The Deoband movement
+          (Darul Uloom, 1866) of Muhammad Qasim Nanautavi and Rashid Ahmad Gangohi was orthodox and
+          anti-British. The Ahmadiyya movement was founded by Mirza Ghulam Ahmad at Qadian (1889);
+          earlier the Faraizi movement of Haji Shariatullah worked in Bengal.
+        difficulty: medium
+        weight: 0.8
+        patterns:
+          - key: founder
+            title: Founder of a Muslim reform movement
+            example_stem: "The Muhammadan Anglo-Oriental College at Aligarh was founded by"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+      - slug: anti-caste-womens-reform
+        title: "Anti-caste and women's reform movements"
+        summary: >-
+          Jyotiba Phule founded the Satyashodhak Samaj (1873), wrote Gulamgiri and, with Savitribai
+          Phule, opened a girls' school in Pune (1848). Sree Narayana Guru set up the SNDP Yogam
+          (1903) in Kerala ('one caste, one religion, one God'); E.V. Ramasamy 'Periyar' began the
+          Self-Respect Movement (1925); the Vaikom Satyagraha (1924-25) fought for temple-road
+          entry; B.R. Ambedkar founded the Bahishkrit Hitakarini Sabha (1924) and led the Mahad
+          Satyagraha (1927). Pandita Ramabai and D.K. Karve worked for widows and women's
+          education, and the Sarda Act (1929) restrained child marriage.
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: founder-body
+            title: Reformer and organisation
+            example_stem: "The Satyashodhak Samaj was founded by"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: satyagraha
+            title: Social satyagrahas
+            example_stem: "The Vaikom Satyagraha of 1924-25 took place in which present-day state?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+
+  - key: revolt-1857
+    title: Revolt of 1857
+    concepts:
+      - slug: revolt-1857-causes-leaders
+        title: "Revolt of 1857: causes, centres and leaders"
+        summary: >-
+          Mangal Pandey attacked his officers at Barrackpore on 29 March 1857; the revolt itself
+          began at Meerut on 10 May 1857, set off by the greased cartridges of the Enfield rifle,
+          after years of annexations (Doctrine of Lapse, Awadh 1856), economic distress and
+          religious fears. Leaders and centres: Delhi – Bahadur Shah Zafar with General Bakht
+          Khan; Kanpur – Nana Saheb and Tantia Tope; Lucknow – Begum Hazrat Mahal; Jhansi – Rani
+          Lakshmibai; Jagdishpur (Bihar) – Kunwar Singh; Faizabad – Maulvi Ahmadullah; Bareilly –
+          Khan Bahadur Khan. British commanders included John Nicholson (Delhi), Colin Campbell
+          (Lucknow, Kanpur) and Hugh Rose (Jhansi); Canning was Governor-General.
+        difficulty: medium
+        weight: 1.5
+        patterns:
+          - key: leader-centre
+            title: Match the leader with the centre
+            example_stem: "Who led the Revolt of 1857 at Lucknow?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: start
+            title: Start and immediate cause
+            example_stem: "The Revolt of 1857 began on 10 May 1857 at"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: leader-map
+            title: Map the leaders west to east
+            kind: memory
+            rule: "Jhansi – Lakshmibai; Delhi – Bahadur Shah/Bakht Khan; Kanpur – Nana Saheb/Tantia Tope; Lucknow – Hazrat Mahal; Jagdishpur – Kunwar Singh. Hugh Rose 'rose' against the Rani of Jhansi."
+            pattern: leader-centre
+      - slug: revolt-1857-consequences
+        title: "Revolt of 1857: consequences and interpretations"
+        summary: >-
+          The Government of India Act 1858 ended Company rule: the Crown took over, a Secretary of
+          State for India with a 15-member Council of India was created and the Governor-General
+          also became Viceroy. Queen Victoria's Proclamation (1 November 1858), read by Canning at
+          Allahabad, promised no more annexations and religious tolerance; the army was
+          reorganised with more European troops. V.D. Savarkar called the revolt the 'First War of
+          Indian Independence' (1909), while R.C. Majumdar argued it was neither the first, nor
+          national, nor a war of independence.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [revolt-1857-causes-leaders]
+        patterns:
+          - key: result
+            title: Results of the revolt
+            example_stem: "After the Revolt of 1857, the power to govern India passed from the East India Company to the British Crown by the"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: historian
+            title: Historians' views
+            example_stem: "Who described the Revolt of 1857 as the 'First War of Indian Independence'?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+
+  - key: economic-impact
+    title: Economic impact of British rule
+    concepts:
+      - slug: british-land-revenue-systems
+        title: "Land revenue systems: Permanent Settlement, Ryotwari, Mahalwari"
+        summary: >-
+          The Permanent Settlement (Cornwallis, 1793) fixed revenue for ever with zamindars as
+          owners in Bengal, Bihar and Orissa (about a fifth of British India). The Ryotwari system
+          (Thomas Munro and Alexander Read; Madras, 1820, later Bombay) dealt directly with the
+          cultivator (ryot) and covered the largest area, about half. The Mahalwari system (Holt
+          Mackenzie, 1822; North-Western Provinces, Punjab, Central India) settled revenue with the
+          village community (mahal), covering about 30%.
+        difficulty: medium
+        weight: 1.5
+        patterns:
+          - key: system-person
+            title: System, introducer and region
+            example_stem: "The Ryotwari system of land revenue was introduced in Madras by"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+          - key: unit
+            title: Who paid the revenue
+            example_stem: "Under the Mahalwari system, land revenue was settled with"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: z-r-m
+            title: Zamindar, Ryot, Mahal
+            kind: memory
+            rule: "Permanent = Zamindar (Bengal, Cornwallis); Ryotwari = Ryot (Madras-Bombay, Munro); Mahalwari = Mahal/village (north-west, Holt Mackenzie)."
+            pattern: system-person
+      - slug: drain-of-wealth-deindustrialisation
+        title: "Drain of wealth and deindustrialisation"
+        summary: >-
+          Dadabhai Naoroji, the 'Grand Old Man of India', put forward the drain theory in 'Poverty
+          and Un-British Rule in India' (1901): India's wealth flowed to Britain as home charges,
+          salaries, pensions and profits without return. R.C. Dutt wrote 'The Economic History of
+          India'. British policy ruined Indian handicrafts (deindustrialisation), commercialised
+          agriculture (indigo, cotton, jute), built railways mainly to move raw materials and
+          coincided with severe famines such as Bengal 1770 and 1943.
+        difficulty: easy
+        weight: 1.0
+        patterns:
+          - key: theory-author
+            title: Drain theory and its exponents
+            example_stem: "Who wrote 'Poverty and Un-British Rule in India'?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+      - slug: peasant-tribal-revolts
+        title: Peasant and tribal revolts under British rule
+        summary: >-
+          Major uprisings: Sanyasi-Fakir rebellion (Bengal, late 18th century, background of
+          Anandamath), Paika rebellion (Odisha, 1817, Bakshi Jagabandhu), Kol uprising
+          (Chotanagpur, 1831-32), Santhal Hul (1855-56, Sidhu and Kanhu), Indigo revolt (Bengal,
+          1859-60, described in Dinabandhu Mitra's play Nil Darpan), Pabna revolt (1873), Deccan
+          riots against moneylenders (1875), Munda Ulgulan (1899-1900, Birsa Munda), Moplah
+          rebellion (Malabar, 1921) and the Rampa rebellion (1922-24, Alluri Sitarama Raju).
+        difficulty: medium
+        weight: 1.2
+        patterns:
+          - key: revolt-leader
+            title: Revolt and its leader
+            example_stem: "The 'Ulgulan' (great tumult) of 1899-1900 was led by"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: revolt-region
+            title: Revolt and region
+            example_stem: "The Paika rebellion of 1817 took place in"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+
+  - key: acts
+    title: Important Acts of British rule
+    concepts:
+      - slug: regulating-act-to-charter-1853
+        title: "Regulating Act 1773 to the Charter Act 1853"
+        summary: >-
+          The Regulating Act (1773) made the Governor of Bengal the Governor-General of Bengal
+          (Warren Hastings) with a council of four and set up a Supreme Court at Calcutta (1774).
+          Pitt's India Act (1784) created the Board of Control, beginning dual control. The Charter
+          Act of 1813 ended the Company's trade monopoly except in tea and trade with China and set
+          aside ₹1 lakh for education; that of 1833 made the Governor-General of Bengal the
+          Governor-General of India and ended the Company's trade; that of 1853 separated the
+          legislative and executive functions of the council and introduced open competition for
+          the civil services.
+        difficulty: medium
+        weight: 1.2
+        patterns:
+          - key: act-provision
+            title: Act and its provision
+            example_stem: "Which Act ended the trade monopoly of the East India Company in India except for tea and trade with China?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: act-firsts
+            title: One first per Act
+            kind: memory
+            rule: "1773 – GG of Bengal + Supreme Court; 1784 – Board of Control; 1813 – monopoly ends + ₹1 lakh education; 1833 – GG of India, trade ends; 1853 – open competition, separate legislature."
+            pattern: act-provision
+      - slug: acts-1858-to-1909
+        title: "Government of India Act 1858 and the Indian Councils Acts"
+        summary: >-
+          The GoI Act 1858 transferred rule to the Crown and created the Secretary of State for
+          India. The Indian Councils Act 1861 brought nominated Indians into the legislative
+          council and recognised Canning's portfolio system; the 1892 Act allowed indirect
+          election and discussion of the budget. The Indian Councils Act 1909 (Morley-Minto
+          Reforms) enlarged the councils and gave Muslims a separate electorate (Minto is called
+          the father of communal electorates); Satyendra Prasad Sinha became the first Indian
+          member of the Viceroy's Executive Council.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [regulating-act-to-charter-1853]
+        patterns:
+          - key: act-provision
+            title: Act and its provision
+            example_stem: "Separate electorates for Muslims were introduced by which Act?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+      - slug: government-of-india-acts-1919-1935
+        title: "Government of India Acts of 1919 and 1935"
+        summary: >-
+          The GoI Act 1919 (Montagu-Chelmsford Reforms) introduced dyarchy in the provinces
+          (reserved and transferred subjects), a bicameral central legislature, direct elections
+          on a limited franchise and separate electorates for Sikhs, Indian Christians,
+          Anglo-Indians and Europeans; it provided for a statutory commission after ten years. The
+          GoI Act 1935 (321 sections, 10 schedules) proposed an All-India Federation, divided
+          powers into Federal, Provincial and Concurrent lists, gave provincial autonomy (ending
+          dyarchy in the provinces), proposed dyarchy at the centre, set up a Federal Court and
+          separated Burma from India.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [acts-1858-to-1909]
+        patterns:
+          - key: dyarchy
+            title: Dyarchy and provincial autonomy
+            example_stem: "Dyarchy in the provinces was introduced by the Government of India Act of"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: act-1935
+            title: Provisions of the 1935 Act
+            example_stem: "Which Act provided for the establishment of a Federal Court in India?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: dyarchy-move
+            title: Dyarchy moves up
+            kind: memory
+            rule: "1919: dyarchy in the provinces. 1935: dyarchy removed from the provinces (provincial autonomy) and proposed at the centre."
+            pattern: dyarchy
+
+  - key: education-press
+    title: Education and the press under British rule
+    concepts:
+      - slug: modern-education-press
+        title: Growth of modern education and the press
+        summary: >-
+          Macaulay's Minute (1835) led to English as the medium of higher education; Wood's
+          Despatch (1854), the 'Magna Carta of English education in India', led to the universities
+          of Calcutta, Bombay and Madras (1857). Later came the Hunter Commission (1882, primary
+          education), the Raleigh Commission and Indian Universities Act (1902-04), the Sadler
+          Commission (1917) and Gandhi's Wardha scheme of basic education (1937). James Augustus
+          Hicky's Bengal Gazette (1780) was India's first newspaper; Metcalfe freed the press in
+          1835; Lytton's Vernacular Press Act (1878) was repealed by Ripon.
+        difficulty: medium
+        weight: 1.0
+        patterns:
+          - key: commission
+            title: Education commission and its subject
+            example_stem: "Which document is called the 'Magna Carta of English education in India'?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: newspaper
+            title: Early newspapers
+            example_stem: "The first newspaper published in India was"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10

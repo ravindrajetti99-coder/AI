@@ -1,0 +1,193 @@
+key: syllogism
+title: Syllogism
+strategies:
+  - key: approach
+    title: "Syllogism: least-overlap diagram plus the rule table"
+    summary: >-
+      SSC syllogisms give two or three statements to be taken as true, even if they contradict
+      common knowledge, and ask which conclusions follow. Combine statements with the standard
+      rules and confirm each conclusion on the diagram with the least overlap the statements allow.
+    seconds_per_question: 45
+    accuracy_target: 0.9
+    tactics:
+      - "Ignore real-world facts: 'All dogs are cats' is true inside the question."
+      - "Check each conclusion two ways: does a rule or a direct conversion give it, and is it true in the least-overlap diagram?"
+      - "Before choosing 'neither follows', check whether the two conclusions form an either-or pair."
+    avoid:
+      - "Reversing 'All A are B' into 'All B are A'."
+      - "Accepting a conclusion because it is true in the one diagram you drew first."
+
+topics:
+  - key: basics
+    title: Statement types
+    concepts:
+      - slug: syllogism-statement-types
+        title: Syllogism statement types and their Venn diagrams
+        summary: >-
+          The four statement forms (All A are B; No A is B; Some A are B; Some A are not B), the
+          Venn diagram of each, and what each allows by conversion: 'All A are B' gives 'Some A
+          are B' and 'Some B are A'; 'No A is B' gives 'No B is A'; 'Some A are B' gives 'Some B
+          are A'; 'Some A are not B' gives nothing.
+        difficulty: easy
+        weight: 1.2
+        formulas:
+          - key: conversions
+            name: Conversions and implications
+            expression: "All A are B → Some A are B, Some B are A;  No A is B → No B is A, Some A are not B;  Some A are B → Some B are A;  Some A are not B → no conversion"
+            conditions: "SSC treats every class named as non-empty, so 'All' implies 'Some'."
+            example: {problem: "All pens are books. Does 'Some books are pens' follow?", solution: "Yes: All A are B gives Some B are A"}
+        patterns:
+          - key: implied-conclusion
+            title: Conclusion by conversion of one statement
+            example_stem: "Statement: All pens are books. Conclusions: I. Some books are pens. II. All books are pens. Which conclusion(s) follow?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: negative-conversion
+            title: Converting a negative statement
+            example_stem: "Statement: No cat is a dog. Conclusions: I. No dog is a cat. II. Some cats are dogs. Which conclusion(s) follow?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: never-reverse-all
+            title: Reverse 'No' and 'Some', never 'All' or 'Some … not'
+            kind: memory
+            rule: "'No' and 'Some' reverse freely (No A is B = No B is A; Some A are B = Some B are A); 'All A are B' reverses only to 'Some B are A'; 'Some A are not B' never reverses."
+            example: {problem: "All pens are books → All books are pens?", shortcut: "'All' never reverses fully → does not follow; only 'Some books are pens' does", seconds_saved: 10}
+            pattern: implied-conclusion
+
+  - key: deductions
+    title: Deductions from statements
+    concepts:
+      - slug: syllogism-two-statements
+        title: Two-statement syllogisms
+        summary: >-
+          Two statements sharing a middle term give a conclusion about the other two terms.
+          Rules: All + All = All; All + No = No; Some + All = Some; Some + No = Some not; All +
+          Some, Some + Some and No + No give no definite conclusion. Direct conversions of each
+          statement also count.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [syllogism-statement-types]
+        formulas:
+          - key: rule-table
+            name: Two-statement rule table
+            expression: "All + All → All;  All + No → No;  Some + All → Some;  Some + No → Some not;  No + All → Some not (reversed);  No + Some → Some not (reversed);  All + Some, Some + Some, No + No, and any pair containing 'Some … not' → no definite conclusion"
+            conditions: "Write the statements so that the middle term is the predicate of the first and the subject of the second. 'Reversed' means the conclusion runs from the third term to the first: No A is B + All B are C → Some C are not A."
+            example: {problem: "All cats are dogs. All dogs are birds.", solution: "All + All → All cats are birds"}
+        patterns:
+          - key: two-statement
+            title: Two statements, two conclusions
+            example_stem: "Statements: All roses are flowers. Some flowers are red. Conclusions: I. Some roses are red. II. Some red things are flowers. Which conclusion(s) follow?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 40
+          - key: reversed-conclusion
+            title: Conclusion that runs backwards
+            example_stem: "Statements: No chair is a table. All tables are desks. Conclusions: I. Some desks are not chairs. II. No desk is a chair. Which conclusion(s) follow?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: rule-table-recall
+            title: Recall the rule table
+            kind: memory
+            rule: "Only four pairs give a forward conclusion: All + All (All), All + No (No), Some + All (Some), Some + No (Some not); No + All and No + Some give 'Some … not' read backwards; everything else gives no definite conclusion."
+            example: {problem: "No chair is a table. All tables are desks.", standard: "Draw several diagrams", shortcut: "No + All → reversed Some not → Some desks are not chairs", seconds_saved: 20}
+            pattern: reversed-conclusion
+
+      - slug: syllogism-three-statements
+        title: Three-statement syllogisms
+        summary: >-
+          Three linked statements (A–B, B–C, C–D) and conclusions about any pair of terms.
+          Combine statements two at a time with the rule table, carrying each result forward, and
+          check every conclusion on the least-overlap diagram.
+        difficulty: hard
+        weight: 1.2
+        prerequisites: [syllogism-two-statements]
+        patterns:
+          - key: three-statement
+            title: Three statements, two conclusions
+            example_stem: "Statements: Some pens are pencils. All pencils are erasers. No eraser is a sharpener. Conclusions: I. Some pens are erasers. II. Some pens are not sharpeners. Which conclusion(s) follow?"
+            frequency: high
+            difficulty: hard
+            target_seconds: 50
+          - key: none-follows
+            title: When no conclusion follows
+            example_stem: "Statements: All apples are mangoes. Some mangoes are grapes. No grape is a banana. Conclusions: I. Some apples are not bananas. II. No apple is a banana. Which conclusion(s) follow?"
+            frequency: medium
+            difficulty: hard
+            target_seconds: 50
+        shortcuts:
+          - key: breaking-diagram
+            title: Try to draw a diagram that breaks the conclusion
+            kind: elimination
+            rule: "A conclusion follows only if it is true in every diagram the statements allow. Try to draw one valid diagram in which it is false: the least-overlap diagram breaks positive conclusions ('All …', 'Some …'), the most-overlap diagram breaks negative ones ('No …', 'Some … not')."
+            example: {problem: "All apples are mangoes; some mangoes are grapes; no grape is a banana. Does 'Some apples are not bananas' follow?", standard: "Combine the statements by rules and hope one applies", shortcut: "Keep apples away from grapes and let bananas cover all the apples: the drawing is valid and every apple is a banana, so it does not follow", seconds_saved: 20}
+            pattern: none-follows
+
+      - slug: syllogism-either-or
+        title: Either-or (complementary) conclusions
+        summary: >-
+          When neither of two conclusions follows on its own but both are about the same two
+          terms and together cover every case (Some A are B / No A is B; All A are B / Some A are
+          not B), the answer is 'Either I or II follows'.
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [syllogism-two-statements]
+        formulas:
+          - key: complementary-pairs
+            name: Complementary pairs
+            expression: "(Some A are B, No A is B) and (All A are B, Some A are not B) are complementary: exactly one of each pair is always true"
+            conditions: "Use only when neither conclusion follows definitely and both have the same two terms."
+        patterns:
+          - key: some-no-pair
+            title: Some / No pair
+            example_stem: "Statements: All birds are animals. Some animals are dogs. Conclusions: I. Some birds are dogs. II. No bird is a dog. Which conclusion(s) follow?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+          - key: all-some-not-pair
+            title: All / Some not pair
+            example_stem: "Statements: Some cups are plates. All plates are spoons. Conclusions: I. All cups are spoons. II. Some cups are not spoons. Which conclusion(s) follow?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: three-checks
+            title: Three checks for 'either-or'
+            kind: shortcut
+            rule: "Mark 'either I or II' only if (1) neither follows definitely, (2) both use the same two terms, and (3) the pair is Some/No or All/Some not."
+            example: {problem: "I. Some birds are dogs. II. No bird is a dog.", shortcut: "Neither follows (All + Some), same terms, Some/No pair → either I or II", seconds_saved: 15}
+            pattern: some-no-pair
+
+      - slug: syllogism-possibility
+        title: Possibility conclusions
+        summary: >-
+          Conclusions like 'All A being B is a possibility' follow if at least one diagram
+          consistent with the statements allows them; they fail only when a statement, or a
+          definite conclusion drawn from them, rules them out.
+        difficulty: hard
+        weight: 0.6
+        prerequisites: [syllogism-two-statements]
+        patterns:
+          - key: possibility-blocked
+            title: Possibility ruled out by a definite relation
+            example_stem: "Statements: Some books are pens. No pen is a pencil. Conclusions: I. All books being pencils is a possibility. II. Some books are not pencils. Which conclusion(s) follow?"
+            frequency: low
+            difficulty: hard
+            target_seconds: 45
+          - key: possibility-open
+            title: Possibility left open
+            example_stem: "Statements: All rings are bangles. Some bangles are chains. Conclusions: I. Some rings being chains is a possibility. II. All chains being rings is a possibility. Which conclusion(s) follow?"
+            frequency: low
+            difficulty: hard
+            target_seconds: 45
+        shortcuts:
+          - key: contradiction-test
+            title: Look for a contradiction only
+            kind: shortcut
+            rule: "A possibility conclusion fails only if it contradicts a definite relation (a statement or a conclusion that follows); if nothing contradicts it, it follows."
+            example: {problem: "Some books are pens; no pen is a pencil. 'All books being pencils is a possibility'?", standard: "Draw every possible case", shortcut: "Definite: some books are not pencils → contradicts 'all books are pencils' → does not follow", seconds_saved: 20}
+            pattern: possibility-blocked

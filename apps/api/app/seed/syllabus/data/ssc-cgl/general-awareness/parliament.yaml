@@ -1,0 +1,430 @@
+key: parliament
+title: Parliament
+strategies:
+  - key: approach
+    title: "Parliament: numbers, majorities and procedures"
+    summary: >-
+      Parliament questions test exact numbers (strength, ages, terms, committee sizes), the type
+      of majority each decision needs, and the procedure for bills and motions. A compact table
+      of numbers and a clear picture of how a bill moves between the Houses answer most of them.
+    seconds_per_question: 15
+    accuracy_target: 0.9
+    tactics:
+      - "Keep one table: Lok Sabha 550/543, Rajya Sabha 250/245, ages 25 and 30, terms 5 years and 6 years, quorum one-tenth."
+      - "Know which powers belong only to the Lok Sabha (money bills, no-confidence) and only to the Rajya Sabha (Articles 249 and 312)."
+      - "For committees, remember size and composition together: PAC 22 (15 + 7), Estimates 30 (all Lok Sabha), Public Undertakings 22 (15 + 7), standing committees 31 (21 + 10)."
+    avoid:
+      - "Confusing the Rajya Sabha's 14-day limit on money bills with the six-month deadlock rule for ordinary bills."
+
+topics:
+  - key: houses
+    title: Lok Sabha and Rajya Sabha composition and powers
+    concepts:
+      - slug: parliament-structure-membership
+        title: "Parliament: composition, qualifications and disqualifications of members"
+        summary: >-
+          Under Article 79 Parliament consists of the President, the Rajya Sabha (Council of
+          States) and the Lok Sabha (House of the People); the President is part of Parliament but
+          sits in neither House. A member must be a citizen aged at least 30 for the Rajya Sabha and
+          25 for the Lok Sabha (Article 84) and is disqualified (Article 102) for holding an office
+          of profit, unsound mind, undischarged insolvency, losing citizenship, under the
+          Representation of the People Act 1951 (for example, conviction with a sentence of two
+          years or more) or for defection (Tenth Schedule). The President decides disqualification
+          on the Election Commission's opinion (Article 103), the presiding officer decides
+          defection cases, and a seat can be declared vacant after 60 days' absence without
+          permission (Article 101).
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [constitution-parts-articles]
+        patterns:
+          - key: parliament-parts
+            title: Constituents of Parliament
+            example_stem: "Which of the following is a part of Parliament under Article 79? (a) Prime Minister (b) President (c) Vice-President (d) Speaker"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: member-eligibility
+            title: Qualifications, disqualifications and vacation of seats
+            example_stem: "Who decides whether a member of Parliament has become disqualified under Article 102, other than for defection?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 12
+
+      - slug: lok-sabha-composition-powers
+        title: "Lok Sabha: composition, term and powers"
+        summary: >-
+          The Lok Sabha (Article 81) can have up to 550 elected members (up to 530 from states and
+          20 from union territories) and now has 543, elected directly by first-past-the-post in
+          single-member constituencies; nomination of two Anglo-Indians ended in 2020 (104th
+          Amendment). Its term is five years (Article 83), extendable a year at a time only during a
+          national emergency; seats per state stay frozen on the 1971 census until the first census
+          after 2026, Uttar Pradesh having the most (80). Only the Lok Sabha can introduce money
+          bills, vote demands for grants, pass a no-confidence motion against the Council of
+          Ministers (collectively responsible to it, Article 75(3)) and end a national emergency;
+          quorum is one-tenth of members, and the first Lok Sabha was constituted in 1952.
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [parliament-structure-membership]
+        patterns:
+          - key: lok-sabha-numbers
+            title: Strength, term and seat allocation
+            example_stem: "What is the maximum strength of the Lok Sabha as provided in the Constitution after the 104th Amendment?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: lok-sabha-exclusive
+            title: Powers exclusive to the Lok Sabha
+            example_stem: "A no-confidence motion against the Council of Ministers can be moved in which House?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: leader-of-opposition
+            title: Leader of Opposition
+            description: "Recognised by statute in 1977; by convention the leader of the largest opposition party holding at least one-tenth of the seats."
+            example_stem: "In which year was the post of Leader of Opposition in Parliament given statutory recognition?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 12
+
+      - slug: rajya-sabha-composition-powers
+        title: "Rajya Sabha: composition, term and special powers"
+        summary: >-
+          The Rajya Sabha (Article 80) can have up to 250 members (238 representatives of states and
+          union territories plus 12 nominated by the President for literature, science, art and
+          social service, an idea from Ireland) and now has 245. It is a permanent House, never
+          dissolved: one-third of members retire every second year and each serves six years;
+          members are elected by the elected MLAs by proportional representation through the single
+          transferable vote, with seats allotted by the Fourth Schedule (Uttar Pradesh has the most,
+          31). The Vice-President is its ex officio Chairman; its special powers are resolutions,
+          by two-thirds of members present and voting, letting Parliament legislate on a State List
+          subject (Article 249) or create new All India Services (Article 312), and a resolution to
+          remove the Vice-President can start only in it.
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [parliament-structure-membership]
+        patterns:
+          - key: rajya-sabha-numbers
+            title: Strength, nominated members and term
+            example_stem: "How many members can the President nominate to the Rajya Sabha?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: rajya-sabha-special
+            title: Special powers of the Rajya Sabha
+            example_stem: "Which House can authorise Parliament to create a new All India Service?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 12
+        shortcuts:
+          - key: two-fifties
+            title: 250 and 550, 12 and 2
+            kind: memory
+            rule: "Rajya Sabha maximum 250 with 12 nominated; Lok Sabha maximum 550 (552 before the 2020 end of the two Anglo-Indian nominations). Present strengths: 245 and 543."
+            example: {problem: "Maximum strength of the Rajya Sabha?", shortcut: "Small House, small number: 250", seconds_saved: 5}
+            pattern: rajya-sabha-numbers
+
+  - key: presiding-officers
+    title: Speaker and Chairman
+    concepts:
+      - slug: speaker-and-presiding-officers
+        title: Speaker, Deputy Speaker and Chairman of the Rajya Sabha
+        summary: >-
+          The Speaker is elected by the Lok Sabha from its members (Article 93), can be removed by a
+          resolution passed by a majority of all the then members after 14 days' notice (Article
+          94), stays in office after dissolution until the new House first meets, and resigns to
+          the Deputy Speaker. The Speaker has only a casting vote in a tie (Article 100), certifies
+          money bills with final authority (Article 110), presides over joint sittings (Article
+          108) and decides defection cases; a pro tem Speaker appointed by the President swears in
+          new members. The Vice-President is ex officio Chairman of the Rajya Sabha and the Deputy
+          Chairman is elected by it; G.V. Mavalankar was the first Speaker and Meira Kumar (2009)
+          the first woman Speaker.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [lok-sabha-composition-powers]
+        patterns:
+          - key: speaker-powers
+            title: Powers and role of the Speaker
+            example_stem: "Who decides whether a bill is a money bill?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: speaker-election-removal
+            title: Election, resignation and removal
+            example_stem: "To whom does the Speaker of the Lok Sabha address his or her resignation?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: resign-to-the-deputy
+            title: Presiding officers resign to each other
+            kind: memory
+            rule: "Speaker ↔ Deputy Speaker resign to each other; the Deputy Chairman resigns to the Chairman; the Chairman (Vice-President) resigns to the President."
+            example: {problem: "Deputy Speaker resigns to?", shortcut: "Pair rule → the Speaker", seconds_saved: 5}
+            pattern: speaker-election-removal
+
+  - key: proceedings
+    title: Sessions and motions
+    concepts:
+      - slug: parliament-sessions-lapse-of-bills
+        title: Sessions, prorogation, dissolution and lapse of bills
+        summary: >-
+          The President summons and prorogues the Houses and can dissolve the Lok Sabha; the gap
+          between two sessions cannot exceed six months (Article 85), so Parliament meets at least
+          twice a year, conventionally in the Budget, Monsoon and Winter sessions. Adjournment (by
+          the presiding officer) suspends a sitting, adjournment sine die ends a sitting without a
+          next date, prorogation (by the President) ends a session and dissolution ends the Lok
+          Sabha. On dissolution, bills pending in the Lok Sabha and bills passed by it but pending in
+          the Rajya Sabha lapse; a bill pending in the Rajya Sabha not yet passed by the Lok Sabha, a
+          bill for which a joint sitting has been notified and a bill awaiting the President's assent
+          do not lapse.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [parliament-structure-membership]
+        patterns:
+          - key: session-terms
+            title: Sessions, adjournment and prorogation
+            example_stem: "What is the maximum gap allowed between two sessions of Parliament?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: lapse-of-bills
+            title: Which bills lapse on dissolution
+            example_stem: "Which of the following bills does NOT lapse on the dissolution of the Lok Sabha? (a) A bill pending in the Lok Sabha (b) A bill passed by the Lok Sabha and pending in the Rajya Sabha (c) A bill pending in the Rajya Sabha but not passed by the Lok Sabha (d) None of these"
+            frequency: medium
+            difficulty: hard
+            target_seconds: 20
+
+      - slug: question-hour-zero-hour
+        title: Question Hour and Zero Hour
+        summary: >-
+          In the Lok Sabha the first hour of every sitting is Question Hour: starred questions
+          (marked with an asterisk) get oral answers and allow supplementary questions, unstarred
+          questions get written answers with no supplementaries, and short-notice questions (asked
+          on less than ten days' notice) are answered orally. Zero Hour, an Indian innovation in
+          use since 1962 and not mentioned in the rules of procedure, follows Question Hour and lets
+          members raise urgent matters without prior notice.
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [parliament-sessions-lapse-of-bills]
+        patterns:
+          - key: question-types
+            title: Starred, unstarred and short-notice questions
+            example_stem: "Which type of question in Parliament requires an oral answer and allows supplementary questions?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: zero-hour
+            title: Zero Hour
+            example_stem: "Since which year has 'Zero Hour' been in use in the Indian Parliament?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: star-speaks
+            title: The star speaks
+            kind: memory
+            rule: "Starred = spoken (oral answer + supplementaries); unstarred = written; short notice = less than 10 days, oral."
+            example: {problem: "Unstarred question answer type?", shortcut: "No star → no speaking → written", seconds_saved: 5}
+            pattern: question-types
+
+      - slug: parliamentary-motions
+        title: Parliamentary motions
+        summary: >-
+          An adjournment motion (Lok Sabha only, supported by 50 members) sets aside normal business
+          to discuss a definite matter of urgent public importance and carries an element of
+          censure; a no-confidence motion (Rule 198, Lok Sabha only, 50 members, no reason needed)
+          is against the whole Council of Ministers, which must resign if it passes; a censure
+          motion must state its reasons and can target a minister or the government. Other devices:
+          the calling attention motion (an Indian innovation of 1954), the privilege motion against
+          a minister who misleads the House, the confidence motion moved by the government, the
+          motion of thanks on the President's address (its defeat means the government's defeat),
+          the closure motion to end a debate and the point of order.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [question-hour-zero-hour]
+        patterns:
+          - key: motion-identification
+            title: Which motion fits the description
+            example_stem: "Which motion is moved to draw the attention of the House to a definite matter of urgent public importance and needs the support of 50 members?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 15
+          - key: no-confidence-censure
+            title: No-confidence versus censure motion
+            example_stem: "Which of the following must state the reasons for its adoption in the Lok Sabha? (a) No-confidence motion (b) Censure motion (c) Motion of thanks (d) Closure motion"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+
+  - key: law-making
+    title: Law-making process
+    concepts:
+      - slug: bills-ordinary-law-making-joint-sitting
+        title: Types of bills, the ordinary bill procedure and joint sitting
+        summary: >-
+          Bills are ordinary, money (Article 110), financial (Article 117) or constitution amendment
+          (Article 368) bills, moved by ministers (government bills) or other members (private
+          members' bills). An ordinary bill can start in either House and passes three readings in
+          each; if the other House rejects it, disagrees on amendments or does not act for six
+          months, the President can summon a joint sitting (Article 108), presided over by the
+          Speaker and decided by a majority of members present and voting. There is no joint sitting
+          on money or constitution amendment bills; only three have been held: Dowry Prohibition
+          Bill (1961), Banking Service Commission (Repeal) Bill (1978) and Prevention of Terrorism
+          Bill (2002). The President may assent, withhold assent or return the bill once for
+          reconsideration (Article 111).
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [lok-sabha-composition-powers, rajya-sabha-composition-powers]
+        patterns:
+          - key: joint-sitting
+            title: Joint sitting facts
+            example_stem: "Who presides over a joint sitting of the two Houses of Parliament?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: bill-stages
+            title: Stages and deadlock of an ordinary bill
+            example_stem: "If the second House does not act on an ordinary bill, after how many months can the President summon a joint sitting?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 12
+        shortcuts:
+          - key: joint-sitting-decades
+            title: Three joint sittings, three decades
+            kind: memory
+            rule: "Dowry (1961), Banking Service Commission repeal (1978), Prevention of Terrorism (2002): one each in the 1960s, 1970s and 2000s."
+            example: {problem: "Which bill was passed at the 2002 joint sitting?", shortcut: "2000s → Prevention of Terrorism (POTA)", seconds_saved: 5}
+            pattern: joint-sitting
+
+      - slug: money-bill-financial-bills
+        title: "Money bill (Article 110) and financial bills (Article 117)"
+        summary: >-
+          A money bill (Article 110) deals only with taxes, government borrowing, the Consolidated
+          or Contingency Fund, appropriation and charged expenditure; the Speaker's certificate that
+          a bill is a money bill is final. It can be introduced only in the Lok Sabha on the
+          President's recommendation; the Rajya Sabha cannot reject or amend it, only recommend
+          changes within 14 days, which the Lok Sabha may reject; there is no joint sitting, and the
+          President may assent or withhold assent but cannot return it. Financial bills under
+          Article 117(1) also start only in the Lok Sabha on the President's recommendation but
+          otherwise follow the ordinary procedure, while Article 117(3) bills merely involve
+          spending from the Consolidated Fund and can start in either House.
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [bills-ordinary-law-making-joint-sitting]
+        patterns:
+          - key: money-bill-rules
+            title: Money bill procedure
+            example_stem: "Within how many days must the Rajya Sabha return a money bill to the Lok Sabha?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: money-vs-financial
+            title: Money bill versus financial bill
+            example_stem: "Which statement about a money bill is correct? (a) It can be introduced in the Rajya Sabha (b) The President can return it for reconsideration (c) The Rajya Sabha can only make recommendations on it (d) A joint sitting can be held on it"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: fourteen-days-no-return
+            title: "Money bill: Lok Sabha only, 14 days, no return"
+            kind: memory
+            rule: "Introduced only in the Lok Sabha, Rajya Sabha has 14 days and no veto, no joint sitting, the President cannot send it back, the Speaker's word is final."
+            example: {problem: "Can the President return a money bill?", shortcut: "Rule 'no return' → No (only assent or withhold)", seconds_saved: 5}
+            pattern: money-bill-rules
+
+  - key: committees
+    title: Parliamentary committees
+    concepts:
+      - slug: parliamentary-committees-financial
+        title: "Financial committees: Public Accounts, Estimates and Public Undertakings"
+        summary: >-
+          The Public Accounts Committee (first formed in 1921 under the 1919 Act) has 22 members (15
+          Lok Sabha, 7 Rajya Sabha) elected each year by proportional representation; it examines
+          the CAG's audit reports, ministers cannot be members, and its chairman, appointed by the
+          Speaker, has by convention come from the opposition since 1967. The Estimates Committee
+          (first in 1950 on John Mathai's recommendation) has 30 members, all from the Lok Sabha,
+          and suggests economies, hence the name 'continuous economy committee'. The Committee on
+          Public Undertakings (1964, on the Krishna Menon Committee's recommendation) has 22 members
+          (15 Lok Sabha, 7 Rajya Sabha) and examines public sector undertakings.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [lok-sabha-composition-powers, rajya-sabha-composition-powers]
+        patterns:
+          - key: committee-size
+            title: Size and composition of financial committees
+            example_stem: "The Estimates Committee consists of how many members, and from which House?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 12
+          - key: committee-function
+            title: Function and chairmanship
+            example_stem: "Which parliamentary committee examines the audit reports of the Comptroller and Auditor General?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: twenty-two-thirty-twenty-two
+            title: 22, 30, 22
+            kind: memory
+            rule: "PAC 22 (15 + 7), Estimates 30 (all Lok Sabha, no Rajya Sabha), Public Undertakings 22 (15 + 7)."
+            example: {problem: "Which financial committee has no Rajya Sabha member?", shortcut: "The odd one out of 22-30-22 → Estimates (30)", seconds_saved: 5}
+            pattern: committee-size
+
+      - slug: parliamentary-committees-standing-ad-hoc
+        title: Departmental standing committees and other committees
+        summary: >-
+          Standing committees are permanent and ad hoc committees end with their task (select and
+          joint committees on bills, Joint Parliamentary Committees for inquiries). The
+          departmentally related standing committees (started in 1993 with 17, expanded to 24 in
+          2004) have 31 members each (21 Lok Sabha, 10 Rajya Sabha), 16 under the Lok Sabha and 8
+          under the Rajya Sabha, and examine demands for grants and bills of ministries. Other
+          standing committees include the Business Advisory and Rules Committees (chaired by the
+          presiding officer) and the Committees on Petitions, Privileges, Government Assurances,
+          Subordinate Legislation and Ethics (Rajya Sabha 1997, Lok Sabha 2000).
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [parliamentary-committees-financial]
+        patterns:
+          - key: standing-committee-facts
+            title: Departmental standing committee facts
+            example_stem: "How many departmentally related standing committees does Parliament have?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 12
+          - key: standing-or-ad-hoc
+            title: Standing or ad hoc committee
+            example_stem: "Which of the following is an ad hoc committee? (a) Public Accounts Committee (b) Joint Parliamentary Committee on a scam (c) Committee on Petitions (d) Business Advisory Committee"
+            frequency: low
+            difficulty: medium
+            target_seconds: 12
+
+  - key: privileges
+    title: Parliamentary privileges
+    concepts:
+      - slug: parliamentary-privileges
+        title: Parliamentary privileges (Articles 105 and 194)
+        summary: >-
+          Article 105 (Parliament) and Article 194 (state legislatures) give members freedom of
+          speech in the House, immunity from court proceedings for anything said or any vote given
+          there, and freedom from arrest in civil cases during a session and 40 days before and
+          after it; each House can punish breach of privilege or contempt, exclude strangers,
+          control publication of its proceedings and make its own rules. Privileges also cover
+          others entitled to take part in proceedings, such as ministers and the Attorney General,
+          but not the President, and they have not been codified. In Sita Soren (2024) the Supreme
+          Court held that taking a bribe to vote or speak in the House is not protected.
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [parliament-structure-membership]
+        patterns:
+          - key: privilege-scope
+            title: Scope of privileges
+            example_stem: "Freedom from arrest of members of Parliament applies to which kind of cases, and for how many days before and after a session?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 12
+          - key: privilege-article
+            title: Article and holders of privileges
+            example_stem: "Which of the following does NOT enjoy parliamentary privileges? (a) Attorney General (b) Union ministers (c) President (d) Members of the Rajya Sabha"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 12

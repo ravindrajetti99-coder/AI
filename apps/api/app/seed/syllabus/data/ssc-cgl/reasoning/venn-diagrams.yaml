@@ -1,0 +1,168 @@
+key: venn-diagrams
+title: Venn diagrams
+strategies:
+  - key: approach
+    title: "Venn diagrams: decide each pair, then the picture"
+    summary: >-
+      Venn questions either ask for the diagram that shows how classes relate, ask which region
+      of a given figure fits a description, or ask for counts in overlapping groups. Decide the
+      relation of each pair of classes, or fill counts from the centre outwards.
+    seconds_per_question: 30
+    accuracy_target: 0.95
+    tactics:
+      - "For three classes, decide each of the three pairs (inside, overlapping, separate) before looking at the diagrams."
+      - "For region questions, turn the description into in/out for every shape."
+      - "For counting, start with the region common to all sets and work outwards."
+    avoid:
+      - "Drawing two classes as overlapping when one is wholly inside the other (Delhi and India)."
+
+topics:
+  - key: relationships
+    title: Venn diagram of class relationships
+    concepts:
+      - slug: venn-class-relationships
+        title: Venn diagram that represents the relationship
+        summary: >-
+          Choose the diagram that shows how two or three classes relate: one inside another
+          (Delhi, India, Asia), overlapping (doctors, women, singers) or separate (pens and
+          pencils inside stationery). Decide the relation of each pair before looking at the figures.
+        difficulty: easy
+        weight: 1.5
+        patterns:
+          - key: three-classes
+            title: Diagram for three classes
+            example_stem: "Select the Venn diagram that best illustrates the relationship between the following classes: Mothers, Women, Doctors"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: separate-inside
+            title: Separate classes inside a larger class
+            example_stem: "Select the Venn diagram that best represents the relationship between: Pens, Pencils, Stationery"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: pairwise
+            title: Decide the three pairs separately
+            kind: elimination
+            rule: "Write the relation of each pair (A–B, B–C, A–C) as inside, overlapping or separate; only one diagram matches all three."
+            example: {problem: "Mothers, Women, Doctors", standard: "Compare the whole picture with each option", shortcut: "Mothers inside Women; Doctors overlap both → a circle inside a second circle, with a third circle cutting both", seconds_saved: 10}
+            pattern: three-classes
+
+      - slug: venn-region-reading
+        title: Reading regions of a Venn diagram
+        summary: >-
+          A figure of overlapping shapes (circle, triangle, rectangle) stands for classes, with
+          letters or numbers in each region; find the region for a description such as
+          'teachers who are women but not singers'. Inside a shape means the class holds, outside
+          means it does not.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [venn-class-relationships]
+        patterns:
+          - key: region-for-description
+            title: Region that matches a description
+            example_stem: "In the given figure, the circle represents teachers, the triangle represents women and the rectangle represents singers. Which number represents women teachers who are not singers?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: region-count
+            title: Count of people in a described region
+            example_stem: "In the given figure, the numbers show how many people are in each region. How many people are singers but neither teachers nor women?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: in-out-checklist
+            title: In/out checklist
+            kind: shortcut
+            rule: "Translate the description into in or out for every shape (teacher: in, woman: in, singer: out) and pick the one region that satisfies all three."
+            example: {problem: "Women teachers who are not singers", shortcut: "Inside circle and triangle, outside rectangle → the single region of circle ∩ triangle that the rectangle does not cover", seconds_saved: 10}
+            pattern: region-for-description
+
+  - key: counting
+    title: Counting with Venn diagrams
+    concepts:
+      - slug: venn-two-set-counting
+        title: Counting with two sets
+        summary: >-
+          Numbers in two overlapping groups: n(A ∪ B) = n(A) + n(B) − n(A ∩ B) and 'neither' =
+          total − n(A ∪ B). SSC asks for the number in both, in only one, or in neither.
+        difficulty: medium
+        weight: 0.8
+        formulas:
+          - key: union
+            name: Union of two sets
+            expression: "n(A ∪ B) = n(A) + n(B) − n(A ∩ B);  neither = total − n(A ∪ B)"
+            example: {problem: "60 people: 35 like tea, 30 like coffee, 10 like neither. How many like both?", solution: "n(A ∪ B) = 50, so both = 35 + 30 − 50 = 15"}
+          - key: only-one
+            name: Exactly one of two
+            expression: "only one = n(A) + n(B) − 2 × n(A ∩ B)"
+            example: {problem: "30 play cricket, 25 football, 10 both", solution: "30 + 25 − 20 = 35 play only one"}
+          - key: overlap-bounds
+            name: Least and greatest overlap
+            expression: "least n(A ∩ B) = n(A) + n(B) − total (if positive, else 0);  greatest n(A ∩ B) = the smaller of n(A) and n(B)"
+            example: {problem: "100 people; 70 like tea, 60 like coffee. Least number who like both?", solution: "70 + 60 − 100 = 30"}
+        patterns:
+          - key: both-neither
+            title: Number in both or in neither
+            example_stem: "In a group of 60 people, 35 like tea, 30 like coffee and 10 like neither. How many like both tea and coffee?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+          - key: only-one
+            title: Number in exactly one group
+            example_stem: "In a class of 50 students, 30 play cricket and 25 play football, and 10 play both. How many students play only one of the two games?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 30
+        shortcuts:
+          - key: subtract-twice
+            title: Only one = sum − 2 × both
+            kind: shortcut
+            rule: "The overlap is counted in both totals, so subtract it twice to get the number in exactly one group."
+            example: {problem: "Cricket 30, football 25, both 10", standard: "Find 'only cricket' and 'only football' separately and add", shortcut: "30 + 25 − 2 × 10 = 35", seconds_saved: 10}
+            pattern: only-one
+
+      - slug: venn-three-set-counting
+        title: Counting with three sets
+        summary: >-
+          Three overlapping groups: fill the diagram from the centre outwards (all three, then
+          exactly two, then only one), or use n(A ∪ B ∪ C) = n(A) + n(B) + n(C) − n(A ∩ B) −
+          n(B ∩ C) − n(C ∩ A) + n(A ∩ B ∩ C).
+        difficulty: hard
+        weight: 0.6
+        prerequisites: [venn-two-set-counting]
+        formulas:
+          - key: union-three
+            name: Union of three sets
+            expression: "n(A ∪ B ∪ C) = n(A) + n(B) + n(C) − n(A ∩ B) − n(B ∩ C) − n(C ∩ A) + n(A ∩ B ∩ C)"
+            example: {problem: "40 read A, 35 read B, 30 read C; 15 read A and B, 12 B and C, 10 C and A; 5 read all three", solution: "105 − 37 + 5 = 73 read at least one"}
+          - key: exactly-two
+            name: Exactly two of three
+            expression: "exactly two = [n(A ∩ B) + n(B ∩ C) + n(C ∩ A)] − 3 × n(A ∩ B ∩ C)"
+            example: {problem: "Same data", solution: "37 − 15 = 22"}
+          - key: exactly-one
+            name: Exactly one of three
+            expression: "exactly one = [n(A) + n(B) + n(C)] − 2 × [n(A ∩ B) + n(B ∩ C) + n(C ∩ A)] + 3 × n(A ∩ B ∩ C)"
+            example: {problem: "Same data", solution: "105 − 74 + 15 = 46"}
+        patterns:
+          - key: three-set-union
+            title: People in at least one of three groups
+            example_stem: "In a survey, 40 people read newspaper A, 35 read B and 30 read C; 15 read A and B, 12 read B and C, 10 read C and A, and 5 read all three. How many read at least one newspaper?"
+            frequency: low
+            difficulty: hard
+            target_seconds: 60
+          - key: exactly-two-groups
+            title: People in exactly two groups
+            example_stem: "In the same survey, how many people read exactly two newspapers?"
+            frequency: low
+            difficulty: hard
+            target_seconds: 50
+        shortcuts:
+          - key: centre-out
+            title: Fill from the centre outwards
+            kind: alternative
+            rule: "Write the all-three number in the centre, subtract it from each pairwise number to get the 'exactly two' regions, then subtract from each single total to get the 'only' regions; add the regions you need."
+            example: {problem: "A 40, B 35, C 30; AB 15, BC 12, CA 10; all 5", standard: "Apply the union formula", shortcut: "Centre 5; only-pairs 10, 7, 5; only A 20, only B 13, only C 13 → total 73", seconds_saved: 15}
+            pattern: three-set-union

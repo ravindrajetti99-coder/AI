@@ -32,13 +32,13 @@ topics:
         patterns:
           - key: row-facing-north
             title: One row facing north
-            example_stem: "Seven friends A, B, C, D, E, F and G sit in a row facing north. C sits third to the right of A. D sits at one of the ends and is an immediate neighbour of A. B sits second to the left of F, and F is not an immediate neighbour of C. Who sits at the extreme right end?"
+            example_stem: "Seven friends A, B, C, D, E, F and G sit in a row facing north. C sits third to the right of A. D sits at one of the ends and is an immediate neighbour of A. B sits second to the left of F. G does not sit at an end. Who sits at the extreme right end?"
             frequency: high
             difficulty: medium
             target_seconds: 60
           - key: row-facing-south
             title: One row facing south
-            example_stem: "Six people P, Q, R, S, T and U sit in a row facing south. P sits at an extreme end. Q sits second to the left of P. R sits to the immediate right of T, who is not next to Q. Who sits to the immediate left of Q?"
+            example_stem: "Six people P, Q, R, S, T and U sit in a row facing south. P sits at an extreme end. Q sits second to the left of P. R sits to the immediate right of T, who is not next to Q. U sits at an extreme end. Who sits to the immediate left of Q?"
             frequency: medium
             difficulty: medium
             target_seconds: 60
@@ -63,13 +63,13 @@ topics:
         patterns:
           - key: facing-pair
             title: Who faces whom
-            example_stem: "Eight people sit in two parallel rows of four, facing each other: A, B, C and D face north and P, Q, R and S face south. B sits at an end of his row. The person facing B sits second to the right of R. Q faces D, who is not next to B. Who faces B?"
+            example_stem: "Eight people sit in two parallel rows of four, facing each other: A, B, C and D face north and P, Q, R and S face south. B sits at an end of his row. The person facing B sits second to the right of R. Q faces D, who is not next to B. S does not sit at an end of the row. Who faces B?"
             frequency: medium
             difficulty: hard
             target_seconds: 75
           - key: diagonal-position
             title: Diagonally opposite positions
-            example_stem: "In the same arrangement, who sits diagonally opposite S?"
+            example_stem: "In the same arrangement, who sits diagonally opposite P?"
             frequency: low
             difficulty: hard
             target_seconds: 45
@@ -99,13 +99,13 @@ topics:
         patterns:
           - key: facing-centre
             title: Circle with everyone facing the centre
-            example_stem: "Eight friends sit around a circular table facing the centre. A sits third to the left of B. C sits opposite A. D sits second to the right of C and next to E. Who sits second to the right of B?"
+            example_stem: "Eight friends sit around a circular table facing the centre. A sits third to the left of B. C sits opposite A. D sits second to the right of C, and E sits to the immediate right of D. Who sits between A and D?"
             frequency: high
             difficulty: medium
             target_seconds: 60
           - key: mixed-facing
             title: Some facing the centre, some facing outward
-            example_stem: "Six people sit around a circular table; some face the centre and some face outward. P faces the centre and sits second to the right of Q, who faces outward. Who sits to the immediate left of P?"
+            example_stem: "In a circular arrangement, P faces the centre and Q, who sits to the immediate right of P, faces away from the centre. On which side of Q does P sit?"
             frequency: low
             difficulty: hard
             target_seconds: 75
@@ -130,13 +130,13 @@ topics:
         patterns:
           - key: square-table
             title: Square table with corner and side seats
-            example_stem: "Eight people sit around a square table: four at the corners and four at the middles of the sides, all facing the centre. A sits at a corner. B sits second to the right of A. C sits opposite B. Who sits at the corner to the immediate left of C?"
+            example_stem: "Eight people sit around a square table: four at the corners and four at the middles of the sides, all facing the centre. A sits at a corner. B sits second to the right of A. C sits opposite B. Does C sit at a corner or at the middle of a side?"
             frequency: low
             difficulty: hard
             target_seconds: 75
           - key: corner-or-side
             title: Who sits at a corner
-            example_stem: "In the same arrangement, which of the following people sit at the middles of the sides?"
+            example_stem: "In the same arrangement, D sits to the immediate left of C. Does D sit at a corner or at the middle of a side?"
             frequency: low
             difficulty: medium
             target_seconds: 40
@@ -192,7 +192,7 @@ topics:
         patterns:
           - key: box-position
             title: Position of a box in the stack
-            example_stem: "Six boxes P, Q, R, S, T and U are stacked one above another. Two boxes are between P and S. Q is immediately above P. R is at the top, and T is not at the bottom. Which box is at the bottom?"
+            example_stem: "Six boxes P, Q, R, S, T and U are stacked one above another. Two boxes are between P and S, and S is below P. Q is immediately above P. R is at the top. U is immediately above S. Which box is at the bottom?"
             frequency: low
             difficulty: medium
             target_seconds: 60
@@ -207,7 +207,7 @@ topics:
             title: Draw both cases of a gap clue
             kind: shortcut
             rule: "A clue like 'two boxes between P and S' allows S above or below P; draw both stacks at once and strike one with the next clue."
-            example: {problem: "Two boxes between P and S; Q immediately above P; R at the top", shortcut: "Case S above P vs P above S: R at the top and Q above P leave only one case", seconds_saved: 20}
+            example: {problem: "Six boxes; two boxes between P and S; Q immediately above P; R at the top", shortcut: "Draw S three places above P and S three places below P side by side; with R fixed at the top and Q on P, only a few placements survive the next clue", seconds_saved: 20}
             pattern: box-position
 
   - key: scheduling
@@ -231,7 +231,7 @@ topics:
             target_seconds: 60
           - key: months
             title: Events in months of a year
-            example_stem: "Six friends have birthdays in six different months from January to June. M's birthday is in a month with 30 days. Two birthdays fall between M's and N's. Whose birthday is in March?"
+            example_stem: "Six friends have birthdays in six different months from January to June. M's birthday is in a month with 30 days. Two birthdays fall between M's and N's, and N was not born in January. Whose birthday is in March?"
             frequency: low
             difficulty: medium
             target_seconds: 60
@@ -257,13 +257,13 @@ topics:
         patterns:
           - key: grid-puzzle
             title: Match people with attributes
-            example_stem: "Four friends Anil, Bina, Chetan and Deepa each like a different fruit: apple, mango, banana or grapes. Anil does not like mango or grapes. Bina likes banana. Chetan does not like apple. Who likes mango, if Deepa does not?"
+            example_stem: "Four friends Anil, Bina, Chetan and Deepa each like a different fruit: apple, mango, banana or grapes. Anil does not like mango or grapes. Bina likes banana. Chetan does not like apple. Deepa does not like mango. Who likes mango?"
             frequency: medium
             difficulty: medium
             target_seconds: 60
           - key: combined-arrangement
             title: Arrangement combined with attributes
-            example_stem: "Five people sit in a row facing north, each with a different profession. The doctor sits at an end. The teacher sits next to the doctor. P, the engineer, sits in the middle. What is the profession of the person at the other end?"
+            example_stem: "Five people sit in a row facing north, each with a different profession: doctor, teacher, engineer, lawyer and clerk. The doctor sits at the left end and the teacher next to the doctor. The engineer sits in the middle. The lawyer does not sit at an end. What is the profession of the person at the right end?"
             frequency: low
             difficulty: hard
             target_seconds: 75

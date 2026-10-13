@@ -1,0 +1,609 @@
+key: speed-distance
+title: Speed, Time and Distance
+strategies:
+  - key: approach
+    title: "Speed and distance: ratios before equations"
+    summary: >-
+      Distance = speed × time drives the whole chapter: trains, boats, races and circular tracks
+      are the same formula with relative speed. Most questions fall to a speed-time ratio or a
+      relative-speed step without any equation.
+    seconds_per_question: 40
+    accuracy_target: 0.9
+    tactics:
+      - "Convert units first (km/h × 5/18 = m/s) and know 18 km/h = 5 m/s, 36 = 10, 54 = 15, 72 = 20, 90 = 25."
+      - "At a fixed distance use the inverse ratio of speeds and times; usual-speed and late/early questions rarely need an equation."
+      - "Use relative speed for anything moving towards, away from or past something else: trains, chases, boats and circular tracks."
+      - "Average speed is total distance over total time; for two equal distances use 2xy/(x + y)."
+    avoid:
+      - "Taking the plain mean of two speeds over equal distances."
+      - "Forgetting the train's own length when it crosses a platform, a bridge or another train."
+
+topics:
+  - key: basics
+    title: Basic formula
+    concepts:
+      - slug: speed-time-distance-basics
+        title: "Basic formula: distance = speed × time"
+        summary: "Distance = speed × time, with matching units. Convert km/h to m/s by multiplying by 5/18 and m/s to km/h by 18/5 (1 m/s = 3.6 km/h), and minutes to hours by dividing by 60. SSC asks direct calculations, unit conversions, and journeys covered partly at one speed and partly at another."
+        difficulty: easy
+        weight: 1.3
+        formulas:
+          - key: dst
+            name: Distance, speed and time
+            expression: "D = S × T;  S = D/T;  T = D/S"
+            example: {problem: "A car covers 210 km in 3½ hours. Find its speed.", solution: "210/3.5 = 60 km/h"}
+          - key: kmph-mps
+            name: km/h ↔ m/s conversion
+            expression: "x km/h = x × 5/18 m/s;  y m/s = y × 18/5 km/h"
+            example: {problem: "Convert 72 km/h to m/s and 15 m/s to km/h.", solution: "72 × 5/18 = 20 m/s; 15 × 18/5 = 54 km/h"}
+          - key: minutes-hours
+            name: Time units
+            expression: "t minutes = t/60 hours;  t seconds = t/3600 hours"
+        patterns:
+          - key: direct-dst
+            title: Find speed, time or distance
+            example_stem: "A cyclist covers 18 km in 45 minutes. Find his speed in km/h."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: km-h-m-s
+            title: km/h ↔ m/s conversion
+            example_stem: "A runner covers 400 m in 50 seconds. What is his speed in km/h?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: two-part-journey
+            title: A journey in two parts at different speeds
+            example_stem: "A man travels 120 km, partly by car at 50 km/h and the rest by bus at 30 km/h. If the whole journey takes 3 hours, how far did he travel by car?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: five-eighteenths
+            title: Multiply by 5/18 or 18/5
+            kind: memory
+            rule: "km/h → m/s: × 5/18 (the number gets smaller); m/s → km/h: × 18/5 = × 3.6. Remember 18 km/h = 5 m/s, 36 = 10, 54 = 15, 72 = 20, 90 = 25, 108 = 30."
+            example: {problem: "8 m/s in km/h", standard: "8 × 3,600/1,000", shortcut: "8 × 3.6 = 28.8 km/h", seconds_saved: 10}
+            pattern: km-h-m-s
+          - key: alligate-times
+            title: Alligate the two speeds for the times
+            kind: alternative
+            rule: "For a two-part journey with the total time known, find the average speed (total distance ÷ total time) and alligate the two speeds around it: the result is the ratio of the times spent at each speed."
+            example: {problem: "120 km in 3 hours, at 50 and 30 km/h", standard: "x/50 + (120 − x)/30 = 3", shortcut: "Average 40: times (40 − 30) : (50 − 40) = 1 : 1, so 1.5 hours by car = 75 km", seconds_saved: 20}
+            pattern: two-part-journey
+
+      - slug: speed-time-proportionality
+        title: "Proportionality: time inversely proportional to speed"
+        summary: "For a fixed distance, time is inversely proportional to speed (S₁ : S₂ = T₂ : T₁); for a fixed time, distance is proportional to speed; at a fixed speed, distance is proportional to time. Questions like 'at 3/4 of his usual speed he is 20 minutes late' are solved with these ratios, without equations."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [speed-time-distance-basics, inverse-proportion]
+        formulas:
+          - key: inverse
+            name: Speed and time at a fixed distance
+            expression: "D constant  ⇒  S₁/S₂ = T₂/T₁"
+            example: {problem: "Speeds are in the ratio 3 : 4 over the same distance.", solution: "Times are in the ratio 4 : 3"}
+          - key: fraction-of-usual
+            name: Fraction of the usual speed
+            expression: "at a/b of the usual speed the time is b/a of the usual time; change in time = (b/a − 1) × usual time"
+            example: {problem: "At 3/4 of his usual speed a man is 20 minutes late.", solution: "Time becomes 4/3 of usual; 1/3 of usual = 20 min, so usual time = 60 min"}
+        patterns:
+          - key: usual-time
+            title: Usual time from a slower or faster speed
+            example_stem: "Walking at 4/5 of his usual speed, a man reaches his office 12 minutes late. What is his usual time to reach the office?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: speed-ratio-from-times
+            title: Ratio of speeds from times
+            example_stem: "Two cars cover the same distance in 4 hours and 5 hours. Find the ratio of their speeds."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: time-saved
+            title: Time saved by a speed increase
+            example_stem: "By increasing his speed by 25%, a man saves 16 minutes on a journey. Find his usual time."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: flip-fraction
+            title: Flip the speed fraction
+            kind: shortcut
+            rule: "New speed = a/b × usual ⇒ new time = b/a × usual; the difference (b − a)/a of the usual time equals the delay or saving given."
+            example: {problem: "4/5 of the usual speed, 12 minutes late", standard: "Let usual speed S and time T; solve D/(0.8S) − D/S = 12", shortcut: "Time 5/4 of usual; 1/4 of usual = 12, so usual = 48 minutes", seconds_saved: 20}
+            pattern: usual-time
+
+      - slug: late-early-arrival
+        title: Late and early arrival problems
+        summary: "A traveller is late at one speed and early at another; the distance is fixed, so D = S₁S₂ × (difference in times)/(S₂ − S₁), where the time difference is late + early (or the difference of two late times), in hours. Variants ask for the distance, the correct time or the speed needed to arrive on time."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [speed-time-proportionality]
+        formulas:
+          - key: late-early
+            name: Distance from late and early arrivals
+            expression: "D = S₁ × S₂ × ΔT/(S₂ − S₁)"
+            variables:
+              - {symbol: "S₁ < S₂", meaning: "the slower and faster speeds"}
+              - {symbol: "ΔT", meaning: "late + early time (or difference of two late times), in hours"}
+            example: {problem: "At 4 km/h a man is 10 minutes late; at 5 km/h he is 5 minutes early.", solution: "ΔT = 15 min = 1/4 h; D = 4 × 5 × (1/4)/1 = 5 km"}
+          - key: on-time
+            name: Correct time and on-time speed
+            expression: "correct time = D/S₁ − late time;  speed to be on time = D/(correct time)"
+            example: {problem: "D = 5 km, 4 km/h makes him 10 minutes late.", solution: "5/4 h = 75 min; correct time = 65 min"}
+        patterns:
+          - key: find-distance
+            title: Distance from late and early arrivals
+            example_stem: "A student walking at 5 km/h reaches school 6 minutes late. Walking at 6 km/h, he reaches 4 minutes early. How far is the school from his home?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 30
+          - key: speed-for-on-time
+            title: Speed needed to arrive on time
+            example_stem: "A man reaches his destination 10 minutes late at 30 km/h and 5 minutes early at 40 km/h. At what speed should he travel to arrive exactly on time?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 40
+          - key: both-late
+            title: Late by different amounts at two speeds
+            example_stem: "At 40 km/h a bus reaches its destination 30 minutes late; at 50 km/h it is only 6 minutes late. Find the distance."
+            frequency: low
+            difficulty: easy
+            target_seconds: 30
+        shortcuts:
+          - key: product-formula
+            title: "D = S₁S₂ΔT/(S₂ − S₁)"
+            kind: shortcut
+            rule: "Multiply the two speeds, multiply by the total time gap in hours and divide by the difference of the speeds: add late and early times, subtract two late times."
+            example: {problem: "5 km/h 6 minutes late, 6 km/h 4 minutes early", standard: "D/5 − D/6 = 10/60", shortcut: "5 × 6 × (1/6)/1 = 5 km", seconds_saved: 20}
+            pattern: find-distance
+
+  - key: average-speed
+    title: Average speed
+    concepts:
+      - slug: average-speed
+        title: "Average speed: total distance over total time"
+        summary: "Average speed = total distance ÷ total time; it equals the plain mean of the speeds only when equal times are spent at each. For two equal distances at x and y it is 2xy/(x + y); for three equal distances 3xyz/(xy + yz + zx). Stoppages lower the average: stoppage time per hour = (speed difference ÷ speed without stoppages) × 60 minutes."
+        difficulty: medium
+        weight: 1.5
+        prerequisites: [speed-time-distance-basics, average-basics]
+        formulas:
+          - key: total-over-total
+            name: Average speed
+            expression: "average speed = total distance/total time"
+            example: {problem: "A man must cover 120 km in 3 hours and covers the first 80 km at 32 km/h. Find the speed needed for the rest.", solution: "80 km take 2.5 h; 40 km in 0.5 h needs 80 km/h"}
+          - key: equal-distances
+            name: Two equal distances
+            expression: "average speed = 2xy/(x + y)"
+            example: {problem: "Equal distances at 40 km/h and 60 km/h.", solution: "2 × 40 × 60/100 = 48 km/h"}
+          - key: three-equal
+            name: Three equal distances
+            expression: "average speed = 3xyz/(xy + yz + zx)"
+            example: {problem: "Three equal parts at 20, 30 and 60 km/h.", solution: "3 × 36,000/(600 + 1,800 + 1,200) = 108,000/3,600 = 30 km/h"}
+          - key: stoppage
+            name: Stoppage time per hour
+            expression: "stoppage time per hour = (S_without − S_with)/S_without × 60 minutes"
+            example: {problem: "60 km/h without stoppages, 45 km/h with them.", solution: "15/60 × 60 = 15 minutes per hour"}
+        patterns:
+          - key: equal-distance
+            title: Round trip or equal distances at two speeds
+            example_stem: "A man drives from A to B at 36 km/h and returns at 54 km/h. Find his average speed for the whole journey."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: unequal-parts
+            title: Different distances at different speeds
+            example_stem: "A car covers 150 km at 50 km/h and the next 160 km at 80 km/h. Find its average speed for the whole distance."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: stoppages
+            title: Stoppage time per hour
+            example_stem: "Without stoppages a bus runs at 54 km/h; with stoppages its average speed is 45 km/h. For how many minutes per hour does the bus stop?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: harmonic-two
+            title: "2xy/(x + y) for equal distances"
+            kind: shortcut
+            rule: "Equal distances: average = 2xy/(x + y), always less than the plain mean; equal times: the plain mean (x + y)/2."
+            example: {problem: "36 km/h out and 54 km/h back", standard: "Assume 108 km each way: 3 h + 2 h, so 216/5", shortcut: "2 × 36 × 54/90 = 43.2 km/h", seconds_saved: 15}
+            pattern: equal-distance
+            pitfalls: ["Answering (36 + 54)/2 = 45, which is the average only for equal times."]
+          - key: lcm-distance
+            title: Assume the distance as the LCM of the speeds
+            kind: alternative
+            rule: "For three or more equal parts, let each part be the LCM of the speeds; the times are then whole numbers."
+            example: {problem: "Three equal parts at 20, 30 and 60 km/h", shortcut: "Each part 60 km: 3 + 2 + 1 = 6 h for 180 km, so 30 km/h", seconds_saved: 20}
+            pattern: equal-distance
+
+  - key: relative
+    title: Relative speed
+    concepts:
+      - slug: relative-speed
+        title: "Relative speed: same and opposite directions"
+        summary: "Two bodies moving towards each other (or apart) change the gap at S₁ + S₂; moving in the same direction, the faster gains at S₁ − S₂. Time to meet or to catch up = gap ÷ relative speed. The same idea underlies trains, boats, escalators and circular tracks."
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [speed-time-distance-basics]
+        formulas:
+          - key: opposite
+            name: Opposite directions
+            expression: "relative speed = S₁ + S₂"
+            example: {problem: "Two towns are 180 km apart; cars leave both at 40 and 50 km/h towards each other.", solution: "180/90 = 2 hours to meet"}
+          - key: same
+            name: Same direction
+            expression: "relative speed = |S₁ − S₂|"
+          - key: time-to-meet
+            name: Time to meet or catch up
+            expression: "time = gap/relative speed"
+        patterns:
+          - key: towards-each-other
+            title: Moving towards each other
+            example_stem: "Two cyclists start at the same time from towns 72 km apart and ride towards each other at 14 km/h and 10 km/h. After how long do they meet?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: chase
+            title: One chases another (police and thief)
+            example_stem: "A thief is running at 8 km/h. A policeman 150 m behind him starts chasing him at 10 km/h. How far will the thief have run when he is caught?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: escalator
+            title: Escalators and moving walkways
+            example_stem: "A moving walkway 60 m long moves at 1 m/s. A man walks at 1.5 m/s. How long does he take to cover its length walking with it, and walking against it?"
+            frequency: rare
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: gap-closure
+            title: Think in terms of the gap
+            kind: shortcut
+            rule: "Ignore the ground: the chaser closes the gap at the relative speed; the distance the escaper runs = his own speed × the catch-up time."
+            example: {problem: "Thief 8 km/h, policeman 10 km/h, 150 m behind", standard: "Equate positions: 10t = 0.15 + 8t", shortcut: "Gap 0.15 km at 2 km/h = 0.075 h; thief runs 8 × 0.075 = 0.6 km = 600 m", seconds_saved: 20}
+            pattern: chase
+
+      - slug: meeting-and-overtaking
+        title: Meeting and overtaking problems
+        summary: "Meeting questions fix where and when two travellers meet. Starting together from opposite ends, they cover distances in the ratio of their speeds; with a later start, the first traveller's head start is closed at the relative speed. If after meeting they take a and b hours to reach their destinations, their speeds are in the ratio √b : √a and they met √(ab) hours after starting."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [relative-speed]
+        formulas:
+          - key: meeting-point
+            name: Meeting from opposite ends
+            expression: "meet after D/(S₁ + S₂); distances covered are in the ratio S₁ : S₂"
+          - key: head-start
+            name: Overtaking after a later start
+            expression: "second starts t hours later in the same direction: catch-up time = S₁t/(S₂ − S₁) after the second starts"
+            example: {problem: "A thief leaves at 10 a.m. at 40 km/h; a policeman follows from the same place at 11 a.m. at 50 km/h.", solution: "Head start 40 km at 10 km/h = 4 h, so he is caught at 3 p.m."}
+          - key: after-meeting
+            name: Times after meeting
+            expression: "S₁ : S₂ = √b : √a, where a and b are the times taken after meeting by the first and second traveller"
+            example: {problem: "After meeting, A takes 9 hours and B takes 4 hours to finish.", solution: "S_A : S_B = √4 : √9 = 2 : 3; they met √36 = 6 hours after starting"}
+        patterns:
+          - key: one-covers-more
+            title: Meeting from two ends when one covers more
+            example_stem: "Two trains start at the same time from stations P and Q and travel towards each other at 45 km/h and 60 km/h. When they meet, one has travelled 90 km more than the other. Find the distance PQ."
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: later-start-overtake
+            title: Overtaking after a later start
+            example_stem: "A bus leaves a depot at 8 a.m. at 40 km/h. A car leaves the same depot at 9:30 a.m. on the same road at 64 km/h. At what time does the car overtake the bus?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: after-meeting-times
+            title: Speed ratio from the times after meeting
+            example_stem: "Two persons start at the same time from A and B towards each other. After meeting, they take 16 hours and 25 hours respectively to reach their destinations. Find the ratio of their speeds."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+        shortcuts:
+          - key: root-ratio
+            title: Square-root rule after meeting
+            kind: shortcut
+            rule: "Speed of the first : speed of the second = √(time the second takes after meeting) : √(time the first takes after meeting)."
+            example: {problem: "After meeting, 16 hours and 25 hours", standard: "Set up S₁ × 16 = S₂ × t and S₂ × 25 = S₁ × t and divide", shortcut: "√25 : √16 = 5 : 4", seconds_saved: 30}
+            pattern: after-meeting-times
+          - key: extra-over-difference
+            title: Extra distance ÷ speed difference = meeting time
+            kind: shortcut
+            rule: "Starting together from opposite ends, one gains (S₂ − S₁) km every hour on the other; extra distance ÷ (S₂ − S₁) is the meeting time, and the distance = (S₁ + S₂) × that time."
+            example: {problem: "45 and 60 km/h; one travels 90 km more", shortcut: "90/15 = 6 h; PQ = 105 × 6 = 630 km", seconds_saved: 20}
+            pattern: one-covers-more
+
+  - key: trains
+    title: Train problems
+    concepts:
+      - slug: train-crossing-pole-platform
+        title: Trains crossing a pole, a person or a platform
+        summary: "A train passing a pole, a signal post or a standing person covers its own length; passing a platform, a bridge or a tunnel it covers its own length plus that length. A moving person is passed at the relative speed. Convert km/h to m/s before using lengths in metres."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [speed-time-distance-basics, relative-speed]
+        formulas:
+          - key: pole
+            name: Crossing a pole or a standing person
+            expression: "time = L/S"
+            example: {problem: "A 300 m train runs at 54 km/h (15 m/s).", solution: "It passes a pole in 300/15 = 20 s"}
+          - key: platform
+            name: Crossing a platform, bridge or tunnel
+            expression: "time = (L + P)/S"
+            example: {problem: "The same train crosses a 150 m platform.", solution: "(300 + 150)/15 = 30 s"}
+          - key: moving-person
+            name: Passing a moving person
+            expression: "time = L/(S − v) in the same direction;  L/(S + v) in opposite directions"
+            example: {problem: "A 150 m train at 64 km/h passes a man walking at 4 km/h in the same direction.", solution: "60 km/h = 50/3 m/s; 150 × 3/50 = 9 s"}
+        patterns:
+          - key: pole-or-platform
+            title: Time to pass a pole or a platform
+            example_stem: "A train 240 m long passes a signal post in 16 seconds. How long will it take to cross a platform 360 m long?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: length-from-two-crossings
+            title: Length and speed from two crossing times
+            example_stem: "A train crosses a 200 m platform in 20 seconds and a man standing on the platform in 12 seconds. Find the length of the train."
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: moving-man
+            title: Passing a man moving in the same or opposite direction
+            example_stem: "A 180 m long train running at 51 km/h passes a man running at 3 km/h in the opposite direction. How long does it take to pass him?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+        shortcuts:
+          - key: extra-length-over-extra-time
+            title: Extra length ÷ extra time = speed
+            kind: shortcut
+            rule: "If a train passes objects of lengths P₁ and P₂ in t₁ and t₂ seconds, its speed = (P₂ − P₁)/(t₂ − t₁); a pole or a man has length 0."
+            example: {problem: "200 m platform in 20 s, a man in 12 s", standard: "Solve L/12 = (L + 200)/20", shortcut: "200 m in 8 s = 25 m/s; length = 25 × 12 = 300 m", seconds_saved: 20}
+            pattern: length-from-two-crossings
+
+      - slug: trains-crossing-each-other
+        title: Two trains crossing each other
+        summary: "Two trains passing each other cover the sum of their lengths at their relative speed: S₁ + S₂ in opposite directions and S₁ − S₂ in the same direction. Questions give the lengths and speeds, or the crossing time, and ask for the time, a length or a speed."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [train-crossing-pole-platform]
+        formulas:
+          - key: crossing
+            name: Time for two trains to cross
+            expression: "time = (L₁ + L₂)/(S₁ + S₂) in opposite directions;  (L₁ + L₂)/(S₁ − S₂) in the same direction"
+            example: {problem: "Trains of 200 m and 160 m run at 50 and 40 km/h.", solution: "Opposite: 360/25 = 14.4 s; same direction: 360/(25/9) = 129.6 s"}
+          - key: two-times
+            name: Speed ratio from the two crossing times
+            expression: "opposite crossing in t₁ and same-direction crossing in t₂  ⇒  (S₁ + S₂)/(S₁ − S₂) = t₂/t₁"
+            example: {problem: "Two trains cross in 10 s in opposite directions and in 30 s in the same direction.", solution: "(S₁ + S₂)/(S₁ − S₂) = 3, so S₁ : S₂ = 2 : 1"}
+        patterns:
+          - key: opposite-directions
+            title: Trains in opposite directions
+            example_stem: "Two trains 140 m and 160 m long run at 60 km/h and 48 km/h in opposite directions on parallel tracks. How long do they take to cross each other?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: same-direction
+            title: A train overtaking another
+            example_stem: "A 150 m long train running at 68 km/h overtakes a 100 m long train running at 50 km/h in the same direction. How long does it take to pass it completely?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: length-or-speed
+            title: Length or speed from the crossing time
+            example_stem: "Two trains of equal length running in opposite directions at 46 km/h and 26 km/h cross each other in 12 seconds. Find the length of each train."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: combine-then-convert
+            title: Combine the speeds before converting
+            kind: shortcut
+            rule: "Add or subtract the speeds in km/h first, then convert once to m/s (× 5/18); multiples of 18 km/h convert to whole numbers."
+            example: {problem: "60 and 48 km/h in opposite directions, 300 m in all", standard: "Convert 60 and 48 separately to 16.67 and 13.33 m/s", shortcut: "108 km/h = 30 m/s; 300/30 = 10 s", seconds_saved: 10}
+            pattern: opposite-directions
+
+  - key: boats
+    title: Boats and streams
+    concepts:
+      - slug: boats-and-streams
+        title: "Boats and streams: upstream and downstream speed"
+        summary: "With the boat's speed u in still water and the stream's speed v: downstream speed = u + v and upstream speed = u − v. So u = (downstream + upstream)/2 and v = (downstream − upstream)/2. SSC gives distances and times up and down and asks for u or v."
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [relative-speed]
+        formulas:
+          - key: down-up
+            name: Downstream and upstream speeds
+            expression: "downstream = u + v;  upstream = u − v"
+            variables:
+              - {symbol: "u", meaning: "speed of the boat in still water"}
+              - {symbol: "v", meaning: "speed of the stream"}
+            example: {problem: "u = 12 km/h and v = 3 km/h.", solution: "Downstream 15 km/h, upstream 9 km/h"}
+          - key: still-water
+            name: Still-water and stream speeds
+            expression: "u = (downstream + upstream)/2;  v = (downstream − upstream)/2"
+            example: {problem: "Downstream 18 km/h and upstream 12 km/h.", solution: "u = 15 km/h, v = 3 km/h"}
+        patterns:
+          - key: speeds-from-distances
+            title: Boat or stream speed from distances and times
+            example_stem: "A boat goes 36 km downstream in 3 hours and 20 km upstream in 2 hours. Find the speed of the stream."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: time-up-down
+            title: Time to go downstream or upstream
+            example_stem: "The speed of a boat in still water is 15 km/h and the stream flows at 3 km/h. How long will the boat take to go 54 km downstream?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: equal-times
+            title: Different distances in the same time
+            example_stem: "A boat takes the same time to travel 30 km downstream as 18 km upstream. If the stream flows at 2 km/h, find the speed of the boat in still water."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: half-sum-half-difference
+            title: Half the sum, half the difference
+            kind: shortcut
+            rule: "u = (D + U)/2 and v = (D − U)/2; if only the ratio D : U = a : b is known, u : v = (a + b) : (a − b)."
+            example: {problem: "30 km down and 18 km up in equal times; v = 2", standard: "30/(u + 2) = 18/(u − 2)", shortcut: "D : U = 5 : 3, so u : v = 8 : 2 = 4 : 1 and u = 8 km/h", seconds_saved: 20}
+            pattern: equal-times
+
+      - slug: boats-and-streams-round-trip
+        title: "Boats and streams: round trips and time ratios"
+        summary: "For a round trip of d km each way, total time = d/(u + v) + d/(u − v) = 2du/(u² − v²), and the average speed of the round trip is (u² − v²)/u. If going upstream takes k times as long as going downstream, u : v = (k + 1) : (k − 1)."
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [boats-and-streams, average-speed]
+        formulas:
+          - key: round-trip-time
+            name: Time for a round trip
+            expression: "T = 2du/(u² − v²)"
+            example: {problem: "u = 10 km/h, v = 2 km/h, 24 km each way.", solution: "T = 2 × 24 × 10/96 = 5 hours (2 h down + 3 h up)"}
+          - key: time-ratio
+            name: Upstream takes k times as long
+            expression: "upstream time = k × downstream time  ⇒  u : v = (k + 1) : (k − 1)"
+            example: {problem: "Upstream takes twice as long as downstream.", solution: "u : v = 3 : 1"}
+          - key: round-average
+            name: Average speed of a round trip
+            expression: "average speed = (u² − v²)/u"
+        patterns:
+          - key: round-trip-distance
+            title: Distance from the round-trip time
+            example_stem: "A man rows at 9 km/h in still water. The river flows at 3 km/h and he takes 6 hours to row to a place and back. How far is the place?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: k-times-as-long
+            title: Upstream takes k times as long as downstream
+            example_stem: "A man takes three times as long to row a distance upstream as to row it downstream. If his speed in still water is 8 km/h, find the speed of the stream."
+            frequency: high
+            difficulty: easy
+            target_seconds: 25
+          - key: ratio-and-total-time
+            title: Ratio of distances and the total time
+            example_stem: "A boat goes 30 km upstream and back in 12½ hours. It can go 3 km downstream in the time it takes to go 2 km upstream. Find the speed of the stream."
+            frequency: medium
+            difficulty: hard
+            target_seconds: 45
+        shortcuts:
+          - key: k-rule
+            title: "(k + 1) : (k − 1)"
+            kind: shortcut
+            rule: "If upstream takes k times as long as downstream, still-water speed : stream speed = (k + 1) : (k − 1)."
+            example: {problem: "Three times as long upstream; u = 8 km/h", standard: "(8 + v) = 3(8 − v), so 4v = 16", shortcut: "u : v = 4 : 2 = 2 : 1, so v = 4 km/h", seconds_saved: 15}
+            pattern: k-times-as-long
+
+  - key: races
+    title: Race problems
+    concepts:
+      - slug: races-start-and-beat
+        title: "Race problems: start, beat and dead heat"
+        summary: "'A beats B by x m in an L m race' means that when A finishes L, B has run L − x, so their speeds are in the ratio L : (L − x). 'Beats by t seconds' means B needs t more seconds; if both are given, B runs x m in t seconds. A start of x m lets B begin x m ahead, and a dead heat means both finish together."
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [speed-time-proportionality]
+        formulas:
+          - key: beat-distance
+            name: Beat by a distance
+            expression: "A beats B by x m in an L m race  ⇒  S_A : S_B = L : (L − x)"
+          - key: beat-both
+            name: Beat by a distance or a time
+            expression: "beats by x m or t s  ⇒  S_B = x/t;  B's time = L/S_B;  A's time = B's time − t"
+            example: {problem: "In a 1 km race A beats B by 50 m or 10 seconds.", solution: "S_B = 5 m/s, B takes 200 s, A takes 190 s"}
+          - key: chain
+            name: Three runners
+            expression: "A beats B by x and B beats C by y in L m races  ⇒  when A runs L, C runs (L − x)(L − y)/L"
+            example: {problem: "100 m races: A beats B by 20 m and B beats C by 25 m.", solution: "C runs 80 × 75/100 = 60 m, so A beats C by 40 m"}
+          - key: dead-heat
+            name: Start for a dead heat
+            expression: "speeds a : b (a > b) over L m  ⇒  start to give = L(a − b)/a"
+            example: {problem: "Speeds 5 : 4 in a 400 m race.", solution: "Start = 400 × 1/5 = 80 m"}
+        patterns:
+          - key: beat-by-distance-time
+            title: Beat by a distance or a time
+            example_stem: "In a 500 m race, A beats B by 25 m or 5 seconds. Find A's time for the race."
+            frequency: high
+            difficulty: medium
+            target_seconds: 30
+          - key: three-runners
+            title: Three runners in a chain
+            example_stem: "In a 200 m race A beats B by 20 m, and in a 200 m race B beats C by 30 m. By how many metres will A beat C in a 200 m race?"
+            frequency: high
+            difficulty: medium
+            target_seconds: 35
+          - key: dead-heat
+            title: Start or race length for a dead heat
+            example_stem: "A runs 1¾ times as fast as B. If A gives B a start of 60 m, how long should the race be so that both reach the winning post together?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+        shortcuts:
+          - key: multiply-fractions
+            title: Multiply the fractions completed
+            kind: shortcut
+            rule: "Turn each 'beats by' into the fraction of the race the loser completes, (L − x)/L, and multiply along the chain."
+            example: {problem: "A beats B by 20 m and B beats C by 30 m in 200 m", standard: "Find speeds of B and C relative to A and compare", shortcut: "9/10 × 17/20 = 153/200, so A beats C by 47 m", seconds_saved: 20}
+            pattern: three-runners
+          - key: start-rule
+            title: Start = race × (speed difference ÷ faster speed)
+            kind: shortcut
+            rule: "With speeds a : b, a dead heat needs a start of L(a − b)/a; reversed, the race length is start × a/(a − b)."
+            example: {problem: "Speeds 7 : 4 and a start of 60 m", shortcut: "L = 60 × 7/3 = 140 m", seconds_saved: 20}
+            pattern: dead-heat
+
+  - key: circular
+    title: Circular motion
+    concepts:
+      - slug: circular-track-meeting
+        title: "Circular motion: meeting on a circular track"
+        summary: "On a circular track of length L, two runners starting together from the same point first meet after L/(a + b) in opposite directions and L/(a − b) in the same direction. They are next together at the starting point after the LCM of their lap times. With speeds in the lowest ratio p : q, they meet at p + q distinct points (opposite directions) or |p − q| points (same direction)."
+        difficulty: medium
+        weight: 0.7
+        prerequisites: [relative-speed]
+        formulas:
+          - key: first-meeting
+            name: First meeting anywhere on the track
+            expression: "opposite directions: L/(a + b);  same direction: L/|a − b|"
+            example: {problem: "A 600 m track; runners at 5 m/s and 3 m/s.", solution: "Opposite: 600/8 = 75 s; same direction: 600/2 = 300 s"}
+          - key: at-start
+            name: Next meeting at the starting point
+            expression: "time = LCM of the lap times L/a, L/b, …"
+            example: {problem: "Lap times of 120 s and 200 s.", solution: "LCM = 600 s"}
+          - key: distinct-points
+            name: Number of distinct meeting points
+            expression: "speeds in lowest terms p : q  ⇒  p + q points (opposite directions), |p − q| points (same direction)"
+        patterns:
+          - key: first-meet
+            title: First meeting on a circular track
+            example_stem: "Two runners start together from the same point on a circular track of 1,200 m and run in opposite directions at 6 m/s and 4 m/s. After how long do they meet for the first time?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: meet-at-start
+            title: All together at the starting point again
+            example_stem: "A, B and C run around a circular track and complete one round in 24, 36 and 40 seconds respectively. They start together from the same point. After how much time will they all be together at the starting point again?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: distinct-meeting-points
+            title: Number of distinct meeting points
+            example_stem: "Two cyclists ride around a circular track in opposite directions at 18 km/h and 12 km/h, starting together from the same point. At how many distinct points on the track do they meet?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+            tiers: [tier2]
+        shortcuts:
+          - key: lap-gain
+            title: Count laps gained or covered together
+            kind: shortcut
+            rule: "Same direction: they meet each time the faster gains one full lap, every L/(a − b). Opposite directions: they meet each time they cover one lap together, every L/(a + b)."
+            example: {problem: "1,200 m track, 6 and 4 m/s, opposite directions", standard: "Equate 6t + 4t to the track length after setting up positions", shortcut: "Together 10 m/s; one lap of 1,200 m takes 120 s", seconds_saved: 15}
+            pattern: first-meet

@@ -1,0 +1,1744 @@
+key: geometry
+title: Geometry
+strategies:
+  - key: approach
+    title: "Geometry: standard results and a quick figure"
+    summary: >-
+      SSC geometry tests a small set of results on triangles, quadrilaterals and circles. Draw a
+      quick figure, mark the given values, and look for the standard result (centre-angle
+      formulas, tangent ⊥ radius, similar triangles, a Pythagorean triplet) before calculating.
+    seconds_per_question: 50
+    accuracy_target: 0.85
+    tactics:
+      - "Learn the angle formulas of the triangle centres (∠BIC = 90° + A/2, ∠BOC = 2A, ∠BHC = 180° − A) and the circle angle theorems; most angle questions are one step."
+      - "Mark equal tangents, equal radii and parallel lines on the figure; isosceles triangles formed by radii give most missing angles."
+      - "For lengths, look for similar triangles or a Pythagorean triplet (3-4-5, 5-12-13, 8-15-17, 7-24-25) before using algebra."
+      - "When the answer must be the same for every triangle that fits the data, test a special case such as an equilateral or right triangle."
+    avoid:
+      - "Reading lengths or angles off the figure: SSC figures are not drawn to scale."
+      - "Using DE/BC = AD/DB instead of AD/AB with a line parallel to a side."
+
+topics:
+  - key: lines-angles
+    title: Lines and angles
+    subtopics:
+      - key: angles
+        title: Angles
+        concepts:
+          - slug: angle-types-pairs
+            title: "Types of angles and angle pairs: complementary, supplementary, vertically opposite"
+            summary: >-
+              Angles are acute (< 90°), right (90°), obtuse (between 90° and 180°), straight
+              (180°) or reflex (between 180° and 360°). Complementary angles add to 90° and
+              supplementary angles to 180°; vertically opposite angles are equal and angles on a
+              straight line add to 180°. SSC asks for an angle from a relation with its complement
+              or supplement.
+            difficulty: easy
+            weight: 0.8
+            formulas:
+              - key: complement-supplement
+                name: Complement and supplement
+                expression: "complement of θ = 90° − θ;  supplement of θ = 180° − θ;  supplement − complement = 90°"
+                example: {problem: "An angle is 24° more than its complement. Find it.", solution: "θ − (90° − θ) = 24°, so 2θ = 114° and θ = 57°"}
+              - key: angles-at-a-point
+                name: Angles on a line and at a point
+                expression: "angles on a straight line add to 180°; angles around a point add to 360°; vertically opposite angles are equal"
+                example: {problem: "Three angles around a point are in the ratio 2 : 3 : 4. Find them.", solution: "9 parts = 360°, so 40° per part: 80°, 120° and 160°"}
+            patterns:
+              - key: complement-relation
+                title: Angle from a relation with its complement or supplement
+                example_stem: "The supplement of an angle is four times its complement. Find the angle."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: linear-pair-bisectors
+                title: Angles on a straight line and their bisectors
+                example_stem: "Two adjacent angles on a straight line are (3x + 15)° and (2x + 25)°. Find the angle between their bisectors and the larger angle."
+                frequency: low
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: supplement-minus-complement
+                title: "Supplement − complement = 90°"
+                kind: shortcut
+                rule: "If the supplement is k times the complement, then (k − 1) × complement = 90°, so complement = 90°/(k − 1)."
+                example: {problem: "The supplement of an angle is four times its complement.", standard: "Solve 180° − θ = 4(90° − θ)", shortcut: "Complement = 90°/3 = 30°, so the angle is 60°", seconds_saved: 15}
+                pattern: complement-relation
+
+      - key: parallel-lines
+        title: Parallel lines and transversals
+        concepts:
+          - slug: parallel-lines-transversal
+            title: Parallel lines cut by a transversal
+            summary: >-
+              When a transversal cuts two parallel lines, corresponding angles and alternate
+              interior angles are equal and co-interior (same-side interior) angles add to 180°;
+              the converses prove lines parallel. SSC asks for unknown angles in figures with
+              parallel lines, often with a bent line between them.
+            difficulty: easy
+            weight: 1.0
+            prerequisites: [angle-types-pairs]
+            formulas:
+              - key: transversal-angles
+                name: Angles made by a transversal
+                expression: "corresponding angles are equal; alternate interior angles are equal; co-interior angles add to 180°"
+                example: {problem: "Two co-interior angles are (3x + 10)° and (2x − 5)°. Find them.", solution: "5x + 5 = 180, so x = 35: the angles are 115° and 65°"}
+              - key: bend-between-parallels
+                name: Bent line between two parallels
+                expression: "AB ∥ CD and P lies between them: ∠APC = ∠BAP + ∠DCP when B and D are on the same side as P;  ∠BAP + ∠APC + ∠DCP = 360° when B and D are on the other side"
+                example: {problem: "AB ∥ CD, ∠BAP = 40° and ∠DCP = 35°, with B and D on P's side. Find ∠APC.", solution: "40° + 35° = 75°"}
+            patterns:
+              - key: find-angle-parallel
+                title: Unknown angle with parallel lines
+                example_stem: "AB ∥ CD and a transversal cuts them at P and Q. If the alternate angles ∠APQ = (4x + 15)° and ∠PQD = (6x − 25)°, find x."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: bend-angle
+                title: Angle at a bend between parallel lines
+                example_stem: "AB ∥ CD and a point E lies between them, on the same side as B and D. If ∠BAE = 38° and ∠DCE = 47°, find ∠AEC."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: parallel-through-bend
+                title: Draw a parallel through the bend
+                kind: shortcut
+                rule: "Draw a line through each bend parallel to the given lines; the angle at the bend splits into two alternate angles. With several bends, the angles pointing one way add up to the angles pointing the other way."
+                example: {problem: "∠BAE = 38° and ∠DCE = 47°; find ∠AEC.", shortcut: "38° + 47° = 85°", seconds_saved: 15}
+                pattern: bend-angle
+
+  - key: triangles
+    title: Triangles
+    subtopics:
+      - key: triangle-basics
+        title: Angles, sides and kinds of triangles
+        concepts:
+          - slug: triangle-angle-sum-exterior
+            title: Angle sum property and exterior angle theorem
+            summary: >-
+              The angles of a triangle add to 180°, and an exterior angle equals the sum of the two
+              interior opposite angles; the three exterior angles (one at each vertex) add to 360°.
+              The angle between the bisector of ∠A and the altitude from A is |∠B − ∠C|/2. SSC asks
+              for angles in a ratio, exterior-angle chains and such bisector angles.
+            difficulty: easy
+            weight: 1.3
+            prerequisites: [parallel-lines-transversal]
+            formulas:
+              - key: angle-sum
+                name: Angle sum property
+                expression: "∠A + ∠B + ∠C = 180°"
+                example: {problem: "The angles of a triangle are in the ratio 2 : 3 : 4. Find them.", solution: "9 parts = 180°: 40°, 60° and 80°"}
+              - key: exterior-angle
+                name: Exterior angle theorem
+                expression: "exterior angle at C = ∠A + ∠B;  sum of the three exterior angles = 360°"
+                example: {problem: "An exterior angle of a triangle is 110° and one interior opposite angle is 45°. Find the other.", solution: "110° − 45° = 65°"}
+              - key: bisector-altitude
+                name: Angle between the bisector and the altitude from a vertex
+                expression: "angle between the internal bisector of ∠A and the altitude from A = |∠B − ∠C|/2"
+                example: {problem: "∠B = 70° and ∠C = 40°; find the angle between the bisector and the altitude from A.", solution: "(70° − 40°)/2 = 15°"}
+            patterns:
+              - key: ratio-angles
+                title: Angles from a ratio or relation
+                example_stem: "In △ABC, ∠A − ∠B = 15° and ∠B − ∠C = 30°. Find ∠A."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: exterior-angle-chain
+                title: Exterior angle problems
+                example_stem: "Side BC of △ABC is produced to D. If ∠ACD = 112° and ∠B = (3/4)∠A, find ∠B."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 30
+              - key: bisector-altitude-angle
+                title: Angle between a bisector and an altitude
+                example_stem: "In △ABC, ∠B = 76° and ∠C = 34°. Find the angle between the bisector of ∠A and the altitude from A."
+                frequency: low
+                difficulty: medium
+                target_seconds: 25
+            shortcuts:
+              - key: half-difference
+                title: Half the difference of the other two angles
+                kind: shortcut
+                rule: "The angle between the internal bisector and the altitude from the same vertex is half the difference of the other two angles."
+                example: {problem: "∠B = 76°, ∠C = 34°", standard: "∠A = 70°, ∠BAD = 90° − 76° = 14°, ∠BAE = 35°, difference 21°", shortcut: "(76° − 34°)/2 = 21°", seconds_saved: 25}
+                pattern: bisector-altitude-angle
+
+          - slug: triangle-kinds-inequality
+            title: Kinds of triangles and the triangle inequality
+            summary: >-
+              Triangles are scalene, isosceles or equilateral by sides and acute, right or obtuse by
+              angles. Any two sides together are longer than the third, the larger side faces the
+              larger angle, and comparing the square of the longest side with the sum of the squares
+              of the other two shows acute (<), right (=) or obtuse (>). SSC asks whether lengths
+              form a triangle, its type, and how many triangles with integer sides are possible.
+            difficulty: easy
+            weight: 1.0
+            prerequisites: [triangle-angle-sum-exterior]
+            formulas:
+              - key: triangle-inequality
+                name: Triangle inequality
+                expression: "|a − b| < c < a + b for every pair of sides"
+                example: {problem: "Can 4 cm, 7 cm and 12 cm form a triangle?", solution: "4 + 7 = 11 < 12, so no"}
+              - key: acute-obtuse-test
+                name: Acute, right or obtuse from the sides
+                expression: "with c the longest side: c² < a² + b² acute;  c² = a² + b² right;  c² > a² + b² obtuse"
+                example: {problem: "What kind of triangle has sides 6, 8 and 11?", solution: "121 > 36 + 64 = 100, so obtuse"}
+              - key: third-side-count
+                name: Possible integer third sides
+                expression: "for sides a > b, the third side c satisfies a − b < c < a + b, giving 2b − 1 integer values"
+                example: {problem: "Two sides are 5 and 9. How many integer values can the third side take?", solution: "4 < c < 14: c = 5 to 13, which is 9 values (2 × 5 − 1)"}
+            patterns:
+              - key: can-form-triangle
+                title: Which set of lengths forms a triangle
+                example_stem: "Which of these can be the sides of a triangle: (3, 4, 8), (5, 6, 12), (6, 7, 12) or (2, 3, 5)?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: type-of-triangle
+                title: Acute, right or obtuse from the sides
+                example_stem: "A triangle has sides 7 cm, 9 cm and 12 cm. Is it acute, right-angled or obtuse?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: count-triangles
+                title: Number of triangles with integer sides
+                example_stem: "Two sides of a triangle are 6 cm and 10 cm. How many integer values can the third side take?"
+                frequency: low
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: two-smallest
+                title: Check only the two smaller sides
+                kind: shortcut
+                rule: "Three lengths form a triangle exactly when the two smaller ones add up to more than the largest; the other two inequalities then hold automatically."
+                example: {problem: "Do 6, 7 and 12 form a triangle?", shortcut: "6 + 7 = 13 > 12, so yes", seconds_saved: 10}
+                pattern: can-form-triangle
+
+      - key: pythagoras
+        title: Pythagoras theorem and right triangles
+        concepts:
+          - slug: pythagoras-theorem-triplets
+            title: Pythagoras theorem and Pythagorean triplets
+            summary: >-
+              In a right triangle the square of the hypotenuse equals the sum of the squares of the
+              other two sides, and the converse identifies right triangles. Triplets such as 3-4-5,
+              5-12-13, 8-15-17, 7-24-25, 20-21-29 and their multiples give answers without square
+              roots. SSC uses it in most geometry, mensuration and trigonometry length questions.
+            difficulty: easy
+            weight: 1.5
+            prerequisites: [triangle-kinds-inequality]
+            formulas:
+              - key: pythagoras
+                name: Pythagoras theorem
+                expression: "c² = a² + b² (c the hypotenuse)"
+                example: {problem: "A 25 m ladder reaches a window 24 m high. How far is its foot from the wall?", solution: "√(625 − 576) = √49 = 7 m"}
+              - key: triplet-generators
+                name: Generating triplets
+                expression: "for m > n > 0: (m² − n², 2mn, m² + n²);  for odd a: (a, (a² − 1)/2, (a² + 1)/2);  for even a: (a, (a/2)² − 1, (a/2)² + 1)"
+                example: {problem: "Find triplets containing 11 and 16.", solution: "11: (11, 60, 61); 16: (16, 63, 65)"}
+              - key: common-triplets
+                name: Triplets to memorise
+                expression: "3-4-5, 5-12-13, 8-15-17, 7-24-25, 20-21-29, 9-40-41, 12-35-37, 11-60-61 and their multiples (6-8-10, 9-12-15, 10-24-26)"
+            patterns:
+              - key: find-side
+                title: Missing side of a right triangle
+                example_stem: "In a right triangle the hypotenuse is 17 cm and one side is 8 cm. Find its area."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: poles-and-ladders
+                title: Ladder, pole and distance word problems
+                example_stem: "Two poles 6 m and 11 m high stand 12 m apart on level ground. Find the distance between their tops."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: scaled-triplet
+                title: Spot a scaled triplet
+                kind: memory
+                rule: "Divide the given sides by their common factor, compare with the standard triplets and scale the missing member back up."
+                example: {problem: "The legs are 18 and 24. Find the hypotenuse.", standard: "√(324 + 576) = √900 = 30", shortcut: "18 : 24 = 3 : 4 (× 6), so the hypotenuse is 5 × 6 = 30", seconds_saved: 15}
+                pattern: find-side
+
+          - slug: right-triangle-altitude-median
+            title: "Right triangle results: altitude and median on the hypotenuse"
+            summary: >-
+              In △ABC with ∠A = 90° and altitude AD on the hypotenuse BC: AD = AB × AC/BC,
+              AB² = BD × BC, AC² = CD × BC and AD² = BD × DC. The median to the hypotenuse is half
+              the hypotenuse, so its midpoint is the circumcentre. SSC asks for these lengths directly.
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [pythagoras-theorem-triplets, triangle-similarity-criteria]
+            formulas:
+              - key: altitude-on-hypotenuse
+                name: Altitude on the hypotenuse
+                expression: "AD = (AB × AC)/BC;  1/AD² = 1/AB² + 1/AC²"
+                example: {problem: "The legs are 15 and 20. Find the altitude on the hypotenuse.", solution: "Hypotenuse 25, altitude = 15 × 20/25 = 12"}
+              - key: mean-proportional
+                name: Segments of the hypotenuse
+                expression: "AB² = BD × BC;  AC² = CD × BC;  AD² = BD × DC"
+                example: {problem: "BD = 4 and DC = 9. Find AD and AB.", solution: "AD = √36 = 6 and AB = √(4 × 13) = 2√13"}
+              - key: median-on-hypotenuse
+                name: Median on the hypotenuse
+                expression: "median to the hypotenuse = hypotenuse/2 = circumradius"
+                example: {problem: "The legs are 6 and 8. Find the median to the hypotenuse.", solution: "10/2 = 5"}
+            patterns:
+              - key: altitude-length
+                title: Altitude on the hypotenuse
+                example_stem: "In △ABC, ∠A = 90°, AB = 12 cm and AC = 16 cm. AD is perpendicular to BC. Find AD."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: hypotenuse-segments
+                title: Segments of the hypotenuse
+                example_stem: "In △ABC right-angled at A, AD ⊥ BC, BD = 9 cm and DC = 16 cm. Find AD and AB."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: product-over-hypotenuse
+                title: Product of the legs over the hypotenuse
+                kind: shortcut
+                rule: "The altitude to the hypotenuse is (product of the legs) ÷ (hypotenuse): twice the area divided by the base."
+                example: {problem: "The legs are 9 and 12. Find the altitude on the hypotenuse.", standard: "Find BD by similar triangles, then AD by Pythagoras", shortcut: "Hypotenuse 15, altitude = 108/15 = 7.2", seconds_saved: 20}
+                pattern: altitude-length
+
+      - key: centres
+        title: "Centres of a triangle: centroid, incentre, circumcentre, orthocentre"
+        concepts:
+          - slug: triangle-centroid
+            title: Centroid and medians
+            summary: >-
+              The medians of a triangle meet at the centroid G, which divides each median in the
+              ratio 2 : 1 from the vertex. The medians split the triangle into six triangles of
+              equal area, so △BGC is one-third of △ABC. SSC asks for lengths along medians, areas of
+              these parts and the centroid's coordinates.
+            difficulty: medium
+            weight: 1.3
+            prerequisites: [triangle-angle-sum-exterior]
+            formulas:
+              - key: two-to-one
+                name: "Centroid divides each median 2 : 1"
+                expression: "AG : GD = 2 : 1, so AG = (2/3)AD and GD = (1/3)AD"
+                example: {problem: "The median AD is 12 cm. Find AG and GD.", solution: "AG = 8 cm, GD = 4 cm"}
+              - key: median-areas
+                name: Areas cut by the medians
+                expression: "ar(△GBC) = ar(△GCA) = ar(△GAB) = (1/3) ar(△ABC); each of the six small triangles has (1/6) ar(△ABC); a median halves the area"
+                example: {problem: "ar(△ABC) = 48 cm². Find ar(△AGB) and ar(△BGD), D the midpoint of BC.", solution: "16 cm² and 8 cm²"}
+              - key: centroid-coordinates
+                name: Coordinates of the centroid
+                expression: "G = ((x₁ + x₂ + x₃)/3, (y₁ + y₂ + y₃)/3)"
+                example: {problem: "Find the centroid of (1, 2), (4, −1) and (7, 5).", solution: "(12/3, 6/3) = (4, 2)"}
+            patterns:
+              - key: median-segments
+                title: Lengths on a median
+                example_stem: "G is the centroid of △ABC and the median AD is 15 cm long. Find AG."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+              - key: centroid-area
+                title: Areas cut by the medians
+                example_stem: "G is the centroid of △ABC, whose area is 72 cm². Find the area of △BGD, where D is the midpoint of BC."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: six-equal-parts
+                title: Six equal pieces
+                kind: memory
+                rule: "The three medians cut any triangle into six triangles of equal area; count the pieces asked for and take that many sixths."
+                example: {problem: "ar(△ABC) = 60; E and F are the midpoints of AC and AB. Find ar(quadrilateral AFGE).", shortcut: "It is two of the six pieces: 2 × 60/6 = 20", seconds_saved: 20}
+                pattern: centroid-area
+
+          - slug: triangle-incentre
+            title: Incentre, angle bisectors and excentres
+            summary: >-
+              The internal angle bisectors meet at the incentre I, the centre of the inscribed
+              circle, with inradius r = Δ/s and ∠BIC = 90° + A/2. The external bisectors of ∠B and
+              ∠C meet at an excentre with angle 90° − A/2, and the internal bisector of ∠B meets the
+              external bisector of ∠C at an angle A/2. SSC asks these angles and the inradius of
+              right and equilateral triangles.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [triangle-angle-sum-exterior]
+            formulas:
+              - key: bic-angle
+                name: Angle at the incentre
+                expression: "∠BIC = 90° + ∠A/2"
+                example: {problem: "∠A = 70°. Find ∠BIC.", solution: "90° + 35° = 125°"}
+              - key: excentre-angles
+                name: Angles with external bisectors
+                expression: "external bisectors of ∠B and ∠C meet at 90° − ∠A/2;  internal bisector of ∠B and external bisector of ∠C meet at ∠A/2"
+                example: {problem: "∠A = 80°. Find both angles.", solution: "90° − 40° = 50° and 40°"}
+              - key: inradius
+                name: Inradius
+                expression: "r = Δ/s, s = (a + b + c)/2;  right triangle: r = (a + b − c)/2 (c the hypotenuse);  equilateral: r = a/(2√3)"
+                example: {problem: "Find the inradius of the 5-12-13 triangle.", solution: "(5 + 12 − 13)/2 = 2 (check: Δ = 30, s = 15, r = 2)"}
+            patterns:
+              - key: bic-angle
+                title: Angle at the incentre
+                example_stem: "In △ABC the bisectors of ∠B and ∠C meet at I. If ∠BIC = 128°, find ∠A."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: inradius-value
+                title: Inradius of a given triangle
+                example_stem: "Find the inradius of a triangle with sides 7 cm, 24 cm and 25 cm."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: external-bisectors
+                title: Angle between external bisectors
+                example_stem: "The external bisectors of ∠B and ∠C of △ABC meet at P. If ∠A = 64°, find ∠BPC."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: centre-angle-table
+                title: The four centre-angle formulas
+                kind: memory
+                rule: "Incentre ∠BIC = 90° + A/2, excentre 90° − A/2, circumcentre ∠BOC = 2A, orthocentre ∠BHC = 180° − A; decide which centre the question describes, then apply one formula."
+                example: {problem: "∠A = 50°: find ∠BIC, ∠BOC and ∠BHC.", shortcut: "115°, 100° and 130°", seconds_saved: 20}
+                pattern: bic-angle
+              - key: right-triangle-inradius
+                title: Right-triangle inradius without the area
+                kind: shortcut
+                rule: "In a right triangle, r = (sum of the legs − hypotenuse)/2."
+                example: {problem: "Inradius of the 8-15-17 triangle", standard: "Δ = 60, s = 20, r = 60/20 = 3", shortcut: "(8 + 15 − 17)/2 = 3", seconds_saved: 10}
+                pattern: inradius-value
+
+          - slug: triangle-circumcentre
+            title: Circumcentre and perpendicular bisectors
+            summary: >-
+              The perpendicular bisectors of the sides meet at the circumcentre O, equidistant from
+              the three vertices, with circumradius R = abc/(4Δ). For an acute ∠A, ∠BOC = 2∠A and
+              ∠OBC = 90° − ∠A. O lies inside an acute triangle, at the midpoint of the hypotenuse of
+              a right triangle and outside an obtuse one. SSC asks ∠BOC, ∠OBC and R.
+            difficulty: medium
+            weight: 1.4
+            prerequisites: [triangle-angle-sum-exterior]
+            formulas:
+              - key: boc-angle
+                name: Angle at the circumcentre
+                expression: "∠BOC = 2∠A (∠A acute; for obtuse ∠A, ∠BOC = 360° − 2∠A);  ∠OBC = ∠OCB = 90° − ∠A"
+                example: {problem: "∠A = 55°. Find ∠BOC and ∠OBC.", solution: "110° and 35°"}
+              - key: circumradius
+                name: Circumradius
+                expression: "R = abc/(4Δ);  right triangle: R = hypotenuse/2;  equilateral: R = a/√3"
+                example: {problem: "Find R for the triangle with sides 13, 14 and 15.", solution: "s = 21, Δ = √(21 × 8 × 7 × 6) = 84, R = 13 × 14 × 15/(4 × 84) = 2730/336 = 8.125"}
+            patterns:
+              - key: boc-angle
+                title: Angle at the circumcentre
+                example_stem: "O is the circumcentre of △ABC. If ∠BOC = 140°, find ∠BAC."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: circumradius-value
+                title: Circumradius of a right or equilateral triangle
+                example_stem: "Find the circumradius of a right triangle whose legs are 10 cm and 24 cm."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: obc-angle
+                title: Angle between a radius and a side
+                example_stem: "O is the circumcentre of △ABC and ∠A = 48°. Find ∠OBC."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: ninety-minus-a
+                title: "∠OBC = 90° − A"
+                kind: shortcut
+                rule: "△OBC is isosceles (OB = OC = R) with apex angle 2A, so each base angle is 90° − A."
+                example: {problem: "∠A = 48°; find ∠OBC.", standard: "∠BOC = 96°, then (180° − 96°)/2", shortcut: "90° − 48° = 42°", seconds_saved: 10}
+                pattern: obc-angle
+
+          - slug: triangle-orthocentre
+            title: Orthocentre and altitudes
+            summary: >-
+              The altitudes meet at the orthocentre H: inside an acute triangle, at the right-angle
+              vertex of a right triangle and outside an obtuse one. In an acute triangle
+              ∠BHC = 180° − ∠A, and each quadrilateral formed by H, a vertex and the feet of two
+              altitudes is cyclic. SSC asks ∠BHC and angles between altitudes and sides.
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [triangle-angle-sum-exterior]
+            formulas:
+              - key: bhc-angle
+                name: Angle at the orthocentre
+                expression: "∠BHC = 180° − ∠A;  ∠AHB = 180° − ∠C;  ∠AHC = 180° − ∠B"
+                conditions: "Acute triangle (H inside)."
+                example: {problem: "∠A = 65°. Find ∠BHC.", solution: "180° − 65° = 115°"}
+              - key: altitude-angles
+                name: Angles between altitudes and sides
+                expression: "with feet D, E on BC, CA: ∠HBC = ∠HAC = 90° − ∠C, and ∠DHE = 180° − ∠C (quadrilateral CDHE has two right angles)"
+                example: {problem: "∠C = 50°. Find ∠HBC.", solution: "90° − 50° = 40°"}
+              - key: orthocentre-position
+                name: Position of the orthocentre
+                expression: "acute triangle: H inside;  right triangle: H at the right-angle vertex;  obtuse triangle: H outside"
+            patterns:
+              - key: bhc-angle
+                title: Angle at the orthocentre
+                example_stem: "H is the orthocentre of △ABC. If ∠BHC = 108°, find ∠A."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: altitude-angles
+                title: Angles between altitudes
+                example_stem: "In △ABC the altitudes AD and BE meet at H. If ∠C = 58°, find ∠DHE."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 25
+            shortcuts:
+              - key: right-triangle-centres
+                title: Right triangle centres
+                kind: memory
+                rule: "In a right triangle the orthocentre is the right-angle vertex and the circumcentre is the midpoint of the hypotenuse, so their distance is half the hypotenuse."
+                example: {problem: "A right triangle has legs 6 cm and 8 cm. Find the distance between its orthocentre and circumcentre.", shortcut: "Half the hypotenuse: 10/2 = 5 cm", seconds_saved: 20}
+              - key: supplement-at-h
+                title: The orthocentre angle is the supplement
+                kind: shortcut
+                rule: "Quadrilateral AFHE (F, E feet of the altitudes from C and B) has right angles at F and E, so the angle at H facing A is 180° − A; ∠BHC is vertically opposite to it."
+                example: {problem: "∠BHC = 108°; find ∠A.", shortcut: "180° − 108° = 72°", seconds_saved: 10}
+                pattern: bhc-angle
+
+          - slug: triangle-centres-relations
+            title: "Centres of equilateral and isosceles triangles; Euler line"
+            summary: >-
+              In an equilateral triangle all four centres coincide, at h/3 from each side and 2h/3
+              from each vertex (h = √3a/2), so r = a/(2√3), R = a/√3 and R = 2r. In an isosceles
+              triangle the centres lie on the axis of symmetry, and in any triangle the orthocentre
+              H, centroid G and circumcentre O are collinear (Euler line) with HG = 2GO. SSC asks
+              distances from the centre and when centres coincide.
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [triangle-centroid, triangle-incentre, triangle-circumcentre, triangle-orthocentre]
+            formulas:
+              - key: equilateral-centre
+                name: Equilateral triangle distances
+                expression: "h = (√3/2)a;  R = (2/3)h = a/√3;  r = (1/3)h = a/(2√3);  R : r = 2 : 1"
+                example: {problem: "An equilateral triangle has side 12 cm. Find the distances from its centre to a vertex and to a side.", solution: "h = 6√3, so 4√3 cm to a vertex and 2√3 cm to a side"}
+              - key: euler-line
+                name: Euler line
+                expression: "H, G and O are collinear and HG : GO = 2 : 1 (HO = 3 × GO)"
+                example: {problem: "OG = 3 cm. Find HG and OH.", solution: "HG = 6 cm and OH = 9 cm"}
+              - key: isosceles-axis
+                name: Isosceles triangle
+                expression: "if AB = AC, the centroid, incentre, circumcentre and orthocentre all lie on the median from A (which is also the altitude and the bisector)"
+            patterns:
+              - key: equilateral-distance
+                title: Distances from the centre of an equilateral triangle
+                example_stem: "The distance between the centroid and a vertex of an equilateral triangle is 6 cm. Find its side."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: incircle-circumcircle
+                title: Incircle and circumcircle of an equilateral triangle
+                example_stem: "Find the ratio of the areas of the incircle and the circumcircle of an equilateral triangle."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+              - key: centres-coincide
+                title: When the centres coincide
+                example_stem: "In which kind of triangle do the incentre, circumcentre, centroid and orthocentre coincide?"
+                frequency: low
+                difficulty: easy
+                target_seconds: 10
+            shortcuts:
+              - key: thirds-of-height
+                title: Thirds of the height
+                kind: memory
+                rule: "In an equilateral triangle every centre is the centroid: it is one-third of the height √3a/2 from each side and two-thirds from each vertex."
+                example: {problem: "Find the inradius of an equilateral triangle of side 9√3 cm.", shortcut: "h = (√3/2) × 9√3 = 13.5, so r = 13.5/3 = 4.5 cm", seconds_saved: 15}
+                pattern: equilateral-distance
+
+      - key: theorems
+        title: Triangle theorems
+        concepts:
+          - slug: basic-proportionality-theorem
+            title: Basic proportionality theorem and midpoint theorem
+            summary: >-
+              If a line parallel to BC cuts AB at D and AC at E, then AD/DB = AE/EC (basic
+              proportionality or Thales theorem), and the converse proves lines parallel. The
+              midpoint theorem is the special case: the segment joining the midpoints of two sides
+              is parallel to the third side and half of it. SSC asks for segment lengths and
+              perimeters of the triangles cut off.
+            difficulty: medium
+            weight: 1.3
+            prerequisites: [triangle-angle-sum-exterior, parallel-lines-transversal]
+            formulas:
+              - key: bpt
+                name: Basic proportionality theorem
+                expression: "DE ∥ BC ⇒ AD/DB = AE/EC and AD/AB = AE/AC = DE/BC"
+                example: {problem: "DE ∥ BC, AD = 3, DB = 5, AE = 4.5. Find EC and DE/BC.", solution: "3/5 = 4.5/EC, so EC = 7.5; DE/BC = AD/AB = 3/8"}
+              - key: midpoint-theorem
+                name: Midpoint theorem
+                expression: "D, E midpoints of AB, AC ⇒ DE ∥ BC and DE = BC/2;  the triangle joining the three midpoints has half the perimeter and 1/4 the area of △ABC"
+                example: {problem: "A triangle has sides 8, 10 and 12. Find the sides of the triangle joining their midpoints.", solution: "4, 5 and 6 (perimeter 15)"}
+            patterns:
+              - key: find-segment
+                title: Segment length by the basic proportionality theorem
+                example_stem: "In △ABC, DE ∥ BC with D on AB and E on AC. If AD = x, DB = x − 2, AE = x + 2 and EC = x − 1, find x."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: midpoint-perimeter
+                title: Midpoint theorem lengths and perimeters
+                example_stem: "D, E and F are the midpoints of the sides of △ABC, whose perimeter is 36 cm. Find the perimeter of △DEF."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+            shortcuts:
+              - key: whole-side-ratio
+                title: Use the whole side for DE
+                kind: shortcut
+                rule: "Convert AD : DB = a : b into AD : AB = a : (a + b) first; DE/BC = AD/AB, not AD/DB."
+                example: {problem: "AD : DB = 2 : 3 and BC = 15 cm. Find DE.", shortcut: "DE = 15 × 2/5 = 6 cm", seconds_saved: 10}
+                pattern: find-segment
+                pitfalls: ["DE/BC = AD/DB is a common wrong step."]
+
+          - slug: angle-bisector-theorem
+            title: Angle bisector theorem (internal and external)
+            summary: >-
+              The internal bisector of ∠A meets BC at D with BD/DC = AB/AC; the external bisector
+              meets BC produced at E with BE/EC = AB/AC. The incentre divides the bisector AD in the
+              ratio AI : ID = (AB + AC) : BC. SSC asks for BD, DC or a side from these ratios.
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [basic-proportionality-theorem]
+            formulas:
+              - key: internal-bisector
+                name: Internal bisector
+                expression: "BD/DC = AB/AC = c/b;  BD = ac/(b + c), DC = ab/(b + c)"
+                variables:
+                  - {symbol: a, meaning: "BC"}
+                  - {symbol: b, meaning: "CA"}
+                  - {symbol: c, meaning: "AB"}
+                example: {problem: "AB = 6, AC = 9, BC = 10. Find BD and DC.", solution: "BD = 10 × 6/15 = 4 and DC = 6"}
+              - key: external-bisector
+                name: External bisector
+                expression: "BE/EC = AB/AC (E on BC produced);  when c > b, BE = ac/(c − b) and CE = ab/(c − b)"
+                example: {problem: "AB = 8, AC = 6, BC = 7. Find BE and CE.", solution: "BE = 56/2 = 28 and CE = 42/2 = 21 (28 − 21 = 7)"}
+              - key: incentre-on-bisector
+                name: Incentre on the bisector
+                expression: "AI : ID = (AB + AC) : BC"
+                example: {problem: "AB = 6, AC = 9, BC = 10. Find AI : ID.", solution: "15 : 10 = 3 : 2"}
+            patterns:
+              - key: divide-base
+                title: Segments of the base cut by a bisector
+                example_stem: "In △ABC, AD bisects ∠A and meets BC at D. If AB = 10 cm, AC = 14 cm and BC = 12 cm, find BD."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+              - key: side-from-bisector
+                title: A side from the bisector ratio
+                example_stem: "In △ABC the bisector of ∠A meets BC at D. If BD = 4 cm, DC = 6 cm and AB = 8 cm, find AC."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: external-bisector
+                title: External bisector meeting the base produced
+                example_stem: "In △ABC, AB = 9 cm, AC = 6 cm and BC = 5 cm. The bisector of the exterior angle at A meets BC produced at E. Find CE."
+                frequency: low
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: split-in-ratio
+                title: Split the base in the ratio of the arms
+                kind: shortcut
+                rule: "Divide BC in the ratio AB : AC directly: BD = BC × AB/(AB + AC)."
+                example: {problem: "AB = 10, AC = 14, BC = 12; find BD.", shortcut: "12 × 10/24 = 5", seconds_saved: 10}
+                pattern: divide-base
+
+          - slug: apollonius-median-theorem
+            title: Apollonius theorem and median results
+            summary: >-
+              For the median AD of △ABC, AB² + AC² = 2(AD² + BD²) (Apollonius theorem). The sum of
+              the squares of the three medians is 3/4 of the sum of the squares of the sides, and
+              the medians from B and C are perpendicular exactly when AB² + AC² = 5BC². SSC asks for
+              median lengths and these relations.
+            difficulty: hard
+            weight: 1.0
+            prerequisites: [pythagoras-theorem-triplets, triangle-centroid]
+            formulas:
+              - key: apollonius
+                name: Apollonius theorem
+                expression: "AB² + AC² = 2(AD² + BD²) for D the midpoint of BC;  median mₐ = ½√(2b² + 2c² − a²)"
+                example: {problem: "AB = 7, AC = 9, BC = 8. Find the median AD.", solution: "49 + 81 = 2(AD² + 16), so AD² = 49 and AD = 7"}
+              - key: sum-of-median-squares
+                name: Sum of the squares of the medians
+                expression: "mₐ² + m_b² + m_c² = (3/4)(a² + b² + c²)"
+                example: {problem: "A triangle has sides 6, 8 and 10. Find the sum of the squares of its medians.", solution: "(3/4) × 200 = 150"}
+              - key: perpendicular-medians
+                name: Perpendicular medians
+                expression: "the medians from B and C are perpendicular ⇔ AB² + AC² = 5BC²"
+                example: {problem: "BC = 4 and the medians from B and C are perpendicular. Find AB² + AC².", solution: "5 × 16 = 80"}
+            patterns:
+              - key: median-length
+                title: Length of a median
+                example_stem: "In △ABC, AB = 13 cm, AC = 9 cm and BC = 10 cm. Find the length of the median AD."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: medians-sum-squares
+                title: Relation between medians and sides
+                example_stem: "The sides of a triangle are 5 cm, 6 cm and 7 cm. Find the sum of the squares of its medians."
+                frequency: low
+                difficulty: medium
+                target_seconds: 25
+              - key: perpendicular-medians
+                title: Perpendicular medians
+                example_stem: "In △ABC the medians from B and C are perpendicular to each other. If BC = 6 cm, find AB² + AC²."
+                frequency: low
+                difficulty: hard
+                target_seconds: 30
+                tiers: [tier2]
+            shortcuts:
+              - key: half-sum-minus-quarter
+                title: Average of the squares minus half the base squared
+                kind: shortcut
+                rule: "AD² = (AB² + AC²)/2 − (BC/2)²."
+                example: {problem: "AB = 13, AC = 9, BC = 10; find AD.", shortcut: "(169 + 81)/2 − 25 = 100, so AD = 10", seconds_saved: 15}
+                pattern: median-length
+
+      - key: congruence
+        title: Congruence of triangles
+        concepts:
+          - slug: triangle-congruence
+            title: "Congruence of triangles: SSS, SAS, ASA, AAS and RHS"
+            summary: >-
+              Two triangles are congruent (same shape and size) under SSS, SAS (the included angle),
+              ASA, AAS or RHS (right angle, hypotenuse, side); corresponding parts of congruent
+              triangles are equal (CPCT). SSA and AAA do not prove congruence in general. SSC asks
+              which criterion applies and uses congruence to find equal lengths and angles.
+            difficulty: easy
+            weight: 0.8
+            prerequisites: [triangle-angle-sum-exterior]
+            formulas:
+              - key: criteria
+                name: Congruence criteria
+                expression: "SSS, SAS (angle between the two sides), ASA, AAS, RHS (right triangles);  not valid in general: SSA and AAA"
+                example: {problem: "In △ABC and △PQR, AB = PQ, ∠B = ∠Q and BC = QR. Are they congruent?", solution: "Yes, by SAS"}
+              - key: cpct
+                name: Corresponding parts
+                expression: "△ABC ≅ △PQR ⇒ AB = PQ, BC = QR, CA = RP, ∠A = ∠P, ∠B = ∠Q, ∠C = ∠R (the letter order fixes the correspondence)"
+            patterns:
+              - key: which-criterion
+                title: Which criterion proves congruence
+                example_stem: "In △ABC and △DEF, AB = DE, ∠A = ∠D and ∠C = ∠F. By which rule are they congruent?"
+                frequency: low
+                difficulty: easy
+                target_seconds: 15
+              - key: cpct-application
+                title: Equal parts of congruent triangles
+                example_stem: "If △ABC ≅ △RPQ, which side of △RPQ equals BC?"
+                frequency: low
+                difficulty: easy
+                target_seconds: 15
+            shortcuts:
+              - key: letter-order
+                title: Read the correspondence from the letter order
+                kind: memory
+                rule: "In △ABC ≅ △RPQ the first letters match (A ↔ R), then the second (B ↔ P) and the third (C ↔ Q); a side matches the side named by the same two positions."
+                example: {problem: "△ABC ≅ △RPQ; which side equals BC?", shortcut: "Positions 2 and 3 give PQ", seconds_saved: 10}
+                pattern: cpct-application
+
+      - key: similarity
+        title: Similarity of triangles
+        concepts:
+          - slug: triangle-similarity-criteria
+            title: "Similarity of triangles: AA, SAS and SSS criteria"
+            summary: >-
+              Triangles are similar when two angles are equal (AA), when all sides are proportional
+              (SSS), or when two sides are proportional and the included angles equal (SAS).
+              Corresponding sides are in one ratio, and so are the altitudes, medians, angle
+              bisectors and perimeters. SSC asks for unknown sides in nested or overlapping
+              triangles and in shadow problems.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [basic-proportionality-theorem, triangle-congruence]
+            formulas:
+              - key: side-ratio
+                name: Corresponding sides
+                expression: "△ABC ~ △PQR ⇒ AB/PQ = BC/QR = CA/RP = k;  perimeters, altitudes, medians and bisectors are in the same ratio k"
+                example: {problem: "△ABC ~ △PQR, AB = 6, PQ = 9 and the perimeter of △ABC is 24. Find the perimeter of △PQR.", solution: "24 × 9/6 = 36"}
+              - key: common-angle
+                name: Triangle sharing an angle (antiparallel)
+                expression: "D on AB, E on AC with ∠ADE = ∠ACB ⇒ △ADE ~ △ACB and AD × AB = AE × AC"
+                example: {problem: "∠ADE = ∠ACB, AD = 4, AB = 12 and AC = 8. Find AE.", solution: "AE = 4 × 12/8 = 6"}
+              - key: shadows
+                name: Heights and shadows
+                expression: "height₁/shadow₁ = height₂/shadow₂ at the same time of day"
+                example: {problem: "A 6 m pole casts a 4 m shadow when a tower casts a 28 m shadow. Find the tower's height.", solution: "6 × 28/4 = 42 m"}
+            patterns:
+              - key: nested-triangles
+                title: Unknown side in nested or overlapping triangles
+                example_stem: "In △ABC, D is on AB and E on AC with ∠ADE = ∠ACB. If AD = 5 cm, AB = 12 cm and AC = 10 cm, find AE."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: ratio-of-parts
+                title: Corresponding sides, perimeters and altitudes
+                example_stem: "Two similar triangles have perimeters 30 cm and 45 cm. An altitude of the smaller is 8 cm. Find the corresponding altitude of the larger."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: match-angles-first
+                title: Match the equal angles before writing ratios
+                kind: shortcut
+                rule: "Name the two triangles with equal angles in the same positions (for example △ADE ~ △ACB), then read each ratio position by position; a wrong pairing is the usual error."
+                example: {problem: "∠ADE = ∠ACB, AD = 5, AB = 12, AC = 10; find AE.", shortcut: "△ADE ~ △ACB gives AD/AC = AE/AB, so AE = 5 × 12/10 = 6", seconds_saved: 15}
+                pattern: nested-triangles
+
+          - slug: similar-triangles-area-ratio
+            title: Areas of similar triangles
+            summary: >-
+              The ratio of the areas of two similar triangles is the square of the ratio of
+              corresponding sides (and of their altitudes, medians and perimeters). SSC asks for an
+              area or a side from this rule, including a line parallel to the base that cuts a
+              triangle into a smaller triangle and a trapezium.
+            difficulty: medium
+            weight: 1.3
+            prerequisites: [triangle-similarity-criteria]
+            formulas:
+              - key: square-of-ratio
+                name: Area ratio of similar triangles
+                expression: "ar(△ABC)/ar(△PQR) = (AB/PQ)² = (altitude ratio)² = (median ratio)²"
+                example: {problem: "Corresponding sides are in the ratio 3 : 5. Find the ratio of the areas.", solution: "9 : 25"}
+              - key: parallel-cut
+                name: Line parallel to the base
+                expression: "DE ∥ BC with AD : DB = m : n ⇒ ar(△ADE) : ar(△ABC) = m² : (m + n)² and ar(△ADE) : ar(DBCE) = m² : [(m + n)² − m²]"
+                example: {problem: "AD : DB = 1 : 2. Compare △ADE with △ABC and with DBCE.", solution: "1 : 9 and 1 : 8"}
+              - key: halving-line
+                name: Parallel line that halves the area
+                expression: "if DE ∥ BC halves the area of △ABC, then AD/AB = 1/√2 and AD : DB = 1 : (√2 − 1)"
+                example: {problem: "AB = 10 cm. Where must D be for DE ∥ BC to halve the area?", solution: "AD = 10/√2 = 5√2 ≈ 7.07 cm"}
+            patterns:
+              - key: area-from-sides
+                title: Area from the side ratio
+                example_stem: "△ABC ~ △DEF with BC = 6 cm and EF = 8 cm. If the area of △DEF is 96 cm², find the area of △ABC."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: parallel-cut-area
+                title: Parallel line cutting a triangle
+                example_stem: "In △ABC, DE ∥ BC with D on AB, E on AC and AD : DB = 3 : 2. Find the ratio of ar(△ADE) to ar(trapezium BCED)."
+                frequency: high
+                difficulty: medium
+                target_seconds: 25
+              - key: side-from-area
+                title: Side from the area ratio
+                example_stem: "The areas of two similar triangles are 81 cm² and 144 cm². If the longest side of the larger is 36 cm, find the longest side of the smaller."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: square-or-root
+                title: Square the side ratio, root the area ratio
+                kind: shortcut
+                rule: "Sides to areas: square the ratio; areas to sides: take the square root. For a parallel cut, use AD : AB, not AD : DB."
+                example: {problem: "AD : DB = 3 : 2; find ar(△ADE) : ar(BCED).", shortcut: "AD : AB = 3 : 5, areas 9 : 25, so 9 : 16", seconds_saved: 15}
+                pattern: parallel-cut-area
+
+      - key: area-ratios
+        title: Area ratios in triangles
+        concepts:
+          - slug: triangle-area-ratios
+            title: "Area ratios: common height, same parallels and shared angles"
+            summary: >-
+              Triangles with the same height have areas in the ratio of their bases, so a line from
+              A dividing BC in m : n divides the area in m : n, and a median halves it. Triangles on
+              the same base between the same parallels have equal areas, and a triangle on the base
+              of a parallelogram between the same parallels has half its area. SSC uses these to find
+              areas of parts of a figure without lengths.
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [triangle-centroid]
+            formulas:
+              - key: common-height
+                name: Same height, area follows the base
+                expression: "D on BC with BD : DC = m : n ⇒ ar(△ABD) : ar(△ADC) = m : n"
+                example: {problem: "BD : DC = 2 : 3 and ar(△ABC) = 40. Find ar(△ABD).", solution: "40 × 2/5 = 16"}
+              - key: same-parallels
+                name: Same base, same parallels
+                expression: "triangles on the same base between the same parallels have equal areas; such a triangle has half the area of a parallelogram on that base"
+                example: {problem: "ABCD is a parallelogram of area 60 and P is any point on CD. Find ar(△APB).", solution: "60/2 = 30"}
+              - key: shared-angle
+                name: Triangle sharing an angle
+                expression: "D on AB and E on AC ⇒ ar(△ADE)/ar(△ABC) = (AD × AE)/(AB × AC)"
+                example: {problem: "AD = AB/3 and AE = AC/2. What fraction of △ABC is △ADE?", solution: "1/3 × 1/2 = 1/6"}
+            patterns:
+              - key: cevian-area
+                title: Area cut by a line from a vertex
+                example_stem: "In △ABC, D lies on BC with BD : DC = 3 : 5. If ar(△ABC) = 64 cm², find ar(△ADC)."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: parallelogram-triangle
+                title: Triangles inside a parallelogram
+                example_stem: "P is any point inside parallelogram ABCD of area 80 cm². Find ar(△PAB) + ar(△PCD)."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: shared-angle-area
+                title: Triangle sharing an angle with a larger one
+                example_stem: "In △ABC, D is on AB with AD : DB = 1 : 2 and E is on AC with AE : EC = 3 : 1. What fraction of ar(△ABC) is ar(△ADE)?"
+                frequency: low
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: area-follows-base
+                title: Area follows the base
+                kind: shortcut
+                rule: "Triangles with a common apex and bases on one line have areas in the ratio of the bases; chain such steps for lines drawn inside lines."
+                example: {problem: "BD : DC = 3 : 5 and ar(△ABC) = 64; find ar(△ADC).", shortcut: "64 × 5/8 = 40", seconds_saved: 10}
+                pattern: cevian-area
+
+  - key: quadrilaterals
+    title: Quadrilaterals
+    concepts:
+      - slug: quadrilateral-angle-sum
+        title: Angle sum of a quadrilateral and angles between bisectors
+        summary: >-
+          The angles of any quadrilateral add to 360°. The bisectors of two adjacent angles ∠A and
+          ∠B meet at an angle equal to half the sum of the other two, (∠C + ∠D)/2. SSC asks for
+          angles in a ratio and for such bisector angles.
+        difficulty: easy
+        weight: 0.8
+        prerequisites: [triangle-angle-sum-exterior]
+        formulas:
+          - key: angle-sum
+            name: Angle sum of a quadrilateral
+            expression: "∠A + ∠B + ∠C + ∠D = 360°"
+            example: {problem: "The angles of a quadrilateral are in the ratio 2 : 3 : 4 : 6. Find them.", solution: "15 parts = 360°, 24° each: 48°, 72°, 96° and 144°"}
+          - key: adjacent-bisectors
+            name: Bisectors of adjacent angles
+            expression: "the bisectors of ∠A and ∠B meet at P with ∠APB = (∠C + ∠D)/2"
+            example: {problem: "∠C = 100° and ∠D = 60°. Find the angle between the bisectors of ∠A and ∠B.", solution: "(100° + 60°)/2 = 80°"}
+        patterns:
+          - key: ratio-angles
+            title: Angles of a quadrilateral from a ratio
+            example_stem: "The angles of a quadrilateral are in the ratio 3 : 5 : 7 : 9. Find the largest angle."
+            frequency: low
+            difficulty: easy
+            target_seconds: 20
+          - key: bisector-meet
+            title: Angle between the bisectors of adjacent angles
+            example_stem: "In quadrilateral ABCD, ∠C = 110° and ∠D = 70°. The bisectors of ∠A and ∠B meet at O. Find ∠AOB."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: half-the-other-two
+            title: Half of the other two angles
+            kind: shortcut
+            rule: "The angle between the bisectors of two adjacent angles equals half the sum of the remaining two angles; ∠A and ∠B are not needed."
+            example: {problem: "∠C = 110° and ∠D = 70°; find ∠AOB.", standard: "∠A + ∠B = 180°, so ∠AOB = 180° − 90°", shortcut: "(110° + 70°)/2 = 90°", seconds_saved: 10}
+            pattern: bisector-meet
+
+      - slug: parallelogram-properties
+        title: Properties of parallelograms
+        summary: >-
+          In a parallelogram, opposite sides are equal and parallel, opposite angles are equal,
+          adjacent angles add to 180° and the diagonals bisect each other; the sum of the squares of
+          the diagonals equals the sum of the squares of the four sides. The bisectors of adjacent
+          angles meet at 90°. SSC asks for angles, diagonal lengths and areas of parts.
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [quadrilateral-angle-sum, triangle-congruence]
+        formulas:
+          - key: parallelogram-angles
+            name: Angles of a parallelogram
+            expression: "∠A = ∠C, ∠B = ∠D and ∠A + ∠B = 180°"
+            example: {problem: "One angle of a parallelogram is two-thirds of its adjacent angle. Find the angles.", solution: "x + 2x/3 = 180°, so x = 108°: the angles are 108°, 72°, 108°, 72°"}
+          - key: parallelogram-law
+            name: Diagonals and sides
+            expression: "d₁² + d₂² = 2(a² + b²);  the diagonals bisect each other (equal diagonals only in a rectangle)"
+            example: {problem: "The sides are 6 and 8 and one diagonal is 10. Find the other.", solution: "d₂² = 2(36 + 64) − 100 = 100, so d₂ = 10 (the parallelogram is a rectangle)"}
+          - key: bisectors-right-angle
+            name: Bisectors of adjacent angles
+            expression: "the bisectors of two adjacent angles of a parallelogram meet at 90°; the four angle bisectors enclose a rectangle"
+        patterns:
+          - key: parallelogram-angle
+            title: Angles of a parallelogram
+            example_stem: "In parallelogram ABCD, ∠A = (3x + 20)° and ∠B = (2x + 10)°. Find ∠C."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: diagonal-length
+            title: A diagonal from the sides and the other diagonal
+            example_stem: "The sides of a parallelogram are 5 cm and 7 cm and one diagonal is 8 cm. Find the other diagonal."
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: parallelogram-law
+            title: Parallelogram law
+            kind: memory
+            rule: "d₁² + d₂² = 2(a² + b²): one equation gives the missing diagonal or side, with no trigonometry."
+            example: {problem: "Sides 5 and 7, one diagonal 8; find the other.", standard: "Find an angle with the cosine rule, then the other diagonal", shortcut: "d₂² = 2(25 + 49) − 64 = 84, so d₂ = 2√21", seconds_saved: 30}
+            pattern: diagonal-length
+
+      - slug: rhombus-rectangle-square-properties
+        title: Properties of rhombus, rectangle and square
+        summary: >-
+          A rectangle is a parallelogram with right angles and equal diagonals; a rhombus has four
+          equal sides and diagonals that bisect each other at right angles and bisect its angles, so
+          side² = (d₁/2)² + (d₂/2)²; a square is both. SSC asks for the side or perimeter from the
+          diagonals, angles of a rhombus and the area d₁d₂/2.
+        difficulty: easy
+        weight: 1.2
+        prerequisites: [parallelogram-properties, pythagoras-theorem-triplets]
+        formulas:
+          - key: rhombus-side
+            name: Rhombus side and area from the diagonals
+            expression: "4a² = d₁² + d₂²;  area = d₁ × d₂/2"
+            example: {problem: "The diagonals of a rhombus are 16 and 30. Find its side and area.", solution: "Side = √(8² + 15²) = 17; area = 16 × 30/2 = 240"}
+          - key: rectangle-square-diagonal
+            name: Diagonals of a rectangle and a square
+            expression: "rectangle: d = √(l² + b²), both diagonals equal and bisecting each other;  square: d = a√2"
+            example: {problem: "Find the diagonal of a 12 × 5 rectangle.", solution: "√(144 + 25) = 13"}
+          - key: rhombus-angles
+            name: Angles of a rhombus
+            expression: "the diagonals bisect the angles; adjacent angles add to 180°; a rhombus with a 60° angle has its shorter diagonal equal to its side"
+        patterns:
+          - key: rhombus-from-diagonals
+            title: Side, perimeter or area of a rhombus from its diagonals
+            example_stem: "The diagonals of a rhombus are 24 cm and 10 cm. Find its perimeter."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: rhombus-angle
+            title: Angles in a rhombus
+            example_stem: "In rhombus ABCD, ∠ABD = 35°. Find ∠BAD."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: half-diagonal-triplet
+            title: Half-diagonals form a triplet
+            kind: shortcut
+            rule: "Halve both diagonals; with the side they form a right triangle, often a known triplet such as 5-12-13 or 8-15-17."
+            example: {problem: "Diagonals 24 and 10; find the side.", shortcut: "12 and 5 give 13", seconds_saved: 10}
+            pattern: rhombus-from-diagonals
+
+      - slug: trapezium-properties
+        title: Properties of trapeziums
+        summary: >-
+          A trapezium has one pair of parallel sides. The segment joining the midpoints of the
+          non-parallel sides is parallel to them and equal to half their sum; the diagonals cut each
+          other in the ratio of the parallel sides, and in an isosceles trapezium the base angles
+          and the diagonals are equal. SSC asks lengths, diagonal ratios and the areas of the four
+          triangles formed by the diagonals.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [triangle-similarity-criteria, similar-triangles-area-ratio]
+        formulas:
+          - key: midline
+            name: Midline and area
+            expression: "midline = (a + b)/2 for parallel sides a and b;  area = ½(a + b) × h"
+            example: {problem: "The parallel sides are 10 and 16. Find the midline.", solution: "(10 + 16)/2 = 13"}
+          - key: diagonal-ratio
+            name: Diagonals cut in the ratio of the parallel sides
+            expression: "AB ∥ CD, diagonals meet at O ⇒ AO/OC = BO/OD = AB/CD"
+            example: {problem: "AB = 12, CD = 8 and AC = 15. Find AO and OC.", solution: "AO = 15 × 12/20 = 9 and OC = 6"}
+          - key: four-triangles
+            name: Areas of the four triangles
+            expression: "ar(△AOB) : ar(△COD) = AB² : CD²;  ar(△AOD) = ar(△BOC) = √(ar(△AOB) × ar(△COD))"
+            example: {problem: "ar(△AOB) = 36 and ar(△COD) = 16. Find the area of the trapezium.", solution: "ar(△AOD) = ar(△BOC) = 24, so 36 + 16 + 24 + 24 = 100"}
+        patterns:
+          - key: diagonal-segments
+            title: Segments of the diagonals
+            example_stem: "In trapezium ABCD, AB ∥ DC, AB = 2 × DC and the diagonals meet at O. If AC = 18 cm, find OC."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: four-triangle-areas
+            title: Areas of the four triangles
+            example_stem: "The diagonals of trapezium ABCD (AB ∥ CD) meet at O. If ar(△AOB) = 49 cm² and ar(△COD) = 25 cm², find the area of the trapezium."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: root-area-sum
+            title: "Whole area = (√A₁ + √A₂)²"
+            kind: shortcut
+            rule: "If the triangles on the two parallel sides have areas A₁ and A₂, the trapezium has area (√A₁ + √A₂)²."
+            example: {problem: "ar(△AOB) = 49 and ar(△COD) = 25", standard: "Find the side triangles √(49 × 25) = 35 each and add all four", shortcut: "(7 + 5)² = 144", seconds_saved: 15}
+            pattern: four-triangle-areas
+
+  - key: polygons
+    title: Polygons
+    concepts:
+      - slug: polygon-interior-exterior-angles
+        title: Interior and exterior angles of regular polygons
+        summary: >-
+          The interior angles of an n-sided polygon add to (n − 2) × 180° and its exterior angles to
+          360°, so a regular polygon has exterior angle 360°/n and interior angle 180° − 360°/n, in
+          the ratio (n − 2) : 2. SSC asks for n from an angle or from the ratio of interior to
+          exterior angles, and compares two polygons.
+        difficulty: easy
+        weight: 1.1
+        prerequisites: [quadrilateral-angle-sum]
+        formulas:
+          - key: interior-sum
+            name: Sum of the interior angles
+            expression: "sum of interior angles = (n − 2) × 180°"
+            example: {problem: "Find the sum of the interior angles of an octagon.", solution: "6 × 180° = 1080°"}
+          - key: regular-angles
+            name: Each angle of a regular polygon
+            expression: "exterior angle = 360°/n;  interior angle = 180° − 360°/n = (n − 2) × 180°/n"
+            example: {problem: "Each interior angle of a regular polygon is 150°. Find n.", solution: "Exterior 30°, so n = 360/30 = 12"}
+          - key: angle-ratio
+            name: Interior to exterior ratio
+            expression: "interior : exterior = (n − 2) : 2"
+            example: {problem: "The ratio is 7 : 2. Find n.", solution: "n − 2 = 7, so n = 9"}
+        patterns:
+          - key: sides-from-angle
+            title: Number of sides from an angle
+            example_stem: "Each interior angle of a regular polygon is 156°. How many sides does it have?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: interior-exterior-ratio
+            title: Ratio of the interior and exterior angles
+            example_stem: "The ratio of each interior angle to each exterior angle of a regular polygon is 5 : 1. Find the number of sides."
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: two-polygons
+            title: Two polygons with related sides and angles
+            example_stem: "The numbers of sides of two regular polygons are in the ratio 5 : 4 and their interior angles differ by 6°. Find the number of sides of each."
+            frequency: low
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: exterior-first
+            title: Work with the exterior angle
+            kind: shortcut
+            rule: "Convert any interior angle to its exterior angle (180° − interior) and use n = 360°/exterior."
+            example: {problem: "Each interior angle is 156°; find n.", standard: "Solve (n − 2) × 180/n = 156", shortcut: "Exterior 24°, n = 360/24 = 15", seconds_saved: 10}
+            pattern: sides-from-angle
+
+      - slug: polygon-diagonals
+        title: Diagonals and sides of polygons
+        summary: >-
+          An n-sided polygon has n(n − 3)/2 diagonals; the n − 3 diagonals from one vertex divide it
+          into n − 2 triangles. SSC asks for the number of diagonals or for n from a given count,
+          often combined with an angle of a regular polygon.
+        difficulty: easy
+        weight: 0.6
+        prerequisites: [polygon-interior-exterior-angles]
+        formulas:
+          - key: diagonal-count
+            name: Number of diagonals
+            expression: "number of diagonals = n(n − 3)/2"
+            example: {problem: "How many diagonals does a decagon have?", solution: "10 × 7/2 = 35"}
+          - key: from-one-vertex
+            name: Diagonals from one vertex
+            expression: "diagonals from one vertex = n − 3; they divide the polygon into n − 2 triangles"
+        patterns:
+          - key: count-diagonals
+            title: Diagonals of a polygon
+            example_stem: "How many diagonals does a regular polygon with each exterior angle 30° have?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+          - key: sides-from-diagonals
+            title: Number of sides from the number of diagonals
+            example_stem: "A polygon has 44 diagonals. How many sides does it have?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: diagonals-k-times-sides
+            title: "Diagonals = k × sides gives n = 2k + 3"
+            kind: shortcut
+            rule: "If the number of diagonals is k times the number of sides, then (n − 3)/2 = k, so n = 2k + 3 (a pentagon has as many diagonals as sides)."
+            example: {problem: "A polygon has three times as many diagonals as sides. Find n.", shortcut: "n = 2 × 3 + 3 = 9", seconds_saved: 15}
+
+  - key: circles
+    title: Circles
+    subtopics:
+      - key: chords
+        title: Circle and its chords
+        concepts:
+          - slug: circle-chord-properties
+            title: "Chords: perpendicular from the centre and equal chords"
+            summary: >-
+              The perpendicular from the centre to a chord bisects it, so (half-chord)² +
+              (distance from the centre)² = r². Equal chords are equidistant from the centre and
+              subtend equal angles there, and a longer chord is nearer the centre. SSC asks for chord
+              lengths, distances from the centre and the distance between two parallel chords.
+            difficulty: medium
+            weight: 1.3
+            prerequisites: [pythagoras-theorem-triplets]
+            formulas:
+              - key: half-chord
+                name: Chord, radius and distance
+                expression: "(c/2)² + d² = r²  ⇒  c = 2√(r² − d²)"
+                variables:
+                  - {symbol: c, meaning: chord length}
+                  - {symbol: d, meaning: distance of the chord from the centre}
+                  - {symbol: r, meaning: radius}
+                example: {problem: "r = 13 cm and the chord is 5 cm from the centre. Find the chord.", solution: "2√(169 − 25) = 2 × 12 = 24 cm"}
+              - key: parallel-chords
+                name: Distance between parallel chords
+                expression: "distance = d₁ + d₂ (chords on opposite sides of the centre) or |d₁ − d₂| (same side), with dᵢ = √(r² − (cᵢ/2)²)"
+                example: {problem: "r = 10 with parallel chords 12 and 16. Find the distance between them.", solution: "d = 8 and 6, so 14 (opposite sides) or 2 (same side)"}
+              - key: equal-chords
+                name: Equal chords
+                expression: "equal chords ⇔ equal distances from the centre ⇔ equal angles at the centre"
+            patterns:
+              - key: chord-length
+                title: Chord length from the radius and distance
+                example_stem: "A chord of a circle of radius 17 cm is 8 cm from the centre. Find the length of the chord."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: parallel-chords
+                title: Distance between two parallel chords
+                example_stem: "Two parallel chords 10 cm and 24 cm long lie on opposite sides of the centre of a circle of radius 13 cm. Find the distance between them."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: radius-from-chords
+                title: Radius from two parallel chords
+                example_stem: "Two parallel chords of a circle on the same side of the centre are 6 cm and 8 cm long and 1 cm apart. Find the radius."
+                frequency: low
+                difficulty: hard
+                target_seconds: 45
+            shortcuts:
+              - key: triplet-in-circle
+                title: Radius, half-chord and distance form a triplet
+                kind: shortcut
+                rule: "The radius (hypotenuse), the half-chord and the distance from the centre form a right triangle; look for 3-4-5, 5-12-13 or 8-15-17 before taking square roots."
+                example: {problem: "r = 17 cm and the chord is 8 cm from the centre.", shortcut: "8-15-17: the half-chord is 15, so the chord is 30 cm", seconds_saved: 10}
+                pattern: chord-length
+
+          - slug: intersecting-chords-theorem
+            title: Intersecting chords theorem
+            summary: >-
+              If chords AB and CD meet at a point P inside a circle, PA × PB = PC × PD, and this
+              product equals r² − OP² for every chord through P. The shortest chord through P is the
+              one perpendicular to OP. SSC asks for a missing segment, the radius or the shortest
+              chord.
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [circle-chord-properties, triangle-similarity-criteria]
+            formulas:
+              - key: chord-products
+                name: Products of the segments
+                expression: "PA × PB = PC × PD (P inside the circle)"
+                example: {problem: "PA = 4, PB = 9 and PC = 6. Find PD.", solution: "36/6 = 6"}
+              - key: power-inside
+                name: Product in terms of the radius
+                expression: "PA × PB = r² − OP²;  shortest chord through P = 2√(r² − OP²)"
+                example: {problem: "r = 10 and OP = 6. Find PA × PB and the shortest chord through P.", solution: "100 − 36 = 64; shortest chord = 2 × 8 = 16"}
+            patterns:
+              - key: missing-segment
+                title: Missing segment of intersecting chords
+                example_stem: "Chords AB and CD of a circle intersect at P. If AP = 6 cm, PB = 4 cm and CP = 3 cm, find CD."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: shortest-chord
+                title: Shortest chord through an interior point
+                example_stem: "P is 5 cm from the centre of a circle of radius 13 cm. Find the length of the shortest chord through P."
+                frequency: low
+                difficulty: medium
+                target_seconds: 25
+            shortcuts:
+              - key: one-product
+                title: One product for every chord through P
+                kind: memory
+                rule: "Every chord through an interior point P gives the same product PA × PB = r² − OP²; once one product is known, any other chord's segments follow."
+                example: {problem: "r = 10, OP = 6; one segment of a chord through P is 4. Find the other.", shortcut: "64/4 = 16", seconds_saved: 20}
+                pattern: missing-segment
+
+      - key: angles-in-circle
+        title: Angles subtended by chords of a circle
+        concepts:
+          - slug: circle-angle-subtended
+            title: "Angles subtended by chords: at the centre, in the same segment, in a semicircle"
+            summary: >-
+              The angle a chord subtends at the centre is twice the angle it subtends at any point
+              on the remaining part of the circle; angles in the same segment are equal, and the
+              angle in a semicircle is 90°. A chord equal to the radius subtends 60° at the centre.
+              SSC asks for angles in figures with the centre and points on the circle.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [triangle-angle-sum-exterior]
+            formulas:
+              - key: centre-twice
+                name: Angle at the centre
+                expression: "∠AOB = 2∠ACB for C on the major arc;  for C on the minor arc, ∠ACB = 180° − ½∠AOB"
+                example: {problem: "∠AOB = 100°. Find ∠ACB for C on the major arc and on the minor arc.", solution: "50° and 130°"}
+              - key: same-segment
+                name: Same segment and semicircle
+                expression: "angles subtended by the same arc at points on the same side are equal;  angle in a semicircle = 90°"
+                example: {problem: "AB is a diameter, C is on the circle and ∠CAB = 35°. Find ∠CBA.", solution: "90° − 35° = 55°"}
+              - key: chord-and-angle
+                name: Chord and central angle
+                expression: "chord = 2r sin(θ/2) for a central angle θ;  a chord equal to the radius subtends 60° at the centre, and 30° on the major arc or 150° on the minor arc"
+                example: {problem: "r = 6 cm and the central angle is 60°. Find the chord.", solution: "2 × 6 × sin 30° = 6 cm"}
+            patterns:
+              - key: centre-angle
+                title: Angle at the centre and on the circle
+                example_stem: "O is the centre of a circle and A, B, C lie on it with C on the major arc. If ∠OAB = 25°, find ∠ACB."
+                frequency: high
+                difficulty: medium
+                target_seconds: 25
+              - key: semicircle-angle
+                title: Angle in a semicircle
+                example_stem: "AB is a diameter of a circle and C is a point on it. If ∠ABC = 3∠BAC, find ∠ABC."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: chord-equal-radius
+                title: Chord equal to the radius
+                example_stem: "A chord of a circle equals its radius. Find the angle it subtends at a point on the major arc."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+            shortcuts:
+              - key: radii-isosceles
+                title: Radii make isosceles triangles
+                kind: shortcut
+                rule: "△OAB is isosceles (OA = OB), so ∠AOB = 180° − 2∠OAB and the angle on the major arc is 90° − ∠OAB."
+                example: {problem: "∠OAB = 25°; find ∠ACB on the major arc.", standard: "∠AOB = 130°, then half of it", shortcut: "90° − 25° = 65°", seconds_saved: 15}
+                pattern: centre-angle
+
+          - slug: cyclic-quadrilateral
+            title: Cyclic quadrilaterals
+            summary: >-
+              A quadrilateral with all four vertices on a circle has opposite angles adding to 180°,
+              and each exterior angle equals the interior opposite angle; conversely, opposite angles
+              adding to 180° make a quadrilateral cyclic. A cyclic parallelogram is a rectangle and a
+              cyclic trapezium is isosceles. SSC asks for unknown angles, often with the centre-angle
+              theorem.
+            difficulty: medium
+            weight: 1.4
+            prerequisites: [circle-angle-subtended]
+            formulas:
+              - key: opposite-angles
+                name: Opposite and exterior angles
+                expression: "∠A + ∠C = ∠B + ∠D = 180°;  exterior angle at a vertex = interior angle at the opposite vertex"
+                example: {problem: "In cyclic ABCD, ∠A = 3∠C. Find ∠A and ∠C.", solution: "4∠C = 180°, so ∠C = 45° and ∠A = 135°"}
+              - key: with-centre
+                name: Cyclic quadrilateral with the centre
+                expression: "∠BOD (subtending arc BCD) = 2∠BAD and ∠BCD = 180° − ∠BAD"
+                example: {problem: "In cyclic ABCD with centre O, ∠BAD = 70°. Find ∠BOD and ∠BCD.", solution: "140° and 110°"}
+            patterns:
+              - key: opposite-angle
+                title: Opposite angles of a cyclic quadrilateral
+                example_stem: "ABCD is a cyclic quadrilateral with ∠A = (2x + 10)° and ∠C = (3x + 20)°. Find ∠C."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: cyclic-with-centre
+                title: Cyclic quadrilateral with the centre
+                example_stem: "ABCD is a cyclic quadrilateral in a circle with centre O. If ∠BAD = 64°, find ∠BOD and ∠BCD."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 25
+              - key: side-produced
+                title: Exterior angle with a side produced
+                example_stem: "Side AB of cyclic quadrilateral ABCD is produced to E. If ∠CBE = 105°, find ∠ADC."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+            shortcuts:
+              - key: exterior-equals-opposite
+                title: Exterior angle = interior opposite angle
+                kind: shortcut
+                rule: "When a side of a cyclic quadrilateral is produced, the exterior angle equals the interior angle at the opposite vertex; no subtraction is needed."
+                example: {problem: "∠CBE = 105°; find ∠ADC.", standard: "∠ABC = 75°, so ∠ADC = 180° − 75°", shortcut: "∠ADC = 105°", seconds_saved: 10}
+                pattern: side-produced
+
+      - key: tangents
+        title: Tangents
+        concepts:
+          - slug: circle-tangent-properties
+            title: "Tangent properties: radius ⊥ tangent and equal tangents"
+            summary: >-
+              A tangent is perpendicular to the radius at the point of contact. The two tangents from
+              an external point P are equal, PO bisects the angle between them, and
+              ∠APB + ∠AOB = 180°. The tangent length from a point at distance d from the centre is
+              √(d² − r²). SSC asks for tangent lengths and the angles between tangents.
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [pythagoras-theorem-triplets, circle-angle-subtended]
+            formulas:
+              - key: tangent-length
+                name: Length of a tangent
+                expression: "PT = √(OP² − r²)"
+                example: {problem: "OP = 25 cm and r = 7 cm. Find the tangent length.", solution: "√(625 − 49) = 24 cm"}
+              - key: two-tangents
+                name: Two tangents from a point
+                expression: "PA = PB;  ∠APO = ∠BPO;  ∠APB + ∠AOB = 180°;  ∠PAB = ∠PBA = 90° − ∠APB/2 = ½∠AOB"
+                example: {problem: "∠APB = 50°. Find ∠AOB and the angle AB subtends on the major arc.", solution: "∠AOB = 130°, and the angle on the major arc is 65°"}
+            patterns:
+              - key: tangent-length
+                title: Length of a tangent
+                example_stem: "From a point P 13 cm from the centre of a circle of radius 5 cm, a tangent PT is drawn. Find PT."
+                frequency: high
+                difficulty: easy
+                target_seconds: 15
+              - key: angle-between-tangents
+                title: Angle between two tangents
+                example_stem: "PA and PB are tangents to a circle with centre O. If ∠AOB = 110°, find ∠APB and ∠PAB."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: supplementary-at-centre
+                title: Tangent angle and centre angle are supplementary
+                kind: shortcut
+                rule: "Quadrilateral PAOB has right angles at A and B, so ∠APB = 180° − ∠AOB, and each base angle ∠PAB of the isosceles △PAB is half of ∠AOB."
+                example: {problem: "∠AOB = 110°; find ∠APB and ∠PAB.", shortcut: "∠APB = 70° and ∠PAB = 55°", seconds_saved: 15}
+                pattern: angle-between-tangents
+
+          - slug: alternate-segment-theorem
+            title: Alternate segment theorem (tangent-chord angle)
+            summary: >-
+              The angle between a tangent and a chord through the point of contact equals the angle
+              the chord subtends in the alternate segment, and equals half the central angle of that
+              chord. SSC combines it with isosceles triangles, diameters and cyclic quadrilaterals to
+              find angles.
+            difficulty: medium
+            weight: 1.1
+            prerequisites: [circle-tangent-properties]
+            formulas:
+              - key: tangent-chord
+                name: Alternate segment theorem
+                expression: "tangent at A and chord AB: ∠(tangent, AB) = ∠ACB for any C in the segment on the other side of AB"
+                example: {problem: "The tangent-chord angle at A is 58°. Find the angle AB subtends in the alternate segment and at the centre.", solution: "58° and 116°"}
+              - key: via-centre
+                name: Tangent-chord angle through the centre
+                expression: "tangent-chord angle = ½ × central angle of the chord = 90° − ∠OAB"
+                example: {problem: "Chord AB has ∠OAB = 32°. Find the angle between AB and the tangent at A.", solution: "90° − 32° = 58°"}
+            patterns:
+              - key: tangent-chord-angle
+                title: Angle between a tangent and a chord
+                example_stem: "PT is the tangent to a circle at A and AB is a chord with ∠BAT = 65°. Find the angle AB subtends at a point C on the major arc."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 25
+              - key: tangent-with-diameter
+                title: Tangent meeting a diameter produced
+                example_stem: "AB is a diameter of a circle and the tangent at C meets AB produced at P. If ∠CAB = 28°, find ∠CPA."
+                frequency: medium
+                difficulty: hard
+                target_seconds: 40
+            shortcuts:
+              - key: ninety-minus-oab
+                title: Use the radius to the point of contact
+                kind: shortcut
+                rule: "Join the centre to the point of contact: the tangent is perpendicular to that radius, so the tangent-chord angle is 90° − ∠OAB, and where the tangent meets a line through O the triangle is right-angled at the point of contact."
+                example: {problem: "AB is a diameter and the tangent at C meets AB produced at P; ∠CAB = 28°. Find ∠CPA.", standard: "Use the alternate segment to get ∠BCP = 28°, then the angle sum of △APC", shortcut: "∠COB = 2 × 28° = 56°, and △OCP is right-angled at C, so ∠CPA = 90° − 56° = 34°", seconds_saved: 20}
+                pattern: tangent-with-diameter
+
+          - slug: tangent-secant-theorem
+            title: Tangent-secant theorem
+            summary: >-
+              If a secant from an external point P meets the circle at A and B and a tangent from P
+              touches it at T, then PT² = PA × PB = OP² − r²; two secants PAB and PCD satisfy
+              PA × PB = PC × PD. SSC asks for a tangent length or a secant segment from these products.
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [circle-tangent-properties, intersecting-chords-theorem]
+            formulas:
+              - key: tangent-secant
+                name: Tangent and secant
+                expression: "PT² = PA × PB = OP² − r² (A nearer to P than B)"
+                example: {problem: "PA = 4 and AB = 5. Find the tangent PT.", solution: "PB = 9, so PT = √36 = 6"}
+              - key: two-secants
+                name: Two secants
+                expression: "PA × PB = PC × PD for secants PAB and PCD"
+                example: {problem: "PA = 3, AB = 9 and PC = 4. Find CD.", solution: "PB = 12, so PD = 36/4 = 9 and CD = 5"}
+            patterns:
+              - key: tangent-from-secant
+                title: Tangent length from a secant
+                example_stem: "From an external point P a secant PAB meets a circle at A and B with PA = 5 cm and AB = 15 cm. Find the length of the tangent from P."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: secant-segment
+                title: Secant segment from a tangent
+                example_stem: "PT is a tangent of length 12 cm and the secant PAB has PA = 8 cm. Find AB."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: outside-times-whole
+                title: Outside part × whole secant
+                kind: memory
+                rule: "For every line from an external point, (outside segment) × (whole secant) is the same number, the square of the tangent."
+                example: {problem: "PT = 12 and PA = 8; find AB.", shortcut: "PB = 144/8 = 18, so AB = 18 − 8 = 10", seconds_saved: 10}
+                pattern: secant-segment
+                pitfalls: ["Multiply by the whole secant PB, not by the chord AB."]
+
+          - slug: circle-incircle-tangent-lengths
+            title: Tangent lengths for circles inscribed in triangles and quadrilaterals
+            summary: >-
+              Tangents from a vertex to an inscribed circle are equal, so in △ABC the tangent
+              lengths from A, B and C are s − a, s − b and s − c (s the semi-perimeter), and a
+              quadrilateral with an incircle has AB + CD = AD + BC. SSC asks for side lengths or
+              perimeters from tangent segments.
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [circle-tangent-properties, triangle-incentre]
+            formulas:
+              - key: triangle-tangent-lengths
+                name: Tangent lengths in a triangle
+                expression: "tangent length from A = s − a, from B = s − b, from C = s − c"
+                example: {problem: "a = 7, b = 8, c = 9. Find the tangent lengths from A, B and C.", solution: "s = 12: 5, 4 and 3 (check: AB = 5 + 4 = 9)"}
+              - key: tangential-quadrilateral
+                name: Quadrilateral circumscribing a circle
+                expression: "a circle touches all four sides of ABCD ⇒ AB + CD = AD + BC;  a parallelogram circumscribing a circle is a rhombus"
+                example: {problem: "AB = 6, BC = 7 and CD = 8. Find AD.", solution: "6 + 8 = AD + 7, so AD = 7"}
+            patterns:
+              - key: quadrilateral-side
+                title: Side of a quadrilateral circumscribing a circle
+                example_stem: "A circle is inscribed in quadrilateral ABCD. If AB = 9 cm, BC = 11 cm and CD = 8 cm, find AD."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: incircle-segment
+                title: Tangent segments of an incircle
+                example_stem: "The incircle of △ABC touches BC, CA and AB at D, E and F. If AB = 10 cm, BC = 12 cm and CA = 8 cm, find BD."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 25
+            shortcuts:
+              - key: s-minus-opposite
+                title: Semi-perimeter minus the opposite side
+                kind: shortcut
+                rule: "The tangent length from a vertex equals the semi-perimeter minus the side opposite that vertex."
+                example: {problem: "AB = 10, BC = 12, CA = 8; find BD.", standard: "Set BD = x, DC = 12 − x and solve with equal tangents", shortcut: "s = 15, BD = 15 − 8 = 7", seconds_saved: 20}
+                pattern: incircle-segment
+
+      - key: common-tangents
+        title: Common tangents to two or more circles
+        concepts:
+          - slug: common-tangent-lengths
+            title: Length of direct and transverse common tangents
+            summary: >-
+              For two circles with radii r₁, r₂ and centres d apart, a direct (external) common
+              tangent has length √(d² − (r₁ − r₂)²) and a transverse (internal) one
+              √(d² − (r₁ + r₂)²). For circles touching externally the direct tangent is 2√(r₁r₂).
+              SSC asks these lengths or the distance between the centres.
+            difficulty: medium
+            weight: 1.2
+            prerequisites: [circle-tangent-properties]
+            formulas:
+              - key: direct-tangent
+                name: Direct common tangent
+                expression: "length = √(d² − (r₁ − r₂)²)"
+                example: {problem: "r₁ = 8, r₂ = 3 and d = 13. Find the direct common tangent.", solution: "√(169 − 25) = 12"}
+              - key: transverse-tangent
+                name: Transverse common tangent
+                expression: "length = √(d² − (r₁ + r₂)²), which exists only when d > r₁ + r₂"
+                example: {problem: "r₁ = 8, r₂ = 3 and d = 13. Find the transverse common tangent.", solution: "√(169 − 121) = √48 = 4√3"}
+              - key: touching-circles
+                name: Circles touching externally
+                expression: "direct common tangent = 2√(r₁r₂)"
+                example: {problem: "Radii 9 and 4, touching externally.", solution: "2√36 = 12"}
+              - key: tangent-meeting-point
+                name: Where the common tangents cross the line of centres
+                expression: "transverse tangents meet the line of centres at the point dividing it internally in r₁ : r₂; direct tangents meet it at the point dividing it externally in r₁ : r₂"
+            patterns:
+              - key: direct-length
+                title: Length of the direct common tangent
+                example_stem: "Two circles of radii 10 cm and 4 cm have their centres 10 cm apart. Find the length of their direct common tangent."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: transverse-length
+                title: Length of the transverse common tangent
+                example_stem: "The centres of two circles of radii 6 cm and 3 cm are 15 cm apart. Find the length of a transverse common tangent."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: touching-tangent
+                title: Circles touching each other
+                example_stem: "Two circles of radii 16 cm and 9 cm touch each other externally. Find the length of their direct common tangent."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+            shortcuts:
+              - key: difference-for-direct
+                title: Direct uses the difference, transverse the sum
+                kind: memory
+                rule: "Direct tangents do not cross the line of centres, so subtract the radii; transverse tangents cross it, so add them. The tangent, d and (r₁ ∓ r₂) form a right triangle, often a triplet."
+                example: {problem: "Radii 10 and 4, d = 10; find the direct tangent.", shortcut: "6-8-10 triplet: 8", seconds_saved: 10}
+                pattern: direct-length
+              - key: twice-geometric-mean
+                title: Twice the geometric mean of the radii
+                kind: shortcut
+                rule: "For circles touching externally the direct common tangent is 2√(r₁r₂)."
+                example: {problem: "Radii 16 and 9, touching externally", standard: "d = 25, √(625 − 49) = 24", shortcut: "2 × √144 = 24", seconds_saved: 10}
+                pattern: touching-tangent
+
+          - slug: two-circles-relative-position
+            title: Relative position of two circles and the number of common tangents
+            summary: >-
+              Comparing the distance d between centres with r₁ + r₂ and |r₁ − r₂| gives the position
+              of two circles and the number of common tangents: 4 (separate), 3 (touching
+              externally), 2 (intersecting), 1 (touching internally), 0 (one inside the other). The
+              line of centres is the perpendicular bisector of a common chord, and three circles
+              touching each other externally have centres forming a triangle with sides r₁ + r₂,
+              r₂ + r₃ and r₃ + r₁. SSC asks the number of tangents, common-chord and centre-triangle
+              problems.
+            difficulty: medium
+            weight: 0.9
+            prerequisites: [common-tangent-lengths, circle-chord-properties]
+            formulas:
+              - key: tangent-count
+                name: Number of common tangents
+                expression: "d > r₁ + r₂: 4;  d = r₁ + r₂: 3;  |r₁ − r₂| < d < r₁ + r₂: 2;  d = |r₁ − r₂|: 1;  d < |r₁ − r₂|: 0"
+                example: {problem: "Radii 5 and 3 with centres 8 apart. How many common tangents?", solution: "d = r₁ + r₂, so they touch externally: 3"}
+              - key: common-chord
+                name: Common chord of intersecting circles
+                expression: "the line of centres bisects the common chord at right angles; d = √(r₁² − (c/2)²) ± √(r₂² − (c/2)²)"
+                example: {problem: "Radii 10 and 17, common chord 16, centres on opposite sides of the chord. Find d.", solution: "√(100 − 64) + √(289 − 64) = 6 + 15 = 21"}
+              - key: three-touching
+                name: Three circles touching each other externally
+                expression: "the centres form a triangle with sides r₁ + r₂, r₂ + r₃, r₃ + r₁ and perimeter 2(r₁ + r₂ + r₃)"
+                example: {problem: "Radii 2, 3 and 4. Find the sides of the centre triangle.", solution: "5, 7 and 6 (perimeter 18)"}
+            patterns:
+              - key: count-tangents
+                title: Number of common tangents
+                example_stem: "Two circles of radii 7 cm and 4 cm have their centres 3 cm apart. How many common tangents do they have?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 15
+              - key: common-chord
+                title: Common chord and the distance between the centres
+                example_stem: "Two circles of radii 15 cm and 20 cm intersect, and their common chord is 24 cm long. Find the distance between their centres if they lie on opposite sides of the chord."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: three-touching
+                title: Three mutually touching circles
+                example_stem: "Three circles of radii 4 cm, 5 cm and 6 cm touch each other externally. Find the perimeter of the triangle formed by joining their centres."
+                frequency: low
+                difficulty: easy
+                target_seconds: 15
+            shortcuts:
+              - key: compare-d
+                title: Compare d with the sum and the difference
+                kind: shortcut
+                rule: "Compute r₁ + r₂ and |r₁ − r₂| once; where d falls among them gives the position and the tangent count (4, 3, 2, 1, 0 as d shrinks)."
+                example: {problem: "Radii 7 and 4, d = 3", shortcut: "d equals the difference: internal touching, 1 tangent", seconds_saved: 10}
+                pattern: count-tangents
+
+  - key: coordinate-geometry
+    title: Coordinate geometry basics
+    concepts:
+      - slug: coordinate-distance-section
+        title: Distance formula, section formula and reflections
+        summary: >-
+          The distance between (x₁, y₁) and (x₂, y₂) is √((x₂ − x₁)² + (y₂ − y₁)²); the point
+          dividing their join internally in m : n is ((mx₂ + nx₁)/(m + n), (my₂ + ny₁)/(m + n)),
+          with the midpoint as a special case. SSC occasionally asks for distances, the ratio in
+          which an axis divides a segment, and reflections of a point in the axes or in y = x.
+        difficulty: easy
+        weight: 0.6
+        prerequisites: [pythagoras-theorem-triplets]
+        formulas:
+          - key: distance
+            name: Distance formula
+            expression: "d = √((x₂ − x₁)² + (y₂ − y₁)²);  distance from the origin = √(x² + y²)"
+            example: {problem: "Find the distance between (1, 2) and (7, 10).", solution: "√(36 + 64) = 10"}
+          - key: section
+            name: Section formula and midpoint
+            expression: "internal division in m : n: ((mx₂ + nx₁)/(m + n), (my₂ + ny₁)/(m + n));  midpoint: ((x₁ + x₂)/2, (y₁ + y₂)/2)"
+            example: {problem: "Find the point dividing the join of (2, −3) and (8, 9) in the ratio 1 : 2.", solution: "((8 + 4)/3, (9 − 6)/3) = (4, 1)"}
+          - key: axis-ratio
+            name: Ratio in which an axis divides a segment
+            expression: "the x-axis divides the join of (x₁, y₁) and (x₂, y₂) in the ratio −y₁ : y₂;  the y-axis in the ratio −x₁ : x₂"
+            example: {problem: "In what ratio does the x-axis divide the join of (3, −4) and (−2, 6)?", solution: "4 : 6 = 2 : 3"}
+          - key: reflections
+            name: Reflections of a point
+            expression: "(x, y) reflected in the x-axis: (x, −y);  in the y-axis: (−x, y);  in the origin: (−x, −y);  in the line y = x: (y, x)"
+        patterns:
+          - key: distance-points
+            title: Distance between two points
+            example_stem: "Find the distance between the points (−3, 4) and (5, −2)."
+            frequency: low
+            difficulty: easy
+            target_seconds: 15
+          - key: axis-divides
+            title: Ratio in which an axis divides a segment
+            example_stem: "In what ratio does the y-axis divide the line segment joining (−4, 7) and (6, −3)?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 20
+          - key: reflection-point
+            title: Reflection of a point
+            example_stem: "What is the reflection of the point (3, −5) in the line y = x?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: read-the-ratio
+            title: Read the ratio off the coordinates
+            kind: shortcut
+            rule: "For points on opposite sides of an axis, the x-axis cuts their join in the ratio of the absolute y-coordinates and the y-axis in the ratio of the absolute x-coordinates."
+            example: {problem: "The y-axis and the join of (−4, 7) and (6, −3)", standard: "Set the x-coordinate of the section point to 0 and solve for m : n", shortcut: "|−4| : |6| = 2 : 3", seconds_saved: 20}
+            pattern: axis-divides
+
+      - slug: coordinate-slope-area
+        title: Slope, collinearity and area of a triangle from coordinates
+        summary: >-
+          The slope of the line through (x₁, y₁) and (x₂, y₂) is (y₂ − y₁)/(x₂ − x₁); parallel lines
+          have equal slopes and perpendicular lines have slopes with product −1. The area of a
+          triangle with given vertices is ½|x₁(y₂ − y₃) + x₂(y₃ − y₁) + x₃(y₁ − y₂)|, and three
+          points are collinear when it is 0. SSC occasionally asks for slopes, a line through two
+          points and collinearity.
+        difficulty: medium
+        weight: 0.6
+        prerequisites: [coordinate-distance-section, linear-equation-graphs]
+        formulas:
+          - key: slope
+            name: Slope through two points
+            expression: "m = (y₂ − y₁)/(x₂ − x₁);  parallel lines: m₁ = m₂;  perpendicular lines: m₁ × m₂ = −1"
+            example: {problem: "Find the slope of the line through (2, 3) and (6, 11).", solution: "8/4 = 2"}
+          - key: point-slope
+            name: Equation of a line through a point
+            expression: "y − y₁ = m(x − x₁)"
+            example: {problem: "Find the line through (2, 3) with slope 2.", solution: "y − 3 = 2(x − 2), so y = 2x − 1"}
+          - key: triangle-area
+            name: Area of a triangle from its vertices
+            expression: "area = ½|x₁(y₂ − y₃) + x₂(y₃ − y₁) + x₃(y₁ − y₂)|;  area 0 ⇔ the points are collinear"
+            example: {problem: "Find the area of the triangle with vertices (1, 1), (4, 5) and (7, 1).", solution: "½|1(4) + 4(0) + 7(−4)| = ½ × 24 = 12"}
+        patterns:
+          - key: slope-perpendicular
+            title: Slope of a parallel or perpendicular line
+            example_stem: "What is the slope of a line perpendicular to 3x − 4y + 7 = 0?"
+            frequency: low
+            difficulty: easy
+            target_seconds: 15
+          - key: collinear-k
+            title: Value of k for collinear points
+            example_stem: "For what value of k are the points (1, 5), (k, 1) and (4, 11) collinear?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 25
+          - key: area-from-vertices
+            title: Area of a triangle from its vertices
+            example_stem: "Find the area of the triangle with vertices (0, 0), (6, 0) and (2, 5)."
+            frequency: low
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: equal-slopes
+            title: Equal slopes for collinearity
+            kind: shortcut
+            rule: "A, B and C are collinear exactly when slope AB = slope AC; compare two slopes instead of using the area formula."
+            example: {problem: "(1, 5), (k, 1) and (4, 11) are collinear; find k.", shortcut: "Slope of the line is 6/3 = 2, so 1 = 5 + 2(k − 1) and k = −1", seconds_saved: 15}
+            pattern: collinear-k

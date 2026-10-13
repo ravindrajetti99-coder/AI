@@ -1,0 +1,687 @@
+key: profit-loss
+title: Profit and Loss
+strategies:
+  - key: approach
+    title: "Profit and loss: everything as a multiplier"
+    summary: >-
+      Profit and loss questions appear in almost every paper. Profit and loss percentages are on
+      the cost price, discount is on the marked price, and writing each percentage as a fraction
+      multiplier (20% profit → SP = 6/5 × CP) turns most questions into a single line.
+    seconds_per_question: 40
+    accuracy_target: 0.9
+    tactics:
+      - "Write every relation as a multiplier: SP = CP × (100 + P)/100 and SP = MP × (100 − D)/100."
+      - "Assume CP = 100 (or the LCM of the denominators) when no amount is given."
+      - "For marked-price questions use MP/CP = (100 + P%)/(100 − D%)."
+      - "For false weights and 'CP of x = SP of y', compare quantities: gain % = difference ÷ what the buyer actually receives × 100."
+    avoid:
+      - "Taking profit on SP, or discount on CP, unless the question says so."
+      - "Adding successive discounts: 20% and 10% make 28%, not 30%."
+
+topics:
+  - key: basics
+    title: Cost price, selling price, profit and loss
+    subtopics:
+      - key: cp-sp
+        title: Cost price and selling price
+        concepts:
+          - ref: profit-loss
+            weight: 2.0
+            formulas:
+              - key: profit-loss-amount
+                name: Profit and loss
+                expression: "profit = SP − CP (when SP > CP);  loss = CP − SP (when CP > SP)"
+                variables:
+                  - {symbol: CP, meaning: cost price (what the seller paid)}
+                  - {symbol: SP, meaning: selling price (what the buyer pays)}
+                example: {problem: "CP ₹640, SP ₹720", solution: "profit = ₹80"}
+              - key: percent-on-cp
+                name: Profit percentage and loss percentage
+                expression: "profit % = profit/CP × 100;  loss % = loss/CP × 100"
+                example: {problem: "CP ₹640, SP ₹720", solution: "80/640 × 100 = 12.5% profit"}
+              - key: sp-cp-from-percent
+                name: SP from CP and CP from SP
+                expression: "SP = CP × (100 + P%)/100 or CP × (100 − L%)/100;  CP = SP × 100/(100 + P%) or SP × 100/(100 − L%)"
+                example: {problem: "An article sold for ₹1,035 gives a 15% profit. Find its CP.", solution: "1,035 × 100/115 = ₹900"}
+              - key: overheads
+                name: Cost price with overhead expenses
+                expression: "effective CP = purchase price + expenses on transport, repairs, labour or tax before the sale"
+                example: {problem: "A scooter is bought for ₹42,000, repaired for ₹3,000 and sold for ₹49,500.", solution: "CP = ₹45,000 → profit ₹4,500 = 10%"}
+            patterns:
+              - key: profit-percentage
+                title: Profit percentage from CP and SP
+                example_stem: "A trader buys a mobile phone for ₹12,500 and sells it for ₹14,250. Find his profit percentage."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: sp-for-target
+                title: Loss percentage and the SP for a target profit
+                example_stem: "By selling a chair for ₹1,190 a carpenter loses 15%. At what price should he sell it to gain 10%?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 30
+              - key: overhead-expenses
+                title: Profit with overhead expenses (repairs, transport)
+                example_stem: "A man buys an old car for ₹1,80,000 and spends ₹20,000 on repairs. He sells it for ₹2,30,000. Find his profit percentage."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: fraction-multipliers
+                title: Profit calculation shortcuts (fraction multipliers)
+                kind: shortcut
+                rule: "Turn the percentage into a fraction r/s; then CP : SP = s : (s + r) for a profit and s : (s − r) for a loss (12.5% profit → 8 : 9, 20% loss → 5 : 4)."
+                example: {problem: "An article costing ₹1,600 is sold at a 12.5% profit. Find the SP.", standard: "1,600 × 112.5/100", shortcut: "12.5% = 1/8 → CP : SP = 8 : 9 → SP = 200 × 9 = ₹1,800", seconds_saved: 10}
+              - key: sp-to-sp
+                title: Go from one SP to another without finding CP
+                kind: shortcut
+                rule: "For the same article, SP₂ = SP₁ × (100 ± P₂)/(100 ± P₁), with + for a profit and − for a loss."
+                example: {problem: "Sold at ₹1,190 with a 15% loss; SP for a 10% gain?", standard: "CP = 1,190 × 100/85 = 1,400, then 1,400 × 110/100", shortcut: "1,190 × 110/85 = 1,190 × 22/17 = ₹1,540", seconds_saved: 20}
+                pattern: sp-for-target
+          - slug: cp-sp-relation
+            title: CP-SP relation (articles bought and sold in different quantities)
+            summary: "When the cost price of x articles equals the selling price of y articles, the profit is (x − y)/y × 100% (a loss if y > x). The same idea covers 'bought a for ₹p, sold b for ₹q' questions and gains stated as the SP or CP of some articles."
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [profit-loss]
+            formulas:
+              - key: x-equals-y
+                name: CP of x articles = SP of y articles
+                expression: "profit % = (x − y)/y × 100 (a loss of (y − x)/y × 100 when y > x)"
+                example: {problem: "CP of 20 pens = SP of 16 pens", solution: "(20 − 16)/16 × 100 = 25% profit"}
+              - key: rate-buying-selling
+                name: Bought at one rate, sold at another
+                expression: "bought a items for ₹p and sold b items for ₹q ⇒ profit % = (qa − pb)/(pb) × 100"
+                example: {problem: "Bought 6 for ₹5 and sold 5 for ₹6", solution: "(6 × 6 − 5 × 5)/(5 × 5) × 100 = 44% profit"}
+              - key: gain-as-articles
+                name: Gain equal to the SP or CP of some articles
+                expression: "on selling n articles, gain = SP of m articles ⇒ profit % = m/(n − m) × 100;  gain = CP of m articles ⇒ profit % = m/n × 100"
+                example: {problem: "On selling 33 m of cloth a trader gains the SP of 11 m.", solution: "11/(33 − 11) × 100 = 50%"}
+            patterns:
+              - key: cp-of-x-sp-of-y
+                title: CP of x articles equals SP of y articles
+                example_stem: "The cost price of 25 articles is equal to the selling price of 20 articles. Find the profit or loss percentage."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: buy-rate-sell-rate
+                title: Bought at one rate, sold at another
+                example_stem: "A vendor buys bananas at 6 for ₹10 and sells them at 4 for ₹8. Find his profit percentage."
+                frequency: high
+                difficulty: medium
+                target_seconds: 30
+              - key: gain-equals-sp
+                title: Gain equal to the selling price of some articles
+                example_stem: "By selling 45 lemons a vendor gains the selling price of 9 lemons. Find his gain percentage."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: difference-over-sold
+                title: Difference over the number sold
+                kind: shortcut
+                rule: "If CP of x = SP of y, profit % = (x − y)/y × 100: the difference divided by the number on the selling side."
+                example: {problem: "CP of 25 = SP of 20", standard: "Assume CP ₹1 each, find the SP of one article and compare", shortcut: "(25 − 20)/20 = 25% profit", seconds_saved: 20}
+                pattern: cp-of-x-sp-of-y
+              - key: equalise-quantities
+                title: Equalise the quantities with the LCM
+                kind: shortcut
+                rule: "For 'a for ₹p, b for ₹q', make both quantities equal to LCM(a, b) and compare the rupee amounts."
+                example: {problem: "Buys 6 for ₹10, sells 4 for ₹8", standard: "Find the CP and SP of one banana as decimals", shortcut: "12 bananas: CP ₹20, SP ₹24 → 20% profit", seconds_saved: 20}
+                pattern: buy-rate-sell-rate
+          - slug: cp-from-two-selling-situations
+            title: Finding CP from two selling situations
+            summary: "When the same article sold at two prices gives two different results, the difference of the selling prices equals the difference of the profit percentages applied to CP: CP = (SP₂ − SP₁) × 100/(P₂ − P₁), with a loss taken as a negative profit. The same idea solves 'had he bought it for less and sold it for less' questions."
+            difficulty: medium
+            weight: 1.3
+            prerequisites: [profit-loss]
+            formulas:
+              - key: two-sp
+                name: CP from two selling prices
+                expression: "CP = (SP₂ − SP₁) × 100/(P₂% − P₁%), with a loss written as a negative profit"
+                example: {problem: "Selling at ₹1,140 gives a 5% loss and at ₹1,260 a 5% profit.", solution: "CP = 120 × 100/(5 − (−5)) = ₹1,200"}
+              - key: equal-profit-loss
+                name: Profit at one price equals loss at another
+                expression: "if SP₁ − CP = CP − SP₂, then CP = (SP₁ + SP₂)/2"
+                example: {problem: "Profit on selling at ₹1,450 equals the loss on selling at ₹1,050.", solution: "CP = (1,450 + 1,050)/2 = ₹1,250"}
+              - key: hypothetical-change
+                name: Hypothetical change in CP and SP
+                expression: "take CP = 100; actual SP = 100 + p; new CP = 100 − a and new SP = (100 − a)(100 + q)/100; (actual SP − new SP) in units equals the rupee difference given"
+                example: {problem: "Sold at 20% profit. Had it been bought 10% cheaper and sold ₹18 cheaper, the gain would be 30%. Find CP.", solution: "SP 120 vs 90 × 1.3 = 117 → 3 units = ₹18 → CP = 100 units = ₹600"}
+            patterns:
+              - key: profit-loss-two-prices
+                title: Profit at one price, loss at another
+                example_stem: "The profit earned by selling an article for ₹1,450 is equal to the loss incurred by selling it for ₹1,050. Find its cost price."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: bought-cheaper-sold-less
+                title: Had he bought for less and sold for less
+                example_stem: "A trader sells an article at a 20% profit. If he had bought it for 20% less and sold it for ₹36 less, he would have gained 35%. Find the cost price."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 40
+              - key: sp-doubled
+                title: Selling price doubled, effect on profit
+                example_stem: "If an article is sold at double its present selling price, the profit becomes four times the present profit. Find the present profit percentage."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: percent-gap
+                title: Rupee gap ÷ percentage gap = 1% of CP
+                kind: shortcut
+                rule: "Between two selling situations of the same article, (difference in SP) ÷ (difference in profit %) gives 1% of the CP."
+                example: {problem: "₹1,140 at a 5% loss, ₹1,260 at a 5% profit", standard: "Write two equations in CP and solve", shortcut: "₹120 ÷ 10 = ₹12 = 1% → CP = ₹1,200", seconds_saved: 20}
+                pattern: profit-loss-two-prices
+              - key: cp-100-units
+                title: CP = 100 units for hypothetical changes
+                kind: alternative
+                rule: "Take CP = 100, write the actual and the hypothetical SP in units, and scale the unit difference to the rupee difference."
+                example: {problem: "20% profit; bought 20% less and sold ₹36 less → 35% gain", standard: "Set up equations with CP = x", shortcut: "SP 120 vs 80 × 1.35 = 108 → 12 units = ₹36 → CP = ₹300", seconds_saved: 30}
+                pattern: bought-cheaper-sold-less
+      - key: percent-base
+        title: Profit percentage and loss percentage
+        concepts:
+          - slug: profit-on-selling-price
+            title: Profit on selling price vs profit on cost price
+            summary: "Profit percentage is on CP unless a question says 'on the selling price'. A profit of x% on SP equals x/(100 − x) × 100% on CP (20% on SP = 25% on CP); a loss of y% on SP equals y/(100 + y) × 100% on CP."
+            difficulty: medium
+            weight: 0.9
+            prerequisites: [profit-loss, percentage-comparison]
+            formulas:
+              - key: sp-to-cp-base
+                name: Profit on SP to profit on CP
+                expression: "profit % on CP = x/(100 − x) × 100, where x = profit % on SP;  conversely x = p/(100 + p) × 100 for a profit of p% on CP"
+                example: {problem: "A profit of 20% on SP is what profit on CP?", solution: "20/80 × 100 = 25%"}
+              - key: loss-on-sp
+                name: Loss on SP to loss on CP
+                expression: "loss % on CP = y/(100 + y) × 100, where y = loss % on SP"
+                example: {problem: "A loss of 20% on SP is what loss on CP?", solution: "SP 100 → CP 120 → 20/120 × 100 = 16.67%"}
+            patterns:
+              - key: convert-base
+                title: Convert profit on SP to profit on CP
+                example_stem: "A shopkeeper earns a profit of 25% on the selling price. What is his profit percentage on the cost price?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: sp-base-word
+                title: Find CP or SP when the profit is on SP
+                example_stem: "A trader's profit is 15% of the selling price. If the cost price is ₹1,700, find the selling price."
+                frequency: low
+                difficulty: medium
+                target_seconds: 25
+            shortcuts:
+              - key: fraction-flip
+                title: "On SP a/b means on CP a/(b − a)"
+                kind: shortcut
+                rule: "A profit of a/b of SP leaves CP = (b − a)/b of SP, so the profit on CP is a/(b − a)."
+                example: {problem: "Profit 25% (1/4) on SP", standard: "Assume SP 100, CP 75, compute 25/75", shortcut: "1/(4 − 1) = 1/3 = 33.33%", seconds_saved: 15}
+                pattern: convert-base
+          - slug: two-articles-same-selling-price
+            title: Two articles sold at the same selling price
+            summary: "If two articles are sold at the same price, one at x% profit and the other at x% loss, there is always a net loss of x²/100 %. With different rates, find each CP from the common SP (CP = SP × 100/(100 ± r)) and compare the totals."
+            difficulty: medium
+            weight: 1.3
+            prerequisites: [profit-loss, reverse-percentage]
+            formulas:
+              - key: equal-rates
+                name: Same SP, equal profit and loss rates
+                expression: "overall loss % = x²/100"
+                example: {problem: "Two cycles are sold at ₹4,800 each, one at a 20% profit and one at a 20% loss.", solution: "loss = 400/100 = 4% (CPs ₹4,000 and ₹6,000; SPs ₹9,600)"}
+              - key: loss-amount
+                name: Overall loss in rupees
+                expression: "loss = 2 × SP × x²/(100² − x²)"
+                example: {problem: "The same two cycles", solution: "2 × 4,800 × 400/(10,000 − 400) = ₹400"}
+              - key: different-rates
+                name: Same SP, different rates
+                expression: "CP₁ : CP₂ = (100 + r₂) : (100 + r₁), with a loss rate taken as negative"
+                example: {problem: "Same SP, a 25% profit on one and a 20% loss on the other", solution: "CP₁ : CP₂ = 80 : 125 = 16 : 25; SPs 20 + 20 = 40 vs CPs 41 → loss 1/41 × 100 ≈ 2.44%"}
+            patterns:
+              - key: equal-percent-same-sp
+                title: Same SP with x% profit and x% loss
+                example_stem: "A man sells two phones for ₹14,850 each, gaining 10% on one and losing 10% on the other. Find his overall gain or loss percentage."
+                frequency: high
+                difficulty: easy
+                target_seconds: 15
+              - key: same-sp-loss-amount
+                title: Overall loss amount for the same SP
+                example_stem: "Two plots are sold for ₹9,60,000 each, one at a 20% profit and the other at a 20% loss. Find the total loss in rupees."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: same-sp-different-rates
+                title: Same SP at different rates
+                example_stem: "Two articles together cost ₹5,600. One is sold at a 20% profit and the other at a 10% loss, and both fetch the same price. Find the cost price of the cheaper article."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 35
+            shortcuts:
+              - key: x-squared-over-100
+                title: Loss = x²/100 %
+                kind: memory
+                rule: "Equal SP with x% profit and x% loss always means a loss of x²/100 %, never 'no profit, no loss'."
+                example: {problem: "₹14,850 each, +10% and −10%", standard: "Find both CPs (₹13,500 and ₹16,500) and compare the totals", shortcut: "10²/100 = 1% loss", seconds_saved: 30}
+                pattern: equal-percent-same-sp
+              - key: inverse-ratio
+                title: CPs in the inverse ratio of the multipliers
+                kind: shortcut
+                rule: "With a common SP, CP₁ : CP₂ = multiplier₂ : multiplier₁ (20% profit → 1.2, 10% loss → 0.9, so CP₁ : CP₂ = 0.9 : 1.2 = 3 : 4)."
+                example: {problem: "Total CP ₹5,600, 20% profit and 10% loss, equal SPs", standard: "Solve 1.2x = 0.9(5,600 − x)", shortcut: "3 : 4 → ₹2,400 and ₹3,200", seconds_saved: 25}
+                pattern: same-sp-different-rates
+
+  - key: combined
+    title: Combined transactions
+    concepts:
+      - slug: successive-selling-chain
+        title: Successive selling chains (A sells to B, B to C)
+        summary: "When an article passes through several hands, each profit or loss multiplies the price: final price = original CP × (1 ± r₁/100)(1 ± r₂/100)…. Divide by the same factors to work back to the first cost price."
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [profit-loss, successive-percentage]
+        formulas:
+          - key: chain
+            name: Chained profit and loss
+            expression: "price paid by the last buyer = CP₁ × (1 + r₁/100)(1 + r₂/100)…, with rᵢ negative for a loss"
+            example: {problem: "A sells to B at a 20% profit, B to C at a 10% loss, and C pays ₹5,400.", solution: "A's cost = 5,400/(1.2 × 0.9) = ₹5,000"}
+        patterns:
+          - key: find-first-cp
+            title: Find the original cost price
+            example_stem: "A sells a bicycle to B at a 25% profit and B sells it to C at a 10% profit. If C pays ₹8,250, how much did A pay for it?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 25
+          - key: net-percent-chain
+            title: Net profit or loss across the chain
+            example_stem: "A sells an article to B at a 10% loss, B sells it to C at a 20% profit and C sells it to D at a 25% profit. D's price is what percent more than A's cost?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 30
+        shortcuts:
+          - key: multiply-fractions
+            title: Multiply the fraction factors
+            kind: shortcut
+            rule: "Write each change as a fraction (25% → 5/4, 10% → 11/10, −10% → 9/10) and cancel before multiplying."
+            example: {problem: "25% then 10% profit, final price ₹8,250", standard: "Work back one sale at a time with decimals", shortcut: "8,250 × 4/5 × 10/11 = ₹6,000", seconds_saved: 20}
+            pattern: find-first-cp
+      - slug: partial-sale-profit-loss
+        title: Partial sales at different rates (overall profit or loss)
+        summary: "When parts of a stock are sold at different profit or loss rates, the overall percentage is the cost-weighted average of the rates. Reverse it to find the rate needed on the rest, or (with alligation) how much was sold at each rate."
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [profit-loss]
+        formulas:
+          - key: weighted-rate
+            name: Overall profit from partial sales
+            expression: "overall % = (C₁r₁ + C₂r₂ + …)/(C₁ + C₂ + …), where Cᵢ is the cost of the part sold at rᵢ% (a loss negative)"
+            example: {problem: "1/3 of the goods sold at a 15% profit and the rest at a 6% profit", solution: "(1/3)(15) + (2/3)(6) = 5 + 4 = 9% profit"}
+          - key: required-rate
+            name: Rate needed on the remainder
+            expression: "r_rest = (target % × total cost − r₁ × C₁)/C_rest"
+            example: {problem: "40% of the stock sold at a 10% loss; a 14% overall gain is wanted.", solution: "(14 × 100 − (−10) × 40)/60 = 1,800/60 = 30% profit on the rest"}
+        patterns:
+          - key: overall-profit
+            title: Overall profit or loss from partial sales
+            example_stem: "A trader buys 200 kg of sugar. He sells 120 kg at a 10% profit and the rest at a 15% loss. Find his overall profit or loss percentage."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: rate-on-rest
+            title: Profit rate needed on the remaining stock
+            example_stem: "A dealer sells one-fourth of his goods at a loss of 8%. At what profit percentage must he sell the rest to gain 10% on the whole?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 35
+          - key: quantity-at-each-rate
+            title: Quantity sold at each rate
+            example_stem: "A shopkeeper sells part of 50 kg of rice at a 12% profit and the rest at an 8% loss, making a 4% profit overall. How many kg did he sell at a profit?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 40
+        shortcuts:
+          - key: alligation-split
+            title: Alligation on the rates
+            kind: alternative
+            rule: "Write the two rates and the overall rate; cost of the part at the higher rate : cost of the part at the lower rate = (overall − lower rate) : (higher rate − overall)."
+            example: {problem: "50 kg: part at a 12% profit, rest at an 8% loss, 4% profit overall", standard: "Solve 0.12x − 0.08(50 − x) = 0.04 × 50", shortcut: "(4 + 8) : (12 − 4) = 3 : 2 → 30 kg at a profit", seconds_saved: 25}
+            pattern: quantity-at-each-rate
+
+  - key: marked-price
+    title: Marked price and discount
+    subtopics:
+      - key: discount-basics
+        title: Discount on the marked price
+        concepts:
+          - ref: discount
+            weight: 1.5
+            formulas:
+              - key: discount-amount
+                name: Discount and discount percentage
+                expression: "discount = MP − SP;  discount % = discount/MP × 100"
+                variables:
+                  - {symbol: MP, meaning: marked (list) price}
+                  - {symbol: SP, meaning: selling price after the discount}
+                example: {problem: "MP ₹2,400, SP ₹2,040", solution: "discount ₹360 = 360/2,400 × 100 = 15%"}
+              - key: sp-from-mp
+                name: SP from MP and MP from SP
+                expression: "SP = MP × (100 − D%)/100;  MP = SP × 100/(100 − D%)"
+                example: {problem: "After a 15% discount an article sells for ₹1,530. Find the MP.", solution: "1,530 × 100/85 = ₹1,800"}
+            patterns:
+              - key: discount-percent
+                title: Discount percentage from MP and SP
+                example_stem: "A jacket marked at ₹3,200 is sold for ₹2,720. Find the rate of discount."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: mp-from-sp
+                title: Marked price from SP and discount
+                example_stem: "After a discount of 12%, a shirt is sold for ₹1,320. What is its marked price?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+            shortcuts:
+              - key: paying-fraction
+                title: Discount shortcuts (paying fractions)
+                kind: shortcut
+                rule: "Write the discount as the fraction you still pay: 12.5% off → 7/8, 20% off → 4/5, 12% off → 22/25. Then SP = MP × that fraction and MP = SP ÷ it."
+                example: {problem: "SP ₹1,320 after a 12% discount; find the MP", standard: "1,320 × 100/88", shortcut: "pay 22/25 → MP = 1,320 × 25/22 = ₹1,500", seconds_saved: 10}
+                pattern: mp-from-sp
+          - slug: mp-sp-relation
+            title: "MP-SP relation: marking up above cost"
+            summary: "Sellers mark the price above cost (the markup) and then allow a discount. Markup % is on CP: MP = CP × (100 + m)/100; the discount comes off MP, so SP = CP × (1 + m/100)(1 − d/100). There is a profit only when the markup outweighs the discount."
+            difficulty: medium
+            weight: 1.3
+            prerequisites: [discount]
+            formulas:
+              - key: markup
+                name: Marked price from the markup
+                expression: "MP = CP × (100 + m)/100, where m = markup % on CP"
+                example: {problem: "CP ₹800, marked 40% above cost", solution: "MP = 800 × 1.4 = ₹1,120"}
+              - key: markup-discount-net
+                name: Net profit after markup and discount
+                expression: "profit % = m − d − (m × d)/100"
+                example: {problem: "Marked 40% above CP, discount 25%", solution: "40 − 25 − 10 = 5% profit"}
+            patterns:
+              - key: markup-then-discount
+                title: Marked above cost, then discounted
+                example_stem: "A shopkeeper marks his goods 30% above the cost price and allows a discount of 10%. Find his profit percentage."
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: mp-cp-sp-values
+                title: Find CP or MP from the other values
+                example_stem: "The marked price of an article is ₹1,500. After a 20% discount the seller still gains 20%. Find the cost price."
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: net-percent
+                title: Net % = m − d − md/100
+                kind: shortcut
+                rule: "A markup is an increase and a discount a decrease of the same price, so combine them like successive percentage changes."
+                example: {problem: "Markup 30%, discount 10%", standard: "Assume CP 100 → MP 130 → SP 117", shortcut: "30 − 10 − 3 = 17% profit", seconds_saved: 10}
+                pattern: markup-then-discount
+          - slug: profit-discount-combination
+            title: Profit and discount combination (how much to mark up)
+            summary: "To earn p% profit after giving d% discount, the marked price must satisfy MP/CP = (100 + p)/(100 − d). SSC asks the markup needed, the largest discount that still leaves a given profit, and how the profit changes when the discount changes."
+            difficulty: medium
+            weight: 1.8
+            prerequisites: [mp-sp-relation]
+            formulas:
+              - key: mp-cp-ratio
+                name: "MP : CP for a target profit"
+                expression: "MP/CP = (100 + p)/(100 − d)"
+                example: {problem: "Discount 20%, profit wanted 20%", solution: "MP/CP = 120/80 = 3/2 → mark 50% above CP"}
+              - key: discount-change
+                name: Change in discount and change in profit
+                expression: "SP₁ − SP₂ = MP × (d₂ − d₁)/100 = CP × (p₁ − p₂)/100"
+                example: {problem: "A 10% discount gives a 17% profit. Find the profit at a 20% discount.", solution: "MP/CP = 117/90 = 1.3 → SP = 1.3 × 0.8 = 1.04 of CP → 4% profit"}
+              - key: discount-for-profit
+                name: Discount that leaves a given profit
+                expression: "d = 100 − (100 + p) × CP/MP"
+                example: {problem: "MP is 40% above CP; a 12% profit is wanted.", solution: "d = 100 − 112/1.4 = 100 − 80 = 20%"}
+            patterns:
+              - key: markup-needed
+                title: Markup needed for a profit after discount
+                example_stem: "A trader wants a 26% profit after allowing a 10% discount. By what percentage above the cost price should he mark his goods?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+              - key: discount-allowed
+                title: Discount that still leaves a profit
+                example_stem: "An article is marked 50% above its cost price. What discount percentage can be given so that the seller still makes a profit of 20%?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 25
+              - key: two-discount-two-profit
+                title: Different discounts, different profits
+                example_stem: "If a shopkeeper gives a 10% discount, he gains 26%. What will his profit percentage be if he gives a 20% discount?"
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: ratio-method
+                title: MP/CP = (100 + p)/(100 − d)
+                kind: shortcut
+                rule: "One ratio links all three quantities: put in the two you know and read off the third."
+                example: {problem: "A 26% profit after a 10% discount", standard: "Assume CP 100, SP 126, then MP = 126 × 100/90", shortcut: "126/90 = 7/5 → mark up 40%", seconds_saved: 15}
+                pattern: markup-needed
+              - key: discount-step
+                title: Each extra 1% discount costs (MP/CP)% of profit
+                kind: shortcut
+                rule: "Since the discount is on MP and the profit on CP, every additional 1% of discount lowers the profit percentage by MP/CP."
+                example: {problem: "10% off gives a 26% profit; the profit at 20% off?", standard: "Find MP/CP, then recompute the SP and the profit", shortcut: "MP/CP = 1.4 → 10 more % off costs 14% → 12% profit", seconds_saved: 20}
+                pattern: two-discount-two-profit
+      - key: successive
+        title: Successive discounts and offers
+        concepts:
+          - slug: successive-discounts
+            title: Successive discounts (equivalent single discount)
+            summary: "Successive discounts apply one after another on the reduced price, so d₁% and d₂% equal a single discount of d₁ + d₂ − d₁d₂/100, never d₁ + d₂. SSC asks the single equivalent discount, the price after a chain of discounts, the missing second discount and the better of two offers."
+            difficulty: medium
+            weight: 1.5
+            prerequisites: [discount, successive-percentage]
+            formulas:
+              - key: two-discounts
+                name: Single discount equal to two discounts
+                expression: "D = d₁ + d₂ − d₁d₂/100"
+                example: {problem: "Discounts of 20% and 15%", solution: "20 + 15 − 3 = 32%"}
+              - key: discount-chain
+                name: Price after several discounts
+                expression: "SP = MP × (1 − d₁/100)(1 − d₂/100)(1 − d₃/100)…"
+                example: {problem: "MP ₹5,000 with discounts of 20%, 10% and 5%", solution: "5,000 × 0.8 × 0.9 × 0.95 = ₹3,420"}
+              - key: missing-discount
+                name: The missing second discount
+                expression: "1 − d₂/100 = (SP/MP) ÷ (1 − d₁/100)"
+                example: {problem: "MP ₹800, SP ₹612 after a 15% discount and one more", solution: "612/800 = 0.765; 0.765 ÷ 0.85 = 0.9 → second discount 10%"}
+            patterns:
+              - key: single-equivalent
+                title: Single discount equivalent to successive discounts
+                example_stem: "Successive discounts of 25% and 12% are equivalent to a single discount of what percentage?"
+                frequency: high
+                difficulty: easy
+                target_seconds: 20
+              - key: second-discount
+                title: Find the missing successive discount
+                example_stem: "A TV marked at ₹25,000 is sold for ₹18,700 after two successive discounts, the first being 15%. Find the second discount."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+              - key: compare-offers
+                title: Compare discount offers
+                example_stem: "Which is better for a buyer: a single discount of 35%, or successive discounts of 20% and 15%? By how much, on a marked price of ₹10,000?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 25
+            shortcuts:
+              - key: multiple-discount-methods
+                title: Multiple discount methods (pairwise formula or paying fractions)
+                kind: shortcut
+                rule: "For two discounts use d₁ + d₂ − d₁d₂/100; for three or more, combine them pairwise or multiply the paying fractions (20% → 4/5, 10% → 9/10, 5% → 19/20). The order of the discounts never matters."
+                steps:
+                  - "Combine the first two discounts into one"
+                  - "Combine that result with the next discount"
+                  - "Or multiply all the paying fractions and subtract the product from 1"
+                example: {problem: "Discounts of 20%, 10% and 5%", standard: "Apply each discount to ₹100 in turn", shortcut: "4/5 × 9/10 × 19/20 = 0.684 → single discount 31.6%", seconds_saved: 20}
+                pattern: single-equivalent
+                pitfalls: ["Adding the discounts: 20% + 10% + 5% is not 35%."]
+          - slug: buy-x-get-y-offers
+            title: Buy x get y free and other sale offers
+            summary: "In 'buy x get y free' the buyer pays for x articles and takes home x + y, so the effective discount is y/(x + y) × 100%. An offer combined with a discount or a markup is turned into one effective multiplier on the marked price."
+            difficulty: medium
+            weight: 1.0
+            prerequisites: [discount]
+            formulas:
+              - key: free-items
+                name: Effective discount of a free-article offer
+                expression: "discount % = y/(x + y) × 100"
+                example: {problem: "Buy 4 get 1 free", solution: "1/5 × 100 = 20%"}
+              - key: offer-plus-discount
+                name: Offer combined with a discount
+                expression: "effective paying fraction = x/(x + y) × (1 − d/100)"
+                example: {problem: "Buy 3 get 1 free, plus 10% off the bill", solution: "3/4 × 0.9 = 0.675 → effective discount 32.5%"}
+            patterns:
+              - key: buy-get-discount
+                title: Effective discount of a buy x get y free offer
+                example_stem: "A shop offers 'buy 5, get 3 free' on soaps. What is the effective discount percentage?"
+                frequency: medium
+                difficulty: easy
+                target_seconds: 20
+              - key: offer-with-markup
+                title: Profit after a free-article offer
+                example_stem: "A shopkeeper marks his goods 50% above cost and offers 'buy 3, get 1 free'. Find his profit or loss percentage."
+                frequency: medium
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: free-over-total
+                title: Free items over total items
+                kind: shortcut
+                rule: "The effective discount is what you get free divided by everything you take home."
+                example: {problem: "Buy 5 get 3 free", standard: "Assume each costs ₹1: pay ₹5 for goods worth ₹8", shortcut: "3/8 = 37.5%", seconds_saved: 10}
+                pattern: buy-get-discount
+          - slug: discount-with-gst
+            title: Discount and sales tax (GST) on the price
+            summary: "Tax is charged on the price actually paid after the discount: bill = MP × (1 − d/100) × (1 + t/100). SSC occasionally asks the final bill or the marked price from a bill that includes tax."
+            difficulty: easy
+            weight: 0.5
+            prerequisites: [discount]
+            formulas:
+              - key: bill
+                name: Bill with discount and tax
+                expression: "bill = MP × (100 − d)/100 × (100 + t)/100"
+                example: {problem: "MP ₹2,000, 10% discount, 12% GST", solution: "2,000 × 0.9 × 1.12 = ₹2,016"}
+              - key: price-before-tax
+                name: Price before tax
+                expression: "price before tax = bill × 100/(100 + t)"
+                example: {problem: "A bill of ₹2,360 includes 18% GST.", solution: "2,360 × 100/118 = ₹2,000"}
+            patterns:
+              - key: final-bill
+                title: Final bill after discount and tax
+                example_stem: "A refrigerator is marked at ₹24,000. A discount of 15% is given and 12% GST is charged on the reduced price. Find the amount paid."
+                frequency: low
+                difficulty: easy
+                target_seconds: 25
+              - key: mp-from-bill
+                title: Marked price from a bill including tax
+                example_stem: "A customer pays ₹3,186 for an article after a 10% discount and 18% GST on the discounted price. Find the marked price."
+                frequency: low
+                difficulty: medium
+                target_seconds: 30
+            shortcuts:
+              - key: combined-factor
+                title: One combined factor
+                kind: shortcut
+                rule: "Multiply the discount and tax factors once (0.9 × 1.18 = 1.062) and apply the result to the MP, or divide the bill by it."
+                example: {problem: "Bill ₹3,186 after 10% off and 18% GST; find the MP", standard: "Remove the tax, then remove the discount", shortcut: "3,186 ÷ 1.062 = ₹3,000", seconds_saved: 10}
+                pattern: mp-from-bill
+
+  - key: dishonest
+    title: False weights and dishonest dealer
+    concepts:
+      - slug: false-weights
+        title: False weights (selling at cost price)
+        summary: "A dealer who uses a false weight gives less than he charges for. Selling at cost price with a weight of (1000 − e) g for 1 kg, his gain is e/(1000 − e) × 100%: the error divided by the amount actually given. The same applies to short measures of length or volume."
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [profit-loss]
+        formulas:
+          - key: false-weight-gain
+            name: Gain from a false weight
+            expression: "gain % = error/(true value − error) × 100 = (true − false)/false × 100"
+            example: {problem: "A dealer uses 900 g for 1 kg and sells at cost price.", solution: "100/900 × 100 = 11.11%"}
+          - key: short-measure
+            name: Gain from a short measure
+            expression: "gain % = (quantity charged for − quantity given)/quantity given × 100"
+            example: {problem: "A cloth seller uses a 95 cm rod as a metre.", solution: "5/95 × 100 = 5.26%"}
+        patterns:
+          - key: gain-false-weight
+            title: Gain percentage with a false weight
+            example_stem: "A shopkeeper claims to sell at cost price but uses a weight of 960 g instead of 1 kg. Find his gain percentage."
+            frequency: high
+            difficulty: easy
+            target_seconds: 20
+          - key: find-false-weight
+            title: Find the false weight from the gain
+            example_stem: "A dishonest dealer sells at cost price and gains 25%. What weight does he use for 1 kg?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+        shortcuts:
+          - key: error-over-given
+            title: Error over what is actually given
+            kind: memory
+            rule: "Gain % = error ÷ (true − error) × 100: the denominator is the amount the customer actually receives, never the full kilogram."
+            example: {problem: "960 g given for 1 kg", standard: "Compare the CP of 960 g with the SP of 1 kg in rupees", shortcut: "40/960 = 1/24 = 4.17%", seconds_saved: 20}
+            pattern: gain-false-weight
+      - slug: dishonest-dealer
+        title: "Dishonest dealer: false weights with profit, discount or adulteration"
+        summary: "A dishonest dealer may combine a false weight with a profit or loss on the price, cheat both while buying and selling, or mix in a cheaper substance. Multiply the price factor by the quantity factor: overall gain = (1 + p/100) × (true/false) − 1; mixing impurity equal to x% of the mixture and selling at cost gives x/(100 − x) × 100% gain."
+        difficulty: hard
+        weight: 1.2
+        prerequisites: [false-weights]
+        formulas:
+          - key: weight-and-price
+            name: False weight plus a price change
+            expression: "overall gain % = [(100 + p)/100 × (true weight/false weight) − 1] × 100, with p negative for a loss or discount"
+            example: {problem: "Sells at a 10% loss but uses 800 g for 1 kg", solution: "0.9 × 1000/800 = 1.125 → 12.5% gain"}
+          - key: buy-and-sell-cheat
+            name: Cheating while buying and while selling
+            expression: "takes x% extra while buying and gives y% less while selling, at cost price: gain % = [(100 + x)/(100 − y) − 1] × 100"
+            example: {problem: "Takes 10% more when buying and gives 10% less when selling", solution: "110/90 − 1 = 22.22%"}
+          - key: adulteration
+            name: Adulteration sold at cost price
+            expression: "impurity = x% of the mixture ⇒ gain % = x/(100 − x) × 100;  impurity = a/b of the pure quantity ⇒ gain % = a/b × 100"
+            example: {problem: "Water equal to 20% of the milk is added and the mixture sold at the cost price of milk.", solution: "gain = 20%"}
+        patterns:
+          - key: cheat-both-ways
+            title: Cheating both while buying and selling
+            example_stem: "A trader uses a balance that lets him take 20% more while buying and give 20% less while selling. If he sells at cost price, find his gain percentage."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: weight-with-price-change
+            title: False weight with a profit or discount
+            example_stem: "A shopkeeper sells rice at 5% above the cost price and also uses a weight of 875 g for 1 kg. Find his total gain percentage."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 30
+          - key: adulteration-gain
+            title: Adulteration and gain
+            example_stem: "A milkman mixes water with milk so that water is 1/6 of the mixture, and sells it at the cost price of pure milk. Find his gain percentage."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 25
+        shortcuts:
+          - key: multiply-factors
+            title: Multiply the price factor and the quantity factor
+            kind: shortcut
+            rule: "The price advantage (1 + p/100) and the quantity advantage (true/false) multiply; subtract 1 at the end."
+            example: {problem: "5% above cost with 875 g for 1 kg", standard: "Work out the CP of 875 g and the SP of the 'kilogram' in rupees", shortcut: "21/20 × 8/7 = 6/5 → 20% gain", seconds_saved: 25}
+            pattern: weight-with-price-change
+          - key: buy-sell-fraction
+            title: "(100 + x)/(100 − y) for two-way cheating"
+            kind: memory
+            rule: "For x% extra while buying and y% short while selling at cost price, gain = (100 + x)/(100 − y) − 1."
+            example: {problem: "20% both ways", standard: "Track the quantity bought and sold for ₹100", shortcut: "120/80 = 1.5 → 50% gain", seconds_saved: 20}
+            pattern: cheat-both-ways

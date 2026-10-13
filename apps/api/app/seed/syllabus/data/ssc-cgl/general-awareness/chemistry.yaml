@@ -1,0 +1,767 @@
+key: chemistry
+title: "General Science: Chemistry"
+strategies:
+  - key: approach
+    title: "Chemistry in GA: names, formulas and everyday chemistry"
+    summary: >-
+      GA chemistry questions ask common names and formulas, natural acids, pH values, ores and
+      alloys, exceptions among metals and non-metals, and the chemistry of daily life (fuels,
+      plastics, soaps, medicines). Most are pure recall, so the marks come from a few tables
+      revised until they are automatic.
+    seconds_per_question: 15
+    accuracy_target: 0.85
+    tactics:
+      - "Keep one table each for common names and formulas, natural acids, ores, alloys and polymers; revise them with flashcards."
+      - "Learn the exceptions as a list (mercury liquid metal, bromine liquid non-metal, graphite conducts, iodine is lustrous)."
+      - "Pair each salt or compound with one use; SSC usually asks the formula or the use."
+    avoid:
+      - "Confusing look-alike names: baking soda and washing soda, quicklime and slaked lime, brass and bronze, gypsum and plaster of Paris."
+
+topics:
+  - key: matter
+    title: Matter and its states
+    concepts:
+      - slug: states-of-matter-and-changes
+        title: "States of matter, physical and chemical changes"
+        summary: >-
+          Matter exists as solid (fixed shape and volume), liquid (fixed volume, no fixed shape)
+          and gas (neither), with plasma (ionised gas in stars, lightning and neon signs) and the
+          Bose-Einstein condensate (near absolute zero, predicted by S.N. Bose and Albert Einstein)
+          as further states. Changes of state: melting, freezing, boiling, condensation and
+          sublimation (solid directly to gas: camphor, naphthalene balls, iodine, ammonium chloride
+          and dry ice); diffusion is fastest in gases. A physical change alters form or state but
+          not composition and is usually reversible (melting ice, dissolving sugar); a chemical
+          change makes new substances (rusting, burning, curdling of milk, ripening of fruit,
+          digestion of food).
+        difficulty: easy
+        weight: 1.0
+        patterns:
+          - key: physical-or-chemical
+            title: Physical or chemical change
+            example_stem: "Which of the following is a chemical change? (a) melting of wax (b) dissolving salt in water (c) rusting of iron (d) evaporation of water"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: sublimation-states
+            title: Sublimation and states of matter
+            example_stem: "Which of the following substances sublimes on heating? (a) sugar (b) common salt (c) camphor (d) wax"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: new-substance-test
+            title: New substance means chemical change
+            kind: elimination
+            rule: "Ask whether a new substance with new properties forms. Only a change of shape, size or state → physical."
+            example: {problem: "Curdling of milk is", shortcut: "Curd is a new substance → chemical change", seconds_saved: 5}
+            pattern: physical-or-chemical
+
+      - slug: elements-compounds-mixtures
+        title: "Elements, compounds, mixtures and separation methods"
+        summary: >-
+          An element has one kind of atom; a compound has elements combined in a fixed ratio by
+          mass with new properties (water always has hydrogen and oxygen in the mass ratio 1:8); a
+          mixture has a variable composition and keeps its components' properties (air, sea water,
+          brass, milk). Solutions are homogeneous with very small particles; colloids (milk, fog,
+          smoke, butter, jelly) have medium-sized particles that scatter a light beam (Tyndall
+          effect); suspensions (muddy water, chalk in water) settle on standing. Separation:
+          filtration, evaporation, distillation, fractional distillation (petroleum refining,
+          gases from liquid air), chromatography (dyes and pigments), centrifugation (cream from
+          milk), sublimation, crystallisation and a separating funnel (oil and water).
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [states-of-matter-and-changes]
+        patterns:
+          - key: classify-matter
+            title: Element, compound or mixture; solution, colloid or suspension
+            example_stem: "Which of the following is a compound? (a) air (b) brass (c) water (d) oxygen"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: separation-method
+            title: Separation method for a mixture
+            example_stem: "Cream is separated from milk by"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+
+  - key: atomic-structure
+    title: Atomic structure
+    concepts:
+      - slug: atomic-structure-subatomic-particles
+        title: "Atomic structure: electron, proton, neutron and isotopes"
+        summary: >-
+          An atom has a tiny, dense, positively charged nucleus (Rutherford's gold-foil experiment,
+          1911) of protons and neutrons, with electrons moving in shells around it (Bohr's model).
+          The electron was discovered by J.J. Thomson (1897; charge −1.6 × 10⁻¹⁹ C, mass about
+          1/1836 of a proton), the proton is credited to Rutherford (after Goldstein's canal rays)
+          and the neutron to James Chadwick (1932). Atomic number Z = number of protons; mass
+          number A = protons + neutrons; isotopes have the same Z but different A (protium,
+          deuterium and tritium; carbon-12 and carbon-14), isobars have the same A but different Z
+          (argon-40 and calcium-40). A shell holds at most 2n² electrons (2, 8, 18); one mole
+          contains 6.022 × 10²³ particles (Avogadro's number).
+        difficulty: medium
+        weight: 1.2
+        formulas:
+          - key: mass-number
+            name: Mass number and neutrons
+            expression: "A = Z + N  ⇒  neutrons N = A − Z"
+            example: {problem: "Sodium has Z = 11 and A = 23. Find its neutrons and electronic configuration.", solution: "N = 23 − 11 = 12; configuration 2, 8, 1"}
+          - key: shell-capacity
+            name: Maximum electrons in a shell
+            expression: "2n² (K = 2, L = 8, M = 18, N = 32)"
+          - key: mole
+            name: Mole and Avogadro's number
+            expression: "moles = mass / molar mass;  1 mol = 6.022 × 10²³ particles"
+            example: {problem: "How many moles are there in 36 g of water (molar mass 18 g/mol)?", solution: "36/18 = 2 mol"}
+        patterns:
+          - key: particle-discoverer
+            title: Discoverer and properties of subatomic particles
+            example_stem: "Who discovered the neutron?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: isotopes-counts
+            title: Isotopes, isobars and particle counts
+            example_stem: "An atom has atomic number 17 and mass number 35. How many neutrons does it have?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: iso-letters
+            title: The letter tells what is the same
+            kind: memory
+            rule: "isotoPes: same Protons; isobArs: same A (mass number); isotoNes: same Neutrons."
+            example: {problem: "C-14 and N-14 are", shortcut: "Same A (14), different Z → isobars", seconds_saved: 10}
+            pattern: isotopes-counts
+
+  - key: periodic-table
+    title: Periodic table
+    concepts:
+      - slug: periodic-table-and-trends
+        title: "Periodic table: history, groups and periodic trends"
+        summary: >-
+          Dobereiner grouped elements in triads and Newlands proposed the law of octaves;
+          Mendeleev arranged the 63 known elements by atomic mass and left gaps for undiscovered
+          ones (gallium, scandium, germanium); Moseley showed that atomic number is the true basis,
+          giving the modern periodic law. The modern table has 18 groups and 7 periods: group 1
+          alkali metals (Li, Na, K), group 2 alkaline earth metals (Mg, Ca), group 17 halogens (F,
+          Cl, Br, I) and group 18 noble gases (He, Ne, Ar, Kr, Xe, Rn), unreactive because their
+          outer shells are full (helium fills balloons, neon glows in signs, argon fills bulbs).
+          Across a period atomic size decreases and non-metallic character and electronegativity
+          increase; down a group atomic size and metallic character increase. Fluorine is the most
+          electronegative element and hydrogen the lightest.
+        difficulty: medium
+        weight: 1.1
+        prerequisites: [atomic-structure-subatomic-particles]
+        patterns:
+          - key: group-family
+            title: Group, family and history of the periodic table
+            example_stem: "Halogens belong to which group of the modern periodic table?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: periodic-trends
+            title: Periodic trends across a period and down a group
+            example_stem: "On moving from left to right across a period, the atomic radius generally"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: history-numbers
+            title: Each pioneer has a number
+            kind: memory
+            rule: "Dobereiner = 3 (triads), Newlands = 8 (octaves), Mendeleev = 63 elements by atomic mass, Moseley = atomic number; modern table = 18 groups, 7 periods."
+            example: {problem: "The law of octaves was given by", shortcut: "Octave = 8 → Newlands", seconds_saved: 5}
+            pattern: group-family
+
+  - key: bonding
+    title: Chemical bonding basics
+    concepts:
+      - slug: chemical-bonding-basics
+        title: "Ionic, covalent and hydrogen bonds"
+        summary: >-
+          Atoms bond to reach a stable noble-gas configuration (octet rule). Ionic or
+          electrovalent bonds form by transfer of electrons from a metal to a non-metal (NaCl,
+          MgO): such compounds are crystalline, have high melting points and conduct electricity
+          when molten or dissolved in water. Covalent bonds form by sharing electron pairs (H₂,
+          Cl₂, CH₄, H₂O; N₂ has a triple bond): such compounds usually have low melting points and
+          do not conduct. Metallic bonding (a sea of free electrons) makes metals conduct, and
+          hydrogen bonding between water molecules explains water's high boiling point and the
+          open structure of ice, which therefore floats on water.
+        difficulty: medium
+        weight: 0.8
+        prerequisites: [atomic-structure-subatomic-particles]
+        patterns:
+          - key: bond-type
+            title: Type of bond in a compound
+            example_stem: "Which of the following compounds has an ionic bond? (a) CH₄ (b) NaCl (c) H₂ (d) Cl₂"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: bond-properties
+            title: Properties from the type of bond
+            example_stem: "Ionic compounds conduct electricity in the molten state because"
+            frequency: low
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: metal-nonmetal-rule
+            title: Metal plus non-metal means ionic
+            kind: elimination
+            rule: "A metal with a non-metal → ionic; only non-metals → covalent."
+            example: {problem: "Bond in MgO", shortcut: "Mg metal + O non-metal → ionic", seconds_saved: 5}
+            pattern: bond-type
+
+  - key: reactions
+    title: Chemical reactions and equations
+    concepts:
+      - slug: chemical-reactions-and-equations
+        title: "Types of chemical reactions, oxidation and reduction"
+        summary: >-
+          A balanced equation has equal numbers of each atom on both sides (law of conservation
+          of mass, Lavoisier). Types: combination (CaO + H₂O → Ca(OH)₂, slaking of quicklime,
+          exothermic), decomposition (CaCO₃ → CaO + CO₂ on heating; silver chloride turning grey in
+          sunlight, used in black-and-white photography; electrolysis of water), displacement (Fe +
+          CuSO₄ → FeSO₄ + Cu: a more reactive metal displaces a less reactive one), double
+          displacement and precipitation (BaCl₂ + Na₂SO₄ → BaSO₄ + 2NaCl) and redox (oxidation is
+          gain of oxygen or loss of electrons; reduction the reverse). Exothermic reactions release
+          heat (burning, respiration) and endothermic ones absorb it (photosynthesis); catalysts
+          change the rate without being used up; rancidity of fats and oils is oxidation, slowed by
+          antioxidants and by filling chip packets with nitrogen.
+        difficulty: medium
+        weight: 1.0
+        formulas:
+          - key: conservation-of-mass
+            name: Balancing an equation
+            expression: "atoms of each element on the left = atoms on the right"
+            example: {problem: "Balance Fe + H₂O → Fe₃O₄ + H₂ (steam on iron).", solution: "3Fe + 4H₂O → Fe₃O₄ + 4H₂"}
+        patterns:
+          - key: reaction-type
+            title: Identify the type of reaction
+            example_stem: "The reaction CaCO₃ → CaO + CO₂ on heating is an example of"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: redox
+            title: Oxidation, reduction and everyday effects
+            example_stem: "In the reaction CuO + H₂ → Cu + H₂O, which substance is oxidised?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+        shortcuts:
+          - key: oil-rig
+            title: OIL RIG
+            kind: memory
+            rule: "Oxidation Is Loss (of electrons; or gain of oxygen), Reduction Is Gain (of electrons; or loss of oxygen)."
+            example: {problem: "CuO + H₂ → Cu + H₂O: what is oxidised?", shortcut: "H₂ gains oxygen → oxidised; CuO loses oxygen → reduced", seconds_saved: 10}
+            pattern: redox
+
+  - key: acids-bases-salts
+    title: "Acids, bases and salts (pH)"
+    concepts:
+      - slug: acids-bases-salts
+        title: "Acids, bases, indicators and natural acids"
+        summary: >-
+          Acids taste sour, turn blue litmus red and give H⁺ ions in water; bases taste bitter,
+          feel soapy, turn red litmus blue and give OH⁻ ions (bases soluble in water, such as NaOH
+          and KOH, are alkalis); acid + base → salt + water is neutralisation. Indicators:
+          phenolphthalein is colourless in acid and pink in base, methyl orange is red in acid and
+          yellow in base, and turmeric turns reddish-brown with bases. Natural acids SSC asks:
+          citric acid (lemon, orange), lactic acid (curd, sour milk), tartaric acid (tamarind,
+          grapes), acetic acid (vinegar), oxalic acid (tomato, spinach), formic or methanoic acid
+          (ant sting, nettle leaves), malic acid (apple), ascorbic acid (amla, citrus; vitamin C)
+          and hydrochloric acid (gastric juice in the stomach).
+        difficulty: easy
+        weight: 1.4
+        prerequisites: [chemical-reactions-and-equations]
+        formulas:
+          - key: neutralisation
+            name: Neutralisation
+            expression: "acid + base → salt + water, e.g. HCl + NaOH → NaCl + H₂O"
+        patterns:
+          - key: natural-acid
+            title: Natural source and its acid
+            example_stem: "Which acid is present in tamarind?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: indicator-colour
+            title: Indicators and their colours
+            example_stem: "What colour does phenolphthalein turn in a basic solution?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: latin-roots
+            title: The name hides the source
+            kind: memory
+            rule: "Formic from formica (ant), malic from malum (apple), acetic from acetum (vinegar), lactic from lac (milk), citric from citrus; tamarind and tartaric both start with 'ta'."
+            example: {problem: "Acid in an ant sting", shortcut: "formica = ant → formic acid", seconds_saved: 5}
+            pattern: natural-acid
+
+      - slug: ph-scale
+        title: "pH scale and its applications"
+        summary: >-
+          pH measures hydrogen-ion concentration, pH = −log₁₀[H⁺], on a scale of 0 to 14 at 25 °C:
+          below 7 is acidic, 7 is neutral (pure water) and above 7 is basic; each unit is a tenfold
+          change in [H⁺]. Typical values: gastric juice about 1-2, lemon juice about 2.2, vinegar
+          about 3, normal rain about 5.6 (acid rain is below 5.6), pure water 7, human blood about
+          7.4 (7.35-7.45, slightly basic), milk of magnesia about 10 and sodium hydroxide solution
+          about 14. Tooth enamel starts to corrode below about pH 5.5, antacids such as milk of
+          magnesia and baking soda neutralise excess stomach acid, and acidic soil is treated with
+          quicklime, slaked lime or chalk.
+        difficulty: medium
+        weight: 1.3
+        prerequisites: [acids-bases-salts]
+        formulas:
+          - key: ph-definition
+            name: pH and pOH
+            expression: "pH = −log₁₀[H⁺];  pH + pOH = 14 at 25 °C"
+            example: {problem: "[H⁺] = 10⁻³ mol/L. Find the pH and pOH.", solution: "pH = 3; pOH = 14 − 3 = 11"}
+          - key: tenfold
+            name: Comparing acidity
+            expression: "a solution with pH lower by n has 10ⁿ times the H⁺ concentration"
+            example: {problem: "How many times more acidic is pH 2 than pH 4?", solution: "10² = 100 times"}
+        patterns:
+          - key: ph-of-substance
+            title: pH of common substances
+            example_stem: "The pH of human blood is about"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: ph-comparison
+            title: Comparing acidity from pH
+            example_stem: "A solution has pH 3 and another pH 5. How many times more H⁺ ions does the first have?"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+        shortcuts:
+          - key: power-of-ten
+            title: Each pH step is ×10
+            kind: shortcut
+            rule: "Subtract the two pH values and raise 10 to that difference."
+            example: {problem: "pH 3 vs pH 5", standard: "10⁻³ ÷ 10⁻⁵", shortcut: "5 − 3 = 2 → 100 times", seconds_saved: 10}
+            pattern: ph-comparison
+
+      - slug: important-salts-and-uses
+        title: "Important salts: common salt, baking soda, washing soda, bleaching powder and plaster of Paris"
+        summary: >-
+          Common salt (NaCl) is the raw material for sodium hydroxide, chlorine and hydrogen
+          (chlor-alkali process: electrolysis of brine) and for baking soda and washing soda.
+          Baking soda is sodium hydrogencarbonate (NaHCO₃): an antacid, used in soda-acid fire
+          extinguishers, and with a mild acid such as tartaric acid it makes baking powder. Washing
+          soda is sodium carbonate decahydrate (Na₂CO₃·10H₂O): removes permanent hardness of water,
+          used in glass, soap and paper making. Bleaching powder is calcium oxychloride (CaOCl₂,
+          made from chlorine and dry slaked lime): bleaches cotton and linen and disinfects
+          drinking water. Plaster of Paris is calcium sulphate hemihydrate (CaSO₄·½H₂O), made by
+          heating gypsum (CaSO₄·2H₂O) to 373 K; it sets hard with water and is used for fracture
+          casts, toys and statues.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [acids-bases-salts]
+        formulas:
+          - key: chlor-alkali
+            name: Chlor-alkali process
+            expression: "2NaCl + 2H₂O → 2NaOH + Cl₂ (at the anode) + H₂ (at the cathode)"
+          - key: baking-soda-heat
+            name: Heating baking soda
+            expression: "2NaHCO₃ → Na₂CO₃ + H₂O + CO₂"
+          - key: plaster-of-paris
+            name: Plaster of Paris from gypsum
+            expression: "CaSO₄·2H₂O → (373 K) CaSO₄·½H₂O + 1½H₂O"
+        patterns:
+          - key: salt-formula
+            title: Formula or chemical name of a salt
+            example_stem: "The chemical formula of plaster of Paris is"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: salt-use
+            title: Use of a salt
+            example_stem: "Which compound is used to remove the permanent hardness of water?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: half-and-two
+            title: Gypsum two, plaster half
+            kind: memory
+            rule: "Gypsum has 2 H₂O; heating it to plaster of Paris leaves ½ H₂O; adding water turns plaster back into gypsum (it sets)."
+            example: {problem: "CaSO₄·2H₂O is", shortcut: "Two waters → gypsum", seconds_saved: 5}
+            pattern: salt-formula
+
+  - key: metals-non-metals
+    title: "Metals and non-metals: ores, alloys and corrosion"
+    concepts:
+      - slug: metals-and-non-metals
+        title: "Metals and non-metals: properties, exceptions and the reactivity series"
+        summary: >-
+          Metals are lustrous, malleable, ductile, sonorous and good conductors and form basic
+          oxides; non-metals are mostly dull, brittle and poor conductors and form acidic or
+          neutral oxides; aluminium oxide and zinc oxide are amphoteric. Exceptions SSC asks:
+          mercury is a liquid metal and bromine a liquid non-metal; gallium and caesium melt near
+          body temperature; sodium and potassium are soft enough to cut with a knife and are kept
+          under kerosene, and white phosphorus is kept under water; iodine is a lustrous non-metal,
+          graphite conducts electricity and diamond is the hardest natural substance; silver is the
+          best conductor, gold the most malleable and ductile metal, tungsten has the highest
+          melting point and lithium is the lightest metal. Reactivity series: K > Na > Ca > Mg > Al
+          > Zn > Fe > Pb > (H) > Cu > Hg > Ag > Au. Oxygen is the most abundant element and
+          aluminium the most abundant metal in the Earth's crust.
+        difficulty: easy
+        weight: 1.4
+        prerequisites: [periodic-table-and-trends]
+        patterns:
+          - key: exceptions
+            title: Exceptional properties of elements
+            example_stem: "Which metal is a liquid at room temperature?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: reactivity-displacement
+            title: Reactivity series and displacement
+            example_stem: "Which metal cannot displace hydrogen from dilute hydrochloric acid? (a) zinc (b) magnesium (c) copper (d) iron"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: above-below-hydrogen
+            title: Above hydrogen reacts, below does not
+            kind: memory
+            rule: "Metals from potassium to lead stand above hydrogen and give H₂ with dilute acids; copper, mercury, silver and gold (the coin and jewellery metals) stand below and do not."
+            example: {problem: "Which gives H₂ with dilute HCl: Cu, Ag, Zn, Au?", shortcut: "Only Zn is above hydrogen", seconds_saved: 10}
+            pattern: reactivity-displacement
+
+      - slug: ores-and-metallurgy
+        title: "Ores, minerals and extraction of metals"
+        summary: >-
+          Minerals are naturally occurring compounds; ores are minerals from which a metal can be
+          extracted profitably, so all ores are minerals but not all minerals are ores. Ores SSC
+          asks: bauxite (aluminium), haematite and magnetite (iron), cinnabar (mercury), galena
+          (lead), zinc blende and calamine (zinc), copper pyrites and malachite (copper),
+          cassiterite or tinstone (tin), argentite (silver), pyrolusite (manganese), chromite
+          (chromium), rock salt (sodium), magnesite and dolomite (magnesium), pitchblende
+          (uranium) and monazite sand (thorium, found on the beaches of Kerala). Extraction:
+          concentration (froth flotation for sulphide ores), roasting (sulphide ores heated in air)
+          or calcination (carbonate ores heated in little or no air), reduction (by coke in a blast
+          furnace for iron; by electrolysis for very reactive metals such as sodium, magnesium and
+          aluminium, whose alumina is dissolved in molten cryolite), and refining (electrolytic
+          refining of copper).
+        difficulty: medium
+        weight: 1.2
+        prerequisites: [metals-and-non-metals]
+        formulas:
+          - key: blast-furnace
+            name: Reduction of iron ore in a blast furnace
+            expression: "Fe₂O₃ + 3CO → 2Fe + 3CO₂"
+        patterns:
+          - key: ore-metal
+            title: Ore and its metal
+            example_stem: "Bauxite is an ore of"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: extraction-steps
+            title: Steps of extraction
+            example_stem: "Froth flotation is used to concentrate which type of ore?"
+            frequency: low
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: ore-families
+            title: Sort ores into sulphides, oxides and carbonates
+            kind: memory
+            rule: "Sulphide ores (froth flotation, roasting): galena, zinc blende, cinnabar, copper pyrites, argentite. Oxide ores: bauxite, haematite, magnetite, cassiterite, pyrolusite. Carbonate ores (calcination): calamine, magnesite, siderite, limestone."
+            example: {problem: "Cinnabar is roasted, not calcined, because it is", shortcut: "In the sulphide family (HgS)", seconds_saved: 10}
+            pattern: extraction-steps
+
+      - slug: alloys-and-corrosion
+        title: "Alloys, rusting and prevention of corrosion"
+        summary: >-
+          An alloy is a homogeneous mixture of a metal with other metals or a non-metal; it is
+          usually harder and more corrosion-resistant than the pure metal and melts at a lower
+          temperature. Compositions SSC asks: brass (copper + zinc), bronze (copper + tin), steel
+          (iron + carbon), stainless steel (iron + chromium + nickel, a little carbon), solder (lead
+          + tin, low melting point), duralumin (aluminium with copper, magnesium and manganese;
+          aircraft bodies), German silver (copper + zinc + nickel; it has no silver), gun metal
+          (copper + tin + zinc), magnalium (aluminium + magnesium), nichrome (nickel + chromium;
+          heating elements) and amalgam (any alloy of mercury); 22-carat gold is 22 parts gold to 2
+          parts copper or silver. Rusting of iron needs both oxygen and water (rust is hydrated
+          iron(III) oxide, Fe₂O₃·xH₂O) and is faster in salty water; silver tarnishes black
+          (silver sulphide) and copper turns green (basic copper carbonate). Prevention: painting,
+          oiling, galvanisation (coating with zinc), tinning, electroplating and alloying.
+        difficulty: easy
+        weight: 1.3
+        prerequisites: [metals-and-non-metals]
+        formulas:
+          - key: carat
+            name: Purity of gold
+            expression: "purity % = carat / 24 × 100 (24 carat = pure gold)"
+            example: {problem: "What is the purity of 18-carat gold?", solution: "18/24 × 100 = 75%"}
+          - key: rusting
+            name: Conditions for rusting
+            expression: "iron + oxygen + water → Fe₂O₃·xH₂O (rust)"
+        patterns:
+          - key: alloy-composition
+            title: Composition of an alloy
+            example_stem: "Brass is an alloy of"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: corrosion-prevention
+            title: Rusting, tarnishing and their prevention
+            example_stem: "Galvanisation is the process of coating iron with"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: bronze-age-tin
+            title: Bronze Age bronze has tin
+            kind: memory
+            rule: "Bronze (the metal of the Bronze Age) = copper + tin; brass = copper + zinc; German silver has no silver; galvanising = zinc."
+            example: {problem: "Bronze is", shortcut: "Bronze Age → copper + tin", seconds_saved: 5}
+            pattern: alloy-composition
+            pitfalls: ["Swapping brass and bronze."]
+
+  - key: carbon
+    title: Carbon and its compounds
+    concepts:
+      - slug: carbon-and-its-allotropes
+        title: "Carbon: bonding, allotropes and oxides"
+        summary: >-
+          Carbon is tetravalent, bonds covalently and shows catenation (it links to itself in long
+          chains and rings), which is why it forms millions of compounds. Allotropes: diamond (each
+          carbon bonded to four others in a rigid 3D network: hardest natural substance, does not
+          conduct electricity; used in jewellery and cutting tools), graphite (layers of hexagonal
+          rings with free electrons: soft, slippery and a good conductor; used in pencils, as a
+          lubricant and for electrodes), fullerenes (C₆₀, buckminsterfullerene, shaped like a
+          football) and graphene (a single layer of graphite, very strong and conducting); coal,
+          charcoal and coke are impure amorphous forms. Carbon monoxide, from incomplete
+          combustion, is poisonous because it binds strongly to haemoglobin; carbon dioxide is a
+          greenhouse gas used in fire extinguishers and soft drinks, and solid CO₂ is dry ice.
+        difficulty: easy
+        weight: 1.1
+        prerequisites: [chemical-bonding-basics]
+        patterns:
+          - key: allotrope-properties
+            title: Properties and uses of diamond and graphite
+            example_stem: "Which allotrope of carbon is a good conductor of electricity?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: catenation-oxides
+            title: Catenation and oxides of carbon
+            example_stem: "The property of carbon atoms to form long chains with each other is called"
+            frequency: low
+            difficulty: easy
+            target_seconds: 10
+
+      - slug: hydrocarbons-and-functional-groups
+        title: "Hydrocarbons, functional groups, ethanol and ethanoic acid"
+        summary: >-
+          Hydrocarbons contain only carbon and hydrogen: alkanes are saturated (single bonds,
+          CₙH₂ₙ₊₂: methane, ethane, propane, butane), alkenes have a double bond (CₙH₂ₙ: ethene)
+          and alkynes a triple bond (CₙH₂ₙ₋₂: ethyne or acetylene, used in oxy-acetylene welding).
+          Saturated compounds burn with a clean blue flame and unsaturated ones with a sooty yellow
+          flame; successive members of a homologous series differ by CH₂ (14 u). Functional groups:
+          alcohol (−OH; ethanol C₂H₅OH, in alcoholic drinks and as a fuel), carboxylic acid (−COOH;
+          ethanoic acid CH₃COOH, and a 5-8% solution of it is vinegar), aldehyde (−CHO;
+          formaldehyde, whose 40% solution formalin preserves biological specimens) and ketone
+          (acetone, a nail-polish remover). An alcohol and an acid form a sweet-smelling ester
+          (esterification), and hydrogenating vegetable oils with a nickel catalyst gives vanaspati
+          ghee.
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [carbon-and-its-allotropes]
+        formulas:
+          - key: general-formulas
+            name: General formulas of hydrocarbons
+            expression: "alkane CₙH₂ₙ₊₂;  alkene CₙH₂ₙ;  alkyne CₙH₂ₙ₋₂"
+            example: {problem: "Write the formula of the alkane with 4 carbon atoms.", solution: "C₄H₁₀ (butane)"}
+        patterns:
+          - key: formula-family
+            title: General formula and family of a hydrocarbon
+            example_stem: "Which of the following is an alkyne? (a) C₂H₆ (b) C₂H₄ (c) C₂H₂ (d) C₃H₈"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+          - key: functional-uses
+            title: Functional groups and everyday compounds
+            example_stem: "Vinegar is a dilute solution of"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: ane-ene-yne
+            title: Count the hydrogens
+            kind: shortcut
+            rule: "For n carbons: 2n + 2 hydrogens → -ane, 2n → -ene, 2n − 2 → -yne."
+            example: {problem: "C₃H₄ is an", shortcut: "2 × 3 − 2 = 4 → alkyne (propyne)", seconds_saved: 10}
+            pattern: formula-family
+
+  - key: daily-life
+    title: Important compounds in daily life
+    concepts:
+      - slug: common-names-and-formulas-of-compounds
+        title: "Common names and chemical formulas of compounds"
+        summary: >-
+          SSC asks the formula behind a common name: common salt NaCl; baking soda NaHCO₃; washing
+          soda Na₂CO₃·10H₂O; caustic soda NaOH; caustic potash KOH; quicklime CaO; slaked lime
+          Ca(OH)₂ (its clear solution is lime water); limestone, chalk and marble CaCO₃; gypsum
+          CaSO₄·2H₂O; plaster of Paris CaSO₄·½H₂O; bleaching powder CaOCl₂; blue vitriol
+          CuSO₄·5H₂O; green vitriol FeSO₄·7H₂O; white vitriol ZnSO₄·7H₂O; Epsom salt MgSO₄·7H₂O;
+          Glauber's salt Na₂SO₄·10H₂O; potash alum K₂SO₄·Al₂(SO₄)₃·24H₂O (purifies water); borax
+          Na₂B₄O₇·10H₂O; laughing gas N₂O; dry ice (solid CO₂); marsh gas CH₄; heavy water D₂O
+          (moderator in reactors); oil of vitriol H₂SO₄; muriatic acid HCl; aqua regia, 3 parts HCl
+          to 1 part HNO₃ (dissolves gold and platinum); sal ammoniac NH₄Cl; saltpetre KNO₃; Chile
+          saltpetre NaNO₃; lunar caustic AgNO₃ (indelible election ink); calomel Hg₂Cl₂;
+          philosopher's wool ZnO; red lead Pb₃O₄; hypo Na₂S₂O₃·5H₂O (photographic fixer);
+          carborundum SiC; sand and quartz SiO₂.
+        difficulty: easy
+        weight: 1.5
+        prerequisites: [important-salts-and-uses]
+        patterns:
+          - key: name-to-formula
+            title: Common name to chemical formula
+            example_stem: "What is the chemical formula of quicklime?"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: compound-use
+            title: Everyday use of a compound
+            example_stem: "Which compound is used in the indelible ink applied on voters' fingers?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: vitriols-and-lime
+            title: Vitriols are sulphates; lime is a cycle
+            kind: memory
+            rule: "Vitriols: blue = copper sulphate, green = ferrous sulphate, white = zinc sulphate, oil of vitriol = sulphuric acid. Lime cycle: limestone CaCO₃ → (heat) quicklime CaO → (water) slaked lime Ca(OH)₂ → (CO₂) CaCO₃."
+            example: {problem: "Green vitriol is", shortcut: "Green → iron → FeSO₄·7H₂O", seconds_saved: 5}
+            pattern: name-to-formula
+
+      - slug: polymers-and-plastics
+        title: "Polymers, plastics, fibres and rubber"
+        summary: >-
+          Polymers are giant molecules of repeating units (monomers). Natural polymers: cellulose
+          (cotton, wood), starch, proteins, silk, wool and natural rubber (a polymer of isoprene,
+          vulcanised by heating with sulphur to make it harder and more elastic, a process
+          introduced by Charles Goodyear). Synthetic polymers: polythene (from ethene; bags),
+          PVC (pipes, insulation), Teflon or polytetrafluoroethylene (non-stick cookware), nylon
+          (the first fully synthetic fibre, a polyamide; parachutes, ropes), polyester or terylene
+          (PET bottles, clothes), acrylic (a wool substitute), Bakelite (phenol and formaldehyde;
+          electrical switches and handles), melamine (crockery, fire-resistant) and Kevlar
+          (bullet-proof vests); rayon is artificial silk regenerated from wood-pulp cellulose.
+          Thermoplastics soften on heating and can be remoulded (polythene, PVC); thermosetting
+          plastics set permanently (Bakelite, melamine). Most plastics are non-biodegradable.
+        difficulty: easy
+        weight: 1.0
+        prerequisites: [hydrocarbons-and-functional-groups]
+        patterns:
+          - key: polymer-monomer-use
+            title: Polymer, monomer and use
+            example_stem: "Teflon, used in non-stick cookware, is a polymer of"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: thermo-classification
+            title: Thermoplastic or thermosetting; natural or synthetic
+            example_stem: "Which of the following is a thermosetting plastic? (a) PVC (b) polythene (c) Bakelite (d) polystyrene"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: baked-sets
+            title: Bakelite is baked, it stays set
+            kind: memory
+            rule: "Thermosetting = Bakelite and melamine (set once, like baked bread); polythene, PVC and polystyrene are thermoplastics."
+            example: {problem: "Electric switches are made of", shortcut: "Must not soften with heat → Bakelite", seconds_saved: 5}
+            pattern: thermo-classification
+
+      - slug: fuels-and-combustion
+        title: "Fuels, calorific value and combustion"
+        summary: >-
+          Combustion needs fuel, oxygen and a temperature above the fuel's ignition temperature
+          (the fire triangle); extinguishers remove one of these. Water must not be used on oil or
+          electrical fires, which are smothered with carbon dioxide. A good fuel has a high
+          calorific value (kJ/kg) and burns without harmful products; hydrogen has the highest,
+          about 150,000 kJ/kg. Gaseous fuels: LPG (mainly butane and propane, with ethyl mercaptan
+          added so leaks can be smelt), CNG (mainly methane), biogas or gobar gas (mainly methane,
+          from anaerobic digestion of waste), water gas (CO + H₂) and producer gas (CO + N₂). Coal
+          ranks by carbon content peat < lignite < bituminous < anthracite (the best); petroleum is
+          separated by fractional distillation into LPG, petrol, kerosene, diesel, lubricating oil,
+          paraffin wax and bitumen, and the octane number rates petrol's resistance to knocking.
+          Incomplete combustion gives poisonous carbon monoxide, and burning fossil fuels releases
+          sulphur and nitrogen oxides that cause acid rain.
+        difficulty: easy
+        weight: 1.1
+        prerequisites: [hydrocarbons-and-functional-groups]
+        formulas:
+          - key: calorific-value
+            name: Calorific value
+            expression: "calorific value = heat produced / mass of fuel burnt completely (kJ/kg)"
+            example: {problem: "Burning 2 kg of a fuel gives 90,000 kJ. Find its calorific value.", solution: "90,000 / 2 = 45,000 kJ/kg (about that of petrol or kerosene)"}
+        patterns:
+          - key: fuel-composition
+            title: Composition and calorific value of fuels
+            example_stem: "The main constituent of CNG is"
+            frequency: high
+            difficulty: easy
+            target_seconds: 10
+          - key: fire-control
+            title: Combustion and fire control
+            example_stem: "Why should water not be used to put out a fire caused by petrol?"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: coal-rank
+            title: Coal rank mnemonic
+            kind: memory
+            rule: "'People Like Burning Anthracite': peat < lignite < bituminous < anthracite in carbon content and quality."
+            example: {problem: "Which coal has the highest carbon content?", shortcut: "Last in the sentence → anthracite", seconds_saved: 5}
+
+      - slug: chemistry-in-everyday-life
+        title: "Chemistry in everyday life: soaps, medicines, food additives and materials"
+        summary: >-
+          Soaps are sodium or potassium salts of long-chain fatty acids, made by saponification of
+          oils with an alkali; they form scum with hard water (calcium and magnesium salts), while
+          detergents (sodium salts of sulphonic acids) work in hard water too; both clean by
+          forming micelles around oil. Temporary hardness (hydrogencarbonates) is removed by
+          boiling and permanent hardness (chlorides and sulphates) by washing soda. Medicines:
+          analgesics relieve pain (aspirin, which is acetylsalicylic acid; paracetamol, also an
+          antipyretic that lowers fever), antibiotics act on bacteria (penicillin), antacids
+          neutralise excess stomach acid (milk of magnesia, baking soda), antiseptics are applied
+          to living tissue (Dettol, tincture of iodine, boric acid) and disinfectants to objects
+          (phenol solutions, bleaching powder). Food chemistry: sodium benzoate and vinegar
+          preserve food; saccharin, aspartame and sucralose are artificial sweeteners; monosodium
+          glutamate enhances flavour. Urea (about 46% nitrogen) is the main nitrogenous fertiliser;
+          Portland cement contains gypsum to slow its setting, and borosilicate glass resists heat.
+        difficulty: easy
+        weight: 1.1
+        prerequisites: [acids-bases-salts]
+        formulas:
+          - key: urea-nitrogen
+            name: Nitrogen content of urea
+            expression: "% N in CO(NH₂)₂ = 28 / 60 × 100 ≈ 46.7%"
+        patterns:
+          - key: medicine-class
+            title: Class of a medicine or chemical
+            example_stem: "Paracetamol is an example of"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+          - key: soap-hard-water
+            title: Soaps, detergents and hard water
+            example_stem: "Soap does not lather well in hard water because hard water contains"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 10
+        shortcuts:
+          - key: living-vs-objects
+            title: Antiseptic on skin, disinfectant on floors
+            kind: elimination
+            rule: "Antiseptic = safe on living tissue (Dettol, iodine tincture); disinfectant = for non-living objects (phenol, bleaching powder); antibiotic = drug against bacteria inside the body."
+            example: {problem: "Tincture of iodine applied to a cut is an", shortcut: "Used on skin → antiseptic", seconds_saved: 5}
+            pattern: medicine-class

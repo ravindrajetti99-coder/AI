@@ -1,0 +1,291 @@
+key: sentence-structure
+title: Sentence Structure
+strategies:
+  - key: approach
+    title: "Sentence structure: read the whole sentence, not one word"
+    summary: >-
+      Structure errors (missing inversion, broken parallelism, redundancy, double negatives,
+      wrong question order, misplaced modifiers) span several words, so they are missed by
+      word-by-word checking. After the usual word-level checks, read the sentence once for its
+      shape: what opens it, what is listed or compared, and what each modifier describes.
+    seconds_per_question: 30
+    accuracy_target: 0.85
+    tactics:
+      - "A negative or restrictive opener (never, seldom, hardly, not only, only after) needs a helping verb before the subject."
+      - "In lists and comparisons, every item must have the same form; compare 'that of' with 'that of'."
+      - "Inside a statement, a question takes statement order: 'where he lives', not 'where does he live'."
+      - "Strike out words that repeat the meaning: return back, repeat again, the reason is because."
+    avoid:
+      - "Accepting a sentence because each word is correct while the structure is broken."
+
+topics:
+  - key: sentences-clauses
+    title: Kinds of sentences and clauses
+    concepts:
+      - slug: english-sentence-types-clauses
+        title: "Simple, compound and complex sentences; clauses"
+        summary: >-
+          A simple sentence has one main clause, a compound sentence joins two main clauses with
+          and, but, or, so or yet, and a complex sentence has a main clause with one or more
+          subordinate clauses: noun clauses ('What he said is true'), adjective or relative clauses
+          ('the man who called') and adverb clauses of time, reason, condition, purpose, result or
+          contrast. A phrase has no finite verb. One idea can be written all three ways: 'In spite
+          of being poor, he is honest' (simple) = 'He is poor but honest' (compound) = 'Though he is
+          poor, he is honest' (complex).
+        difficulty: medium
+        weight: 0.6
+        prerequisites: [english-coordinating-conjunctions, english-relative-pronouns]
+        patterns:
+          - key: identify-clause
+            title: "Identify the kind of the underlined clause"
+            example_stem: "Identify the kind of the underlined clause: I know where he lives (underlined: where he lives). (a) Noun clause (b) Adjective clause (c) Adverb clause (d) Main clause"
+            frequency: low
+            difficulty: medium
+            target_seconds: 20
+          - key: transform
+            title: "Select the sentence that keeps the meaning in another form"
+            example_stem: "Select the option that expresses the same meaning as a complex sentence: In spite of his illness, he attended the meeting. (a) He was ill and he attended the meeting. (b) Though he was ill, he attended the meeting. (c) He was ill, so he attended the meeting. (d) Being ill, he did not attend the meeting."
+            frequency: rare
+            difficulty: medium
+            target_seconds: 25
+
+      - slug: english-embedded-questions
+        title: Word order in indirect (embedded) questions
+        summary: >-
+          A question placed inside another sentence takes statement word order and drops
+          do/does/did: 'Can you tell me where the station is?' (not 'where is the station'), 'I do
+          not know what his name is', 'She asked me why I was late'. A yes/no question inside a
+          sentence uses if or whether ('I wonder whether he will come'), and the sentence ends with
+          a question mark only if the main clause is itself a question.
+        difficulty: medium
+        weight: 1.2
+        patterns:
+          - key: question-order
+            title: "Spot the error: question word order inside a statement"
+            example_stem: "Identify the segment that contains an error: I could not understand / what did he want / from me / at that late hour."
+            frequency: high
+            difficulty: medium
+            target_seconds: 20
+          - key: embedded-improvement
+            title: "Sentence improvement: indirect question order"
+            example_stem: "Improve the underlined part: Do you know where does the new manager live? (a) where the new manager lives (b) where lives the new manager (c) where did the new manager live (d) No improvement"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 20
+
+  - key: question-tags
+    title: Question tags
+    concepts:
+      - slug: english-question-tags
+        title: Question tags
+        summary: >-
+          A question tag repeats the helping verb of the statement with a pronoun for its subject,
+          negative after a positive statement and positive after a negative one ('She can swim,
+          can't she?'; 'He didn't come, did he?'); with no helper, use do/does/did ('You know him,
+          don't you?'). Special forms: 'I am …, aren't I?', 'Let's …, shall we?', an imperative
+          takes 'will you?', 'everyone/somebody' takes 'they', 'There is …, isn't there?', 'This
+          is …, isn't it?'. Never, hardly, seldom, scarcely, few, little, nobody and nothing make
+          the statement negative, so the tag is positive ('He hardly works, does he?').
+        difficulty: medium
+        weight: 1.0
+        prerequisites: [english-modals]
+        formulas:
+          - key: tag-rule
+            name: Building a question tag
+            expression: "tag = first helping verb of the statement (or do/does/did) + pronoun of the subject;  positive statement → negative tag;  negative statement (not, never, hardly, seldom, few, little, nobody, nothing) → positive tag"
+            example: {problem: "Few people attended the lecture, ___?", solution: "did they ('few' is negative, so the tag is positive)"}
+        patterns:
+          - key: choose-tag
+            title: "Fill in the blank: the correct question tag"
+            example_stem: "Nobody came to the meeting, ___? (a) did they (b) didn't they (c) did he (d) came they"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+          - key: special-tag
+            title: "Fill in the blank: tags after I am, Let's and imperatives"
+            example_stem: "Let's start the work now, ___? (a) shall we (b) will you (c) don't we (d) won't we"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+          - key: negative-word-tag
+            title: "Fill in the blank: tag after seldom, hardly, never"
+            example_stem: "He seldom visits his parents, ___? (a) doesn't he (b) does he (c) isn't he (d) didn't he"
+            frequency: low
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: copy-flip
+            title: Copy the helper, flip the sign
+            kind: shortcut
+            rule: "Copy the first helping verb, flip positive to negative (or the reverse) and replace the subject with its pronoun; count never, hardly, seldom, few and nobody as negatives."
+            example: {problem: "Your brother has passed, ___?", shortcut: "helper 'has', positive → hasn't; 'your brother' → he: hasn't he?", seconds_saved: 5}
+            pattern: choose-tag
+
+  - key: word-order
+    title: Inversion and word order
+    concepts:
+      - slug: english-inversion
+        title: Inversion
+        summary: >-
+          When a negative or restrictive word opens the sentence, the helping verb comes before the
+          subject: Never have I seen, Seldom does he come, Rarely, Hardly/Scarcely … when, No sooner
+          … than, Not only … but also, Little did he know, At no time, Under no circumstances, On no
+          account, Nowhere, Not until, and 'Only after/only when/only then' ('Only after the results
+          came did he relax'). Inversion also replaces 'if' (Had I known, Were I you, Should you
+          need), follows 'So + adjective' and 'Such' at the start ('So loud was the noise that…'),
+          and appears in short replies ('So do I', 'Neither did she').
+        difficulty: hard
+        weight: 1.4
+        prerequisites: [english-correlative-conjunctions, english-conditionals]
+        formulas:
+          - key: inversion-order
+            name: Inverted order
+            expression: "negative or restrictive opener + helping verb + subject + main verb (use do/does/did when there is no helper)"
+            example: {problem: "Correct: 'Never I have seen such a crowd.'", solution: "Never have I seen such a crowd."}
+        patterns:
+          - key: missing-inversion
+            title: "Spot the error: normal order after a negative opener"
+            example_stem: "Identify the segment that contains an error: Seldom we come across / such an honest / and hard-working / officer these days."
+            frequency: high
+            difficulty: medium
+            target_seconds: 20
+          - key: only-not-until
+            title: "Sentence improvement: inversion after 'only' or 'not until'"
+            example_stem: "Improve the underlined part: Only after the meeting the manager realised his mistake. (a) did the manager realise (b) the manager did realise (c) had realised the manager (d) No improvement"
+            frequency: medium
+            difficulty: hard
+            target_seconds: 25
+          - key: little-did
+            title: "Fill in the blank: 'Little did he know' and 'Not only did'"
+            example_stem: "Little ___ that his life would change that day. (a) he knew (b) did he know (c) he did know (d) knew he"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 15
+        shortcuts:
+          - key: opener-helper
+            title: Negative opener needs a helper next
+            kind: elimination
+            rule: "If the sentence starts with a negative or 'only' phrase, the word after it (or after its phrase) must be a helping verb; reject options where the subject comes first."
+            example: {problem: "Not only ___ the exam, he also topped it. (a) he passed (b) did he pass (c) he did pass (d) passed he", shortcut: "Opener 'Not only' → helper first → did he pass", seconds_saved: 10}
+            pattern: missing-inversion
+
+      - slug: english-misplaced-modifiers
+        title: Misplaced and dangling modifiers
+        summary: >-
+          A modifier must stand next to the word it describes. Only, almost, nearly, even, just and
+          merely go immediately before the word they limit ('He spent only two hundred rupees'); a
+          phrase or relative clause should follow its own noun ('He gave the beggar a shirt that
+          was torn', not 'He gave a shirt to the beggar that was torn'); and an opening participle
+          or infinitive phrase must refer to the subject that follows it ('While walking in the
+          park, I saw a snake', not 'Walking in the park, a snake was seen').
+        difficulty: hard
+        weight: 0.9
+        prerequisites: [english-participles, english-adverbs]
+        patterns:
+          - key: only-position
+            title: "Sentence improvement: position of only, almost, even"
+            example_stem: "Improve the underlined part: He only spent two hundred rupees on the whole trip. (a) spent only two hundred rupees (b) spent two hundred only rupees (c) only had spent two hundred rupees (d) No improvement"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: dangling-choice
+            title: "Select the logically correct sentence (dangling modifier)"
+            example_stem: "Select the grammatically correct and logical sentence. (a) Running to catch the bus, my bag fell in the mud. (b) Running to catch the bus, I dropped my bag in the mud. (c) My bag fell in the mud running to catch the bus. (d) Running to catch the bus, the mud got my bag."
+            frequency: low
+            difficulty: hard
+            target_seconds: 30
+
+  - key: parallelism
+    title: Parallelism
+    concepts:
+      - slug: english-parallelism
+        title: Parallelism and faulty comparison
+        summary: >-
+          Items joined by and, or, but, a correlative pair or 'than/as' must share one grammatical
+          form: 'He likes swimming, cycling and reading' (not 'and to read'); 'She is not only
+          intelligent but also hard-working'. Comparisons must compare like with like: 'The climate
+          of Shimla is cooler than that of Delhi' (not 'than Delhi'), 'Her marks are better than
+          those of her brother'. Verbs in a series keep one tense.
+        difficulty: medium
+        weight: 1.4
+        prerequisites: [english-correlative-conjunctions, english-gerunds]
+        patterns:
+          - key: list-form
+            title: "Spot the error: mixed forms in a list"
+            example_stem: "Identify the segment that contains an error: The new manager / is known for his honesty, / discipline and / for being punctual."
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+          - key: that-of
+            title: "Spot the error: faulty comparison (that of / those of)"
+            example_stem: "Identify the segment that contains an error: The population of Mumbai / is much larger / than Pune / according to the census."
+            frequency: high
+            difficulty: medium
+            target_seconds: 20
+          - key: parallel-improvement
+            title: "Sentence improvement: parallel structure"
+            example_stem: "Improve the underlined part: The job requires typing letters, filing records and to answer calls. (a) and answering calls (b) and answers calls (c) and to answering calls (d) No improvement"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
+
+  - key: redundancy-negatives
+    title: Redundancy and double negatives
+    concepts:
+      - slug: english-redundancy
+        title: Redundancy (superfluous words)
+        summary: >-
+          Redundancy is saying the same thing twice. SSC's favourites: return back, revert back,
+          repeat again, reply back, cousin brother, the reason is because (use 'that'), free gift,
+          past history, final outcome, end result, new innovation, join together, ascend up,
+          descend down, at about (use 'at' or 'about'), more superior, very unique, both … alike,
+          and a pronoun repeating a noun subject ('My friend, he is a doctor'). The fix is to
+          remove the extra word, never to add one.
+        difficulty: easy
+        weight: 1.3
+        patterns:
+          - key: spot-redundancy
+            title: "Spot the error: redundant word"
+            example_stem: "Identify the segment that contains an error: The students / were asked to / return back / the library books by Monday."
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: reason-because
+            title: "Sentence improvement: 'The reason … is because'"
+            example_stem: "Improve the underlined part: The reason for his absence is because he was ill. (a) is that he was ill (b) was because of illness (c) is due to he was ill (d) No improvement"
+            frequency: medium
+            difficulty: easy
+            target_seconds: 15
+        shortcuts:
+          - key: shortest-correct
+            title: Prefer the shortest correct option
+            kind: elimination
+            rule: "When options differ only by extra words that repeat the meaning (back, again, together, up), choose the one without them."
+            example: {problem: "He decided to ___ to his hometown. (a) return back (b) return (c) go back again (d) revert back", shortcut: "Only (b) has no repeated idea.", seconds_saved: 5}
+            pattern: spot-redundancy
+
+      - slug: english-negatives
+        title: Double negatives and negative words
+        summary: >-
+          Use one negative per idea. Hardly, scarcely, barely, seldom, rarely, never, nothing,
+          nobody and none are already negative, so they take no 'not' or 'no' ('I can hardly hear
+          you', not 'can't hardly'; 'Hardly anyone came', not 'hardly no one'). Unless, until and
+          lest already contain the negative; deny, forbid, refuse and prohibit take no second 'not'
+          in their clause; 'neither … nor' replaces 'not … neither … nor' ('He likes neither tea
+          nor coffee'); and 'seldom or never' is correct while 'seldom or ever' is not.
+        difficulty: medium
+        weight: 1.1
+        prerequisites: [english-subordinating-time-condition]
+        patterns:
+          - key: double-negative
+            title: "Spot the error: not/no with hardly, scarcely, seldom"
+            example_stem: "Identify the segment that contains an error: There was / hardly no water / left in the tank / after the long summer."
+            frequency: high
+            difficulty: easy
+            target_seconds: 15
+          - key: neither-not
+            title: "Sentence improvement: 'not' with neither … nor"
+            example_stem: "Improve the underlined part: He did not like neither the food nor the music at the party. (a) liked neither the food nor (b) did not liked either the food nor (c) did like neither the food or (d) No improvement"
+            frequency: medium
+            difficulty: medium
+            target_seconds: 20
