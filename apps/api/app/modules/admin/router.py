@@ -6,9 +6,11 @@ from pydantic import BaseModel, Field, ValidationError
 from sqlalchemy import case, func, select
 from sqlalchemy.orm import Session
 
+from app.ai import check as ai_check
 from app.ai import gateway
+from app.core.config import get_settings
 from app.core.db import as_utc, get_db
-from app.core.deps import require_staff
+from app.core.deps import limiter, require_admin, require_staff
 from app.core.errors import AppError, NotFound
 from app.jobs import service as jobs
 from app.modules.assessment import service as qservice
@@ -309,6 +311,71 @@ def resolve_flag(flag_id: uuid.UUID, user: User = Depends(require_staff), db: Se
     return {"id": str(flag.id), "resolved": True}
 
 
+@router.get("/ai/status")
+def ai_status(user: User = Depends(require_staff), db: Session = Depends(get_db)):
+    """AI configuration (no secrets) and the last 24 hours: spend against the cap, cache
+    efficiency, errors, refusals and server-side fallbacks."""
+    s = get_settings()
+    since = datetime.now(UTC) - timedelta(hours=24)
+
+    def count_if(cond):
+        return func.sum(case((cond, 1), else_=0))
+
+    row = db.execute(
+        select(
+            func.count(),
+            func.coalesce(func.sum(LlmCall.cost_usd), 0.0),
+            func.coalesce(func.sum(LlmCall.input_tokens), 0),
+            func.coalesce(func.sum(LlmCall.output_tokens), 0),
+            func.coalesce(func.sum(LlmCall.cache_read_tokens), 0),
+            func.coalesce(func.sum(LlmCall.cache_write_tokens), 0),
+            count_if(LlmCall.status == "error"),
+            count_if(LlmCall.status == "refusal"),
+            count_if((LlmCall.requested_model != "") & (LlmCall.model != LlmCall.requested_model)),
+            count_if(LlmCall.provider == "offline"),
+            count_if(LlmCall.cache_hit.is_(True)),
+        ).where(LlmCall.created_at >= since)
+    ).one()
+    calls, cost, inp, out, cread, cwrite, errors, refusals, fallbacks, offline, stored = (row[0], float(row[1]), *(int(x or 0) for x in row[2:]))
+    prompt = inp + cread + cwrite
+    config = ai_check.configuration()
+    if user.role != "admin":
+        config.pop("keys")
+    cap = s.ai_daily_spend_cap_usd
+    return {
+        "mode": gateway.ai_status()["mode"],
+        "providers": gateway.ai_status()["providers"],
+        "config": config,
+        "last_24h": {
+            "calls": calls,
+            "cost_usd": round(cost, 4),
+            "spend_cap_usd": cap,
+            "cap_used": round(cost / cap, 3) if cap else None,
+            "cap_reached": bool(cap) and cost >= cap,
+            "input_tokens": inp,
+            "output_tokens": out,
+            "cache_read_tokens": cread,
+            "cache_write_tokens": cwrite,
+            "prompt_cache_hit_ratio": round(cread / prompt, 3) if prompt else None,
+            "stored_answers_served": stored,
+            "errors": errors,
+            "refusals": refusals,
+            "fallbacks": fallbacks,
+            "offline_answers": offline,
+        },
+    }
+
+
+@router.post("/ai/check")
+def ai_check_now(live: bool = False, user: User = Depends(require_admin), db: Session = Depends(get_db)):
+    """Smoke-check every configured provider and tier (free calls; `live` sends tiny real ones)."""
+    limiter.hit(f"ai-check:{user.id}", 5)
+    results = ai_check.run_checks(live=live)
+    audit(db, user.id, "ai_check", "ai", "", live=live, ok=all(r["ok"] is not False for r in results))
+    db.commit()
+    return {"ok": all(r["ok"] is not False for r in results), "configured": any(r["ok"] is not None for r in results), "results": results}
+
+
 @router.get("/ai-usage")
 def ai_usage(days: int = 30, _: User = Depends(require_staff), db: Session = Depends(get_db)):
     since = datetime.now(UTC) - timedelta(days=days)
@@ -322,6 +389,8 @@ def ai_usage(days: int = 30, _: User = Depends(require_staff), db: Session = Dep
             func.sum(LlmCall.cost_usd),
             func.avg(LlmCall.latency_ms),
             func.sum(case((LlmCall.cache_hit.is_(True), 1), else_=0)),
+            func.sum(LlmCall.cache_read_tokens),
+            func.sum(LlmCall.cache_write_tokens),
         )
         .where(LlmCall.created_at >= since)
         .group_by(LlmCall.feature, LlmCall.provider)
@@ -339,8 +408,10 @@ def ai_usage(days: int = 30, _: User = Depends(require_staff), db: Session = Dep
                 "cost_usd": round(float(c or 0), 4),
                 "avg_latency_ms": round(float(lat or 0)),
                 "cache_hits": int(h or 0),
+                "cache_read_tokens": int(cr or 0),
+                "cache_write_tokens": int(cw or 0),
             }
-            for f, p, n, i, o, c, lat, h in rows
+            for f, p, n, i, o, c, lat, h, cr, cw in rows
         ],
     }
 

@@ -30,7 +30,7 @@ from functools import lru_cache
 from typing import Protocol
 from urllib.parse import unquote, urlsplit
 
-from app.core.config import get_settings
+from app.core.config import get_settings, reveal
 
 log = logging.getLogger("eduverse.mail")
 
@@ -200,7 +200,7 @@ def sender_address() -> str:
 def make_backend() -> MailBackend:
     s = get_settings()
     if s.mail_backend == "smtp":
-        return SmtpMail(s.smtp_url, sender_address(), s.mail_reply_to)
+        return SmtpMail(reveal(s.smtp_url), sender_address(), s.mail_reply_to)
     if s.mail_backend == "ses":
         return SesMail(s.ses_region, sender_address(), s.mail_reply_to, s.ses_configuration_set)
     return ConsoleMail(s.mail_outbox_dir)

@@ -181,6 +181,11 @@ def test_every_engine_task_runs_live_through_the_sdk(sdb, anthropic_api, monkeyp
         assert roles[0] == "user" and roles[-1] == "user", (name, roles)
         assert all(a != b for a, b in zip(roles, roles[1:], strict=False)), (name, roles)  # strictly alternating turns
         assert all(isinstance(m["content"], str) and m["content"].strip() for m in body["messages"]), name
-        assert body["system"].startswith(gateway.SYSTEM_PREAMBLE) and "JSON schema" in body["system"], name
+        [system] = body["system"]  # one block, marked for prompt caching
+        assert system["cache_control"] == {"type": "ephemeral"}, name
+        assert system["text"].startswith(gateway.SYSTEM_PREAMBLE) and "JSON schema" in system["text"], name
+        fmt = body["output_config"]["format"]  # structured output with the task's schema
+        assert fmt["type"] == "json_schema" and fmt["schema"]["additionalProperties"] is False, name
+        assert body["output_config"]["effort"] == clients.AnthropicProvider().effort_for(task.tier), name
         assert body["model"] == clients.AnthropicProvider().model_for(task.tier), name
     assert len(fake.requests) == 11  # no repair round trips were needed

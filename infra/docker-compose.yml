@@ -13,6 +13,18 @@ x-api-environment: &api-environment
   # Jobs run in the worker service, not inside the API process.
   EDU_JOBS_EMBEDDED_WORKER: "false"
 
+# To keep AI keys out of .env, use Compose secrets: they appear as files in /run/secrets, which
+# the API reads (EDU_SECRETS_DIR). Uncomment here and under the api and worker services:
+#
+#   secrets:
+#     anthropic_key:
+#       file: ../secrets/anthropic_api_key        # a file holding only the key
+#
+#   (in api: and worker:)
+#     secrets:
+#       - source: anthropic_key
+#         target: EDU_ANTHROPIC_API_KEY
+
 services:
   db:
     image: pgvector/pgvector:pg16

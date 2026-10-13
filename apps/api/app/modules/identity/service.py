@@ -288,6 +288,11 @@ def revoke_refresh(db: Session, raw: str) -> None:
         db.commit()
 
 
+def admin_emails(db: Session) -> list[str]:
+    """Where operational alerts go (active admins)."""
+    return list(db.scalars(select(User.email).where(User.role == "admin", User.status == "active").order_by(User.email)))
+
+
 def purge_expired_refresh_tokens(db: Session, now: datetime) -> int:
     """Expired tokens can never be exchanged again (a replay gets 401 either way), so drop them."""
     return db.execute(delete(RefreshToken).where(RefreshToken.expires_at < now)).rowcount

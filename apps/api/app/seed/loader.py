@@ -16,7 +16,7 @@ from sqlalchemy import func, inspect, select
 from sqlalchemy.orm import Session
 
 from app.ai.schemas import LessonOut
-from app.core.config import get_settings
+from app.core.config import get_settings, reveal
 from app.core.db import utcnow
 from app.modules.assessment import service as qservice
 from app.modules.assessment.models import (
@@ -369,9 +369,10 @@ def bootstrap_admin(db: Session, stats: Counter) -> User | None:
     """Create (or promote) the first admin from EDU_ADMIN_EMAIL / EDU_ADMIN_PASSWORD.
     An existing account keeps its password: the seed never resets credentials."""
     s = get_settings()
-    if not (s.admin_email and s.admin_password):
+    password = reveal(s.admin_password)
+    if not (s.admin_email and password):
         return None
-    if len(s.admin_password) < 12:
+    if len(password) < 12:
         raise SeedError("EDU_ADMIN_PASSWORD must be at least 12 characters")
     try:  # the same check sign-in applies, so the account can actually log in
         email = TypeAdapter(EmailStr).validate_python(s.admin_email.strip()).lower()
@@ -379,7 +380,7 @@ def bootstrap_admin(db: Session, stats: Counter) -> User | None:
         raise SeedError(f"EDU_ADMIN_EMAIL is not a usable email address: {exc.errors()[0]['msg']}") from exc
     user = db.scalar(select(User).where(User.email == email))
     if not user:
-        user = identity.create_user(db, email, s.admin_password, "Administrator", role="admin", commit=False)
+        user = identity.create_user(db, email, password, "Administrator", role="admin", commit=False)
         user.email_verified_at = utcnow()  # configured by the operator, so no confirmation email
         db.commit()
         stats["admin.created"] += 1

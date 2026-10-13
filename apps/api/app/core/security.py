@@ -9,7 +9,7 @@ from datetime import UTC, datetime, timedelta
 import bcrypt
 import jwt
 
-from app.core.config import get_settings
+from app.core.config import get_settings, reveal
 
 ALGORITHM = "HS256"
 
@@ -43,11 +43,11 @@ def create_access_token(user_id: uuid.UUID, role: str, version: int = 0) -> str:
         "exp": now + timedelta(minutes=s.access_token_minutes),
         "type": "access",
     }
-    return jwt.encode(payload, s.secret_key, algorithm=ALGORITHM)
+    return jwt.encode(payload, reveal(s.secret_key), algorithm=ALGORITHM)
 
 
 def decode_access_token(token: str) -> dict:
-    payload = jwt.decode(token, get_settings().secret_key, algorithms=[ALGORITHM])
+    payload = jwt.decode(token, reveal(get_settings().secret_key), algorithms=[ALGORITHM])
     if payload.get("type") != "access":
         raise jwt.InvalidTokenError("wrong token type")
     return payload

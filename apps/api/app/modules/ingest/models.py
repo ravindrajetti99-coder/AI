@@ -45,15 +45,23 @@ class LlmCall(IdMixin, Base):
     user_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True, index=True)
     feature: Mapped[str] = mapped_column(String(40), index=True)
     provider: Mapped[str] = mapped_column(String(20))
-    model: Mapped[str] = mapped_column(String(80))
+    model: Mapped[str] = mapped_column(String(80))  # the model that answered
+    # What the gateway asked for; differs from `model` when a server-side fallback answered.
+    requested_model: Mapped[str] = mapped_column(String(80), default="")
     prompt_version: Mapped[str] = mapped_column(String(40), default="")
-    input_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    effort: Mapped[str] = mapped_column(String(10), default="")
+    input_tokens: Mapped[int] = mapped_column(Integer, default=0)  # uncached input
     output_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    cache_read_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    cache_write_tokens: Mapped[int] = mapped_column(Integer, default=0)
     cost_usd: Mapped[float] = mapped_column(Float, default=0.0)
     latency_ms: Mapped[int] = mapped_column(Integer, default=0)
-    cache_hit: Mapped[bool] = mapped_column(Boolean, default=False)
-    status: Mapped[str] = mapped_column(String(20), default="ok")
+    cache_hit: Mapped[bool] = mapped_column(Boolean, default=False)  # answered from the response cache
+    status: Mapped[str] = mapped_column(String(20), default="ok")  # ok | error | refusal
     error: Mapped[str] = mapped_column(Text, default="")
+    request_id: Mapped[str] = mapped_column(String(80), default="")  # the provider's, for support tickets
+    stop_reason: Mapped[str] = mapped_column(String(30), default="")
+    refusal_category: Mapped[str] = mapped_column(String(40), default="")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, index=True)
 
 

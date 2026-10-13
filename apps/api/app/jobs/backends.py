@@ -12,7 +12,7 @@ from datetime import datetime
 from functools import lru_cache
 from typing import Protocol
 
-from sqlalchemy import event, select, text, update
+from sqlalchemy import event, func, select, text, update
 from sqlalchemy.orm import Session
 
 from app.core.config import get_settings
@@ -34,6 +34,16 @@ class QueueBackend(Protocol):
 
     def claim(self, worker_id: str, queues: Sequence[str] | None, now: datetime) -> tuple[uuid.UUID, str] | None:
         """Take the next due job: mark it running and return (job id, lease), or None."""
+
+    @staticmethod
+    def _full_queues(db: Session) -> list[str]:
+        """Queues already running their EDU_JOBS_QUEUE_CONCURRENCY limit. A soft cap: workers
+        claiming at the same instant can overshoot it by one each."""
+        caps = get_settings().jobs_queue_concurrency
+        if not caps:
+            return []
+        running = dict(db.execute(select(Job.queue, func.count()).where(Job.status == "running", Job.queue.in_(caps)).group_by(Job.queue)).all())
+        return [queue for queue, cap in caps.items() if running.get(queue, 0) >= cap]
 
     def wait(self, timeout: float, stop: threading.Event) -> None:
         """Block until new work may be available, `timeout` passes, or `stop` is set."""
@@ -59,10 +69,13 @@ class DatabaseQueue:
 
     def claim(self, worker_id: str, queues: Sequence[str] | None, now: datetime) -> tuple[uuid.UUID, str] | None:
         with SessionLocal() as db:
+            full = self._full_queues(db)
             for _ in range(5):  # another worker may win the compare-and-set; try the next job
                 q = select(Job.id).where(Job.status == "queued", Job.run_at <= now)
                 if queues:
                     q = q.where(Job.queue.in_(queues))
+                if full:
+                    q = q.where(Job.queue.not_in(full))
                 q = q.order_by(Job.priority.desc(), Job.run_at, Job.id).limit(1).with_for_update(skip_locked=True)
                 job_id = db.scalar(q)
                 if job_id is None:
@@ -79,6 +92,16 @@ class DatabaseQueue:
                 if res.rowcount == 1:
                     return job_id, lease
         return None
+
+    @staticmethod
+    def _full_queues(db: Session) -> list[str]:
+        """Queues already running their EDU_JOBS_QUEUE_CONCURRENCY limit. A soft cap: workers
+        claiming at the same instant can overshoot it by one each."""
+        caps = get_settings().jobs_queue_concurrency
+        if not caps:
+            return []
+        running = dict(db.execute(select(Job.queue, func.count()).where(Job.status == "running", Job.queue.in_(caps)).group_by(Job.queue)).all())
+        return [queue for queue, cap in caps.items() if running.get(queue, 0) >= cap]
 
     def wait(self, timeout: float, stop: threading.Event) -> None:
         deadline = time.monotonic() + timeout
