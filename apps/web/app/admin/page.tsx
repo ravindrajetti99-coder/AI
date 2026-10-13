@@ -516,8 +516,114 @@ function Flags() {
 type Usage = {
   status: { providers: string[]; mode: string };
   since: string;
-  rows: { feature: string; provider: string; calls: number; input_tokens: number; output_tokens: number; cost_usd: number; avg_latency_ms: number; cache_hits: number }[];
+  rows: {
+    feature: string;
+    provider: string;
+    calls: number;
+    input_tokens: number;
+    output_tokens: number;
+    cost_usd: number;
+    avg_latency_ms: number;
+    cache_hits: number;
+    cache_read_tokens: number;
+    cache_write_tokens: number;
+  }[];
 };
+
+type AiStatusOut = {
+  mode: string;
+  providers: string[];
+  config: {
+    models: Record<string, string>;
+    effort: Record<string, string>;
+    prompt_caching: boolean;
+    structured_outputs: boolean;
+    server_fallbacks: boolean;
+    keys?: Record<string, string>;
+  };
+  last_24h: {
+    calls: number;
+    cost_usd: number;
+    spend_cap_usd: number;
+    cap_used: number | null;
+    cap_reached: boolean;
+    prompt_cache_hit_ratio: number | null;
+    stored_answers_served: number;
+    errors: number;
+    refusals: number;
+    fallbacks: number;
+    offline_answers: number;
+  };
+};
+type CheckRow = { provider: string; tier: string; model: string; ok: boolean | null; mode: string; detail: string };
+
+function pct(value: number | null) {
+  return value === null ? "–" : `${Math.round(value * 100)}%`;
+}
+
+function AiStatus() {
+  const { me } = useAuth();
+  const { data, error } = useApi<AiStatusOut>("/admin/ai/status");
+  const [check, setCheck] = useState<{ busy: boolean; rows: CheckRow[] | null; error: unknown }>({ busy: false, rows: null, error: null });
+
+  async function runCheck() {
+    setCheck({ busy: true, rows: null, error: null });
+    try {
+      const out = await api<{ results: CheckRow[] }>("/admin/ai/check", { method: "POST" });
+      setCheck({ busy: false, rows: out.results, error: null });
+    } catch (err) {
+      setCheck({ busy: false, rows: null, error: err });
+    }
+  }
+
+  if (error) return <ErrorNote error={error} />;
+  if (!data) return <Loading />;
+  const day = data.last_24h;
+  const tiers = ["heavy", "standard", "light"];
+  const runButton =
+    me?.role === "admin" ? (
+      <Button size="sm" variant="secondary" busy={check.busy} onClick={() => void runCheck()}>
+        Run smoke check
+      </Button>
+    ) : undefined;
+  return (
+    <Card title="AI configuration and the last 24 hours" action={runButton}>
+      {day.cap_reached && (
+        <div className="mb-4">
+          <Notice tone="amber">The daily AI spend cap is reached: every AI feature is answering with the offline engines.</Notice>
+        </div>
+      )}
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <Stat label="Spend (24 h)" value={`$${day.cost_usd.toFixed(2)}`} hint={day.spend_cap_usd ? `${pct(day.cap_used)} of the $${day.spend_cap_usd} daily cap` : "No daily cap set"} />
+        <Stat label="Prompt cache hits" value={pct(day.prompt_cache_hit_ratio)} hint={`${day.stored_answers_served} stored answers served`} />
+        <Stat label="AI calls (24 h)" value={day.calls} hint={`${day.errors} errors · ${day.offline_answers} offline answers`} />
+        <Stat label="Refusals / fallbacks" value={`${day.refusals} / ${day.fallbacks}`} hint="Declined requests and answers from a fallback model" />
+      </div>
+      <p className="mt-4 text-xs text-muted">
+        {tiers.map((t) => `${t}: ${data.config.models[t]} (effort ${data.config.effort[t]})`).join(" · ")} · prompt caching{" "}
+        {data.config.prompt_caching ? "on" : "off"} · structured outputs {data.config.structured_outputs ? "on" : "off"}
+        {data.config.keys ? ` · Anthropic key ${data.config.keys.anthropic || "not set"}` : ""}
+      </p>
+      <div className="mt-3 space-y-2">
+        <ErrorNote error={check.error} />
+        {check.rows && (
+          <ul className="divide-y divide-line text-sm">
+            {check.rows.map((r) => (
+              <li key={`${r.provider}-${r.tier}`} className="flex items-center gap-2 py-1.5">
+                <Badge tone={r.ok === true ? "green" : r.ok === false ? "red" : "neutral"}>{r.ok === true ? "pass" : r.ok === false ? "fail" : "skipped"}</Badge>
+                <span className="font-medium">
+                  {r.provider} {r.tier}
+                </span>
+                <span className="text-xs text-muted">{r.model}</span>
+                <span className="ml-auto truncate text-xs text-muted">{r.detail}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </Card>
+  );
+}
 
 function AiUsage() {
   const { data, error } = useApi<Usage>("/admin/ai-usage", { days: 30 });
@@ -525,42 +631,49 @@ function AiUsage() {
   if (!data) return <Loading />;
   const total = data.rows.reduce((s, r) => s + r.cost_usd, 0);
   return (
-    <Card title={`AI usage (last 30 days) · estimated $${total.toFixed(2)}`} action={<Badge tone={data.status.mode === "live" ? "green" : "neutral"}>{data.status.mode === "live" ? data.status.providers.join(", ") : "offline engines only"}</Badge>}>
-      {!data.rows.length ? (
-        <p className="text-sm text-muted">No AI calls yet.</p>
-      ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead className="text-left text-muted">
-              <tr>
-                <th className="py-1">Feature</th>
-                <th>Provider</th>
-                <th className="text-right">Calls</th>
-                <th className="text-right">Cache hits</th>
-                <th className="text-right">Tokens in / out</th>
-                <th className="text-right">Avg latency</th>
-                <th className="text-right">Cost</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.rows.map((r) => (
-                <tr key={`${r.feature}-${r.provider}`} className="border-t border-line tabular-nums">
-                  <td className="py-2">{r.feature}</td>
-                  <td>{r.provider}</td>
-                  <td className="text-right">{r.calls}</td>
-                  <td className="text-right">{r.cache_hits}</td>
-                  <td className="text-right">
-                    {r.input_tokens.toLocaleString()} / {r.output_tokens.toLocaleString()}
-                  </td>
-                  <td className="text-right">{r.avg_latency_ms} ms</td>
-                  <td className="text-right">${r.cost_usd.toFixed(4)}</td>
+    <div className="space-y-6">
+      <AiStatus />
+      <Card title={`AI usage (last 30 days) · estimated $${total.toFixed(2)}`} action={<Badge tone={data.status.mode === "live" ? "green" : "neutral"}>{data.status.mode === "live" ? data.status.providers.join(", ") : "offline engines only"}</Badge>}>
+        {!data.rows.length ? (
+          <p className="text-sm text-muted">No AI calls yet.</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-left text-muted">
+                <tr>
+                  <th className="py-1">Feature</th>
+                  <th>Provider</th>
+                  <th className="text-right">Calls</th>
+                  <th className="text-right">Stored answers</th>
+                  <th className="text-right">Tokens in / out</th>
+                  <th className="text-right">Cache read / write</th>
+                  <th className="text-right">Avg latency</th>
+                  <th className="text-right">Cost</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-    </Card>
+              </thead>
+              <tbody>
+                {data.rows.map((r) => (
+                  <tr key={`${r.feature}-${r.provider}`} className="border-t border-line tabular-nums">
+                    <td className="py-2">{r.feature}</td>
+                    <td>{r.provider}</td>
+                    <td className="text-right">{r.calls}</td>
+                    <td className="text-right">{r.cache_hits}</td>
+                    <td className="text-right">
+                      {r.input_tokens.toLocaleString()} / {r.output_tokens.toLocaleString()}
+                    </td>
+                    <td className="text-right">
+                      {r.cache_read_tokens.toLocaleString()} / {r.cache_write_tokens.toLocaleString()}
+                    </td>
+                    <td className="text-right">{r.avg_latency_ms} ms</td>
+                    <td className="text-right">${r.cost_usd.toFixed(4)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </Card>
+    </div>
   );
 }
 

@@ -72,7 +72,7 @@ python -m app.worker --once                   # run whatever is due, then exit
 ## Tests
 
 ```bash
-cd apps/api && pytest                         # 224 tests, SQLite, offline AI (~20 s)
+cd apps/api && pytest                         # 244 tests, SQLite, offline AI (~20 s)
 EDU_TEST_POSTGRES_URL=postgresql+psycopg://postgres:postgres@localhost:5432/postgres pytest
                                               # same suite on PostgreSQL, schema from migrations
 cd apps/web && npm run lint && npm run typecheck && npm run build
@@ -103,7 +103,11 @@ All API settings are environment variables prefixed `EDU_` (see `.env.example` a
 | `EDU_ENV` | `development` | `production` refuses the dev secret key, SQLite, the local code runner and bcrypt cost < 12. |
 | `EDU_DATABASE_URL` | `sqlite:///./eduverse.db` | Must be PostgreSQL in production: `postgresql+psycopg://…` |
 | `EDU_REDIS_URL` | empty | Shared rate limits across API replicas; without it each process counts alone. |
-| `EDU_ANTHROPIC_API_KEY` / `EDU_OPENAI_API_KEY` | empty | Empty means offline engines. Models per tier: `claude-opus-5-5` / `claude-sonnet-5-5` / `claude-haiku-5-5`. |
+| `EDU_ANTHROPIC_API_KEY` / `EDU_OPENAI_API_KEY` | empty | Empty means offline engines. Models per tier: `claude-opus-5-5` / `claude-sonnet-5-5` / `claude-haiku-5-5`. Prefer a secrets file (see below). `EDU_ANTHROPIC_API_KEY_SECONDARY` takes over when the primary is rejected, for rotation. |
+| `EDU_ANTHROPIC_EFFORT_HEAVY` / `_STANDARD` / `_LIGHT` | `medium` / `medium` / `low` | Thinking depth per tier (`low` … `max`). |
+| `EDU_AI_PROMPT_CACHING` / `EDU_AI_STRUCTURED_OUTPUTS` | `true` / `true` | Cache each task's static system prompt; constrain answers to the task's JSON schema. |
+| `EDU_AI_TASK_OVERRIDES` | `{}` | Per task: `{"examiner.evaluate": {"effort": "high", "max_tokens": 3000}}` (tier, effort, max_tokens, prompt_cache). |
+| `EDU_AI_DAILY_SPEND_CAP_USD` | `0` (none) | Organisation-wide USD per 24 h; at the cap AI answers come from the offline engines, and admins get an email at 80%. |
 | `EDU_ANTHROPIC_SERVER_FALLBACKS` | `true` | On a safety decline, Anthropic re-runs the request on its recommended fallback model. |
 | `EDU_MAIL_BACKEND` | `console` | `ses` (Amazon SES, `EDU_SES_REGION`, AWS credentials from the standard chain) or `smtp` (`EDU_SMTP_URL`). Production refuses `console`. |
 | `EDU_MAIL_FROM` | `EduVerse AI <no-reply@eduverse.local>` | With SES, a verified identity (domain with DKIM/SPF/DMARC). |
@@ -113,6 +117,13 @@ All API settings are environment variables prefixed `EDU_` (see `.env.example` a
 | `EDU_JOBS_STALE_AFTER_SECONDS` | `300` | A running job whose worker has not heart-beaten for this long is retried by another worker. |
 | `EDU_CODE_RUNNER` | `local` | `local` is a resource-limited subprocess for development only; use `judge0` (with `EDU_JUDGE0_URL`) or `disabled` in production. |
 | `EDU_ADMIN_EMAIL` / `EDU_ADMIN_PASSWORD` | empty | First admin, created by the seed loader. |
+
+## AI in production
+
+- **Secrets.** Every key and password is a `SecretStr` (never in logs, reprs or errors). Each can also be read from a file named after its variable in `EDU_SECRETS_DIR` (default `/run/secrets`), e.g. `/run/secrets/EDU_ANTHROPIC_API_KEY`, which is where Docker/Compose secrets land; platforms such as Render, Railway and ECS (Secrets Manager) can inject them as variables instead. A variable that is set, even empty, wins over the file.
+- **Rotation.** Put the new key in `EDU_ANTHROPIC_API_KEY_SECONDARY`, deploy, then make it the primary and revoke the old one. A request the primary key fails to authenticate is retried once with the secondary.
+- **Smoke check.** `python -m app.ai.check` proves each provider's key and each tier's model with free calls (Anthropic token counting); `--live` sends one tiny real request per tier; `--require` fails when no provider is configured. Admins can run the same check from Content studio → AI usage, which also shows the configuration, 24-hour spend against the cap, prompt-cache hit ratio, refusals and fallbacks.
+- **Cost tracking.** `llm_calls` records input, output, cache-read and cache-write tokens, effort, the provider's request id, stop reason, refusal category, and the requested versus serving model (server-side fallbacks); cost uses per-model prices, including cache pricing and Haiku's long-context rate.
 
 ## Security notes
 

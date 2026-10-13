@@ -20,7 +20,7 @@ class Answer(BaseModel):
 
 class FakeProvider:
     def __init__(self, name: str, replies: list, model: str = "fake-model"):
-        self.name, self.replies, self.model, self.calls = name, list(replies), model, []
+        self.name, self.replies, self.model, self.calls, self.options = name, list(replies), model, [], []
 
     def available(self) -> bool:
         return True
@@ -28,12 +28,15 @@ class FakeProvider:
     def model_for(self, tier):
         return self.model
 
-    def complete(self, system, messages, tier, max_tokens):
+    def complete(self, system, messages, tier, max_tokens, **options):
         self.calls.append(messages)
+        self.options.append({"tier": tier, "max_tokens": max_tokens, "system": system, **options})
         reply = self.replies.pop(0)
         if isinstance(reply, Exception):
             raise reply
-        return ProviderResult(text=reply, model=self.model, input_tokens=100, output_tokens=50)
+        if isinstance(reply, ProviderResult):
+            return reply
+        return ProviderResult(text=reply, model=self.model, input_tokens=100, output_tokens=50, requested_model=self.model)
 
 
 def task(cacheable=False, **parts) -> gateway.Task:
