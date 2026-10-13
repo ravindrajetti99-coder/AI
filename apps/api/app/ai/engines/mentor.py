@@ -1,5 +1,7 @@
 """AI Mentor (daily plan note) and AI Career Guide."""
 
+import re
+
 from app.ai import gateway
 from app.ai.schemas import CareerOut, MentorOut
 
@@ -56,29 +58,51 @@ def career_task(goal: str, education: str, mastery_summary: list[dict], catalog:
 
 
 CAREER_KEYWORDS = {
-    "competitive": ["government", "upsc", "ssc", "bank", "railway", "psc", "civil service", "officer", "group"],
-    "technology": ["software", "developer", "programmer", "data", "ai", "machine learning", "web", "python", "coding", "it job"],
-    "professional": ["ca", "chartered", "accountant", "finance", "audit", "tax", "cma", "commerce"],
-    "language": ["english", "spoken", "communication", "abroad", "japan", "germany", "ielts", "interview"],
+    "competitive": [
+        "government",
+        "upsc",
+        "ssc",
+        "bank",
+        "banking",
+        "railway",
+        "railways",
+        "psc",
+        "civil service",
+        "civil services",
+        "officer",
+        "group 1",
+        "group 2",
+    ],
+    "technology": ["software", "developer", "programmer", "programming", "data", "ai", "machine learning", "web", "python", "coding", "it job"],
+    "professional": ["ca", "chartered", "accountant", "accounting", "finance", "audit", "tax", "cma", "commerce"],
+    "language": ["english", "spoken", "communication", "abroad", "japan", "germany", "ielts"],
     "academic": ["class", "board", "neet", "jee", "engineering", "medical", "school"],
+    "career": ["interview", "interviews", "resume", "cv", "placement", "placements", "campus", "hr round", "first job"],
 }
+PATH_TITLES = {
+    "competitive": "Government job through competitive exams",
+    "technology": "Software & data career",
+    "professional": "Commerce & finance professional",
+    "language": "Communication skills for careers",
+    "academic": "Strong academic foundation",
+    "career": "Interview-ready job seeker",
+}
+
+
+def _mentions(goal: str, keyword: str) -> bool:
+    # Whole words only: "ca" must not match "career", nor "ai" match "railway".
+    return re.search(rf"\b{re.escape(keyword)}\b", goal) is not None
 
 
 def offline_career(goal: str, catalog: list[dict]) -> dict:
     g = goal.lower()
-    domains = [d for d, kws in CAREER_KEYWORDS.items() if any(k in g for k in kws)] or ["language", "technology"]
+    domains = [d for d, kws in CAREER_KEYWORDS.items() if any(_mentions(g, k) for k in kws)] or ["language", "technology"]
     paths = []
     for d in domains[:3]:
         courses = [c["slug"] for c in catalog if c["domain"] == d][:3]
         paths.append(
             {
-                "title": {
-                    "competitive": "Government job through competitive exams",
-                    "technology": "Software & data career",
-                    "professional": "Commerce & finance professional",
-                    "language": "Communication skills for careers",
-                    "academic": "Strong academic foundation",
-                }[d],
+                "title": PATH_TITLES[d],
                 "why": f"Your goal mentions topics linked to {d} learning.",
                 "next_steps": [
                     "Enroll in the first course below and follow the daily plan.",

@@ -23,12 +23,19 @@ from app.ai.providers.clients import get_provider
 from app.core.config import get_settings
 from app.modules.ingest.models import AiCache, LlmCall
 
-# Rough USD per 1M tokens (input, output) for cost dashboards. These are estimates for
-# budgeting only; update them from the providers' pricing pages.
+# USD per 1M tokens (input, output) for cost dashboards and budgeting only; update them from
+# the providers' pricing pages. Models not listed fall back to their tier's estimate.
 PRICE_PER_MTOK = {
-    "heavy": (15.0, 75.0),
-    "standard": (3.0, 15.0),
-    "light": (0.8, 4.0),
+    "claude-opus-5-5": (4.0, 20.0),
+    "claude-sonnet-5-5": (2.0, 10.0),
+    "claude-haiku-5-5": (0.10, 0.50),  # prompts up to 100K tokens
+    "gpt-4.1": (2.0, 8.0),
+    "gpt-4.1-mini": (0.40, 1.60),
+}
+PRICE_PER_MTOK_TIER = {
+    "heavy": (4.0, 20.0),
+    "standard": (2.0, 10.0),
+    "light": (0.40, 1.60),
 }
 
 SYSTEM_PREAMBLE = (
@@ -95,8 +102,8 @@ def tokens_used_today(db: Session, user_id: uuid.UUID) -> int:
     )
 
 
-def estimate_cost(tier: Tier, inp: int, out: int) -> float:
-    pin, pout = PRICE_PER_MTOK[tier]
+def estimate_cost(tier: Tier, inp: int, out: int, model: str = "") -> float:
+    pin, pout = PRICE_PER_MTOK.get(model) or PRICE_PER_MTOK_TIER[tier]
     return round((inp * pin + out * pout) / 1_000_000, 6)
 
 
@@ -189,7 +196,7 @@ def _meter(db, user_id, task: Task, provider, model, inp, out, latency, cache_hi
             prompt_version=task.prompt_version,
             input_tokens=inp,
             output_tokens=out,
-            cost_usd=estimate_cost(task.tier, inp, out) if provider not in ("offline",) else 0.0,
+            cost_usd=estimate_cost(task.tier, inp, out, model) if provider != "offline" else 0.0,
             latency_ms=latency,
             cache_hit=cache_hit,
             status=status,

@@ -17,5 +17,7 @@ known-first-party = ["app"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 addopts = "-q"
-filterwarnings = ["ignore::DeprecationWarning"]
+# Models named Test/TestItem/TestAttempt are not test classes.
+filterwarnings = ["ignore::DeprecationWarning", "ignore::pytest.PytestCollectionWarning"]

@@ -18,6 +18,7 @@ class Settings(BaseSettings):
 
     # Auth
     secret_key: str = "dev-only-change-me-please-32-bytes-min"
+    bcrypt_rounds: int = 12  # tests lower this; never below 12 in production
     access_token_minutes: int = 15
     refresh_token_days: int = 30
     cors_origins: list[str] = ["http://localhost:3000"]
@@ -38,7 +39,9 @@ class Settings(BaseSettings):
     openai_model_heavy: str = "gpt-4.1"
     openai_model_standard: str = "gpt-4.1-mini"
     openai_model_light: str = "gpt-4.1-mini"
-    ai_timeout_seconds: float = 60.0
+    # Re-run declined requests server-side on Anthropic's recommended fallback model.
+    anthropic_server_fallbacks: bool = True
+    ai_timeout_seconds: float = 120.0
     ai_daily_token_budget_learner: int = 200_000
     ai_daily_token_budget_staff: int = 5_000_000
 
@@ -67,6 +70,8 @@ def get_settings() -> Settings:
     if s.is_production:
         if s.secret_key.startswith("dev-only"):
             raise RuntimeError("EDU_SECRET_KEY must be set in production")
+        if s.bcrypt_rounds < 12:
+            raise RuntimeError("EDU_BCRYPT_ROUNDS must be at least 12 in production")
         if s.code_runner == "local":
             raise RuntimeError("EDU_CODE_RUNNER=local is not allowed in production; use judge0 or disabled")
     return s

@@ -15,6 +15,7 @@ from app.ai.text import content_terms, term_counts
 from app.modules.ingest.models import Chunk, SourceDocument
 
 K1, B = 1.5, 0.75
+_PAGE = re.compile(r"^\f?\[page (\d+)\]")
 _HEADING = re.compile(r"^\s{0,3}(#{1,6}\s+.+|[A-Z][A-Za-z0-9 ,:&()\-]{2,80})\s*$")
 
 
@@ -26,37 +27,39 @@ def chunk_text(text: str, target_words: int = 350, overlap_words: int = 40) -> l
     heading = ""
     buf: list[str] = []
     words = 0
+    fresh = 0  # words added since the last flush (the overlap tail alone is not worth a chunk)
     page = 1
 
     def flush():
-        nonlocal buf, words
-        if buf:
+        nonlocal buf, words, fresh
+        if buf and fresh:
             body = "\n\n".join(buf)
             chunks.append({"heading": heading, "text": body, "page": page})
             tail = body.split()[-overlap_words:] if overlap_words else []
             buf = [" ".join(tail)] if tail else []
-            words = len(tail)
+            words, fresh = len(tail), 0
 
     for p in paragraphs:
-        if p.startswith("\f[page "):
-            m = re.match(r"\f\[page (\d+)\]", p)
-            page = int(m.group(1)) if m else page
-            p = re.sub(r"^\f\[page \d+\]\s*", "", p)
+        marker = _PAGE.match(p)  # extract_text() starts each PDF page with "\f[page N]"
+        if marker:
+            flush()
+            page = int(marker.group(1))
+            p = p[marker.end() :].strip()
             if not p:
                 continue
         first_line = p.splitlines()[0]
         if len(p.split()) <= 12 and _HEADING.match(first_line) and len(p.splitlines()) == 1:
             flush()
-            buf, words = [], 0
+            buf, words, fresh = [], 0, 0
             heading = first_line.lstrip("# ").strip()
             continue
         n = len(p.split())
-        if words + n > target_words and words > overlap_words:
+        if words + n > target_words and fresh:
             flush()
         buf.append(p)
         words += n
-    if buf and (words > overlap_words or not chunks):
-        chunks.append({"heading": heading, "text": "\n\n".join(buf), "page": page})
+        fresh += n
+    flush()
     return chunks
 
 

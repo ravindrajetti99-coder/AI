@@ -224,7 +224,7 @@ def choose_concept(db: Session, user_id: uuid.UUID, course_id: uuid.UUID) -> tup
     for c, _, _ in concepts:
         st = states.get(c.id)
         if (st is None or st.score < mm.STRONG_THRESHOLD) and prerequisites_met(db, user_id, c.id):
-            return c, "next in syllabus" if st is None else "keep building"
+            return c, "next in syllabus" if st is None or not st.attempts else "keep building"
     # 4. everything strong: stretch on the least-recently seen
     if concepts:
         seen = sorted(concepts, key=lambda row: as_utc(states[row[0].id].last_seen_at) if row[0].id in states else datetime.min.replace(tzinfo=UTC))
@@ -399,16 +399,27 @@ def generate_plan(db: Session, user_id: uuid.UUID, course: Course, plan_date: da
             if gap:
                 add("weak", gap, f"Fix the base: {gap.title}", f"Weak prerequisite of {c.title}", 15)
             add("weak", c, f"Strengthen: {c.title}", f"Mastery {round(st.score * 100)}% after {st.attempts} attempts", 15)
+    # A mastery row with no attempts only means the learner opened the concept; it is still new.
+    started = {cid: st for cid, st in states.items() if st.attempts > 0}
     new_added = 0
     for c, _, _ in concepts:
         if new_added >= 2:
             break
-        if c.id not in states and prerequisites_met(db, user_id, c.id):
+        if c.id not in started and prerequisites_met(db, user_id, c.id):
             if add("learn", c, f"Learn: {c.title}", "Next in your syllabus", 20):
                 new_added += 1
-    developing = [c for c, _, _ in concepts if c.id in states and mm.WEAK_THRESHOLD <= states[c.id].score < mm.STRONG_THRESHOLD]
-    for c in developing[:2]:
-        add("practice", c, f"Practice: {c.title}", "Push mastery past 80%", 10)
+    # Concepts already under way that are neither weak (handled above) nor strong yet.
+    in_progress = [
+        c
+        for c, _, _ in concepts
+        if c.id in started
+        and started[c.id].score < mm.STRONG_THRESHOLD
+        and not (started[c.id].attempts >= mm.MIN_ATTEMPTS_FOR_LABEL and started[c.id].score < mm.WEAK_THRESHOLD)
+    ]
+    for c in in_progress[:2]:
+        st = started[c.id]
+        reason = "Push mastery past 80%" if st.attempts >= mm.MIN_ATTEMPTS_FOR_LABEL else f"Keep building: {st.attempts} attempt(s) so far"
+        add("practice", c, f"Practice: {c.title}", reason, 10)
     if plan_date.weekday() == 6:
         add("test", None, "Weekly mock test", "Measure exam readiness", 30)
     for it in items:

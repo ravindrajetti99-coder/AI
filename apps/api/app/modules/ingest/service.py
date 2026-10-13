@@ -149,12 +149,12 @@ def _execute(db: Session, job: GenerationJob, user: User) -> dict:
         doc = db.get(SourceDocument, uuid.UUID(p["document_id"]))
         if not doc:
             raise AppError("Document not found")
-        text = "\n\n".join(c["text"] for c in retrieval.search(db, doc.title, document_id=doc.id, k=50)) or _doc_text(db, doc)
-        res = gateway.run(db, teacher.notes_task(db, doc.title, text), user.id, user.role)
+        concept_ids = p.get("concept_ids") or []
+        res = gateway.run(db, teacher.notes_task(db, doc.title, _doc_text(db, doc)), user.id, user.role)
         out["providers"].add(res.provider)
         note = Note(
             document_id=doc.id,
-            concept_id=uuid.UUID(p["concept_id"]) if p.get("concept_id") else None,
+            concept_id=uuid.UUID(str(concept_ids[0])) if concept_ids else None,
             title=res.data.title,
             body="\n".join(f"- {s}" for s in res.data.summary) + ("\n\nKey terms: " + ", ".join(res.data.key_terms) if res.data.key_terms else ""),
             source="offline" if res.offline else "ai",

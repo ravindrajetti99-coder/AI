@@ -32,45 +32,90 @@ def chat_task(target_language: str, level: str, scenario: str, history: list[dic
 
 
 # Frequent errors made by Indian-language speakers learning English (rule set for offline mode).
+# Fixed phrases only; articles and third-person verbs need context and are handled below.
 ENGLISH_RULES = [
     (r"\bi am agree\b", "I agree", "'Agree' is already a verb; don't add 'am'."),
     (r"\bdiscuss about\b", "discuss", "'Discuss' takes a direct object: discuss the plan."),
     (r"\breturn back\b", "return", "'Return' already means 'go back'."),
     (r"\brevert back\b", "reply", "In Indian English 'revert' is often used for 'reply'; say 'reply' or 'get back to you'."),
     (r"\bmore better\b", "better", "'Better' is already comparative."),
-    (r"\b(he|she|it) (go|do|have|want|like|come)\b", None, "Third person singular takes -s/-es: he goes, she does, it has."),
-    (r"\ba ([aeiou]\w*)", None, "Use 'an' before a vowel sound: an apple, an hour."),
     (r"\bmyself is\b", "My name is", "Say 'My name is ...' or 'I am ...' to introduce yourself."),
     (r"\bwhat is your good name\b", "what is your name", "'Good name' is a literal translation; just say 'your name'."),
     (r"\bdo the needful\b", "please do what is needed", "'Do the needful' sounds dated outside India; say exactly what you need."),
-    (r"\bi have been to (\w+) yesterday\b", None, "With a finished time like 'yesterday', use the past simple: I went to ... yesterday."),
-    (r"\bsince (\d+) (years|months|days)\b", None, "Use 'for' with a length of time: for 2 years; 'since' with a starting point: since 2020."),
+    (r"\bi have been to (\w+) yesterday\b", "I went to {0} yesterday", "With a finished time like 'yesterday', use the past simple: I went to ... yesterday."),
+    (r"\bsince (\d+) (years|months|days)\b", "for {0} {1}", "Use 'for' with a length of time: for 2 years; 'since' with a starting point: since 2020."),
 ]
 _THIRD = {"go": "goes", "do": "does", "have": "has", "want": "wants", "like": "likes", "come": "comes"}
+_THIRD_PERSON = re.compile(r"\b(he|she|it) (go|do|have|want|like|come)\b", re.I)
+# After these words the bare verb is right: "did he go", "will it come", "let her go", "saw it go".
+_BARE_VERB_CONTEXT = re.compile(
+    r"\b(do|does|did|will|would|can|could|shall|should|may|might|must|don't|doesn't|didn't|won't|wouldn't|can't|cannot|couldn't|shouldn't|"
+    r"let|lets|make|makes|made|help|helps|helped|see|sees|saw|watch|watched|hear|heard|why not)\s+$",
+    re.I,
+)
+_VOWEL_SOUND_START = re.compile(r"^(hour|honest|honou?r|heir)", re.I)  # silent h
+_CONSONANT_SOUND_START = re.compile(r"^(uni|use|usu|uti|ure|uro|ufo|u-|eu|ewe|one\b|one-|once)", re.I)  # "you"/"wuh" sounds
+_VOWEL_LETTER_NAMES = set("AEFHILMNORSX")  # an MBA, an FIR, an SSC exam; a UPSC exam
+
+
+def _vowel_sound(word: str) -> bool:
+    if len(word) > 1 and word.isupper():  # abbreviations are read letter by letter
+        return word[0] in _VOWEL_LETTER_NAMES
+    if _VOWEL_SOUND_START.match(word):
+        return True
+    if _CONSONANT_SOUND_START.match(word):
+        return False
+    return word[0].lower() in "aeiou"
+
+
+def _article_fixes(message: str) -> list[dict]:
+    out = []
+    for m in re.finditer(r"(^|[.!?]\s+|\s)(a|an|A|An)\s+([A-Za-z][\w'-]*)", message):
+        lead, article, word = m.groups()
+        sentence_start = lead == "" or lead.strip() in (".", "!", "?")
+        if article[0] == "A" and not sentence_start:
+            continue  # "Plan A is", "grade A in maths": a label, not an article
+        wanted = "an" if _vowel_sound(word) else "a"
+        if article.lower() == wanted:
+            continue
+        fixed = wanted.capitalize() if article[0] == "A" else wanted
+        why = (
+            "Use 'an' before a vowel sound: an apple, an hour, an MBA."
+            if wanted == "an"
+            else "Use 'a' before a consonant sound: a university, a European, a one-rupee coin."
+        )
+        out.append({"original": f"{article} {word}", "corrected": f"{fixed} {word}", "explanation": why})
+    return out
 
 
 def english_corrections(message: str) -> list[dict]:
     out = []
     for pattern, fix, why in ENGLISH_RULES:
         for m in re.finditer(pattern, message, flags=re.I):
-            original = m.group(0)
-            if fix is not None:
-                corrected = fix
-            elif pattern.startswith(r"\b(he|she|it)"):
-                corrected = f"{m.group(1)} {_THIRD[m.group(2).lower()]}"
-            elif pattern.startswith(r"\ba ("):
-                corrected = f"an {m.group(1)}"
-            elif "been to" in pattern:
-                corrected = f"I went to {m.group(1)} yesterday"
-            else:
-                corrected = f"for {m.group(1)} {m.group(2)}"
-            out.append({"original": original, "corrected": corrected, "explanation": why})
-    if re.search(r"(^|[.!?]\s+)i\b", message):
+            out.append({"original": m.group(0), "corrected": fix.format(*m.groups()), "explanation": why})
+    for m in _THIRD_PERSON.finditer(message):
+        if _BARE_VERB_CONTEXT.search(message[: m.start()]):
+            continue
+        out.append(
+            {
+                "original": m.group(0),
+                "corrected": f"{m.group(1)} {_THIRD[m.group(2).lower()]}",
+                "explanation": "Third person singular takes -s/-es: he goes, she does, it has.",
+            }
+        )
+    out += _article_fixes(message)
+    if re.search(r"(?<![\w.'])i(?![\w])(?!\.[a-z])", message):
         out.append({"original": "i", "corrected": "I", "explanation": "The pronoun 'I' is always a capital letter."})
-    stripped = message.strip()
-    if stripped and stripped[0].islower():
-        out.append({"original": stripped.split()[0], "corrected": stripped.split()[0].capitalize(), "explanation": "Start a sentence with a capital letter."})
-    return out
+    first = message.strip().split()[0] if message.strip() else ""
+    if first and first[0].islower() and first != "i":
+        out.append({"original": first, "corrected": first[0].upper() + first[1:], "explanation": "Start a sentence with a capital letter."})
+    seen, unique = set(), []
+    for c in out:
+        key = (c["original"].lower(), c["corrected"])
+        if key not in seen:
+            seen.add(key)
+            unique.append(c)
+    return unique
 
 
 def offline_reply(target_language: str, message: str, scenario: str) -> dict:

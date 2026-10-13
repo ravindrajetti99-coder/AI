@@ -2,7 +2,7 @@ import uuid
 from datetime import UTC, datetime, timedelta
 
 from fastapi import APIRouter, BackgroundTasks, Depends, File, Form, UploadFile
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ValidationError
 from sqlalchemy import case, func, select
 from sqlalchemy.orm import Session
 
@@ -89,6 +89,7 @@ def generate(body: GenerateIn, background: BackgroundTasks, user: User = Depends
     params = body.model_dump(mode="json", exclude={"kind"})
     job = GenerationJob(created_by=user.id, kind=body.kind, params=params)
     db.add(job)
+    db.flush()  # assigns job.id for the audit entry
     audit(db, user.id, "generate", "job", job.id, kind=body.kind)
     db.commit()
     background.add_task(service.run_job, job.id)
@@ -202,7 +203,10 @@ def decide(asset_type: str, asset_id: uuid.UUID, body: DecisionIn, user: User = 
     if not asset:
         raise NotFound("Asset not found")
     if body.edits:
-        _apply_edits(asset_type, asset, body.edits)
+        try:
+            _apply_edits(asset_type, asset, body.edits)
+        except ValidationError as exc:
+            raise AppError(f"Invalid edits: {exc.errors()[0]['loc']} {exc.errors()[0]['msg']}", status=422) from exc
     asset.status = "verified" if body.decision == "approve" else "retired"
     if asset_type == "lesson" and body.decision == "approve":
         asset.reviewed_by = user.id

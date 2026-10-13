@@ -22,6 +22,9 @@ from app.modules.learning.models import Attempt, HintUsage, TestAttempt
 
 router = APIRouter(tags=["practice"])
 
+# Answers saved this long after the timer ends still count (network lag, a slow last click).
+TEST_GRACE_SECONDS = 120
+
 
 def _concepts_of(db: Session, qid: uuid.UUID) -> list[dict]:
     rows = db.execute(
@@ -208,11 +211,20 @@ def _own_attempt(db: Session, attempt_id: uuid.UUID, user: User) -> TestAttempt:
     return ta
 
 
+def _deadline(ta: TestAttempt, test: Test) -> datetime:
+    return as_utc(ta.started_at) + timedelta(minutes=test.duration_minutes, seconds=TEST_GRACE_SECONDS)
+
+
 @router.put("/test-attempts/{attempt_id}/answers")
 def save_answer(attempt_id: uuid.UUID, body: AnswerIn, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     ta = _own_attempt(db, attempt_id, user)
     if ta.status != "in_progress":
         raise Conflict("Test already submitted")
+    test = db.get(Test, ta.test_id)
+    if datetime.now(UTC) > _deadline(ta, test):
+        raise Conflict("Time is up; submit the test to see your result")
+    if not db.scalar(select(TestItem.id).where(TestItem.test_id == test.id, TestItem.question_id == body.question_id)):
+        raise NotFound("Question is not part of this test")
     answers = dict(ta.answers or {})
     answers[str(body.question_id)] = body.response
     ta.answers = answers
@@ -228,7 +240,8 @@ def submit_test(attempt_id: uuid.UUID, user: User = Depends(get_current_user), d
     test = db.get(Test, ta.test_id)
     items = _test_items(db, test.id)
     started = as_utc(ta.started_at)
-    elapsed = int((datetime.now(UTC) - started).total_seconds())
+    # A test left open past its timer counts as the full duration, not as very slow answers.
+    elapsed = min(int((datetime.now(UTC) - started).total_seconds()), test.duration_minutes * 60 + TEST_GRACE_SECONDS)
     per_q = max(1, elapsed // max(1, len(items)))
     sections: dict[str, dict] = defaultdict(lambda: {"score": 0.0, "max": 0.0, "correct": 0, "wrong": 0, "unattempted": 0})
     review, concept_scores = [], defaultdict(list)
