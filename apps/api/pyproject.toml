@@ -23,7 +23,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.6"]
+dev = ["pytest>=8", "ruff>=0.6", "httpx2>=2.0"]  # httpx2: the SDKs' HTTP layer, used by the provider tests
 
 [build-system]
 requires = ["setuptools>=69"]

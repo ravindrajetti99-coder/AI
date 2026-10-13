@@ -19,12 +19,15 @@ COPY migrations ./migrations
 COPY alembic.ini docker-entrypoint.sh ./
 
 RUN useradd --create-home --uid 10001 eduverse \
-    && mkdir -p /app/uploads \
-    && chown eduverse:eduverse /app/uploads \
+    && mkdir -p /app/uploads /app/data \
+    && chown eduverse:eduverse /app/uploads /app/data \
     && chmod +x docker-entrypoint.sh
 USER eduverse
 
-ENV EDU_UPLOAD_DIR=/app/uploads
+# SQLite in a writable volume makes `docker run` work for a demo; production must set
+# EDU_DATABASE_URL to PostgreSQL (the API refuses SQLite when EDU_ENV=production).
+ENV EDU_UPLOAD_DIR=/app/uploads \
+    EDU_DATABASE_URL=sqlite:////app/data/eduverse.db
 EXPOSE 8000
 HEALTHCHECK --interval=15s --timeout=5s --start-period=40s --retries=5 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health', timeout=4)" || exit 1

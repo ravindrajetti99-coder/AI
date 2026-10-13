@@ -65,10 +65,9 @@ function TestRunner() {
   }, [run, report]);
 
   useEffect(() => {
-    if (run && !report && remaining <= 0) {
-      const t = setTimeout(() => void submit(), 0); // time is up: hand in what was saved
-      return () => clearTimeout(t);
-    }
+    if (!run || report || remaining > 0) return;
+    const t = setTimeout(() => void submit(), 0); // time is up: hand in what was saved
+    return () => clearTimeout(t);
   }, [run, report, remaining, submit]);
 
   function answer(questionId: string, response: Response) {

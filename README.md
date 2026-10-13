@@ -60,7 +60,7 @@ npm run dev                                   # http://localhost:3000 (proxies /
 ## Tests
 
 ```bash
-cd apps/api && pytest                         # 143 tests, SQLite, offline AI (~15 s)
+cd apps/api && pytest                         # 157 tests, SQLite, offline AI (~15 s)
 EDU_TEST_POSTGRES_URL=postgresql+psycopg://postgres:postgres@localhost:5432/postgres pytest
                                               # same suite on PostgreSQL, schema from migrations
 cd apps/web && npm run lint && npm run typecheck && npm run build
@@ -88,8 +88,8 @@ All API settings are environment variables prefixed `EDU_` (see `.env.example` a
 
 | Variable | Default | Notes |
 | --- | --- | --- |
-| `EDU_ENV` | `development` | `production` refuses the dev secret key, the local code runner and bcrypt cost < 12. |
-| `EDU_DATABASE_URL` | `sqlite:///./eduverse.db` | PostgreSQL in production: `postgresql+psycopg://…` |
+| `EDU_ENV` | `development` | `production` refuses the dev secret key, SQLite, the local code runner and bcrypt cost < 12. |
+| `EDU_DATABASE_URL` | `sqlite:///./eduverse.db` | Must be PostgreSQL in production: `postgresql+psycopg://…` |
 | `EDU_REDIS_URL` | empty | Shared rate limits across API replicas; without it each process counts alone. |
 | `EDU_ANTHROPIC_API_KEY` / `EDU_OPENAI_API_KEY` | empty | Empty means offline engines. Models per tier: `claude-opus-5-5` / `claude-sonnet-5-5` / `claude-haiku-5-5`. |
 | `EDU_ANTHROPIC_SERVER_FALLBACKS` | `true` | On a safety decline, Anthropic re-runs the request on its recommended fallback model. |

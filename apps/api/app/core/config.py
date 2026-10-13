@@ -70,14 +70,22 @@ class Settings(BaseSettings):
         return self.env == "production"
 
 
+def check_production(s: Settings) -> None:
+    """Refuse to start production with development defaults."""
+    if not s.is_production:
+        return
+    if s.secret_key.startswith("dev-only"):
+        raise RuntimeError("EDU_SECRET_KEY must be set in production")
+    if s.bcrypt_rounds < 12:
+        raise RuntimeError("EDU_BCRYPT_ROUNDS must be at least 12 in production")
+    if s.code_runner == "local":
+        raise RuntimeError("EDU_CODE_RUNNER=local is not allowed in production; use judge0 or disabled")
+    if s.database_url.startswith("sqlite"):
+        raise RuntimeError("EDU_DATABASE_URL must point to PostgreSQL in production")
+
+
 @lru_cache
 def get_settings() -> Settings:
     s = Settings()
-    if s.is_production:
-        if s.secret_key.startswith("dev-only"):
-            raise RuntimeError("EDU_SECRET_KEY must be set in production")
-        if s.bcrypt_rounds < 12:
-            raise RuntimeError("EDU_BCRYPT_ROUNDS must be at least 12 in production")
-        if s.code_runner == "local":
-            raise RuntimeError("EDU_CODE_RUNNER=local is not allowed in production; use judge0 or disabled")
+    check_production(s)
     return s
