@@ -8,6 +8,7 @@ const API_PORT = 8765;
 const WEB_PORT = 3100;
 const python = process.env.PYTHON ?? "python";
 const db = process.env.E2E_DB ?? "/tmp/eduverse-e2e.db";
+const MAIL_DIR = process.env.E2E_MAIL_DIR ?? "/tmp/eduverse-e2e-mail";
 
 
 export default defineConfig({
@@ -25,7 +26,7 @@ export default defineConfig({
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: [
     {
-      command: `rm -f ${db} && ${python} -m app.seed && ${python} -m uvicorn app.main:app --host 127.0.0.1 --port ${API_PORT}`,
+      command: `rm -rf ${db} ${MAIL_DIR} && ${python} -m app.seed && ${python} -m uvicorn app.main:app --host 127.0.0.1 --port ${API_PORT}`,
       cwd: "../api",
       env: {
         EDU_ENV: "development",
@@ -36,6 +37,9 @@ export default defineConfig({
         EDU_OPENAI_API_KEY: "",
         EDU_RATE_LIMIT_AUTH: "1000",
         EDU_UPLOAD_DIR: "/tmp/eduverse-e2e-uploads",
+        // Emails are "sent" by the console backend into this folder; the tests open their links.
+        EDU_MAIL_OUTBOX_DIR: MAIL_DIR,
+        EDU_PUBLIC_WEB_URL: `http://127.0.0.1:${WEB_PORT}`,
       },
       url: `http://127.0.0.1:${API_PORT}/api/v1/health`,
       reuseExistingServer: false,

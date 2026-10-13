@@ -15,6 +15,8 @@ It works **with or without AI keys**. Every AI feature has a deterministic offli
 | Language partner | Conversation practice with corrections tuned to Indian-English errors, and pronunciation drills scored from the microphone (Web Speech API). |
 | Career guide | Realistic paths for a stated goal, mapped to platform courses. |
 
+Accounts have email verification, password reset by email, password change (which signs out every other device) and an **invite-only mode** for the beta, with invite codes managed in the content studio. Email goes through Amazon SES, SMTP, or (in development) the console.
+
 Staff get a **content studio**: upload source PDFs, generate lessons/questions/flashcards/notes/mock tests with AI, and approve or edit every AI draft before learners see it. AI usage, cost and cache hits are metered per feature.
 
 ## Architecture
@@ -70,11 +72,11 @@ python -m app.worker --once                   # run whatever is due, then exit
 ## Tests
 
 ```bash
-cd apps/api && pytest                         # 184 tests, SQLite, offline AI (~20 s)
+cd apps/api && pytest                         # 224 tests, SQLite, offline AI (~20 s)
 EDU_TEST_POSTGRES_URL=postgresql+psycopg://postgres:postgres@localhost:5432/postgres pytest
                                               # same suite on PostgreSQL, schema from migrations
 cd apps/web && npm run lint && npm run typecheck && npm run build
-cd apps/web && npx playwright test            # 7 browser tests against a seeded API + production build
+cd apps/web && npx playwright test            # 10 browser tests against a seeded API + production build
 ```
 
 CI (`.github/workflows/ci.yml`) runs all of the above, checks that migrations match the models, and builds both Docker images.
@@ -103,6 +105,10 @@ All API settings are environment variables prefixed `EDU_` (see `.env.example` a
 | `EDU_REDIS_URL` | empty | Shared rate limits across API replicas; without it each process counts alone. |
 | `EDU_ANTHROPIC_API_KEY` / `EDU_OPENAI_API_KEY` | empty | Empty means offline engines. Models per tier: `claude-opus-5-5` / `claude-sonnet-5-5` / `claude-haiku-5-5`. |
 | `EDU_ANTHROPIC_SERVER_FALLBACKS` | `true` | On a safety decline, Anthropic re-runs the request on its recommended fallback model. |
+| `EDU_MAIL_BACKEND` | `console` | `ses` (Amazon SES, `EDU_SES_REGION`, AWS credentials from the standard chain) or `smtp` (`EDU_SMTP_URL`). Production refuses `console`. |
+| `EDU_MAIL_FROM` | `EduVerse AI <no-reply@eduverse.local>` | With SES, a verified identity (domain with DKIM/SPF/DMARC). |
+| `EDU_PUBLIC_WEB_URL` | `http://localhost:3000` | Base of the links in emails; must be `https://` in production. |
+| `EDU_REGISTRATION_MODE` | `open` | `invite`: sign-up needs an invite code (admins create them under Content studio → Invites). |
 | `EDU_JOBS_EMBEDDED_WORKER` | `true` | The API process also runs a job worker. Set `false` when a separate `python -m app.worker` service runs (docker compose does). |
 | `EDU_JOBS_STALE_AFTER_SECONDS` | `300` | A running job whose worker has not heart-beaten for this long is retried by another worker. |
 | `EDU_CODE_RUNNER` | `local` | `local` is a resource-limited subprocess for development only; use `judge0` (with `EDU_JUDGE0_URL`) or `disabled` in production. |
@@ -111,6 +117,7 @@ All API settings are environment variables prefixed `EDU_` (see `.env.example` a
 ## Security notes
 
 - Passwords: bcrypt over a SHA-256 prehash. Refresh tokens are stored hashed, rotate on every use, and a replay outside a 20-second grace window revokes the whole session family.
+- Password-reset and email-verification links carry single-use random tokens; only their SHA-256 is stored, and they never pass through the jobs table (the worker creates the token and sends the email in one step). Reset links last 30 minutes, at most 3 emails per account per hour, and "forgot password" answers the same for unknown addresses. A reset or password change revokes every refresh token and bumps the user's token version, so old access tokens stop working at once. Invite codes are stored hashed too and shown once.
 - Learner code never sees hidden test expectations. The runner compares results in the parent process, so a forged report cannot pass hidden tests. The local runner adds CPU, memory and file-size limits and no network (when user namespaces are available), but it is not a sandbox: production needs Judge0 or another isolated runner.
 - Uploaded sources are fenced as data in prompts, and AI drafts are invisible to learners until a reviewer approves them.
 - The API trusts `X-Forwarded-For` only from `FORWARDED_ALLOW_IPS`. Keep the API port private and expose only the web app (or your own reverse proxy).

@@ -17,6 +17,7 @@ from sqlalchemy.orm import Session
 
 from app.ai.schemas import LessonOut
 from app.core.config import get_settings
+from app.core.db import utcnow
 from app.modules.assessment import service as qservice
 from app.modules.assessment.models import (
     DIFFICULTY_B,
@@ -378,13 +379,18 @@ def bootstrap_admin(db: Session, stats: Counter) -> User | None:
         raise SeedError(f"EDU_ADMIN_EMAIL is not a usable email address: {exc.errors()[0]['msg']}") from exc
     user = db.scalar(select(User).where(User.email == email))
     if not user:
-        user = identity.create_user(db, email, s.admin_password, "Administrator", role="admin")
+        user = identity.create_user(db, email, s.admin_password, "Administrator", role="admin", commit=False)
+        user.email_verified_at = utcnow()  # configured by the operator, so no confirmation email
+        db.commit()
         stats["admin.created"] += 1
     elif user.role != "admin":
         user.role = "admin"
         identity.audit(db, None, "seed_promote_admin", "user", user.id)
         db.commit()
         stats["admin.promoted"] += 1
+    if not user.email_verified_at:  # e.g. an admin created before email verification existed
+        user.email_verified_at = utcnow()
+        db.commit()
     return user
 
 

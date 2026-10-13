@@ -40,6 +40,11 @@ function LoginForm() {
       <form onSubmit={submit} className="mt-6 space-y-4">
         <Field label="Email" name="email" type="email" autoComplete="email" required />
         <Field label="Password" name="password" type="password" autoComplete="current-password" required />
+        <p className="-mt-2 text-right text-sm">
+          <Link href="/forgot-password" className="text-brand-600 hover:underline">
+            Forgot password?
+          </Link>
+        </p>
         <ErrorNote error={error} />
         <Button type="submit" busy={busy} className="w-full">
           Sign in
