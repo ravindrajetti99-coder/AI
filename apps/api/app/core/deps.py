@@ -34,6 +34,8 @@ def get_current_user(
     user = db.get(User, uuid.UUID(payload["sub"]))
     if not user or user.status != "active":
         raise Unauthorized("User not found or inactive")
+    if payload.get("ver", 0) != user.token_version:
+        raise Unauthorized("Your password was changed; please sign in again")
     return user
 
 
@@ -121,9 +123,13 @@ def make_limiter(redis_url: str) -> RateLimiter | RedisRateLimiter:
 limiter = make_limiter(get_settings().redis_url)
 
 
+def client_ip(request: Request) -> str:
+    """The caller's address (uvicorn resolves X-Forwarded-For from trusted proxies)."""
+    return request.client.host if request.client else "unknown"
+
+
 def rate_limit_auth(request: Request) -> None:
-    ip = request.client.host if request.client else "unknown"
-    limiter.hit(f"auth:{ip}", get_settings().rate_limit_auth)
+    limiter.hit(f"auth:{client_ip(request)}", get_settings().rate_limit_auth)
 
 
 def rate_limit_ai(user: User = Depends(get_current_user)) -> User:

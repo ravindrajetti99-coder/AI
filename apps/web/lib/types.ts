@@ -2,7 +2,7 @@
 
 export type Role = "learner" | "reviewer" | "admin";
 
-export type User = { id: string; email: string; name: string; role: Role; preferred_locale: string };
+export type User = { id: string; email: string; name: string; role: Role; preferred_locale: string; email_verified: boolean };
 
 export type Profile = {
   target_exams: string[];

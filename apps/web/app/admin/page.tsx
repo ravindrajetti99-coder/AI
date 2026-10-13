@@ -10,7 +10,7 @@ import { api } from "@/lib/api";
 import { useApi } from "@/lib/hooks";
 import type { Course, CourseDetail, LessonBody, Option, TreeNode, User } from "@/lib/types";
 
-type Tab = "overview" | "review" | "generate" | "documents" | "flags" | "usage" | "users";
+type Tab = "overview" | "review" | "generate" | "documents" | "flags" | "usage" | "users" | "invites";
 
 // --------------------------------------------------------------------------- overview
 
@@ -605,6 +605,133 @@ function Users() {
   );
 }
 
+// --------------------------------------------------------------------------- invites
+
+type Invite = {
+  id: string;
+  email: string | null;
+  role: string;
+  note: string;
+  max_uses: number;
+  uses: number;
+  status: "active" | "used" | "expired" | "revoked";
+  expires_at: string | null;
+  created_at: string;
+};
+type InviteCreated = Invite & { code: string; link: string; emailed: boolean };
+const INVITE_TONES = { active: "green", used: "neutral", expired: "amber", revoked: "red" } as const;
+
+function Invites() {
+  const { data, error, reload } = useApi<Invite[]>("/admin/invites");
+  const [created, setCreated] = useState<InviteCreated | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [actionError, setActionError] = useState<unknown>(null);
+
+  async function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formEl = e.currentTarget;
+    const f = new FormData(formEl);
+    const email = String(f.get("email") ?? "").trim();
+    const days = Number(f.get("expires_in_days") || 0);
+    setBusy(true);
+    setActionError(null);
+    try {
+      const out = await api<InviteCreated>("/admin/invites", {
+        body: {
+          email: email || null,
+          role: String(f.get("role")),
+          note: String(f.get("note") ?? ""),
+          max_uses: Number(f.get("max_uses") || 1),
+          expires_in_days: days || null,
+          send_email: f.get("send_email") === "on",
+        },
+      });
+      setCreated(out);
+      formEl.reset();
+      await reload();
+    } catch (err) {
+      setActionError(err);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function revoke(id: string) {
+    setActionError(null);
+    try {
+      await api(`/admin/invites/${id}`, { method: "DELETE" });
+      await reload();
+    } catch (err) {
+      setActionError(err);
+    }
+  }
+
+  return (
+    <div className="grid gap-6 lg:grid-cols-2">
+      <Card title="New invite">
+        <form onSubmit={submit} className="space-y-4">
+          <Field label="Note" name="note" placeholder="e.g. Pilot cohort 1" maxLength={200} />
+          <Field label="Email (optional)" name="email" type="email" hint="Set it to tie the invite to one address, or to email it." />
+          <div className="grid grid-cols-3 gap-3">
+            <Select label="Role" name="role" defaultValue="learner">
+              <option value="learner">learner</option>
+              <option value="reviewer">reviewer</option>
+            </Select>
+            <Field label="Uses" name="max_uses" type="number" min={1} max={1000} defaultValue={1} />
+            <Field label="Valid for (days)" name="expires_in_days" type="number" min={1} max={365} defaultValue={30} />
+          </div>
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" name="send_email" /> Email the invite
+          </label>
+          <ErrorNote error={actionError} />
+          <Button type="submit" busy={busy}>
+            Create invite
+          </Button>
+        </form>
+        {created && (
+          <div className="mt-4">
+            <Notice tone="green">
+              <p>
+                Invite code <code className="font-semibold">{created.code}</code>
+                {created.emailed ? ` emailed to ${created.email}.` : "."} It is shown only now; copy it or the link.
+              </p>
+              <p className="mt-1 break-all text-xs">{created.link}</p>
+            </Notice>
+          </div>
+        )}
+      </Card>
+      <Card title="Invites">
+        <ErrorNote error={error} />
+        {!data?.length ? (
+          <p className="text-sm text-muted">No invites yet.</p>
+        ) : (
+          <ul className="divide-y divide-line text-sm">
+            {data.map((i) => (
+              <li key={i.id} className="flex items-center gap-3 py-2">
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <Badge tone={INVITE_TONES[i.status]}>{i.status}</Badge>
+                    <span className="truncate font-medium">{i.note || i.email || "Invite"}</span>
+                  </div>
+                  <p className="mt-0.5 truncate text-xs text-muted">
+                    {i.role} · {i.uses}/{i.max_uses} used{i.email ? ` · ${i.email}` : ""}
+                    {i.expires_at ? ` · until ${new Date(i.expires_at).toLocaleDateString()}` : ""}
+                  </p>
+                </div>
+                {i.status === "active" && (
+                  <Button size="sm" variant="ghost" onClick={() => void revoke(i.id)}>
+                    Revoke
+                  </Button>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </Card>
+    </div>
+  );
+}
+
 function Admin() {
   const { me } = useAuth();
   const [tab, setTab] = useState<Tab>("overview");
@@ -615,7 +742,12 @@ function Admin() {
     { id: "documents", label: "Documents" },
     { id: "flags", label: "Flags" },
     { id: "usage", label: "AI usage" },
-    ...(me?.role === "admin" ? [{ id: "users" as Tab, label: "Users" }] : []),
+    ...(me?.role === "admin"
+      ? [
+          { id: "users" as Tab, label: "Users" },
+          { id: "invites" as Tab, label: "Invites" },
+        ]
+      : []),
   ];
   return (
     <div className="space-y-6">
@@ -628,6 +760,7 @@ function Admin() {
       {tab === "flags" && <Flags />}
       {tab === "usage" && <AiUsage />}
       {tab === "users" && <Users />}
+      {tab === "invites" && <Invites />}
     </div>
   );
 }

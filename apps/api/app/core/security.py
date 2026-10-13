@@ -30,12 +30,15 @@ def verify_password(password: str, hashed: str) -> bool:
         return False
 
 
-def create_access_token(user_id: uuid.UUID, role: str) -> str:
+def create_access_token(user_id: uuid.UUID, role: str, version: int = 0) -> str:
+    """`version` is the user's token_version: bumping it (password reset or change) makes every
+    access token issued before that stop working immediately, not when it expires."""
     s = get_settings()
     now = datetime.now(UTC)
     payload = {
         "sub": str(user_id),
         "role": role,
+        "ver": version,
         "iat": now,
         "exp": now + timedelta(minutes=s.access_token_minutes),
         "type": "access",

@@ -20,6 +20,9 @@ const nextConfig: NextConfig = {
           { key: "Permissions-Policy", value: "camera=(), geolocation=(), microphone=(self)" },
         ],
       },
+      // These URLs carry a secret (reset or verification token, invite code): never leak them
+      // in a Referer header. Later entries override the default above.
+      ...["/reset-password", "/verify-email", "/register"].map((source) => ({ source, headers: [{ key: "Referrer-Policy", value: "no-referrer" }] })),
     ];
   },
 };

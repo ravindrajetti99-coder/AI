@@ -48,6 +48,9 @@ class JobContext:
         self._lease = lease
         self._stopping = stopping
         self._saved = (copy.deepcopy(self.result), copy.deepcopy(self.checkpoint))
+        # Set by handlers whose payload holds something that should not outlive the job (an
+        # email body with a link or code): stored in place of the payload once the job finishes.
+        self.final_payload: dict | None = None
 
     def now(self) -> datetime:
         return self.clock()
@@ -90,7 +93,8 @@ class JobContext:
             raise LeaseLost(f"job {self.id} is no longer leased to this worker")
 
     def finish(self, status: str, error: str = "") -> None:
-        self.write(status=status, error=error[:2000], result=self.result, checkpoint=self.checkpoint, lease=None, finished_at=self.now())
+        extra = {"payload": self.final_payload} if self.final_payload is not None else {}
+        self.write(status=status, error=error[:2000], result=self.result, checkpoint=self.checkpoint, lease=None, finished_at=self.now(), **extra)
         self.db.commit()
 
     def requeue(self, run_at: datetime, error: str = "", count_attempt: bool = True) -> None:

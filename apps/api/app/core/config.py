@@ -68,6 +68,23 @@ class Settings(BaseSettings):
     jobs_retention_days: int = 30  # finished jobs older than this are pruned
     jobs_health_file: str = ""  # touched by the worker loop, read by `--healthcheck`
 
+    # Email (see app/core/mail.py). Production refuses the console backend.
+    mail_backend: Literal["console", "smtp", "ses"] = "console"
+    mail_from: str = "EduVerse AI <no-reply@eduverse.local>"  # with SES: a verified identity
+    mail_reply_to: str = ""
+    smtp_url: str = ""  # smtp://user:pass@host:587 (STARTTLS) or smtps://user:pass@host:465
+    ses_region: str = "ap-south-1"
+    ses_configuration_set: str = ""  # optional: SES event publishing (bounces, complaints)
+    mail_outbox_dir: str = ""  # console backend: also save each email here as JSON
+    # Where learners open links from emails (reset, verify, invite). https:// in production.
+    public_web_url: str = "http://localhost:3000"
+
+    # Accounts. "invite" makes registration require an invite code from an admin.
+    registration_mode: Literal["open", "invite"] = "open"
+    password_reset_minutes: int = 30
+    email_verify_hours: int = 48
+    account_emails_per_hour: int = 3  # reset / verification emails per account per hour
+
     # Uploads
     upload_dir: str = "./uploads"
     max_upload_mb: int = 25
@@ -95,6 +112,14 @@ def check_production(s: Settings) -> None:
         raise RuntimeError("EDU_CODE_RUNNER=local is not allowed in production; use judge0 or disabled")
     if s.database_url.startswith("sqlite"):
         raise RuntimeError("EDU_DATABASE_URL must point to PostgreSQL in production")
+    if s.mail_backend == "console":
+        raise RuntimeError("EDU_MAIL_BACKEND must be ses or smtp in production (console only logs emails)")
+    if "@eduverse.local" in s.mail_from:
+        raise RuntimeError("EDU_MAIL_FROM must be a real sender address in production (with SES, a verified identity)")
+    if s.mail_backend == "smtp" and not s.smtp_url:
+        raise RuntimeError("EDU_SMTP_URL is required with EDU_MAIL_BACKEND=smtp")
+    if not s.public_web_url.startswith("https://"):
+        raise RuntimeError("EDU_PUBLIC_WEB_URL must be the site's https:// address in production")
 
 
 @lru_cache

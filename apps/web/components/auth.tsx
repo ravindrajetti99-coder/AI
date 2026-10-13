@@ -11,7 +11,9 @@ type AuthState = {
   me: Me | null;
   ready: boolean;
   login: (email: string, password: string) => Promise<void>;
-  register: (name: string, email: string, password: string, locale: string) => Promise<void>;
+  register: (name: string, email: string, password: string, locale: string, inviteCode?: string) => Promise<void>;
+  /** Continue with tokens the API just issued (e.g. after a password change). */
+  adopt: (out: TokenOut) => Promise<void>;
   logout: () => Promise<void>;
   reload: () => Promise<void>;
 };
@@ -48,8 +50,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setAccessToken(out.access_token);
         await reload();
       },
-      async register(name, email, password, locale) {
-        const out = await api<TokenOut>("/auth/register", { body: { name, email, password, preferred_locale: locale } });
+      async register(name, email, password, locale, inviteCode) {
+        const out = await api<TokenOut>("/auth/register", { body: { name, email, password, preferred_locale: locale, invite_code: inviteCode || null } });
+        setAccessToken(out.access_token);
+        await reload();
+      },
+      async adopt(out) {
         setAccessToken(out.access_token);
         await reload();
       },

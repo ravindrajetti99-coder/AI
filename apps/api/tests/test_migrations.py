@@ -15,7 +15,6 @@ from sqlalchemy import Column, DateTime, MetaData, String, Table, Uuid, create_e
 
 from app.core.db import Base, JSONType
 from app.jobs.models import Job
-from app.modules.identity.models import User
 
 
 @pytest.fixture
@@ -64,7 +63,15 @@ def test_generation_jobs_move_into_the_job_queue_and_back(scratch_url):
             fn(cfg, rev)
 
     migrate(command.upgrade, "0001")
-    users, jobs = User.__table__, Job.__table__
+    jobs = Job.__table__
+    # Tables as they were at 0001 (the models describe head, which has more columns).
+    users = Table(
+        "users",
+        MetaData(),
+        Column("id", Uuid),
+        *(Column(name, String) for name in ("email", "name", "password_hash", "role", "status", "preferred_locale")),
+        *(Column(name, DateTime(timezone=True)) for name in ("created_at", "updated_at")),
+    )
     old_jobs = Table(
         "generation_jobs",
         MetaData(),

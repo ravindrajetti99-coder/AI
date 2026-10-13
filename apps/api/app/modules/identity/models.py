@@ -18,6 +18,13 @@ class User(IdMixin, TimestampMixin, Base):
     role: Mapped[str] = mapped_column(String(20), default="learner")
     preferred_locale: Mapped[str] = mapped_column(String(10), default="en")
     status: Mapped[str] = mapped_column(String(20), default="active")
+    email_verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    # Access tokens carry this; bumping it (password reset or change) invalidates them at once.
+    token_version: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
+
+    @property
+    def email_verified(self) -> bool:
+        return self.email_verified_at is not None
 
 
 class LearnerProfile(TimestampMixin, Base):
@@ -53,3 +60,36 @@ class AuditLog(IdMixin, Base):
     entity_id: Mapped[str] = mapped_column(String(64), default="")
     detail: Mapped[dict] = mapped_column(JSONType, default=dict)
     at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class AccountToken(IdMixin, Base):
+    """Single-use secrets mailed to a user (password reset, email verification). Only the
+    SHA-256 of the token is stored, so a database leak does not expose working links."""
+
+    __tablename__ = "account_tokens"
+
+    user_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    purpose: Mapped[str] = mapped_column(String(20))  # reset | verify
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    email: Mapped[str] = mapped_column(String(255))  # the address the token was sent to
+    requested_ip: Mapped[str] = mapped_column(String(64), default="")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    used_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class Invite(IdMixin, Base):
+    """Registration invite for the invite-only beta. The code is shown once; only its hash is kept."""
+
+    __tablename__ = "invites"
+
+    code_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    email: Mapped[str | None] = mapped_column(String(255), nullable=True)  # set: only this address may use it
+    role: Mapped[str] = mapped_column(String(20), default="learner")  # learner | reviewer
+    note: Mapped[str] = mapped_column(String(200), default="")  # e.g. "Pilot cohort 1"
+    max_uses: Mapped[int] = mapped_column(Integer, default=1)
+    uses: Mapped[int] = mapped_column(Integer, default=0)
+    expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    created_by: Mapped[uuid.UUID | None] = mapped_column(Uuid, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)

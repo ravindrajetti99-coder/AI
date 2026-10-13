@@ -391,7 +391,7 @@ def test_periodic_jobs_are_enqueued_once_per_interval(empty_db, handlers):
     assert ticks() == 2  # a worker only schedules jobs for queues it serves
 
 
-def test_prune_deletes_old_jobs_and_expired_refresh_tokens(empty_db, handlers, worker):
+def test_prune_deletes_old_jobs_and_expired_tokens(empty_db, handlers, worker):
     handlers("test.noop", lambda ctx: None)
     now = utcnow()
     old_done, recent_done, old_queued = enqueue("test.noop"), enqueue("test.noop"), enqueue("test.noop")
@@ -402,13 +402,15 @@ def test_prune_deletes_old_jobs_and_expired_refresh_tokens(empty_db, handlers, w
         identity.issue_tokens(db, user)
         identity.issue_tokens(db, user)
         db.execute(update(RefreshToken).where(RefreshToken.id == db.scalars(select(RefreshToken.id)).first()).values(expires_at=now - timedelta(days=1)))
+        identity.issue_account_token(db, user, "reset", "", timedelta(minutes=30))  # still valid: kept
+        identity.issue_account_token(db, user, "verify", "", timedelta(hours=-50))  # long expired: deleted
         db.commit()
     prune = enqueue("maintenance.prune")
     with SessionLocal() as db:
         db.execute(update(Job).where(Job.id == old_queued).values(status="queued", run_at=now + timedelta(days=1)))
         db.commit()
     worker.drain()
-    assert load(prune).result == {"jobs_deleted": 1, "refresh_tokens_deleted": 1}
+    assert load(prune).result == {"jobs_deleted": 1, "refresh_tokens_deleted": 1, "account_tokens_deleted": 1}
     assert load(old_done) is None and load(recent_done) and load(old_queued)
     with SessionLocal() as db:
         assert db.scalar(select(func.count()).select_from(RefreshToken)) == 1
