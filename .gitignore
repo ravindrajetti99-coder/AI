@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Local data
+*.db
+*.sqlite3
+apps/api/uploads/
+.env
+.env.local
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+apps/web/next-env.d.ts
+*.tsbuildinfo
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+apps/web/test-results/
+apps/web/playwright-report/
