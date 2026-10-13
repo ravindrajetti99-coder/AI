@@ -1,7 +1,12 @@
-"""Test harness: SQLite, offline AI, and per-test database snapshots.
+"""Test harness: offline AI and per-test database snapshots, on SQLite or PostgreSQL.
 
-The schema (and, for `seeded`, all seed courses) is built once per session into template
-files; each test starts from a fresh copy, so tests never see each other's writes.
+The schema (and, for the seeded fixtures, all seed courses) is built once per session into
+templates; each test starts from a fresh copy, so tests never see each other's writes.
+
+SQLite (default) copies database files. Set EDU_TEST_POSTGRES_URL to an admin connection
+(e.g. postgresql+psycopg://postgres:postgres@localhost:5432/postgres) to run the same suite
+on PostgreSQL: the schema then comes from `alembic upgrade head` and each test gets a
+database cloned with CREATE DATABASE ... TEMPLATE.
 """
 
 import math
@@ -11,12 +16,17 @@ import tempfile
 import uuid
 from pathlib import Path
 
+from sqlalchemy import create_engine, make_url, pool
+
 TMP = Path(tempfile.mkdtemp(prefix="eduverse-tests-"))
 DB_FILE = TMP / "test.db"
+PG_ADMIN_URL = os.environ.get("EDU_TEST_POSTGRES_URL", "")
+PG_DB = "eduverse_test"
+DB_URL = make_url(PG_ADMIN_URL).set(database=PG_DB).render_as_string(hide_password=False) if PG_ADMIN_URL else f"sqlite:///{DB_FILE}"
 os.environ.update(
     {
         "EDU_ENV": "test",
-        "EDU_DATABASE_URL": f"sqlite:///{DB_FILE}",
+        "EDU_DATABASE_URL": DB_URL,
         "EDU_UPLOAD_DIR": str(TMP / "uploads"),
         "EDU_ANTHROPIC_API_KEY": "",
         "EDU_OPENAI_API_KEY": "",
@@ -30,6 +40,8 @@ os.environ.update(
 from datetime import UTC, datetime  # noqa: E402
 
 import pytest  # noqa: E402
+from alembic import command  # noqa: E402
+from alembic.config import Config  # noqa: E402
 from fastapi.testclient import TestClient  # noqa: E402
 from sqlalchemy import select  # noqa: E402
 
@@ -46,28 +58,73 @@ from app.modules.identity import service as identity  # noqa: E402
 from app.modules.learning.models import Mastery  # noqa: E402
 from app.seed.loader import load  # noqa: E402
 
-
-def _snapshot(target: Path) -> None:
-    engine.dispose()  # close pooled connections before touching the file
-    shutil.copyfile(DB_FILE, target)
+API_DIR = Path(__file__).resolve().parents[1]
 
 
-def _restore(source: Path) -> None:
-    engine.dispose()
-    shutil.copyfile(source, DB_FILE)
+def alembic_config() -> Config:
+    cfg = Config(str(API_DIR / "alembic.ini"))
+    cfg.attributes["configure_logger"] = False
+    return cfg
+
+
+class SqliteSnapshots:
+    def build_schema(self) -> None:
+        engine.dispose()
+        DB_FILE.unlink(missing_ok=True)
+        Base.metadata.create_all(engine)
+
+    def snapshot(self, name: str) -> None:
+        engine.dispose()  # close pooled connections before touching the file
+        shutil.copyfile(DB_FILE, TMP / f"{name}.db")
+
+    def restore(self, name: str) -> None:
+        engine.dispose()
+        shutil.copyfile(TMP / f"{name}.db", DB_FILE)
+
+    def cleanup(self) -> None:
+        engine.dispose()
+
+
+class PostgresSnapshots:
+    def __init__(self) -> None:
+        self.admin = create_engine(PG_ADMIN_URL, isolation_level="AUTOCOMMIT", poolclass=pool.NullPool)
+        self.names: set[str] = set()
+
+    def _recreate(self, target: str, template: str | None = None) -> None:
+        engine.dispose()
+        with self.admin.connect() as c:
+            c.exec_driver_sql(f'DROP DATABASE IF EXISTS "{target}" WITH (FORCE)')
+            c.exec_driver_sql(f'CREATE DATABASE "{target}"' + (f' TEMPLATE "{template}"' if template else ""))
+
+    def build_schema(self) -> None:
+        self._recreate(PG_DB)
+        command.upgrade(alembic_config(), "head")  # the real migrations, not create_all
+
+    def snapshot(self, name: str) -> None:
+        self.names.add(f"{PG_DB}_{name}")
+        self._recreate(f"{PG_DB}_{name}", template=PG_DB)
+
+    def restore(self, name: str) -> None:
+        self._recreate(PG_DB, template=f"{PG_DB}_{name}")
+
+    def cleanup(self) -> None:
+        engine.dispose()
+        with self.admin.connect() as c:
+            for db_name in [*self.names, PG_DB]:
+                c.exec_driver_sql(f'DROP DATABASE IF EXISTS "{db_name}" WITH (FORCE)')
+        self.admin.dispose()
 
 
 @pytest.fixture(scope="session")
-def templates() -> dict[str, Path]:
-    engine.dispose()
-    DB_FILE.unlink(missing_ok=True)
-    Base.metadata.create_all(engine)
-    _snapshot(TMP / "empty.db")
+def snapshots():
+    backend = PostgresSnapshots() if PG_ADMIN_URL else SqliteSnapshots()
+    backend.build_schema()
+    backend.snapshot("empty")
     with SessionLocal() as db:
         load(db)
-    _snapshot(TMP / "seeded.db")
-    yield {"empty": TMP / "empty.db", "seeded": TMP / "seeded.db"}
-    engine.dispose()
+    backend.snapshot("seeded")
+    yield backend
+    backend.cleanup()
     shutil.rmtree(TMP, ignore_errors=True)
 
 
@@ -83,15 +140,15 @@ def _isolation(monkeypatch):
 
 
 @pytest.fixture
-def empty_db(templates):
-    _restore(templates["empty"])
+def empty_db(snapshots):
+    snapshots.restore("empty")
     yield
     engine.dispose()
 
 
 @pytest.fixture
-def seeded_db(templates):
-    _restore(templates["seeded"])
+def seeded_db(snapshots):
+    snapshots.restore("seeded")
     yield
     engine.dispose()
 
